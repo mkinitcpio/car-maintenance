@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+/* CAN (MUST) BE REMOVED ! Sample Global style */
+.container {
+  height: 100%;
+}
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+.custom-dialog {
+  .mat-dialog-container {
+    padding: 0;
+  }
+}

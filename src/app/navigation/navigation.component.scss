@@ -1,0 +1,43 @@
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+button {
+  background: none;
+}
+
+.button {
+  font-family: Ubuntu;
+  font-weight: normal;
+  color: #111;
+}
+
+.button__create {
+  margin-right: 8px;
+  background-color: #0d7f1e;
+  border-color: rgba(0,0,0,0.56);
+  color: #fff;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    visibility: hidden;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+li:hover> .menu-button {
+  visibility: visible;
+}

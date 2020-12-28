@@ -1,0 +1,25 @@
+<div class="create-dialog">
+  <header class="create-dialog__title">
+    <span>{{data.mode === 0 ? 'Добавление' : 'Редактирование'}} категории</span>
+  </header>
+  <main class="create-dialog__content">
+    <form [formGroup]="categoryForm">
+      <mat-form-field [floatLabel]="'always'">
+        <mat-label>Наименование</mat-label>
+        <input [required]="true" [formControlName]="'name'" matInput value="Sushi">
+      </mat-form-field>
+      <mat-form-field [floatLabel]="'always'">
+      <mat-label>Родитель</mat-label>
+        <mat-select [formControlName]="'parent'">
+          <mat-option *ngFor="let parent of data.parents" [value]="parent.value">
+            {{parent.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </main>
+  <div class="create-dialog__footer">
+    <button class="button button__submit" mat-button (click)="onSubmit()">{{data.mode === 0 ? 'Добавить' : 'Изменить'}}</button>
+    <button class="button" mat-button (click)="onClose()">Отмена</button>
+  </div>
+</div>

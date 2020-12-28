@@ -1,0 +1,26 @@
+:host {
+  
+}
+
+.home {
+  &__sidenav {
+    padding: 16px;
+    width: 300px;
+    
+    border-right: 1px solid rgba(0,0,0,0.2);;
+  }
+
+  &__content {
+    padding: 16px;
+
+    height: calc(100vh - 96px);
+    overflow: hidden;
+  }
+
+  &__table {
+    height: 100%;
+    width: 100%;
+
+    overflow-y: auto;
+  }
+}

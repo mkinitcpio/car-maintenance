@@ -1,0 +1,43 @@
+<div class="container">
+  <mat-sidenav-container  class="example-container">
+    <mat-sidenav #sidenav mode="side" opened class="home__sidenav"
+                 [fixedInViewport]="true">
+      <app-navigation></app-navigation>
+    </mat-sidenav>
+
+    <mat-sidenav-content fixedInViewport="true" scrollable="false" class="home__content">
+
+      <button mat-button>Добавить</button>
+      <mat-table [dataSource]="dataSourceTable" class="home__table">
+        <!-- User name Definition -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> N </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.position}} </mat-cell>
+        </ng-container>
+      
+        <!-- Age Definition -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+      
+        <!-- Title Definition -->
+        <ng-container matColumnDef="weight">
+          <mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.weight}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="symbol">
+          <mat-header-cell *matHeaderCellDef> Стоимость </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.symbol}} </mat-cell>
+        </ng-container>
+      
+        <!-- Header and Row Declarations -->
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+      
+      
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

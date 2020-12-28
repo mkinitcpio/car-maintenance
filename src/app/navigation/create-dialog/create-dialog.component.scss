@@ -1,0 +1,80 @@
+.create-dialog {
+
+  &__title {
+    height: 64px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+
+    font-family: Ubuntu;
+    font-weight: lighter;
+    font-size: 24px;
+    color: white;
+
+    background: #262626;
+  }
+
+  &__content {
+    padding: 16px 24px;
+    mat-form-field {
+      font-family: 'Ubuntu';
+      font-weight: lighter;
+      width: 100%;
+
+      &.mat-form-field-invalid mat-label {
+        caret-color: #c7162b;
+        color: #c7162b !important;
+      }
+
+      mat-label {
+        color: #111;
+        font-weight: lighter;
+        font-size: 20px;
+      }
+
+      input:placeholder-shown {
+        font-size: 16px;
+      }
+    }
+
+    mat-error {
+      color: #c7162b;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 24px 16px 24px;
+  }
+}
+
+.button {
+  font-family: Ubuntu;
+  font-weight: normal;
+  color: #111;
+}
+
+.button__submit {
+  margin-right: 8px;
+  background-color: #0d7f1e;
+  border-color: rgba(0,0,0,0.56);
+  color: #fff;
+}
+
+.mat-form-field::ng-deep {
+  .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #2e96ff;
+   }
+
+   .mat-form-field-required-marker {
+    color: #c7162b !important;
+  }
+}
+
+::ng-deep .mat-form-field-invalid {
+  .mat-form-field-ripple {
+    background: #c7162b !important;
+  }
+}
