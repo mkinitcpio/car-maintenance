@@ -24,5 +24,15 @@ export class AppComponent {
     } else {
       console.log('Run in browser');
     }
+
+    const db = localStorage.getItem('db');
+
+    if(!db) {
+      localStorage.setItem('db', JSON.stringify({
+        categories: [],
+        records: [],
+        filePath: '',
+      }));
+    }
   }
 }

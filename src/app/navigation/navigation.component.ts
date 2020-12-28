@@ -4,67 +4,67 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 import { CreateDialogComponent } from "./create-dialog/create-dialog.component";
 
-import { filter } from "rxjs/operators";
+import { filter, pairwise } from "rxjs/operators";
 import { MatMenuTrigger } from "@angular/material/menu";
 
 import { FormModeEnum } from "./create-dialog/form-mode.enum";
+import { NavigationFacade } from "./state/navigation.facade";
+import { Category } from "./state/interface";
+import { Status } from "../state/interface";
 
-const TREE_DATA = [
-  {
-    name: "Двигатель",
-    parent: null,
-    id: 1,
-    children: [
-      { name: "один", parent: 1, id: 2, children: [] },
-      { name: "два", parent: 1, id: 3, children: [] },
-      { name: "три", parent: 1, id: 4, children: [] },
-    ],
-  },
-  {
-    name: "Дверь",
-    parent: null,
-    id: 5,
-    children: [
-      { name: "ручка", parent: 5, id: 6, children: [] },
-      { name: "зеркало", parent: 5, id: 7, children: [] },
-      { name: "стекло", parent: 5, id: 8, children: [] },
-    ],
-  },
-  {
-    name: "Выхлопная труба",
-    parent: null,
-    id: 9,
-    children: [
-      { name: "дырка", parent: 9, id: 10, children: [] },
-      { name: "дырка 1", parent: 9, id: 11, children: [] },
-      { name: "дырка 2", parent: 9, id: 12, children: [] },
-    ],
-  },
-];
+import { AutoCloseable } from '../core/auto-closeable';
+import { merge } from "rxjs";
+import { DetailsFacade } from "../detail/state/details.facade";
 
 @Component({
   selector: "app-navigation",
   templateUrl: "./navigation.component.html",
   styleUrls: ["./navigation.component.scss"],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent extends AutoCloseable implements OnInit {
   @ViewChild(MatMenuTrigger) contextMenu: MatMenuTrigger;
 
   treeControl = new NestedTreeControl<any>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
   public context;
-  constructor(public dialog: MatDialog) {
-    this.dataSource.data = TREE_DATA;
+
+  constructor(
+    public dialog: MatDialog,
+    private navigationFacade: NavigationFacade,
+    private detailsFacade: DetailsFacade,
+  ) {
+    super();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  hasChild = (_: number, node: any) =>
-    !!node.children && node.children.length > 0;
+    merge(
+      this.navigationFacade.newCategory$,
+      this.navigationFacade.editCategory$,
+      this.navigationFacade.deleteCategory$
+    ).pipe(
+      pairwise(),
+      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
+    ).subscribe(() => {
+      this.navigationFacade.loadCategories();
+    });
+
+    this.navigationFacade.navigation$
+        .pipe(
+          pairwise(),
+          filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
+        ).subscribe(([_, categories]) => {
+          this.dataSource.data = [];
+          this.dataSource.data = categories.value;
+        });
+
+    this.navigationFacade.loadCategories();
+  }
+
+  hasChild = (_: number, node: any) => !!node.children;
 
   public addCategory(): void {
     const parentList = this.flatTreeView(this.dataSource.data);
-    console.log(parentList);
     const dialogRef = this.dialog.open(CreateDialogComponent, {
       width: "380px",
       panelClass: "custom-dialog",
@@ -77,29 +77,8 @@ export class NavigationComponent implements OnInit {
     dialogRef
       .afterClosed()
       .pipe(filter(Boolean))
-      .subscribe((result: any) => {
-        if (result.parent === null) {
-          TREE_DATA.push({
-            name: result.name,
-            id: Math.random(),
-            parent: result.parent,
-            children: [],
-          });
-        } else {
-          TREE_DATA.forEach((leaf) => {
-            if (leaf.id === result.parent) {
-              leaf.children.push({
-                name: result.name,
-                parent: result.parent,
-                id: Math.random(),
-                children: [],
-              });
-            }
-          });
-        }
-
-        this.dataSource.data = [];
-        this.dataSource.data = TREE_DATA;
+      .subscribe((category: Category) => {
+        this.navigationFacade.createNewCategory(category);
       });
   }
 
@@ -113,19 +92,20 @@ export class NavigationComponent implements OnInit {
     return tree
       .map((value) => [value, ...value.children])
       .flat(2)
+      .filter((value) => value)
       .map((value) => {
         const { children, ...data } = value;
         return data;
       });
   }
 
-  public onSelectCategory(id: number): void {
-    console.log(id);
+  public onSelectCategory(id: string): void {
+    this.detailsFacade.loadRecords(id);
   }
 
   public openContextMenu(event): void {
-    event.preventDefault(); // Suppress the browser's context menu
-    this.contextMenu.openMenu(); // Open your custom context menu instead
+    event.preventDefault();
+    this.contextMenu.openMenu();
   }
 
   public onEdit(): void {
@@ -146,27 +126,12 @@ export class NavigationComponent implements OnInit {
     dialogRef
       .afterClosed()
       .pipe(filter(Boolean))
-      .subscribe((result: any) => {
-        if (result.parent === null) {
-          const node = this.dataSource.data.find((row) => row.id === result.id);
-          console.log(node);
-        } else {
-          this.dataSource.data.forEach(element => {
-            element.children.forEach(element => {
-              if(element.id === result.id) {
-                element.name = result.name;
-                element.parent = result.parent;
-              }
-            });
-          });
-        }
-
-        this.dataSource.data = [];
-        this.dataSource.data = TREE_DATA;
+      .subscribe((category: Category) => {
+        this.navigationFacade.editCategory(category);
       });
   }
 
   public onDelete(): void {
-    console.log(this.context);
+    this.navigationFacade.deleteCategory(this.context);
   }
 }

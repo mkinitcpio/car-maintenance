@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from './form-mode.enum';
 
+import { v4 as uuidv4 } from 'uuid';
+
 @Component({
   selector: 'app-create-dialog',
   templateUrl: './create-dialog.component.html',
@@ -11,13 +13,13 @@ import { FormModeEnum } from './form-mode.enum';
 export class CreateDialogComponent implements OnInit {
 
   public categoryForm = new FormGroup({
-    id: new FormControl(null),
+    id: new FormControl(uuidv4()),
     name: new FormControl(null, Validators.required),
     parent: new FormControl(null),
   });
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {parents: Array<any>},
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<CreateDialogComponent>
   ) {}
 

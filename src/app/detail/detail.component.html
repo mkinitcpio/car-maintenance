@@ -1,7 +1,31 @@
 <div class="container">
-  <h1 class="title">
-    {{ 'PAGES.DETAIL.TITLE' | translate }}
-  </h1>
+  <button mat-button>Добавить</button>
+  <mat-table [dataSource]="dataSourceTable" class="home__table">
+    <!-- User name Definition -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> N </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.position}} </mat-cell>
+    </ng-container>
+  
+    <!-- Age Definition -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Title Definition -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.weight}} </mat-cell>
+    </ng-container>
 
-  <a routerLink="/">{{ 'PAGES.DETAIL.BACK_TO_HOME' | translate }}</a>
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Стоимость </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.symbol}} </mat-cell>
+    </ng-container>
+  
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
 </div>

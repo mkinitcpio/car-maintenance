@@ -41,10 +41,14 @@
     "lint": "ng lint"
   },
   "dependencies": {
-    "@angular/animations": "^11.0.0 || ^12.0.0-0",
+    "@angular/animations": "^11.0.0",
     "@angular/cdk": "11.0.3",
-    "@angular/forms": "^11.0.0 || ^12.0.0-0",
-    "@angular/material": "11.0.3"
+    "@angular/forms": "^11.0.0",
+    "@angular/material": "11.0.3",
+    "@ngrx/effects": "10.1.2",
+    "@ngrx/store": "10.1.2",
+    "@ngrx/store-devtools": "10.1.2",
+    "uuid": "8.3.1"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "10.0.1",
