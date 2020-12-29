@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { NavigationModule } from '../navigation/navigation.module';
 import { StoreModule } from '@ngrx/store';
 import { DetailModule } from '../detail/detail.module';
+import { EmptyModule } from '../empty/empty.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -22,6 +23,7 @@ import { DetailModule } from '../detail/detail.module';
     HomeRoutingModule,
     NavigationModule,
     DetailModule,
+    EmptyModule,
   ]
 })
 export class HomeModule {}

@@ -15,6 +15,8 @@ import { Status } from "../state/interface";
 import { AutoCloseable } from '../core/auto-closeable';
 import { merge } from "rxjs";
 import { DetailsFacade } from "../detail/state/details.facade";
+import { Router } from "@angular/router";
+import { Route } from "@angular/compiler/src/core";
 
 @Component({
   selector: "app-navigation",
@@ -32,6 +34,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     public dialog: MatDialog,
     private navigationFacade: NavigationFacade,
     private detailsFacade: DetailsFacade,
+    private router: Router,
   ) {
     super();
   }
@@ -100,6 +103,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   public onSelectCategory(id: string): void {
+    this.router.navigate(['home/details', id])
     this.detailsFacade.loadRecords(id);
   }
 

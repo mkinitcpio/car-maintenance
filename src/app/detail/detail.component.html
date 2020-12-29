@@ -4,7 +4,7 @@
     <!-- User name Definition -->
     <ng-container matColumnDef="position">
       <mat-header-cell *matHeaderCellDef> N </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.position}} </mat-cell>
+      <mat-cell *matCellDef="let row; let i = index"> {{i + 1}} </mat-cell>
     </ng-container>
   
     <!-- Age Definition -->
@@ -14,14 +14,14 @@
     </ng-container>
   
     <!-- Title Definition -->
-    <ng-container matColumnDef="weight">
+    <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.weight}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="symbol">
+    <ng-container matColumnDef="cost">
       <mat-header-cell *matHeaderCellDef> Стоимость </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.symbol}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
     </ng-container>
   
     <!-- Header and Row Declarations -->
