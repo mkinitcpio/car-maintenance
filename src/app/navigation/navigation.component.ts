@@ -16,7 +16,6 @@ import { AutoCloseable } from '../core/auto-closeable';
 import { merge } from "rxjs";
 import { DetailsFacade } from "../detail/state/details.facade";
 import { Router } from "@angular/router";
-import { Route } from "@angular/compiler/src/core";
 
 @Component({
   selector: "app-navigation",
@@ -28,12 +27,11 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   treeControl = new NestedTreeControl<any>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
-  public context;
+  public context: string;
 
   constructor(
     public dialog: MatDialog,
     private navigationFacade: NavigationFacade,
-    private detailsFacade: DetailsFacade,
     private router: Router,
   ) {
     super();
@@ -64,7 +62,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     this.navigationFacade.loadCategories();
   }
 
-  hasChild = (_: number, node: any) => !!node.children;
+  hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
 
   public addCategory(): void {
     const parentList = this.flatTreeView(this.dataSource.data);
@@ -91,7 +89,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   private getFlatTreeView(
     tree
-  ): Array<{ name: string; value: number; id: number }> {
+  ): Array<{ name: string; value: number; id: string }> {
     return tree
       .map((value) => [value, ...value.children])
       .flat(2)
@@ -102,9 +100,10 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public onSelectCategory(id: string): void {
-    this.router.navigate(['home/details', id])
-    this.detailsFacade.loadRecords(id);
+  public onSelectCategory(node): void {
+    if(node.parent) {
+      this.router.navigate(['/details', node.id, node.name]);
+    }
   }
 
   public openContextMenu(event): void {

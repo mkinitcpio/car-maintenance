@@ -1,3 +1,81 @@
-:host {
-  
+.detail {
+  height: 100%;
+  overflow: hidden;
+
+  &__table {
+    font-family: Ubuntu;
+    height: calc(100% - 112px);
+    overflow-y: scroll;
+
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+  }
+
+  &__menu-button {
+    cursor: pointer;
+  }
+
+  &__menu-column {
+    max-width: 24px;
+    visibility: hidden;
+  }
+
+  &__title-container {
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #262626;
+  }
+
+  &__title {
+    font-family: Ubuntu;
+    font-size: 32px;
+    color: white;
+    font-weight: 100;
+  }
+
+  &__add-button {
+    font-family: Ubuntu;
+    font-weight: normal;
+    margin-right: 8px;
+    background-color: #0d7f1e;
+    border-color: rgba(0,0,0,0.56);
+    color: #fff;
+  }
+
+  &__content {
+    padding: 32px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__empty {
+    height: calc(100% - 112px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Ubuntu;
+    font-weight: lighter;
+    font-size: 32px;
+  }
+
+  &__empty-text {
+    font-size: 128px;
+    width: auto;
+    height: auto;
+    color: #333;
+  }
+}
+
+.mat-row:hover {
+  cursor: pointer;
+  background: #F7F7F7;
+}
+.mat-row:hover .detail__menu-column {
+  visibility: visible;
 }

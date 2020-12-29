@@ -1,0 +1,23 @@
+.empty {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    font-family: Ubuntu;
+    font-size: 32px;
+    font-weight: 100;
+    color: #333;
+  }
+
+  &__icon {
+    height: 64px;
+    width: 64px;
+    margin-right: 16px;
+    font-size: 64px;
+    color: #333;
+  }
+}

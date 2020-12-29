@@ -12,6 +12,7 @@ export class DataBaseService {
   }
 
   public getRecords(parentId: string): Array<any> {
+    console.log(parentId);
     const db = JSON.parse(localStorage.getItem('db')) as any;
     return db.records.filter((record) => record.parent === parentId);
   }
@@ -40,8 +41,9 @@ export class DataBaseService {
   }
 
   public deleteRecord(id: string): void {
+    console.log(id);
     const db = JSON.parse(localStorage.getItem('db')) as any;
-    db.records = db.records.filter(record => record.parent !== id);
+    db.records = db.records.filter(record => record.id !== id);
 
     localStorage.setItem('db', JSON.stringify(db));
   }

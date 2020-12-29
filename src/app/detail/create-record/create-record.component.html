@@ -1,0 +1,27 @@
+<div class="create-record">
+  <header class="create-record__title">
+    <span>{{data.mode === 0 ? 'Добавление' : 'Редактирование'}} категории</span>
+  </header>
+  <main class="create-record__content">
+    <form [formGroup]="recordForm">
+      <mat-form-field [floatLabel]="'always'">
+        <mat-label>Наименование</mat-label>
+        <input [required]="true" [formControlName]="'name'" matInput>
+      </mat-form-field>
+      <mat-form-field [floatLabel]="'always'">
+        <mat-label>Стоимость</mat-label>
+        <input [required]="true" [formControlName]="'cost'" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" [floatLabel]="'always'">
+        <mat-label>Дата</mat-label>
+        <input  [formControlName]="'date'" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </main>
+  <div class="create-record__footer">
+    <button class="button button__submit" mat-button (click)="onSubmit()">{{data.mode === 0 ? 'Добавить' : 'Изменить'}}</button>
+    <button class="button" mat-button (click)="onClose()">Отмена</button>
+  </div>
+</div>

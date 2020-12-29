@@ -9,7 +9,7 @@ export const categoriesMapper = (categories: Array<Category>): Array<CategoryTre
       id,
       name,
       parent,
-      children: children.length ? children : null
+      children,
     }
   })).filter(category => !category.parent);
 }

@@ -24,6 +24,9 @@ import { EmptyModule } from '../empty/empty.module';
     NavigationModule,
     DetailModule,
     EmptyModule,
+  ],
+  exports: [
+    HomeComponent,
   ]
 })
 export class HomeModule {}

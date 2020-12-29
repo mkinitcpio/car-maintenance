@@ -6,19 +6,13 @@ import { DetailComponent } from "../detail/detail.component";
 import { EmptyComponent } from "../empty/empty.component";
 
 const routes: Routes = [
-  {
-    path: "home",
-    component: HomeComponent,
-    children: [
       { path: "", component: EmptyComponent },
-      { path: "details/:id", component: DetailComponent },
-    ],
-  },
+      { path: "details/:id/:name", component: DetailComponent },
 ];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class HomeRoutingModule {}

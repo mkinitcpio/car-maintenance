@@ -10,16 +10,23 @@ import { detailsReducer } from './state/reducers';
 import { DetailsFacade } from './state/details.facade';
 import { EffectsModule } from '@ngrx/effects';
 import { DetailsEffects } from './state/effects';
+import { EmptyModule } from '../empty/empty.module';
+import { CreateRecordComponent } from './create-record/create-record.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     DetailComponent,
+    CreateRecordComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forFeature('details', detailsReducer),
-    EffectsModule.forFeature([DetailsEffects])
+    EffectsModule.forFeature([DetailsEffects]),
+    EmptyModule,
   ],
   providers: [
     DetailsFacade,

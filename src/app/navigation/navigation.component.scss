@@ -2,6 +2,12 @@
   display: none;
 }
 
+.example-tree {
+  height: calc(100% - 112px);
+  overflow: scroll;
+  padding: 16px;
+}
+
 .example-tree ul,
 .example-tree li {
   cursor: pointer;
@@ -34,10 +40,42 @@ button {
 
     visibility: hidden;
     font-size: 16px;
-    width: 16px;
-    height: 16px;
 }
 
 li:hover> .menu-button {
   visibility: visible;
+}
+
+.mat-tree-node:hover .menu-button {
+  visibility: visible;
+}
+
+.node__container {
+  height: 40px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* align-self: stretch; */
+    align-items: center;
+    // border-bottom: 1px dotted rgb(216, 216, 216);
+}
+
+.navigation {
+  height: 100%;
+  overflow: hidden;
+
+  &__title-container {
+    padding: 0 16px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    background-color: #262626;
+  }
+
+  &__node-view {
+    height: 32px;
+    width: 32px;
+  }
 }
