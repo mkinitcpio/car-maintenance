@@ -70,6 +70,20 @@
     height: auto;
     color: #333;
   }
+
+  &__stat-panel {
+    padding: 8px;
+
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    font-family: Ubuntu;
+    font-weight: lighter;
+    margin-left: 16px;
+    margin-right: auto;
+    color: white;
+    justify-self: flex-end;
+    font-size: 12px;
+  }
 }
 
 .mat-row:hover {
@@ -78,4 +92,17 @@
 }
 .mat-row:hover .detail__menu-column {
   visibility: visible;
+}
+
+.stat-panel {
+
+  &__row {
+    margin-bottom: 4px;
+  }
+
+  &__label {
+    margin-right: 4px;
+
+    font-weight: bold;
+  }
 }

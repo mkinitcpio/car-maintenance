@@ -24,6 +24,8 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   public name: string = null;
   public context: string;
 
+  public costSum: number = 0;
+
   constructor(private detailsFacade: DetailsFacade, private route: ActivatedRoute, public dialog: MatDialog,) {
     super();
   }
@@ -36,6 +38,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       )
       .subscribe(([_, curr]) => {
         this.dataSourceTable = curr.value;
+        this.costSum = this.dataSourceTable.reduce((acc, curr) => acc + +curr.cost , 0);
       });
 
     this.route.params.subscribe(params => {
