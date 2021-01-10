@@ -18,7 +18,7 @@ import { Record } from './state/interface';
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'date', 'cost', 'menu'];
+  displayedColumns: string[] = ['position', 'name', 'mileage' , 'date', 'cost', 'menu'];
   dataSourceTable = [];
   private parentId = null;
   public name: string = null;

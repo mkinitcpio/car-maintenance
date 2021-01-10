@@ -4,4 +4,5 @@ export interface Record {
   parent: string;
   date: Date;
   cost: string;
+  mileage: number;
 }

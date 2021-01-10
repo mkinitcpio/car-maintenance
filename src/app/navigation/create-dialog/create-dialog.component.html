@@ -9,7 +9,7 @@
         <input [required]="true" [formControlName]="'name'" matInput value="Sushi">
       </mat-form-field>
       <mat-form-field [floatLabel]="'always'">
-      <mat-label>Родитель</mat-label>
+      <mat-label>Категория</mat-label>
         <mat-select [formControlName]="'parent'">
           <mat-option *ngFor="let parent of data.parents" [value]="parent.value">
             {{parent.name}}

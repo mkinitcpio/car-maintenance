@@ -8,7 +8,7 @@
         <span class="stat-panel__label">Последнее изменение: </span> <span>{{dataSourceTable[0]?.date | date}}</span>
       </div>
       <div>
-        <span class="stat-panel__label">Затраты: </span><span>{{costSum}} BYN</span>
+        <span class="stat-panel__label">Общий расход: </span><span>{{costSum}} BYN</span>
       </div>
     </div>
     <button class="detail__add-button" mat-button (click)="onCreateRecord()">Добавить</button>
@@ -25,13 +25,18 @@
         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
       </ng-container>
     
+      <ng-container matColumnDef="mileage">
+        <mat-header-cell *matHeaderCellDef> Пробег (км) </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.mileage}} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.date | date}} </mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="cost">
-        <mat-header-cell *matHeaderCellDef> Стоимость </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Расход (BYN) </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
       </ng-container>
   
