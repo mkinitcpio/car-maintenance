@@ -14,7 +14,6 @@ import { Status } from "../state/interface";
 
 import { AutoCloseable } from '../core/auto-closeable';
 import { merge } from "rxjs";
-import { DetailsFacade } from "../detail/state/details.facade";
 import { Router } from "@angular/router";
 
 @Component({
@@ -51,13 +50,13 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     });
 
     this.navigationFacade.navigation$
-        .pipe(
-          pairwise(),
-          filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-        ).subscribe(([_, categories]) => {
-          this.dataSource.data = [];
-          this.dataSource.data = categories.value;
-        });
+      .pipe(
+        pairwise(),
+        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
+      ).subscribe(([_, categories]) => {
+        this.dataSource.data = [];
+        this.dataSource.data = categories.value;
+      });
 
     this.navigationFacade.loadCategories();
   }

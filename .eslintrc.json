@@ -51,7 +51,13 @@
         "@typescript-eslint/no-floating-promises": 0,
         "@typescript-eslint/semi": "error",
         "@angular-eslint/use-injectable-provided-in": "error",
-        "@angular-eslint/no-attribute-decorator": "error"
+        "@angular-eslint/no-attribute-decorator": "error",
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
+        ]
       }
     },
     {

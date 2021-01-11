@@ -19,12 +19,12 @@ import { Record } from './state/interface';
 export class DetailComponent extends AutoCloseable implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'mileage' , 'date', 'cost', 'menu'];
-  dataSourceTable = [];
+  dataSourceTable: Record[] = [];
   private parentId = null;
   public name: string = null;
   public context: string;
 
-  public costSum: number = 0;
+  public costSum = 0;
 
   constructor(private detailsFacade: DetailsFacade, private route: ActivatedRoute, public dialog: MatDialog,) {
     super();
@@ -56,19 +56,19 @@ export class DetailComponent extends AutoCloseable implements OnInit {
         this.detailsFacade.loadRecords(this.parentId);
       });
 
-      merge(
-        this.detailsFacade.newDetails$,
-        this.detailsFacade.editDetail$,
-        this.detailsFacade.deleteDetail$,
-      ).pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-      ).subscribe(() => {
-        this.detailsFacade.loadRecords(this.parentId);
-      });
-   }
+    merge(
+      this.detailsFacade.newDetails$,
+      this.detailsFacade.editDetail$,
+      this.detailsFacade.deleteDetail$,
+    ).pipe(
+      pairwise(),
+      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
+    ).subscribe(() => {
+      this.detailsFacade.loadRecords(this.parentId);
+    });
+  }
 
-   public onCreateRecord(): void {
+  public onCreateRecord(): void {
     const dialogRef = this.dialog.open(CreateRecordComponent, {
       width: "380px",
       panelClass: "custom-dialog",
