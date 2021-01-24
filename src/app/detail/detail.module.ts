@@ -13,6 +13,7 @@ import { DetailsEffects } from './state/effects';
 import { EmptyModule } from '../empty/empty.module';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecordsTableModule } from '../shared/components';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     FormsModule,
+    RecordsTableModule,
     ReactiveFormsModule,
     StoreModule.forFeature('details', detailsReducer),
     EffectsModule.forFeature([DetailsEffects]),

@@ -9,7 +9,7 @@ import { MatMenuTrigger } from "@angular/material/menu";
 
 import { FormModeEnum } from "./create-dialog/form-mode.enum";
 import { NavigationFacade } from "./state/navigation.facade";
-import { Category } from "./state/interface";
+import { Category, CategoryTree } from "./state/interface";
 import { Status } from "../state/interface";
 
 import { AutoCloseable } from '../core/auto-closeable';
@@ -49,7 +49,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       this.navigationFacade.loadCategories();
     });
 
-    this.navigationFacade.navigation$
+    this.navigationFacade.categories$
       .pipe(
         pairwise(),
         filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
@@ -86,9 +86,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     return tree.map((value) => ({ name: value.name, value: value.id }));
   }
 
-  private getFlatTreeView(
-    tree
-  ): Array<{ name: string; value: number; id: string }> {
+  private getFlatTreeView(tree): Array<{ name: string; value: number; id: string }> {
     return tree
       .map((value) => [value, ...value.children])
       .flat(2)
@@ -99,13 +97,15 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public onSelectCategory(node): void {
+  public onSelectCategory(node: CategoryTree): void {
     if(node.parent) {
       this.router.navigate(['/details', node.id, node.name]);
+    } else {
+      this.router.navigate(['/category-details', node.id]);
     }
   }
 
-  public openContextMenu(event): void {
+  public openContextMenu(event: Event): void {
     event.preventDefault();
     this.contextMenu.openMenu();
   }

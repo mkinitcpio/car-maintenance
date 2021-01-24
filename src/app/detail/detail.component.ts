@@ -18,11 +18,9 @@ import { Record } from './state/interface';
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'mileage' , 'date', 'cost', 'menu'];
   dataSourceTable: Record[] = [];
   private parentId = null;
   public name: string = null;
-  public context: string;
 
   public costSum = 0;
 
@@ -86,14 +84,14 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public onEdit(): void {
+  public onEdit(id: string): void {
     const dialogRef = this.dialog.open(CreateRecordComponent, {
       width: "380px",
       panelClass: "custom-dialog",
       data: {
         mode: FormModeEnum.Edit,
         parent: this.parentId,
-        formData: this.dataSourceTable.find(row => row.id === this.context),
+        formData: this.dataSourceTable.find(row => row.id === id),
       },
     });
 
@@ -105,7 +103,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public onDelete(): void {
-    this.detailsFacade.deleteRecord(this.context);
+  public onDelete(id: string): void {
+    this.detailsFacade.deleteRecord(id);
   }
 }

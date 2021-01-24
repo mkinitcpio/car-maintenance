@@ -14,50 +14,12 @@
     <button class="detail__add-button" mat-button (click)="onCreateRecord()">Добавить</button>
   </div>
   <div class="detail__content">
-    <mat-table *ngIf="dataSourceTable.length" [dataSource]="dataSourceTable" class="detail__table">
-      <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> № </mat-header-cell>
-        <mat-cell *matCellDef="let row; let i = index"> {{i + 1}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-      </ng-container>
-    
-      <ng-container matColumnDef="mileage">
-        <mat-header-cell *matHeaderCellDef> Пробег (км) </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.mileage}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="date">
-        <mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.date | date}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="cost">
-        <mat-header-cell *matHeaderCellDef> Расход (BYN) </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="menu">
-        <mat-header-cell  class="detail__menu-column" *matHeaderCellDef></mat-header-cell>
-        <mat-cell  class="detail__menu-column"  *matCellDef="let row"> <mat-icon class="detail__menu-button" [matMenuTriggerFor]="contextMenu" (click)="context = row.id; $event.stopPropagation()">more_horiz</mat-icon> </mat-cell>
-      </ng-container>
-  
-      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
-
+    <app-records-table [data]="dataSourceTable"
+                       (edit)="onEdit($event)"
+                       (delete)="onDelete($event)">
+    </app-records-table>
     <div *ngIf="!dataSourceTable.length" class="detail__empty">
       <mat-icon class="detail__empty-text">content_paste</mat-icon>Записи отсутствуют.
     </div>
   </div>
 </div>
-
-<mat-menu #contextMenu="matMenu">
-  <ng-template matMenuContent>
-      <button mat-menu-item (click)="onEdit($event)">Редактировать</button>
-      <button mat-menu-item (click)="onDelete($event)">Удалить</button>
-  </ng-template>
-</mat-menu>

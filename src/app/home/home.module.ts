@@ -6,14 +6,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
 import { NavigationModule } from '../navigation/navigation.module';
-import { StoreModule } from '@ngrx/store';
 import { DetailModule } from '../detail/detail.module';
 import { EmptyModule } from '../empty/empty.module';
+import { CategoryDetailsModule } from '../category-details/category-details.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -24,6 +20,7 @@ import { EmptyModule } from '../empty/empty.module';
     NavigationModule,
     DetailModule,
     EmptyModule,
+    CategoryDetailsModule,
   ],
   exports: [
     HomeComponent,

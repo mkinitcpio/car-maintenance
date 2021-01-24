@@ -16,7 +16,7 @@ import { Category } from "./interface";
 })
 export class NavigationFacade {
 
-  public readonly navigation$ = this.store.select(getCategories);
+  public readonly categories$ = this.store.select(getCategories);
   public readonly newCategory$ = this.store.select(getNewCategory);
   public readonly editCategory$ = this.store.select(getEditCategory);
   public readonly deleteCategory$ = this.store.select(getDeleteCategory);
