@@ -27,6 +27,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   treeControl = new NestedTreeControl<any>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
   public context: string;
+  public selectedCategory: string;
 
   constructor(
     public dialog: MatDialog,
@@ -98,6 +99,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   public onSelectCategory(node: CategoryTree): void {
+    this.selectedCategory = node.id;
     if(node.parent) {
       this.router.navigate(['/details', node.id, node.name]);
     } else {
