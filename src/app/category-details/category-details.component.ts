@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, pairwise } from 'rxjs/operators';
 import { CategoryTree } from '../navigation/state/interface';
-import { NavigationFacade } from '../navigation/state/navigation.facade';
 import { Status } from '../state/interface';
+import { CategoryDetailsFacade } from './state/category-details.facade';
+import { CategoryDetails } from './state/interface';
 
 @Component({
   selector: 'app-category-details',
@@ -13,28 +14,27 @@ import { Status } from '../state/interface';
 export class CategoryDetailsComponent implements OnInit {
   private id: string;
   public category: CategoryTree;
-  public recordTables: any;
+  public categoryDetails: CategoryDetails;
 
   constructor(
-    private navigationFacade: NavigationFacade,
+    private categoryDetailsFacade: CategoryDetailsFacade,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.navigationFacade.categories$
+
+    this.categoryDetailsFacade.categoryDetails$
       .pipe(
         pairwise(),
         filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
         map(([_, curr]) => curr.value),
-        map((categories) => categories.filter(category => category.id === this.id)[0]),
-      )
-      .subscribe((category) => {
-        this.category = category;
+      ).subscribe((categoryDetails) => {
+        this.categoryDetails = categoryDetails;
       });
 
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.navigationFacade.loadCategories();
+      this.categoryDetailsFacade.loadCategoryDetails(this.id);
     });
   }
 

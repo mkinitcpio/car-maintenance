@@ -15,6 +15,7 @@
   </div>
   <div class="detail__content">
     <app-records-table [data]="dataSourceTable"
+                       [stretch]="true"
                        (edit)="onEdit($event)"
                        (delete)="onDelete($event)">
     </app-records-table>

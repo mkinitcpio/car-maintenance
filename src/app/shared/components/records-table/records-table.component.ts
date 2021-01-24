@@ -11,6 +11,9 @@ export class RecordsTableComponent {
   @Input()
   data: Record[];
 
+  @Input()
+  stretch = false;
+
   @Output()
   edit: EventEmitter<string> = new EventEmitter();
 

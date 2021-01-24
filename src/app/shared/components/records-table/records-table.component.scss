@@ -1,10 +1,6 @@
 .records {
-  height: 100%;
-  overflow: hidden;
-
   &-table {
     font-family: Ubuntu;
-    height: calc(100% - 112px);
     overflow-y: scroll;
 
     border: 1px solid rgba(0,0,0,0.2);

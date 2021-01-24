@@ -1,1 +1,14 @@
-<app-records-table [data]="category.children"></app-records-table>
+<div class="category-details">
+  <div class="category-details__title-container">
+    <div class="category-details__title">
+      {{categoryDetails.name}}
+    </div>
+  </div>
+  <div class="category-details__content">
+    <div class="category-details__scroll-fix"></div>
+    <div class="category-details__table" *ngFor="let table of categoryDetails.tables">
+      <div class="category-details__table-title">{{table.name}}</div>
+      <app-records-table [data]="table.data"></app-records-table>
+    </div>
+  </div>
+</div>

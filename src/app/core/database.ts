@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CategoryDetail, CategoryDetails } from '../category-details/state/interface';
 import { Record } from '../detail/state/interface';
 import { Category } from '../navigation/state/interface';
 
@@ -15,7 +16,6 @@ export class DataBaseService {
   }
 
   public getRecords(parentId: string): Array<any> {
-    console.log(parentId);
     const db = JSON.parse(localStorage.getItem('db'));
     return db.records.filter((record) => record.parent === parentId);
   }
@@ -44,7 +44,6 @@ export class DataBaseService {
   }
 
   public deleteRecord(id: string): void {
-    console.log(id);
     const db = JSON.parse(localStorage.getItem('db'));
     db.records = db.records.filter(record => record.id !== id);
 
@@ -63,5 +62,26 @@ export class DataBaseService {
     db.records = db.records.map(r => r.id === record.id ? record : r);
 
     localStorage.setItem('db', JSON.stringify(db));
+  }
+
+  public getCategoryDetails(id: string): CategoryDetails {
+    const db = JSON.parse(localStorage.getItem('db')) as { categories: Category[], records: Record[] };
+    const parentCategory = db.categories.find(category => category.id === id);
+    const childCategories = db.categories.filter(category => category.parent === id);
+    const allRecords = db.records;
+
+    const tablesData: CategoryDetail[] = childCategories.map(category => {
+      const records = allRecords.filter(record => record.parent === category.id);
+
+      return {
+        name: category.name,
+        data: records,
+      };
+    });
+
+    return {
+      name: parentCategory.name,
+      tables: tablesData,
+    };
   }
 }

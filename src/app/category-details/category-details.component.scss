@@ -1,0 +1,50 @@
+.category-details {
+  height: 100%;
+
+  &__title-container {
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #262626;
+  }
+
+  &__title {
+    font-family: Ubuntu;
+    font-size: 32px;
+    color: white;
+    font-weight: 100;
+  }
+
+  &__scroll-fix {
+    height: 16px;
+    width: 100%;
+    background-color: #fafafa;
+    z-index: 101;
+  }
+
+  &__content {
+    padding: 0px 32px 32px 32px;
+    height: calc(100% - 122px);
+    overflow-y: scroll;
+    position: relative;
+  }
+
+  &__table {
+    margin-bottom: 32px;
+  }
+
+  &__table-title {
+    padding: 16px 0;
+    margin-bottom: 24px;
+    position: sticky;
+    top: 0;
+
+    font-size: 24px;
+    z-index: 101;
+    background-color: #fafafa;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+  }
+}
