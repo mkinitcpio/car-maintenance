@@ -1,7 +1,8 @@
-import { OnDestroy } from '@angular/core';
+import { Directive, OnDestroy } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
-export class AutoCloseable implements OnDestroy {
+@Directive()
+export abstract class AutoCloseable implements OnDestroy {
 
   protected destroyedSource: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
