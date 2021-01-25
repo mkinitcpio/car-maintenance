@@ -8,24 +8,15 @@ import * as NavigationActions  from './actions';
 
 import { categoriesMapper } from './mappers';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NavigationEffects {
   getCategories$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType(NavigationActions.getCategories),
       switchMap(() => {
-        // const data = [
-        //   { name: "Двигатель",parent: null, id: '1',},
-        //   { name: "один", parent: '1', id: '2',},
-        //   { name: "два", parent: '1', id: '3',},
-        //   { name: "три", parent: '1', id: '4',},
-        //   { name: "Дверь",parent: null, id: '5',},
-        //   { name: "Выхлопная труба", parent: null, id: '6',},
-        //   { name: "дырка", parent: '6', id: '7'},
-        // ];
-
         const data = this.database.getCategories();
-
         return of( NavigationActions.getCategoriesSuccess({categories: categoriesMapper(data)}));
       }),
     );
