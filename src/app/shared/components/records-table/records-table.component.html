@@ -24,6 +24,17 @@
     <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="notes">
+    <mat-header-cell *matHeaderCellDef> Заметка </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-icon *ngIf="row.notes" 
+                [matTooltip]="row.notes"
+                [matTooltipPosition]="'above'">
+        description
+      </mat-icon>
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="menu">
     <mat-header-cell  class="records-table__menu-column" *matHeaderCellDef></mat-header-cell>
     <mat-cell  class="records-table__menu-column"  *matCellDef="let row">

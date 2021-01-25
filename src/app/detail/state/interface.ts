@@ -5,4 +5,5 @@ export interface Record {
   date: Date;
   cost: string;
   mileage: number;
+  notes: string;
 }

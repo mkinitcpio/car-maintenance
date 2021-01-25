@@ -4,6 +4,7 @@ import {RecordsTableComponent} from './records-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatTableModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ],
   exports: [
     RecordsTableComponent,

@@ -20,7 +20,7 @@ export class RecordsTableComponent {
   @Output()
   delete: EventEmitter<string> = new EventEmitter();
 
-  displayedColumns: string[] = ['position', 'name', 'mileage' , 'date', 'cost', 'menu'];
+  displayedColumns: string[] = ['position', 'name', 'mileage' , 'date', 'cost', 'notes', 'menu'];
   public context: string;
 
   constructor() { }

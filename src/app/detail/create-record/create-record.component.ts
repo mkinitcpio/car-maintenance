@@ -19,6 +19,7 @@ export class CreateRecordComponent implements OnInit {
     cost: this.fb.control(null),
     date: this.fb.control(null),
     mileage: this.fb.control(null),
+    notes: this.fb.control(null),
   });
 
   constructor(

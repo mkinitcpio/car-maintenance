@@ -22,6 +22,10 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      <mat-form-field appearance="fill" [floatLabel]="'always'">
+        <mat-label>Заметка</mat-label>
+        <textarea [formControlName]="'notes'" matInput></textarea>
+      </mat-form-field>
     </form>
   </main>
   <div class="create-record__footer">
