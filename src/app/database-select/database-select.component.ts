@@ -18,7 +18,7 @@ export class DatabaseSelectComponent implements OnInit {
 
   public onCreate(): void {
     this.electronService.dialog
-      .showSaveDialog()
+      .showSaveDialog({})
       .then((data) => {
         if(data.filePath.length) {
           const filePath = data.filePath;
