@@ -9,6 +9,21 @@ import {BehaviorSubject, Subject} from "rxjs";
   providedIn: 'root',
 })
 export class DataBaseService {
+
+  public readonly confPath: string = this.electronService.os.homedir() + '/.config/Учет/conf';
+  public readonly initialDataBase = {
+    categories: [],
+    records: [],
+  };
+
+  private appConfFolder: string = this.electronService.os.homedir() + '/.config/Учет';
+  private fileReadConfig: {
+    flag: 'r',
+    encoding: 'utf8',
+  };
+  private fileWriteConfig: {
+    encoding: 'utf8',
+  };
   private data: {
     categories: Category[],
     records: Record[],
@@ -70,7 +85,7 @@ export class DataBaseService {
     const db = this.data;
     db.records = db.records.map(r => r.id === record.id ? record : r);
 
-    localStorage.setItem('db', JSON.stringify(db));
+    this.writeToDataBase();
   }
 
   public getCategoryDetails(id: string): CategoryDetails {
@@ -96,25 +111,24 @@ export class DataBaseService {
 
   public dbExist$: Subject<boolean> = new BehaviorSubject(false);
   public initDataBase(): void {
-    const dbPath = localStorage.getItem('dbPath');
+    const confExist = this.electronService.fs.existsSync(this.appConfFolder);
 
-    if(dbPath) {
-      this.dbPath = dbPath;
-      this.readFileData(dbPath);
+    if(confExist) {
+      this.dbPath = this.electronService.fs.readFileSync(this.confPath, this.fileReadConfig);
+      this.readFileData(this.dbPath);
     } else {
+      this.electronService.fs.mkdirSync(this.appConfFolder, { recursive: true });
       this.dbExist$.next(false);
     }
   }
 
   private readFileData(path: string): void {
-    this.electronService.fs.readFile(path, { flag: 'r', encoding: 'utf8'}, (error, file) => {
-      this.data = JSON.parse(file);
-      this.dbExist$.next(true);
-    });
+    this.data = JSON.parse(this.electronService.fs.readFileSync(path, this.fileReadConfig));
+    this.dbExist$.next(true);
   }
 
   private writeToDataBase(): void {
-    this.electronService.fs.writeFile(this.dbPath, JSON.stringify(this.data), { encoding: 'utf8'}, () => {
+    this.electronService.fs.writeFile(this.dbPath, JSON.stringify(this.data), this.fileWriteConfig, () => {
       console.log('done');
     });
   }

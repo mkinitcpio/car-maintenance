@@ -28,7 +28,7 @@
   &__content {
     padding: 0px 32px 32px 32px;
     height: calc(100% - 122px);
-    overflow-y: scroll;
+    overflow-y: auto;
     position: relative;
   }
 

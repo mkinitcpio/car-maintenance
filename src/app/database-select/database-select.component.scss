@@ -1,0 +1,36 @@
+.database-select {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    margin-bottom: 16px;
+
+
+    font-family: Ubuntu;
+    font-size: 32px;
+    font-weight: 100;
+    color: #333;
+  }
+}
+
+
+button {
+  background: none;
+}
+
+.button {
+  font-family: Ubuntu;
+  font-weight: normal;
+  color: #111;
+}
+
+.button__create {
+  margin-right: 8px;
+  background-color: #0d7f1e;
+  border-color: rgba(0,0,0,0.56);
+  color: #fff;
+}

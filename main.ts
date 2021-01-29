@@ -25,6 +25,7 @@ function createWindow(): BrowserWindow {
     },
   });
 
+  win.setMenu(null);
   if (serve) {
 
     win.webContents.openDevTools();
@@ -74,6 +75,11 @@ try {
     // dock icon is clicked and there are no other windows open.
     if (win === null) {
       createWindow();
+
+    }
+
+    if (process.platform === 'linux') {
+      app.disableHardwareAcceleration();
     }
   });
 
