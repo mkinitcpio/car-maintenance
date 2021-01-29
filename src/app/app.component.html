@@ -1,1 +1,2 @@
-<app-home></app-home>
+<app-home *ngIf="dbExist"></app-home>
+<app-database-select *ngIf="!dbExist"></app-database-select>

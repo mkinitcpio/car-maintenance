@@ -1,4 +1,4 @@
-<mat-table *ngIf="data.length" [dataSource]="data" class="records-table" [style.height]="stretch ? 'calc(100% - 112px)' : 'auto'">
+<mat-table *ngIf="data.length" [dataSource]="data" class="records-table" [style.height]="stretch ? 'calc(100% - 132px)' : 'auto'">
   <ng-container matColumnDef="position">
     <mat-header-cell *matHeaderCellDef> № </mat-header-cell>
     <mat-cell *matCellDef="let row; let i = index"> {{i + 1}} </mat-cell>
@@ -27,7 +27,7 @@
   <ng-container matColumnDef="notes">
     <mat-header-cell *matHeaderCellDef> Заметка </mat-header-cell>
     <mat-cell *matCellDef="let row">
-      <mat-icon *ngIf="row.notes" 
+      <mat-icon *ngIf="row.notes"
                 [matTooltip]="row.notes"
                 [matTooltipPosition]="'above'">
         description

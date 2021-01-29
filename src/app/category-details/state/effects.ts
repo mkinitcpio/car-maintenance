@@ -6,7 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { DataBaseService } from '../../core/database';
 import * as CategoryDetailsActions  from './actions';
 
-@Injectable()
+@Injectable({providedIn: "root"})
 export class CategoryDetailsEffects {
   getCategoryDetails$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(

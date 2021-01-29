@@ -1,16 +1,16 @@
 :host {
-  
+
 }
 
 .home {
   &__sidenav {
     width: 300px;
-    
+
     border-right: 1px solid rgba(0,0,0,0.2);
   }
 
   &__content {
-    height: calc(100vh - 16px);
+    height: 100vh;
     overflow: hidden;
   }
 }

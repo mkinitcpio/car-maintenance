@@ -1,38 +1,29 @@
 import { Component } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
-import { AppConfig } from '../environments/environment';
+import {DataBaseService} from "./core/database";
+import {AutoCloseable} from "./core/auto-closeable";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent extends AutoCloseable {
+
+  public dbExist: boolean;
+
   constructor(
     private electronService: ElectronService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private dataBaseService: DataBaseService,
   ) {
+    super();
     this.translate.setDefaultLang('en');
-    console.log('AppConfig', AppConfig);
+    this.dataBaseService.dbExist$.subscribe((exist) => {
+      this.dbExist = exist;
+    });
 
-    if (electronService.isElectron) {
-      console.log(process.env);
-      console.log('Run in electron');
-      console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
-      console.log('NodeJS childProcess', this.electronService.childProcess);
-    } else {
-      console.log('Run in browser');
-    }
-
-    const db = localStorage.getItem('db');
-
-    if(!db) {
-      localStorage.setItem('db', JSON.stringify({
-        categories: [],
-        records: [],
-        filePath: '',
-      }));
-    }
+    this.dataBaseService.initDataBase();
   }
 }

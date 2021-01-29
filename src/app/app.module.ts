@@ -20,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { EffectsModule } from '@ngrx/effects';
 import { DataBaseService } from './core/database';
+import {DatabaseSelectModule} from "./database-select/database-select.module";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HomeModule,
     DetailModule,
+    DatabaseSelectModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
