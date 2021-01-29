@@ -1,5 +1,6 @@
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/car-maintenance)
 
+[![car-maintenance](https://snapcraft.io/car-maintenance/badge.svg)](https://snapcraft.io/car-maintenance)
 ![Maintained][maintained-badge]
 [![License](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE.md)
 
