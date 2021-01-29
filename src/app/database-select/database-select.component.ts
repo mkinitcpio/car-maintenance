@@ -34,7 +34,6 @@ export class DatabaseSelectComponent implements OnInit {
             { encoding: 'utf8'});
           this.dataBaseService.initDataBase();
         }
-        console.log(data);
       });
   }
 
