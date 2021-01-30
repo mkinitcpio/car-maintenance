@@ -112,8 +112,9 @@ export class DataBaseService {
   public dbExist$: Subject<boolean> = new BehaviorSubject(false);
   public initDataBase(): void {
     const confExist = this.electronService.fs.existsSync(this.appConfFolder);
+    const dbExist = this.electronService.fs.existsSync(this.confPath);
 
-    if(confExist) {
+    if(confExist && dbExist) {
       this.dbPath = this.electronService.fs.readFileSync(this.confPath, this.fileReadConfig);
       this.readFileData(this.dbPath);
     } else {
@@ -128,8 +129,6 @@ export class DataBaseService {
   }
 
   private writeToDataBase(): void {
-    this.electronService.fs.writeFile(this.dbPath, JSON.stringify(this.data), this.fileWriteConfig, () => {
-      console.log('done');
-    });
+    this.electronService.fs.writeFile(this.dbPath, JSON.stringify(this.data), this.fileWriteConfig, () => {});
   }
 }

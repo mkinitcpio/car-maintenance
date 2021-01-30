@@ -26,12 +26,15 @@ export class DatabaseSelectComponent implements OnInit {
           this.electronService.fs.writeFileSync(
             this.dataBaseService.confPath,
             filePath,
-            { encoding: 'utf8'});
+            { encoding: 'utf8'}
+          );
 
           this.electronService.fs.writeFileSync(
             filePath,
             JSON.stringify(this.dataBaseService.initialDataBase),
-            { encoding: 'utf8'});
+            { encoding: 'utf8'}
+          );
+
           this.dataBaseService.initDataBase();
         }
       });
@@ -43,10 +46,13 @@ export class DatabaseSelectComponent implements OnInit {
       .then((data) => {
         if(data.filePaths.length) {
           const filePath = data.filePaths[0];
+
           this.electronService.fs.writeFileSync(
             this.dataBaseService.confPath,
             filePath,
-            { encoding: 'utf8'});
+            { encoding: 'utf8'}
+          );
+
           this.dataBaseService.initDataBase();
         }
       });
