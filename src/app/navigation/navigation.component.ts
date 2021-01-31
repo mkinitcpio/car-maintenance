@@ -83,6 +83,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
 
   public addCategory(): void {
+    this.context = null;
     const parentList = this.flatTreeView(this.dataSource.data);
     const dialogRef = this.dialog.open(CreateDialogComponent, {
       width: "380px",
@@ -102,7 +103,9 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   private flatTreeView(tree): Array<{ name: string; value: number }> {
-    return tree.map((value) => ({ name: value.name, value: value.id }));
+    return tree
+      .map((value) => ({ name: value.name, value: value.id }))
+      .filter(parent => parent.value !== this.context);
   }
 
   private getFlatTreeView(tree): Array<{ name: string; value: number; id: string, parent: string }> {
