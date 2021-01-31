@@ -42,6 +42,7 @@
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
+      <button *ngIf="isRootCategory(context)" mat-menu-item (click)="addCategory(context)">Добавить</button>
       <button mat-menu-item (click)="onEdit()">Редактировать</button>
       <button mat-menu-item (click)="onDelete()">Удалить</button>
   </ng-template>

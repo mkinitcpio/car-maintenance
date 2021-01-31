@@ -48,8 +48,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
     )
       .subscribe(([_, curr]) => {
-        const parents = this.flatTreeView(this.dataSource.data);
-        if(parents.some(parent => parent.value === curr.value)) {
+        const parents = this.dataSource.data;
+        if(parents.some(parent => parent.id === curr.value)) {
           this.router.navigate(['']);
         }
         if(this.selectedCategory === curr.value) {
@@ -80,9 +80,13 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     this.navigationFacade.loadCategories();
   }
 
-  hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
+  public hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
 
-  public addCategory(): void {
+  public isRootCategory(id: string): boolean {
+    return this.dataSource.data.some(row => row.id === id);
+  }
+
+  public addCategory(parentId?: string): void {
     this.context = null;
     const parentList = this.flatTreeView(this.dataSource.data);
     const dialogRef = this.dialog.open(CreateDialogComponent, {
@@ -91,6 +95,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       data: {
         mode: FormModeEnum.Create,
         parents: parentList,
+        parentId,
       },
     });
 
@@ -102,13 +107,13 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  private flatTreeView(tree): Array<{ name: string; value: number }> {
+  private flatTreeView(tree): Array<{ name: string; value: string }> {
     return tree
       .map((value) => ({ name: value.name, value: value.id }))
       .filter(parent => parent.value !== this.context);
   }
 
-  private getFlatTreeView(tree): Array<{ name: string; value: number; id: string, parent: string }> {
+  private getFlatTreeView(tree): Array<{ name: string; value: string; id: string, parent: string }> {
     return tree
       .map((value) => [value, ...value.children])
       .flat(2)

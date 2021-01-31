@@ -15,7 +15,7 @@ export class CreateDialogComponent implements OnInit {
   public categoryForm = new FormGroup({
     id: new FormControl(uuidv4()),
     name: new FormControl(null, Validators.required),
-    parent: new FormControl(null),
+    parent: new FormControl(this.data.parentId),
   });
 
   constructor(
