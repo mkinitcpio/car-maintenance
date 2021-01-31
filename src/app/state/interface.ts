@@ -1,8 +1,8 @@
 export interface FeatureState<T> {
   entity: EntityState<T>;
   newEntity: EntityState<T>;
-  editEntity: EntityState<T>;
-  deleteEntity: EntityState<T>;
+  editEntity: EntityState<string>;
+  deleteEntity: EntityState<string>;
 }
 
 export enum Status {

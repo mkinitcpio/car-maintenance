@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { merge } from 'rxjs';
-import { filter, pairwise } from 'rxjs/operators';
+import { filter, pairwise, takeUntil } from 'rxjs/operators';
 import { AutoCloseable } from '../core/auto-closeable';
 import { FormModeEnum } from '../navigation/create-dialog/form-mode.enum';
+import { NavigationFacade } from '../navigation/state/navigation.facade';
 import { Status } from '../state/interface';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { DetailsFacade } from './state/details.facade';
@@ -24,7 +25,13 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   public costSum = 0;
 
-  constructor(private detailsFacade: DetailsFacade, private route: ActivatedRoute, public dialog: MatDialog,) {
+  constructor(
+    private detailsFacade: DetailsFacade,
+    private route: ActivatedRoute,
+    private router: Router,
+    private navigationFacade: NavigationFacade,
+    public dialog: MatDialog,
+  ) {
     super();
   }
 
@@ -64,6 +71,19 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     ).subscribe(() => {
       this.detailsFacade.loadRecords(this.parentId);
     });
+
+    this.navigationFacade
+      .deleteCategory$
+      .pipe(
+        takeUntil(this.destroyedSource),
+        pairwise(),
+        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
+      )
+      .subscribe(([_, curr]) => {
+        if(this.parentId === curr.value) {
+          this.router.navigate([""]);
+        }
+      });
   }
 
   public onCreateRecord(): void {

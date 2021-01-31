@@ -15,6 +15,7 @@ import { Status } from "../state/interface";
 import { AutoCloseable } from '../core/auto-closeable';
 import { merge } from "rxjs";
 import { Router } from "@angular/router";
+import { DetailsFacade } from "../detail/state/details.facade";
 
 @Component({
   selector: "app-navigation",
@@ -32,12 +33,29 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   constructor(
     public dialog: MatDialog,
     private navigationFacade: NavigationFacade,
+    private detailsFacade: DetailsFacade,
     private router: Router,
   ) {
     super();
   }
 
   ngOnInit(): void {
+    merge(
+      this.navigationFacade.deleteCategory$,
+      this.detailsFacade.deleteDetail$,
+    ).pipe(
+      pairwise(),
+      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
+    )
+      .subscribe(([_, curr]) => {
+        const parents = this.flatTreeView(this.dataSource.data);
+        if(parents.some(parent => parent.value === curr.value)) {
+          this.router.navigate(['']);
+        }
+        if(this.selectedCategory === curr.value) {
+          this.selectedCategory = null;
+        }
+      });
 
     merge(
       this.navigationFacade.newCategory$,
@@ -87,7 +105,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     return tree.map((value) => ({ name: value.name, value: value.id }));
   }
 
-  private getFlatTreeView(tree): Array<{ name: string; value: number; id: string }> {
+  private getFlatTreeView(tree): Array<{ name: string; value: number; id: string, parent: string }> {
     return tree
       .map((value) => [value, ...value.children])
       .flat(2)

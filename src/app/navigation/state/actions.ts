@@ -11,7 +11,7 @@ export const createCategory = createAction('[Navigation] Create Category', props
 export const createCategorySuccess = createAction('[Navigation] Create Category Success');
 
 export const deleteCategory = createAction('[Navigation] Delete Category', props<{ id: string }>());
-export const deleteCategorySuccess = createAction('[Navigation] Delete Category Success');
+export const deleteCategorySuccess = createAction('[Navigation] Delete Category Success', props<{ id: string }>());
 
 export const editCategory = createAction('[Navigation] Edit Category', props<{ category: Category }>());
 export const editCategorySuccess = createAction('[Navigation] Edit Category Success');

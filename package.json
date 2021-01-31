@@ -1,6 +1,6 @@
 {
   "name": "car-maintenance",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "App for log your car parts maintenance such as engine, oil and any what you want! Manage cost, date and mileage.",
   "homepage": "https://github.com/mkinitcpio/car-maintenance",
   "author": {

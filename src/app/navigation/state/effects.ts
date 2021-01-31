@@ -37,7 +37,7 @@ export class NavigationEffects {
       ofType(NavigationActions.deleteCategory),
       switchMap(({ id }) => {
         this.database.deleteCategory(id);
-        return of( NavigationActions.deleteCategorySuccess());
+        return of( NavigationActions.deleteCategorySuccess({ id }));
       }),
     );
   });

@@ -34,7 +34,7 @@ export class DetailsEffects {
       ofType(DetailsActions.deleteRecord),
       switchMap(({ id }) => {
         this.database.deleteRecord(id);
-        return of( DetailsActions.deleteRecordSuccess());
+        return of( DetailsActions.deleteRecordSuccess({ id }));
       }),
     );
   });

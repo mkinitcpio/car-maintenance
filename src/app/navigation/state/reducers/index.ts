@@ -1,11 +1,12 @@
 import { state } from "@angular/animations";
-import { Action, createReducer, on, State } from "@ngrx/store";
+import { Action, ActionReducer, createReducer, on, State } from "@ngrx/store";
 import { FeatureState, Status } from "../../../state/interface";
 import { initialState } from "../initial-state";
 import { Category } from "../interface";
 import { createCategory, createCategorySuccess, deleteCategory, deleteCategorySuccess, editCategory, editCategorySuccess, getCategories, getCategoriesSuccess } from "../actions";
 
-const appReducer = createReducer(initialState, 
+const appReducer = createReducer(
+  initialState,
   on(getCategories, state => ({
     ...state,
     entity: {
@@ -46,11 +47,11 @@ const appReducer = createReducer(initialState,
       error: null,
     }
   })),
-  on(deleteCategorySuccess, state => ({
+  on(deleteCategorySuccess, (state, { id }) => ({
     ...state,
     deleteEntity: {
       status: Status.Success,
-      value: null,
+      value: id,
       error: null,
     }
   })),
@@ -70,7 +71,7 @@ const appReducer = createReducer(initialState,
       error: null,
     }
   })),
-  );
+);
 
 export function navigationReducer(state: FeatureState<Array<Category>>, action: Action) {
   return appReducer(state, action);
