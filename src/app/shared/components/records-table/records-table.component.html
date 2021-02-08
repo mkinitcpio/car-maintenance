@@ -11,17 +11,17 @@
 
   <ng-container matColumnDef="mileage">
     <mat-header-cell *matHeaderCellDef> Пробег (км) </mat-header-cell>
-    <mat-cell *matCellDef="let row"> {{row.mileage}} </mat-cell>
+    <mat-cell *matCellDef="let row"> {{row.mileage | number | numberSeparator:' '}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="date">
     <mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
-    <mat-cell *matCellDef="let row"> {{row.date | date}} </mat-cell>
+    <mat-cell *matCellDef="let row"> {{row.date | date:'d MMM, y'}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="cost">
     <mat-header-cell *matHeaderCellDef> Расход (BYN) </mat-header-cell>
-    <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
+    <mat-cell *matCellDef="let row"> {{row.cost | number | numberSeparator:' '}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="notes">

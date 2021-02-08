@@ -5,10 +5,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { NumberSeparatorPipe } from './pipes/number.pipe';
 
 @NgModule({
-  declarations: [RecordsTableComponent],
+  declarations: [
+    RecordsTableComponent,
+    NumberSeparatorPipe,
+  ],
   imports: [
     CommonModule,
     MatTableModule,
