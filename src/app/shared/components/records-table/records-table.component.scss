@@ -29,14 +29,14 @@
     .mat-header-cell {
       padding-right: 24px;
     }
+
+    .mat-row:hover {
+      cursor: pointer;
+      background: #F7F7F7;
+    }
+
+    .mat-row:hover .records-table__menu-column {
+      visibility: visible;
+    }
   }
-}
-
-.mat-row:hover {
-  cursor: pointer;
-  background: #F7F7F7;
-}
-
-.mat-row:hover .records-table__menu-column {
-  visibility: visible;
 }
