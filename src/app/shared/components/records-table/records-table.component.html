@@ -22,9 +22,9 @@
     <mat-header-cell *matHeaderCellDef> Пробег (км) </mat-header-cell>
     <mat-cell *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.mileage | number | numberSeparator:' '"
+           [matTooltip]="row.mileage | number | numberSeparator:separator"
            [matTooltipPosition]="'above'">
-        {{row.mileage | number | numberSeparator:' '}}
+        {{row.mileage | number | numberSeparator:separator}}
       </div>
     </mat-cell>
   </ng-container>
@@ -33,9 +33,9 @@
     <mat-header-cell *matHeaderCellDef> Дата </mat-header-cell>
     <mat-cell *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.date | date:'d MMM, y'"
+           [matTooltip]="row.date | date:dateFormat"
            [matTooltipPosition]="'above'">
-        {{row.date | date:'d MMM, y'}}
+        {{row.date | date:dateFormat}}
       </div>
     </mat-cell>
   </ng-container>
@@ -44,9 +44,9 @@
     <mat-header-cell *matHeaderCellDef> Расход (BYN) </mat-header-cell>
     <mat-cell *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.cost | number | numberSeparator:' '"
+           [matTooltip]="row.cost | number | numberSeparator:separator"
            [matTooltipPosition]="'above'">
-        {{row.cost | number | numberSeparator:' '}}
+        {{row.cost | number | numberSeparator:separator}}
       </div>
     </mat-cell>
   </ng-container>
