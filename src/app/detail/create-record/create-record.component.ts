@@ -3,6 +3,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from '../../navigation/create-dialog/form-mode.enum';
 
+import { CreateRecordComponentData } from './interface';
+
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -15,15 +17,15 @@ export class CreateRecordComponent implements OnInit {
   public recordForm = new FormGroup({
     id: this.fb.control(uuidv4()),
     name: this.fb.control(null, Validators.required),
-    parent: this.fb.control(this.data.parent),
     cost: this.fb.control(null),
     date: this.fb.control(null),
-    mileage: this.fb.control(null),
     notes: this.fb.control(null),
+    parent: this.fb.control(this.data.parent),
+    mileage: this.fb.control(null),
   });
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: CreateRecordComponentData,
     public dialogRef: MatDialogRef<CreateRecordComponent>,
     private fb: FormBuilder,
   ) {}

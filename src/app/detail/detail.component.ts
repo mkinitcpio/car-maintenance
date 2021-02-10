@@ -1,4 +1,3 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,22 +14,22 @@ import { Record } from './state/interface';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
 
-  dataSourceTable: Record[] = [];
-  private parentId = null;
-  public name: string = null;
+  parentId = null;
 
+  public dataSourceTable: Record[] = [];
+  public name: string = null;
   public costSum = 0;
 
   constructor(
-    private detailsFacade: DetailsFacade,
-    private route: ActivatedRoute,
     private router: Router,
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+    private detailsFacade: DetailsFacade,
     private navigationFacade: NavigationFacade,
-    public dialog: MatDialog,
   ) {
     super();
   }
@@ -46,7 +45,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
         this.costSum = this.dataSourceTable.reduce((acc, curr) => acc + +curr.cost , 0);
       });
 
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.parentId = params['id'];
       this.name = params['name'];
       this.detailsFacade.loadRecords(this.parentId);
@@ -62,12 +61,12 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       });
 
     merge(
-      this.detailsFacade.newDetails$,
       this.detailsFacade.editDetail$,
+      this.detailsFacade.newDetails$,
       this.detailsFacade.deleteDetail$,
     ).pipe(
       pairwise(),
-      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
+      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
     ).subscribe(() => {
       this.detailsFacade.loadRecords(this.parentId);
     });
