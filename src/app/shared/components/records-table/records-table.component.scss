@@ -3,7 +3,7 @@
     font-family: Ubuntu;
     overflow-y: auto;
 
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 
     &__menu-button {
@@ -12,6 +12,7 @@
 
     &__menu-column {
       max-width: 24px;
+
       visibility: hidden;
     }
 
@@ -31,8 +32,9 @@
     }
 
     .mat-row:hover {
-      cursor: pointer;
       background: #F7F7F7;
+
+      cursor: pointer;
     }
 
     .mat-row:hover .records-table__menu-column {
