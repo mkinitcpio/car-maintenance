@@ -14,6 +14,21 @@
       max-width: 24px;
       visibility: hidden;
     }
+
+    &__cell-id {
+      flex: 0 0 48px;
+    }
+
+    &__cell-text {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .mat-cell,
+    .mat-header-cell {
+      padding-right: 24px;
+    }
   }
 }
 
