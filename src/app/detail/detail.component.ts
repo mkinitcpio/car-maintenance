@@ -18,6 +18,7 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
   public dataSourceTable: Record[] = [];
   public name: string = null;
   public costSum = 0;
+  public lastModifiedDate: Date = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +32,8 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
     this.listenLoadedEntity$<Record[]>(this.detailsFacade.details$)
       .subscribe(([_, curr]) => {
         this.dataSourceTable = curr.value;
-        this.costSum = this.dataSourceTable.reduce((acc, curr) => acc + +curr.cost , 0);
+        this.costSum = this.getResultCost(this.dataSourceTable);
+        this.lastModifiedDate = this.getLastModifiedDate(this.dataSourceTable);
       });
 
     this.route.params.subscribe((params) => {
@@ -83,5 +85,19 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
 
   public onDelete(id: string): void {
     this.detailsFacade.deleteRecord(id);
+  }
+
+  private getResultCost(records: Record[]): number {
+    const costs = records.map((record) => +record.cost).filter(Boolean);
+
+    return costs.reduce((acc, cost) => acc + cost , 0);
+  }
+
+  private getLastModifiedDate(records: Record[]): Date {
+    const EMPTY = null;
+    const allDates = records.filter((row) => row.date).map((row) => new Date(row.date));
+    const lastModifiedDate = allDates.length ? new Date(Math.max.apply(null, allDates)) : EMPTY;
+
+    return lastModifiedDate;
   }
 }
