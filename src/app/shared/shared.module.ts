@@ -7,26 +7,25 @@ import { PageNotFoundComponent, RecordsTableModule } from './components/';
 import { WebviewDirective } from './directives/';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../core/material.module';
-import { CreateDialogComponent } from './components/create-dialog/create-dialog.component';
 
 import { DialogManagerService } from './services/dialog-manager.service';
-import { CreateRecordComponent } from './components/create-record/create-record.component';
-
+import { CreateRecordModule } from './components/create-record/create-record.module';
+import { CreateDialogModule } from './components/create-dialog/create-dialog.module';
 @NgModule({
   declarations: [
     PageNotFoundComponent,
     WebviewDirective,
-    CreateDialogComponent,
-    CreateRecordComponent,
   ],
   providers: [
-    DialogManagerService
+    DialogManagerService,
   ],
   imports: [
     CommonModule,
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
+    CreateRecordModule,
+    CreateDialogModule,
   ],
   exports: [
     TranslateModule,
