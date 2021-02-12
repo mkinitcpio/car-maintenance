@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { FormModeEnum } from '../navigation/create-dialog/form-mode.enum';
-import { CreateRecordComponent } from './create-record/create-record.component';
+import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
 import {SubscriptionListener} from "../core/subscription-listener";
+import { DialogManagerService } from '../shared/services/dialog-manager.service';
 
 @Component({
   selector: 'app-detail',
@@ -23,9 +21,9 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
 
   constructor(
     private router: Router,
-    private dialog: MatDialog,
     private route: ActivatedRoute,
     private detailsFacade: DetailsFacade,
+    private dialogManagerService: DialogManagerService,
   ) {
     super();
   }
@@ -65,37 +63,27 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
   }
 
   public onCreateRecord(): void {
-    const dialogRef = this.dialog.open(CreateRecordComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Create,
-        parent: this.parentId,
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Create,
+      parent: this.parentId,
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openRecordDialog(data)
       .subscribe((record: Record) => {
         this.detailsFacade.createNewRecord(record);
       });
   }
 
   public onEdit(id: string): void {
-    const dialogRef = this.dialog.open(CreateRecordComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Edit,
-        parent: this.parentId,
-        formData: this.dataSourceTable.find(row => row.id === id),
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Edit,
+      parent: this.parentId,
+      formData: this.dataSourceTable.find(row => row.id === id),
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openRecordDialog(data)
       .subscribe((record: Record) => {
         this.detailsFacade.editRecord(record);
       });

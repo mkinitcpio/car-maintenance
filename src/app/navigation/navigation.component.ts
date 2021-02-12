@@ -1,19 +1,17 @@
 import { NestedTreeControl } from "@angular/cdk/tree";
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
-import { CreateDialogComponent } from "./create-dialog/create-dialog.component";
 
-import { filter } from "rxjs/operators";
 import { MatMenuTrigger } from "@angular/material/menu";
 
-import { FormModeEnum } from "./create-dialog/form-mode.enum";
+import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum";
 import { NavigationFacade } from "./state/navigation.facade";
 import { Category, CategoryTree } from "./state/interface";
 
 import { Router } from "@angular/router";
 import { DetailsFacade } from "../detail/state/details.facade";
 import {SubscriptionListener} from "../core/subscription-listener";
+import { DialogManagerService } from "../shared/services/dialog-manager.service";
 
 @Component({
   selector: "app-navigation",
@@ -29,10 +27,10 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
   public selectedCategory: string;
 
   constructor(
-    public dialog: MatDialog,
-    private navigationFacade: NavigationFacade,
-    private detailsFacade: DetailsFacade,
     private router: Router,
+    private detailsFacade: DetailsFacade,
+    private navigationFacade: NavigationFacade,
+    private dialogManagerService: DialogManagerService,
   ) {
     super();
   }
@@ -77,19 +75,14 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
   public addCategory(parentId?: string): void {
     this.context = null;
     const parentList = this.flatTreeView(this.dataSource.data);
-    const dialogRef = this.dialog.open(CreateDialogComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Create,
-        parents: parentList,
-        parentId,
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Create,
+      parents: parentList,
+      parentId,
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openCategoryDialog(data)
       .subscribe((category: Category) => {
         this.navigationFacade.createNewCategory(category);
       });
@@ -131,19 +124,14 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
       (row) => row.id === this.context
     );
     const parentList = this.flatTreeView(this.dataSource.data);
-    const dialogRef = this.dialog.open(CreateDialogComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Edit,
-        parents: parentList,
-        formData,
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Edit,
+      parents: parentList,
+      formData,
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openCategoryDialog(data)
       .subscribe((category: Category) => {
         this.navigationFacade.editCategory(category);
       });
