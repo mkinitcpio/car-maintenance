@@ -4,29 +4,27 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 import { CreateDialogComponent } from "./create-dialog/create-dialog.component";
 
-import { filter, pairwise } from "rxjs/operators";
+import { filter } from "rxjs/operators";
 import { MatMenuTrigger } from "@angular/material/menu";
 
 import { FormModeEnum } from "./create-dialog/form-mode.enum";
 import { NavigationFacade } from "./state/navigation.facade";
 import { Category, CategoryTree } from "./state/interface";
-import { Status } from "../state/interface";
 
-import { AutoCloseable } from '../core/auto-closeable';
-import { merge } from "rxjs";
 import { Router } from "@angular/router";
 import { DetailsFacade } from "../detail/state/details.facade";
+import {SubscriptionListener} from "../core/subscription-listener";
 
 @Component({
   selector: "app-navigation",
   templateUrl: "./navigation.component.html",
   styleUrls: ["./navigation.component.scss"],
 })
-export class NavigationComponent extends AutoCloseable implements OnInit {
+export class NavigationComponent extends SubscriptionListener implements OnInit {
   @ViewChild(MatMenuTrigger) contextMenu: MatMenuTrigger;
 
-  treeControl = new NestedTreeControl<any>((node) => node.children);
-  dataSource = new MatTreeNestedDataSource<any>();
+  public treeControl = new NestedTreeControl<any>((node) => node.children);
+  public dataSource = new MatTreeNestedDataSource<any>();
   public context: string;
   public selectedCategory: string;
 
@@ -40,39 +38,29 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   ngOnInit(): void {
-    merge(
+    this.listenLoadedEntity$([
       this.navigationFacade.deleteCategory$,
       this.detailsFacade.deleteDetail$,
-    ).pipe(
-      pairwise(),
-      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
-    )
-      .subscribe(([_, curr]) => {
-        const parents = this.dataSource.data;
-        if(parents.some(parent => parent.id === curr.value)) {
-          this.router.navigate(['']);
-        }
-        if(this.selectedCategory === curr.value) {
-          this.selectedCategory = null;
-        }
-      });
+    ]).subscribe(([_, curr]) => {
+      const parents = this.dataSource.data;
+      if(parents.some(parent => parent.id === curr.value)) {
+        this.router.navigate(['']);
+      }
+      if(this.selectedCategory === curr.value) {
+        this.selectedCategory = null;
+      }
+    });
 
-    merge(
+    this.listenLoadedEntity$([
       this.navigationFacade.newCategory$,
       this.navigationFacade.editCategory$,
       this.navigationFacade.deleteCategory$
-    ).pipe(
-      pairwise(),
-      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-    ).subscribe(() => {
+    ]).subscribe(() => {
       this.navigationFacade.loadCategories();
     });
 
-    this.navigationFacade.categories$
-      .pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-      ).subscribe(([_, categories]) => {
+    this.listenLoadedEntity$<any>(this.navigationFacade.categories$)
+      .subscribe(([_, categories]) => {
         this.dataSource.data = [];
         this.dataSource.data = categories.value;
       });

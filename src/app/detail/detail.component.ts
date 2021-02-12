@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { merge } from 'rxjs';
-import { filter, pairwise } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { FormModeEnum } from '../navigation/create-dialog/form-mode.enum';
-import { Status } from '../state/interface';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
@@ -50,14 +48,11 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
         this.detailsFacade.loadRecords(this.parentId);
       });
 
-    merge(
+    this.listenLoadedEntity$([
       this.detailsFacade.editDetail$,
       this.detailsFacade.newDetails$,
       this.detailsFacade.deleteDetail$,
-    ).pipe(
-      pairwise(),
-      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
-    ).subscribe(() => {
+    ]).subscribe(() => {
       this.detailsFacade.loadRecords(this.parentId);
     });
 

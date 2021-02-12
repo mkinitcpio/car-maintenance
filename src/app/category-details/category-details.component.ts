@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, pairwise } from 'rxjs/operators';
 import { CategoryTree } from '../navigation/state/interface';
-import { Status } from '../state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { CategoryDetails } from './state/interface';
+import {SubscriptionListener} from "../core/subscription-listener";
 
 @Component({
   selector: 'app-category-details',
   templateUrl: './category-details.component.html',
   styleUrls: ['./category-details.component.scss']
 })
-export class CategoryDetailsComponent implements OnInit {
+export class CategoryDetailsComponent extends SubscriptionListener implements OnInit {
   private id: string;
   public category: CategoryTree;
   public categoryDetails: CategoryDetails;
@@ -19,17 +18,14 @@ export class CategoryDetailsComponent implements OnInit {
   constructor(
     private categoryDetailsFacade: CategoryDetailsFacade,
     private route: ActivatedRoute,
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-
-    this.categoryDetailsFacade.categoryDetails$
-      .pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
-        map(([_, curr]) => curr.value),
-      ).subscribe((categoryDetails) => {
-        this.categoryDetails = categoryDetails;
+    this.listenLoadedEntity$<CategoryDetails>(this.categoryDetailsFacade.categoryDetails$)
+      .subscribe(([_, curr]) => {
+        this.categoryDetails = curr.value;
       });
 
     this.route.params.subscribe(params => {
