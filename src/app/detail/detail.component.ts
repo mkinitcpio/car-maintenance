@@ -2,21 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { merge } from 'rxjs';
-import { filter, pairwise, takeUntil } from 'rxjs/operators';
-import { AutoCloseable } from '../core/auto-closeable';
+import { filter, pairwise } from 'rxjs/operators';
 import { FormModeEnum } from '../navigation/create-dialog/form-mode.enum';
-import { NavigationFacade } from '../navigation/state/navigation.facade';
 import { Status } from '../state/interface';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
+import {SubscriptionListener} from "../core/subscription-listener";
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
-export class DetailComponent extends AutoCloseable implements OnInit {
+export class DetailComponent extends SubscriptionListener implements OnInit {
 
   parentId = null;
 
@@ -29,17 +28,12 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private detailsFacade: DetailsFacade,
-    private navigationFacade: NavigationFacade,
   ) {
     super();
   }
 
   ngOnInit(): void {
-    this.detailsFacade.details$
-      .pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-      )
+    this.listenLoadedEntity$<Record[]>(this.detailsFacade.details$)
       .subscribe(([_, curr]) => {
         this.dataSourceTable = curr.value;
         this.costSum = this.dataSourceTable.reduce((acc, curr) => acc + +curr.cost , 0);
@@ -51,11 +45,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       this.detailsFacade.loadRecords(this.parentId);
     });
 
-    this.detailsFacade.newDetails$
-      .pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-      )
+    this.listenLoadedEntity$<Record[]>(this.detailsFacade.newDetails$)
       .subscribe(() => {
         this.detailsFacade.loadRecords(this.parentId);
       });
@@ -71,13 +61,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       this.detailsFacade.loadRecords(this.parentId);
     });
 
-    this.navigationFacade
-      .deleteCategory$
-      .pipe(
-        takeUntil(this.destroyedSource),
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
-      )
+    this.listenLoadedEntity$<Record[]>(this.detailsFacade.deleteDetail$)
       .subscribe(([_, curr]) => {
         if(this.parentId === curr.value) {
           this.router.navigate([""]);
