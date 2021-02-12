@@ -47,11 +47,11 @@ const appReducer = createReducer(
       error: null,
     }
   })),
-  on(deleteCategorySuccess, (state, { id }) => ({
+  on(deleteCategorySuccess, (state, { category }) => ({
     ...state,
     deleteEntity: {
       status: Status.Success,
-      value: id,
+      value: category,
       error: null,
     }
   })),

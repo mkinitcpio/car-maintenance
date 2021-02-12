@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
@@ -20,7 +20,6 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
   public costSum = 0;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
     private detailsFacade: DetailsFacade,
     private dialogManagerService: DialogManagerService,
@@ -53,13 +52,6 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
     ]).subscribe(() => {
       this.detailsFacade.loadRecords(this.parentId);
     });
-
-    this.listenLoadedEntity$<Record[]>(this.detailsFacade.deleteDetail$)
-      .subscribe(([_, curr]) => {
-        if(this.parentId === curr.value) {
-          this.router.navigate([""]);
-        }
-      });
   }
 
   public onCreateRecord(): void {

@@ -9,9 +9,9 @@
       <!-- use a disabled button to provide padding for tree leaf -->
       <div class="navigation__node-view"></div>
       <div class="node__container">
-        <span [style.fontWeight]="selectedCategory === node.id ? 'bold' : 'normal'">{{node.name}}</span>
+        <span [style.fontWeight]="selectedCategory?.id === node.id ? 'bold' : 'normal'">{{node.name}}</span>
         <span class="menu-button">
-          <mat-icon [matMenuTriggerFor]="contextMenu" (click)="context = node.id; $event.stopPropagation()">more_horiz</mat-icon>
+          <mat-icon [matMenuTriggerFor]="contextMenu" (click)="context = node; $event.stopPropagation()">more_horiz</mat-icon>
         </span>
       </div>
     </li>
@@ -27,9 +27,9 @@
           </mat-icon>
         </button>
         <div class="node__container">
-          <span [style.fontWeight]="selectedCategory === node.id ? 'bold' : 'normal'">{{node.name}}</span>
+          <span [style.fontWeight]="selectedCategory?.id === node.id ? 'bold' : 'normal'">{{node.name}}</span>
           <span class="menu-button">
-            <mat-icon [matMenuTriggerFor]="contextMenu" (click)="context = node.id; $event.stopPropagation()">more_horiz</mat-icon>
+            <mat-icon [matMenuTriggerFor]="contextMenu" (click)="context = node; $event.stopPropagation()">more_horiz</mat-icon>
           </span>
         </div>
       </div>

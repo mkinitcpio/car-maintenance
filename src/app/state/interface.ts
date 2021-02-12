@@ -1,8 +1,10 @@
+import { Category } from "../navigation/state/interface";
+
 export interface FeatureState<T> {
   entity: EntityState<T>;
   newEntity: EntityState<T>;
   editEntity: EntityState<string>;
-  deleteEntity: EntityState<string>;
+  deleteEntity: EntityState<Category>;
 }
 
 export enum Status {

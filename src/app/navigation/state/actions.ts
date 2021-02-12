@@ -10,8 +10,8 @@ export const getCategoriesSuccess = createAction(
 export const createCategory = createAction('[Navigation] Create Category', props<{ category: Category }>());
 export const createCategorySuccess = createAction('[Navigation] Create Category Success');
 
-export const deleteCategory = createAction('[Navigation] Delete Category', props<{ id: string }>());
-export const deleteCategorySuccess = createAction('[Navigation] Delete Category Success', props<{ id: string }>());
+export const deleteCategory = createAction('[Navigation] Delete Category', props<{ category: Category }>());
+export const deleteCategorySuccess = createAction('[Navigation] Delete Category Success', props<{ category: Category }>());
 
 export const editCategory = createAction('[Navigation] Edit Category', props<{ category: Category }>());
 export const editCategorySuccess = createAction('[Navigation] Edit Category Success');

@@ -6,10 +6,9 @@ import { MatMenuTrigger } from "@angular/material/menu";
 
 import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum";
 import { NavigationFacade } from "./state/navigation.facade";
-import { Category, CategoryTree } from "./state/interface";
+import { Category } from "./state/interface";
 
 import { Router } from "@angular/router";
-import { DetailsFacade } from "../detail/state/details.facade";
 import {SubscriptionListener} from "../core/subscription-listener";
 import { DialogManagerService } from "../shared/services/dialog-manager.service";
 
@@ -23,12 +22,11 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
 
   public treeControl = new NestedTreeControl<any>((node) => node.children);
   public dataSource = new MatTreeNestedDataSource<any>();
-  public context: string;
-  public selectedCategory: string;
+  public context: Category;
+  public selectedCategory: Category;
 
   constructor(
     private router: Router,
-    private detailsFacade: DetailsFacade,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
   ) {
@@ -36,18 +34,15 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
   }
 
   ngOnInit(): void {
-    this.listenLoadedEntity$([
-      this.navigationFacade.deleteCategory$,
-      this.detailsFacade.deleteDetail$,
-    ]).subscribe(([_, curr]) => {
-      const parents = this.dataSource.data;
-      if(parents.some(parent => parent.id === curr.value)) {
-        this.router.navigate(['']);
-      }
-      if(this.selectedCategory === curr.value) {
-        this.selectedCategory = null;
-      }
-    });
+    this.listenLoadedEntity$<Category>(this.navigationFacade.deleteCategory$)
+      .subscribe(([_, curr]) => {
+        const deletedCategory = curr.value;
+
+        if(deletedCategory.id === this.selectedCategory?.id || deletedCategory.id === this.selectedCategory?.parent) {
+          this.selectedCategory = null;
+          this.router.navigate(['']);
+        }
+      });
 
     this.listenLoadedEntity$([
       this.navigationFacade.newCategory$,
@@ -68,17 +63,17 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
 
   public hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
 
-  public isRootCategory(id: string): boolean {
-    return this.dataSource.data.some(row => row.id === id);
+  public isRootCategory(category: Category): boolean {
+    return this.dataSource.data.some(row => row.id === category?.id);
   }
 
-  public addCategory(parentId?: string): void {
+  public addCategory(category: Category): void {
     this.context = null;
     const parentList = this.flatTreeView(this.dataSource.data);
     const data = {
       mode: FormModeEnum.Create,
       parents: parentList,
-      parentId,
+      parentId: category?.id,
     };
 
     this.dialogManagerService
@@ -105,8 +100,8 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
       });
   }
 
-  public onSelectCategory(node: CategoryTree): void {
-    this.selectedCategory = node.id;
+  public onSelectCategory(node: Category): void {
+    this.selectedCategory = node;
     if(node.parent) {
       this.router.navigate(['/details', node.id, node.name]);
     } else {
@@ -121,7 +116,7 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
 
   public onEdit(): void {
     const formData = this.getFlatTreeView(this.dataSource.data).find(
-      (row) => row.id === this.context
+      (row) => row.id === this.context.id
     );
     const parentList = this.flatTreeView(this.dataSource.data);
     const data = {

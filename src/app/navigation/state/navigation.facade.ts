@@ -31,8 +31,8 @@ export class NavigationFacade {
     this.store.dispatch(actions.createCategory({ category }));
   }
 
-  public deleteCategory(id: string): void {
-    this.store.dispatch(actions.deleteCategory({ id }));
+  public deleteCategory(category: Category): void {
+    this.store.dispatch(actions.deleteCategory({ category }));
   }
 
   public editCategory(category: Category): void {
