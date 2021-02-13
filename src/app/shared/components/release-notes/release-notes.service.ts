@@ -19,6 +19,7 @@ export class ReleaseNotesService {
   };
   private fileWriteConfig: {
     encoding: 'utf8',
+    flag: 'w',
   };
 
   constructor(
@@ -27,7 +28,6 @@ export class ReleaseNotesService {
   ) {}
 
   public isFirstAppStartAfterUpdate(): boolean {
-    console.log(releaseNotes);
     this.releaseNotes = releaseNotes as ReleaseNotes;
     const { version } = packageJson;
     let showChangeLog = false;
@@ -58,6 +58,6 @@ export class ReleaseNotesService {
       isShown,
     };
 
-    this.electronService.fs.writeFile(this.changeLogPath, JSON.stringify(changeLogConfig), this.fileWriteConfig, () => {});
+    this.electronService.fs.writeFileSync(this.changeLogPath, JSON.stringify(changeLogConfig), this.fileWriteConfig);
   }
 }
