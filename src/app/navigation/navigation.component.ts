@@ -67,7 +67,7 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
     return this.dataSource.data.some(row => row.id === category?.id);
   }
 
-  public addCategory(category: Category): void {
+  public addCategory(category?: Category): void {
     this.context = null;
     const parentList = this.flatTreeView(this.dataSource.data);
     const data = {
