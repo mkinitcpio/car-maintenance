@@ -5,12 +5,37 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { PageNotFoundComponent, RecordsTableModule } from './components/';
 import { WebviewDirective } from './directives/';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../core/material.module';
 
+import { DialogManagerService } from './services/dialog-manager.service';
+import { CreateRecordModule } from './components/create-record/create-record.module';
+import { CreateDialogModule } from './components/create-dialog/create-dialog.module';
+import { ReleaseNotesModule } from './components/release-notes/release-notes.module';
+
 @NgModule({
-  declarations: [PageNotFoundComponent, WebviewDirective,],
-  imports: [CommonModule, TranslateModule, FormsModule],
-  exports: [TranslateModule, WebviewDirective, FormsModule, MaterialModule, RecordsTableModule]
+  declarations: [
+    PageNotFoundComponent,
+    WebviewDirective,
+  ],
+  providers: [
+    DialogManagerService,
+  ],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CreateRecordModule,
+    CreateDialogModule,
+    ReleaseNotesModule,
+  ],
+  exports: [
+    TranslateModule,
+    WebviewDirective,
+    FormsModule,
+    MaterialModule,
+    RecordsTableModule,
+  ],
 })
 export class SharedModule {}

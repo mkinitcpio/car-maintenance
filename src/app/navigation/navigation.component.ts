@@ -1,78 +1,59 @@
 import { NestedTreeControl } from "@angular/cdk/tree";
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
-import { CreateDialogComponent } from "./create-dialog/create-dialog.component";
 
-import { filter, pairwise } from "rxjs/operators";
 import { MatMenuTrigger } from "@angular/material/menu";
 
-import { FormModeEnum } from "./create-dialog/form-mode.enum";
+import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum";
 import { NavigationFacade } from "./state/navigation.facade";
-import { Category, CategoryTree } from "./state/interface";
-import { Status } from "../state/interface";
+import { Category } from "./state/interface";
 
-import { AutoCloseable } from '../core/auto-closeable';
-import { merge } from "rxjs";
 import { Router } from "@angular/router";
-import { DetailsFacade } from "../detail/state/details.facade";
+import {SubscriptionListener} from "../core/subscription-listener";
+import { DialogManagerService } from "../shared/services/dialog-manager.service";
 
 @Component({
   selector: "app-navigation",
   templateUrl: "./navigation.component.html",
   styleUrls: ["./navigation.component.scss"],
 })
-export class NavigationComponent extends AutoCloseable implements OnInit {
+export class NavigationComponent extends SubscriptionListener implements OnInit {
   @ViewChild(MatMenuTrigger) contextMenu: MatMenuTrigger;
 
-  treeControl = new NestedTreeControl<any>((node) => node.children);
-  dataSource = new MatTreeNestedDataSource<any>();
-  public context: string;
-  public selectedCategory: string;
+  public treeControl = new NestedTreeControl<any>((node) => node.children);
+  public dataSource = new MatTreeNestedDataSource<any>();
+  public context: Category;
+  public selectedCategory: Category;
 
   constructor(
-    public dialog: MatDialog,
-    private navigationFacade: NavigationFacade,
-    private detailsFacade: DetailsFacade,
     private router: Router,
+    private navigationFacade: NavigationFacade,
+    private dialogManagerService: DialogManagerService,
   ) {
     super();
   }
 
   ngOnInit(): void {
-    merge(
-      this.navigationFacade.deleteCategory$,
-      this.detailsFacade.deleteDetail$,
-    ).pipe(
-      pairwise(),
-      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
-    )
+    this.listenLoadedEntity$<Category>(this.navigationFacade.deleteCategory$)
       .subscribe(([_, curr]) => {
-        const parents = this.dataSource.data;
-        if(parents.some(parent => parent.id === curr.value)) {
-          this.router.navigate(['']);
-        }
-        if(this.selectedCategory === curr.value) {
+        const deletedCategory = curr.value;
+
+        if(deletedCategory.id === this.selectedCategory?.id || deletedCategory.id === this.selectedCategory?.parent) {
           this.selectedCategory = null;
+          this.router.navigate(['']);
         }
       });
 
-    merge(
+    this.listenLoadedEntity$([
       this.navigationFacade.newCategory$,
       this.navigationFacade.editCategory$,
       this.navigationFacade.deleteCategory$
-    ).pipe(
-      pairwise(),
-      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-    ).subscribe(() => {
+    ]).subscribe(() => {
       this.navigationFacade.loadCategories();
     });
 
-    this.navigationFacade.categories$
-      .pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-      ).subscribe(([_, categories]) => {
+    this.listenLoadedEntity$<any>(this.navigationFacade.categories$)
+      .subscribe(([_, categories]) => {
         this.dataSource.data = [];
         this.dataSource.data = categories.value;
       });
@@ -82,26 +63,21 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   public hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
 
-  public isRootCategory(id: string): boolean {
-    return this.dataSource.data.some(row => row.id === id);
+  public isRootCategory(category: Category): boolean {
+    return this.dataSource.data.some(row => row.id === category?.id);
   }
 
-  public addCategory(parentId?: string): void {
+  public addCategory(category: Category): void {
     this.context = null;
     const parentList = this.flatTreeView(this.dataSource.data);
-    const dialogRef = this.dialog.open(CreateDialogComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Create,
-        parents: parentList,
-        parentId,
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Create,
+      parents: parentList,
+      parentId: category?.id,
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openCategoryDialog(data)
       .subscribe((category: Category) => {
         this.navigationFacade.createNewCategory(category);
       });
@@ -124,8 +100,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public onSelectCategory(node: CategoryTree): void {
-    this.selectedCategory = node.id;
+  public onSelectCategory(node: Category): void {
+    this.selectedCategory = node;
     if(node.parent) {
       this.router.navigate(['/details', node.id, node.name]);
     } else {
@@ -140,22 +116,17 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   public onEdit(): void {
     const formData = this.getFlatTreeView(this.dataSource.data).find(
-      (row) => row.id === this.context
+      (row) => row.id === this.context.id
     );
     const parentList = this.flatTreeView(this.dataSource.data);
-    const dialogRef = this.dialog.open(CreateDialogComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Edit,
-        parents: parentList,
-        formData,
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Edit,
+      parents: parentList,
+      formData,
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openCategoryDialog(data)
       .subscribe((category: Category) => {
         this.navigationFacade.editCategory(category);
       });

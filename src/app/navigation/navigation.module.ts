@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation.component';
 import { SharedModule } from '../shared/shared.module';
 
-import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,7 +13,7 @@ import { NavigationEffects } from './state/effects';
 
 
 @NgModule({
-  declarations: [NavigationComponent, CreateDialogComponent],
+  declarations: [NavigationComponent],
   imports: [
     CommonModule,
     SharedModule,

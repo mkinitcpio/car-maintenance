@@ -35,9 +35,9 @@ export class NavigationEffects {
   deleteCategory$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType(NavigationActions.deleteCategory),
-      switchMap(({ id }) => {
-        this.database.deleteCategory(id);
-        return of( NavigationActions.deleteCategorySuccess({ id }));
+      switchMap(({ category }) => {
+        this.database.deleteCategory(category.id);
+        return of( NavigationActions.deleteCategorySuccess({ category }));
       }),
     );
   });

@@ -11,14 +11,12 @@ import { DetailsFacade } from './state/details.facade';
 import { EffectsModule } from '@ngrx/effects';
 import { DetailsEffects } from './state/effects';
 import { EmptyModule } from '../empty/empty.module';
-import { CreateRecordComponent } from './create-record/create-record.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecordsTableModule } from '../shared/components';
 
 @NgModule({
   declarations: [
     DetailComponent,
-    CreateRecordComponent,
   ],
   imports: [
     CommonModule,

@@ -8,7 +8,10 @@
     <div class="category-details__scroll-fix"></div>
     <div class="category-details__table" *ngFor="let table of categoryDetails.tables">
       <div class="category-details__table-title">{{table.name}}</div>
-      <app-records-table [data]="table.data"></app-records-table>
+      <app-records-table [data]="table.data"
+                         (edit)="onEdit($event)"
+                         (delete)="onDelete($event)"
+      ></app-records-table>
     </div>
   </div>
 </div>

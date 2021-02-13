@@ -10,6 +10,6 @@ export const categoriesMapper = (categories: Array<Category>): Array<CategoryTre
       name,
       parent,
       children,
-    }
+    };
   })).filter(category => !category.parent);
-}
+};

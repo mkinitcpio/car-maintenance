@@ -1,123 +1,83 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { merge } from 'rxjs';
-import { filter, pairwise, takeUntil } from 'rxjs/operators';
-import { AutoCloseable } from '../core/auto-closeable';
-import { FormModeEnum } from '../navigation/create-dialog/form-mode.enum';
-import { NavigationFacade } from '../navigation/state/navigation.facade';
-import { Status } from '../state/interface';
-import { CreateRecordComponent } from './create-record/create-record.component';
+import { ActivatedRoute } from '@angular/router';
+import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
+import {SubscriptionListener} from "../core/subscription-listener";
+import { DialogManagerService } from '../shared/services/dialog-manager.service';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  styleUrls: ['./detail.component.scss'],
 })
-export class DetailComponent extends AutoCloseable implements OnInit {
+export class DetailComponent extends SubscriptionListener implements OnInit {
 
-  dataSourceTable: Record[] = [];
-  private parentId = null;
+  parentId = null;
+
+  public dataSourceTable: Record[] = [];
   public name: string = null;
-
   public costSum = 0;
+  public lastModifiedDate: Date = null;
 
   constructor(
-    private detailsFacade: DetailsFacade,
     private route: ActivatedRoute,
-    private router: Router,
-    private navigationFacade: NavigationFacade,
-    public dialog: MatDialog,
+    private detailsFacade: DetailsFacade,
+    private dialogManagerService: DialogManagerService,
   ) {
     super();
   }
 
   ngOnInit(): void {
-    this.detailsFacade.details$
-      .pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-      )
+    this.listenLoadedEntity$<Record[]>(this.detailsFacade.details$)
       .subscribe(([_, curr]) => {
         this.dataSourceTable = curr.value;
-        this.costSum = this.dataSourceTable.reduce((acc, curr) => acc + +curr.cost , 0);
+        this.costSum = this.getResultCost(this.dataSourceTable);
+        this.lastModifiedDate = this.getLastModifiedDate(this.dataSourceTable);
       });
 
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.parentId = params['id'];
       this.name = params['name'];
       this.detailsFacade.loadRecords(this.parentId);
     });
 
-    this.detailsFacade.newDetails$
-      .pipe(
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-      )
+    this.listenLoadedEntity$<Record[]>(this.detailsFacade.newDetails$)
       .subscribe(() => {
         this.detailsFacade.loadRecords(this.parentId);
       });
 
-    merge(
-      this.detailsFacade.newDetails$,
+    this.listenLoadedEntity$([
       this.detailsFacade.editDetail$,
+      this.detailsFacade.newDetails$,
       this.detailsFacade.deleteDetail$,
-    ).pipe(
-      pairwise(),
-      filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success)
-    ).subscribe(() => {
+    ]).subscribe(() => {
       this.detailsFacade.loadRecords(this.parentId);
     });
-
-    this.navigationFacade
-      .deleteCategory$
-      .pipe(
-        takeUntil(this.destroyedSource),
-        pairwise(),
-        filter(([prev, curr]) => prev.status === Status.Loading && curr.status === Status.Success),
-      )
-      .subscribe(([_, curr]) => {
-        if(this.parentId === curr.value) {
-          this.router.navigate([""]);
-        }
-      });
   }
 
   public onCreateRecord(): void {
-    const dialogRef = this.dialog.open(CreateRecordComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Create,
-        parent: this.parentId,
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Create,
+      parent: this.parentId,
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openRecordDialog(data)
       .subscribe((record: Record) => {
         this.detailsFacade.createNewRecord(record);
       });
   }
 
   public onEdit(id: string): void {
-    const dialogRef = this.dialog.open(CreateRecordComponent, {
-      width: "380px",
-      panelClass: "custom-dialog",
-      data: {
-        mode: FormModeEnum.Edit,
-        parent: this.parentId,
-        formData: this.dataSourceTable.find(row => row.id === id),
-      },
-    });
+    const data = {
+      mode: FormModeEnum.Edit,
+      parent: this.parentId,
+      formData: this.dataSourceTable.find(row => row.id === id),
+    };
 
-    dialogRef
-      .afterClosed()
-      .pipe(filter(Boolean))
+    this.dialogManagerService
+      .openRecordDialog(data)
       .subscribe((record: Record) => {
         this.detailsFacade.editRecord(record);
       });
@@ -125,5 +85,19 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   public onDelete(id: string): void {
     this.detailsFacade.deleteRecord(id);
+  }
+
+  private getResultCost(records: Record[]): number {
+    const costs = records.map((record) => +record.cost).filter(Boolean);
+
+    return costs.reduce((acc, cost) => acc + cost , 0);
+  }
+
+  private getLastModifiedDate(records: Record[]): Date {
+    const EMPTY = null;
+    const allDates = records.filter((row) => row.date).map((row) => new Date(row.date));
+    const lastModifiedDate = allDates.length ? new Date(Math.max.apply(null, allDates)) : EMPTY;
+
+    return lastModifiedDate;
   }
 }

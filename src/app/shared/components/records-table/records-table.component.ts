@@ -20,8 +20,11 @@ export class RecordsTableComponent {
   @Output()
   delete: EventEmitter<string> = new EventEmitter();
 
-  displayedColumns: string[] = ['position', 'name', 'mileage' , 'date', 'cost', 'notes', 'menu'];
   public context: string;
+  public displayedColumns: string[] = ['position', 'name', 'mileage', 'date', 'cost', 'notes', 'menu'];
+
+  public separator = ' ';
+  public dateFormat = 'd MMM, y';
 
   constructor() { }
 

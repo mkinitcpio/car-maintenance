@@ -1,27 +1,42 @@
-.records {
-  &-table {
-    font-family: Ubuntu;
-    overflow-y: auto;
+.records-table {
+  font-family: Ubuntu;
+  overflow-y: auto;
 
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 
-    &__menu-button {
-      cursor: pointer;
-    }
-
-    &__menu-column {
-      max-width: 24px;
-      visibility: hidden;
-    }
+  &__menu-button {
+    cursor: pointer;
   }
-}
 
-.mat-row:hover {
-  cursor: pointer;
-  background: #F7F7F7;
-}
+  &__menu-column {
+    max-width: 24px;
 
-.mat-row:hover .records-table__menu-column {
-  visibility: visible;
+    visibility: hidden;
+  }
+
+  &__cell-id {
+    flex: 0 0 48px;
+  }
+
+  &__cell-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    padding-right: 24px;
+  }
+
+  .mat-row:hover {
+    background: #F7F7F7;
+
+    cursor: pointer;
+  }
+
+  .mat-row:hover .records-table__menu-column {
+    visibility: visible;
+  }
 }
