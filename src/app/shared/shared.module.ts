@@ -11,6 +11,8 @@ import { MaterialModule } from '../core/material.module';
 import { DialogManagerService } from './services/dialog-manager.service';
 import { CreateRecordModule } from './components/create-record/create-record.module';
 import { CreateDialogModule } from './components/create-dialog/create-dialog.module';
+import { ReleaseNotesModule } from './components/release-notes/release-notes.module';
+
 @NgModule({
   declarations: [
     PageNotFoundComponent,
@@ -26,6 +28,7 @@ import { CreateDialogModule } from './components/create-dialog/create-dialog.mod
     ReactiveFormsModule,
     CreateRecordModule,
     CreateDialogModule,
+    ReleaseNotesModule,
   ],
   exports: [
     TranslateModule,

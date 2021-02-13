@@ -8,6 +8,9 @@ import { Record } from '../../detail/state/interface';
 import { Category } from '../../navigation/state/interface';
 import { CreateDialogComponent } from '../components/create-dialog/create-dialog.component';
 import { CreateRecordComponent } from '../components/create-record/create-record.component';
+import { ReleaseNotesComponent } from '../components/release-notes/release-notes.component';
+
+import { ReleaseNotes } from '../components/release-notes/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +39,13 @@ export class DialogManagerService {
       })
       .afterClosed()
       .pipe<Record>(filter<Record>(Boolean));
+  }
+
+  public openReleaseNotesDialog(data: ReleaseNotes): void {
+    this.dialog.open(ReleaseNotesComponent, {
+      width: "580px",
+      panelClass: "custom-dialog",
+      data,
+    });
   }
 }

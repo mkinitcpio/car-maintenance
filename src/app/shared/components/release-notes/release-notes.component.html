@@ -1,0 +1,40 @@
+<div class="release-notes">
+  <header class="release-notes__title">
+    <span>{{releaseNotes.title}}</span>
+  </header>
+
+  <main class="release-notes__content">
+    <div class="release-notes__section" *ngIf="releaseNotes.features.length">
+      <div class="release-notes__section-title">
+        Добавленный функционал:
+      </div>
+      <ul>
+        <li class="release-notes__change" *ngFor="let feature of releaseNotes.features">
+          {{feature.text}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="release-notes__section" *ngIf="releaseNotes.improvements.length">
+      <div class="release-notes__section-title">
+        Улучшения:
+      </div>
+      <ul>
+        <li class="release-notes__change" *ngFor="let improvement of releaseNotes.improvements">
+          {{improvement.text}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="release-notes__section" *ngIf="releaseNotes.bugFixes.length">
+      <div class="release-notes__section-title">
+        Исправленные ошибки:
+      </div>
+      <ul>
+        <li class="release-notes__change" *ngFor="let bugFix of releaseNotes.bugFixes">
+          {{bugFix.text}}
+        </li>
+      </ul>
+    </div>
+  </main>
+</div>
