@@ -3,8 +3,10 @@ export interface Change {
 }
 
 export interface ReleaseNotes {
-  title: string;
-  bugFixes: Array<Change>;
-  improvements: Array<Change>;
-  features: Array<Change>;
+  releases: string[];
+  releaseNotes: {
+    bugFixes: Array<Change>;
+    improvements: Array<Change>;
+    features: Array<Change>;
+  }
 }

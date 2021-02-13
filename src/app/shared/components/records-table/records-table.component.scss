@@ -19,6 +19,22 @@
     flex: 0 0 48px;
   }
 
+  &__cell-cost {
+    flex: 0 0 76px;
+  }
+
+  &__cell-date {
+    flex: 0 0 84px;
+  }
+
+  &__cell-note {
+    flex: 0 0 48px;
+  }
+
+  &__cell-mileage {
+    flex: 0 0 84px;
+  }
+
   &__cell-text {
     text-overflow: ellipsis;
     white-space: nowrap;

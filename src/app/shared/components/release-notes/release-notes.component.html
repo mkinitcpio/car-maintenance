@@ -1,37 +1,50 @@
 <div class="release-notes">
   <header class="release-notes__title">
-    <span>{{releaseNotes.title}}</span>
+    <span>Версия {{ selectedVersion }}</span>
+    <button mat-icon-button
+            (click)="dialogRef.close()">
+      <mat-icon>close</mat-icon>
+    </button>
   </header>
 
   <main class="release-notes__content">
-    <div class="release-notes__section" *ngIf="releaseNotes.features.length">
+    <mat-form-field class="release-notes__version-select">
+      <mat-label>Изменения в версии</mat-label>
+      <mat-select #versionSelect [value]="selectedVersion">
+        <mat-option *ngFor="let release of releases" [value]="release">
+          {{ release }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="release-notes__section" *ngIf="releaseNotes.releaseNotes[selectedVersion].features.length">
       <div class="release-notes__section-title">
         Добавленный функционал:
       </div>
       <ul>
-        <li class="release-notes__change" *ngFor="let feature of releaseNotes.features">
+        <li class="release-notes__change" *ngFor="let feature of releaseNotes.releaseNotes[selectedVersion].features">
           {{feature.text}}
         </li>
       </ul>
     </div>
 
-    <div class="release-notes__section" *ngIf="releaseNotes.improvements.length">
+    <div class="release-notes__section" *ngIf="releaseNotes.releaseNotes[selectedVersion].improvements.length">
       <div class="release-notes__section-title">
         Улучшения:
       </div>
       <ul>
-        <li class="release-notes__change" *ngFor="let improvement of releaseNotes.improvements">
+        <li class="release-notes__change" *ngFor="let improvement of releaseNotes.releaseNotes[selectedVersion].improvements">
           {{improvement.text}}
         </li>
       </ul>
     </div>
 
-    <div class="release-notes__section" *ngIf="releaseNotes.bugFixes.length">
+    <div class="release-notes__section" *ngIf="releaseNotes.releaseNotes[selectedVersion].bugFixes.length">
       <div class="release-notes__section-title">
         Исправленные ошибки:
       </div>
       <ul>
-        <li class="release-notes__change" *ngFor="let bugFix of releaseNotes.bugFixes">
+        <li class="release-notes__change" *ngFor="let bugFix of releaseNotes.releaseNotes[selectedVersion].bugFixes">
           {{bugFix.text}}
         </li>
       </ul>
