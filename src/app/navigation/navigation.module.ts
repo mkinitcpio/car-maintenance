@@ -10,7 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { navigationReducer } from './state/reducers';
 import { NavigationFacade } from './state/navigation.facade';
 import { NavigationEffects } from './state/effects';
-
+import { CategoriesTreeModule } from './categories-tree/categories-tree.module';
 
 @NgModule({
   declarations: [NavigationComponent],
@@ -20,7 +20,8 @@ import { NavigationEffects } from './state/effects';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('navigation', navigationReducer),
-    EffectsModule.forFeature([ NavigationEffects ])
+    EffectsModule.forFeature([ NavigationEffects ]),
+    CategoriesTreeModule,
   ],
   providers: [
     NavigationFacade,

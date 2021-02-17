@@ -1,0 +1,58 @@
+.categories-tree-node {
+  font-family: 'Ubuntu';
+  width: 100%;
+
+  list-style: none;
+
+  &__sub-node {
+    margin: 8px 0;
+  }
+
+  &__name {
+    &--sub-node {
+      margin-left: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 24px;
+
+    color: rgba(0,0,0,.87);
+    cursor: pointer;
+    border-radius: 4px;
+    line-height: 1.5rem;
+
+    &:hover {
+      color: #111;
+      background: rgba(0,0,0,0.05);
+    }
+
+    &:hover> .menu-button {
+      visibility: visible;
+    }
+
+    &--select {
+      color: #111;
+      background: rgba(0,0,0,0.05);
+    }
+  }
+
+  &__expand-button-container {
+    display: flex;
+    align-items: center;
+    width: 32px;
+  }
+
+  .menu-button {
+    visibility: hidden;
+    margin-left: auto;
+    color: #111;
+  }
+}
+
+ul {
+  padding-inline-start: 0px;
+}

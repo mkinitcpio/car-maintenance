@@ -1,0 +1,11 @@
+<ul class="categories-tree">
+    <app-categories-tree-node *ngFor="let category of catagories; trackBy: trackBy"
+                              [selected]="selectedCategory"
+                              [child]="category"
+                              (add)="onAdd($event)"
+                              (edit)="onEdit($event)"
+                              (select)="onSelect($event)"
+                              (delete)="onDelete($event)">
+    </app-categories-tree-node>
+</ul>
+

@@ -6,7 +6,7 @@ import { MatMenuTrigger } from "@angular/material/menu";
 
 import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum";
 import { NavigationFacade } from "./state/navigation.facade";
-import { Category } from "./state/interface";
+import { Category, CategoryTree } from "./state/interface";
 
 import { Router } from "@angular/router";
 import {SubscriptionListener} from "../core/subscription-listener";
@@ -24,6 +24,7 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
   public dataSource = new MatTreeNestedDataSource<any>();
   public context: Category;
   public selectedCategory: Category;
+  public categories: CategoryTree[];
 
   constructor(
     private router: Router,
@@ -56,6 +57,7 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
       .subscribe(([_, categories]) => {
         this.dataSource.data = [];
         this.dataSource.data = categories.value;
+        this.categories = categories.value;
       });
 
     this.navigationFacade.loadCategories();
@@ -114,9 +116,9 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
     this.contextMenu.openMenu();
   }
 
-  public onEdit(): void {
+  public onEdit(category: Category): void {
     const formData = this.getFlatTreeView(this.dataSource.data).find(
-      (row) => row.id === this.context.id
+      (row) => row.id === category.id
     );
     const parentList = this.flatTreeView(this.dataSource.data);
     const data = {
@@ -132,7 +134,7 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
       });
   }
 
-  public onDelete(): void {
-    this.navigationFacade.deleteCategory(this.context);
+  public onDelete(category: Category): void {
+    this.navigationFacade.deleteCategory(category);
   }
 }
