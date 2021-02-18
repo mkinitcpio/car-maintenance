@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
+import * as CustomValidators from './validators';
 
 import { CreateRecordComponentData } from './interface';
 
@@ -17,11 +18,17 @@ export class CreateRecordComponent implements OnInit {
   public recordForm = new FormGroup({
     id: this.fb.control(uuidv4()),
     name: this.fb.control(null, Validators.required),
-    cost: this.fb.control(null),
+    cost: this.fb.control(null, [
+      CustomValidators.numberValidator,
+      CustomValidators.positiveNumberValidator,
+    ]),
     date: this.fb.control(null),
     notes: this.fb.control(null),
     parent: this.fb.control(this.data.parent),
-    mileage: this.fb.control(null),
+    mileage: this.fb.control(null, [
+      CustomValidators.numberValidator,
+      CustomValidators.positiveNumberValidator,
+    ]),
   });
 
   constructor(

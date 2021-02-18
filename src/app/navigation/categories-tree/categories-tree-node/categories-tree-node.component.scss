@@ -1,0 +1,85 @@
+.categories-tree-node {
+  font-family: 'Ubuntu';
+  width: 100%;
+  margin: 1px 0;
+
+  list-style: none;
+
+  &__sub-node {
+    margin: 0;
+    visibility: hidden;
+    transition: height 0.2s ease-out;
+
+    &--expanded {
+      visibility: visible;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    margin-right: 8px;
+  }
+
+  &__name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__icon {
+    width: 20px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 16px;
+
+    color: rgba(0,0,0,.87);
+    cursor: pointer;
+    border-radius: 4px;
+    line-height: 1.5rem;
+
+    &:hover {
+      color: #111;
+      background: rgba(0,0,0,0.05);
+    }
+
+    &:hover> .menu-button {
+      visibility: visible;
+    }
+
+    &--select {
+      color: #111;
+      background: rgba(0,0,0,0.05);
+    }
+  }
+
+  &__expand-button-container {
+    display: flex;
+    align-items: center;
+    width: 32px;
+  }
+
+  &__expand-button {
+    user-select: none;
+    transform: rotate(0deg);
+
+    &--expanded {
+      transform: rotate(90deg);
+    }
+  }
+
+  .menu-button {
+    visibility: hidden;
+    margin-left: auto;
+    color: #111;
+  }
+}
+
+ul {
+  padding-inline-start: 0px;
+}

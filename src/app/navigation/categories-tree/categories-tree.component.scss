@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  height: calc(100% - 64px);
+  overflow-y: auto;
+}
+
+.categories-tree {
+  padding-inline-start: 0px;
+}

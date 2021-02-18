@@ -18,9 +18,9 @@ export class RecordsTableComponent {
   edit: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  delete: EventEmitter<string> = new EventEmitter();
+  delete: EventEmitter<Record> = new EventEmitter();
 
-  public context: string;
+  public context: Record;
   public displayedColumns: string[] = ['position', 'name', 'mileage', 'date', 'cost', 'notes', 'menu'];
 
   public separator = ' ';
@@ -29,7 +29,7 @@ export class RecordsTableComponent {
   constructor() { }
 
   public onEdit(): void {
-    this.edit.emit(this.context);
+    this.edit.emit(this.context.id);
   }
 
   public onDelete(): void {

@@ -1,12 +1,9 @@
-import { NestedTreeControl } from "@angular/cdk/tree";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
-
-import { MatMenuTrigger } from "@angular/material/menu";
 
 import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum";
 import { NavigationFacade } from "./state/navigation.facade";
-import { Category } from "./state/interface";
+import { Category, CategoryTree } from "./state/interface";
 
 import { Router } from "@angular/router";
 import {SubscriptionListener} from "../core/subscription-listener";
@@ -18,12 +15,9 @@ import { DialogManagerService } from "../shared/services/dialog-manager.service"
   styleUrls: ["./navigation.component.scss"],
 })
 export class NavigationComponent extends SubscriptionListener implements OnInit {
-  @ViewChild(MatMenuTrigger) contextMenu: MatMenuTrigger;
-
-  public treeControl = new NestedTreeControl<any>((node) => node.children);
   public dataSource = new MatTreeNestedDataSource<any>();
-  public context: Category;
   public selectedCategory: Category;
+  public categories: CategoryTree[];
 
   constructor(
     private router: Router,
@@ -54,22 +48,14 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
 
     this.listenLoadedEntity$<any>(this.navigationFacade.categories$)
       .subscribe(([_, categories]) => {
-        this.dataSource.data = [];
-        this.dataSource.data = categories.value;
+        this.categories = categories.value;
       });
 
     this.navigationFacade.loadCategories();
   }
 
-  public hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
-
-  public isRootCategory(category: Category): boolean {
-    return this.dataSource.data.some(row => row.id === category?.id);
-  }
-
   public addCategory(category?: Category): void {
-    this.context = null;
-    const parentList = this.flatTreeView(this.dataSource.data);
+    const parentList = this.getListOfParents(this.categories);
     const data = {
       mode: FormModeEnum.Create,
       parents: parentList,
@@ -83,14 +69,12 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
       });
   }
 
-  private flatTreeView(tree): Array<{ name: string; value: string }> {
-    return tree
-      .map((value) => ({ name: value.name, value: value.id }))
-      .filter(parent => parent.value !== this.context);
+  private getListOfParents(categories: CategoryTree[]): Array<{ name: string; value: string }> {
+    return categories.map((value) => ({ name: value.name, value: value.id }));
   }
 
-  private getFlatTreeView(tree): Array<{ name: string; value: string; id: string, parent: string }> {
-    return tree
+  private getFlatTreeView(categories): Array<{ name: string; value: string; id: string, parent: string }> {
+    return categories
       .map((value) => [value, ...value.children])
       .flat(2)
       .filter((value) => value)
@@ -109,16 +93,9 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
     }
   }
 
-  public openContextMenu(event: Event): void {
-    event.preventDefault();
-    this.contextMenu.openMenu();
-  }
-
-  public onEdit(): void {
-    const formData = this.getFlatTreeView(this.dataSource.data).find(
-      (row) => row.id === this.context.id
-    );
-    const parentList = this.flatTreeView(this.dataSource.data);
+  public onEdit(category: Category): void {
+    const formData = this.getFlatTreeView(this.categories).find((row) => row.id === category.id);
+    const parentList = this.getListOfParents(this.categories);
     const data = {
       mode: FormModeEnum.Edit,
       parents: parentList,
@@ -132,7 +109,10 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
       });
   }
 
-  public onDelete(): void {
-    this.navigationFacade.deleteCategory(this.context);
+  public onDelete(category: Category): void {
+    this.dialogManagerService.openDeleteCategoryDialog(category.name)
+      .subscribe(() => {
+        this.navigationFacade.deleteCategory(category);
+      });
   }
 }

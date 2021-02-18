@@ -4,30 +4,56 @@
   </header>
   <main class="create-record__content">
     <form [formGroup]="recordForm">
-      <mat-form-field [floatLabel]="'always'">
+      <mat-form-field appearance="standard" [floatLabel]="'always'">
         <mat-label>Наименование</mat-label>
         <input [required]="true" [formControlName]="'name'" matInput>
+        <mat-error *ngIf="recordForm.get('name').hasError('required')">
+          Введите наименование.
+        </mat-error>
       </mat-form-field>
-      <mat-form-field [floatLabel]="'always'">
+
+      <mat-form-field appearance="standard" [floatLabel]="'always'">
         <mat-label>Пробег</mat-label>
         <input [formControlName]="'mileage'" matInput>
+        <mat-error *ngIf="recordForm.get('mileage').hasError('number')">
+          {{recordForm.get('mileage').getError('number').value}}
+        </mat-error>
+        <mat-error *ngIf="recordForm.get('mileage').hasError('positiveNumber')">
+          {{recordForm.get('mileage').getError('positiveNumber').value}}
+        </mat-error>
       </mat-form-field>
-      <mat-form-field [floatLabel]="'always'">
+
+      <mat-form-field appearance="standard" [floatLabel]="'always'">
         <mat-label>Расход</mat-label>
         <input [required]="true" [formControlName]="'cost'" matInput>
+        <mat-error *ngIf="recordForm.get('cost').hasError('number')">
+          {{recordForm.get('cost').getError('number').value}}
+        </mat-error>
+        <mat-error *ngIf="recordForm.get('cost').hasError('positiveNumber')">
+          {{recordForm.get('cost').getError('positiveNumber').value}}
+        </mat-error>
+        <mat-error *ngIf="recordForm.get('cost').hasError('required')">
+          Введите расход.
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" [floatLabel]="'always'">
+
+      <mat-form-field appearance="standard" [floatLabel]="'always'">
         <mat-label>Дата</mat-label>
-        <input  [formControlName]="'date'" matInput [matDatepicker]="picker">
+        <input [formControlName]="'date'" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          Введите корректную дату.
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" [floatLabel]="'always'">
+
+      <mat-form-field appearance="standard" [floatLabel]="'always'">
         <mat-label>Заметка</mat-label>
         <textarea [formControlName]="'notes'" matInput></textarea>
       </mat-form-field>
     </form>
   </main>
+
   <div class="create-record__footer">
     <button class="button button__submit" mat-button (click)="onSubmit()">{{data.mode === 0 ? 'Добавить' : 'Изменить'}}</button>
     <button class="button" mat-button (click)="onClose()">Отмена</button>

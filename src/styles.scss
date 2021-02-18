@@ -25,3 +25,22 @@ html, body {
 .mat-tooltip {
   font-size: 14px;
 }
+
+.mat-select-value-text,
+.mat-date-picker-input {
+  font-family: 'Ubuntu';
+}
+
+.menu-item.mat-menu-item {
+  display: flex;
+  align-items: center;
+
+  font-family: 'Ubuntu';
+  color: #111;
+
+ .mat-icon {
+   margin-right: 4px;
+
+   color: rgb(140, 140, 140);
+  }
+}

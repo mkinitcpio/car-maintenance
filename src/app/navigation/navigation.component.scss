@@ -1,65 +1,3 @@
-.example-tree-invisible {
-  display: none;
-}
-
-.example-tree {
-  height: calc(100% - 112px);
-  overflow: auto;
-  padding: 16px;
-}
-
-.example-tree ul,
-.example-tree li {
-  cursor: pointer;
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style-type: none;
-}
-
-button {
-  background: none;
-}
-
-.button {
-  font-family: Ubuntu;
-  font-weight: normal;
-  color: #111;
-}
-
-.button__create {
-  margin-right: 8px;
-  background-color: #0d7f1e;
-  border-color: rgba(0,0,0,0.56);
-  color: #fff;
-}
-
-.menu-button {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-
-    visibility: hidden;
-    font-size: 16px;
-}
-
-li:hover> .menu-button {
-  visibility: visible;
-}
-
-.mat-tree-node:hover .menu-button {
-  visibility: visible;
-}
-
-.node__container {
-  height: 40px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    /* align-self: stretch; */
-    align-items: center;
-    // border-bottom: 1px dotted rgb(216, 216, 216);
-}
-
 .navigation {
   height: 100%;
   overflow: hidden;
@@ -74,8 +12,20 @@ li:hover> .menu-button {
     background-color: #262626;
   }
 
-  &__node-view {
-    height: 32px;
-    width: 32px;
+  button {
+    background: none;
+  }
+
+  .button {
+    font-family: Ubuntu;
+    font-weight: normal;
+    color: #111;
+  }
+
+  .button__create {
+    margin-right: 8px;
+    background-color: #0d7f1e;
+    border-color: rgba(0,0,0,0.56);
+    color: #fff;
   }
 }

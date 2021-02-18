@@ -16,6 +16,25 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field [floatLabel]="'always'" *ngIf="!categoryForm.get('parent').value">
+        <mat-label>Иллюстрация</mat-label>
+          <mat-select [formControlName]="'illustration'">
+            <mat-select-trigger class="create-dialog__illustration-container">
+              <img class="create-dialog__illustration-icon"
+                   *ngIf="categoryForm.get('illustration').value"
+                   [src]="'assets/category-icons/' + categoryForm.get('illustration').value">
+              {{getIllustrationName(categoryForm.get('illustration').value)}}
+            </mat-select-trigger>
+            <mat-option *ngFor="let illustrationOption of categoryIllustrationOptions" [value]="illustrationOption.value">
+              <span class="create-dialog__option-content">
+                <img class="create-dialog__option-icon" [src]="'assets/category-icons/' + illustrationOption.value">
+                <span class="create-dialog__option-text">
+                {{illustrationOption.name}}
+                </span>
+              </span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
     </form>
   </main>
   <div class="create-dialog__footer">

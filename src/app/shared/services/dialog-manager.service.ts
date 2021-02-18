@@ -11,6 +11,7 @@ import { CreateRecordComponent } from '../components/create-record/create-record
 import { ReleaseNotesComponent } from '../components/release-notes/release-notes.component';
 
 import { ReleaseNotes } from '../components/release-notes/interface';
+import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,27 @@ export class DialogManagerService {
       panelClass: "custom-dialog",
       data,
     });
+  }
+
+  public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
+    return this.dialog
+      .open(DeleteDialogComponent, {
+        width: "480px",
+        panelClass: "custom-dialog",
+        data: `Вы уверены, что хотите удалить категорию "${categoryName}"?`,
+      })
+      .afterClosed()
+      .pipe<boolean>(filter<boolean>(Boolean));
+  }
+
+  public openDeleteRecordDialog(categoryName: string): Observable<boolean> {
+    return this.dialog
+      .open(DeleteDialogComponent, {
+        width: "480px",
+        panelClass: "custom-dialog",
+        data: `Вы уверены, что хотите удалить запись "${categoryName}"?`,
+      })
+      .afterClosed()
+      .pipe<boolean>(filter<boolean>(Boolean));
   }
 }

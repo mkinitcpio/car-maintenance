@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from './form-mode.enum';
 
 import { v4 as uuidv4 } from 'uuid';
+import { categoryIllustrationOptions } from './category-illustration-options';
 
 @Component({
   selector: 'app-create-dialog',
@@ -12,10 +13,13 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class CreateDialogComponent implements OnInit {
 
+  public categoryIllustrationOptions = categoryIllustrationOptions;
+
   public categoryForm = new FormGroup({
     id: new FormControl(uuidv4()),
     name: new FormControl(null, Validators.required),
     parent: new FormControl(this.data.parentId),
+    illustration: new FormControl(null),
   });
 
   constructor(
@@ -41,4 +45,7 @@ export class CreateDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  public getIllustrationName(value: string): string {
+    return this.categoryIllustrationOptions.find(option => option.value === value)?.name;
+  }
 }
