@@ -4,20 +4,28 @@
        (click)="onSelect()">
     <span class="categories-tree-node__expand-button-container">
       <mat-icon class="categories-tree-node__expand-button"
+                [class.categories-tree-node__expand-button--expanded]="expand"
                 *ngIf="child.children?.length"
                 (click)="expand = !expand; $event.stopPropagation()">
-          {{expand ? 'expand_more' : 'chevron_right'}}
-          </mat-icon>
+        chevron_right
+      </mat-icon>
     </span>
-    <span class="categories-tree-node__name"
-          [class.categories-tree-node__name--sub-node]="isSubNode">
+    <div class="categories-tree-node__icon-container">
+      <img class="categories-tree-node__icon"
+           *ngIf="!isSubNode"
+           [src]="'assets/category-icons/' + (child.illustration || 'wrench.svg')">
+    </div>
+    <span class="categories-tree-node__name">
       {{child.name}}
     </span>
     <mat-icon class="menu-button" [matMenuTriggerFor]="contextMenu" (click)="$event.stopPropagation()">more_horiz</mat-icon>
   </div>
-  <ng-container *ngIf="expand && child.children?.length">
-    <ul class="categories-tree-node__sub-node">
+  <ng-container>
+    <ul class="categories-tree-node__sub-node"
+        [class.categories-tree-node__sub-node--expanded]="expand"
+        [style.height]="expand ? child.children.length * 48 + 'px' : 0">
       <app-categories-tree-node *ngFor="let c of child.children"
+                                [style.visibility]="expand ? 'visible' : 'hidden'"
                                 [selected]="selected"
                                 [isSubNode]="true"
                                 [child]="c"
@@ -31,8 +39,17 @@
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
-      <button mat-menu-item *ngIf="!child.parent" (click)="onAdd()">Добавить</button>
-      <button mat-menu-item (click)="onEdit()">Редактировать</button>
-      <button mat-menu-item (click)="onDelete()">Удалить</button>
+      <button class="menu-item" mat-menu-item *ngIf="!child.parent" (click)="onAdd()">
+        <mat-icon>add</mat-icon>
+        <span>Добавить</span>
+      </button>
+      <button class="menu-item" mat-menu-item (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+        <span>Редактировать</span>
+      </button>
+      <button class="menu-item" mat-menu-item (click)="onDelete()">
+        <mat-icon>delete</mat-icon>
+        <span>Удалить</span>
+      </button>
   </ng-template>
 </mat-menu>

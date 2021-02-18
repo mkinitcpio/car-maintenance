@@ -42,6 +42,25 @@
     }
   }
 
+  &__option-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__option-icon {
+    width: 24px;
+    margin-right: 8px;
+  }
+
+  &__illustration-container {
+    display: flex;
+  }
+
+  &__illustration-icon {
+    width: 18px;
+    margin-right: 8px;
+  }
+
   &__footer {
     display: flex;
     justify-content: flex-end;

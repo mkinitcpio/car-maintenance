@@ -5,20 +5,36 @@
   list-style: none;
 
   &__sub-node {
-    margin: 8px 0;
+    margin: 0;
+    transition: height 0.15s ease-out;
+
+    &--expanded {
+      margin: 8px 0;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    margin-right: 8px;
   }
 
   &__name {
-    &--sub-node {
-      margin-left: 16px;
-    }
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__icon {
+    width: 20px;
   }
 
   &__content {
     display: flex;
     align-items: center;
     height: 48px;
-    padding: 0 24px;
+    padding: 0 16px;
 
     color: rgba(0,0,0,.87);
     cursor: pointer;
@@ -44,6 +60,16 @@
     display: flex;
     align-items: center;
     width: 32px;
+  }
+
+  &__expand-button {
+    user-select: none;
+    transform: rotate(0deg);
+    transition: transform 0.15s linear;
+
+    &--expanded {
+      transform: rotate(90deg);
+    }
   }
 
   .menu-button {
