@@ -23,7 +23,7 @@
   <ng-container>
     <ul class="categories-tree-node__sub-node"
         [class.categories-tree-node__sub-node--expanded]="expand"
-        [style.height]="expand ? child.children.length * 48 + 'px' : 0">
+        [style.height]="expand ? child.children.length * 50 + 'px' : 0">
       <app-categories-tree-node *ngFor="let c of child.children"
                                 [selected]="selected"
                                 [isSubNode]="true"
