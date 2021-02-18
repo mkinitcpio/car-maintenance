@@ -1,0 +1,38 @@
+.delete-dialog {
+  &__title {
+    height: 64px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+
+    font-family: Ubuntu;
+    font-weight: lighter;
+    font-size: 24px;
+    color: white;
+
+    background: #262626;
+  }
+
+  &__content {
+    padding: 24px 24px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 24px 16px 24px;
+  }
+
+  .button {
+    font-family: Ubuntu;
+    font-weight: normal;
+    color: #111;
+  }
+  
+  .button__submit {
+    margin-right: 8px;
+    background-color: #c7162b;
+    border-color: #c7162b;
+    color: #fff;
+  }
+}

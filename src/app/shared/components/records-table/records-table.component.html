@@ -67,7 +67,7 @@
     <mat-cell  class="records-table__menu-column"  *matCellDef="let row">
       <mat-icon class="detail__menu-button"
                 [matMenuTriggerFor]="contextMenu"
-                (click)="context = row.id; $event.stopPropagation()">
+                (click)="context = row; $event.stopPropagation()">
         more_horiz
       </mat-icon>
     </mat-cell>

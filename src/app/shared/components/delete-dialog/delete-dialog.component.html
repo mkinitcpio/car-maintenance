@@ -1,0 +1,14 @@
+<div class="delete-dialog">
+  <header class="delete-dialog__title">
+    <span>Удаление</span>
+  </header>
+
+  <main class="delete-dialog__content">
+    {{text}}
+  </main>
+
+  <footer class="delete-dialog__footer">
+    <button class="button button__submit" mat-button (click)="onSubmit()">Удалить</button>
+    <button class="button" mat-button (click)="onClose()">Отмена</button>
+  </footer>
+</div>

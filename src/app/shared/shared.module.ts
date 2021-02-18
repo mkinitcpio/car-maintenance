@@ -12,7 +12,7 @@ import { DialogManagerService } from './services/dialog-manager.service';
 import { CreateRecordModule } from './components/create-record/create-record.module';
 import { CreateDialogModule } from './components/create-dialog/create-dialog.module';
 import { ReleaseNotesModule } from './components/release-notes/release-notes.module';
-
+import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.module';
 @NgModule({
   declarations: [
     PageNotFoundComponent,
@@ -29,6 +29,7 @@ import { ReleaseNotesModule } from './components/release-notes/release-notes.mod
     CreateRecordModule,
     CreateDialogModule,
     ReleaseNotesModule,
+    DeleteDialogModule,
   ],
   exports: [
     TranslateModule,

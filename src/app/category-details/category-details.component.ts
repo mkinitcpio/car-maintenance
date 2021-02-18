@@ -61,8 +61,12 @@ export class CategoryDetailsComponent extends SubscriptionListener implements On
       });
   }
 
-  public onDelete(id: string): void {
-    this.detailsFacade.deleteRecord(id);
+  public onDelete(record: Record): void {
+    this.dialogManagerService
+      .openDeleteRecordDialog(record.name)
+      .subscribe(() => {
+        this.detailsFacade.deleteRecord(record.id);
+      });
   }
 
   private findRecord(id: string): Record {

@@ -110,6 +110,9 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
   }
 
   public onDelete(category: Category): void {
-    this.navigationFacade.deleteCategory(category);
+    this.dialogManagerService.openDeleteCategoryDialog(category.name)
+      .subscribe(() => {
+        this.navigationFacade.deleteCategory(category);
+      });
   }
 }

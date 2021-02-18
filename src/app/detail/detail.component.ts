@@ -83,8 +83,12 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
       });
   }
 
-  public onDelete(id: string): void {
-    this.detailsFacade.deleteRecord(id);
+  public onDelete(record: Record): void {
+    this.dialogManagerService
+      .openDeleteRecordDialog(record.name)
+      .subscribe(() => {
+        this.detailsFacade.deleteRecord(record.id);
+      });
   }
 
   private getResultCost(records: Record[]): number {
