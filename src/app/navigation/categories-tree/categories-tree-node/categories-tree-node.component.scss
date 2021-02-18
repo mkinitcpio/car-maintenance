@@ -6,10 +6,11 @@
 
   &__sub-node {
     margin: 0;
-    transition: height 0.15s ease-out;
+    opacity: 0;
+    transition: height 0.2s ease-out, opacity 0.1s ease-out;
 
     &--expanded {
-      margin: 8px 0;
+      opacity: 1;
     }
   }
 
@@ -65,7 +66,6 @@
   &__expand-button {
     user-select: none;
     transform: rotate(0deg);
-    transition: transform 0.15s linear;
 
     &--expanded {
       transform: rotate(90deg);
