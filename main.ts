@@ -8,12 +8,12 @@ const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
 function createWindow(): BrowserWindow {
-  const { name , version } = packageJson;
+  const { version } = packageJson;
 
   win = new BrowserWindow({
     width: 1280,
     height: 720,
-    title: `${name as string} ${version as string}`,
+    title: `Обслуживание Автомобиля ${version as string}`,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
