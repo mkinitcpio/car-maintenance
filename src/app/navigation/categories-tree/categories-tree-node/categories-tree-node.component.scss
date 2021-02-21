@@ -66,6 +66,7 @@
 
   &__expand-button {
     user-select: none;
+    transition: transform 0.2s ease-out;
     transform: rotate(0deg);
 
     &--expanded {
