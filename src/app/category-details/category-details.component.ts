@@ -3,26 +3,47 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryTree } from '../navigation/state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { CategoryDetails } from './state/interface';
-import {SubscriptionListener} from "../core/subscription-listener";
 import { Record } from '../detail/state/interface';
 import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from '../detail/state/details.facade';
 import { DialogManagerService } from '../shared/services/dialog-manager.service';
 import { NavigationFacade } from '../navigation/state/navigation.facade';
+import { listen } from '../core/decorators';
+import { merge } from 'rxjs';
+import { AutoCloseable } from '../core/auto-closeable';
 
 @Component({
   selector: 'app-category-details',
   templateUrl: './category-details.component.html',
   styleUrls: ['./category-details.component.scss']
 })
-export class CategoryDetailsComponent extends SubscriptionListener implements OnInit {
+export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
+
+  @listen({ value: true })
+  categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
+
+  @listen({ value: true })
+  deleteCategory$ = this.navigationFacade.deleteCategory$;
+
+  @listen()
+  recordChanges$ = merge(
+    this.detailsFacade.editDetail$,
+    this.detailsFacade.deleteDetail$,
+  );
+
+  @listen({ value: true })
+  categoryChanges$ = merge(
+    this.navigationFacade.newCategory$,
+    this.navigationFacade.editCategory$,
+  );
+
   private id: string;
   public category: CategoryTree;
   public categoryDetails: CategoryDetails;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
+    private route: ActivatedRoute,
     private detailsFacade: DetailsFacade,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
@@ -32,40 +53,26 @@ export class CategoryDetailsComponent extends SubscriptionListener implements On
   }
 
   ngOnInit(): void {
-    this.listenLoadedEntity$<CategoryDetails>(this.categoryDetailsFacade.categoryDetails$)
-      .subscribe(([_, curr]) => {
-        this.categoryDetails = curr.value;
-      });
+    this.categoryDetails$.subscribe((categoryDetails) => {
+      this.categoryDetails = categoryDetails;
+    });
 
-    this.listenLoadedEntity$([
-      this.detailsFacade.editDetail$,
-      this.detailsFacade.deleteDetail$,
-    ]).subscribe(() => {
+    this.recordChanges$.subscribe(() => {
       this.categoryDetailsFacade.loadCategoryDetails(this.id);
     });
 
-    this.listenLoadedEntity$<CategoryTree>([
-      this.navigationFacade.newCategory$,
-      this.navigationFacade.editCategory$,
-      this.navigationFacade.deleteCategory$,
-    ]).subscribe(([_, curr]) => {
-      if(curr.value.parent === this.id) {
+    this.categoryChanges$.subscribe((category) => {
+      if(category.parent === this.id || this.id === category.id) {
         this.categoryDetailsFacade.loadCategoryDetails(this.id);
       }
     });
 
-    this.listenLoadedEntity$<CategoryTree>([
-      this.navigationFacade.deleteCategory$,
-    ]).subscribe(([_, curr]) => {
-      if(this.id === curr.value.id) {
+    this.deleteCategory$.subscribe((category) => {
+      if(this.id === category.id) {
         this.router.navigate(['']);
       }
-    });
 
-    this.listenLoadedEntity$<CategoryTree>([
-      this.navigationFacade.editCategory$,
-    ]).subscribe(([_, curr]) => {
-      if(this.id === curr.value.id) {
+      if(this.id === category.parent) {
         this.categoryDetailsFacade.loadCategoryDetails(this.id);
       }
     });
