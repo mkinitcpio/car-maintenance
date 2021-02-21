@@ -31,11 +31,11 @@ const appReducer = createReducer(
       error: null,
     }
   })),
-  on(createCategorySuccess, state => ({
+  on(createCategorySuccess, (state, { category }) => ({
     ...state,
     newEntity: {
       status: Status.Success,
-      value: null,
+      value: category,
       error: null,
     }
   })),
@@ -63,11 +63,11 @@ const appReducer = createReducer(
       error: null,
     }
   })),
-  on(editCategorySuccess, state => ({
+  on(editCategorySuccess, (state, { category }) => ({
     ...state,
     editEntity: {
       status: Status.Success,
-      value: null,
+      value: category,
       error: null,
     }
   })),

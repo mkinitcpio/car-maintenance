@@ -27,7 +27,7 @@ export class NavigationEffects {
       ofType(NavigationActions.createCategory),
       switchMap(({ category }) => {
         this.database.saveNewCategory(category);
-        return of( NavigationActions.createCategorySuccess());
+        return of( NavigationActions.createCategorySuccess({ category }));
       }),
     );
   });
@@ -47,7 +47,7 @@ export class NavigationEffects {
       ofType(NavigationActions.editCategory),
       switchMap(({ category }) => {
         this.database.editCategory(category);
-        return of( NavigationActions.editCategorySuccess());
+        return of( NavigationActions.editCategorySuccess({ category }));
       }),
     );
   });
