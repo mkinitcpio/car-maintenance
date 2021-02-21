@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryTree } from '../navigation/state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { CategoryDetails } from './state/interface';
@@ -8,6 +8,7 @@ import { Record } from '../detail/state/interface';
 import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from '../detail/state/details.facade';
 import { DialogManagerService } from '../shared/services/dialog-manager.service';
+import { NavigationFacade } from '../navigation/state/navigation.facade';
 
 @Component({
   selector: 'app-category-details',
@@ -21,7 +22,9 @@ export class CategoryDetailsComponent extends SubscriptionListener implements On
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private detailsFacade: DetailsFacade,
+    private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
     private categoryDetailsFacade: CategoryDetailsFacade,
   ) {
@@ -39,6 +42,32 @@ export class CategoryDetailsComponent extends SubscriptionListener implements On
       this.detailsFacade.deleteDetail$,
     ]).subscribe(() => {
       this.categoryDetailsFacade.loadCategoryDetails(this.id);
+    });
+
+    this.listenLoadedEntity$<CategoryTree>([
+      this.navigationFacade.newCategory$,
+      this.navigationFacade.editCategory$,
+      this.navigationFacade.deleteCategory$,
+    ]).subscribe(([_, curr]) => {
+      if(curr.value.parent === this.id) {
+        this.categoryDetailsFacade.loadCategoryDetails(this.id);
+      }
+    });
+
+    this.listenLoadedEntity$<CategoryTree>([
+      this.navigationFacade.deleteCategory$,
+    ]).subscribe(([_, curr]) => {
+      if(this.id === curr.value.id) {
+        this.router.navigate(['']);
+      }
+    });
+
+    this.listenLoadedEntity$<CategoryTree>([
+      this.navigationFacade.editCategory$,
+    ]).subscribe(([_, curr]) => {
+      if(this.id === curr.value.id) {
+        this.categoryDetailsFacade.loadCategoryDetails(this.id);
+      }
     });
 
     this.route.params.subscribe(params => {
