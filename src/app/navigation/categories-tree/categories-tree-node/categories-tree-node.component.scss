@@ -40,7 +40,6 @@
 
     color: rgba(0,0,0,.87);
     cursor: pointer;
-    border-radius: 4px;
     line-height: 1.5rem;
 
     &:hover {
@@ -53,8 +52,17 @@
     }
 
     &--select {
-      color: #111;
-      background: rgba(0,0,0,0.05);
+      color: white;
+      background: rgb(233,84,32);
+    }
+
+    &--select:hover {
+      color: white;
+      background: rgb(216, 82, 35);
+
+      > .menu-button {
+        color: white;
+      }
     }
   }
 
