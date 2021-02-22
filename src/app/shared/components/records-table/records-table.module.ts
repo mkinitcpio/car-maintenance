@@ -6,6 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NumberSeparatorPipe } from './pipes/number.pipe';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NumberSeparatorPipe } from './pipes/number.pipe';
     MatTableModule,
     MatMenuModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    TranslateModule,
   ],
   exports: [
     RecordsTableComponent,
