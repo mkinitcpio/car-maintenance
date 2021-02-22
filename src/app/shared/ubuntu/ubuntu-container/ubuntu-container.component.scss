@@ -1,5 +1,4 @@
 .ubuntu-container {
-  margin-bottom: 32px;
 
   &__header {
     margin-bottom: 16px;
@@ -10,8 +9,6 @@
   }
 
   &__content {
-    padding: 24px;
-
     border: 1px solid rgb(191,191,191);
     background: white;
   }

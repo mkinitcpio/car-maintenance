@@ -12,6 +12,7 @@ import { ReleaseNotesComponent } from '../components/release-notes/release-notes
 
 import { ReleaseNotes } from '../components/release-notes/interface';
 import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
+import { SettingsComponent } from '../components/settings/settings.component';
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +71,14 @@ export class DialogManagerService {
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));
+  }
+
+  public openSettingsDialog(): void {
+    this.dialog
+      .open(SettingsComponent, {
+        disableClose: true,
+        width: "580px",
+        panelClass: "custom-dialog",
+      });
   }
 }
