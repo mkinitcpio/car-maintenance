@@ -17,7 +17,7 @@ export class AppComponent extends AutoCloseable {
     private dataBaseService: DataBaseService,
   ) {
     super();
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('ru');
     this.dataBaseService.dbExist$.subscribe((exist) => {
       this.dbExist = exist;
     });

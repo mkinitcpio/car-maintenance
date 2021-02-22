@@ -3,13 +3,13 @@
   overflow: hidden;
 
   &__title-container {
-    padding: 0 16px;
-    height: 64px;
+    padding: 4px 8px;
+    height: 48px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
 
-    background-color: #262626;
+    background-color: rgb(50, 48, 48);
   }
 
   button {
@@ -20,12 +20,13 @@
     font-family: Ubuntu;
     font-weight: normal;
     color: #111;
+    min-width: initial;
+    padding: 0 8px;
   }
 
   .button__create {
-    margin-right: 8px;
-    background-color: #0d7f1e;
-    border-color: rgba(0,0,0,0.56);
+    background-color: rgb(75,72,72);
+    border: 1px solid rgb(43,42,42);
     color: #fff;
   }
 }

@@ -7,6 +7,23 @@
       "DETAIL": {
         "TITLE": "Detail page !",
         "BACK_TO_HOME": "Back to Home"
+    },
+    "SETTINGS": {
+      "TITLE": "Settings",
+      "SECTIONS": {
+        "COMMON": "Common"
+      },
+      "FIELDS": {
+        "LANG": "Language",
+        "DATABASE_PATH": "Database"
+      }
     }
+  },
+  "MENU": {
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "ABOUT": "About",
+    "SETTINGS":"Settings"
   }
 }

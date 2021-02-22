@@ -1,6 +1,12 @@
 <div class="navigation">
   <div class="navigation__title-container">
-    <button class="button button__create" mat-button (click)="addCategory()">Добавить</button>
+    <button class="button button__create" mat-button (click)="addCategory()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button class="button button__create" mat-button [matMenuTriggerFor]="contextMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
   </div>
 
   <app-categories-tree [catagories]="categories"
@@ -10,4 +16,15 @@
                       (delete)="onDelete($event)">
   </app-categories-tree>
 </div>
+
+<mat-menu #contextMenu="matMenu">
+  <ng-template matMenuContent>
+      <button class="menu-item" mat-menu-item (click)="openSettings()">
+        <span>{{"MENU.SETTINGS" | translate}}</span>
+      </button>
+      <button class="menu-item" mat-menu-item>
+        <span>{{"MENU.ABOUT" | translate}}</span>
+      </button>
+  </ng-template>
+</mat-menu>
 

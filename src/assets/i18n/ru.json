@@ -1,0 +1,29 @@
+{
+  "PAGES": {
+      "HOME": {
+          "TITLE": "App works !",
+          "GO_TO_DETAIL": "Go to Detail"
+      },
+      "DETAIL": {
+        "TITLE": "Detail page !",
+        "BACK_TO_HOME": "Back to Home"
+      },
+      "SETTINGS": {
+        "TITLE": "Настройки",
+        "SECTIONS": {
+          "COMMON": "Общие"
+        },
+        "FIELDS": {
+          "LANG": "Язык",
+          "DATABASE_PATH": "База данных"
+        }
+      }
+  },
+  "MENU": {
+    "ADD": "Добавить",
+    "EDIT": "Редактировать",
+    "DELETE": "Удалить",
+    "ABOUT": "О приложении",
+    "SETTINGS":"Настройки"
+  }
+}

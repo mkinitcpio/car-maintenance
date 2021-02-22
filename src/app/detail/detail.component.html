@@ -11,7 +11,9 @@
         <span class="stat-panel__label">Общий расход: </span><span>{{costSum}} BYN</span>
       </div>
     </div>
-    <button class="detail__add-button" mat-button (click)="onCreateRecord()">Добавить</button>
+    <button class="detail__add-button" mat-button (click)="onCreateRecord()">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
   <div class="detail__content">
     <app-records-table [data]="dataSourceTable"

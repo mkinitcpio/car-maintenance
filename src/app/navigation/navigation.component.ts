@@ -127,4 +127,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
         this.navigationFacade.deleteCategory(category);
       });
   }
+
+  public openSettings(): void {
+    this.dialogManagerService.openSettingsDialog();
+  }
 }
