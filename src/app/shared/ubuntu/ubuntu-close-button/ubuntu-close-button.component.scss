@@ -1,0 +1,27 @@
+.ubuntu-close-button {
+  height: 20px !important;
+  width: 20px !important;
+  display: flex !important;
+  margin-right: 0 !important;
+
+  background: rgb(233,84,32) !important;
+  color: white !important;
+
+  .mat-button-wrapper {
+    height: 20px;
+    width: 20px;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    line-height: 16px !important;
+  }
+
+  .mat-icon {
+    height: 16px;
+    width: 16px;
+
+    font-size: 16px;
+  }
+}
