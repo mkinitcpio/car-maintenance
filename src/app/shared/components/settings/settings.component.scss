@@ -1,0 +1,37 @@
+.settings {
+  user-select: none;
+  font-family: 'Ubuntu';
+
+  &__header {
+    height: 42px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: rgb(50, 48, 48);
+  }
+
+  &__header-text {
+    color: white;
+  }
+
+  &__button-container {
+    width: 28px;
+
+    &:first-child {
+      margin-right: auto;
+    }
+
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+
+  &__content {
+    height: 500px;
+    padding: 32px;
+
+    background: rgb(247, 247, 247);
+  }
+}
