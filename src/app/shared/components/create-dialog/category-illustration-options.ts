@@ -1,30 +1,30 @@
 export const categoryIllustrationOptions = [
   {
-    name: 'Аккумулятор',
+    name: 'ILLUSTRATIONS.BATTERY',
     value: 'battery.svg',
   },
   {
-    name: 'Двигатель',
+    name: 'ILLUSTRATIONS.ENGINE',
     value: 'motor.svg',
   },
   {
-    name: 'Колесо',
+    name: 'ILLUSTRATIONS.WHEEL',
     value: 'wheel-1.svg',
   },
   {
-    name: 'Масло',
+    name: 'ILLUSTRATIONS.OIL',
     value: 'oil.svg',
   },
   {
-    name: 'Трансмиссия',
+    name: 'ILLUSTRATIONS.TRANSMISSION',
     value: 'chassis.svg',
   },
   {
-    name: 'Фары',
+    name: 'ILLUSTRATIONS.HEADLIGHTS',
     value: 'car-lights-2.svg',
   },
   {
-    name: 'Другое',
+    name: 'ILLUSTRATIONS.OTHER',
     value: 'wrench.svg',
   }
 ];

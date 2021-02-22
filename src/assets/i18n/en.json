@@ -25,5 +25,31 @@
     "DELETE": "Delete",
     "ABOUT": "About",
     "SETTINGS":"Settings"
+  },
+  "DIALOG": {
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CATEGORY": "Category",
+    "BUTTONS": {
+      "ADD": "Add",
+      "EDIT": "Edit",
+      "DELETE": "Delete",
+      "CANCEL": "Cancel"
+    },
+    "FIELDS": {
+      "NAME": "Name",
+      "CATEGORY": "Category",
+      "ILLUSTRATION": "Illustration"
+    }
+  },
+  "ILLUSTRATIONS": {
+      "ENGINE": "Engine",
+      "BATTERY": "Battery",
+      "WHEEL": "Wheel",
+      "OIL": "Oil",
+      "TRANSMISSION": "Transmission",
+      "HEADLIGHTS": "Headlights",
+      "OTHER": "Other"
   }
 }

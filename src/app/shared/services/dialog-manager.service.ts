@@ -24,7 +24,7 @@ export class DialogManagerService {
   public openCategoryDialog(data: any): Observable<Category> {
     return this.dialog
       .open(CreateDialogComponent, {
-        width: "380px",
+        width: "480px",
         panelClass: "custom-dialog",
         data,
       })

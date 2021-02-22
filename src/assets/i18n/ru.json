@@ -25,5 +25,31 @@
     "DELETE": "Удалить",
     "ABOUT": "О приложении",
     "SETTINGS":"Настройки"
-  }
+  },
+  "DIALOG": {
+    "ADD": "Добавление",
+    "EDIT": "Редактирование",
+    "DELETE": "Удаление",
+    "CATEGORY": "Категории",
+    "BUTTONS": {
+      "ADD": "Добавить",
+      "EDIT": "Сохранить",
+      "DELETE": "Удалить",
+      "CANCEL": "Отмена"
+    },
+    "FIELDS": {
+      "NAME": "Имя",
+      "CATEGORY": "Категория",
+      "ILLUSTRATION": "Иллюстрация"
+    }
+  },
+  "ILLUSTRATIONS": {
+    "ENGINE": "Двигатель",
+    "BATTERY": "Аккумулятор",
+    "WHEEL": "Колесо",
+    "OIL": "Масло",
+    "TRANSMISSION": "Трансмиссия",
+    "HEADLIGHTS": "Фары",
+    "OTHER": "Другое"
+}
 }
