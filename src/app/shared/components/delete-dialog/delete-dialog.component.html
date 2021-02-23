@@ -1,14 +1,15 @@
 <div class="delete-dialog">
-  <header class="delete-dialog__title">
-    <span>Удаление</span>
+  <header class="delete-dialog__header">
+    <div class="delete-dialog__button-container">
+      <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
+    </div>
+    <div class="delete-dialog__header-text">{{"DIALOG.DELETE.TITLE" | translate}}</div>
+    <div class="delete-dialog__button-container">
+      <button class="button button__submit" mat-button (click)="onSubmit()">{{"DIALOG.BUTTONS.DELETE" | translate}}</button>
+    </div>
   </header>
 
   <main class="delete-dialog__content">
-    {{text}}
+    {{data.text | translate}} "{{data.name}}"?
   </main>
-
-  <footer class="delete-dialog__footer">
-    <button class="button button__submit" mat-button (click)="onSubmit()">Удалить</button>
-    <button class="button" mat-button (click)="onClose()">Отмена</button>
-  </footer>
 </div>

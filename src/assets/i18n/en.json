@@ -35,7 +35,11 @@
   "DIALOG": {
     "ADD": "Add",
     "EDIT": "Edit",
-    "DELETE": "Delete",
+    "DELETE": {
+      "TITLE": "Confirm Deletion",
+      "CATEGORY": "Delete category",
+      "RECORD": "Delete record"
+    },
     "CATEGORY": "Category",
     "BUTTONS": {
       "ADD": "Add",

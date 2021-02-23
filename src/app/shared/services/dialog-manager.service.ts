@@ -54,9 +54,12 @@ export class DialogManagerService {
   public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
-        width: "480px",
+        width: "380px",
         panelClass: "custom-dialog",
-        data: `Вы уверены, что хотите удалить категорию "${categoryName}"?`,
+        data: {
+          text: "DIALOG.DELETE.CATEGORY",
+          name: categoryName,
+        },
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));
@@ -65,9 +68,12 @@ export class DialogManagerService {
   public openDeleteRecordDialog(categoryName: string): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
-        width: "480px",
+        width: "380px",
         panelClass: "custom-dialog",
-        data: `Вы уверены, что хотите удалить запись "${categoryName}"?`,
+        data: {
+          text: "DIALOG.DELETE.RECORD",
+          name: categoryName,
+        },
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));
