@@ -5,10 +5,10 @@
     </div>
     <div class="detail__stat-panel">
       <div class="stat-panel__row">
-        <span class="stat-panel__label">Последнее изменение: </span> <span>{{lastModifiedDate | date:'d MMM, y'}}</span>
+        <span class="stat-panel__label">{{"PAGES.DETAIL.LAST_MODIFIED" | translate}}: </span> <span>{{lastModifiedDate | date:'d MMM, y'}}</span>
       </div>
       <div>
-        <span class="stat-panel__label">Общий расход: </span><span>{{costSum}} BYN</span>
+        <span class="stat-panel__label">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span><span>{{costSum}} BYN</span>
       </div>
     </div>
     <button class="detail__add-button" mat-button (click)="onCreateRecord()">
@@ -22,7 +22,7 @@
                        (delete)="onDelete($event)">
     </app-records-table>
     <div *ngIf="!dataSourceTable.length" class="detail__empty">
-      <mat-icon class="detail__empty-text">content_paste</mat-icon>Записи отсутствуют.
+      <mat-icon class="detail__empty-text">content_paste</mat-icon>{{"PAGES.DETAIL.EMPTY" | translate}}
     </div>
   </div>
 </div>

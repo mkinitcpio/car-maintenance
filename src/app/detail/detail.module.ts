@@ -13,6 +13,7 @@ import { DetailsEffects } from './state/effects';
 import { EmptyModule } from '../empty/empty.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecordsTableModule } from '../shared/components';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RecordsTableModule } from '../shared/components';
     StoreModule.forFeature('details', detailsReducer),
     EffectsModule.forFeature([DetailsEffects]),
     EmptyModule,
+    TranslateModule,
   ],
   providers: [
     DetailsFacade,
