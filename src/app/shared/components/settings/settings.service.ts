@@ -23,7 +23,7 @@ export class SettingsService {
     this.defaultSettings = {
       language: this.translate.getBrowserLang(),
       databasePath: null,
-      region: this.translate.getBrowserLang(),
+      region: this.translate.getBrowserLang() as LocaleEnum,
     };
   }
 
@@ -69,7 +69,7 @@ export class SettingsService {
     this.translate.setDefaultLang(lang);
   }
 
-  public setRegion(region: string): void {
+  public setRegion(region: LocaleEnum): void {
     this.settings.region = region;
   }
 

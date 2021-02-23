@@ -11,14 +11,14 @@ export class NumberSeparatorPipe implements PipeTransform {
 
   }
 
-  transform(value: string, locale: LocaleEnum): string {
+  transform(value: number, locale: LocaleEnum): string {
 
     if(locale === LocaleEnum.Us) {
-      return formatNumber(+value, 'en');
+      return formatNumber(value, 'en');
     }
 
     if(locale === LocaleEnum.Ru || locale === LocaleEnum.By) {
-      return formatNumber(+value, 'en').replace(/,/g, ' ');
+      return formatNumber(value, 'en').replace(/,/g, ' ');
     }
 
     return null;

@@ -1,5 +1,7 @@
+import { LocaleEnum } from "./locale-enum";
+
 export interface Settings {
   language: string;
-  region: string;
+  region: LocaleEnum;
   databasePath: string;
 }

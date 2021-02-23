@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { languageOptions } from './language-options';
+import { LocaleEnum } from './locale-enum';
 import { regionOptions } from './region-options';
 
 import { SettingsService } from './settings.service';
@@ -29,7 +30,7 @@ export class SettingsComponent implements OnInit {
     this.settingsService.saveSettings();
   }
 
-  public onSelectRegion(region: string): void {
+  public onSelectRegion(region: LocaleEnum): void {
     this.settingsService.setRegion(region);
     this.settingsService.saveSettings();
   }
