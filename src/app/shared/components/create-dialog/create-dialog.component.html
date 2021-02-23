@@ -1,15 +1,25 @@
 <div class="create-dialog">
-  <header class="create-dialog__title">
-    <span>{{data.mode === 0 ? 'Добавление' : 'Редактирование'}} категории</span>
+  <header class="create-dialog__header">
+    <div class="create-dialog__button-container">
+      <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
+    </div>
+    <div class="create-dialog__header-text">{{(data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT") | translate}} {{"DIALOG.CATEGORY" | translate}}</div>
+    <div class="create-dialog__button-container">
+      <button class="button button__submit" mat-button (click)="onSubmit()">{{(data.mode === 0 ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT") | translate}}</button>
+    </div>
   </header>
+
   <main class="create-dialog__content">
     <form [formGroup]="categoryForm">
       <mat-form-field [floatLabel]="'always'">
-        <mat-label>Наименование</mat-label>
-        <input [required]="true" [formControlName]="'name'" matInput value="Sushi">
+        <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
+        <input [required]="true" [formControlName]="'name'" matInput>
+        <mat-error>
+          {{"DIALOG.VALIDATIONS.NAME" | translate}}
+        </mat-error>
       </mat-form-field>
       <mat-form-field [floatLabel]="'always'">
-      <mat-label>Категория</mat-label>
+      <mat-label>{{"DIALOG.FIELDS.CATEGORY" | translate}}</mat-label>
         <mat-select [formControlName]="'parent'">
           <mat-option *ngFor="let parent of data.parents" [value]="parent.value">
             {{parent.name}}
@@ -17,19 +27,19 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field [floatLabel]="'always'" *ngIf="!categoryForm.get('parent').value">
-        <mat-label>Иллюстрация</mat-label>
+        <mat-label>{{"DIALOG.FIELDS.ILLUSTRATION" | translate}}</mat-label>
           <mat-select [formControlName]="'illustration'">
             <mat-select-trigger class="create-dialog__illustration-container">
               <img class="create-dialog__illustration-icon"
                    *ngIf="categoryForm.get('illustration').value"
                    [src]="'assets/category-icons/' + categoryForm.get('illustration').value">
-              {{getIllustrationName(categoryForm.get('illustration').value)}}
+              {{getIllustrationName(categoryForm.get('illustration').value) | translate}}
             </mat-select-trigger>
             <mat-option *ngFor="let illustrationOption of categoryIllustrationOptions" [value]="illustrationOption.value">
               <span class="create-dialog__option-content">
                 <img class="create-dialog__option-icon" [src]="'assets/category-icons/' + illustrationOption.value">
                 <span class="create-dialog__option-text">
-                {{illustrationOption.name}}
+                {{illustrationOption.name | translate}}
                 </span>
               </span>
             </mat-option>
@@ -37,8 +47,4 @@
         </mat-form-field>
     </form>
   </main>
-  <div class="create-dialog__footer">
-    <button class="button button__submit" mat-button (click)="onSubmit()">{{data.mode === 0 ? 'Добавить' : 'Изменить'}}</button>
-    <button class="button" mat-button (click)="onClose()">Отмена</button>
-  </div>
 </div>

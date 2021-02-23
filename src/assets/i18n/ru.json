@@ -1,0 +1,94 @@
+{
+  "PAGES": {
+    "DATABASE_SELECT": {
+      "TEXT": "База данных отсутствует",
+      "CREATE": "Создать",
+      "OPEN": "Открыть"
+  },
+      "DETAIL": {
+        "EMPTY": "Записи отсутствуют",
+        "LAST_MODIFIED": "Последнее изменение",
+        "OVERALL_EXPENSE": "Общий расход"
+      },
+      "SETTINGS": {
+        "TITLE": "Настройки",
+        "SECTIONS": {
+          "COMMON": "Общие",
+          "LANG": "Язык и Регион"
+        },
+        "FIELDS": {
+          "LANG": "Язык",
+          "REGION": "Регион",
+          "DATABASE_PATH": "База данных"
+        }
+      },
+      "EMPTY": {
+        "TEXT": "Выберите Категорию"
+      }
+  },
+  "MENU": {
+    "ADD": "Добавить",
+    "EDIT": "Редактировать",
+    "DELETE": "Удалить",
+    "ABOUT": "О приложении",
+    "GITHUB": "GitHub",
+    "SETTINGS":"Настройки"
+  },
+  "DIALOG": {
+    "ADD": "Добавление",
+    "EDIT": "Редактирование",
+    "RELEASE_NOTES": {
+      "TITLE": "Версия",
+      "NEW_FEATURES": "Добавленный функционал",
+      "BUGFIXES": "Исправленные ошибки",
+      "IMPROVEMENTS": "Улучшения"
+    },
+    "DELETE": {
+      "TITLE": "Удаление",
+      "CATEGORY": "Удалить категорию",
+      "RECORD": "Удалить запись"
+    },
+    "CATEGORY": "Категории",
+    "RECORD": "Записи",
+    "BUTTONS": {
+      "ADD": "Добавить",
+      "EDIT": "Сохранить",
+      "DELETE": "Удалить",
+      "CANCEL": "Отмена"
+    },
+    "FIELDS": {
+      "NAME": "Имя",
+      "CATEGORY": "Категория",
+      "ILLUSTRATION": "Иллюстрация",
+      "MILEAGE": "Пробег",
+      "DATE": "Дата",
+      "EXPENSE": "Расход",
+      "COMMENT": "Заметка"
+    },
+    "VALIDATIONS": {
+      "NAME": "Введите Имя.",
+      "DATE": "Введите корректную дату.",
+      "EXPENSE": {
+        "REQIRED": "Введите расход."
+      },
+      "NUMBER": "Введите числовое значение.",
+      "POSITIVE": "Введите неотрицательное значение."
+    }
+  },
+  "ILLUSTRATIONS": {
+    "ENGINE": "Двигатель",
+    "BATTERY": "Аккумулятор",
+    "WHEEL": "Колесо",
+    "OIL": "Масло",
+    "TRANSMISSION": "Трансмиссия",
+    "HEADLIGHTS": "Фары",
+    "OTHER": "Другое"
+  },
+  "RECORDS_TABLE": {
+    "NAME": "Имя",
+    "MILEAGE": "Пробег (км)",
+    "DATE": "Дата",
+    "EXPENSE": "Расход",
+    "COMMENT": "Заметка"
+  }
+}

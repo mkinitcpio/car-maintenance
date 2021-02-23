@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriesTreeNodeComponent } from './categories-tree-node.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [CategoriesTreeNodeComponent],
@@ -10,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
     CommonModule,
     MatIconModule,
     MatMenuModule,
+    TranslateModule,
   ],
   exports: [
     CategoriesTreeNodeComponent,

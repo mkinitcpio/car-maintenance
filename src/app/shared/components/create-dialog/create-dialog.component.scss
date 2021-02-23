@@ -1,21 +1,38 @@
 .create-dialog {
+  font-family: "Ubuntu";
 
-  &__title {
-    height: 64px;
-    padding: 0 24px;
+  &__header {
+    height: 42px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: rgb(50, 48, 48);
+  }
+
+  &__header-text {
+    color: white;
+  }
+
+  &__button-container {
     display: flex;
     align-items: center;
 
-    font-family: Ubuntu;
-    font-weight: lighter;
-    font-size: 24px;
-    color: white;
+    &:first-child {
+      margin-right: auto;
+      justify-content: flex-start;
+    }
 
-    background: #262626;
+    &:last-child {
+      margin-left: auto;
+      justify-content: flex-end;
+    }
   }
 
   &__content {
-    padding: 16px 24px;
+    padding: 16px 32px;
+
     mat-form-field {
       font-family: 'Ubuntu';
       font-weight: lighter;
@@ -60,12 +77,6 @@
     width: 18px;
     margin-right: 8px;
   }
-
-  &__footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0px 24px 16px 24px;
-  }
 }
 
 .button {
@@ -75,9 +86,14 @@
 }
 
 .button__submit {
-  margin-right: 8px;
   background-color: #0d7f1e;
   border-color: rgba(0,0,0,0.56);
+  color: #fff;
+}
+
+.button__cancel {
+  background-color: rgb(75, 72, 72);
+  border-color: rgb(48,47,47);
   color: #fff;
 }
 

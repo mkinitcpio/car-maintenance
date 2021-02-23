@@ -3,15 +3,32 @@ import { ActivatedRoute } from '@angular/router';
 import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
-import {SubscriptionListener} from "../core/subscription-listener";
 import { DialogManagerService } from '../shared/services/dialog-manager.service';
+import { listen } from '../core/decorators';
+import { merge } from 'rxjs';
+import { AutoCloseable } from '../core/auto-closeable';
+import { SettingsService } from '../shared/components/settings/settings.service';
+import { currencies } from '../shared/components/records-table/currencies';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
-export class DetailComponent extends SubscriptionListener implements OnInit {
+export class DetailComponent extends AutoCloseable implements OnInit {
+
+  @listen({ value: true })
+  details$ = this.detailsFacade.details$;
+
+  @listen()
+  newDetails$ = this.detailsFacade.newDetails$;
+
+  @listen()
+  detailChanges$ = merge(
+    this.detailsFacade.editDetail$,
+    this.detailsFacade.newDetails$,
+    this.detailsFacade.deleteDetail$,
+  );
 
   parentId = null;
 
@@ -19,22 +36,23 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
   public name: string = null;
   public costSum = 0;
   public lastModifiedDate: Date = null;
+  public currencies = currencies;
 
   constructor(
     private route: ActivatedRoute,
     private detailsFacade: DetailsFacade,
+    public settingsService: SettingsService,
     private dialogManagerService: DialogManagerService,
   ) {
     super();
   }
 
   ngOnInit(): void {
-    this.listenLoadedEntity$<Record[]>(this.detailsFacade.details$)
-      .subscribe(([_, curr]) => {
-        this.dataSourceTable = curr.value;
-        this.costSum = this.getResultCost(this.dataSourceTable);
-        this.lastModifiedDate = this.getLastModifiedDate(this.dataSourceTable);
-      });
+    this.details$.subscribe((categoryDetails) => {
+      this.dataSourceTable = categoryDetails;
+      this.costSum = this.getResultCost(this.dataSourceTable);
+      this.lastModifiedDate = this.getLastModifiedDate(this.dataSourceTable);
+    });
 
     this.route.params.subscribe((params) => {
       this.parentId = params['id'];
@@ -42,16 +60,7 @@ export class DetailComponent extends SubscriptionListener implements OnInit {
       this.detailsFacade.loadRecords(this.parentId);
     });
 
-    this.listenLoadedEntity$<Record[]>(this.detailsFacade.newDetails$)
-      .subscribe(() => {
-        this.detailsFacade.loadRecords(this.parentId);
-      });
-
-    this.listenLoadedEntity$([
-      this.detailsFacade.editDetail$,
-      this.detailsFacade.newDetails$,
-      this.detailsFacade.deleteDetail$,
-    ]).subscribe(() => {
+    this.detailChanges$.subscribe(() => {
       this.detailsFacade.loadRecords(this.parentId);
     });
   }

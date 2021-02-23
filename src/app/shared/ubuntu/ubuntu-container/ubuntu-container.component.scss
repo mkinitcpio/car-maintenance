@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.ubuntu-container {
+
+  &__header {
+    margin-bottom: 16px;
+
+    font-family: 'Ubuntu';
+    font-weight: bold;
+    color: #111;
+  }
+
+  &__content {
+    border: 1px solid rgb(191,191,191);
+    background: white;
+  }
+}

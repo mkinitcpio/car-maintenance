@@ -6,49 +6,65 @@ import { NavigationFacade } from "./state/navigation.facade";
 import { Category, CategoryTree } from "./state/interface";
 
 import { Router } from "@angular/router";
-import {SubscriptionListener} from "../core/subscription-listener";
 import { DialogManagerService } from "../shared/services/dialog-manager.service";
+
+import { listen } from "../core/decorators";
+import { merge } from "rxjs";
+import { AutoCloseable } from "../core/auto-closeable";
+import { ElectronService } from "../core/services";
 
 @Component({
   selector: "app-navigation",
   templateUrl: "./navigation.component.html",
   styleUrls: ["./navigation.component.scss"],
 })
-export class NavigationComponent extends SubscriptionListener implements OnInit {
+export class NavigationComponent extends AutoCloseable implements OnInit {
+
+  @listen({ value: true })
+  deleteCategory$ = this.navigationFacade.deleteCategory$;
+
+  @listen({value: true})
+  categories$ = this.navigationFacade.categories$;
+
+  @listen()
+  categoryChanges$ = merge(
+    this.navigationFacade.newCategory$,
+    this.navigationFacade.editCategory$,
+    this.navigationFacade.deleteCategory$
+  );
+
   public dataSource = new MatTreeNestedDataSource<any>();
   public selectedCategory: Category;
   public categories: CategoryTree[];
+
+  private readonly repositoryLink = "https://github.com/mkinitcpio/car-maintenance";
 
   constructor(
     private router: Router,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
+    private electronService: ElectronService,
   ) {
     super();
   }
 
   ngOnInit(): void {
-    this.listenLoadedEntity$<Category>(this.navigationFacade.deleteCategory$)
-      .subscribe(([_, curr]) => {
-        const deletedCategory = curr.value;
-
+    this.deleteCategory$
+      .subscribe((deletedCategory) => {
         if(deletedCategory.id === this.selectedCategory?.id || deletedCategory.id === this.selectedCategory?.parent) {
           this.selectedCategory = null;
           this.router.navigate(['']);
         }
       });
 
-    this.listenLoadedEntity$([
-      this.navigationFacade.newCategory$,
-      this.navigationFacade.editCategory$,
-      this.navigationFacade.deleteCategory$
-    ]).subscribe(() => {
-      this.navigationFacade.loadCategories();
-    });
+    this.categoryChanges$
+      .subscribe(() => {
+        this.navigationFacade.loadCategories();
+      });
 
-    this.listenLoadedEntity$<any>(this.navigationFacade.categories$)
-      .subscribe(([_, categories]) => {
-        this.categories = categories.value;
+    this.categories$
+      .subscribe((categories) => {
+        this.categories = categories;
       });
 
     this.navigationFacade.loadCategories();
@@ -114,5 +130,13 @@ export class NavigationComponent extends SubscriptionListener implements OnInit 
       .subscribe(() => {
         this.navigationFacade.deleteCategory(category);
       });
+  }
+
+  public openSettings(): void {
+    this.dialogManagerService.openSettingsDialog();
+  }
+
+  public openRepository(): void {
+    this.electronService.shell.openExternal(this.repositoryLink);
   }
 }

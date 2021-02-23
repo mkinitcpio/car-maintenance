@@ -2,13 +2,13 @@
   height: 100%;
 
   &__title-container {
-    padding: 0 32px;
-    height: 64px;
+    padding: 4px 32px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background-color: #262626;
+    background-color: rgb(50, 48, 48);
   }
 
   &__title {

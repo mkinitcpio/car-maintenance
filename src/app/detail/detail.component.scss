@@ -3,13 +3,13 @@
   overflow: hidden;
 
   &__title-container {
-    padding: 0 32px;
-    height: 64px;
+    padding: 4px 32px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background-color: #262626;
+    background-color: rgb(50, 48, 48);
   }
 
   &__title {
@@ -20,11 +20,13 @@
   }
 
   &__add-button {
+    min-width: initial;
+    padding: 0 8px;
+
     font-family: Ubuntu;
     font-weight: normal;
-    margin-right: 8px;
-    background-color: #0d7f1e;
-    border-color: rgba(0,0,0,0.56);
+    background-color: rgb(75,72,72);
+    border: 1px solid rgb(43,42,42);
     color: #fff;
   }
 

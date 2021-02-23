@@ -12,6 +12,7 @@ import { ReleaseNotesComponent } from '../components/release-notes/release-notes
 
 import { ReleaseNotes } from '../components/release-notes/interface';
 import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
+import { SettingsComponent } from '../components/settings/settings.component';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class DialogManagerService {
   public openCategoryDialog(data: any): Observable<Category> {
     return this.dialog
       .open(CreateDialogComponent, {
-        width: "380px",
+        width: "480px",
         panelClass: "custom-dialog",
         data,
       })
@@ -34,7 +35,7 @@ export class DialogManagerService {
   public openRecordDialog(data: any): Observable<Record> {
     return this.dialog
       .open(CreateRecordComponent, {
-        width: "380px",
+        width: "480px",
         panelClass: "custom-dialog",
         data,
       })
@@ -53,9 +54,12 @@ export class DialogManagerService {
   public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
-        width: "480px",
+        width: "380px",
         panelClass: "custom-dialog",
-        data: `Вы уверены, что хотите удалить категорию "${categoryName}"?`,
+        data: {
+          text: "DIALOG.DELETE.CATEGORY",
+          name: categoryName,
+        },
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));
@@ -64,11 +68,23 @@ export class DialogManagerService {
   public openDeleteRecordDialog(categoryName: string): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
-        width: "480px",
+        width: "380px",
         panelClass: "custom-dialog",
-        data: `Вы уверены, что хотите удалить запись "${categoryName}"?`,
+        data: {
+          text: "DIALOG.DELETE.RECORD",
+          name: categoryName,
+        },
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));
+  }
+
+  public openSettingsDialog(): void {
+    this.dialog
+      .open(SettingsComponent, {
+        disableClose: true,
+        width: "580px",
+        panelClass: "custom-dialog",
+      });
   }
 }

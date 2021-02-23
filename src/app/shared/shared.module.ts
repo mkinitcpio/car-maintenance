@@ -13,6 +13,10 @@ import { CreateRecordModule } from './components/create-record/create-record.mod
 import { CreateDialogModule } from './components/create-dialog/create-dialog.module';
 import { ReleaseNotesModule } from './components/release-notes/release-notes.module';
 import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.module';
+import { SettingsModule } from './components/settings/settings.module';
+import { UbuntuCloseButtonModule } from './ubuntu/ubuntu-close-button/ubuntu-close-button.module';
+import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-container.module';
+
 @NgModule({
   declarations: [
     PageNotFoundComponent,
@@ -30,6 +34,8 @@ import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.mod
     CreateDialogModule,
     ReleaseNotesModule,
     DeleteDialogModule,
+    UbuntuCloseButtonModule,
+    UbuntuContainerModule,
   ],
   exports: [
     TranslateModule,
@@ -37,6 +43,7 @@ import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.mod
     FormsModule,
     MaterialModule,
     RecordsTableModule,
+    SettingsModule,
   ],
 })
 export class SharedModule {}

@@ -1,61 +1,63 @@
 <div class="create-record">
-  <header class="create-record__title">
-    <span>{{data.mode === 0 ? 'Добавление' : 'Редактирование'}} категории</span>
+  <header class="create-record__header">
+    <div class="create-record__button-container">
+      <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
+    </div>
+    <div class="create-record__header-text">{{(data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT") | translate}} {{"DIALOG.RECORD" | translate}}</div>
+    <div class="create-record__button-container">
+      <button class="button button__submit" mat-button (click)="onSubmit()">{{(data.mode === 0 ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT") | translate}}</button>
+    </div>
   </header>
+
   <main class="create-record__content">
     <form [formGroup]="recordForm">
       <mat-form-field appearance="standard" [floatLabel]="'always'">
-        <mat-label>Наименование</mat-label>
+        <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
         <input [required]="true" [formControlName]="'name'" matInput>
         <mat-error *ngIf="recordForm.get('name').hasError('required')">
-          Введите наименование.
+          {{"DIALOG.VALIDATIONS.NAME" | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="standard" [floatLabel]="'always'">
-        <mat-label>Пробег</mat-label>
+        <mat-label>{{"DIALOG.FIELDS.MILEAGE" | translate}}</mat-label>
         <input [formControlName]="'mileage'" matInput>
         <mat-error *ngIf="recordForm.get('mileage').hasError('number')">
-          {{recordForm.get('mileage').getError('number').value}}
+          {{recordForm.get('mileage').getError('number').value | translate}}
         </mat-error>
         <mat-error *ngIf="recordForm.get('mileage').hasError('positiveNumber')">
-          {{recordForm.get('mileage').getError('positiveNumber').value}}
+          {{recordForm.get('mileage').getError('positiveNumber').value | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="standard" [floatLabel]="'always'">
-        <mat-label>Расход</mat-label>
+        <mat-label>{{"DIALOG.FIELDS.EXPENSE" | translate}}</mat-label>
         <input [required]="true" [formControlName]="'cost'" matInput>
         <mat-error *ngIf="recordForm.get('cost').hasError('number')">
-          {{recordForm.get('cost').getError('number').value}}
+          {{recordForm.get('cost').getError('number').value | translate}}
         </mat-error>
         <mat-error *ngIf="recordForm.get('cost').hasError('positiveNumber')">
-          {{recordForm.get('cost').getError('positiveNumber').value}}
+          {{recordForm.get('cost').getError('positiveNumber').value | translate}}
         </mat-error>
         <mat-error *ngIf="recordForm.get('cost').hasError('required')">
-          Введите расход.
+          {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="standard" [floatLabel]="'always'">
-        <mat-label>Дата</mat-label>
+        <mat-label>{{"DIALOG.FIELDS.DATE" | translate}}</mat-label>
         <input [formControlName]="'date'" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error>
-          Введите корректную дату.
+          {{"DIALOG.VALIDATIONS.DATE" | translate}}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="standard" [floatLabel]="'always'">
-        <mat-label>Заметка</mat-label>
+        <mat-label>{{"DIALOG.FIELDS.COMMENT" | translate}}</mat-label>
         <textarea [formControlName]="'notes'" matInput></textarea>
       </mat-form-field>
     </form>
   </main>
-
-  <div class="create-record__footer">
-    <button class="button button__submit" mat-button (click)="onSubmit()">{{data.mode === 0 ? 'Добавить' : 'Изменить'}}</button>
-    <button class="button" mat-button (click)="onClose()">Отмена</button>
-  </div>
 </div>

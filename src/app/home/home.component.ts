@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ReleaseNotesService } from '../shared/components/release-notes/release-notes.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +7,7 @@ import { ReleaseNotesService } from '../shared/components/release-notes/release-
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    private releaseNotesService: ReleaseNotesService,
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    if(this.releaseNotesService.isFirstAppStartAfterUpdate()) {
-      this.releaseNotesService.showReleaseNotes();
-    }
-  }
+  ngOnInit(): void { }
 }

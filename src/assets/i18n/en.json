@@ -1,12 +1,94 @@
 {
   "PAGES": {
-      "HOME": {
-          "TITLE": "App works !",
-          "GO_TO_DETAIL": "Go to Detail"
+      "DATABASE_SELECT": {
+          "TEXT": "Database is missing",
+          "CREATE": "Create",
+          "OPEN": "Open"
       },
       "DETAIL": {
-        "TITLE": "Detail page !",
-        "BACK_TO_HOME": "Back to Home"
+        "EMPTY": "No Records",
+        "LAST_MODIFIED": "Last modified",
+        "OVERALL_EXPENSE": "Overall expense"
+    },
+    "SETTINGS": {
+      "TITLE": "Settings",
+      "SECTIONS": {
+        "COMMON": "Common",
+        "LANG": "Language & Region"
+      },
+      "FIELDS": {
+        "LANG": "Language",
+        "REGION": "Region",
+        "DATABASE_PATH": "Database"
+      }
+    },
+    "EMPTY": {
+      "TEXT": "Select Category"
     }
+  },
+  "MENU": {
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "ABOUT": "About",
+    "GITHUB": "GitHub",
+    "SETTINGS":"Settings"
+  },
+  "DIALOG": {
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "RELEASE_NOTES": {
+      "TITLE": "Version",
+      "NEW_FEATURES": "New Features",
+      "BUGFIXES": "Bug Fixes",
+      "IMPROVEMENTS": "Improvements"
+    },
+    "DELETE": {
+      "TITLE": "Confirm Deletion",
+      "CATEGORY": "Delete category",
+      "RECORD": "Delete record"
+    },
+    "CATEGORY": "Category",
+    "RECORD": "Record",
+    "BUTTONS": {
+      "ADD": "Add",
+      "EDIT": "Edit",
+      "DELETE": "Delete",
+      "CANCEL": "Cancel"
+    },
+    "VALIDATIONS": {
+      "NAME": "Enter the Name.",
+      "DATE": "Enter the correct Date.",
+      "EXPENSE": {
+        "REQIRED": "Enter the Expense."
+      },
+      "NUMBER": "Enter numeric value.",
+      "POSITIVE": "Enter positive value."
+    },
+    "FIELDS": {
+      "NAME": "Name",
+      "CATEGORY": "Category",
+      "ILLUSTRATION": "Illustration",
+      "MILEAGE": "Mileage",
+      "DATE": "Date",
+      "EXPENSE": "Expense",
+      "COMMENT": "Comment"
+    }
+  },
+  "ILLUSTRATIONS": {
+      "ENGINE": "Engine",
+      "BATTERY": "Battery",
+      "WHEEL": "Wheel",
+      "OIL": "Oil",
+      "TRANSMISSION": "Transmission",
+      "HEADLIGHTS": "Headlights",
+      "OTHER": "Other"
+  },
+  "RECORDS_TABLE": {
+    "NAME": "Name",
+    "MILEAGE": "Mileage (mi)",
+    "DATE": "Date",
+    "EXPENSE": "Expense",
+    "COMMENT": "Comment"
   }
 }

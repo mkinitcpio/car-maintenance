@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ElectronService} from "../core/services";
 import {DataBaseService} from "../core/database";
+import { SettingsService } from '../shared/components/settings/settings.service';
 
 @Component({
   selector: 'app-database-select',
@@ -12,6 +13,7 @@ export class DatabaseSelectComponent implements OnInit {
   constructor(
     private electronService: ElectronService,
     private dataBaseService: DataBaseService,
+    private settingsService: SettingsService,
   ) { }
 
   ngOnInit(): void {}
@@ -23,18 +25,8 @@ export class DatabaseSelectComponent implements OnInit {
         if(data.filePath.length) {
           const filePath = data.filePath;
 
-          this.electronService.fs.writeFileSync(
-            this.dataBaseService.confPath,
-            filePath,
-            { encoding: 'utf8'}
-          );
-
-          this.electronService.fs.writeFileSync(
-            filePath,
-            JSON.stringify(this.dataBaseService.initialDataBase),
-            { encoding: 'utf8'}
-          );
-
+          this.settingsService.setDataBasePath(filePath);
+          this.settingsService.saveSettings();
           this.dataBaseService.initDataBase();
         }
       });
@@ -47,12 +39,8 @@ export class DatabaseSelectComponent implements OnInit {
         if(data.filePaths.length) {
           const filePath = data.filePaths[0];
 
-          this.electronService.fs.writeFileSync(
-            this.dataBaseService.confPath,
-            filePath,
-            { encoding: 'utf8'}
-          );
-
+          this.settingsService.setDataBasePath(filePath);
+          this.settingsService.saveSettings();
           this.dataBaseService.initDataBase();
         }
       });
