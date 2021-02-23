@@ -42,6 +42,10 @@ export class SettingsService {
       if(!translateExist) {
         this.defaultSettings.language = LanguageEnum.En;
         this.defaultSettings.region = LocaleEnum.Us;
+      } else {
+        if(this.defaultSettings.language === LanguageEnum.En) {
+          this.defaultSettings.region = LocaleEnum.Us;
+        }
       }
 
       this.settings = this.defaultSettings;
