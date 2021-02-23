@@ -11,6 +11,7 @@ import { DialogManagerService } from "../shared/services/dialog-manager.service"
 import { listen } from "../core/decorators";
 import { merge } from "rxjs";
 import { AutoCloseable } from "../core/auto-closeable";
+import { ElectronService } from "../core/services";
 
 @Component({
   selector: "app-navigation",
@@ -36,10 +37,13 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public selectedCategory: Category;
   public categories: CategoryTree[];
 
+  private readonly repositoryLink = "https://github.com/mkinitcpio/car-maintenance";
+
   constructor(
     private router: Router,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
+    private electronService: ElectronService,
   ) {
     super();
   }
@@ -130,5 +134,9 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   public openSettings(): void {
     this.dialogManagerService.openSettingsDialog();
+  }
+
+  public openRepository(): void {
+    this.electronService.shell.openExternal(this.repositoryLink);
   }
 }
