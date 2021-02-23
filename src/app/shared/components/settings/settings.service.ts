@@ -16,6 +16,7 @@ export class SettingsService {
 
   private readonly appConfFolder: string = this.electronService.os.homedir() + '/.config/Учет';
   private readonly settingsPath: string = this.electronService.os.homedir() + '/.config/Учет/settings.json';
+  private readonly oldConfigPath: string = this.electronService.os.homedir() + '/.config/Учет/conf';
   private readonly defaultSettings : Settings = null;
 
   constructor(private electronService: ElectronService, private translate: TranslateService) {
@@ -29,6 +30,15 @@ export class SettingsService {
   public init(): void {
     const confExist = this.electronService.fs.existsSync(this.appConfFolder);
     const settingsExist = this.electronService.fs.existsSync(this.settingsPath);
+    const oldConfigExist = this.electronService.fs.existsSync(this.oldConfigPath);
+
+    // Need for migration 1.3.1 => 2.0.0
+    if(oldConfigExist) {
+      const databasePath = this.electronService.fs.readFileSync(this.settingsPath, 'utf8');
+
+      this.defaultSettings.databasePath = databasePath;
+      this.electronService.fs.unlinkSync(this.oldConfigPath);
+    }
 
     if(!confExist) {
       this.electronService.fs.mkdirSync(this.appConfFolder, { recursive: true });
