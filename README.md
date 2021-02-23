@@ -8,7 +8,9 @@
 
 # Introduction
 
-App for log your car parts maintenance such as engine, oil and any what you want! Manage cost, date and mileage. 
+App for log your car parts maintenance such as engine, oil and any what you want! Manage cost, date and mileage.
+
+![alt text](https://sun9-9.userapi.com/impg/Wcw_ZvqwpxWRA4PSNcO17AcAo6F1u7D4MUm1hQ/SW6YEBlp_BI.jpg?size=1850x1055&quality=96&proxy=1&sign=6c0f6488e629d78e4c46b60a52339a37&type=album)
 
 ## Getting Started
 
