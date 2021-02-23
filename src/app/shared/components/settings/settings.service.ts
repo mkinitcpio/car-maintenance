@@ -34,7 +34,7 @@ export class SettingsService {
 
     // Need for migration 1.3.1 => 2.0.0
     if(oldConfigExist) {
-      const databasePath = this.electronService.fs.readFileSync(this.settingsPath, 'utf8');
+      const databasePath = this.electronService.fs.readFileSync(this.oldConfigPath, 'utf8');
 
       this.defaultSettings.databasePath = databasePath;
       this.electronService.fs.unlinkSync(this.oldConfigPath);
