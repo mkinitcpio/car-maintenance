@@ -4,6 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { ElectronService } from '../../../core/services';
 import { Settings } from './interface';
 
+import { LanguageEnum } from './language-enum';
+import { LocaleEnum } from './locale-enum';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +37,13 @@ export class SettingsService {
     if(settingsExist) {
       this.settings = JSON.parse(this.electronService.fs.readFileSync(this.settingsPath, 'utf8'));
     } else {
+      const translateExist = this.translate.getLangs().includes(this.defaultSettings.language);
+
+      if(!translateExist) {
+        this.defaultSettings.language = LanguageEnum.En;
+        this.defaultSettings.region = LocaleEnum.Us;
+      }
+
       this.settings = this.defaultSettings;
       this.saveSettings();
     }
