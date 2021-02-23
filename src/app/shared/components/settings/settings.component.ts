@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { languageOptions } from './language-options';
+import { regionOptions } from './region-options';
+
 import { SettingsService } from './settings.service';
 
 @Component({
@@ -12,6 +14,7 @@ import { SettingsService } from './settings.service';
 export class SettingsComponent implements OnInit {
 
   public languageOptions = languageOptions;
+  public regionOptions = regionOptions;
 
   constructor(
     public dialogRef: MatDialogRef<SettingsComponent>,

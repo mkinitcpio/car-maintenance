@@ -1,6 +1,14 @@
 <div class="release-notes">
   <header class="release-notes__header">
-    <div class="release-notes__button-container"><span></span></div>
+    <div class="release-notes__button-container">
+      <mat-form-field class="release-notes__version-select">
+        <mat-select #versionSelect [value]="selectedVersion">
+          <mat-option *ngFor="let release of releases" [value]="release">
+            {{ release }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <div class="release-notes__header-text">{{"DIALOG.RELEASE_NOTES.TITLE" | translate}} {{selectedVersion}}</div>
     <div class="release-notes__button-container">
       <ubuntu-close-button (close)="dialogRef.close()"></ubuntu-close-button>
@@ -8,15 +16,6 @@
   </header>
 
   <main class="release-notes__content">
-    <mat-form-field class="release-notes__version-select">
-      <mat-label>Изменения в версии</mat-label>
-      <mat-select #versionSelect [value]="selectedVersion">
-        <mat-option *ngFor="let release of releases" [value]="release">
-          {{ release }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
     <div class="release-notes__section" *ngIf="releaseNotes.releaseNotes[selectedVersion].features.length">
       <div class="release-notes__section-title">
         Добавленный функционал:

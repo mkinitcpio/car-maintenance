@@ -3,7 +3,7 @@
 
   &__header {
     height: 42px;
-    padding: 4px 8px;
+    padding: 4px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,14 +16,18 @@
   }
 
   &__button-container {
-    width: 28px;
+    width: 64px;
+    display: flex;
+    align-items: center;
 
     &:first-child {
       margin-right: auto;
+      justify-content: flex-start;
     }
 
     &:last-child {
       margin-left: auto;
+      justify-content: flex-end;
     }
   }
 
@@ -47,10 +51,16 @@
   }
 
   &__version-select {
-    width: 128px;
+    width: 64px;
     align-self: flex-end;
 
-    position: absolute;
-    top: 64px;
+    &::ng-deep .mat-select-value,
+    &::ng-deep .mat-select-arrow {
+      color: white;
+    }
+
+    &::ng-deep .mat-form-field-underline {
+      background: white;
+    }
   }
 }

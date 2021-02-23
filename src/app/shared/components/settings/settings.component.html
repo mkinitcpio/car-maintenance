@@ -35,8 +35,8 @@
         <div class="settings__item-label"><mat-icon class="settings__item-label-icon">text_format</mat-icon> {{"PAGES.SETTINGS.FIELDS.REGION" | translate}}</div>
         <mat-form-field class="settings__item-field">
           <mat-select [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
-            <mat-option *ngFor="let language of languageOptions" [value]="language.value">
-              {{ language.name }}
+            <mat-option *ngFor="let region of regionOptions" [value]="region.value">
+              {{ region.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>

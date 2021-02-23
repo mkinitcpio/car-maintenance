@@ -23,6 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   exports: [
     RecordsTableComponent,
+    NumberSeparatorPipe,
   ]
 })
 export class RecordsTableModule { }

@@ -8,7 +8,7 @@
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Имя </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> {{"RECORDS_TABLE.NAME" | translate}} </mat-header-cell>
     <mat-cell *matCellDef="let row">
       <div class="records-table__cell-text"
            [matTooltip]="row.name"
@@ -19,18 +19,18 @@
   </ng-container>
 
   <ng-container matColumnDef="mileage">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-mileage"> Пробег (км) </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__cell-mileage"> {{"RECORDS_TABLE.MILEAGE" | translate}} </mat-header-cell>
     <mat-cell class="records-table__cell-mileage" *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.mileage | number | numberSeparator:separator"
+           [matTooltip]="row.mileage | numberSeparator:settingsService.settings.region"
            [matTooltipPosition]="'above'">
-        {{row.mileage | number | numberSeparator:separator}}
+        {{row.mileage | numberSeparator:settingsService.settings.region}}
       </div>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="date">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-date"> Дата </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__cell-date"> {{"RECORDS_TABLE.DATE" | translate}} </mat-header-cell>
     <mat-cell class="records-table__cell-date" *matCellDef="let row">
       <div class="records-table__cell-text"
            [matTooltip]="row.date | date:dateFormat"
@@ -41,18 +41,18 @@
   </ng-container>
 
   <ng-container matColumnDef="cost">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-cost"> Расход (BYN) </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__cell-cost"> {{"RECORDS_TABLE.EXPENSE" | translate}} ({{currencies[settingsService.settings.region]}}) </mat-header-cell>
     <mat-cell class="records-table__cell-cost" *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.cost | number | numberSeparator:separator"
+           [matTooltip]="row.cost | numberSeparator:settingsService.settings.region"
            [matTooltipPosition]="'above'">
-        {{row.cost | number | numberSeparator:separator}}
+        {{row.cost | numberSeparator:settingsService.settings.region}}
       </div>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="notes">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-note"> Заметка </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__cell-note"> {{"RECORDS_TABLE.COMMENT" | translate}} </mat-header-cell>
     <mat-cell class="records-table__cell-note" *matCellDef="let row">
       <mat-icon *ngIf="row.notes"
                 [matTooltip]="row.notes"
@@ -80,11 +80,9 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
     <button class="menu-item" mat-menu-item (click)="onEdit()">
-      <mat-icon>edit</mat-icon>
       <span>{{"MENU.EDIT" | translate}}</span>
     </button>
     <button class="menu-item" mat-menu-item (click)="onDelete()">
-      <mat-icon>delete</mat-icon>
       <span>{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>
