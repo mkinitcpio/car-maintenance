@@ -66,5 +66,12 @@
       "TRANSMISSION": "Transmission",
       "HEADLIGHTS": "Headlights",
       "OTHER": "Other"
+  },
+  "RECORDS_TABLE": {
+    "NAME": "Name",
+    "MILEAGE": "Mileage (mi)",
+    "DATE": "Date",
+    "EXPENSE": "Expense",
+    "COMMENT": "Comment"
   }
 }

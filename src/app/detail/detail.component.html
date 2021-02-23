@@ -8,7 +8,7 @@
         <span class="stat-panel__label">{{"PAGES.DETAIL.LAST_MODIFIED" | translate}}: </span> <span>{{lastModifiedDate | date:'d MMM, y'}}</span>
       </div>
       <div>
-        <span class="stat-panel__label">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span><span>{{costSum}} BYN</span>
+        <span class="stat-panel__label">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span><span>{{costSum | numberSeparator:settingsService.settings.region}} BYN</span>
       </div>
     </div>
     <button class="detail__add-button" mat-button (click)="onCreateRecord()">

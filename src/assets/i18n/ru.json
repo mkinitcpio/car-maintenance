@@ -66,5 +66,12 @@
     "TRANSMISSION": "Трансмиссия",
     "HEADLIGHTS": "Фары",
     "OTHER": "Другое"
+  },
+  "RECORDS_TABLE": {
+    "NAME": "Имя",
+    "MILEAGE": "Пробег (км)",
+    "DATE": "Дата",
+    "EXPENSE": "Расход",
+    "COMMENT": "Заметка"
   }
 }

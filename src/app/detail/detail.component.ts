@@ -7,6 +7,7 @@ import { DialogManagerService } from '../shared/services/dialog-manager.service'
 import { listen } from '../core/decorators';
 import { merge } from 'rxjs';
 import { AutoCloseable } from '../core/auto-closeable';
+import { SettingsService } from '../shared/components/settings/settings.service';
 
 @Component({
   selector: 'app-detail',
@@ -38,6 +39,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private detailsFacade: DetailsFacade,
+    public settingsService: SettingsService,
     private dialogManagerService: DialogManagerService,
   ) {
     super();
