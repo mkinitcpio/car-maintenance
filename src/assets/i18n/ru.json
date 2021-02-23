@@ -13,10 +13,12 @@
       "SETTINGS": {
         "TITLE": "Настройки",
         "SECTIONS": {
-          "COMMON": "Общие"
+          "COMMON": "Общие",
+          "LANG": "Язык и Регион"
         },
         "FIELDS": {
           "LANG": "Язык",
+          "REGION": "Регион",
           "DATABASE_PATH": "База данных"
         }
       },
@@ -35,6 +37,9 @@
   "DIALOG": {
     "ADD": "Добавление",
     "EDIT": "Редактирование",
+    "RELEASE_NOTES": {
+      "TITLE": "Версия"
+    },
     "DELETE": {
       "TITLE": "Удаление",
       "CATEGORY": "Удалить категорию",

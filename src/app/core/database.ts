@@ -4,6 +4,7 @@ import { Record } from '../detail/state/interface';
 import { Category } from '../navigation/state/interface';
 import { ElectronService } from './services';
 import {BehaviorSubject, Subject} from "rxjs";
+import { SettingsService } from '../shared/components/settings/settings.service';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,10 @@ export class DataBaseService {
 
   private dbPath: string;
 
-  constructor(private electronService: ElectronService) {
+  constructor(
+    private electronService: ElectronService,
+    private settingsService: SettingsService,
+  ) {
   }
 
   public getCategories(): Array<Category> {
@@ -111,14 +115,10 @@ export class DataBaseService {
 
   public dbExist$: Subject<boolean> = new BehaviorSubject(false);
   public initDataBase(): void {
-    const confExist = this.electronService.fs.existsSync(this.appConfFolder);
-    const dbExist = this.electronService.fs.existsSync(this.confPath);
-
-    if(confExist && dbExist) {
-      this.dbPath = this.electronService.fs.readFileSync(this.confPath, this.fileReadConfig);
-      this.readFileData(this.dbPath);
+    const dbPath = this.settingsService.settings.databasePath;
+    if(dbPath) {
+      this.readFileData(dbPath);
     } else {
-      this.electronService.fs.mkdirSync(this.appConfFolder, { recursive: true });
       this.dbExist$.next(false);
     }
   }

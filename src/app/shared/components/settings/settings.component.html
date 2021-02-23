@@ -10,21 +10,36 @@
   <main class="settings__content">
     <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.COMMON' | translate">
       <div class="settings__item">
+        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">storage</mat-icon> {{"PAGES.SETTINGS.FIELDS.DATABASE_PATH" | translate}}</div>
+        <div class="settings__item-field settings__item-field--disable">
+          {{this.settingsService.settings.databasePath}}
+        </div>
+      </div>
+    </ubuntu-container>
+
+    <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
+      <div class="settings__item">
         <div class="settings__item-label"><mat-icon class="settings__item-label-icon">language</mat-icon> {{"PAGES.SETTINGS.FIELDS.LANG" | translate}}</div>
         <mat-form-field class="settings__item-field">
-          <mat-select [value]="selectedLanguage" (valueChange)="onSelectLanguage($event)">
+          <mat-select [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
             <mat-option *ngFor="let language of languageOptions" [value]="language.value">
               {{ language.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
+
       <mat-divider></mat-divider>
+
       <div class="settings__item">
-        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">storage</mat-icon> {{"PAGES.SETTINGS.FIELDS.DATABASE_PATH" | translate}}</div>
-        <div class="settings__item-field settings__item-field--disable">
-          {{this.settingsService.dataBasePath}}
-        </div>
+        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">text_format</mat-icon> {{"PAGES.SETTINGS.FIELDS.REGION" | translate}}</div>
+        <mat-form-field class="settings__item-field">
+          <mat-select [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
+            <mat-option *ngFor="let language of languageOptions" [value]="language.value">
+              {{ language.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </ubuntu-container>
   </main>

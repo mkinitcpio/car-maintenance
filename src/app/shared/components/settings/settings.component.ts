@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
 
 import { languageOptions } from './language-options';
 import { SettingsService } from './settings.service';
@@ -13,19 +12,22 @@ import { SettingsService } from './settings.service';
 export class SettingsComponent implements OnInit {
 
   public languageOptions = languageOptions;
-  public selectedLanguage: string = null;
 
   constructor(
-    private translate: TranslateService,
     public dialogRef: MatDialogRef<SettingsComponent>,
     public settingsService: SettingsService,
   ) { }
 
   ngOnInit(): void {
-    this.selectedLanguage = this.translate.getDefaultLang();
   }
 
   public onSelectLanguage(language: string): void {
-    this.translate.setDefaultLang(language);
+    this.settingsService.setAppLanguage(language);
+    this.settingsService.saveSettings();
+  }
+
+  public onSelectRegion(region: string): void {
+    this.settingsService.setRegion(region);
+    this.settingsService.saveSettings();
   }
 }

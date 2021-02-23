@@ -1,25 +1,36 @@
 .release-notes {
   position: relative;
 
-  &__title {
-    height: 64px;
-    padding: 0 24px;
+  &__header {
+    height: 42px;
+    padding: 4px 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    font-family: Ubuntu;
-    font-weight: lighter;
-    font-size: 24px;
-    color: white;
+    background-color: rgb(50, 48, 48);
+  }
 
-    background: #262626;
+  &__header-text {
+    color: white;
+  }
+
+  &__button-container {
+    width: 28px;
+
+    &:first-child {
+      margin-right: auto;
+    }
+
+    &:last-child {
+      margin-left: auto;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    padding: 36px 24px 24px 24px;
+    padding: 32px;
   }
 
   &__section-title {
@@ -40,6 +51,6 @@
     align-self: flex-end;
 
     position: absolute;
-    top: 80px;
+    top: 64px;
   }
 }

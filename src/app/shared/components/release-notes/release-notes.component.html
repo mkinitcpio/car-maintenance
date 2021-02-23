@@ -1,10 +1,10 @@
 <div class="release-notes">
-  <header class="release-notes__title">
-    <span>Версия {{ selectedVersion }}</span>
-    <button mat-icon-button
-            (click)="dialogRef.close()">
-      <mat-icon>close</mat-icon>
-    </button>
+  <header class="release-notes__header">
+    <div class="release-notes__button-container"><span></span></div>
+    <div class="release-notes__header-text">{{"DIALOG.RELEASE_NOTES.TITLE" | translate}} {{selectedVersion}}</div>
+    <div class="release-notes__button-container">
+      <ubuntu-close-button (close)="dialogRef.close()"></ubuntu-close-button>
+    </div>
   </header>
 
   <main class="release-notes__content">

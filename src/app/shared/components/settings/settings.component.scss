@@ -32,6 +32,14 @@
     padding: 32px;
 
     background: rgb(247, 247, 247);
+
+    ubuntu-container {
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   &__item {

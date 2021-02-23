@@ -1,7 +1,7 @@
 {
   "PAGES": {
       "DATABASE_SELECT": {
-          "TEXT": "App works !",
+          "TEXT": "Database is missing",
           "CREATE": "Create",
           "OPEN": "Open"
       },
@@ -13,10 +13,12 @@
     "SETTINGS": {
       "TITLE": "Settings",
       "SECTIONS": {
-        "COMMON": "Common"
+        "COMMON": "Common",
+        "LANG": "Language & Region"
       },
       "FIELDS": {
         "LANG": "Language",
+        "REGION": "Region",
         "DATABASE_PATH": "Database"
       }
     },
@@ -35,6 +37,9 @@
   "DIALOG": {
     "ADD": "Add",
     "EDIT": "Edit",
+    "RELEASE_NOTES": {
+      "TITLE": "Version"
+    },
     "DELETE": {
       "TITLE": "Confirm Deletion",
       "CATEGORY": "Delete category",

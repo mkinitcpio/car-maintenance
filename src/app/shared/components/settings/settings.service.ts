@@ -1,26 +1,59 @@
 
 import { Injectable } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog";
+import { TranslateService } from '@ngx-translate/core';
 import { ElectronService } from '../../../core/services';
+import { Settings } from './interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
 
-  private fileReadConfig: {
-    flag: 'r',
-    encoding: 'utf8',
-  };
+  public settings: Settings;
 
-  public dataBasePath: string = null;
+  private readonly appConfFolder: string = this.electronService.os.homedir() + '/.config/Учет';
+  private readonly settingsPath: string = this.electronService.os.homedir() + '/.config/Учет/settings.json';
+  private readonly defaultSettings : Settings = null;
 
-  private readonly confPath: string = this.electronService.os.homedir() + '/.config/Учет/conf';
-  constructor(private electronService: ElectronService) {}
-
-  public init(): void {
-    this.dataBasePath = this.electronService.fs.readFileSync(this.confPath, 'utf8');
+  constructor(private electronService: ElectronService, private translate: TranslateService) {
+    this.defaultSettings = {
+      language: this.translate.getBrowserLang(),
+      databasePath: null,
+      region: this.translate.getBrowserLang(),
+    };
   }
 
+  public init(): void {
+    const confExist = this.electronService.fs.existsSync(this.appConfFolder);
+    const settingsExist = this.electronService.fs.existsSync(this.settingsPath);
 
+    if(!confExist) {
+      this.electronService.fs.mkdirSync(this.appConfFolder, { recursive: true });
+    }
+
+    if(settingsExist) {
+      this.settings = JSON.parse(this.electronService.fs.readFileSync(this.settingsPath, 'utf8'));
+    } else {
+      this.settings = this.defaultSettings;
+      this.saveSettings();
+    }
+    this.setAppLanguage(this.settings.language);
+  }
+
+  public setAppLanguage(lang: string): void {
+    this.settings.language = lang;
+    this.translate.setDefaultLang(lang);
+  }
+
+  public setRegion(region: string): void {
+    this.settings.region = region;
+  }
+
+  public setDataBasePath(path: string): void {
+    this.settings.databasePath = path;
+  }
+
+  public saveSettings(): void {
+    this.electronService.fs.writeFileSync(this.settingsPath, JSON.stringify(this.settings), { encoding: 'utf8'});
+  }
 }
