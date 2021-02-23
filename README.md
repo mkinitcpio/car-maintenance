@@ -8,46 +8,20 @@
 
 # Introduction
 
-Bootstrap and package your project with Angular 10 and Electron 9 (Typescript + SASS + Hot Reload) for creating Desktop applications.
-
-Currently runs with:
-
-- Angular v11.0.3
-- Electron v11.0.3
-- Electron Builder v22.9.1
-
-With this sample, you can :
-
-- Run your app in a local development environment with Electron & Hot reload
-- Run your app in a production environment
-- Package your app into an executable file for Linux, Windows & Mac
-
-/!\ Hot reload only pertains to the renderer process. The main electron process is not able to be hot reloaded, only restarted.
-
-/!\ Angular 11.x CLI needs Node 10.13 or later to work correctly.
+App for log your car parts maintenance such as engine, oil and any what you want! Manage cost, date and mileage. 
 
 ## Getting Started
 
 Clone this repository locally :
 
 ``` bash
-git clone https://github.com/maximegris/angular-electron.git
+git clone https://github.com/mkinitcpio/car-maintenance.git
 ```
 
 Install dependencies with npm :
 
 ``` bash
 npm install
-```
-
-There is an issue with `yarn` and `node_modules` when the application is built by the packager. Please use `npm` as dependencies manager.
-
-
-If you want to generate Angular components with Angular-cli , you **MUST** install `@angular/cli` in npm global context.
-Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
-
-``` bash
-npm install -g @angular/cli
 ```
 
 ## Included Commands
@@ -58,7 +32,7 @@ npm install -g @angular/cli
 |`npm run build`| Build the app. Your built files are in the /dist folder. |
 |`npm run build:prod`| Build the app with Angular aot. Your built files are in the /dist folder. |
 |`npm run electron:local`| Builds your application and start electron
-|`npm run electron:build`| Builds your application and creates an app consumable based on your operating system |
+|`npm run electron:build`| Builds your application and creates an snap image for Linux |
 
 
 [build-badge]: https://travis-ci.org/maximegris/angular-electron.svg?branch=master&style=style=flat-square
