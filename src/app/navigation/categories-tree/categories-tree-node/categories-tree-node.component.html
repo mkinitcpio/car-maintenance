@@ -39,15 +39,12 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
       <button class="menu-item" mat-menu-item *ngIf="!child.parent" (click)="onAdd()">
-        <mat-icon>add</mat-icon>
         <span>{{"MENU.ADD" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="onEdit()">
-        <mat-icon>edit</mat-icon>
         <span>{{"MENU.EDIT" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="onDelete()">
-        <mat-icon>delete</mat-icon>
         <span>{{"MENU.DELETE" | translate}}</span>
       </button>
   </ng-template>
