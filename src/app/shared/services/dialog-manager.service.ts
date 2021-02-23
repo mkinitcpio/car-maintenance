@@ -35,7 +35,7 @@ export class DialogManagerService {
   public openRecordDialog(data: any): Observable<Record> {
     return this.dialog
       .open(CreateRecordComponent, {
-        width: "380px",
+        width: "480px",
         panelClass: "custom-dialog",
         data,
       })

@@ -46,16 +46,30 @@
       "RECORD": "Delete record"
     },
     "CATEGORY": "Category",
+    "RECORD": "Record",
     "BUTTONS": {
       "ADD": "Add",
       "EDIT": "Edit",
       "DELETE": "Delete",
       "CANCEL": "Cancel"
     },
+    "VALIDATIONS": {
+      "NAME": "Enter the Name.",
+      "DATE": "Enter the correct Date.",
+      "EXPENSE": {
+        "REQIRED": "Enter the Expense."
+      },
+      "NUMBER": "Enter numeric value.",
+      "POSITIVE": "Enter positive value."
+    },
     "FIELDS": {
       "NAME": "Name",
       "CATEGORY": "Category",
-      "ILLUSTRATION": "Illustration"
+      "ILLUSTRATION": "Illustration",
+      "MILEAGE": "Mileage",
+      "DATE": "Date",
+      "EXPENSE": "Expense",
+      "COMMENT": "Comment"
     }
   },
   "ILLUSTRATIONS": {

@@ -7,7 +7,7 @@ export function numberValidator(control: AbstractControl): {[key: string]: any} 
   if (Number.isNaN(+value)) {
     error = {
       number: {
-        value: 'Введите числовое значение.',
+        value: 'DIALOG.VALIDATIONS.NUMBER',
       }
     };
   }
@@ -24,7 +24,7 @@ export function positiveNumberValidator(control: AbstractControl): {[key: string
   if (value < 0) {
     error = {
       positiveNumber: {
-        value: 'Введите неотрицательное число.',
+        value: 'DIALOG.VALIDATIONS.POSITIVE',
       }
     };
   }
