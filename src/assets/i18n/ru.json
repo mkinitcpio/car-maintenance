@@ -1,12 +1,14 @@
 {
   "PAGES": {
-      "HOME": {
-          "TITLE": "App works !",
-          "GO_TO_DETAIL": "Go to Detail"
-      },
+    "DATABASE_SELECT": {
+      "TEXT": "База данных отсутствует",
+      "CREATE": "Создать",
+      "OPEN": "Открыть"
+  },
       "DETAIL": {
-        "TITLE": "Detail page !",
-        "BACK_TO_HOME": "Back to Home"
+        "EMPTY": "Записи отсутствуют",
+        "LAST_MODIFIED": "Последнее изменение",
+        "OVERALL_EXPENSE": "Общий расход"
       },
       "SETTINGS": {
         "TITLE": "Настройки",
@@ -17,6 +19,9 @@
           "LANG": "Язык",
           "DATABASE_PATH": "База данных"
         }
+      },
+      "EMPTY": {
+        "TEXT": "Выберите Категорию"
       }
   },
   "MENU": {
@@ -24,6 +29,7 @@
     "EDIT": "Редактировать",
     "DELETE": "Удалить",
     "ABOUT": "О приложении",
+    "GITHUB": "GitHub",
     "SETTINGS":"Настройки"
   },
   "DIALOG": {
@@ -51,5 +57,5 @@
     "TRANSMISSION": "Трансмиссия",
     "HEADLIGHTS": "Фары",
     "OTHER": "Другое"
-}
+  }
 }

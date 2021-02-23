@@ -1,12 +1,14 @@
 {
   "PAGES": {
-      "HOME": {
-          "TITLE": "App works !",
-          "GO_TO_DETAIL": "Go to Detail"
+      "DATABASE_SELECT": {
+          "TEXT": "App works !",
+          "CREATE": "Create",
+          "OPEN": "Open"
       },
       "DETAIL": {
-        "TITLE": "Detail page !",
-        "BACK_TO_HOME": "Back to Home"
+        "EMPTY": "No Records",
+        "LAST_MODIFIED": "Last modified",
+        "OVERALL_EXPENSE": "Overall expense"
     },
     "SETTINGS": {
       "TITLE": "Settings",
@@ -17,6 +19,9 @@
         "LANG": "Language",
         "DATABASE_PATH": "Database"
       }
+    },
+    "EMPTY": {
+      "TEXT": "Select Category"
     }
   },
   "MENU": {
@@ -24,6 +29,7 @@
     "EDIT": "Edit",
     "DELETE": "Delete",
     "ABOUT": "About",
+    "GITHUB": "GitHub",
     "SETTINGS":"Settings"
   },
   "DIALOG": {
