@@ -38,7 +38,10 @@
     "ADD": "Add",
     "EDIT": "Edit",
     "RELEASE_NOTES": {
-      "TITLE": "Version"
+      "TITLE": "Version",
+      "NEW_FEATURES": "New Features",
+      "BUGFIXES": "Bug Fixes",
+      "IMPROVEMENTS": "Improvements"
     },
     "DELETE": {
       "TITLE": "Confirm Deletion",

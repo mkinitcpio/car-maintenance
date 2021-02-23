@@ -13,7 +13,7 @@ function createWindow(): BrowserWindow {
   win = new BrowserWindow({
     width: 1280,
     height: 720,
-    title: `Обслуживание Автомобиля ${version as string}`,
+    title: `Car Maintenance ${version as string}`,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
