@@ -17,7 +17,6 @@ export class DataBaseService {
     records: [],
   };
 
-  private appConfFolder: string = this.electronService.os.homedir() + '/.config/Учет';
   private fileReadConfig: {
     flag: 'r',
     encoding: 'utf8',
@@ -29,8 +28,6 @@ export class DataBaseService {
     categories: Category[],
     records: Record[],
   };
-
-  private dbPath: string;
 
   constructor(
     private electronService: ElectronService,
@@ -129,6 +126,6 @@ export class DataBaseService {
   }
 
   private writeToDataBase(): void {
-    this.electronService.fs.writeFile(this.dbPath, JSON.stringify(this.data), this.fileWriteConfig, () => {});
+    this.electronService.fs.writeFile(this.settingsService.settings.databasePath, JSON.stringify(this.data), this.fileWriteConfig, () => {});
   }
 }
