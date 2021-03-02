@@ -32,7 +32,8 @@
     "DELETE": "Удалить",
     "ABOUT": "О приложении",
     "GITHUB": "GitHub",
-    "SETTINGS":"Настройки"
+    "SETTINGS":"Настройки",
+    "WHATS_NEW": "Что нового"
   },
   "DIALOG": {
     "ADD": "Добавление",

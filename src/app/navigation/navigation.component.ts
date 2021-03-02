@@ -12,6 +12,7 @@ import { listen } from "../core/decorators";
 import { merge } from "rxjs";
 import { AutoCloseable } from "../core/auto-closeable";
 import { ElectronService } from "../core/services";
+import { ReleaseNotesService } from "../shared/components/release-notes/release-notes.service";
 
 @Component({
   selector: "app-navigation",
@@ -44,6 +45,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
     private electronService: ElectronService,
+    private releaseNotesService: ReleaseNotesService,
   ) {
     super();
   }
@@ -134,6 +136,10 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   public openSettings(): void {
     this.dialogManagerService.openSettingsDialog();
+  }
+
+  public openReleaseNotes(): void {
+    this.releaseNotesService.showReleaseNotes();
   }
 
   public openRepository(): void {

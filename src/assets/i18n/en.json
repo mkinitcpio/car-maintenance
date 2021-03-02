@@ -32,7 +32,8 @@
     "DELETE": "Delete",
     "ABOUT": "About",
     "GITHUB": "GitHub",
-    "SETTINGS":"Settings"
+    "SETTINGS":"Settings",
+    "WHATS_NEW": "What's new"
   },
   "DIALOG": {
     "ADD": "Add",
