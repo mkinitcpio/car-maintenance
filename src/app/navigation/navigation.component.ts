@@ -139,7 +139,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   public openReleaseNotes(): void {
-    this.releaseNotesService.showReleaseNotes();
+    this.dialogManagerService.openReleaseNotesDialog(this.releaseNotesService.releaseNotes);
   }
 
   public openRepository(): void {
