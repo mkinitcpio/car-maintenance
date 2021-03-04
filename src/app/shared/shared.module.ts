@@ -16,6 +16,7 @@ import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.mod
 import { SettingsModule } from './components/settings/settings.module';
 import { UbuntuCloseButtonModule } from './ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-container.module';
+import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-containe
     DeleteDialogModule,
     UbuntuCloseButtonModule,
     UbuntuContainerModule,
+    FeedbackDialogModule,
   ],
   exports: [
     TranslateModule,

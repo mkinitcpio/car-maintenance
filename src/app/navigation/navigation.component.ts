@@ -145,4 +145,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public openRepository(): void {
     this.electronService.shell.openExternal(this.repositoryLink);
   }
+
+  public onFeedback(): void {
+    this.dialogManagerService.openFeedbackDialog();
+  }
 }

@@ -33,11 +33,13 @@
     "ABOUT": "О приложении",
     "GITHUB": "GitHub",
     "SETTINGS":"Настройки",
-    "WHATS_NEW": "Что нового"
+    "WHATS_NEW": "Что нового",
+    "FEEDBACK": "Обратная связь"
   },
   "DIALOG": {
     "ADD": "Добавление",
     "EDIT": "Редактирование",
+    "FEEDBACK": "Обратная связь",
     "RELEASE_NOTES": {
       "TITLE": "Версия",
       "NEW_FEATURES": "Добавленный функционал",
@@ -55,7 +57,8 @@
       "ADD": "Добавить",
       "EDIT": "Сохранить",
       "DELETE": "Удалить",
-      "CANCEL": "Отмена"
+      "CANCEL": "Отмена",
+      "SUBMIT": "Отправить"
     },
     "FIELDS": {
       "NAME": "Имя",
@@ -64,7 +67,9 @@
       "MILEAGE": "Пробег",
       "DATE": "Дата",
       "EXPENSE": "Расход",
-      "COMMENT": "Заметка"
+      "COMMENT": "Заметка",
+      "TEXT": "Текст",
+      "TYPE": "Тип"
     },
     "VALIDATIONS": {
       "NAME": "Введите Имя.",
@@ -91,5 +96,11 @@
     "DATE": "Дата",
     "EXPENSE": "Расход",
     "COMMENT": "Заметка"
-  }
+  },
+  "FEEDBACK_TYPES": {
+    "BUG": "Ошибка",
+    "IMPROVEMENT": "Улучшение"
+  },
+  "ERROR": "Упс, что-то пошло не так.",
+  "FEEDBACK_SUCCESS": "Отзыв отправлен."
 }

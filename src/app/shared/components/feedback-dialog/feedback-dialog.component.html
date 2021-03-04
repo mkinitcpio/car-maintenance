@@ -1,0 +1,35 @@
+<div class="feedback-dialog">
+  <header class="feedback-dialog__header">
+    <div class="feedback-dialog__button-container">
+      <button class="button button__cancel" mat-button (click)="dialogRef.close()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
+    </div>
+    <div class="feedback-dialog__header-text">{{"DIALOG.FEEDBACK" | translate}}</div>
+    <div class="feedback-dialog__button-container">
+      <button class="button button__submit" mat-button (click)="onSubmit()" [disabled]="loading">{{"DIALOG.BUTTONS.SUBMIT" | translate}}</button>
+    </div>
+  </header>
+
+  <main class="feedback-dialog__content">
+    <div class="feedback-dialog__error-message" *ngIf="hasError"><mat-icon class="feedback-dialog__error-icon">warning</mat-icon>{{"ERROR" | translate}}</div>
+    <div class="feedback-dialog__success-message" *ngIf="success"><mat-icon class="feedback-dialog__success-icon">done</mat-icon>{{"FEEDBACK_SUCCESS" | translate}}</div>
+    <form [formGroup]="feedbackForm">
+      <mat-form-field [floatLabel]="'always'">
+        <mat-label>{{"DIALOG.FIELDS.TYPE" | translate}}</mat-label>
+          <mat-select [formControlName]="'type'">
+            <mat-option *ngFor="let option of feedbackTypeOptions" [value]="option.value">
+              {{option.name | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <mat-form-field appearance="standard" [floatLabel]="'always'">
+        <mat-label>{{"DIALOG.FIELDS.TEXT" | translate}}</mat-label>
+        <textarea [required]="true"
+                  [rows]="5"
+                  [formControlName]="'text'"
+                  matInput>
+        </textarea>
+      </mat-form-field>
+    </form>
+  </main>
+</div>

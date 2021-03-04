@@ -33,11 +33,13 @@
     "ABOUT": "About",
     "GITHUB": "GitHub",
     "SETTINGS":"Settings",
-    "WHATS_NEW": "What's new"
+    "WHATS_NEW": "What's new",
+    "FEEDBACK": "Feedback"
   },
   "DIALOG": {
     "ADD": "Add",
     "EDIT": "Edit",
+    "FEEDBACK": "Feedback",
     "RELEASE_NOTES": {
       "TITLE": "Version",
       "NEW_FEATURES": "New Features",
@@ -55,7 +57,8 @@
       "ADD": "Add",
       "EDIT": "Edit",
       "DELETE": "Delete",
-      "CANCEL": "Cancel"
+      "CANCEL": "Cancel",
+      "SUBMIT": "Submit"
     },
     "VALIDATIONS": {
       "NAME": "Enter the Name.",
@@ -73,7 +76,9 @@
       "MILEAGE": "Mileage",
       "DATE": "Date",
       "EXPENSE": "Expense",
-      "COMMENT": "Comment"
+      "COMMENT": "Comment",
+      "TEXT": "Text",
+      "TYPE": "Type"
     }
   },
   "ILLUSTRATIONS": {
@@ -85,11 +90,17 @@
       "HEADLIGHTS": "Headlights",
       "OTHER": "Other"
   },
+  "FEEDBACK_TYPES": {
+    "BUG": "Bug",
+    "IMPROVEMENT": "Improvement"
+  },
   "RECORDS_TABLE": {
     "NAME": "Name",
     "MILEAGE": "Mileage (mi)",
     "DATE": "Date",
     "EXPENSE": "Expense",
     "COMMENT": "Comment"
-  }
+  },
+  "ERROR": "Oops, something was wrong.",
+  "FEEDBACK_SUCCESS": "Feedback submitted."
 }
