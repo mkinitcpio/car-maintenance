@@ -22,6 +22,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { DataBaseService } from './core/database';
 import {DatabaseSelectModule} from "./database-select/database-select.module";
 
+import { ConstantsService } from "./core/constants.service";
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   providers: [
     DataBaseService,
+    ConstantsService,
   ],
   bootstrap: [AppComponent]
 })
