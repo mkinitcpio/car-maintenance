@@ -12,7 +12,8 @@ export class ReleaseNotesService {
 
   public readonly changeLogPath: string = this.electronService.os.homedir() + '/.config/Учет/changelog.json';
 
-  private releaseNotes: ReleaseNotes = null;
+  public releaseNotes: ReleaseNotes = null;
+
   private fileReadConfig: {
     flag: 'r',
     encoding: 'utf8',
