@@ -1,6 +1,24 @@
 {
-  "releases": ["2.0.0"],
+  "releases": ["2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.1.0": {
+      "ru": {
+        "features": [
+          { "text": "Диалог обратной связи, где можно предложить новый функционал или сообщить об ошибке." },
+          { "text": "Возможность повторного просмотра изменений в приложении после закрытия диалога;" }
+        ],
+        "bugFixes": [],
+        "improvements": []
+      },
+      "en": {
+        "features": [
+          { "text": "Reopen 'Release notes' dialog possibility;" },
+          { "text": "Feedback dialog where you can submit bug or request new feature." }
+        ],
+        "bugFixes": [],
+        "improvements": []
+      }
+    },
     "2.0.0": {
       "ru": {
         "features": [
