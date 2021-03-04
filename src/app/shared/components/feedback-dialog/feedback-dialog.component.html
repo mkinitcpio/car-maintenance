@@ -15,12 +15,12 @@
     <form [formGroup]="feedbackForm">
       <mat-form-field [floatLabel]="'always'">
         <mat-label>{{"DIALOG.FIELDS.TYPE" | translate}}</mat-label>
-          <mat-select [formControlName]="'type'">
-            <mat-option *ngFor="let option of feedbackTypeOptions" [value]="option.value">
-              {{option.name | translate}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mat-select [formControlName]="'type'">
+          <mat-option *ngFor="let option of feedbackTypeOptions" [value]="option.value">
+            {{option.name | translate}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <mat-form-field appearance="standard" [floatLabel]="'always'">
         <mat-label>{{"DIALOG.FIELDS.TEXT" | translate}}</mat-label>
