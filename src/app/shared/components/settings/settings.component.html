@@ -42,5 +42,18 @@
         </mat-form-field>
       </div>
     </ubuntu-container>
+
+    <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
+      <div class="settings__item">
+        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">category</mat-icon> {{"PAGES.SETTINGS.FIELDS.ICONS" | translate}}</div>
+        <div  class="settings__multi-item-field-container">
+          <div class="settings__multi-item-field settings__item-field--disable">
+            {{"PAGES.SETTINGS.ICONS_PACK_NAMES.DEFAULT" | translate}}
+          </div>
+          <div class="settings__item-label settings__multi-item-label">{{"PAGES.SETTINGS.FIELDS.MONO" | translate}}</div>
+          <mat-slide-toggle [checked]="settingsService.settings.appearance.type === IconTypeEnum.Mono" (change)="onColorSelect($event)"></mat-slide-toggle>
+        </div>
+      </div>
+    </ubuntu-container>
   </main>
 </div>

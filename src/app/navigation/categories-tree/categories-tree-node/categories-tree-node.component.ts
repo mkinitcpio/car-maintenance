@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { filter } from 'rxjs/operators';
 import { IconTypeEnum } from '../../../shared/components/settings/icon-type.enum';
+import { SettingsTypeEnum } from '../../../shared/components/settings/settings-type.enum';
 import { SettingsService } from '../../../shared/components/settings/settings.service';
 import { Category, CategoryTree } from '../../state/interface';
 
@@ -39,7 +41,11 @@ export class CategoriesTreeNodeComponent implements OnInit {
   constructor(public settingsService: SettingsService) { }
 
   ngOnInit(): void {
-    this.iconsPath = `assets/category-icons/${this.settingsService.settings.appearance.iconPack}/${this.settingsService.settings.appearance.type}/`;
+    this.settingsService.settingsChanged$
+      .pipe(filter((node) => node.type === SettingsTypeEnum.Appearance || node.type === SettingsTypeEnum.All))
+      .subscribe(() => {
+        this.iconsPath = `assets/category-icons/${this.settingsService.settings.appearance.iconPack}/${this.settingsService.settings.appearance.type}/`;
+      });
   }
 
   public onAdd(): void {

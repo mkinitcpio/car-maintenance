@@ -63,6 +63,21 @@
     width: 70%;
   }
 
+  &__multi-item-field-container {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__multi-item-field {
+    margin-right: 24px;
+  }
+
+  &__multi-item-label {
+    margin-right: 12px;
+  }
+
   &__item-field--disable {
     color: gray;
   }

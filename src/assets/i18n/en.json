@@ -14,12 +14,18 @@
       "TITLE": "Settings",
       "SECTIONS": {
         "COMMON": "Common",
-        "LANG": "Language & Region"
+        "LANG": "Language & Region",
+        "APPEARANCE": "Appearence"
       },
       "FIELDS": {
         "LANG": "Language",
         "REGION": "Region",
-        "DATABASE_PATH": "Database"
+        "DATABASE_PATH": "Database",
+        "ICONS": "Icons",
+        "MONO": "Mono"
+      },
+      "ICONS_PACK_NAMES": {
+        "DEFAULT": "Default"
       }
     },
     "EMPTY": {

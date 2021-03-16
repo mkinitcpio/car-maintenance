@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { IconTypeEnum } from './icon-type.enum';
 
 import { languageOptions } from './language-options';
 import { LocaleEnum } from './locale-enum';
@@ -16,6 +18,7 @@ export class SettingsComponent implements OnInit {
 
   public languageOptions = languageOptions;
   public regionOptions = regionOptions;
+  public IconTypeEnum = IconTypeEnum;
 
   constructor(
     public dialogRef: MatDialogRef<SettingsComponent>,
@@ -32,6 +35,11 @@ export class SettingsComponent implements OnInit {
 
   public onSelectRegion(region: LocaleEnum): void {
     this.settingsService.setRegion(region);
+    this.settingsService.saveSettings();
+  }
+
+  public onColorSelect(event: MatSlideToggleChange): void {
+    this.settingsService.setIconType(event.checked ? IconTypeEnum.Mono : IconTypeEnum.Color);
     this.settingsService.saveSettings();
   }
 }
