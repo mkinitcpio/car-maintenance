@@ -15,7 +15,7 @@
       "SECTIONS": {
         "COMMON": "Common",
         "LANG": "Language & Region",
-        "APPEARANCE": "Appearence"
+        "APPEARANCE": "Appearance"
       },
       "FIELDS": {
         "LANG": "Language",

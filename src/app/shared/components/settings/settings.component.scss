@@ -81,4 +81,13 @@
   &__item-field--disable {
     color: gray;
   }
+
+  &__toggle.mat-checked {
+    .mat-slide-toggle-bar {
+      background-color: #ff9069;
+    }
+    .mat-slide-toggle-thumb {
+      background-color: #e95420;
+    }
+  }
 }

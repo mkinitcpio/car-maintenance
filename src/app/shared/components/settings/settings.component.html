@@ -10,7 +10,10 @@
   <main class="settings__content">
     <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.COMMON' | translate">
       <div class="settings__item">
-        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">storage</mat-icon> {{"PAGES.SETTINGS.FIELDS.DATABASE_PATH" | translate}}</div>
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">storage</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.DATABASE_PATH" | translate}}
+        </div>
         <div class="settings__item-field settings__item-field--disable">
           {{this.settingsService.settings.databasePath}}
         </div>
@@ -19,7 +22,10 @@
 
     <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
       <div class="settings__item">
-        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">language</mat-icon> {{"PAGES.SETTINGS.FIELDS.LANG" | translate}}</div>
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">language</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.LANG" | translate}}
+        </div>
         <mat-form-field class="settings__item-field">
           <mat-select [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
             <mat-option *ngFor="let language of languageOptions" [value]="language.value">
@@ -32,7 +38,10 @@
       <mat-divider></mat-divider>
 
       <div class="settings__item">
-        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">text_format</mat-icon> {{"PAGES.SETTINGS.FIELDS.REGION" | translate}}</div>
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">text_format</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.REGION" | translate}}
+        </div>
         <mat-form-field class="settings__item-field">
           <mat-select [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
             <mat-option *ngFor="let region of regionOptions" [value]="region.value">
@@ -45,13 +54,29 @@
 
     <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
       <div class="settings__item">
-        <div class="settings__item-label"><mat-icon class="settings__item-label-icon">category</mat-icon> {{"PAGES.SETTINGS.FIELDS.ICONS" | translate}}</div>
-        <div  class="settings__multi-item-field-container">
-          <div class="settings__multi-item-field settings__item-field--disable">
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">category</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.ICONS" | translate}}
+        </div>
+        <div  class="settings__item-field">
+          <div class="settings__item-field settings__item-field--disable">
             {{"PAGES.SETTINGS.ICONS_PACK_NAMES.DEFAULT" | translate}}
           </div>
-          <div class="settings__item-label settings__multi-item-label">{{"PAGES.SETTINGS.FIELDS.MONO" | translate}}</div>
-          <mat-slide-toggle [checked]="settingsService.settings.appearance.type === IconTypeEnum.Mono" (change)="onColorSelect($event)"></mat-slide-toggle>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="settings__item">
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">invert_colors</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.MONO" | translate}}
+        </div>
+        <div class="settings__item-field">
+          <mat-slide-toggle class="settings__toggle"
+                            [checked]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
+                            (change)="onColorSelect($event)">
+          </mat-slide-toggle>
         </div>
       </div>
     </ubuntu-container>
