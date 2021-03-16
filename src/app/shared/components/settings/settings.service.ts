@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ElectronService } from '../../../core/services';
+import { IconTypeEnum } from './icon-type.enum';
 import { Settings } from './interface';
 
 import { LanguageEnum } from './language-enum';
@@ -24,6 +25,10 @@ export class SettingsService {
       language: this.translate.getBrowserLang(),
       databasePath: null,
       region: this.translate.getBrowserLang() as LocaleEnum,
+      appearance: {
+        iconPack: 'default',
+        type: IconTypeEnum.Color,
+      },
     };
   }
 
@@ -46,6 +51,9 @@ export class SettingsService {
 
     if(settingsExist) {
       this.settings = JSON.parse(this.electronService.fs.readFileSync(this.settingsPath, 'utf8'));
+      if(!this.settings.appearance) {
+        this.settings.appearance = this.defaultSettings.appearance;
+      }
     } else {
       const translateExist = this.translate.getLangs().includes(this.defaultSettings.language);
 

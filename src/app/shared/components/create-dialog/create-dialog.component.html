@@ -32,12 +32,12 @@
             <mat-select-trigger class="create-dialog__illustration-container">
               <img class="create-dialog__illustration-icon"
                    *ngIf="categoryForm.get('illustration').value"
-                   [src]="'assets/category-icons/' + categoryForm.get('illustration').value">
+                   [src]="iconsPath + categoryForm.get('illustration').value">
               {{getIllustrationName(categoryForm.get('illustration').value) | translate}}
             </mat-select-trigger>
             <mat-option *ngFor="let illustrationOption of categoryIllustrationOptions" [value]="illustrationOption.value">
               <span class="create-dialog__option-content">
-                <img class="create-dialog__option-icon" [src]="'assets/category-icons/' + illustrationOption.value">
+                <img class="create-dialog__option-icon" [src]="iconsPath + illustrationOption.value">
                 <span class="create-dialog__option-text">
                 {{illustrationOption.name | translate}}
                 </span>

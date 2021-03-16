@@ -5,6 +5,7 @@ import { FormModeEnum } from './form-mode.enum';
 
 import { v4 as uuidv4 } from 'uuid';
 import { categoryIllustrationOptions } from './category-illustration-options';
+import { SettingsService } from '../settings/settings.service';
 
 @Component({
   selector: 'app-create-dialog',
@@ -14,6 +15,7 @@ import { categoryIllustrationOptions } from './category-illustration-options';
 export class CreateDialogComponent implements OnInit {
 
   public categoryIllustrationOptions = categoryIllustrationOptions;
+  public iconsPath: string = null;
 
   public categoryForm = new FormGroup({
     id: new FormControl(uuidv4()),
@@ -24,7 +26,8 @@ export class CreateDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<CreateDialogComponent>
+    public dialogRef: MatDialogRef<CreateDialogComponent>,
+    public settingsService: SettingsService,
   ) {}
 
 
@@ -32,6 +35,8 @@ export class CreateDialogComponent implements OnInit {
     if(this.data.mode === FormModeEnum.Edit) {
       this.categoryForm.setValue(this.data.formData);
     }
+
+    this.iconsPath = `assets/category-icons/${this.settingsService.settings.appearance.iconPack}/${this.settingsService.settings.appearance.type}/`;
   }
 
   public onSubmit(): void {

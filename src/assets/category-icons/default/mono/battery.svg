@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" xmlns:vectornator="http://vectornator.io" version="1.1" viewBox="0 0 512 512">
+<metadata>
+<vectornator:setting key="DynamicGuides" value="1"/>
+<vectornator:setting key="Units" value="Points"/>
+<vectornator:setting key="GuidesVisible" value="1"/>
+<vectornator:setting key="GridSpacing" value="36"/>
+<vectornator:setting key="SnapToGuides" value="1"/>
+<vectornator:setting key="RulersVisible" value="1"/>
+</metadata>
+<defs/>
+<g id="Untitled" vectornator:layerName="Untitled">
+<g opacity="1">
+<path d="M460.8+89.6L460.8+64C460.8+49.86+449.34+38.4+435.2+38.4L358.4+38.4C344.26+38.4+332.8+49.86+332.8+64L332.8+89.6L179.2+89.6L179.2+64C179.2+49.86+167.74+38.4+153.6+38.4L76.8+38.4C62.66+38.4+51.2+49.86+51.2+64L51.2+89.6C22.972+89.6+0+112.563+0+140.8L0+422.4C0+450.628+22.972+473.6+51.2+473.6L460.8+473.6C489.028+473.6+512+450.628+512+422.4L512+140.8C512+112.563+489.028+89.6+460.8+89.6ZM358.4+64L435.2+64L435.2+89.6L358.4+89.6L358.4+64ZM76.8+64L153.6+64L153.6+89.6L76.8+89.6L76.8+64ZM486.4+422.4C486.4+436.54+474.94+448+460.8+448L51.2+448C37.06+448+25.6+436.54+25.6+422.4L25.6+166.4L486.4+166.4C486.4+166.4+486.4+422.4+486.4+422.4ZM25.6+140.8C25.6+126.66+37.06+115.2+51.2+115.2L460.8+115.2C474.94+115.2+486.4+126.66+486.4+140.8L25.6+140.8Z" opacity="1" fill="#000000"/>
+<path d="M384+358.4L409.6+358.4L409.6+320L448+320L448+294.4L409.6+294.4L409.6+256L384+256L384+294.4L345.6+294.4L345.6+320L384+320L384+358.4Z" opacity="1" fill="#000000"/>
+<path d="M64+294.4L166.4+294.4L166.4+294.4L166.4+320L166.4+320L64+320L64+320L64+294.4L64+294.4Z" opacity="1" fill="#000000"/>
+</g>
+</g>
+</svg>
