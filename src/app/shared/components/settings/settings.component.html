@@ -15,7 +15,16 @@
           {{"PAGES.SETTINGS.FIELDS.DATABASE_PATH" | translate}}
         </div>
         <div class="settings__item-field settings__item-field--disable">
-          {{this.settingsService.settings.databasePath}}
+          <span class="settings__text"
+                [matTooltipClass]="'mat-tooltip--long-text'"
+                [matTooltip]="this.settingsService.settings.databasePath">
+            {{this.settingsService.settings.databasePath}}
+          </span>
+          <button class="button button__create"
+                  mat-button
+                  (click)="onDatabaseChange()">
+            Change
+          </button>
         </div>
       </div>
     </ubuntu-container>

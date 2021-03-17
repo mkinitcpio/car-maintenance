@@ -29,6 +29,8 @@ export class DataBaseService {
     records: Record[],
   };
 
+  public databaseError$: Subject<void> = new Subject();
+
   constructor(
     private electronService: ElectronService,
     private settingsService: SettingsService,
@@ -121,8 +123,22 @@ export class DataBaseService {
   }
 
   private readFileData(path: string): void {
-    this.data = JSON.parse(this.electronService.fs.readFileSync(path, this.fileReadConfig));
-    this.dbExist$.next(true);
+    try{
+      const data = JSON.parse(this.electronService.fs.readFileSync(path, this.fileReadConfig));
+
+      if(!data?.categories || !data?.records) {
+        throw new Error();
+      } else {
+        this.data = data;
+      }
+      this.dbExist$.next(true);
+    } catch(error) {
+      this.databaseError$.next();
+    }
+  }
+
+  public createDatabaseFile(path: string): void {
+    this.electronService.fs.writeFileSync(path, JSON.stringify(this.initialDataBase), this.fileWriteConfig);
   }
 
   private writeToDataBase(): void {

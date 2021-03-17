@@ -2,6 +2,14 @@
   user-select: none;
   font-family: 'Ubuntu';
 
+  &__text {
+    margin-right: 12px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   &__header {
     height: 42px;
     padding: 4px 8px;
@@ -60,6 +68,9 @@
   }
 
   &__item-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 70%;
   }
 
@@ -68,14 +79,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-  }
-
-  &__multi-item-field {
-    margin-right: 24px;
-  }
-
-  &__multi-item-label {
-    margin-right: 12px;
   }
 
   &__item-field--disable {
@@ -89,5 +92,16 @@
     .mat-slide-toggle-thumb {
       background-color: #e95420;
     }
+  }
+
+  .button {
+    padding: 0 12px;
+    min-width: initial;
+
+    font-family: Ubuntu;
+    font-weight: normal;
+    color: #111;
+    background-color: rgb(252, 252, 252);
+    border: 1px solid rgb(196,196,196);
   }
 }

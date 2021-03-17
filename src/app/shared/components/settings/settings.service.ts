@@ -94,6 +94,9 @@ export class SettingsService {
 
   public setDataBasePath(path: string): void {
     this.settings.databasePath = path;
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Database,
+    });
   }
 
   public saveSettings(): void {

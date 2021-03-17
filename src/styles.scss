@@ -27,6 +27,10 @@ html, body {
   font-size: 14px;
 }
 
+.mat-tooltip--long-text {
+  word-break: break-all;
+}
+
 .mat-select-value-text,
 .mat-date-picker-input {
   font-family: 'Ubuntu';

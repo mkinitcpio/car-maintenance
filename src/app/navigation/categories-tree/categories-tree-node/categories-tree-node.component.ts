@@ -42,7 +42,7 @@ export class CategoriesTreeNodeComponent implements OnInit {
 
   ngOnInit(): void {
     this.settingsService.settingsChanged$
-      .pipe(filter((node) => node.type === SettingsTypeEnum.Appearance || node.type === SettingsTypeEnum.All))
+      .pipe(filter((node) => node.type === SettingsTypeEnum.Appearance || node.type === SettingsTypeEnum.All || node.type === SettingsTypeEnum.Database))
       .subscribe(() => {
         this.iconsPath = `assets/category-icons/${this.settingsService.settings.appearance.iconPack}/${this.settingsService.settings.appearance.type}/`;
       });

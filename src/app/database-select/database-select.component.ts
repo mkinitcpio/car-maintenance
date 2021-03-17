@@ -25,6 +25,7 @@ export class DatabaseSelectComponent implements OnInit {
         if(data.filePath.length) {
           const filePath = data.filePath;
 
+          this.dataBaseService.createDatabaseFile(filePath);
           this.settingsService.setDataBasePath(filePath);
           this.settingsService.saveSettings();
           this.dataBaseService.initDataBase();

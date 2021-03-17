@@ -13,6 +13,8 @@ import { merge } from "rxjs";
 import { AutoCloseable } from "../core/auto-closeable";
 import { ElectronService } from "../core/services";
 import { ReleaseNotesService } from "../shared/components/release-notes/release-notes.service";
+import { filter, skip } from "rxjs/operators";
+import { DataBaseService } from "../core/database";
 
 @Component({
   selector: "app-navigation",
@@ -46,6 +48,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     private dialogManagerService: DialogManagerService,
     private electronService: ElectronService,
     private releaseNotesService: ReleaseNotesService,
+    private dataBaseService: DataBaseService,
   ) {
     super();
   }
@@ -70,6 +73,16 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
 
     this.navigationFacade.loadCategories();
+
+    this.dataBaseService.dbExist$
+      .pipe(
+        filter(Boolean),
+        skip(1),
+      )
+      .subscribe(() => {
+        this.router.navigate(['']);
+        this.navigationFacade.loadCategories();
+      });
   }
 
   public addCategory(category?: Category): void {
