@@ -13,7 +13,7 @@
     <form [formGroup]="recordForm">
       <mat-form-field appearance="standard" [floatLabel]="'always'">
         <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
-        <input [required]="true" [formControlName]="'name'" matInput>
+        <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
         <mat-error *ngIf="recordForm.get('name').hasError('required')">
           {{"DIALOG.VALIDATIONS.NAME" | translate}}
         </mat-error>
