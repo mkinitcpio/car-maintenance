@@ -26,6 +26,9 @@
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"
+      },
+      "BUTTONS": {
+        "CHANGE": "Change"
       }
     },
     "EMPTY": {

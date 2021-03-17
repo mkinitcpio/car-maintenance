@@ -26,6 +26,9 @@
         },
         "ICONS_PACK_NAMES": {
           "DEFAULT": "Стандартные"
+        },
+        "BUTTONS": {
+          "CHANGE": "Изменить"
         }
       },
       "EMPTY": {
