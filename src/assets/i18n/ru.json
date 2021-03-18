@@ -14,12 +14,21 @@
         "TITLE": "Настройки",
         "SECTIONS": {
           "COMMON": "Общие",
-          "LANG": "Язык и Регион"
+          "LANG": "Язык и Регион",
+          "APPEARANCE": "Внешний вид"
         },
         "FIELDS": {
           "LANG": "Язык",
           "REGION": "Регион",
-          "DATABASE_PATH": "База данных"
+          "DATABASE_PATH": "База данных",
+          "ICONS": "Иконки",
+          "MONO": "Моно"
+        },
+        "ICONS_PACK_NAMES": {
+          "DEFAULT": "Стандартные"
+        },
+        "BUTTONS": {
+          "CHANGE": "Изменить"
         }
       },
       "EMPTY": {

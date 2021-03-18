@@ -12,8 +12,9 @@
     </span>
     <div class="categories-tree-node__icon-container">
       <img class="categories-tree-node__icon"
+           [class.categories-tree-node__icon--mono]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
            *ngIf="!isSubNode"
-           [src]="'assets/category-icons/' + (child.illustration || 'wrench.svg')">
+           [src]="iconsPath + (child.illustration || 'wrench.svg')">
     </div>
     <span class="categories-tree-node__name">
       {{child.name}}

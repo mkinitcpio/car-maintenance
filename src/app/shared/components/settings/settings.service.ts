@@ -1,11 +1,14 @@
 
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
 import { ElectronService } from '../../../core/services';
+import { IconTypeEnum } from './icon-type.enum';
 import { Settings } from './interface';
 
 import { LanguageEnum } from './language-enum';
 import { LocaleEnum } from './locale-enum';
+import { SettingsTypeEnum } from './settings-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +22,17 @@ export class SettingsService {
   private readonly oldConfigPath: string = this.electronService.os.homedir() + '/.config/Учет/conf';
   private readonly defaultSettings : Settings = null;
 
+  public settingsChanged$: BehaviorSubject<{type: SettingsTypeEnum}> = new BehaviorSubject({type: SettingsTypeEnum.All});
+
   constructor(private electronService: ElectronService, private translate: TranslateService) {
     this.defaultSettings = {
       language: this.translate.getBrowserLang(),
       databasePath: null,
       region: this.translate.getBrowserLang() as LocaleEnum,
+      appearance: {
+        iconPack: 'default',
+        type: IconTypeEnum.Color,
+      },
     };
   }
 
@@ -46,6 +55,9 @@ export class SettingsService {
 
     if(settingsExist) {
       this.settings = JSON.parse(this.electronService.fs.readFileSync(this.settingsPath, 'utf8'));
+      if(!this.settings.appearance) {
+        this.settings.appearance = this.defaultSettings.appearance;
+      }
     } else {
       const translateExist = this.translate.getLangs().includes(this.defaultSettings.language);
 
@@ -73,8 +85,18 @@ export class SettingsService {
     this.settings.region = region;
   }
 
+  public setIconType(type: IconTypeEnum): void {
+    this.settings.appearance.type = type;
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Appearance,
+    });
+  }
+
   public setDataBasePath(path: string): void {
     this.settings.databasePath = path;
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Database,
+    });
   }
 
   public saveSettings(): void {

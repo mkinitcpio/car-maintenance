@@ -1,4 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { filter } from 'rxjs/operators';
+import { IconTypeEnum } from '../../../shared/components/settings/icon-type.enum';
+import { SettingsTypeEnum } from '../../../shared/components/settings/settings-type.enum';
+import { SettingsService } from '../../../shared/components/settings/settings.service';
 import { Category, CategoryTree } from '../../state/interface';
 
 @Component({
@@ -29,11 +33,19 @@ export class CategoriesTreeNodeComponent implements OnInit {
   @Output()
   select: EventEmitter<Category> = new EventEmitter();
 
+  public iconsPath: string = null;
+  public IconTypeEnum = IconTypeEnum;
+
   public expand = false;
 
-  constructor() { }
+  constructor(public settingsService: SettingsService) { }
 
   ngOnInit(): void {
+    this.settingsService.settingsChanged$
+      .pipe(filter((node) => node.type === SettingsTypeEnum.Appearance || node.type === SettingsTypeEnum.All || node.type === SettingsTypeEnum.Database))
+      .subscribe(() => {
+        this.iconsPath = `assets/category-icons/${this.settingsService.settings.appearance.iconPack}/${this.settingsService.settings.appearance.type}/`;
+      });
   }
 
   public onAdd(): void {

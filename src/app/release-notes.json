@@ -1,6 +1,28 @@
 {
-  "releases": ["2.1.0", "2.0.0"],
+  "releases": ["2.2.0", "2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.2.0": {
+      "ru": {
+        "features": [
+          { "text": "Выбор цвета иконок в настройках приложения;" },
+          { "text": "Изменение базы данных в настройках приложения." }
+        ],
+        "bugFixes": [],
+        "improvements": [
+          { "text": "UX улучшения в диалогах." }
+        ]
+      },
+      "en": {
+        "features": [
+          { "text": "Change database from settings." },
+          { "text": "Select category icons color from settings;" }
+        ],
+        "bugFixes": [],
+        "improvements": [
+          { "text": "UX in dialogs." }
+        ]
+      }
+    },
     "2.1.0": {
       "ru": {
         "features": [

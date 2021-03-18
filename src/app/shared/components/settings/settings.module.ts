@@ -11,6 +11,9 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { SettingsService } from './settings.service';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [SettingsComponent],
   imports: [
@@ -24,6 +27,8 @@ import { MatDividerModule } from '@angular/material/divider';
     TranslateModule,
     MatDividerModule,
     MatIconModule,
+    MatTooltipModule,
+    MatSlideToggleModule,
   ],
   providers: [
     SettingsService,
