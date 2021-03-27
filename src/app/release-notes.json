@@ -1,6 +1,22 @@
 {
-  "releases": ["2.2.0", "2.1.0", "2.0.0"],
+  "releases": ["2.2.1", "2.2.0", "2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.2.1": {
+      "ru": {
+        "features": [],
+        "bugFixes": [
+          { "text": "Коллизия кнопки скрытия при длинном имени категории." }
+        ],
+        "improvements": []
+      },
+      "en": {
+        "features": [],
+        "bugFixes": [
+          { "text": "Collision of expand button when category name to long." }
+        ],
+        "improvements": []
+      }
+    },
     "2.2.0": {
       "ru": {
         "features": [

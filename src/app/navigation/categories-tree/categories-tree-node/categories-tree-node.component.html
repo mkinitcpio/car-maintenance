@@ -2,14 +2,14 @@
   <div class="categories-tree-node__content"
        [class.categories-tree-node__content--select]="selected === child.id"
        (click)="onSelect()">
-    <span class="categories-tree-node__expand-button-container">
+    <div class="categories-tree-node__expand-button-container">
       <mat-icon class="categories-tree-node__expand-button"
                 [class.categories-tree-node__expand-button--expanded]="expand"
                 *ngIf="child.children?.length"
                 (click)="expand = !expand; $event.stopPropagation()">
         chevron_right
       </mat-icon>
-    </span>
+    </div>
     <div class="categories-tree-node__icon-container">
       <img class="categories-tree-node__icon"
            [class.categories-tree-node__icon--mono]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
