@@ -1,4 +1,5 @@
 [![car-maintenance](https://snapcraft.io/car-maintenance/badge.svg)](https://snapcraft.io/car-maintenance)
+[![Build](https://travis-ci.com/mkinitcpio/car-maintenance.svg?branch=master)](https://travis-ci.com/github/mkinitcpio/car-maintenance)
 ![Maintained][maintained-badge]
 [![License](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE.md)
 
