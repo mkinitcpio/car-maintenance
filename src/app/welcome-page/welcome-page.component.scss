@@ -1,0 +1,84 @@
+.welcome-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  font-family: Ubuntu;
+  user-select: none;
+
+  &__content {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 1;
+  }
+
+  &__stretcher {
+    flex-grow: 1;
+  }
+
+  &__title {
+    font-size: 64px;
+    margin-bottom: 16px;
+    color: #111;
+  }
+
+  &__sub-title {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+    font-family: Open Sans;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__get-started-button {
+    margin-bottom: 16px;
+    padding: 4px 64px;
+    font-family: Ubuntu;
+    font-weight: normal;
+    background-color: #0d7f1e;
+    border-color: rgba(0,0,0,0.56);
+    color: #fff;
+    font-size: 18px;
+  }
+
+  &__skip-link {
+    font-family: Ubuntu;
+    font-weight: 100;
+    color: #0066CC;
+  }
+
+  &__gear {
+    position: absolute;
+    color: #e5e5e5;
+    width: 512px;
+    height: 512px;
+    font-size: 512px;
+
+    &--top {
+      top: -256px;
+      left: -256px;
+    }
+
+    &--bottom {
+      bottom: -256px;
+      right: -256px;
+    }
+  }
+
+  &__app-icon {
+    width: 96px;
+    width: 96px;
+    margin-bottom: 16px;
+  }
+}
