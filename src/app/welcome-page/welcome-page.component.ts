@@ -47,7 +47,7 @@ import { TranslateService } from '@ngx-translate/core';
     ]),
     trigger('rotateGear', [
       state('false', style({
-        transform: "rotate(0);"
+        transform: "rotate(0deg)"
       })),
       state('true', style({
         transform: "rotate(-45deg)"
