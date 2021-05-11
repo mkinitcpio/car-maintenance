@@ -1,6 +1,27 @@
 {
-  "releases": ["2.2.1", "2.2.0", "2.1.0", "2.0.0"],
+  "releases": ["2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.3.0": {
+      "ru": {
+        "features": [
+          {"text": "Виджеты статистики для записей;"},
+          {"text": "Начальный экран для новых пользователей."}
+        ],
+        "bugFixes": [],
+        "improvements": [
+          { "text": "Косметические UI изменения." }
+        ]
+      },
+      "en": {
+        "features": [
+          { "text": "Stat widgets for records;" },
+        { "text": "Welcome page for new users." }],
+        "bugFixes": [],
+        "improvements": [
+          { "text": "Small UI changes." }
+        ]
+      }
+    },
     "2.2.1": {
       "ru": {
         "features": [],

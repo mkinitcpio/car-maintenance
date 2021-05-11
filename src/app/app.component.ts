@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import {DataBaseService} from "./core/database";
 import {AutoCloseable} from "./core/auto-closeable";
 import { SettingsService } from './shared/components/settings/settings.service';
@@ -25,10 +24,6 @@ export class AppComponent extends AutoCloseable {
     this.dataBaseService.dbExist$.subscribe((exist) => {
       this.dbExist = exist;
     });
-
-    if(this.releaseNotesService.isFirstAppStartAfterUpdate()) {
-      this.releaseNotesService.showReleaseNotes();
-    }
 
     this.dataBaseService.initDataBase();
   }

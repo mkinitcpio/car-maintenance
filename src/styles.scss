@@ -2,6 +2,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
@@ -24,7 +25,12 @@ html, body {
 }
 
 .mat-tooltip {
+  font-family: Ubuntu;
+  font-weight: normal;
   font-size: 14px;
+  line-height: 1.5;
+  background: #333;
+  border-radius: 0 !important;
 }
 
 .mat-tooltip--long-text {

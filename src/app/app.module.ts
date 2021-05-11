@@ -21,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { DataBaseService } from './core/database';
 import {DatabaseSelectModule} from "./database-select/database-select.module";
+import { WelcomePageModule } from "./welcome-page/welcome-page.module";
 
 import { ConstantsService } from "./core/constants.service";
 
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HomeModule,
     DetailModule,
     DatabaseSelectModule,
+    WelcomePageModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
