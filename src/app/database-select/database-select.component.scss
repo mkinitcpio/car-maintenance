@@ -9,10 +9,8 @@
   &__text {
     margin-bottom: 16px;
 
-
-    font-family: Ubuntu;
-    font-size: 32px;
-    font-weight: 100;
+    font-family: Open Sans;
+    font-size: 18px;
     color: #333;
   }
 }
@@ -23,9 +21,13 @@ button {
 }
 
 .button {
+  padding: 4px 48px;
+
   font-family: Ubuntu;
   font-weight: normal;
-  color: #111;
+  font-size: 18px;
+  color: #333;
+  background-color: #c5c5c5;
 }
 
 .button__create {

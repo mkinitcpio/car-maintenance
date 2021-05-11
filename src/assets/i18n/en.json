@@ -1,14 +1,20 @@
 {
   "PAGES": {
-      "DATABASE_SELECT": {
-          "TEXT": "Database is missing",
-          "CREATE": "Create",
-          "OPEN": "Open"
-      },
-      "DETAIL": {
-        "EMPTY": "No Records",
-        "LAST_MODIFIED": "Last modified",
-        "OVERALL_EXPENSE": "Overall expense"
+    "WELCOME": {
+      "SUBTITLE": "Create. Organize. Schedule.",
+      "BUTTONS": {
+        "GET_STARTED": "Get Started"
+      }
+    },
+    "DATABASE_SELECT": {
+        "TEXT": "Create or select existing Database",
+        "CREATE": "Create",
+        "OPEN": "Select"
+    },
+    "DETAIL": {
+      "EMPTY": "No Records",
+      "LAST_MODIFIED": "Last modified",
+      "OVERALL_EXPENSE": "Overall expense"
     },
     "SETTINGS": {
       "TITLE": "Settings",

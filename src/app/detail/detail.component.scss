@@ -14,7 +14,7 @@
 
   &__title {
     font-family: Ubuntu;
-    font-size: 32px;
+    font-size: 24px;
     color: white;
     font-weight: 100;
   }
@@ -55,29 +55,31 @@
     color: #333;
   }
 
-  &__stat-panel {
-    padding: 8px;
+  &__cards {
+    display: flex;
+    margin-bottom: 16px;
+  }
 
-    border: 1px solid #c5c5c5;
+  .card {
+    padding: 16px;
+    margin-right: 16px;
+
     border-radius: 4px;
-    font-family: Ubuntu;
-    font-weight: lighter;
-    margin-left: 16px;
-    margin-right: auto;
-    color: white;
-    justify-self: flex-end;
-    font-size: 12px;
-  }
-}
+    border: 1px solid silver;
+    background: white;
 
-.stat-panel {
-  &__row {
-    margin-bottom: 4px;
-  }
+    &__title {
+      margin-bottom: 4px;
 
-  &__label {
-    margin-right: 4px;
+      font-family: Ubuntu;
+      font-size: 12px;
+      color: #666;
+    }
 
-    font-weight: bold;
+    &__stat {
+      font-family: Ubuntu;
+      font-size: 18px;
+      color: #111;
+    }
   }
 }

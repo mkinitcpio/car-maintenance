@@ -1,0 +1,32 @@
+<div class="welcome-page">
+  <div class="welcome-page__content">
+    <img class="welcome-page__app-icon"
+         src="assets/icons/app-icon.png"
+         [@title]="'in'">
+    <div class="welcome-page__title"
+         [@title]="'in'"
+         (@title.done)="typeWriter()">
+      Car Maintenance
+    </div>
+    <div class="welcome-page__sub-title">{{typableSubtitleText}}</div>
+    <div class="welcome-page__stretcher"></div>
+
+    <section class="welcome-page__buttons" [@buttons]="showButtons">
+      <button mat-button
+              class="welcome-page__get-started-button"
+              (click)="onGetStartedButtonClick()">
+        {{"PAGES.WELCOME.BUTTONS.GET_STARTED" | translate}}
+      </button>
+    </section>
+
+    <app-database-select [@selectDatabase]="showSelectDatabaseButtons"></app-database-select>
+  </div>
+  <mat-icon [@rotateGear]="showSelectDatabaseButtons"
+            class="welcome-page__gear welcome-page__gear--top">
+    settings
+  </mat-icon>
+  <mat-icon [@rotateGear]="showSelectDatabaseButtons"
+            class="welcome-page__gear welcome-page__gear--bottom">
+    settings
+  </mat-icon>
+</div>
