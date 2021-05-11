@@ -3,19 +3,21 @@
     <div class="detail__title">
       {{name}}
     </div>
-    <div class="detail__stat-panel">
-      <div class="stat-panel__row">
-        <span class="stat-panel__label">{{"PAGES.DETAIL.LAST_MODIFIED" | translate}}: </span> <span>{{lastModifiedDate | date:'d MMM, y'}}</span>
-      </div>
-      <div>
-        <span class="stat-panel__label">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span><span>{{costSum | numberSeparator:settingsService.settings.region}} {{currencies[settingsService.settings.region]}}</span>
-      </div>
-    </div>
     <button class="detail__add-button" mat-button (click)="onCreateRecord()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
   <div class="detail__content">
+    <div class="detail__cards">
+      <div class="card">
+        <div class="card__title">{{"PAGES.DETAIL.LAST_MODIFIED" | translate}}</div>
+        <div class="card__stat">{{lastModifiedDate ? (lastModifiedDate | date:'d MMM, y') : '-'}}</div>
+      </div>
+      <div class="card">
+        <div class="card__title">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}</div>
+        <div class="card__stat">{{costSum | numberSeparator:settingsService.settings.region}} {{currencies[settingsService.settings.region]}}</div>
+      </div>
+    </div>
     <app-records-table [data]="dataSourceTable"
                        [stretch]="true"
                        (edit)="onEdit($event)"
