@@ -25,10 +25,6 @@ export class AppComponent extends AutoCloseable {
       this.dbExist = exist;
     });
 
-    if(this.releaseNotesService.isFirstAppStartAfterUpdate()) {
-      this.releaseNotesService.showReleaseNotes();
-    }
-
     this.dataBaseService.initDataBase();
   }
 }
