@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { ipcRenderer, webFrame, remote, dialog, shell } from 'electron';
+import { ipcRenderer, webFrame, dialog, shell } from 'electron';
 import * as childProcess from 'child_process';
 import * as fs from 'fs';
 import * as os from 'os';
@@ -11,7 +11,7 @@ import * as os from 'os';
 export class ElectronService {
   ipcRenderer: typeof ipcRenderer;
   webFrame: typeof webFrame;
-  remote: typeof remote;
+  remote: any;
   childProcess: typeof childProcess;
   fs: typeof fs;
   os: typeof os;
@@ -27,7 +27,7 @@ export class ElectronService {
       this.ipcRenderer = window.require('electron').ipcRenderer;
       this.webFrame = window.require('electron').webFrame;
       this.os = window.require('os');
-      this.dialog = window.require('electron').remote.dialog;
+      this.dialog = window.require('electron').dialog;
       this.childProcess = window.require('child_process');
       this.fs = window.require('fs');
       this.shell = window.require('electron').shell;
