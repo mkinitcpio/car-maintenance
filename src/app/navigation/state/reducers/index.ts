@@ -2,7 +2,7 @@ import { state } from "@angular/animations";
 import { Action, ActionReducer, createReducer, on, State } from "@ngrx/store";
 import { FeatureState, Status } from "../../../state/interface";
 import { initialState } from "../initial-state";
-import { Category } from "../interface";
+import { Category, CategoryTree } from "../interface";
 import { createCategory, createCategorySuccess, deleteCategory, deleteCategorySuccess, editCategory, editCategorySuccess, getCategories, getCategoriesSuccess } from "../actions";
 
 const appReducer = createReducer(
@@ -35,7 +35,7 @@ const appReducer = createReducer(
     ...state,
     newEntity: {
       status: Status.Success,
-      value: category,
+      value: category as any,
       error: null,
     }
   })),
@@ -51,7 +51,7 @@ const appReducer = createReducer(
     ...state,
     deleteEntity: {
       status: Status.Success,
-      value: category,
+      value: category as any,
       error: null,
     }
   })),
@@ -67,7 +67,7 @@ const appReducer = createReducer(
     ...state,
     editEntity: {
       status: Status.Success,
-      value: category,
+      value: category as any,
       error: null,
     }
   })),

@@ -103,7 +103,10 @@
       "OIL": "Oil",
       "TRANSMISSION": "Transmission",
       "HEADLIGHTS": "Headlights",
-      "OTHER": "Other"
+      "OTHER": "Other",
+      "BRAKEBLOCK": "Brake block",
+      "SPARK": "Spark",
+      "WINDSHIELD": "Windshield"
   },
   "FEEDBACK_TYPES": {
     "BUG": "Bug",
