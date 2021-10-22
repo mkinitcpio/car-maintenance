@@ -103,7 +103,10 @@
     "OIL": "Масло",
     "TRANSMISSION": "Трансмиссия",
     "HEADLIGHTS": "Фары",
-    "OTHER": "Другое"
+    "OTHER": "Другое",
+    "BRAKEBLOCK": "Тормозные колодки",
+    "SPARK": "Свеча",
+    "WINDSHIELD": "Дворники"
   },
   "RECORDS_TABLE": {
     "NAME": "Имя",

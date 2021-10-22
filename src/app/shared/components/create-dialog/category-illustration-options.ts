@@ -24,7 +24,19 @@ export const categoryIllustrationOptions = [
     value: 'car-lights-2.svg',
   },
   {
+    name: 'ILLUSTRATIONS.BRAKEBLOCK',
+    value: 'brake-block.svg',
+  },
+  {
+    name: 'ILLUSTRATIONS.SPARK',
+    value: 'spark.svg',
+  },
+  {
+    name: 'ILLUSTRATIONS.WINDSHIELD',
+    value: 'windshield.svg',
+  },
+  {
     name: 'ILLUSTRATIONS.OTHER',
     value: 'wrench.svg',
-  }
+  },
 ];

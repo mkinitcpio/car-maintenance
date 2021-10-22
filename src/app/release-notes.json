@@ -1,6 +1,26 @@
 {
-  "releases": ["2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
+  "releases": ["2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.4.0": {
+      "ru": {
+        "features": [
+          {"text": "Новые иконки."}
+        ],
+        "bugFixes": [],
+        "improvements": [
+          { "text": "Обновление зависимостей." }
+        ]
+      },
+      "en": {
+        "features": [
+          {"text": "New icons."}
+        ],
+        "bugFixes": [],
+        "improvements": [
+          { "text": "Update application dependencies." }
+        ]
+      }
+    },
     "2.3.0": {
       "ru": {
         "features": [

@@ -2,6 +2,7 @@ import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 const packageJson= require('./package.json');
+require('@electron/remote/main').initialize();
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -16,6 +17,7 @@ function createWindow(): BrowserWindow {
     title: `Car Maintenance ${version as string}`,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
       allowRunningInsecureContent: (serve) ? true : false,
       contextIsolation: false,// true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
     },
@@ -35,7 +37,7 @@ function createWindow(): BrowserWindow {
     win.loadURL(url.format({
       pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
-      slashes: true
+      slashes: true,
     }));
   }
 
