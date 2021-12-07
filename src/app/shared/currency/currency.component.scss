@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.currency {
+  height: 18px;
+
+  font-size: 17px;
+
+  &--small {
+    height: 14px;
+    width: 14px;
+
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.currency-text {
+  margin-left: 4px;
+
+  &--small {
+    font-size: inherit;
+    margin-left: initial;
+  }
+}

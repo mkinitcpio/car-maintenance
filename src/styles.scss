@@ -17,10 +17,24 @@ html, body {
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
-.custom-dialog {
-  .mat-dialog-container {
-    padding: 0;
-    border-radius: 8px 8px 0 0;
+.dialog {
+  &-custom {
+    .mat-dialog-container {
+      padding: 0;
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+  &-settings,
+  &-notes {
+    .mat-dialog-container {
+      height: 600px;
+      width: 600px;
+      padding: 0;
+
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+    }
   }
 }
 

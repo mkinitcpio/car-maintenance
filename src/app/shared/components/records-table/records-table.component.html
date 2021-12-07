@@ -19,7 +19,10 @@
   </ng-container>
 
   <ng-container matColumnDef="mileage">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-mileage"> {{"RECORDS_TABLE.MILEAGE" | translate}} </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__cell-mileage">
+      {{"RECORDS_TABLE.MILEAGE" | translate}} 
+      ({{ "METRIC_SYSTEM." + (settingsService.settings.units?.metricSystem || MetricSystemEnum[settingsService.settings.region]) | uppercase | translate}})
+    </mat-header-cell>
     <mat-cell class="records-table__cell-mileage" *matCellDef="let row">
       <div class="records-table__cell-text"
            [matTooltip]="row.mileage | numberSeparator:settingsService.settings.region"
@@ -41,7 +44,13 @@
   </ng-container>
 
   <ng-container matColumnDef="cost">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-cost"> {{"RECORDS_TABLE.EXPENSE" | translate}} ({{currencies[settingsService.settings.region]}}) </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__cell-cost">
+      {{"RECORDS_TABLE.EXPENSE" | translate}} 
+      (<app-currency [currency]="settingsService.settings.units?.currency"
+                     [size]="CurrencySizeEnum.Small"
+                     [locale]="settingsService.settings.region">
+      </app-currency>)
+    </mat-header-cell>
     <mat-cell class="records-table__cell-cost" *matCellDef="let row">
       <div class="records-table__cell-text"
            [matTooltip]="row.cost | numberSeparator:settingsService.settings.region"

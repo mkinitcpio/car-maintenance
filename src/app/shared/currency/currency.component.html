@@ -1,0 +1,15 @@
+<mat-icon [ngClass]="{
+    'currency': true,
+    'currency--small': size === CurrencySizeEnum.Small
+  }" 
+  *ngIf="(currency && currency !== CurrencyEnum.Byn) || (!currency && locale !== LocaleEnum.By); else currencyText"
+  >
+    {{currency | currency:locale}}
+</mat-icon>
+
+<ng-template #currencyText>
+  <span [ngClass]="{
+    'currency-text': true,
+    'currency-text--small': size === CurrencySizeEnum.Small
+  }" >BYN</span>
+</ng-template>

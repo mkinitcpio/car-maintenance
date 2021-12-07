@@ -1,6 +1,22 @@
 {
-  "releases": ["2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
+  "releases": ["2.5.0", "2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.5.0": {
+      "ru": {
+        "features": [
+          {"text": "Редактирование валюты и единиц измерения в настройках плиложения."}
+        ],
+        "bugFixes": [],
+        "improvements": []
+      },
+      "en": {
+        "features": [
+          {"text": "Editable units at settings dialog."}
+        ],
+        "bugFixes": [],
+        "improvements": []
+      }
+    },
     "2.4.0": {
       "ru": {
         "features": [

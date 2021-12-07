@@ -15,7 +15,12 @@
       </div>
       <div class="card">
         <div class="card__title">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}</div>
-        <div class="card__stat">{{costSum | numberSeparator:settingsService.settings.region}} {{currencies[settingsService.settings.region]}}</div>
+        <div class="card__stat">
+          <span>{{costSum | numberSeparator:settingsService.settings.region}}</span>
+          <app-currency [currency]="settingsService.settings.units?.currency"
+                        [locale]="settingsService.settings.region">
+          </app-currency>
+        </div>
       </div>
     </div>
     <app-records-table [data]="dataSourceTable"

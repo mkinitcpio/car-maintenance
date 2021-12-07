@@ -26,7 +26,7 @@ export class DialogManagerService {
     return this.dialog
       .open(CreateDialogComponent, {
         width: "480px",
-        panelClass: "custom-dialog",
+        panelClass: "dialog-custom",
         data,
       })
       .afterClosed()
@@ -37,7 +37,7 @@ export class DialogManagerService {
     return this.dialog
       .open(CreateRecordComponent, {
         width: "480px",
-        panelClass: "custom-dialog",
+        panelClass: "dialog-custom",
         data,
       })
       .afterClosed()
@@ -47,7 +47,7 @@ export class DialogManagerService {
   public openReleaseNotesDialog(data: ReleaseNotes): void {
     this.dialog.open(ReleaseNotesComponent, {
       width: "580px",
-      panelClass: "custom-dialog",
+      panelClass: "dialog-notes",
       data,
     });
   }
@@ -56,7 +56,7 @@ export class DialogManagerService {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "380px",
-        panelClass: "custom-dialog",
+        panelClass: "dialog-custom",
         data: {
           text: "DIALOG.DELETE.CATEGORY",
           name: categoryName,
@@ -70,7 +70,7 @@ export class DialogManagerService {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "380px",
-        panelClass: "custom-dialog",
+        panelClass: "dialog-custom",
         data: {
           text: "DIALOG.DELETE.RECORD",
           name: categoryName,
@@ -85,7 +85,7 @@ export class DialogManagerService {
       .open(SettingsComponent, {
         disableClose: true,
         width: "580px",
-        panelClass: "custom-dialog",
+        panelClass: "dialog-settings",
       });
   }
 
@@ -94,7 +94,7 @@ export class DialogManagerService {
       .open(FeedbackDialogComponent, {
         disableClose: true,
         width: "380px",
-        panelClass: "custom-dialog",
+        panelClass: "dialog-custom",
       });
   }
 }

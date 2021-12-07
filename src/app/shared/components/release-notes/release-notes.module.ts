@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UbuntuCloseButtonModule } from '../../ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatFormFieldModule,
     TranslateModule,
     UbuntuCloseButtonModule,
+    MatDividerModule,
   ]
 })
 export class ReleaseNotesModule { }

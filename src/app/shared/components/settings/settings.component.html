@@ -61,6 +61,38 @@
       </div>
     </ubuntu-container>
 
+    <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.UNITS' | translate">
+      <div class="settings__item">
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">straighten</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.METRIC_SYSTEM" | translate}}
+        </div>
+        <div class="settings__item-field">
+          <mat-button-toggle-group [value]="MetricSystemEnum[settingsService.settings.units?.metricSystem] || MetricSystemEnum[settingsService.settings.region]" (change)="onMetricSystemChanged($event.value)">
+            <mat-button-toggle [value]="MetricSystemEnum.Mi">{{"METRIC_SYSTEM.MILES" | translate}}</mat-button-toggle>
+            <mat-button-toggle [value]="MetricSystemEnum.Km">{{"METRIC_SYSTEM.KILOMETERS" | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="settings__item">
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">attach_money</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.CURRENCY" | translate}}
+        </div>
+        <mat-form-field class="settings__item-field">
+          <mat-select (valueChange)="onSelectCurrency($event)"
+                      [value]="CurrencyEnum[settingsService.settings.units?.currency] || CurrencyEnum[settingsService.settings.region]">
+            <mat-option *ngFor="let currency of currencyOptions" [value]="currency.value">
+              {{ currency.name | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ubuntu-container>
+
     <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
       <div class="settings__item">
         <div class="settings__item-label">
