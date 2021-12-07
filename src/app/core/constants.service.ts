@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ConstantsService {
-  public readonly secureToken = '';
-  public readonly feedbackApiUrl = '';
+  public readonly secureToken = 'JcteT?[:m|mM#/vAXtPW)iSAy5dr.(';
+  public readonly feedbackApiUrl = 'http://car-maintenance.online:3000/api/feedback';
 }

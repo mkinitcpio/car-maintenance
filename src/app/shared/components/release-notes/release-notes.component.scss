@@ -1,5 +1,9 @@
 .release-notes {
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   &__header {
     height: 42px;
@@ -32,9 +36,11 @@
   }
 
   &__content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     padding: 32px;
+    overflow: auto;
   }
 
   &__section-title {
@@ -61,6 +67,40 @@
 
     &::ng-deep .mat-form-field-underline {
       background: white;
+    }
+  }
+
+  .button {
+    width: 128px;
+    font-family: Ubuntu;
+    font-weight: normal;
+    color: #111;
+  }
+  
+  .button__submit {
+    background-color: #0d7f1e;
+    border-color: rgba(0,0,0,0.56);
+    color: #fff;
+  }
+
+  .donate {
+    font-family: Ubuntu;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    h2 {
+      margin-top: 0;
+      font-weight: normal;
+    }
+
+    p {
+      color: #111;
+      line-height: 1.4;
+    }
+
+    &__illustration {
+      width: 100%;
     }
   }
 }

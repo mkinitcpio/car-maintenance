@@ -47,7 +47,7 @@ export class DialogManagerService {
   public openReleaseNotesDialog(data: ReleaseNotes): void {
     this.dialog.open(ReleaseNotesComponent, {
       width: "580px",
-      panelClass: "dialog-custom",
+      panelClass: "dialog-notes",
       data,
     });
   }

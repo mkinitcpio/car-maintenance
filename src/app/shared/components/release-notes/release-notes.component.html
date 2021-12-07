@@ -48,5 +48,21 @@
         </li>
       </ul>
     </div>
+
+    <section *ngIf="selectedVersion === '2.5.0'" class="donate">
+      <h2>And one small thing...</h2>
+      <p>At the beginning of the project I didn't think that my application will be used in <strong>14 countries</strong>. I'm sincerely glad that my application useful and people use it.</p>
+      <img class="donate__illustration" src="assets/images/territories.png">
+      <p>And now I'm thinking what I can implement in the next year. If you have <strong>any ideas</strong>, <strong>cool feature</strong> that you want to see or you can help <strong>translate</strong> application to different languages, please, create a <a href="" (click)="onTicketLinkClick($event)">ticket</a> in my repository or contact me dirrectly by <a href="mailto:aliaksandr.kazhamiaka@gmail.com">email</a>.</p>
+      <p>I strongly believe with your ideas and my desired to develop project at my free time we can create something cool and useful!</p>
+      <p><strong>Best regards,</strong><br>Aliaksandr</p>
+
+      <mat-divider></mat-divider>
+
+      <p>Small donation but huge help for me develop, improve application and support web server for future useful features.</p>
+      <button mat-button class="button button__submit" (click)="onDonateButtonClick()">Donate</button>
+    </section>
+
   </main>
+
 </div>
