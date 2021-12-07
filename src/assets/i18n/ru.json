@@ -21,14 +21,17 @@
         "SECTIONS": {
           "COMMON": "Общие",
           "LANG": "Язык и Регион",
-          "APPEARANCE": "Внешний вид"
+          "APPEARANCE": "Внешний вид",
+          "UNITS": "Валюта и единицы измерения"
         },
         "FIELDS": {
           "LANG": "Язык",
           "REGION": "Регион",
           "DATABASE_PATH": "База данных",
           "ICONS": "Иконки",
-          "MONO": "Моно"
+          "MONO": "Моно",
+          "CURRENCY": "Валюта",
+          "METRIC_SYSTEM": "Расстояние"
         },
         "ICONS_PACK_NAMES": {
           "DEFAULT": "Стандартные"
@@ -110,7 +113,7 @@
   },
   "RECORDS_TABLE": {
     "NAME": "Имя",
-    "MILEAGE": "Пробег (км)",
+    "MILEAGE": "Пробег",
     "DATE": "Дата",
     "EXPENSE": "Расход",
     "COMMENT": "Заметка"
@@ -118,6 +121,18 @@
   "FEEDBACK_TYPES": {
     "BUG": "Ошибка",
     "IMPROVEMENT": "Улучшение"
+  },
+  "CURRENCY": {
+    "EURO": "Евро",
+    "DOLLAR": "Доллар",
+    "RUSSIAN_RUBLE": "Русский рубль",
+    "BELARUSSIAN_RUBLE": "Белорусский рубль"
+  },
+  "METRIC_SYSTEM": {
+    "KILOMETERS": "Километры",
+    "MILES": "Мили",
+    "KM": "км",
+    "MI": "mi"
   },
   "ERROR": "Упс, что-то пошло не так.",
   "FEEDBACK_SUCCESS": "Отзыв отправлен."

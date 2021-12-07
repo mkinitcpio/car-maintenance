@@ -21,14 +21,17 @@
       "SECTIONS": {
         "COMMON": "Common",
         "LANG": "Language & Region",
-        "APPEARANCE": "Appearance"
+        "APPEARANCE": "Appearance",
+        "UNITS": "Units"
       },
       "FIELDS": {
         "LANG": "Language",
         "REGION": "Region",
         "DATABASE_PATH": "Database",
         "ICONS": "Icons",
-        "MONO": "Mono"
+        "MONO": "Mono",
+        "CURRENCY": "Currency",
+        "METRIC_SYSTEM": "Metric system"
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"
@@ -114,10 +117,22 @@
   },
   "RECORDS_TABLE": {
     "NAME": "Name",
-    "MILEAGE": "Mileage (mi)",
+    "MILEAGE": "Mileage",
     "DATE": "Date",
     "EXPENSE": "Expense",
     "COMMENT": "Comment"
+  },
+  "CURRENCY": {
+    "EURO": "Euro",
+    "DOLLAR": "Dollar",
+    "RUSSIAN_RUBLE": "Russian ruble",
+    "BELARUSSIAN_RUBLE": "Belarussian ruble"
+  },
+  "METRIC_SYSTEM": {
+    "KILOMETERS": "Kilometers",
+    "MILES": "Miles",
+    "KM": "km",
+    "MI": "mi"
   },
   "ERROR": "Oops, something was wrong.",
   "FEEDBACK_SUCCESS": "Feedback submitted."

@@ -8,7 +8,8 @@ import { listen } from '../core/decorators';
 import { merge } from 'rxjs';
 import { AutoCloseable } from '../core/auto-closeable';
 import { SettingsService } from '../shared/components/settings/settings.service';
-import { currencies } from '../shared/components/records-table/currencies';
+import { currencies } from '../shared/pipes/currencies';
+import { CurrencyEnum } from '../shared/components/settings/currency.enum';
 
 @Component({
   selector: 'app-detail',
@@ -37,6 +38,8 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   public costSum = 0;
   public lastModifiedDate: Date = null;
   public currencies = currencies;
+
+  public CurrencyEnum = CurrencyEnum;
 
   constructor(
     private route: ActivatedRoute,

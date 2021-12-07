@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Record } from '../../../detail/state/interface';
+import { CurrencySizeEnum } from '../../currency/currency-size.enum';
+import { CurrencyEnum } from '../settings/currency.enum';
+import { LocaleEnum } from '../settings/locale-enum';
+import { MetricSystemEnum } from '../settings/metric-system.enum';
 import { SettingsService } from '../settings/settings.service';
-
-import { currencies } from './currencies';
 
 @Component({
   selector: 'app-records-table',
@@ -26,7 +28,10 @@ export class RecordsTableComponent {
   public context: Record;
   public displayedColumns: string[] = ['position', 'name', 'mileage', 'date', 'cost', 'notes', 'menu'];
 
-  public currencies = currencies;
+  public CurrencyEnum = CurrencyEnum;
+  public LocaleEnum = LocaleEnum;
+  public CurrencySizeEnum = CurrencySizeEnum;
+  public MetricSystemEnum = MetricSystemEnum;
 
   public separator = ' ';
   public dateFormat = 'd MMM, y';

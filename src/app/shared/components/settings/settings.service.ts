@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { ElectronService } from '../../../core/services';
+import { CurrencyEnum } from './currency.enum';
 import { IconTypeEnum } from './icon-type.enum';
 import { Settings } from './interface';
 
 import { LanguageEnum } from './language-enum';
 import { LocaleEnum } from './locale-enum';
+import { MetricSystemEnum } from './metric-system.enum';
 import { SettingsTypeEnum } from './settings-type.enum';
 
 @Injectable({
@@ -33,6 +35,10 @@ export class SettingsService {
         iconPack: 'default',
         type: IconTypeEnum.Color,
       },
+      units: {
+        metricSystem: null,
+        currency: null,
+      }
     };
   }
 
@@ -94,6 +100,36 @@ export class SettingsService {
 
   public setDataBasePath(path: string): void {
     this.settings.databasePath = path;
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Database,
+    });
+  }
+
+  public setMetricSystem(metricSystem: MetricSystemEnum): void {
+    if(this.settings.units) {
+      this.settings.units.metricSystem = metricSystem;
+    } else {
+      this.settings.units = {
+        metricSystem,
+        currency: null,
+      };
+    }
+
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Database,
+    });
+  }
+
+  public setCurrency(currency: CurrencyEnum): void {
+    if(this.settings.units) {
+      this.settings.units.currency = currency;
+    } else {
+      this.settings.units = {
+        currency,
+        metricSystem: null,
+      };
+    }
+
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Database,
     });

@@ -14,6 +14,9 @@ import { EmptyModule } from '../empty/empty.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecordsTableModule } from '../shared/components';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonPipesModule } from '../shared/pipes/common-pipes.module';
+import { CurrencyModule } from '../shared/currency/currency.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { TranslateModule } from '@ngx-translate/core';
     EffectsModule.forFeature([DetailsEffects]),
     EmptyModule,
     TranslateModule,
+    MatIconModule,
+    CommonPipesModule,
+    CurrencyModule,
   ],
   providers: [
     DetailsFacade,

@@ -8,7 +8,10 @@ import { IconTypeEnum } from './icon-type.enum';
 
 import { languageOptions } from './language-options';
 import { LocaleEnum } from './locale-enum';
+import { MetricSystemEnum } from './metric-system.enum';
+import { CurrencyEnum } from './currency.enum';
 import { regionOptions } from './region-options';
+import { currencyOptions } from './currency-options';
 
 import { SettingsService } from './settings.service';
 
@@ -22,7 +25,12 @@ export class SettingsComponent implements OnInit {
 
   public languageOptions = languageOptions;
   public regionOptions = regionOptions;
+  public currencyOptions = currencyOptions;
+
+  public MetricSystemEnum = MetricSystemEnum;
   public IconTypeEnum = IconTypeEnum;
+  public CurrencyEnum = CurrencyEnum;
+
 
   constructor(
     public dialogRef: MatDialogRef<SettingsComponent>,
@@ -70,5 +78,15 @@ export class SettingsComponent implements OnInit {
           this.settingsService.saveSettings();
         }
       });
+  }
+
+  public onMetricSystemChanged(mSystem: MetricSystemEnum): void {
+    this.settingsService.setMetricSystem(mSystem);
+    this.settingsService.saveSettings();
+  }
+
+  public onSelectCurrency(currency: CurrencyEnum): void {
+    this.settingsService.setCurrency(currency);
+    this.settingsService.saveSettings();
   }
 }
