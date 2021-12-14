@@ -1,10 +1,14 @@
 .navigation {
   height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 
+  transition: background-color 0.25s ease-in;
+
   &__title-container {
-    padding: 4px 8px;
-    height: 48px;
+    box-sizing: border-box;
+    padding: 9px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,8 +16,12 @@
     background-color: rgb(50, 48, 48);
   }
 
-  button {
-    background: none;
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 12px;
+
+    border-top: 1px solid rgba(0,0,0,0.2);
   }
 
   .button {
@@ -22,11 +30,42 @@
     color: #111;
     min-width: initial;
     padding: 0 8px;
+
+    &__switcher-icon {
+      transition: transform 0.2s ease-in;
+    }
+  }
+
+  app-categories-tree {
+    flex-grow: 1;
+
+    transition: opacity 0.15s ease-in 0.15s;
   }
 
   .button__create {
     background-color: rgb(75,72,72);
     border: 1px solid rgb(43,42,42);
     color: #fff;
+  }
+
+  &--minimize {
+    background-color: #323030;
+    transition: background-color 0.25s ease-out;
+
+    app-categories-tree {
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0s;
+    }
+
+    .navigation__title-container {
+      flex-wrap: wrap-reverse;
+      gap: 8px;
+    }
+
+    .button__switcher-icon {
+      transform: rotate(180deg);
+      color: white;
+    }
   }
 }

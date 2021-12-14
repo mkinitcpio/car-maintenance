@@ -1,16 +1,29 @@
-:host {
-
-}
-
 .home {
   &__sidenav {
     width: 300px;
 
     border-right: 1px solid rgba(0,0,0,0.2);
+    transition: width 0.5s ease-in-out,
+                border-right 0.5s ease-in;
+
+    &--minimize {
+      width: 64px;
+
+      border-color: #282626;
+      transition: width 0.5s ease-in-out,
+      border-right 0.5s ease-out;
+    }
   }
 
   &__content {
     height: 100vh;
     overflow: hidden;
+    margin-left: 300px;
+
+    transition: margin-left 0.5s ease-in-out;
+
+    &--minimize {
+      margin-left: 64px !important;
+    }
   }
 }

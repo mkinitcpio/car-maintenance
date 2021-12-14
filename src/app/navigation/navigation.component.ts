@@ -16,6 +16,8 @@ import { ReleaseNotesService } from "../shared/components/release-notes/release-
 import { filter, skip } from "rxjs/operators";
 import { DataBaseService } from "../core/database";
 
+import { SideNavigationTrackerService } from "../home/side-navigation-tracker.service";
+
 @Component({
   selector: "app-navigation",
   templateUrl: "./navigation.component.html",
@@ -49,6 +51,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     private electronService: ElectronService,
     private releaseNotesService: ReleaseNotesService,
     private dataBaseService: DataBaseService,
+    public sideNavService: SideNavigationTrackerService,
   ) {
     super();
   }
