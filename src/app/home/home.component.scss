@@ -18,7 +18,7 @@
   &__content {
     height: 100vh;
     overflow: hidden;
-    margin-left: 300px;
+    margin-left: 300px !important;
 
     transition: margin-left 0.5s ease-in-out;
 
