@@ -110,6 +110,21 @@
 
       <div class="settings__item">
         <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">animation</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.ANIMATION" | translate}}
+        </div>
+        <div class="settings__item-field">
+          <mat-slide-toggle class="settings__toggle"
+                            [checked]="settingsService.settings.appearance.animations"
+                            (change)="onAnimationsChanged($event)">
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="settings__item">
+        <div class="settings__item-label">
           <mat-icon class="settings__item-label-icon">invert_colors</mat-icon>
           {{"PAGES.SETTINGS.FIELDS.MONO" | translate}}
         </div>

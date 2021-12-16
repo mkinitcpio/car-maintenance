@@ -31,6 +31,10 @@ html, body {
       overflow: hidden;
     }
   }
+
+  &-print {
+    height: 600px;
+  }
 }
 
 .mat-tooltip {
@@ -87,5 +91,11 @@ html, body {
     50% {
       opacity: 0.5;
     }
+  }
+}
+
+body.no-animations {
+  * {
+    transition: none !important;
   }
 }

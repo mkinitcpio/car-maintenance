@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ElectronService } from '../../../core/services';
 import { CurrencyEnum } from './currency.enum';
 import { IconTypeEnum } from './icon-type.enum';
@@ -25,8 +25,11 @@ export class SettingsService {
   private readonly defaultSettings : Settings = null;
 
   public settingsChanged$: BehaviorSubject<{type: SettingsTypeEnum}> = new BehaviorSubject({type: SettingsTypeEnum.All});
+  public animationsStateChanged$: Subject<boolean> = new Subject();
 
-  constructor(private electronService: ElectronService, private translate: TranslateService) {
+  constructor(private electronService: ElectronService,
+              private translate: TranslateService,
+  ) {
     this.defaultSettings = {
       language: this.translate.getBrowserLang(),
       databasePath: null,
@@ -34,6 +37,7 @@ export class SettingsService {
       appearance: {
         iconPack: 'default',
         type: IconTypeEnum.Color,
+        animations: true,
       },
       units: {
         metricSystem: null,
@@ -64,6 +68,10 @@ export class SettingsService {
       if(!this.settings.appearance) {
         this.settings.appearance = this.defaultSettings.appearance;
       }
+
+      if(this.settings.appearance.animations === undefined) {
+        this.settings.appearance.animations = true;
+      }
     } else {
       const translateExist = this.translate.getLangs().includes(this.defaultSettings.language);
 
@@ -80,11 +88,17 @@ export class SettingsService {
       this.saveSettings();
     }
     this.setAppLanguage(this.settings.language);
+    this.animationsStateChanged$.next(this.settings.appearance.animations);
   }
 
   public setAppLanguage(lang: string): void {
     this.settings.language = lang;
     this.translate.setDefaultLang(lang);
+  }
+
+  public setAnimations(state: boolean): void {
+    this.settings.appearance.animations = state;
+    this.animationsStateChanged$.next(state);
   }
 
   public setRegion(region: LocaleEnum): void {

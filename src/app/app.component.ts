@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {DataBaseService} from "./core/database";
 import {AutoCloseable} from "./core/auto-closeable";
 import { SettingsService } from './shared/components/settings/settings.service';
-import { ReleaseNotesService } from './shared/components/release-notes/release-notes.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +16,17 @@ export class AppComponent extends AutoCloseable {
   constructor(
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
-    private releaseNotesService: ReleaseNotesService,
+    @Inject(DOCUMENT) private document: Document,
   ) {
     super();
+    this.settingsService.animationsStateChanged$.subscribe(enabled => {
+      if(enabled) {
+        this.document.body.classList.remove('no-animations');
+      } else {
+        this.document.body.classList.add('no-animations');
+      }
+    });
+
     this.settingsService.init();
 
     this.dataBaseService.dbExist$.subscribe((exist) => {
