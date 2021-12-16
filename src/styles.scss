@@ -32,6 +32,10 @@ html, body {
     }
   }
 
+  &-settings {
+    max-height: 80%;
+  }
+
   &-print {
     height: 600px;
   }
