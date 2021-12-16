@@ -1,0 +1,140 @@
+{
+  "PAGES": {
+    "WELCOME": {
+      "SUBTITLE": "Crea. Organizza. Modula.",
+      "BUTTONS": {
+        "GET_STARTED": "Iniziamo"
+      }
+    },
+    "DATABASE_SELECT": {
+        "TEXT": "Crea o Seleziona Database Esistente",
+        "CREATE": "Crea",
+        "OPEN": "Seleziona"
+    },
+    "DETAIL": {
+      "EMPTY": "No Registrazioni",
+      "LAST_MODIFIED": "Ultima Modifica",
+      "OVERALL_EXPENSE": "Spesa Complessiva"
+    },
+    "SETTINGS": {
+      "TITLE": "Opzioni",
+      "SECTIONS": {
+        "COMMON": "Generale",
+        "LANG": "Lingua",
+        "APPEARANCE": "Aspetto",
+        "UNITS": "Unita"
+      },
+      "FIELDS": {
+        "LANG": "Lingua",
+        "REGION": "Stato",
+        "DATABASE_PATH": "Database",
+        "ICONS": "Icone",
+        "MONO": "Mono",
+        "CURRENCY": "Moneta",
+        "METRIC_SYSTEM": "Sistema metrico",
+        "ANIMATION": "Animazioni"
+      },
+      "ICONS_PACK_NAMES": {
+        "DEFAULT": "Default"
+      },
+      "BUTTONS": {
+        "CHANGE": "Cambia"
+      }
+    },
+    "EMPTY": {
+      "TEXT": "Seleziona Categoria"
+    }
+  },
+  "MENU": {
+    "ADD": "Aggiungi",
+    "EDIT": "Modifica",
+    "DELETE": "Eliminare",
+    "ABOUT": "About",
+    "GITHUB": "GitHub",
+    "SETTINGS":"Opzioni",
+    "WHATS_NEW": "Novità",
+    "FEEDBACK": "Feedback"
+  },
+  "DIALOG": {
+    "ADD": "Aggiungi",
+    "ETID": "Modifica",
+    "FEEDBACK": "Feedback",
+    "RELEASE_NOTES": {
+      "TITLE": "Versione",
+      "NEW_FEATURES": "Nuove Funzionalità",
+      "BUGFIXES": "Bug Corretti",
+      "IMPROVEMENTS": "Miglioramenti"
+    },
+    "DELETE": {
+      "TITLE": "Conferma",
+      "CATEGORY": "Eliminare Categoria",
+      "RECORD": "Eliminare Registrati"
+    },
+    "CATEGORY": "Categoria",
+    "RECORD": "Registrati",
+    "BUTTONS": {
+      "ADD": "Aggiungi",
+      "EDIT": "Modifica",
+      "DELETE": "Elimina",
+      "CANCEL": "Cancella",
+      "SUBMIT": "Invia"
+    },
+    "VALIDATIONS": {
+      "NAME": "Nome ?",
+      "DATE": "Data ?",
+      "EXPENSE": {
+        "REQIRED": "Spesa ?"
+      },
+      "NUMBER": "Valore Numerico ?",
+      "POSITIVE": "Digita Un Valore Positivo"
+    },
+    "FIELDS": {
+      "NAME": "Nome",
+      "CATEGORY": "Categoria",
+      "ILLUSTRATION": "Illustrazione",
+      "MILEAGE": "Chilometraggio",
+      "DATE": "Data",
+      "EXPENSE": "Spesa",
+      "COMMENT": "Commenti",
+      "TEXT": "Testo",
+      "TYPE": "Digita"
+    }
+  },
+  "ILLUSTRATIONS": {
+      "ENGINE": "Motore",
+      "BATTERY": "Batteria",
+      "WHEEL": "Ruote",
+      "OIL": "Olio",
+      "TRANSMISSION": "Trasmissione",
+      "HEADLIGHTS": "Fari",
+      "OTHER": "Altro",
+      "BRAKEBLOCK": "Freni",
+      "SPARK": "Bobine",
+      "WINDSHIELD": "Parabrezza"
+  },
+  "FEEDBACK_TYPES": {
+    "BUG": "Bug",
+    "IMPROVEMENT": "Miglioramenti"
+  },
+  "RECORDS_TABLE": {
+    "NAME": "Nome",
+    "MILEAGE": "Chilometraggio",
+    "DATE": "Data",
+    "EXPENSE": "Spesa",
+    "COMMENT": "Commenti"
+  },
+  "CURRENCY": {
+    "EURO": "Eura",
+    "DOLLAR": "Dollaro",
+    "RUSSIAN_RUBLE": "Rublo russo",
+    "BELARUSSIAN_RUBLE": "Rublo bielorusso"
+  },
+  "METRIC_SYSTEM": {
+    "KILOMETERS": "Chilometri",
+    "MILES": "Miglia",
+    "KM": "km",
+    "MI": "mi"
+  },
+  "ERROR": "Oops, Qualcosa è andato storto!",
+  "FEEDBACK_SUCCESS": "Feedback Inviato."
+}
