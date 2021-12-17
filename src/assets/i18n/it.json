@@ -57,7 +57,7 @@
   },
   "DIALOG": {
     "ADD": "Aggiungi",
-    "ETID": "Modifica",
+    "EDIT": "Modifica",
     "FEEDBACK": "Feedback",
     "RELEASE_NOTES": {
       "TITLE": "Versione",

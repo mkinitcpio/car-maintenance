@@ -17,6 +17,7 @@ import { SettingsModule } from './components/settings/settings.module';
 import { UbuntuCloseButtonModule } from './ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-container.module';
 import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
+import { PrintDialogModule } from './components/print-dialog/print-dialog.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dial
     UbuntuCloseButtonModule,
     UbuntuContainerModule,
     FeedbackDialogModule,
+    PrintDialogModule,
   ],
   exports: [
     TranslateModule,

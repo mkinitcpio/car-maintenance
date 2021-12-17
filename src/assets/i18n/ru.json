@@ -31,7 +31,8 @@
           "ICONS": "Иконки",
           "MONO": "Моно",
           "CURRENCY": "Валюта",
-          "METRIC_SYSTEM": "Расстояние"
+          "METRIC_SYSTEM": "Расстояние",
+          "ANIMATION": "Анимации"
         },
         "ICONS_PACK_NAMES": {
           "DEFAULT": "Стандартные"

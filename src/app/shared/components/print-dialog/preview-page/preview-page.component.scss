@@ -1,0 +1,26 @@
+.preview-page {
+  width: 100%;
+  padding: 12px;
+  aspect-ratio: 1 / 1.4142;
+
+  font-family: Ubuntu;
+
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  user-select: none;
+
+  table, th, td {
+    font-size: 8px;
+  }
+
+  &__nowrap {
+    white-space: nowrap;
+  }
+
+  &__loader {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

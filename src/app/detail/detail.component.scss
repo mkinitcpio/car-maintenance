@@ -19,6 +19,11 @@
     font-weight: 100;
   }
 
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
   &__add-button {
     min-width: initial;
     padding: 0 8px;

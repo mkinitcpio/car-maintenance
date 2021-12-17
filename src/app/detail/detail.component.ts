@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from './state/details.facade';
@@ -10,6 +10,7 @@ import { AutoCloseable } from '../core/auto-closeable';
 import { SettingsService } from '../shared/components/settings/settings.service';
 import { currencies } from '../shared/pipes/currencies';
 import { CurrencyEnum } from '../shared/components/settings/currency.enum';
+import { ElectronService } from '../core/services';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,8 @@ import { CurrencyEnum } from '../shared/components/settings/currency.enum';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
+
+  @ViewChild('content', {static: true}) content: ElementRef;
 
   @listen({ value: true })
   details$ = this.detailsFacade.details$;
@@ -46,6 +49,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     private detailsFacade: DetailsFacade,
     public settingsService: SettingsService,
     private dialogManagerService: DialogManagerService,
+    private electronService: ElectronService,
   ) {
     super();
   }
@@ -101,6 +105,42 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       .subscribe(() => {
         this.detailsFacade.deleteRecord(record.id);
       });
+  }
+
+  public onPrint(): void {
+    this.dialogManagerService.openPrintDialog(this.dataSourceTable).subscribe(() => {
+
+    });
+    // console.log();
+    // const options = {
+    //   silent: false,
+    //   printBackground: true,
+    //   color: false,
+    //   margin: {
+    //     marginType: 'printableArea'
+    //   },
+    //   landscape: false,
+    //   pagesPerSheet: 1,
+    //   collate: false,
+    //   copies: 1,
+    //   header: 'Header of the Page',
+    //   footer: 'Footer of the Page'
+    // };
+
+    // const win = new this.electronService.remote.BrowserWindow({
+    //   show: false,
+    //   webPreferences: {
+    //     nodeIntegration: true
+    //   }
+    // });
+    // win.loadURL(`data:text/html;charset=utf-8,<head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>MyYTitle</title> <style type="text/css"> </style></head> <body>${this.content.nativeElement.outerHTML}</body>`);
+
+    // win.webContents.on('did-finish-load', () => {
+    //   win.webContents.print(options, (success, failureReason) => {
+    //     if (!success) console.log(failureReason);
+    //     console.log('Print Initiated');
+    //   });
+    // });
   }
 
   private getResultCost(records: Record[]): number {

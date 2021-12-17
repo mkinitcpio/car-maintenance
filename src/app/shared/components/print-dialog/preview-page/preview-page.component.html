@@ -1,0 +1,23 @@
+<div class="preview-page">
+  <table mat-table [dataSource]="records">
+    <ng-container *ngFor="let column of config.columns">
+      <ng-container [matColumnDef]="column.id">
+        <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
+        <td mat-cell *matCellDef="let record" [ngSwitch]="column.id"> 
+          <span *ngSwitchCase="'date'" class="preview-page__nowrap">
+            {{ record[column.id] | date:dateFormat }}
+          </span>
+          <span *ngSwitchCase="'cost'" class="preview-page__nowrap">
+            {{ record[column.id] | numberSeparator }}
+          </span>
+          <span *ngSwitchCase="'mileage'" class="preview-page__nowrap">
+            {{ record[column.id] | numberSeparator }}
+          </span>
+        <ng-container *ngSwitchDefault>{{ record[column.id] }}</ng-container> </td>
+      </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

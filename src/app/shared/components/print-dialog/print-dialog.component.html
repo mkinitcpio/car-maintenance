@@ -1,0 +1,34 @@
+<section class="print-dialog">
+  <div class="print-dialog__config-section">
+    <h3 class="print-dialog__title">Column order</h3>
+    <div class="print-dialog__content">
+      <div cdkDropList class="columns" (cdkDropListDropped)="drop($event)">
+        <div class="column" *ngFor="let column of columns" cdkDrag>
+          <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
+          <span class="column__name">{{column.name | translate}}</span>
+          <mat-checkbox [disabled]="column.id === 'name'"
+                        [checked]="column.visible"
+                        (change)="column.visible = !column.visible; onChecked()">
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="print-dialog__buttons">
+      <button class="button button__cancel" mat-button (click)="dialogRef.close()">Cancel</button>
+      <button class="button button__submit" mat-button>Print</button>
+    </div>
+  </div>
+
+  <mat-divider class="print-dialog__divider"
+               vertical="true">
+  </mat-divider>
+
+  <div class="print-dialog__preview-section">
+    <h3 class="print-dialog__title">Preview (A4)</h3>
+    <div class="print-dialog__preview">
+      <app-preview-page [config]="config"
+                        [records]="records">
+      </app-preview-page>
+    </div>
+  </div>
+</section>

@@ -31,7 +31,8 @@
         "ICONS": "Icons",
         "MONO": "Mono",
         "CURRENCY": "Currency",
-        "METRIC_SYSTEM": "Metric system"
+        "METRIC_SYSTEM": "Metric system",
+        "ANIMATION": "Animations"
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"
