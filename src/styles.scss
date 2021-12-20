@@ -23,7 +23,6 @@ html, body {
   &-settings,
   &-notes {
     .mat-dialog-container {
-      height: 600px;
       width: 600px;
       padding: 0;
 
@@ -32,8 +31,18 @@ html, body {
     }
   }
 
+  &-notes {
+    .mat-dialog-container {
+      height: 600px;
+    }
+  }
+
   &-settings {
     max-height: 80%;
+
+    .mat-dialog-container {
+      height: auto;
+    }
   }
 
   &-print {

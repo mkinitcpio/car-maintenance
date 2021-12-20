@@ -1,5 +1,5 @@
 <div class="preview-page">
-  <table mat-table [dataSource]="records">
+  <table #print class="preview-page__table" mat-table [dataSource]="records">
     <ng-container *ngFor="let column of config.columns">
       <ng-container [matColumnDef]="column.id">
         <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>

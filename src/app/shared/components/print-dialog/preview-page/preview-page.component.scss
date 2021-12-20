@@ -9,8 +9,35 @@
   border: 1px solid #ccc;
   user-select: none;
 
-  table, th, td {
-    font-size: 8px;
+  &__table {
+    width: 100%;
+
+    font-family: Ubuntu;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    
+    th, td, th {
+      height: auto;
+      padding: 2px;
+
+      font-size: 5px;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-left: none;
+    }
+
+    th {
+      color: #111;
+    }
+
+    tr {
+      height: auto;
+
+      th:last-child,
+      td:last-child  {
+        border-right: none;
+      }
+    }
   }
 
   &__nowrap {
