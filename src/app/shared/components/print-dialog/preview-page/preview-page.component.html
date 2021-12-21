@@ -1,5 +1,26 @@
 <div class="preview-page">
-  <table #print class="preview-page__table" mat-table [dataSource]="records">
+  <div class="preview-page__app-title-container">
+    <img class="preview-page__app-icon" [src]="domSanitizer.bypassSecurityTrustUrl(appIconBase64)" alt="">
+    <h1 class="preview-page__app-title">Car Maintenance</h1>
+  </div>
+
+  <hr class="preview-page__divider">
+
+  <div class="preview-page__title-container">
+    <h2 class="preview-page__title">{{title}}</h2>
+    <div class="preview-page__cost-section">
+      <div class="preview-page__cost-section-text">
+        <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
+        <span style="font-weight: bold; white-space: nowrap;">{{cost | numberSeparator}}</span>
+      </div>
+      <app-currency [locale]="settingsService.settings.region"
+                    [renderAs]="1"
+                    [size]="0"
+                    [currency]="settingsService.settings.units.currency">
+      </app-currency>
+    </div>
+  </div>
+  <table class="preview-page__table" mat-table [dataSource]="records">
     <ng-container *ngFor="let column of config.columns">
       <ng-container [matColumnDef]="column.id">
         <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>

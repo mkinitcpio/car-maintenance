@@ -1,16 +1,20 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
+
+import { merge } from 'rxjs';
+
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
-import { DialogManagerService } from '../shared/services/dialog-manager.service';
-import { listen } from '../core/decorators';
-import { merge } from 'rxjs';
-import { AutoCloseable } from '../core/auto-closeable';
-import { SettingsService } from '../shared/components/settings/settings.service';
-import { currencies } from '../shared/pipes/currencies';
-import { CurrencyEnum } from '../shared/components/settings/currency.enum';
-import { ElectronService } from '../core/services';
+
+import { FormModeEnum } from '@shared/components/create-dialog/form-mode.enum';
+import { DialogManagerService } from '@shared/services/dialog-manager.service';
+import { SettingsService } from '@shared/components/settings/settings.service';
+import { CurrencyEnum } from '@shared/components/settings/currency.enum';
+import { currencies } from '@shared/pipes/currencies';
+
+import { listen } from '@core/decorators';
+import { ElectronService } from '@core/services';
+import { AutoCloseable } from '@core/auto-closeable';
 
 @Component({
   selector: 'app-detail',
@@ -34,7 +38,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     this.detailsFacade.deleteDetail$,
   );
 
-  parentId = null;
+  private parentId: string = null;
 
   public dataSourceTable: Record[] = [];
   public name: string = null;
@@ -108,39 +112,9 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   }
 
   public onPrint(): void {
-    this.dialogManagerService.openPrintDialog(this.dataSourceTable).subscribe(() => {
-
-    });
-    // console.log();
-    // const options = {
-    //   silent: false,
-    //   printBackground: true,
-    //   color: false,
-    //   margin: {
-    //     marginType: 'printableArea'
-    //   },
-    //   landscape: false,
-    //   pagesPerSheet: 1,
-    //   collate: false,
-    //   copies: 1,
-    //   header: 'Header of the Page',
-    //   footer: 'Footer of the Page'
-    // };
-
-    // const win = new this.electronService.remote.BrowserWindow({
-    //   show: false,
-    //   webPreferences: {
-    //     nodeIntegration: true
-    //   }
-    // });
-    // win.loadURL(`data:text/html;charset=utf-8,<head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>MyYTitle</title> <style type="text/css"> </style></head> <body>${this.content.nativeElement.outerHTML}</body>`);
-
-    // win.webContents.on('did-finish-load', () => {
-    //   win.webContents.print(options, (success, failureReason) => {
-    //     if (!success) console.log(failureReason);
-    //     console.log('Print Initiated');
-    //   });
-    // });
+    this.dialogManagerService
+      .openPrintDialog({title: this.name, records: this.dataSourceTable })
+      .subscribe(() => {});
   }
 
   private getResultCost(records: Record[]): number {
@@ -151,8 +125,8 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   private getLastModifiedDate(records: Record[]): Date {
     const EMPTY = null;
-    const allDates = records.filter((row) => row.date).map((row) => new Date(row.date));
-    const lastModifiedDate = allDates.length ? new Date(Math.max.apply(null, allDates)) : EMPTY;
+    const allDates = records.filter((row) => row.date).map((row) => (new Date(row.date)).getTime());
+    const lastModifiedDate = allDates.length ? new Date(Math.max(...allDates)) : EMPTY;
 
     return lastModifiedDate;
   }

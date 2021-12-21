@@ -1,27 +1,72 @@
 .preview-page {
   width: 100%;
-  padding: 12px;
+  padding: 18px;
   aspect-ratio: 1 / 1.4142;
 
   font-family: Ubuntu;
+  background: white;
 
   box-sizing: border-box;
   border: 1px solid #ccc;
   user-select: none;
 
+  &__title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__app-title-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__app-title {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  &__app-icon {
+    height: 18px;
+    margin-right: 4px;
+  }
+
+  &__cost {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    width: 60%;
+    font-size: 10px;
+  }
+
+  &__divider {
+    margin-bottom: 4px;
+
+    border-top: 1px solid black;
+  }
+
+  &__cost-section {
+    display: flex;
+    align-items: center;
+    font-size: 8px;
+  }
+
   &__table {
     width: 100%;
 
     font-family: Ubuntu;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-bottom: none;
     
     th, td, th {
       height: auto;
       padding: 2px;
 
-      font-size: 5px;
-      border: 1px solid #ccc;
+      font-size: 8px;
+      border: 1px solid black;
       border-top: none;
       border-left: none;
     }

@@ -99,7 +99,7 @@ export class DialogManagerService {
       });
   }
 
-  public openPrintDialog(data: { title: string, records: Array<Record> }): Observable<any> {
+  public openPrintDialog(data: { title: string, records: Array<Record> }): Observable<void> {
     return this.dialog
       .open(PrintDialogComponent, {
         disableClose: true,

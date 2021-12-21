@@ -11,8 +11,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RecordsTableModule } from '..';
 import { MatTableModule } from '@angular/material/table';
-
-
+import { CommonPipesModule } from '../../pipes/common-pipes.module';
+import { CurrencyModule } from '../../currency/currency.module';
+import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-container.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,10 @@ import { MatTableModule } from '@angular/material/table';
     MatProgressSpinnerModule,
     RecordsTableModule,
     MatTableModule,
+    CommonPipesModule,
+    CurrencyModule,
+    UbuntuContainerModule,
+    MatTooltipModule,
   ],
   exports: [
     PrintDialogComponent,
