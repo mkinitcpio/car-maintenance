@@ -101,6 +101,7 @@ export class DataBaseService {
       const records = allRecords.filter(record => record.parent === category.id);
 
       return {
+        id: category.id,
         name: category.name,
         data: records,
       };

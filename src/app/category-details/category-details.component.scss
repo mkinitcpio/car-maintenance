@@ -18,6 +18,23 @@
     font-weight: 100;
   }
 
+  &__link {
+    color: #222;
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+      .category-details__link-icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__link-icon {
+    font-size: 18px;
+    transition: font-size 0.2s linear;
+  }
+
   &__scroll-fix {
     height: 16px;
     width: 100%;

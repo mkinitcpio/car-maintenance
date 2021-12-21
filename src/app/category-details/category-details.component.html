@@ -7,7 +7,12 @@
   <div class="category-details__content">
     <div class="category-details__scroll-fix"></div>
     <div class="category-details__table" *ngFor="let table of categoryDetails.tables">
-      <div class="category-details__table-title">{{table.name}}</div>
+      <div class="category-details__table-title">
+        <a class="category-details__link" routerLink="/details/{{table.id}}/{{table.name}}">
+          {{table.name}}
+          <mat-icon class="category-details__link-icon">launch</mat-icon>
+        </a>
+      </div>
       <app-records-table [data]="table.data"
                          (edit)="onEdit($event)"
                          (delete)="onDelete($event)"
