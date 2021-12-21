@@ -43,6 +43,12 @@
     },
     "EMPTY": {
       "TEXT": "Seleziona Categoria"
+    },
+    "PDF_EXPORT": {
+      "CONFIGURATIONS": "Configuraciones",
+      "PATH": "Camino para salvar",
+      "ORDER_AND_VISIBILITY": "Orden y visibilidad",
+      "PREVIEW": "Avance"
     }
   },
   "MENU": {
@@ -77,6 +83,8 @@
       "EDIT": "Modifica",
       "DELETE": "Elimina",
       "CANCEL": "Cancella",
+      "CHANGE": "Cambia",
+      "EXPORT": "Esportare",
       "SUBMIT": "Invia"
     },
     "VALIDATIONS": {
