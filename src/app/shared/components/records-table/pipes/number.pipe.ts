@@ -3,15 +3,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { formatNumber } from '@angular/common';
 
 import { LocaleEnum } from '../../settings/locale-enum';
+import { SettingsService } from '../../settings/settings.service';
 
 @Pipe({name: 'numberSeparator'})
 export class NumberSeparatorPipe implements PipeTransform {
 
-  constructor() {
+  constructor(private settingsService: SettingsService) { }
 
-  }
-
-  transform(value: number, locale: LocaleEnum): string {
+  transform(value: number): string {
+    const locale = this.settingsService.settings.region;
 
     if(locale === LocaleEnum.Us) {
       return formatNumber(value, 'en');

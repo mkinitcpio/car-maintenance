@@ -31,7 +31,8 @@
           "ICONS": "Иконки",
           "MONO": "Моно",
           "CURRENCY": "Валюта",
-          "METRIC_SYSTEM": "Расстояние"
+          "METRIC_SYSTEM": "Расстояние",
+          "ANIMATION": "Анимации"
         },
         "ICONS_PACK_NAMES": {
           "DEFAULT": "Стандартные"
@@ -42,6 +43,12 @@
       },
       "EMPTY": {
         "TEXT": "Выберите Категорию"
+      },
+      "PDF_EXPORT": {
+        "CONFIGURATIONS": "Настройки",
+        "PATH": "Путь для сохранения",
+        "ORDER_AND_VISIBILITY": "Порядок и отображение",
+        "PREVIEW": "Предпросмотр"
       }
   },
   "MENU": {
@@ -76,6 +83,8 @@
       "EDIT": "Сохранить",
       "DELETE": "Удалить",
       "CANCEL": "Отмена",
+      "CHANGE": "Изменить",
+      "EXPORT": "Экспорт",
       "SUBMIT": "Отправить"
     },
     "FIELDS": {

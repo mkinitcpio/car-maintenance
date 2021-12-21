@@ -14,6 +14,7 @@ import { ReleaseNotes } from '../components/release-notes/interface';
 import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
 import { SettingsComponent } from '../components/settings/settings.component';
 import { FeedbackDialogComponent } from '../components/feedback-dialog/feedback-dialog.component';
+import { PrintDialogComponent } from '../components/print-dialog/print-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -96,5 +97,17 @@ export class DialogManagerService {
         width: "380px",
         panelClass: "dialog-custom",
       });
+  }
+
+  public openPrintDialog(data: { title: string, records: Array<Record> }): Observable<void> {
+    return this.dialog
+      .open(PrintDialogComponent, {
+        disableClose: true,
+        width: "820px",
+        panelClass: "dialog-print",
+        data,
+        autoFocus: false,
+      })
+      .afterClosed();
   }
 }

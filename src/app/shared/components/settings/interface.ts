@@ -9,6 +9,7 @@ export interface Settings {
   appearance: {
     iconPack: string;
     type: IconTypeEnum;
+    animations: boolean;
   },
   units: {
     currency: CurrencyEnum,

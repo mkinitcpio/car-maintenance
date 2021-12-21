@@ -3,9 +3,14 @@
     <div class="detail__title">
       {{name}}
     </div>
-    <button class="detail__add-button" mat-button (click)="onCreateRecord()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div class="detail__buttons">
+      <button class="detail__add-button" mat-button (click)="onCreateRecord()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button class="detail__add-button" mat-button (click)="onPrint()">
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+    </div>
   </div>
   <div class="detail__content">
     <div class="detail__cards">

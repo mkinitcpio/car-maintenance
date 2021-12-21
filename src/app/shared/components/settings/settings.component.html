@@ -118,13 +118,13 @@
 
       <div class="settings__item">
         <div class="settings__item-label">
-          <mat-icon class="settings__item-label-icon">animation</mat-icon>
-          {{"PAGES.SETTINGS.FIELDS.ANIMATION" | translate}}
+          <mat-icon class="settings__item-label-icon">invert_colors</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.MONO" | translate}}
         </div>
         <div class="settings__item-container">
           <mat-slide-toggle class="settings__toggle"
-                            [checked]="settingsService.settings.appearance.animations"
-                            (change)="onAnimationsChanged($event)">
+                            [checked]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
+                            (change)="onColorSelect($event)">
           </mat-slide-toggle>
         </div>
       </div>
@@ -133,13 +133,13 @@
 
       <div class="settings__item">
         <div class="settings__item-label">
-          <mat-icon class="settings__item-label-icon">invert_colors</mat-icon>
-          {{"PAGES.SETTINGS.FIELDS.MONO" | translate}}
+          <mat-icon class="settings__item-label-icon">animation</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.ANIMATION" | translate}}
         </div>
         <div class="settings__item-container">
           <mat-slide-toggle class="settings__toggle"
-                            [checked]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
-                            (change)="onColorSelect($event)">
+                            [checked]="settingsService.settings.appearance.animations"
+                            (change)="onAnimationsChanged($event)">
           </mat-slide-toggle>
         </div>
       </div>

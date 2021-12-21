@@ -31,7 +31,8 @@
         "ICONS": "Icons",
         "MONO": "Mono",
         "CURRENCY": "Currency",
-        "METRIC_SYSTEM": "Metric system"
+        "METRIC_SYSTEM": "Metric system",
+        "ANIMATION": "Animations"
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"
@@ -42,6 +43,12 @@
     },
     "EMPTY": {
       "TEXT": "Select Category"
+    },
+    "PDF_EXPORT": {
+      "CONFIGURATIONS": "Configurations",
+      "PATH": "Path to save",
+      "ORDER_AND_VISIBILITY": "Order and visibility",
+      "PREVIEW": "Preview"
     }
   },
   "MENU": {
@@ -76,6 +83,8 @@
       "EDIT": "Edit",
       "DELETE": "Delete",
       "CANCEL": "Cancel",
+      "CHANGE": "Change",
+      "EXPORT": "Export",
       "SUBMIT": "Submit"
     },
     "VALIDATIONS": {

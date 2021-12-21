@@ -43,6 +43,12 @@
     },
     "EMPTY": {
       "TEXT": "Seleziona Categoria"
+    },
+    "PDF_EXPORT": {
+      "CONFIGURATIONS": "Opzioni",
+      "PATH": "Percorso",
+      "ORDER_AND_VISIBILITY": "Visualizzati",
+      "PREVIEW": "Anteprima"
     }
   },
   "MENU": {
@@ -57,7 +63,7 @@
   },
   "DIALOG": {
     "ADD": "Aggiungi",
-    "ETID": "Modifica",
+    "EDIT": "Modifica",
     "FEEDBACK": "Feedback",
     "RELEASE_NOTES": {
       "TITLE": "Versione",
@@ -77,6 +83,8 @@
       "EDIT": "Modifica",
       "DELETE": "Elimina",
       "CANCEL": "Cancella",
+      "CHANGE": "Cambia",
+      "EXPORT": "Esportare",
       "SUBMIT": "Invia"
     },
     "VALIDATIONS": {

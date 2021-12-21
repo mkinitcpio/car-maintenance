@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
+
+import { merge } from 'rxjs';
+
 import { DetailsFacade } from './state/details.facade';
 import { Record } from './state/interface';
-import { DialogManagerService } from '../shared/services/dialog-manager.service';
-import { listen } from '../core/decorators';
-import { merge } from 'rxjs';
-import { AutoCloseable } from '../core/auto-closeable';
-import { SettingsService } from '../shared/components/settings/settings.service';
-import { currencies } from '../shared/pipes/currencies';
-import { CurrencyEnum } from '../shared/components/settings/currency.enum';
+
+import { FormModeEnum } from '@shared/components/create-dialog/form-mode.enum';
+import { DialogManagerService } from '@shared/services/dialog-manager.service';
+import { SettingsService } from '@shared/components/settings/settings.service';
+import { CurrencyEnum } from '@shared/components/settings/currency.enum';
+import { currencies } from '@shared/pipes/currencies';
+
+import { listen } from '@core/decorators';
+import { ElectronService } from '@core/services';
+import { AutoCloseable } from '@core/auto-closeable';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +22,8 @@ import { CurrencyEnum } from '../shared/components/settings/currency.enum';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
+
+  @ViewChild('content', {static: true}) content: ElementRef;
 
   @listen({ value: true })
   details$ = this.detailsFacade.details$;
@@ -31,7 +38,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     this.detailsFacade.deleteDetail$,
   );
 
-  parentId = null;
+  private parentId: string = null;
 
   public dataSourceTable: Record[] = [];
   public name: string = null;
@@ -46,6 +53,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     private detailsFacade: DetailsFacade,
     public settingsService: SettingsService,
     private dialogManagerService: DialogManagerService,
+    private electronService: ElectronService,
   ) {
     super();
   }
@@ -103,6 +111,12 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       });
   }
 
+  public onPrint(): void {
+    this.dialogManagerService
+      .openPrintDialog({title: this.name, records: this.dataSourceTable })
+      .subscribe(() => {});
+  }
+
   private getResultCost(records: Record[]): number {
     const costs = records.map((record) => +record.cost).filter(Boolean);
 
@@ -111,8 +125,8 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   private getLastModifiedDate(records: Record[]): Date {
     const EMPTY = null;
-    const allDates = records.filter((row) => row.date).map((row) => new Date(row.date));
-    const lastModifiedDate = allDates.length ? new Date(Math.max.apply(null, allDates)) : EMPTY;
+    const allDates = records.filter((row) => row.date).map((row) => (new Date(row.date)).getTime());
+    const lastModifiedDate = allDates.length ? new Date(Math.max(...allDates)) : EMPTY;
 
     return lastModifiedDate;
   }

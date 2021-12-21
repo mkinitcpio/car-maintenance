@@ -1,0 +1,52 @@
+<section class="print-dialog">
+  <div class="print-dialog__config-section">
+    <h3 class="print-dialog__title">{{'PAGES.PDF_EXPORT.CONFIGURATIONS' | translate}}</h3>
+    <ubuntu-container [title]="'PAGES.PDF_EXPORT.PATH' | translate">
+      <div class="print-dialog__section">
+        <span class="print-dialog__path"
+              [matTooltipClass]="'mat-tooltip--long-text'"
+              [matTooltip]="saveDirectoryPath">
+          {{saveDirectoryPath}}
+        </span>
+        <button mat-button class="button button__edit" (click)="onEditFilePath()">{{'DIALOG.BUTTONS.CHANGE' | translate}}</button>
+      </div>
+    </ubuntu-container>
+
+    <ubuntu-container [title]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate">
+      <div class="print-dialog__section print-dialog__section--small">
+        <div cdkDropList class="columns" (cdkDropListDropped)="drop($event)">
+          <div class="print-dialog__column-container" *ngFor="let column of columns" cdkDrag>
+            <div class="column">
+              <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
+              <span class="column__name">{{column.name | translate}}</span>
+              <mat-checkbox [disabled]="column.id === 'name'"
+                            [checked]="column.visible"
+                            (change)="column.visible = !column.visible">
+              </mat-checkbox>
+            </div>
+            <mat-divider class="column__divider"></mat-divider>
+          </div>
+        </div>
+      </div>
+    </ubuntu-container>
+    <div class="print-dialog__buttons">
+      <button class="button button__cancel" mat-button (click)="dialogRef.close()">{{'DIALOG.BUTTONS.CANCEL' | translate}}</button>
+      <button class="button button__submit" mat-button (click)="onPrint()">{{'DIALOG.BUTTONS.EXPORT' | translate}}</button>
+    </div>
+  </div>
+
+  <mat-divider class="print-dialog__divider"
+               vertical="true">
+  </mat-divider>
+
+  <div class="print-dialog__preview-section">
+    <h3 class="print-dialog__title">{{'PAGES.PDF_EXPORT.PREVIEW' | translate}}</h3>
+    <div class="print-dialog__preview">
+      <app-preview-page #print
+                        [config]="config"
+                        [title]="data.title"
+                        [records]="data.records">
+      </app-preview-page>
+    </div>
+  </div>
+</section>
