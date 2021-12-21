@@ -10,6 +10,7 @@ import { NavigationModule } from '../navigation/navigation.module';
 import { DetailModule } from '../detail/detail.module';
 import { EmptyModule } from '../empty/empty.module';
 import { CategoryDetailsModule } from '../category-details/category-details.module';
+import { SideNavigationTrackerService } from './side-navigation-tracker.service';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -21,6 +22,9 @@ import { CategoryDetailsModule } from '../category-details/category-details.modu
     DetailModule,
     EmptyModule,
     CategoryDetailsModule,
+  ],
+  providers: [
+    SideNavigationTrackerService,
   ],
   exports: [
     HomeComponent,

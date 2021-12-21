@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .categories-tree-node {
   font-family: 'Ubuntu';
   width: 100%;
@@ -8,6 +12,7 @@
   &__sub-node {
     margin: 0;
     visibility: hidden;
+    overflow: hidden;
     transition: height 0.2s ease-out;
 
     &--expanded {
@@ -23,6 +28,8 @@
   }
 
   &__name {
+    max-width: 180px;
+
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -41,6 +48,7 @@
     color: rgba(0,0,0,.87);
     cursor: pointer;
     line-height: 1.5rem;
+    transition: background-color 0.1s linear;
 
     &:hover {
       color: #111;
@@ -94,8 +102,4 @@
   .categories-tree-node__icon--mono {
     filter: invert(1);
   }
-}
-
-ul {
-  padding-inline-start: 0px;
 }

@@ -9,11 +9,6 @@ html, body {
   background-color: white;
 }
 
-/* CAN (MUST) BE REMOVED ! Sample Global style */
-.container {
-  height: 100%;
-}
-
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
@@ -28,12 +23,27 @@ html, body {
   &-settings,
   &-notes {
     .mat-dialog-container {
-      height: 600px;
       width: 600px;
       padding: 0;
 
       border-radius: 8px 8px 0 0;
       overflow: hidden;
+    }
+  }
+
+  &-settings {
+    max-height: 80%;
+
+    .mat-dialog-container {
+      height: auto;
+    }
+  }
+
+  &-print {
+    height: 600px;
+
+    .mat-dialog-container {
+      background-color: #f7f7f7;
     }
   }
 }
@@ -67,5 +77,36 @@ html, body {
    margin-right: 4px;
 
    color: rgb(140, 140, 140);
+  }
+}
+
+.app {
+  &__image {
+    width: 128px;
+  }
+
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    top: 50%;
+    right: 50%;
+
+    transform: translate(50%,-50%);
+    animation: blinker 1.5s ease-in infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+body.no-animations {
+  * {
+    transition: none !important;
   }
 }

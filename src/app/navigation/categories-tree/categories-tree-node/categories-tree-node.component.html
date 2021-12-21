@@ -1,4 +1,4 @@
-<li class="categories-tree-node">
+<div class="categories-tree-node">
   <div class="categories-tree-node__content"
        [class.categories-tree-node__content--select]="selected === child.id"
        (click)="onSelect()">
@@ -22,7 +22,7 @@
     <mat-icon class="menu-button" [matMenuTriggerFor]="contextMenu" (click)="$event.stopPropagation()">more_horiz</mat-icon>
   </div>
   <ng-container>
-    <ul class="categories-tree-node__sub-node"
+    <div class="categories-tree-node__sub-node"
         [class.categories-tree-node__sub-node--expanded]="expand"
         [style.height]="expand ? child.children.length * 50 + 'px' : 0">
       <app-categories-tree-node *ngFor="let c of child.children"
@@ -33,9 +33,9 @@
                                 (select)="onSelect(c)"
                                 (delete)="onDelete(c)">
       </app-categories-tree-node>
-    </ul>
+    </div>
   </ng-container>
-</li>
+</div>
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>

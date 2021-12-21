@@ -36,7 +36,7 @@ export class ReleaseNotesComponent implements OnInit {
       this.selectedVersion = version;
     });
 
-    this.appLanguage = this.settingsService.settings.language;
+    this.appLanguage = this.settingsService.settings.language === 'it' ? 'en' : this.settingsService.settings.language;
   }
 
   public onDonateButtonClick(): void {

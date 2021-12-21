@@ -1,4 +1,5 @@
-<div class="navigation">
+<div class="navigation"
+     [class.navigation--minimize]="(sideNavService.collapse$ | async)">
   <div class="navigation__title-container">
     <button class="button button__create" mat-button (click)="addCategory()">
       <mat-icon>add</mat-icon>
@@ -15,6 +16,12 @@
                       (select)="onSelectCategory($event)"
                       (delete)="onDelete($event)">
   </app-categories-tree>
+
+  <div class="navigation__buttons">
+    <button mat-button class="button" appSideNavTracker>
+      <mat-icon class=" button__switcher-icon">chevron_left</mat-icon>
+    </button>
+  </div>
 </div>
 
 <mat-menu #contextMenu="matMenu">
@@ -22,9 +29,10 @@
       <button class="menu-item" mat-menu-item (click)="openSettings()">
         <span>{{"MENU.SETTINGS" | translate}}</span>
       </button>
-      <button class="menu-item" mat-menu-item (click)="onFeedback()">
+      <!--TODO: Uncomment when rewrite feedbacks -->
+      <!-- <button class="menu-item" mat-menu-item (click)="onFeedback()">
         <span>{{"MENU.FEEDBACK" | translate}}</span>
-      </button>
+      </button> -->
       <button class="menu-item" mat-menu-item (click)="openReleaseNotes()">
         <span>{{"MENU.WHATS_NEW" | translate}}</span>
       </button>

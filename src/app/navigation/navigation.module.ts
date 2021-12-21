@@ -11,9 +11,13 @@ import { navigationReducer } from './state/reducers';
 import { NavigationFacade } from './state/navigation.facade';
 import { NavigationEffects } from './state/effects';
 import { CategoriesTreeModule } from './categories-tree/categories-tree.module';
+import { SideNavTrackerDirective } from '../shared/directives/side-nav-tracker.directive';
 
 @NgModule({
-  declarations: [NavigationComponent],
+  declarations: [
+    NavigationComponent,
+    SideNavTrackerDirective
+  ],
   imports: [
     CommonModule,
     SharedModule,

@@ -26,7 +26,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field [floatLabel]="'always'" *ngIf="!categoryForm.get('parent').value">
+      <mat-form-field [floatLabel]="'always'" *ngIf="!categoryForm.get('parent')?.value">
         <mat-label>{{"DIALOG.FIELDS.ILLUSTRATION" | translate}}</mat-label>
           <mat-select [formControlName]="'illustration'">
             <mat-select-trigger class="create-dialog__illustration-container">

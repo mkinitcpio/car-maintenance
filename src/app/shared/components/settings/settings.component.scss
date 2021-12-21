@@ -74,11 +74,15 @@
     }
   }
 
+  &__item-container {
+    width: 70%;
+  }
+
   &__item-field {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 70%;
+    width: 100%;
   }
 
   &__multi-item-field-container {

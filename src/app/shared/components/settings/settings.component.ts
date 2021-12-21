@@ -89,4 +89,9 @@ export class SettingsComponent implements OnInit {
     this.settingsService.setCurrency(currency);
     this.settingsService.saveSettings();
   }
+
+  public onAnimationsChanged(event: MatSlideToggleChange): void {
+    this.settingsService.setAnimations(event.checked);
+    this.settingsService.saveSettings();
+  }
 }

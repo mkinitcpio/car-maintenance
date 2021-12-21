@@ -33,6 +33,7 @@ export class CreateDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data.mode === FormModeEnum.Edit) {
+      this.data.formData.illustration = this.data.formData.illustration || null,
       this.categoryForm.setValue(this.data.formData);
     }
 

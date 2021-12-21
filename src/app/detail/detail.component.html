@@ -3,9 +3,14 @@
     <div class="detail__title">
       {{name}}
     </div>
-    <button class="detail__add-button" mat-button (click)="onCreateRecord()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div class="detail__buttons">
+      <button class="detail__add-button" mat-button (click)="onCreateRecord()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button class="detail__add-button" mat-button (click)="onPrint()">
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+    </div>
   </div>
   <div class="detail__content">
     <div class="detail__cards">
@@ -16,7 +21,7 @@
       <div class="card">
         <div class="card__title">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}</div>
         <div class="card__stat">
-          <span>{{costSum | numberSeparator:settingsService.settings.region}}</span>
+          <span>{{costSum | numberSeparator}}</span>
           <app-currency [currency]="settingsService.settings.units?.currency"
                         [locale]="settingsService.settings.region">
           </app-currency>
