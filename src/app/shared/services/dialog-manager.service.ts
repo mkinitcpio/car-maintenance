@@ -99,13 +99,14 @@ export class DialogManagerService {
       });
   }
 
-  public openPrintDialog(data: Array<Record>): Observable<any> {
+  public openPrintDialog(data: { title: string, records: Array<Record> }): Observable<any> {
     return this.dialog
       .open(PrintDialogComponent, {
         disableClose: true,
         width: "820px",
         panelClass: "dialog-print",
         data,
+        autoFocus: false,
       })
       .afterClosed();
   }

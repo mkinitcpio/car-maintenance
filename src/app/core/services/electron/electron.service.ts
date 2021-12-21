@@ -5,6 +5,7 @@ import * as remote from '@electron/remote';
 import * as childProcess from 'child_process';
 import * as fs from 'fs';
 import * as os from 'os';
+import * as path from 'path';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class ElectronService {
   os: typeof os;
   dialog: typeof dialog;
   shell: typeof shell;
+  path: typeof path;
 
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);
@@ -31,6 +33,7 @@ export class ElectronService {
       this.dialog = window.require('@electron/remote').dialog;
       this.childProcess = window.require('child_process');
       this.fs = window.require('fs');
+      this.path = window.require('path');
       this.shell = window.require('electron').shell;
       this.remote = window.require('@electron/remote');
     }
