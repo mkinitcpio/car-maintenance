@@ -1,6 +1,38 @@
 {
-  "releases": ["2.5.0", "2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
+  "releases": ["2.6.0", "2.5.0", "2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.6.0": {
+      "ru": {
+        "features": [
+          {"text": "Экспорт в PDF файл;"},
+          {"text": "Скрытие бокового списка;"},
+          {"text": "Перевод на итальянский язык;"},
+          {"text": "Отключение анимации, для повышения производительности."}
+        ],
+        "bugFixes": [
+          {"text": "Прокрутка списка категорий в закрытом состоянии;"},
+          {"text": "Некорректная работа диалога подсписка категорий."}
+        ],
+        "improvements": [
+          {"text": "Добавлен лоадер при зазгрузке приложения."}
+        ]
+      },
+      "en": {
+        "features": [
+          {"text": "Export to PDF;"},
+          {"text": "Italian translation;"},
+          {"text": "Show/hide side bar;"},
+          {"text": "Turn on/off animations to improve performance."}
+        ],
+        "bugFixes": [
+          {"text": "Scroll category list in collapsed state;"},
+          {"text": "Broken category dialog for sub categories."}
+        ],
+        "improvements": [
+          {"text": "Loader for app startup."}
+        ]
+      }
+    },
     "2.5.0": {
       "ru": {
         "features": [

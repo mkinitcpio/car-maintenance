@@ -45,10 +45,10 @@
       "TEXT": "Seleziona Categoria"
     },
     "PDF_EXPORT": {
-      "CONFIGURATIONS": "Configuraciones",
-      "PATH": "Camino para salvar",
-      "ORDER_AND_VISIBILITY": "Orden y visibilidad",
-      "PREVIEW": "Avance"
+      "CONFIGURATIONS": "Opzioni",
+      "PATH": "Percorso",
+      "ORDER_AND_VISIBILITY": "Visualizzati",
+      "PREVIEW": "Anteprima"
     }
   },
   "MENU": {
