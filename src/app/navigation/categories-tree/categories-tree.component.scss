@@ -2,7 +2,12 @@
   display: block;
   padding: 12px 0;
 
-  overflow-y: auto;
+  overflow-y: overlay;
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #cdcdcdb3;
+    transition: background-color 0.1s ease-in;
+  }
 }
 
 .categories-tree {

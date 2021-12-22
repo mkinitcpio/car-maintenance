@@ -110,3 +110,17 @@ body.no-animations {
     transition: none !important;
   }
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  transition: all 0.1s ease-in;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cdcdcd;
+}
