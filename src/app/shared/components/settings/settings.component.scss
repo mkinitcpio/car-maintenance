@@ -1,3 +1,5 @@
+@use '/src/mixins' as mixins;
+
 .settings {
   height: 100%;
   display: flex;
@@ -42,9 +44,10 @@
   }
 
   &__content {
+    @include mixins.scrollable;
+
     height: 100%;
     padding: 32px;
-    overflow: auto;
 
     background: rgb(247, 247, 247);
 

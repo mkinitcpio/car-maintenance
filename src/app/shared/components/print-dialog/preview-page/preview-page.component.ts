@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ColumnConfig, PreviewPageConfig } from './preview-page-config';
-import { Record } from '../../../../detail/state/interface';
 import { SettingsService } from '../../settings/settings.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { appImageBase64 } from './app-image.base64';
+import { PrintDialogConfig } from '../print-dialog-config';
 
 @Component({
   selector: 'app-preview-page',
@@ -18,15 +18,12 @@ export class PreviewPageComponent implements OnInit {
   config: PreviewPageConfig;
 
   @Input()
-  title: string;
-
-  @Input()
-  records: Array<Record>;
+  data: PrintDialogConfig;
 
   public cost = 0;
+  public isMultiply: boolean;
 
   public readonly appIconBase64 = appImageBase64;
-
   public readonly dateFormat = 'd MMM, y';
 
   constructor(
@@ -35,7 +32,13 @@ export class PreviewPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cost = this.getResultCost(this.records);
+    const costs = this.data.tablesData
+      .map(table => table.records)
+      .flat(1)
+      .map(record => +record.cost)
+      .filter(Boolean);
+
+    this.cost = this.getResultCost(costs);
   }
 
   public trackById(columnConfig: ColumnConfig): string {
@@ -46,9 +49,7 @@ export class PreviewPageComponent implements OnInit {
     return this.config.columns.filter((column) => column.visible).map(c => c.id);
   }
 
-  private getResultCost(records: Record[]): number {
-    const costs = records.map((record) => +record.cost).filter(Boolean);
-
+  private getResultCost(costs: number[]): number {
     return costs.reduce((acc, cost) => acc + cost , 0);
   }
 

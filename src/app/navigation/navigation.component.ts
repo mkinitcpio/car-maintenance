@@ -133,7 +133,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public onSelectCategory(node: Category): void {
     this.selectedCategory = node;
     if(node.parent) {
-      this.router.navigate(['/details', node.id, node.name]);
+      this.router.navigate(['/details', node.id, node.parent, node.name]);
     } else {
       this.router.navigate(['/category-details', node.id]);
     }

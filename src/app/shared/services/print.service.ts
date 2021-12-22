@@ -22,8 +22,9 @@ export class PrintService {
     private electronService: ElectronService,
   ) { }
 
-  public print(path: string, printSection: string): Subject<void> {
-    const pdfFilePath = this.electronService.path.join(path, 'report.pdf');
+  public print(name: string, path: string, printSection: string): Subject<void> {
+    const fileName = `${name} (${(new Date().toLocaleDateString())}).pdf`;
+    const pdfFilePath = this.electronService.path.join(path, fileName.replace(/\//g, '\u2215'));
     const win = new this.electronService.remote.BrowserWindow({
       show: false,
       webPreferences: {
@@ -49,7 +50,7 @@ export class PrintService {
           }
 
           .currency__image {
-            height: 16px;
+            height: 18px;
           }
 
           .preview-page__cost-section {
@@ -58,8 +59,13 @@ export class PrintService {
             font-size: 18px;
           }
 
-          .preview-page__title {
+          .preview-page__title,
+          .preview-page__category-title {
             width: 60%;
+          }
+
+          .preview-page__category-section {
+            margin-bottom: 18px;
           }
 
           .preview-page__app-title-container {
@@ -103,6 +109,26 @@ export class PrintService {
           td.mat-column-cost,
           td.mat-column-mileage {
             white-space: nowrap;
+          }
+
+          .mat-column-date {
+            width: 15%;
+          }
+      
+          .mat-column-name {
+            width: 35%;
+          }
+      
+          .mat-column-notes {
+            width: 20%;
+          }
+      
+          .mat-column-mileage {
+            width: 15%;
+          }
+      
+          .mat-column-cost {
+            width: 15%;
           }
 
           th {

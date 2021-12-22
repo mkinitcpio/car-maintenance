@@ -6,12 +6,13 @@
 
   <hr class="preview-page__divider">
 
-  <div class="preview-page__title-container">
-    <h2 class="preview-page__title">{{title}}</h2>
+  <div *ngIf="data.multiply" class="preview-page__title-container">
+    <h2 class="preview-page__category-title">{{data.title}}</h2>
+
     <div class="preview-page__cost-section">
       <div class="preview-page__cost-section-text">
-        <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
-        <span style="font-weight: bold; white-space: nowrap;">{{cost | numberSeparator}}</span>
+        <span>{{"PAGES.PDF_EXPORT.TOTAL" | translate}}: </span>
+        <span style="font-weight: bold; white-space: nowrap;">{{cost | numberSeparator:this.settingsService.settings.region}}</span>
       </div>
       <app-currency [locale]="settingsService.settings.region"
                     [renderAs]="1"
@@ -20,25 +21,42 @@
       </app-currency>
     </div>
   </div>
-  <table class="preview-page__table" mat-table [dataSource]="records">
-    <ng-container *ngFor="let column of config.columns">
-      <ng-container [matColumnDef]="column.id">
-        <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
-        <td mat-cell *matCellDef="let record" [ngSwitch]="column.id"> 
-          <span *ngSwitchCase="'date'" class="preview-page__nowrap">
-            {{ record[column.id] | date:dateFormat }}
-          </span>
-          <span *ngSwitchCase="'cost'" class="preview-page__nowrap">
-            {{ record[column.id] | numberSeparator }}
-          </span>
-          <span *ngSwitchCase="'mileage'" class="preview-page__nowrap">
-            {{ record[column.id] | numberSeparator }}
-          </span>
-        <ng-container *ngSwitchDefault>{{ record[column.id] }}</ng-container> </td>
-      </ng-container>
-    </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <section class="preview-page__category-section" *ngFor="let category of data.tablesData">
+    <div class="preview-page__title-container">
+      <h3 class="preview-page__title">{{category.title}}</h3>
+      <div *ngIf="config.showTablesCostResult" class="preview-page__cost-section">
+        <div class="preview-page__cost-section-text">
+          <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
+          <span style="font-weight: bold; white-space: nowrap;">{{category.totalCost | numberSeparator:this.settingsService.settings.region}}</span>
+        </div>
+        <app-currency [locale]="settingsService.settings.region"
+                      [renderAs]="1"
+                      [size]="0"
+                      [currency]="settingsService.settings.units?.currency">
+        </app-currency>
+      </div>
+    </div>
+    <table class="preview-page__table" mat-table [dataSource]="category.records">
+      <ng-container *ngFor="let column of config.columns">
+        <ng-container [matColumnDef]="column.id">
+          <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
+          <td mat-cell *matCellDef="let record" [ngSwitch]="column.id"> 
+            <span *ngSwitchCase="'date'" class="preview-page__nowrap">
+              {{ record[column.id] | date:dateFormat }}
+            </span>
+            <span *ngSwitchCase="'cost'" class="preview-page__nowrap">
+              {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
+            </span>
+            <span *ngSwitchCase="'mileage'" class="preview-page__nowrap">
+              {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
+            </span>
+          <ng-container *ngSwitchDefault>{{ record[column.id] }}</ng-container> </td>
+        </ng-container>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </section>
 </div>

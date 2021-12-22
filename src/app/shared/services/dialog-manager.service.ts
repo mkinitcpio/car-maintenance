@@ -15,6 +15,7 @@ import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog
 import { SettingsComponent } from '../components/settings/settings.component';
 import { FeedbackDialogComponent } from '../components/feedback-dialog/feedback-dialog.component';
 import { PrintDialogComponent } from '../components/print-dialog/print-dialog.component';
+import { PrintDialogConfig } from '@shared/components/print-dialog/print-dialog-config';
 
 @Injectable({
   providedIn: 'root'
@@ -99,7 +100,7 @@ export class DialogManagerService {
       });
   }
 
-  public openPrintDialog(data: { title: string, records: Array<Record> }): Observable<void> {
+  public openPrintDialog(data: PrintDialogConfig): Observable<void> {
     return this.dialog
       .open(PrintDialogComponent, {
         disableClose: true,

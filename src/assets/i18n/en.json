@@ -48,7 +48,10 @@
       "CONFIGURATIONS": "Configurations",
       "PATH": "Path to save",
       "ORDER_AND_VISIBILITY": "Order and visibility",
-      "PREVIEW": "Preview"
+      "PREVIEW": "Preview",
+      "OTHER": "Other",
+      "SHOW_TOTAL_SUM": "Show total expense for each table",
+      "TOTAL": "Total"
     }
   },
   "MENU": {

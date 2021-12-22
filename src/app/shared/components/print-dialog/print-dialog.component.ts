@@ -7,7 +7,7 @@ import { ColumnConfig, PreviewPageConfig } from './preview-page/preview-page-con
 import { ElectronService } from '@core/services';
 
 import { defaultColumns } from './preview-page/default-columns';
-import { Record } from '../../../detail/state/interface';
+import { PrintDialogConfig } from './print-dialog-config';
 import { PrintService } from '../../services/print.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class PrintDialogComponent implements OnInit {
   @ViewChild('print', { read: ElementRef, static: false }) print;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { title: string, records: Array<Record> },
+    @Inject(MAT_DIALOG_DATA) public data: PrintDialogConfig,
     public dialogRef: MatDialogRef<PrintDialogComponent>,
     public printService: PrintService,
     private electronService: ElectronService,
@@ -34,9 +34,15 @@ export class PrintDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.records = [...this.data.records.slice(0, this.MAX_RECORDS_FOR_PREVIEW)];
+    this.data.tablesData = this.data.tablesData.filter(table => table.records.length);
+    this.data.tablesData
+      .forEach(table => {
+        table.records = table.records.slice(0, this.MAX_RECORDS_FOR_PREVIEW);
+      });
+
     this.columns = [...defaultColumns.map(column =>  ({...column}))];
     this.config = {
+      showTablesCostResult: true,
       columns: this.columns,
     };
   }
@@ -46,8 +52,10 @@ export class PrintDialogComponent implements OnInit {
   }
 
   public onPrint(): void {
+    const fileName = this.data.multiply ? this.data.title : this.data.tablesData[0].title;
+
     this.printService
-      .print(this.saveDirectoryPath, this.print.nativeElement.outerHTML as string)
+      .print(fileName, this.saveDirectoryPath, this.print.nativeElement.outerHTML as string)
       .subscribe(() => {
         this.dialogRef.close();
       });

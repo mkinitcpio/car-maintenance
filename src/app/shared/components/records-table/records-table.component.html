@@ -25,9 +25,9 @@
     </mat-header-cell>
     <mat-cell class="records-table__cell-mileage" *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.mileage | numberSeparator"
+           [matTooltip]="row.mileage | numberSeparator:this.settingsService.settings.region"
            [matTooltipPosition]="'above'">
-        {{row.mileage | numberSeparator}}
+        {{row.mileage | numberSeparator:this.settingsService.settings.region}}
       </div>
     </mat-cell>
   </ng-container>
@@ -53,9 +53,9 @@
     </mat-header-cell>
     <mat-cell class="records-table__cell-cost" *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.cost | numberSeparator"
+           [matTooltip]="row.cost | numberSeparator:this.settingsService.settings.region"
            [matTooltipPosition]="'above'">
-        {{row.cost | numberSeparator}}
+        {{row.cost | numberSeparator:this.settingsService.settings.region}}
       </div>
     </mat-cell>
   </ng-container>

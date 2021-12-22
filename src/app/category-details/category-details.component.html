@@ -3,12 +3,17 @@
     <div class="category-details__title">
       {{categoryDetails.name}}
     </div>
+    <div class="category-details__buttons">
+      <button class="category-details__add-button" mat-button (click)="onPrint()">
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+    </div>
   </div>
   <div class="category-details__content">
     <div class="category-details__scroll-fix"></div>
     <div class="category-details__table" *ngFor="let table of categoryDetails.tables">
       <div class="category-details__table-title">
-        <a class="category-details__link" routerLink="/details/{{table.id}}/{{table.name}}">
+        <a class="category-details__link" routerLink="/details/{{table.id}}/{{id}}/{{table.name}}">
           {{table.name}}
           <mat-icon class="category-details__link-icon">launch</mat-icon>
         </a>
