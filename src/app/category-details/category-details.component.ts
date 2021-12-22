@@ -37,7 +37,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     this.navigationFacade.editCategory$,
   );
 
-  private id: string;
+  public id: string;
   public category: CategoryTree;
   public categoryDetails: CategoryDetails;
 
@@ -103,6 +103,27 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .subscribe(() => {
         this.detailsFacade.deleteRecord(record.id);
       });
+  }
+
+  public onPrint(): void {
+    const tablesData = this.categoryDetails.tables
+      .map(table => ({
+        title: table.name,
+        records: table.data,
+        totalCost: this.getResultCost(table.data),
+      }));
+
+    this.dialogManagerService.openPrintDialog({
+      title: this.categoryDetails.name,
+      multiply: true,
+      tablesData,
+    });
+  }
+
+  private getResultCost(records: Record[]): number {
+    const costs = records.map((record) => +record.cost).filter(Boolean);
+
+    return costs.reduce((acc, cost) => acc + cost , 0);
   }
 
   private findRecord(id: string): Record {

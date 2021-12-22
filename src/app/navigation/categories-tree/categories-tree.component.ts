@@ -11,6 +11,9 @@ export class CategoriesTreeComponent implements OnInit {
   @Input()
   catagories: CategoryTree[];
 
+  @Input()
+  selected: string;
+
   @Output()
   add: EventEmitter<Category> = new EventEmitter();
 
@@ -43,7 +46,6 @@ export class CategoriesTreeComponent implements OnInit {
   }
 
   public onSelect(category: Category): void {
-    this.selectedCategory = category.id;
     this.select.emit(category);
   }
 

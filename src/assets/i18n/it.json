@@ -48,7 +48,9 @@
       "CONFIGURATIONS": "Opzioni",
       "PATH": "Percorso",
       "ORDER_AND_VISIBILITY": "Visualizzati",
-      "PREVIEW": "Anteprima"
+      "PREVIEW": "Anteprima",
+      "OTHER": "Altro",
+      "TOTAL": "Totale"
     }
   },
   "MENU": {

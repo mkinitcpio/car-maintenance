@@ -17,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonPipesModule } from '../shared/pipes/common-pipes.module';
 import { CurrencyModule } from '../shared/currency/currency.module';
+import { HomeRoutingModule } from 'app/home/home-routing.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CurrencyModule } from '../shared/currency/currency.module';
     MatIconModule,
     CommonPipesModule,
     CurrencyModule,
+    HomeRoutingModule,
   ],
   providers: [
     DetailsFacade,

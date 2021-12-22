@@ -1,8 +1,9 @@
+@use '/src/mixins' as mixins;
+
 :host {
   display: block;
   padding: 12px 0;
-
-  overflow-y: auto;
+  @include mixins.scrollable;
 }
 
 .categories-tree {

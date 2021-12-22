@@ -15,6 +15,7 @@ import { CommonPipesModule } from '../../pipes/common-pipes.module';
 import { CurrencyModule } from '../../currency/currency.module';
 import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-container.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CurrencyModule,
     UbuntuContainerModule,
     MatTooltipModule,
+    MatSlideToggleModule,
   ],
   exports: [
     PrintDialogComponent,

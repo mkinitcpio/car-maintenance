@@ -1,0 +1,11 @@
+@mixin scrollable {
+  overflow-y: overlay;
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #79797966;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #797979ad;
+  }
+}

@@ -3,9 +3,9 @@
   padding: 18px;
   aspect-ratio: 1 / 1.4142;
 
+  overflow: hidden;
   font-family: Ubuntu;
   background: white;
-
   box-sizing: border-box;
   border: 1px solid #ccc;
   user-select: none;
@@ -25,6 +25,16 @@
   &__app-title {
     font-size: 16px;
     margin: 0;
+  }
+
+  &__category-title {
+    width: 60%;
+
+    font-size: 12px;
+  }
+
+  &__category-section {
+    margin-bottom: 8px;
   }
 
   &__app-icon {
@@ -69,6 +79,26 @@
       border: 1px solid black;
       border-top: none;
       border-left: none;
+    }
+
+    .mat-column-date {
+      width: 15%;
+    }
+
+    .mat-column-name {
+      width: 35%;
+    }
+
+    .mat-column-notes {
+      width: 20%;
+    }
+
+    .mat-column-mileage {
+      width: 15%;
+    }
+
+    .mat-column-cost {
+      width: 15%;
     }
 
     th {

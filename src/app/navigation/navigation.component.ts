@@ -5,7 +5,7 @@ import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum"
 import { NavigationFacade } from "./state/navigation.facade";
 import { Category, CategoryTree } from "./state/interface";
 
-import { Router } from "@angular/router";
+import { NavigationEnd, Router } from "@angular/router";
 import { DialogManagerService } from "../shared/services/dialog-manager.service";
 
 import { listen } from "../core/decorators";
@@ -13,7 +13,7 @@ import { merge } from "rxjs";
 import { AutoCloseable } from "../core/auto-closeable";
 import { ElectronService } from "../core/services";
 import { ReleaseNotesService } from "../shared/components/release-notes/release-notes.service";
-import { filter, skip } from "rxjs/operators";
+import { filter, map, skip } from "rxjs/operators";
 import { DataBaseService } from "../core/database";
 
 import { SideNavigationTrackerService } from "../home/side-navigation-tracker.service";
@@ -40,6 +40,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   public dataSource = new MatTreeNestedDataSource<any>();
   public selectedCategory: Category;
+  public selected: string = null;
   public categories: CategoryTree[];
 
   private readonly repositoryLink = "https://github.com/mkinitcpio/car-maintenance";
@@ -57,6 +58,17 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.router.events
+      .pipe(
+        filter(e => e instanceof NavigationEnd),
+        map((e: NavigationEnd) => e.url.split('/').filter(Boolean)),
+        map(pathTokens => pathTokens[1]),
+      )
+      .subscribe((selectedCategory) => {
+        this.selected = selectedCategory;
+      });
+
     this.deleteCategory$
       .subscribe((deletedCategory) => {
         if(deletedCategory.id === this.selectedCategory?.id || deletedCategory.id === this.selectedCategory?.parent) {
@@ -121,7 +133,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public onSelectCategory(node: Category): void {
     this.selectedCategory = node;
     if(node.parent) {
-      this.router.navigate(['/details', node.id, node.name]);
+      this.router.navigate(['/details', node.id, node.parent, node.name]);
     } else {
       this.router.navigate(['/category-details', node.id]);
     }

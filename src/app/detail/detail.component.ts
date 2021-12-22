@@ -38,8 +38,8 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     this.detailsFacade.deleteDetail$,
   );
 
-  private parentId: string = null;
-
+  public parentId: string = null;
+  public id: string = null;
   public dataSourceTable: Record[] = [];
   public name: string = null;
   public costSum = 0;
@@ -53,7 +53,6 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     private detailsFacade: DetailsFacade,
     public settingsService: SettingsService,
     private dialogManagerService: DialogManagerService,
-    private electronService: ElectronService,
   ) {
     super();
   }
@@ -66,20 +65,21 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     });
 
     this.route.params.subscribe((params) => {
-      this.parentId = params['id'];
+      this.parentId = params['parentId'];
+      this.id = params['id'];
       this.name = params['name'];
-      this.detailsFacade.loadRecords(this.parentId);
+      this.detailsFacade.loadRecords(this.id);
     });
 
     this.detailChanges$.subscribe(() => {
-      this.detailsFacade.loadRecords(this.parentId);
+      this.detailsFacade.loadRecords(this.id);
     });
   }
 
   public onCreateRecord(): void {
     const data = {
       mode: FormModeEnum.Create,
-      parent: this.parentId,
+      parent: this.id,
     };
 
     this.dialogManagerService
@@ -92,7 +92,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   public onEdit(id: string): void {
     const data = {
       mode: FormModeEnum.Edit,
-      parent: this.parentId,
+      parent: this.id,
       formData: this.dataSourceTable.find(row => row.id === id),
     };
 
@@ -113,7 +113,14 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   public onPrint(): void {
     this.dialogManagerService
-      .openPrintDialog({title: this.name, records: this.dataSourceTable })
+      .openPrintDialog({
+        multiply: false,
+        tablesData: [{
+          title: this.name,
+          records: this.dataSourceTable,
+          totalCost: this.getResultCost(this.dataSourceTable),
+        }],
+      })
       .subscribe(() => {});
   }
 

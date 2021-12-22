@@ -11,6 +11,7 @@
   </div>
 
   <app-categories-tree [catagories]="categories"
+                      [selected]="selected"
                       (add)="addCategory($event)"
                       (edit)="onEdit($event)"
                       (select)="onSelectCategory($event)"

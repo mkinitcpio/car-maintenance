@@ -6,6 +6,7 @@ export interface FeatureState<T> {
 }
 
 export interface CategoryDetail {
+  id: string;
   name: string;
   data: Record[];
 }

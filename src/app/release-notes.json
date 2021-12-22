@@ -1,6 +1,31 @@
 {
-  "releases": ["2.6.1", "2.6.0", "2.5.0", "2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
+  "releases": ["2.7.0", "2.6.1", "2.6.0", "2.5.0", "2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
   "releaseNotes": {
+    "2.7.0": {
+      "en": {
+        "bugFixes": [],
+        "features": [
+          {"text": "Export all tables of selected category to PDF;"},
+          {"text": "Navigation from category details page to details page by click on title;"},
+          {"text": "Navigation from details page to category details page by click on 'tree' button."}
+        ],
+        "improvements": [
+          {"text": "Custom scrollbar"}
+        ]
+      },
+      "ru": {
+        "features": [
+          {"text": "Экспорт всех таблиц категории в PDF файл;"},
+          {"text": "Перемещение к деталям категории при нажатии на заголовок;"},
+          {"text": "Перемещение к списку сабкатегорий с помощью кнопки в заголовке."}
+        ],
+        "bugFixes": [
+        ],
+        "improvements": [
+          {"text": "Обновленный скроллбар"}
+        ]
+      }
+    },
     "2.6.1": {
       "en": {
         "features": [],

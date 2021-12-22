@@ -1,3 +1,5 @@
+@use '/src/mixins' as mixins;
+
 .category-details {
   height: 100%;
 
@@ -15,7 +17,39 @@
     font-family: Ubuntu;
     font-size: 24px;
     color: white;
-    font-weight: 100;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-button {
+    min-width: initial;
+    padding: 0 8px;
+
+    font-family: Ubuntu;
+    font-weight: normal;
+    background-color: rgb(75,72,72);
+    border: 1px solid rgb(43,42,42);
+    color: #fff;
+  }
+
+  &__link {
+    color: #222;
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+      .category-details__link-icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__link-icon {
+    font-size: 18px;
+    transition: font-size 0.2s linear;
   }
 
   &__scroll-fix {
@@ -26,9 +60,10 @@
   }
 
   &__content {
+    @include mixins.scrollable;
+
     padding: 0px 32px 32px 32px;
     height: calc(100% - 122px);
-    overflow-y: auto;
     position: relative;
   }
 
