@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 .detail {
   height: 100%;
   overflow: hidden;
@@ -93,7 +95,7 @@
 
       font-family: Ubuntu;
       font-size: 18px;
-      color: #111;
+      color: $font-primary;
     }
   }
 }

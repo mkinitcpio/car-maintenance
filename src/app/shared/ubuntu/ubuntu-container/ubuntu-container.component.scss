@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 :host {
   display: block;
 }
@@ -9,7 +11,7 @@
 
     font-family: 'Ubuntu';
     font-weight: bold;
-    color: #111;
+    color: $font-primary;
   }
 
   &__content {

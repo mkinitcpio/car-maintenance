@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 .release-notes {
   position: relative;
   height: 100%;
@@ -74,7 +76,7 @@
     width: 128px;
     font-family: Ubuntu;
     font-weight: normal;
-    color: #111;
+    color: $font-primary;
   }
   
   .button__submit {
@@ -95,7 +97,7 @@
     }
 
     p {
-      color: #111;
+      color: $font-primary;
       line-height: 1.4;
     }
 

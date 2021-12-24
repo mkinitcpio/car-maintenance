@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 .create-dialog {
   font-family: "Ubuntu";
 
@@ -44,7 +46,7 @@
       }
 
       mat-label {
-        color: #111;
+        color: $font-primary;
         font-weight: lighter;
         font-size: 20px;
       }
@@ -82,7 +84,7 @@
 .button {
   font-family: Ubuntu;
   font-weight: normal;
-  color: #111;
+  color: $font-primary;
 }
 
 .button__submit {

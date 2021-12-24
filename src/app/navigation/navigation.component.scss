@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 .navigation {
   height: 100%;
   display: flex;
@@ -28,7 +30,7 @@
   .button {
     font-family: Ubuntu;
     font-weight: normal;
-    color: #111;
+    color: $font-primary;
     min-width: initial;
     padding: 0 8px;
 

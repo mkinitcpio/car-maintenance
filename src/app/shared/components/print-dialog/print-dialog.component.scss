@@ -1,4 +1,5 @@
 @use '/src/mixins' as mixins;
+@import '/src/colors';
 
 .print-dialog {
   font-family: Ubuntu;
@@ -187,7 +188,7 @@
   width: 92px;
   font-family: Ubuntu;
   font-weight: normal;
-  color: #111;
+  color: $font-primary;
 }
 
 .button__edit {

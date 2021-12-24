@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 .create-record {
 
   &__header {
@@ -43,7 +45,7 @@
       }
 
       mat-label {
-        color: #111;
+        color: $font-primary;
         font-weight: lighter;
         font-size: 20px;
       }
@@ -62,7 +64,7 @@
 .button {
   font-family: Ubuntu;
   font-weight: normal;
-  color: #111;
+  color: $font-primary;
 }
 
 .button__submit {
