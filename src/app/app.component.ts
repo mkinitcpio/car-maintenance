@@ -3,6 +3,7 @@ import {DataBaseService} from "./core/database";
 import {AutoCloseable} from "./core/auto-closeable";
 import { SettingsService } from './shared/components/settings/settings.service';
 import { DOCUMENT } from '@angular/common';
+import { NotificationService } from '@core/services';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent extends AutoCloseable {
   constructor(
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
+    private notificationService: NotificationService,
     @Inject(DOCUMENT) private document: Document,
   ) {
     super();
