@@ -63,12 +63,12 @@
 
     &--select {
       color: white;
-      background: rgb(233,84,32);
+      background: var(--primary-color);
     }
 
     &--select:hover {
       color: white;
-      background: rgb(216, 82, 35);
+      background: var(--primary-color);
 
       > .menu-button {
         color: white;

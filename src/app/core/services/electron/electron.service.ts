@@ -20,6 +20,7 @@ export class ElectronService {
   dialog: typeof dialog;
   shell: typeof shell;
   path: typeof path;
+  systemPreferences :typeof remote.systemPreferences
 
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);
@@ -36,6 +37,7 @@ export class ElectronService {
       this.path = window.require('path');
       this.shell = window.require('electron').shell;
       this.remote = window.require('@electron/remote');
+      this.systemPreferences= window.require('@electron/remote').systemPreferences
     }
   }
 }
