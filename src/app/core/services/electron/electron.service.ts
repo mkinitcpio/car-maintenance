@@ -20,7 +20,7 @@ export class ElectronService {
   dialog: typeof dialog;
   shell: typeof shell;
   path: typeof path;
-  systemPreferences :typeof remote.systemPreferences
+  systemPreferences: typeof remote.systemPreferences;
 
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);

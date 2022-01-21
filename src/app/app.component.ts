@@ -4,7 +4,7 @@ import { AutoCloseable } from "./core/auto-closeable";
 import { SettingsService } from "./shared/components/settings/settings.service";
 import { DOCUMENT } from "@angular/common";
 import { NotificationService } from "@core/services";
-import { ThemeService } from "../app/core/services/theme.service";
+import { ThemeService } from "@core/services/theme.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
