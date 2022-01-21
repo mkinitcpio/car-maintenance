@@ -102,10 +102,10 @@
 
   &__toggle.mat-checked {
     .mat-slide-toggle-bar {
-      background-color: #ff9069;
+      background-color:var(--secondary-color);
     }
     .mat-slide-toggle-thumb {
-      background-color: #e95420;
+      background-color: var(--primary-color);
     }
   }
 
@@ -121,7 +121,7 @@
   }
 
   .mat-button-toggle-checked {
-    background: #e95420;
+    background: var(--primary-color);
     line-height: initial;
     color: white;
   }

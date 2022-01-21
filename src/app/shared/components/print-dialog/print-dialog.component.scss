@@ -87,12 +87,12 @@
       background-color: #ff9069;
     }
     ::ng-deep .mat-slide-toggle-thumb {
-      background-color: #e95420;
+      background-color: var(--primary-color);
     }
   }
 
   .mat-button-toggle-checked {
-    background: #e95420;
+    background: var(--primary-color);
     line-height: initial;
     color: white;
   }
@@ -212,11 +212,11 @@
 
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
 .mat-checkbox-indeterminate .mat-checkbox-background {
-  background-color: #e95420 !important;
+  background-color: var(--primary-color) !important;
 }
 
 ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
-  background-color: #e95420 !important;
+  background-color: var(--primary-color) !important;
 }
 
 ::ng-deep .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background,
