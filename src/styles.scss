@@ -5,7 +5,7 @@ html, body {
   overflow: hidden;
 
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu";
   background-color: white;
 }
 
@@ -49,35 +49,74 @@ html, body {
 }
 
 .mat-tooltip {
-  font-family: Ubuntu;
   font-weight: normal;
   font-size: 14px;
   line-height: 1.5;
   background: #333;
-  border-radius: 0 !important;
+  border-radius: 8px !important;
 }
 
 .mat-tooltip--long-text {
   word-break: break-all;
 }
 
-.mat-select-value-text,
-.mat-date-picker-input {
-  font-family: 'Ubuntu';
-}
-
 .menu-item.mat-menu-item {
   display: flex;
   align-items: center;
 
-  font-family: 'Ubuntu';
+  padding: 0 12px;
+
   color: #111;
+  font-size: 14px !important;
+  height: 40px;
+  line-height: 40px;
 
  .mat-icon {
-   margin-right: 4px;
-
-   color: rgb(140, 140, 140);
+   margin-right: 8px;
+   color: #3c3a3a !important;
+   font-size: 20px;
+   height: 20px;
+   width: 20px;
   }
+
+  &.menu-item--delete {
+    color: #c7162b !important;
+
+    .mat-icon {
+      color: #c7162b !important;
+    }
+  }
+}
+
+.menu-item.mat-menu-item:hover {
+  .mat-icon {
+    animation: shake 0.5s ease-out both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-2px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(2px, 0, 0);
+    }
+  }
+}
+
+.mat-menu-panel {
+  border-radius: 8px !important;
 }
 
 .app {
