@@ -5,7 +5,6 @@ html, body {
   overflow: hidden;
 
   height: 100%;
-  font-family: "Ubuntu";
   background-color: white;
 }
 
@@ -49,6 +48,7 @@ html, body {
 }
 
 .mat-tooltip {
+  font-family: Ubuntu;
   font-weight: normal;
   font-size: 14px;
   line-height: 1.5;
@@ -60,12 +60,18 @@ html, body {
   word-break: break-all;
 }
 
+.mat-select-value-text,
+.mat-date-picker-input {
+  font-family: 'Ubuntu';
+}
+
 .menu-item.mat-menu-item {
   display: flex;
   align-items: center;
 
   padding: 0 12px;
 
+  font-family: 'Ubuntu';
   color: #111;
   font-size: 14px !important;
   height: 40px;
@@ -90,10 +96,21 @@ html, body {
 
 .menu-item.mat-menu-item:hover {
   .mat-icon {
-    animation: shake 0.5s ease-out both;
-    transform: translate3d(0, 0, 0);
+    animation: shake 0.5s ease-in both;
     backface-visibility: hidden;
     perspective: 1000px;
+
+    &.mat-item__icon--add {
+      animation: punch 0.5s ease-in;
+    }
+
+    &.mat-item__icon--rotate {
+      animation: rotation 0.5s ease-in;
+    }
+
+    &.mat-item__icon--delete {
+      animation: squeeze 0.5s ease-in;
+    }
   }
   
   @keyframes shake {
@@ -111,6 +128,71 @@ html, body {
   
     40%, 60% {
       transform: translate3d(2px, 0, 0);
+    }
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg) scale(1);
+    }
+    30% {
+      transform: rotate(45deg) scale(0.8);
+    }
+    70% {
+      transform: rotate(225deg) scale(1.2);
+    }
+    80% {
+      transform: rotate(405deg) scale(0.9);
+    }
+    90% {
+      transform: rotate(495deg) scale(1.1);
+    }
+    to {
+      transform: rotate(540deg) scale(1);
+    }
+  }
+
+  @keyframes punch {
+    from {
+      transform: scaleX(1);
+    }
+
+    20% {
+      transform: scale(1.2, 1.2);
+    }
+
+    50% {
+      transform: scale(0.8, 0.8);
+    }
+
+    70% {
+      transform: scale(1.1, 1.1);
+    }
+
+    to {
+      transform: scale(1, 1);
+    }
+  }
+
+  @keyframes squeeze {
+    from {
+      transform: scaleX(1);
+    }
+
+    20% {
+      transform: scaleY(0.6) scaleX(1.4);
+    }
+
+    50% {
+      transform: scaleY(1) scaleX(1);
+    }
+
+    70% {
+      transform: scaleY(0.8) scaleX(1.2);
+    }
+
+    to {
+      transform: scaleY(1) scaleX(1);
     }
   }
 }

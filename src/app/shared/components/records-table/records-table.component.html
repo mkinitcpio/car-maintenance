@@ -63,7 +63,8 @@
   <ng-container matColumnDef="notes">
     <mat-header-cell *matHeaderCellDef class="records-table__cell-note"> {{"RECORDS_TABLE.COMMENT" | translate}} </mat-header-cell>
     <mat-cell class="records-table__cell-note" *matCellDef="let row">
-      <mat-icon *ngIf="row.notes"
+      <mat-icon class="records-table__note-icon"
+                *ngIf="row.notes"
                 [matTooltip]="row.notes"
                 [matTooltipPosition]="'above'">
         description
@@ -88,7 +89,7 @@
       <span>{{"MENU.EDIT" | translate}}</span>
     </button>
     <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-      <mat-icon>delete</mat-icon>
+      <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
       <span>{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>
