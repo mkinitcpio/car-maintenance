@@ -27,7 +27,8 @@
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
-      <button class="menu-item" mat-menu-item (click)="openSettings()">
+      <button class="menu-item rotate" mat-menu-item (click)="openSettings()">
+        <mat-icon class="mat-item__icon mat-item__icon--rotate">settings</mat-icon>
         <span>{{"MENU.SETTINGS" | translate}}</span>
       </button>
       <!--TODO: Uncomment when rewrite feedbacks -->
@@ -35,9 +36,11 @@
         <span>{{"MENU.FEEDBACK" | translate}}</span>
       </button> -->
       <button class="menu-item" mat-menu-item (click)="openReleaseNotes()">
+        <mat-icon>newspaper</mat-icon>
         <span>{{"MENU.WHATS_NEW" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="openRepository()">
+        <mat-icon>info</mat-icon>
         <span>{{"MENU.GITHUB" | translate}}</span>
       </button>
   </ng-template>

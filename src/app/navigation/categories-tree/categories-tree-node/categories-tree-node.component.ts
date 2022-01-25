@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { filter } from 'rxjs/operators';
 import { IconTypeEnum } from '../../../shared/components/settings/icon-type.enum';
 import { SettingsTypeEnum } from '../../../shared/components/settings/settings-type.enum';
@@ -11,6 +12,9 @@ import { Category, CategoryTree } from '../../state/interface';
   styleUrls: ['./categories-tree-node.component.scss']
 })
 export class CategoriesTreeNodeComponent implements OnInit {
+
+  @ViewChild(MatMenuTrigger)
+  contextMenu: MatMenuTrigger;
 
   @Input()
   child: CategoryTree;
@@ -38,6 +42,8 @@ export class CategoriesTreeNodeComponent implements OnInit {
 
   public expand = false;
 
+  contextMenuPosition = { x: '0px', y: '0px' };
+
   constructor(public settingsService: SettingsService) { }
 
   ngOnInit(): void {
@@ -46,6 +52,14 @@ export class CategoriesTreeNodeComponent implements OnInit {
       .subscribe(() => {
         this.iconsPath = `assets/category-icons/${this.settingsService.settings.appearance.iconPack}/${this.settingsService.settings.appearance.type}/`;
       });
+  }
+
+  onContextMenu(event: MouseEvent) {
+    event.preventDefault();
+    this.contextMenuPosition.x = `${event.clientX}px`;
+    this.contextMenuPosition.y = `${event.clientY}px`;
+    this.contextMenu.menu.focusFirstItem('mouse');
+    this.contextMenu.openMenu();
   }
 
   public onAdd(): void {

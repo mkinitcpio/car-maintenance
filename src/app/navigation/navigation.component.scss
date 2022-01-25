@@ -22,7 +22,7 @@
   &__buttons {
     display: flex;
     justify-content: flex-end;
-    padding: 8px 12px;
+    padding: 4px 10px;
 
     border-top: 1px solid rgba(0,0,0,0.2);
   }
@@ -33,6 +33,8 @@
     color: $font-primary;
     min-width: initial;
     padding: 0 8px;
+
+    border-radius: 8px;
 
     &__switcher-icon {
       transition: transform 0.2s ease-in;
