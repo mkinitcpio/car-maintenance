@@ -74,7 +74,7 @@
           {{"PAGES.SETTINGS.FIELDS.METRIC_SYSTEM" | translate}}
         </div>
         <div class="settings__item-container">
-          <mat-button-toggle-group [value]="MetricSystemEnum[settingsService.settings.units?.metricSystem] || MetricSystemEnum[settingsService.settings.region]" (change)="onMetricSystemChanged($event.value)">
+          <mat-button-toggle-group class="settings__toggle-group" [value]="MetricSystemEnum[settingsService.settings.units?.metricSystem] || MetricSystemEnum[settingsService.settings.region]" (change)="onMetricSystemChanged($event.value)">
             <mat-button-toggle [value]="MetricSystemEnum.Mi">{{"METRIC_SYSTEM.MILES" | translate}}</mat-button-toggle>
             <mat-button-toggle [value]="MetricSystemEnum.Km">{{"METRIC_SYSTEM.KILOMETERS" | translate}}</mat-button-toggle>
           </mat-button-toggle-group>
