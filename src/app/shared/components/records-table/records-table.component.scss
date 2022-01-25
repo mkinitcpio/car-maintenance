@@ -1,9 +1,13 @@
+@import '/src/colors';
+
 .records-table {
   font-family: Ubuntu;
   overflow-y: overlay;
 
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+
+  user-select: none;
 
   &__menu-button {
     cursor: pointer;
@@ -19,6 +23,14 @@
     flex: 0 0 24px;
   }
 
+  .records-table__header {
+    min-height: 48px;
+  }
+  
+  .records-table__row {
+    min-height: 42px;
+  }
+
   &__cell-cost {
     flex: 0 0 82px;
   }
@@ -29,7 +41,6 @@
 
   &__cell-note {
     flex: 0 0 48px;
-    color: #666;
   }
 
   &__cell-mileage {
@@ -51,9 +62,5 @@
     background: #F7F7F7;
 
     cursor: pointer;
-  }
-
-  .mat-row:hover .records-table__menu-column {
-    visibility: visible;
   }
 }

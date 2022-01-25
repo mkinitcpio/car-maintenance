@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { Record } from '../../../detail/state/interface';
 import { CurrencySizeEnum } from '../../currency/currency-size.enum';
 import { CurrencyEnum } from '../settings/currency.enum';
@@ -13,6 +14,9 @@ import { SettingsService } from '../settings/settings.service';
 })
 export class RecordsTableComponent {
 
+  @ViewChild(MatMenuTrigger)
+  contextMenu: MatMenuTrigger;
+
   @Input()
   data: Record[];
 
@@ -26,7 +30,7 @@ export class RecordsTableComponent {
   delete: EventEmitter<Record> = new EventEmitter();
 
   public context: Record;
-  public displayedColumns: string[] = ['position', 'name', 'mileage', 'date', 'cost', 'notes', 'menu'];
+  public displayedColumns: string[] = ['position', 'name', 'mileage', 'date', 'cost', 'notes'];
 
   public CurrencyEnum = CurrencyEnum;
   public LocaleEnum = LocaleEnum;
@@ -35,6 +39,7 @@ export class RecordsTableComponent {
 
   public separator = ' ';
   public dateFormat = 'd MMM, y';
+  contextMenuPosition = { x: '0px', y: '0px' };
 
   constructor(public settingsService: SettingsService) { }
 
@@ -44,5 +49,14 @@ export class RecordsTableComponent {
 
   public onDelete(): void {
     this.delete.emit(this.context);
+  }
+
+  onContextMenu(event: MouseEvent, row: Record) {
+    event.preventDefault();
+    this.context = row;
+    this.contextMenuPosition.x = `${event.clientX}px`;
+    this.contextMenuPosition.y =`${event.clientY}px`;
+    this.contextMenu.menu.focusFirstItem('mouse');
+    this.contextMenu.openMenu();
   }
 }

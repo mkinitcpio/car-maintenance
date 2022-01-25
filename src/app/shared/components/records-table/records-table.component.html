@@ -71,27 +71,24 @@
     </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="menu">
-    <mat-header-cell  class="records-table__menu-column" *matHeaderCellDef></mat-header-cell>
-    <mat-cell  class="records-table__menu-column"  *matCellDef="let row">
-      <mat-icon class="detail__menu-button"
-                [matMenuTriggerFor]="contextMenu"
-                (click)="context = row; $event.stopPropagation()">
-        more_horiz
-      </mat-icon>
-    </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  <mat-header-row class="records-table__header" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  <mat-row class="records-table__row" *matRowDef="let row; columns: displayedColumns" (contextmenu)="onContextMenu($event, row)">
+  </mat-row>
 </mat-table>
+<div style="visibility: hidden; position: fixed"
+     [style.left]="contextMenuPosition.x"
+     [style.top]="contextMenuPosition.y"
+     [matMenuTriggerFor]="contextMenu">
+</div>
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
     <button class="menu-item" mat-menu-item (click)="onEdit()">
+      <mat-icon>edit</mat-icon>
       <span>{{"MENU.EDIT" | translate}}</span>
     </button>
-    <button class="menu-item" mat-menu-item (click)="onDelete()">
+    <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
       <span>{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>
