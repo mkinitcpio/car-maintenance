@@ -7,11 +7,28 @@
 .ubuntu-container {
 
   &__header {
-    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 36px;
+    margin-bottom: 8px;
 
     font-family: 'Ubuntu';
     font-weight: bold;
     color: $font-primary;
+  }
+
+  &__info {
+    height: 14px;
+    width: 14px;
+
+    font-size: 15px;
+    color: $font-secondary;
+    cursor: pointer;
+  }
+
+  &__actions {
+    margin-left: auto;
   }
 
   &__content {
