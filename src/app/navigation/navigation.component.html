@@ -1,7 +1,7 @@
 <div class="navigation"
      [class.navigation--minimize]="(sideNavService.collapse$ | async)">
   <div class="navigation__title-container">
-    <button class="button button__create" mat-button (click)="addCategory()">
+    <button class="button button__create" mat-button [matMenuTriggerFor]="creationMenu">
       <mat-icon>add</mat-icon>
     </button>
 
@@ -42,6 +42,19 @@
       <button class="menu-item" mat-menu-item (click)="openRepository()">
         <mat-icon>info</mat-icon>
         <span>{{"MENU.GITHUB" | translate}}</span>
+      </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #creationMenu="matMenu">
+  <ng-template matMenuContent>
+      <button class="menu-item rotate" mat-menu-item>
+        <mat-icon class="mat-item__icon mat-item__icon--add-car">airport_shuttle</mat-icon>
+        <span>{{"Car" | translate}}</span>
+      </button>
+      <button class="menu-item" mat-menu-item (click)="addCategory()">
+        <mat-icon class="mat-item__icon mat-item__icon--add">post_add</mat-icon>
+        <span>{{"Category" | translate}}</span>
       </button>
   </ng-template>
 </mat-menu>
