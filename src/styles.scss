@@ -20,9 +20,9 @@ html, body {
   }
 
   &-settings,
+  &-car,
   &-notes {
     .mat-dialog-container {
-      width: 600px;
       padding: 0;
 
       border-radius: 8px 8px 0 0;
@@ -31,6 +31,14 @@ html, body {
   }
 
   &-settings {
+    max-height: 80%;
+
+    .mat-dialog-container {
+      height: auto;
+    }
+  }
+
+  &-car {
     max-height: 80%;
 
     .mat-dialog-container {
@@ -111,6 +119,10 @@ html, body {
     &.mat-item__icon--delete {
       animation: squeeze 0.5s ease-in;
     }
+
+    &.mat-item__icon--add-car {
+      animation: movement 0.5s ease-in;
+    }
   }
   
   @keyframes shake {
@@ -135,20 +147,20 @@ html, body {
     from {
       transform: rotate(0deg) scale(1);
     }
-    30% {
-      transform: rotate(45deg) scale(0.8);
+    60% {
+      transform: rotate(180deg) scale(0.8);
     }
     70% {
-      transform: rotate(225deg) scale(1.2);
+      transform: rotate(220deg)
     }
     80% {
-      transform: rotate(405deg) scale(0.9);
+      transform: rotate(240deg)
     }
     90% {
-      transform: rotate(495deg) scale(1.1);
+      transform: rotate(250deg);
     }
     to {
-      transform: rotate(540deg) scale(1);
+      transform: rotate(255deg) scale(1);
     }
   }
 
@@ -167,6 +179,28 @@ html, body {
 
     70% {
       transform: scale(1.1, 1.1);
+    }
+
+    to {
+      transform: scale(1, 1);
+    }
+  }
+
+  @keyframes movement {
+    from {
+      transform: scaleX(1);
+    }
+
+    20% {
+      transform: scale(1.2, 0.8) translate3d(-4px, 0, 0) rotate(-5deg);
+    }
+
+    50% {
+      transform: scale(1, 1);
+    }
+
+    70% {
+      transform: scale(0.6, 1.4) translate3d(4px, 0, 0) rotate(5deg);
     }
 
     to {
