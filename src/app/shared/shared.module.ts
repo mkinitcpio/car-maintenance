@@ -19,6 +19,7 @@ import { UbuntuCloseButtonModule } from './ubuntu/ubuntu-close-button/ubuntu-clo
 import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-container.module';
 import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
 import { PrintDialogModule } from './components/print-dialog/print-dialog.module';
+import { TabsModule } from './components/tabs/tabs.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PrintDialogModule } from './components/print-dialog/print-dialog.module
     UbuntuContainerModule,
     FeedbackDialogModule,
     PrintDialogModule,
+    TabsModule,
   ],
   exports: [
     TranslateModule,

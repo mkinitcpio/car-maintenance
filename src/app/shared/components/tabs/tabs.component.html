@@ -1,0 +1,11 @@
+<div class="tabs">
+  <div class="tabs__tab-background" [ngStyle]="{
+    'left.px': (tabWidth * selectedtab) + (4 * (selectedtab + 1))
+  }"></div>
+  <div class="tabs__tab"
+       [class.tabs__tab--selected]="selectedtab === i"
+       *ngFor="let tab of ['Cars', 'Categories']; let i = index;"
+       (click)="selectedtab = i">
+    {{tab}}
+  </div>
+</div>

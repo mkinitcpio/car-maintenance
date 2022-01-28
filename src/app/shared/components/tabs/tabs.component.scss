@@ -1,0 +1,39 @@
+@import "/src/colors";
+
+.tabs {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+  padding: 4px;
+  background: var(--secondary-color);
+  font-family: Ubuntu;
+  font-size: 14px;
+  cursor: pointer;
+
+  &__tab-background {
+    position: absolute;
+    top: 4px;
+    height: 32px;
+    width: 133.5px;
+    background: white;
+    border-radius: 8px;
+    transition: left 0.4s ease-in-out;
+  }
+
+  &__tab {
+    color: var(--primary-color);
+    padding: 8px 0;
+    text-align: center;
+    flex: 1 1 50%;
+    border-radius: 8px;
+    z-index: 1;
+    transition: color 0.4s ease-in-out;
+
+    &--selected {
+      color: $font-secondary;
+    }
+  }
+}

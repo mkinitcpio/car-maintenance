@@ -11,7 +11,7 @@ export class ThemeService {
 
   constructor(private electronService: ElectronService) {}
 
-  private getSecondaryColor(color: string, percent: number): string {
+  private getSecondaryColor(color: string, percent: number, opacity = ""): string {
     const calc = (sub1, sub2) =>
       Math.min(
         255,
@@ -19,18 +19,18 @@ export class ThemeService {
       )
         .toString(16)
         .padStart(2, "0");
-    return `#${calc(1, 2)}${calc(3, 2)}${calc(5, 2)}`;
+    return `#${calc(1, 2)}${calc(3, 2)}${calc(5, 2)}${opacity}`;
   }
 
   private changeThemeColors(primary: string): void {
     document.documentElement.style.setProperty(
       "--primary-color",
-      `#${primary}`
+      this.getSecondaryColor(`#${primary}`, 1),
     );
 
     document.documentElement.style.setProperty(
       "--secondary-color",
-      this.getSecondaryColor(`#${primary}`, 1.5)
+      this.getSecondaryColor(`#${primary}`, 1, "30"),
     );
   }
 
