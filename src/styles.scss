@@ -78,13 +78,14 @@ html, body {
   display: flex;
   align-items: center;
 
-  padding: 0 12px;
+  padding: 0 8px;
 
   font-family: 'Ubuntu';
   color: #111;
   font-size: 14px !important;
-  height: 40px;
-  line-height: 40px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 8px;
 
  .mat-icon {
    margin-right: 8px;
@@ -104,6 +105,8 @@ html, body {
 }
 
 .menu-item.mat-menu-item:hover {
+  background: rgba(0,0,0,0.05);
+
   .mat-icon {
     animation: shake 0.5s ease-in both;
     backface-visibility: hidden;
@@ -193,7 +196,7 @@ html, body {
     }
 
     20% {
-      transform: scale(1.2, 0.8) translate3d(-6px, 0, 0) rotate(-5deg);
+      transform: scale(1.2, 0.8) translate3d(-4px, 0, 0) rotate(-5deg);
     }
 
     50% {
@@ -201,7 +204,7 @@ html, body {
     }
 
     70% {
-      transform: scale(0.6, 1.4) translate3d(6px, 0, 0) rotate(5deg);
+      transform: scale(0.6, 1.4) translate3d(4px, 0, 0) rotate(5deg);
     }
 
     to {
@@ -235,7 +238,20 @@ html, body {
 }
 
 .mat-menu-panel {
+  min-width: initial !important;
   border-radius: 8px !important;
+  background: #ffffffa3;
+  backdrop-filter: saturate(180%) blur(10px);
+
+  .mat-menu-content {
+    padding: 4px !important;
+  }
+
+  .mat-menu__divider {
+    height: 1px;
+    margin: 4px 8px;
+    background: #ccc;
+  }
 }
 
 .mat-select-panel {
