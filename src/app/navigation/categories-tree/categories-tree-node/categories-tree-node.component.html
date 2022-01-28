@@ -4,7 +4,7 @@
        [style.top]="contextMenuPosition.y"
        [matMenuTriggerFor]="contextMenu">
   </div>
-  <div class="categories-tree-node__content"
+  <div matRipple class="categories-tree-node__content"
        [class.categories-tree-node__content--select]="selected === child.id"
        (click)="onSelect()"
        (contextmenu)="onContextMenu($event)">
