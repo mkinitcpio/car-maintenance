@@ -8,14 +8,6 @@
        [class.categories-tree-node__content--select]="selected === child.id"
        (click)="onSelect()"
        (contextmenu)="onContextMenu($event)">
-    <div class="categories-tree-node__expand-button-container">
-      <mat-icon class="categories-tree-node__expand-button"
-                [class.categories-tree-node__expand-button--expanded]="expand"
-                *ngIf="child.children?.length"
-                (click)="expand = !expand; $event.stopPropagation()">
-        chevron_right
-      </mat-icon>
-    </div>
     <div class="categories-tree-node__icon-container">
       <img class="categories-tree-node__icon"
             [class.categories-tree-node__icon--mono]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
@@ -25,6 +17,14 @@
     <span class="categories-tree-node__name">
       {{child.name}}
     </span>
+    <div class="categories-tree-node__expand-button-container">
+      <mat-icon class="categories-tree-node__expand-button"
+                [class.categories-tree-node__expand-button--expanded]="expand"
+                *ngIf="child.children?.length"
+                (click)="expand = !expand; $event.stopPropagation()">
+        chevron_right
+      </mat-icon>
+    </div>
   </div>
   <ng-container>
     <div class="categories-tree-node__sub-node"
@@ -52,6 +52,7 @@
         <mat-icon>edit</mat-icon>
         <span>{{"MENU.EDIT" | translate}}</span>
       </button>
+      <div class="mat-menu__divider"></div>
       <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
         <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
         <span>{{"MENU.DELETE" | translate}}</span>

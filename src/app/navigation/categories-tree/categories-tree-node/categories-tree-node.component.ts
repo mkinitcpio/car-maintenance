@@ -58,7 +58,6 @@ export class CategoriesTreeNodeComponent implements OnInit {
     event.preventDefault();
     this.contextMenuPosition.x = `${event.clientX}px`;
     this.contextMenuPosition.y = `${event.clientY}px`;
-    this.contextMenu.menu.focusFirstItem('mouse');
     this.contextMenu.openMenu();
   }
 
