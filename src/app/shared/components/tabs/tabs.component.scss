@@ -1,39 +1,80 @@
+@use '/src/mixins' as mixins;
 @import "/src/colors";
 
-.tabs {
-  position: relative;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  border-radius: 8px;
-  padding: 4px;
-  background: var(--secondary-color);
-  font-family: Ubuntu;
-  font-size: 14px;
-  cursor: pointer;
+:host {
+  overflow: hidden;
+}
 
-  &__tab-background {
-    position: absolute;
-    top: 4px;
+.tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__tabs-section {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
     height: 32px;
-    width: 133.5px;
-    background: white;
-    border-radius: 8px;
-    transition: left 0.4s ease-in-out;
+  }
+
+  &__title {
+    padding: 8px 12px;
+
+    background: $background-header-primary;
+    font-family: Ubuntu;
+    font-size: 14px;
   }
 
   &__tab {
-    color: var(--primary-color);
-    padding: 8px 0;
-    text-align: center;
-    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: 8px;
+    color: white;
     z-index: 1;
     transition: color 0.4s ease-in-out;
 
+    cursor: pointer;
+
     &--selected {
-      color: $font-secondary;
+      box-sizing: border-box;
+      position: absolute;
+      height: inherit;
+
+      background-color: #4b4848;
+      border: 1px solid #2b2a2a;
+      border-radius: 8px;
+      transition: left 0.4s ease-in-out;
+    }
+  }
+
+  &__content {
+    position: relative;
+    height: 90%;
+    flex: 1;
+    left: 0;
+    display: grid;
+    block-size: 100%;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+
+    transition: left 0.4s ease-in-out;
+    will-change: left;
+
+    &--switched {
+      left: -100%
+    }
+  }
+
+  .tab-content {
+    @include mixins.scrollable();
+
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+
+    &--selected {
+      opacity: 1;
     }
   }
 }

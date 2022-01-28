@@ -105,7 +105,7 @@ html, body {
 }
 
 .menu-item.mat-menu-item:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(0,0,0,0.05) !important;
 
   .mat-icon {
     animation: shake 0.5s ease-in both;
@@ -242,6 +242,9 @@ html, body {
   border-radius: 8px !important;
   background: #ffffffa3;
   backdrop-filter: saturate(180%) blur(10px);
+  .cdk-program-focused { 
+    background-color: transparent!important; 
+  }
 
   .mat-menu-content {
     padding: 4px !important;
