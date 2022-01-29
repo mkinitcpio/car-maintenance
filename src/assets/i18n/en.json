@@ -52,6 +52,12 @@
       "OTHER": "Other",
       "SHOW_TOTAL_SUM": "Show total expense for each table",
       "TOTAL": "Total"
+    },
+    "NAVIGATION": {
+      "TABS": {
+        "CATEGORIES": "Categories",
+        "CARS": "Cars"
+      }
     }
   },
   "MENU": {
@@ -105,10 +111,18 @@
       "ILLUSTRATION": "Illustration",
       "MILEAGE": "Mileage",
       "DATE": "Date",
+      "YEAR": "Year",
+      "MAKE": "Make",
+      "MODEL": "Model",
+      "VEHICLE_ID": "Vehicle ID",
+      "ENGINE": "Engine",
       "EXPENSE": "Expense",
       "COMMENT": "Comment",
       "TEXT": "Text",
       "TYPE": "Type"
+    },
+    "TOOLTIPS": {
+      "CAR_MILEAGE": "Mileage will add in tables"
     }
   },
   "ILLUSTRATIONS": {

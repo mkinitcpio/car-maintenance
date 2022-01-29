@@ -16,6 +16,9 @@ import { SettingsComponent } from '../components/settings/settings.component';
 import { FeedbackDialogComponent } from '../components/feedback-dialog/feedback-dialog.component';
 import { PrintDialogComponent } from '../components/print-dialog/print-dialog.component';
 import { PrintDialogConfig } from '@shared/components/print-dialog/print-dialog-config';
+import { CreateCarDialogComponent } from '@shared/components/create-car-dialog/create-car-dialog.component';
+
+import { CarCategory, CarCategoryFormData } from '@core/interfaces/car-category';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +36,20 @@ export class DialogManagerService {
       })
       .afterClosed()
       .pipe<Category>(filter<Category>(Boolean));
+  }
+
+  public openCarDialog(data: any): Observable<CarCategoryFormData> {
+    return this.dialog
+      .open(CreateCarDialogComponent, {
+        maxWidth: "50%",
+        maxHeight: "90%",
+        width: "768px",
+        panelClass: "dialog-car",
+        data,
+        disableClose: true,
+      })
+      .afterClosed()
+      .pipe<CarCategoryFormData>(filter<CarCategoryFormData>(Boolean));
   }
 
   public openRecordDialog(data: any): Observable<Record> {

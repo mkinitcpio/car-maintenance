@@ -6,6 +6,7 @@ import { FormModeEnum } from './form-mode.enum';
 import { v4 as uuidv4 } from 'uuid';
 import { categoryIllustrationOptions } from './category-illustration-options';
 import { SettingsService } from '../settings/settings.service';
+import { CategoryTypeEnum } from 'app/navigation/state/interface';
 
 @Component({
   selector: 'app-create-dialog',
@@ -22,6 +23,7 @@ export class CreateDialogComponent implements OnInit {
     name: new FormControl(null, Validators.required),
     parent: new FormControl(this.data.parentId),
     illustration: new FormControl(null),
+    type: new FormControl(CategoryTypeEnum.Category),
   });
 
   constructor(

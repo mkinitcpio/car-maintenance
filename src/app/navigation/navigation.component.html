@@ -9,14 +9,21 @@
       <mat-icon>menu</mat-icon>
     </button>
   </div>
+  <app-tabs [tabs]="['PAGES.NAVIGATION.TABS.CATEGORIES', 'PAGES.NAVIGATION.TABS.CARS']">
+    <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"
+                              [selected]="selected"
+                              (edit)="onEdit($event)"
+                              (select)="onSelectCategory($event)"
+                              (delete)="onDelete($event)">
+    </app-categories-tree>
 
-  <app-categories-tree [catagories]="categories"
-                      [selected]="selected"
-                      (add)="addCategory($event)"
-                      (edit)="onEdit($event)"
-                      (select)="onSelectCategory($event)"
-                      (delete)="onDelete($event)">
-  </app-categories-tree>
+    <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Car)"
+                              [selected]="selected"
+                              (edit)="onEditCarCategory($event.id)"
+                              (select)="onSelectCategory($event)"
+                              (delete)="onDelete($event)">
+    </app-categories-tree>
+  </app-tabs>
 
   <div class="navigation__buttons">
     <button mat-button class="button" appSideNavTracker>
@@ -49,7 +56,7 @@
 
 <mat-menu #creationMenu="matMenu">
   <ng-template matMenuContent>
-      <button class="menu-item rotate" mat-menu-item>
+      <button class="menu-item rotate" mat-menu-item (click)="addCarCategory()">
         <mat-icon class="mat-item__icon mat-item__icon--add-car">airport_shuttle</mat-icon>
         <span>{{"Car" | translate}}</span>
       </button>

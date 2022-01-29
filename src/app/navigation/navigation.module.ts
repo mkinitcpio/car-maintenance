@@ -12,6 +12,7 @@ import { NavigationFacade } from './state/navigation.facade';
 import { NavigationEffects } from './state/effects';
 import { CategoriesTreeModule } from './categories-tree/categories-tree.module';
 import { SideNavTrackerDirective } from '../shared/directives/side-nav-tracker.directive';
+import { TabsModule } from '@shared/components/tabs/tabs.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SideNavTrackerDirective } from '../shared/directives/side-nav-tracker.d
     StoreModule.forFeature('navigation', navigationReducer),
     EffectsModule.forFeature([ NavigationEffects ]),
     CategoriesTreeModule,
+    TabsModule,
   ],
   providers: [
     NavigationFacade,

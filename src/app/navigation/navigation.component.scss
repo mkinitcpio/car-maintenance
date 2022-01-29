@@ -41,7 +41,7 @@
     }
   }
 
-  app-categories-tree {
+  app-tabs {
     flex-grow: 1;
 
     transition: opacity 0.15s ease-in 0.15s;
@@ -57,10 +57,13 @@
     background-color: #323030;
     transition: background-color 0.25s ease-out;
 
-    app-categories-tree {
+    app-tabs{
       opacity: 0;
-      z-index: -1;
       transition: opacity 0s;
+
+      app-categories-tree {
+        z-index: -1;
+      }
     }
 
     .navigation__title-container {

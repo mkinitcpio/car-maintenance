@@ -1,23 +1,23 @@
-import { CategoryTree } from "./interface";
-import { FeatureState, Status } from "../../state/interface";
+import { Status } from "../../core/state.interfaces";
+import { CarFeatureState } from "./feature.interface";
 
-export const initialState: FeatureState<Array<CategoryTree>> = {
-  entity: {
+export const initialState: CarFeatureState = {
+  new: {
     value: null,
     error: null,
     status: Status.Init,
   },
-  newEntity: {
+  edit: {
     value: null,
     error: null,
     status: Status.Init,
   },
-  deleteEntity: {
+  delete: {
     value: null,
     error: null,
     status: Status.Init,
   },
-  editEntity: {
+  carCategory: {
     value: null,
     error: null,
     status: Status.Init,

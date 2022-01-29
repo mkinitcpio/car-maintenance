@@ -51,6 +51,12 @@
       "PREVIEW": "Anteprima",
       "OTHER": "Altro",
       "TOTAL": "Totale"
+    },
+    "NAVIGATION": {
+      "TABS": {
+        "CATEGORIES": "Categorie",
+        "CARS": "Automobili"
+      }
     }
   },
   "MENU": {
@@ -104,10 +110,18 @@
       "ILLUSTRATION": "Illustrazione",
       "MILEAGE": "Chilometraggio",
       "DATE": "Data",
+      "YEAR": "Год выпуска",
+      "MAKE": "Марка",
+      "MODEL": "Модель",
+      "VEHICLE_ID": "Идентификатор автомобиля",
+      "ENGINE": "Двигатель",
       "EXPENSE": "Spesa",
       "COMMENT": "Commenti",
       "TEXT": "Testo",
       "TYPE": "Digita"
+    },
+    "TOOLTIPS": {
+      "CAR_MILEAGE": "Mileage will add in tables"
     }
   },
   "ILLUSTRATIONS": {

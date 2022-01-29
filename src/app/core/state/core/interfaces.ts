@@ -1,3 +1,5 @@
+import { CategoryTypeEnum } from "./enums";
+
 export interface Category {
   id: string;
   name: string;
@@ -13,9 +15,4 @@ export interface CategoryTree {
   illustration? : string;
   type: CategoryTypeEnum;
   children?: Array<CategoryTree>;
-}
-
-export enum CategoryTypeEnum {
-  Category,
-  Car,
 }

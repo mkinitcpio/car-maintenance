@@ -9,9 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../core/material.module';
 
 import { DialogManagerService } from './services/dialog-manager.service';
+import { UtilsService } from './services/utils.service';
 import { PrintService } from './services/print.service';
 import { CreateRecordModule } from './components/create-record/create-record.module';
 import { CreateDialogModule } from './components/create-dialog/create-dialog.module';
+import { CreateCarDialogModule } from './components/create-car-dialog/create-car-dialog.module';
 import { ReleaseNotesModule } from './components/release-notes/release-notes.module';
 import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.module';
 import { SettingsModule } from './components/settings/settings.module';
@@ -29,6 +31,7 @@ import { TabsModule } from './components/tabs/tabs.module';
   providers: [
     DialogManagerService,
     PrintService,
+    UtilsService,
   ],
   imports: [
     CommonModule,
@@ -37,6 +40,7 @@ import { TabsModule } from './components/tabs/tabs.module';
     ReactiveFormsModule,
     CreateRecordModule,
     CreateDialogModule,
+    CreateCarDialogModule,
     ReleaseNotesModule,
     DeleteDialogModule,
     UbuntuCloseButtonModule,
