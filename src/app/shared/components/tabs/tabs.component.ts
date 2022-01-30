@@ -39,10 +39,10 @@ export class TabsComponent implements OnInit, AfterViewInit {
   }
 
   private setTabWidth(tabsRef: ElementRef, tabsCount: number): void {
-    this.tabWidth = tabsRef.nativeElement.clientWidth / tabsCount;
+    this.tabWidth = (tabsRef.nativeElement.clientWidth - ((tabsCount - 1) * 4)) / tabsCount;
   }
 
   private updateTabCoverPosition(offset: number): void {
-    this.tabCoverRef.nativeElement.style.left = `${this.tabWidth * offset}px`;
+    this.tabCoverRef.nativeElement.style.left = `${this.tabWidth * offset + (offset * 4)}px`;
   }
 }
