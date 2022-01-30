@@ -103,7 +103,7 @@
 .mat-form-field::ng-deep {
   .mat-form-field-ripple {
     /*change color of underline when focused*/
-    background-color: #2e96ff;
+    background-color: var(--primary-color);
    }
 
    .mat-form-field-required-marker {
