@@ -29,6 +29,19 @@
           </div>
         </div>
       </div>
+
+      <div *ngIf="false" class="settings__item">
+        <div class="settings__item-label">
+          <mat-icon class="settings__item-label-icon">tab</mat-icon>
+          {{"PAGES.SETTINGS.FIELDS.FIRST_TAB" | translate}}
+        </div>
+        <div class="settings__item-container">
+          <mat-button-toggle-group class="settings__toggle-group" [value]="this.settingsService.settings.firstTab" (change)="onFirstTabChanged($event.value)">
+            <mat-button-toggle [value]="NavigationTabEnum.Categories">{{"PAGES.SETTINGS.BUTTONS.CATEGORIES" | translate}}</mat-button-toggle>
+            <mat-button-toggle [value]="NavigationTabEnum.Cars">{{"PAGES.SETTINGS.BUTTONS.CARS" | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
     </ubuntu-container>
 
     <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">

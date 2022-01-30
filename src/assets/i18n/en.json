@@ -29,6 +29,7 @@
         "REGION": "Region",
         "DATABASE_PATH": "Database",
         "ICONS": "Icons",
+        "FIRST_TAB": "First tab",
         "MONO": "Mono",
         "CURRENCY": "Currency",
         "METRIC_SYSTEM": "Metric system",
@@ -38,7 +39,9 @@
         "DEFAULT": "Default"
       },
       "BUTTONS": {
-        "CHANGE": "Change"
+        "CHANGE": "Change",
+        "CARS": "Cars",
+        "CATEGORIES": "Categories"
       }
     },
     "EMPTY": {

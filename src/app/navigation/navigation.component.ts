@@ -17,7 +17,10 @@ import { filter, map, skip, switchMap, take } from "rxjs/operators";
 import { DataBaseService } from "../core/database";
 
 import { SideNavigationTrackerService } from "../home/side-navigation-tracker.service";
-import { CarCategory, CarCategoryFormData } from "@core/interfaces/car-category";
+import { CarCategoryFormData } from "@core/interfaces/car-category";
+import { NavigationTabEnum } from "@shared/components/settings/navigation-tab.enum";
+import { SettingsService } from "@shared/components/settings/settings.service";
+import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 
 @Component({
   selector: "app-navigation",
@@ -51,6 +54,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public categories: CategoryTree[];
   public CategoryTypeEnum = CategoryTypeEnum;
 
+  public tabs = ['PAGES.NAVIGATION.TABS.CATEGORIES', 'PAGES.NAVIGATION.TABS.CARS'];
+
   private readonly repositoryLink = "https://github.com/mkinitcpio/car-maintenance";
 
   constructor(
@@ -60,6 +65,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     private electronService: ElectronService,
     private releaseNotesService: ReleaseNotesService,
     private dataBaseService: DataBaseService,
+    private settingsService: SettingsService,
     public sideNavService: SideNavigationTrackerService,
   ) {
     super();
@@ -105,6 +111,11 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       .subscribe(() => {
         this.router.navigate(['']);
         this.navigationFacade.loadCategories();
+      });
+
+    this.settingsService.settingsChanged$
+      .pipe(filter((node) => node.type === SettingsTypeEnum.FirstTab))
+      .subscribe(() => {
       });
   }
 

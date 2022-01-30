@@ -9,7 +9,7 @@
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <app-tabs [tabs]="['PAGES.NAVIGATION.TABS.CATEGORIES', 'PAGES.NAVIGATION.TABS.CARS']">
+  <app-tabs [tabs]="tabs">
     <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"
                               [selected]="selected"
                               (add)="addCategory($event)"

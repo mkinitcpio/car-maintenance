@@ -29,6 +29,7 @@
           "REGION": "Регион",
           "DATABASE_PATH": "База данных",
           "ICONS": "Иконки",
+          "FIRST_TAB": "Первая вкладка",
           "MONO": "Моно",
           "CURRENCY": "Валюта",
           "METRIC_SYSTEM": "Расстояние",
@@ -38,7 +39,9 @@
           "DEFAULT": "Стандартные"
         },
         "BUTTONS": {
-          "CHANGE": "Изменить"
+          "CHANGE": "Изменить",
+          "CARS": "Автомобили",
+          "CATEGORIES": "Категории"
         }
       },
       "EMPTY": {

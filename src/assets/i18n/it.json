@@ -29,6 +29,7 @@
         "REGION": "Stato",
         "DATABASE_PATH": "Database",
         "ICONS": "Icone",
+        "FIRST_TAB": "Prima scheda",
         "MONO": "Mono",
         "CURRENCY": "Moneta",
         "METRIC_SYSTEM": "Sistema metrico",
@@ -38,7 +39,9 @@
         "DEFAULT": "Default"
       },
       "BUTTONS": {
-        "CHANGE": "Cambia"
+        "CHANGE": "Cambia",
+        "CARS": "Automobili",
+        "CATEGORIES": "Categorie"
       }
     },
     "EMPTY": {
@@ -73,8 +76,8 @@
         "ENGINE": "Motore"
       },
       "TOOLTIPS": {
-        "OVERALL_EXPENSE": "Overall expense",
-        "MILEAGE": "Mileage"
+        "OVERALL_EXPENSE": "Spese per l'intero periodo di servizio.\n Calcolato dai dati nelle tabelle.",
+        "MILEAGE": "Chilometraggio del veicolo.\n Il valore verrà inserito automaticamente nel campo 'Chilometraggio' al momento della creazione della voce."
       }
     }
   },
@@ -146,7 +149,7 @@
       "TYPE": "Digita"
     },
     "TOOLTIPS": {
-      "CAR_MILEAGE": "Mileage will add in tables"
+      "CAR_PARTS": "Parti che puoi riparare"
     }
   },
   "ILLUSTRATIONS": {
