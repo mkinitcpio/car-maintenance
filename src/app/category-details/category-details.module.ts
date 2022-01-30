@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { UtilsService } from '@shared/services/utils.service';
 import { CurrencyModule } from '@shared/currency/currency.module';
-import { ProgressCircleBarModule } from '@shared/components/progress-circle-bar/progress-circle-bar.module';
 import { WidgetModule } from '@shared/components/widget/widget.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -32,7 +31,6 @@ import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-co
     EffectsModule.forFeature([CategoryDetailsEffects]),
     TranslateModule,
     CurrencyModule,
-    ProgressCircleBarModule,
     WidgetModule,
     MatInputModule,
     MatCheckboxModule,
