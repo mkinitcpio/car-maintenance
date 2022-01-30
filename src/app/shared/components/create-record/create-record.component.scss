@@ -80,16 +80,3 @@
   border-color: rgb(48,47,47);
   color: #fff;
 }
-
-.mat-form-field::ng-deep {
-
-   .mat-form-field-required-marker {
-    color: #c7162b !important;
-  }
-}
-
-::ng-deep .mat-form-field-invalid {
-  .mat-form-field-ripple {
-    background: #c7162b !important;
-  }
-}

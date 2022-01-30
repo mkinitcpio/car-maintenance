@@ -130,20 +130,6 @@
   .mat-form-field-infix {
     width: auto !important;
   }
-  .mat-form-field-ripple {
-    /*change color of underline when focused*/
-    background-color: var(--primary-color);
-   }
-
-   .mat-form-field-required-marker {
-    color: $color-dangerous !important;
-  }
-}
-
-::ng-deep .mat-form-field-invalid {
-  .mat-form-field-ripple {
-    background: $color-dangerous !important;
-  }
 }
 
 ubuntu-container {

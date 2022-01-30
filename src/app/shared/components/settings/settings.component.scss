@@ -141,3 +141,24 @@
     width: 104px;
   }
 }
+
+.mat-form-field.mat-focused {
+  .mat-select-arrow {
+    color: rgba(0,0,0,.54) !important;
+  }
+
+  .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: var(--primary-color);
+}
+}
+
+.mat-option.mat-selected:not(.mat-option-disabled) {
+  color: var(--primary-color) !important;
+}
+
+.mat-form-field-invalid {
+  .mat-form-field-ripple {
+    background: $color-dangerous !important;
+  }
+}
