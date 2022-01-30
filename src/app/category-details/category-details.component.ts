@@ -14,6 +14,7 @@ import { AutoCloseable } from '../core/auto-closeable';
 import { UtilsService } from '@shared/services/utils.service';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { ElectronService } from '@core/services';
+import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
 
 @Component({
   selector: 'app-category-details',
@@ -46,6 +47,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   );
 
   public CategoryTypeEnum = CategoryTypeEnum;
+  public MetricSystemEnum = MetricSystemEnum;
 
   public id: string;
   public category: CategoryTree;
