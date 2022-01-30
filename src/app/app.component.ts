@@ -5,6 +5,8 @@ import { SettingsService } from "./shared/components/settings/settings.service";
 import { DOCUMENT } from "@angular/common";
 import { NotificationService } from "@core/services";
 import { ThemeService } from "@core/services/theme.service";
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -18,9 +20,16 @@ export class AppComponent extends AutoCloseable {
     private settingsService: SettingsService,
     private notificationService: NotificationService,
     private themeService: ThemeService,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
     @Inject(DOCUMENT) private document: Document
   ) {
     super();
+
+    this.matIconRegistry.addSvgIcon(
+      "github",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/github.svg")
+    );
 
     this.settingsService.animationsStateChanged$.subscribe((enabled) => {
       if (enabled) {

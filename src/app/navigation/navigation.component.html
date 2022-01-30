@@ -50,7 +50,7 @@
         <span>{{"MENU.WHATS_NEW" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="openRepository()">
-        <mat-icon>info</mat-icon>
+        <mat-icon class="menu-item__github-icon" [svgIcon]="'github'"></mat-icon>
         <span>{{"MENU.GITHUB" | translate}}</span>
       </button>
   </ng-template>
