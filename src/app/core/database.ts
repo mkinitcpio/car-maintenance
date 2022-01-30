@@ -108,7 +108,7 @@ export class DataBaseService {
     const childCategoriesId = this.data.categories.filter(category => category.parent === id).map(c => c.id);
 
     this.data.categories = this.data.categories.filter(category => category.parent !== id);
-    this.data.records = this.data.records.filter(record => childCategoriesId.includes(record.parent));
+    this.data.records = this.data.records.filter(record => !childCategoriesId.includes(record.parent));
 
     return this.writeToDataBaseAsync().pipe(
       map(() => carCategory),
