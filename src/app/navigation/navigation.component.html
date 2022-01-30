@@ -12,6 +12,7 @@
   <app-tabs [tabs]="['PAGES.NAVIGATION.TABS.CATEGORIES', 'PAGES.NAVIGATION.TABS.CARS']">
     <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"
                               [selected]="selected"
+                              (add)="addCategory($event)"
                               (edit)="onEdit($event)"
                               (select)="onSelectCategory($event)"
                               (delete)="onDelete($event)">
@@ -19,7 +20,8 @@
 
     <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Car)"
                               [selected]="selected"
-                              (edit)="onEditCarCategory($event.id)"
+                              (add)="addCategory($event)"
+                              (edit)="$event.type === CategoryTypeEnum.Car ? onEditCarCategory($event.id) : onEdit($event)"
                               (select)="onSelectCategory($event)"
                               (delete)="onDelete($event)">
     </app-categories-tree>
@@ -58,11 +60,11 @@
   <ng-template matMenuContent>
       <button class="menu-item rotate" mat-menu-item (click)="addCarCategory()">
         <mat-icon class="mat-item__icon mat-item__icon--add-car">airport_shuttle</mat-icon>
-        <span>{{"Car" | translate}}</span>
+        <span>{{"MENU.CAR" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="addCategory()">
         <mat-icon class="mat-item__icon mat-item__icon--add">post_add</mat-icon>
-        <span>{{"Category" | translate}}</span>
+        <span>{{"MENU.CATEGORY" | translate}}</span>
       </button>
   </ng-template>
 </mat-menu>

@@ -12,7 +12,7 @@ export const getCarCategorySuccess = createAction('[Core] Get Car Category Succe
 } }>());
 
 export const deleteCarCategory = createAction('[Core] Delete Car Category', props<{ id: string }>());
-export const deleteCarCategorySuccess = createAction('[Core] Delete Car Category Success', props<{ id: string }>());
+export const deleteCarCategorySuccess = createAction('[Core] Delete Car Category Success', props<{ carCategory: CarCategory }>());
 
 export const editCarCategory = createAction('[Navigation] Edit Car Category', props<{ carCategoryFormData: CarCategoryFormData }>());
-export const editCarCategorySuccess = createAction('[Navigation] Edit Car Category Success', props<{ id: string }>());
+export const editCarCategorySuccess = createAction('[Navigation] Edit Car Category Success', props<{ carCategory: CarCategory }>());

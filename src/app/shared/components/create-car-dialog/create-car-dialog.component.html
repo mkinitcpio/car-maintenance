@@ -3,7 +3,7 @@
     <div class="create-car-dialog__button-container">
       <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
     </div>
-    <div class="create-car-dialog__header-text">{{(data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT") | translate}} {{"DIALOG.CATEGORY" | translate}}</div>
+    <div class="create-car-dialog__header-text">{{(data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT") | translate}} {{"DIALOG.CAR" | translate}}</div>
     <div class="create-car-dialog__button-container">
       <button class="button button__submit" mat-button (click)="onSubmit()">{{(data.mode === 0 ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT") | translate}}</button>
     </div>
@@ -13,7 +13,7 @@
     <form [formGroup]="carForm">
       <div class="create-car-dialog__columns">
         <div>
-          <ubuntu-container [title]="'Common'">
+          <ubuntu-container [title]="'DIALOG.COMMON' | translate">
             <div class="create-car-dialog__container">
               <mat-form-field [floatLabel]="'always'">
                 <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
@@ -24,7 +24,7 @@
               </mat-form-field>
             </div>
           </ubuntu-container>
-          <ubuntu-container [title]="'Information'">
+          <ubuntu-container [title]="'DIALOG.INFO' | translate">
             <div class="create-car-dialog__container">
               <mat-form-field [floatLabel]="'always'">
                 <mat-label>{{"DIALOG.FIELDS.VEHICLE_ID" | translate}}</mat-label>
@@ -65,7 +65,7 @@
           </ubuntu-container>
         </div>
         <div>
-          <ubuntu-container [title]="'Parts'" [info]="'test info'">
+          <ubuntu-container [title]="'DIALOG.PARTS' | translate" [info]="'DIALOG.TOOLTIPS.CAR_PARTS' | translate">
             <button actions mat-button class="button button--add" (click)="addPart()" [disabled]="disablePartsForm"><mat-icon>add</mat-icon></button>
             <div class="create-car-dialog__parts-container">
               <div formArrayName="parts">

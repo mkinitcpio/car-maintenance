@@ -4,8 +4,8 @@ import { EntityState } from "../../core/state.interfaces";
 
 export interface CarFeatureState {
   new: EntityState<CarCategory>,
-  edit: EntityState<string>,
-  delete: EntityState<string>,
+  edit: EntityState<CarCategory>,
+  delete: EntityState<CarCategory>,
   carCategory: EntityState<{
     data: CarCategory,
     children: Category[]

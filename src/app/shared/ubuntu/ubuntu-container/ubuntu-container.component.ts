@@ -11,6 +11,9 @@ export class UbuntuContainerComponent implements OnInit {
   title: string;
 
   @Input()
+  hasBordersStyle = true;
+
+  @Input()
   info: string;
 
   constructor() { }

@@ -57,6 +57,25 @@
         "CATEGORIES": "Categorie",
         "CARS": "Automobili"
       }
+    },
+    "CATEGORY_DETAILS": {
+      "WIDGETS": {
+        "INFO": "Informazioni",
+        "NOTE": "Nota",
+        "MILEAGE": "Chilometraggio",
+        "OVERALL_EXPENSE": "Overall expense"
+      },
+      "LABELS": {
+        "YEAR": "Anno",
+        "MAKE": "Lavori",
+        "MODEL": "Modello",
+        "VEHICLE_ID": "Targa",
+        "ENGINE": "Motore"
+      },
+      "TOOLTIPS": {
+        "OVERALL_EXPENSE": "Overall expense",
+        "MILEAGE": "Mileage"
+      }
     }
   },
   "MENU": {
@@ -67,7 +86,9 @@
     "GITHUB": "GitHub",
     "SETTINGS":"Opzioni",
     "WHATS_NEW": "Novità",
-    "FEEDBACK": "Feedback"
+    "FEEDBACK": "Feedback",
+    "CAR": "Automobile",
+    "CATEGORY": "Categoria"
   },
   "DIALOG": {
     "ADD": "Aggiungi",
@@ -85,6 +106,10 @@
       "RECORD": "Eliminare Registrati"
     },
     "CATEGORY": "Categoria",
+    "CAR": "Automobile",
+    "COMMON": "Comune",
+    "INFO": "Informazioni",
+    "PARTS": "Parti",
     "RECORD": "Registrati",
     "BUTTONS": {
       "ADD": "Aggiungi",
@@ -110,11 +135,11 @@
       "ILLUSTRATION": "Illustrazione",
       "MILEAGE": "Chilometraggio",
       "DATE": "Data",
-      "YEAR": "Год выпуска",
-      "MAKE": "Марка",
-      "MODEL": "Модель",
-      "VEHICLE_ID": "Идентификатор автомобиля",
-      "ENGINE": "Двигатель",
+      "YEAR": "Anno",
+      "MAKE": "Lavori",
+      "MODEL": "Modello",
+      "VEHICLE_ID": "Targa",
+      "ENGINE": "Motore",
       "EXPENSE": "Spesa",
       "COMMENT": "Commenti",
       "TEXT": "Testo",

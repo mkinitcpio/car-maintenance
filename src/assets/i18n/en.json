@@ -58,6 +58,25 @@
         "CATEGORIES": "Categories",
         "CARS": "Cars"
       }
+    },
+    "CATEGORY_DETAILS": {
+      "WIDGETS": {
+        "INFO": "Information",
+        "NOTE": "Note",
+        "MILEAGE": "Mileage",
+        "OVERALL_EXPENSE": "Overall expense"
+      },
+      "LABELS": {
+        "YEAR": "Year",
+        "MAKE": "Make",
+        "MODEL": "Model",
+        "VEHICLE_ID": "License plate",
+        "ENGINE": "Engine"
+      },
+      "TOOLTIPS": {
+        "OVERALL_EXPENSE": "Overall expense",
+        "MILEAGE": "Mileage"
+      }
     }
   },
   "MENU": {
@@ -68,7 +87,9 @@
     "GITHUB": "GitHub",
     "SETTINGS":"Settings",
     "WHATS_NEW": "What's new",
-    "FEEDBACK": "Feedback"
+    "FEEDBACK": "Feedback",
+    "CAR": "Car",
+    "CATEGORY": "Category"
   },
   "DIALOG": {
     "ADD": "Add",
@@ -86,6 +107,10 @@
       "RECORD": "Delete record"
     },
     "CATEGORY": "Category",
+    "CAR": "Car",
+    "COMMON": "Common",
+    "INFO": "Information",
+    "PARTS": "Parts",
     "RECORD": "Record",
     "BUTTONS": {
       "ADD": "Add",
@@ -114,7 +139,7 @@
       "YEAR": "Year",
       "MAKE": "Make",
       "MODEL": "Model",
-      "VEHICLE_ID": "Vehicle ID",
+      "VEHICLE_ID": "License plate",
       "ENGINE": "Engine",
       "EXPENSE": "Expense",
       "COMMENT": "Comment",
@@ -122,7 +147,7 @@
       "TYPE": "Type"
     },
     "TOOLTIPS": {
-      "CAR_MILEAGE": "Mileage will add in tables"
+      "CAR_PARTS": "Car parts that you will maintain"
     }
   },
   "ILLUSTRATIONS": {

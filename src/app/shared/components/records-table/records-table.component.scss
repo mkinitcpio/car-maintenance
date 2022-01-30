@@ -1,8 +1,9 @@
+@use '/src/mixins' as mixins;
 @import '/src/colors';
 
 .records-table {
+  @include mixins.scrollable();
   font-family: Ubuntu;
-  overflow-y: overlay;
 
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -70,5 +71,9 @@
     background: #F7F7F7;
 
     cursor: pointer;
+  }
+  
+  .mat-row:last-child {
+    border-bottom: none;
   }
 }

@@ -31,11 +31,11 @@ const carCategoryReducers = createReducer(
       error: null,
     },
   })),
-  on(CarCategoryActions.editCarCategorySuccess, (state, { id }) => ({
+  on(CarCategoryActions.editCarCategorySuccess, (state, { carCategory }) => ({
     ...state,
     edit: {
       status: Status.Success,
-      value: id,
+      value: carCategory,
       error: null,
     },
   })),
@@ -48,11 +48,11 @@ const carCategoryReducers = createReducer(
       error: null,
     },
   })),
-  on(CarCategoryActions.deleteCarCategorySuccess, (state, { id }) => ({
+  on(CarCategoryActions.deleteCarCategorySuccess, (state, { carCategory }) => ({
     ...state,
     delete: {
       status: Status.Success,
-      value: id,
+      value: carCategory,
       error: null,
     },
   })),

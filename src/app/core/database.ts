@@ -6,6 +6,7 @@ import { ElectronService } from './services';
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import { SettingsService } from '../shared/components/settings/settings.service';
 import { CarCategory } from './interfaces/car-category';
+import { Maintenance } from '@core/interfaces/maintenance';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -17,7 +18,8 @@ export class DataBaseService {
   public readonly initialDataBase = {
     categories: [],
     records: [],
-    cars: []
+    cars: [],
+    maintenances: [],
   };
 
   private fileReadConfig: {
@@ -31,6 +33,7 @@ export class DataBaseService {
     categories: Category[],
     records: Record[],
     cars: CarCategory[],
+    maintenances: Maintenance[],
   };
 
   public databaseError$: Subject<void> = new Subject();
@@ -39,6 +42,7 @@ export class DataBaseService {
     private electronService: ElectronService,
     private settingsService: SettingsService,
   ) {
+    this.data = this.initialDataBase;
   }
 
   public getCategories(): Array<Category> {
@@ -58,13 +62,19 @@ export class DataBaseService {
     this.writeToDataBase();
   }
 
-  public saveNewCarCategory(carCategory: CarCategory, parts: Category[]): Observable<CarCategory> {
+  public saveNewCarCategory(carCategory: CarCategory, parts: Category[], maintenance: Maintenance): Observable<CarCategory> {
     const db = this.data;
 
     if(db.cars) {
       db.cars.push(carCategory);
     } else {
       db.cars = [carCategory];
+    }
+
+    if(db.maintenances) {
+      db.maintenances.push(maintenance);
+    } else {
+      db.maintenances = [maintenance];
     }
 
     db.categories.push(...parts);
@@ -84,15 +94,16 @@ export class DataBaseService {
     return of(data);
   }
 
-  public editCarCategory(carCategory: CarCategory): Observable<string> {
+  public editCarCategory(carCategory: CarCategory): Observable<CarCategory> {
     this.data.cars = this.data.cars.map(c => c.id === carCategory.id ? carCategory : c);
 
     return this.writeToDataBaseAsync().pipe(
-      map(() => carCategory.id),
+      map(() => carCategory),
     );
   }
 
-  public deleteCarCategory(id: string): Observable<string> {
+  public deleteCarCategory(id: string): Observable<CarCategory> {
+    const carCategory = this.data.cars.find(car => car.id === id);
     this.data.cars = this.data.cars.filter(car => car.id !== id);
     const childCategoriesId = this.data.categories.filter(category => category.parent === id).map(c => c.id);
 
@@ -100,7 +111,15 @@ export class DataBaseService {
     this.data.records = this.data.records.filter(record => childCategoriesId.includes(record.parent));
 
     return this.writeToDataBaseAsync().pipe(
-      map(() => id)
+      map(() => carCategory),
+    );
+  }
+
+  public updateMaintenance(maintenance: Maintenance): Observable<Maintenance> {
+    this.data.maintenances = this.data.maintenances.map(m => m.parent === maintenance.parent ? maintenance : m);
+
+    return this.writeToDataBaseAsync().pipe(
+      map(() => maintenance),
     );
   }
 
@@ -143,7 +162,7 @@ export class DataBaseService {
 
   public getCategoryDetails(id: string): CategoryDetails {
     const db = this.data;
-    const parentCategory = db.categories.find(category => category.id === id);
+    const parentCategory = db.categories.find(category => category.id === id) || db.cars.find(car => car.id === id);
     const childCategories = db.categories.filter(category => category.parent === id);
     const allRecords = db.records;
 
@@ -157,8 +176,12 @@ export class DataBaseService {
       };
     });
 
+    const maintenance = db.maintenances?.find(maintenance => maintenance.parent === id) || null;
+
     return {
-      name: parentCategory.name,
+      data: parentCategory,
+      type: parentCategory.type,
+      maintenance,
       tables: tablesData,
     };
   }
@@ -180,7 +203,10 @@ export class DataBaseService {
       if(!data?.categories || !data?.records) {
         throw new Error();
       } else {
-        this.data = data;
+        this.data = {
+          ...this.data,
+          ...data,
+        };
       }
       this.dbExist$.next(true);
     } catch(error) {

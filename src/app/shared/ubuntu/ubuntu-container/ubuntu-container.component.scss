@@ -5,13 +5,15 @@
 }
 
 .ubuntu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
   &__header {
     display: flex;
     align-items: center;
     gap: 4px;
     height: 36px;
-    margin-bottom: 8px;
 
     font-family: 'Ubuntu';
     font-weight: bold;
@@ -32,8 +34,11 @@
   }
 
   &__content {
-    border: 1px solid rgb(191,191,191);
     border-radius: 8px;
     background: white;
+
+    &--with-borders {
+      border: 1px solid rgb(191,191,191);
+    }
   }
 }

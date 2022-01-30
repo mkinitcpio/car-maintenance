@@ -9,6 +9,8 @@ import * as CarCategoryActions  from './actions';
 import { CategoryTypeEnum } from './enums';
 
 import { v4 as uuidv4 } from 'uuid';
+import { Maintenance } from '@core/interfaces/maintenance';
+import { ProjectStatusEnum } from '@core/state/features/maintenance/enums';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +30,14 @@ export class CarCategoryEffects {
           type: CategoryTypeEnum.Category,
         }));
 
-        return this.database.saveNewCarCategory(carCategoryData, carSubCategories);
+        const maintenance: Maintenance = {
+          parent: carCategoryData.id,
+          note: "",
+          completedParts: [],
+          status: ProjectStatusEnum.Init,
+        };
+
+        return this.database.saveNewCarCategory(carCategoryData, carSubCategories, maintenance);
       }),
       switchMap((carCategory) => of(CarCategoryActions.createCarCategorySuccess({ carCategory }))),
     );
@@ -46,7 +55,7 @@ export class CarCategoryEffects {
     return this.actions$.pipe(
       ofType(CarCategoryActions.deleteCarCategory),
       switchMap(({ id }) => this.database.deleteCarCategory(id)),
-      switchMap((id) => of(CarCategoryActions.deleteCarCategorySuccess({ id }))),
+      switchMap((carCategory) => of(CarCategoryActions.deleteCarCategorySuccess({ carCategory }))),
     );
   });
 
@@ -57,7 +66,7 @@ export class CarCategoryEffects {
         const { parts, ...carCategory } = carCategoryFormData;
         return this.database.editCarCategory(carCategory);
       }),
-      switchMap((id) => of(CarCategoryActions.editCarCategorySuccess({ id }))),
+      switchMap((carCategory) => of(CarCategoryActions.editCarCategorySuccess({ carCategory }))),
     );
   });
 
