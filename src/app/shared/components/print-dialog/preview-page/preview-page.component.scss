@@ -1,5 +1,10 @@
 @import '/src/colors';
 
+:host {
+  display: block;
+  padding: 1px;
+}
+
 .preview-page {
   width: 100%;
   padding: 18px;
