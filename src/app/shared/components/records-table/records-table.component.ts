@@ -23,6 +23,9 @@ export class RecordsTableComponent {
   @Input()
   stretch = false;
 
+  @Input()
+  withBorders = false;
+
   @Output()
   edit: EventEmitter<string> = new EventEmitter();
 

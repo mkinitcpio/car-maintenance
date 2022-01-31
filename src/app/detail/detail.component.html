@@ -17,21 +17,21 @@
   </div>
   <div class="detail__content">
     <div class="detail__cards">
-      <div class="card">
-        <div class="card__title">{{"PAGES.DETAIL.LAST_MODIFIED" | translate}}</div>
+      <app-widget [title]="'PAGES.DETAIL.LAST_MODIFIED' | translate">
         <div class="card__stat">{{lastModifiedDate ? (lastModifiedDate | date:'d MMM, y') : '-'}}</div>
-      </div>
-      <div class="card">
-        <div class="card__title">{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}</div>
+      </app-widget>
+      <app-widget [title]="'PAGES.DETAIL.OVERALL_EXPENSE' | translate">
         <div class="card__stat">
           <span>{{costSum | numberSeparator:this.settingsService.settings.region}}</span>
           <app-currency [currency]="settingsService.settings.units?.currency"
                         [locale]="settingsService.settings.region">
           </app-currency>
         </div>
-      </div>
+      </app-widget>
     </div>
-    <app-records-table [data]="dataSourceTable"
+    <app-records-table class="detail__table"
+                       [data]="dataSourceTable"
+                       [withBorders]="true"
                        [stretch]="true"
                        (edit)="onEdit($event)"
                        (delete)="onDelete($event)">

@@ -2,10 +2,13 @@
 
 .detail {
   height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  user-select: none;
 
   &__title-container {
-    padding: 4px 32px;
+    padding: 9px 24px;
     height: 48px;
     display: flex;
     align-items: center;
@@ -45,13 +48,21 @@
   }
 
   &__content {
-    padding: 32px;
+    padding: 24px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__table {
+    flex: 1;
     overflow: hidden;
   }
 
   &__empty {
-    height: calc(100% - 112px);
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,24 +82,10 @@
 
   &__cards {
     display: flex;
-    margin-bottom: 16px;
+    gap: 16px;
   }
 
   .card {
-    padding: 16px;
-    margin-right: 16px;
-
-    border-radius: 8px;
-    border: 1px solid silver;
-    background: white;
-
-    &__title {
-      margin-bottom: 4px;
-
-      font-family: Ubuntu;
-      font-size: 12px;
-      color: #666;
-    }
 
     &__stat {
       display: flex;

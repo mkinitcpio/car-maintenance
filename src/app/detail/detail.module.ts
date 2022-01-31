@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonPipesModule } from '../shared/pipes/common-pipes.module';
 import { CurrencyModule } from '../shared/currency/currency.module';
 import { HomeRoutingModule } from 'app/home/home-routing.module';
+import { WidgetModule } from '@shared/components/widget/widget.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HomeRoutingModule } from 'app/home/home-routing.module';
     CommonPipesModule,
     CurrencyModule,
     HomeRoutingModule,
+    WidgetModule,
   ],
   providers: [
     DetailsFacade,

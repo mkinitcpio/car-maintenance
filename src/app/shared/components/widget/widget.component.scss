@@ -9,7 +9,8 @@
   box-sizing: border-box;
 
   background: white;
-  border: 1px solid $color-border;
+  box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
+
   border-radius: 8px;
 
   user-select: none;

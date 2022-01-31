@@ -2,11 +2,26 @@
 @import '/src/colors';
 
 .records-table {
-  @include mixins.scrollable();
-  font-family: Ubuntu;
+  @include mixins.scrollable;
+  @include mixins.scrollable-horizontal;
+  height: 100%;
+  box-sizing: border-box;
 
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: Ubuntu;
   border-radius: 8px;
+
+  &--with-borders {
+    border: 1px solid $separator-color;
+
+    .records-table__row.mat-row:last-child {
+      border-bottom-width: 1px;
+    }
+  }
+
+  &__row {
+    min-height: 42px;
+    border-bottom-color: $separator-color;
+  }
 
   user-select: none;
 
@@ -26,10 +41,6 @@
 
   .records-table__header {
     min-height: 48px;
-  }
-  
-  .records-table__row {
-    min-height: 42px;
   }
 
   &__cell-cost {
@@ -74,6 +85,6 @@
   }
   
   .mat-row:last-child {
-    border-bottom: none;
+    border-bottom-width: 0;
   }
 }

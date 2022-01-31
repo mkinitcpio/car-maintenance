@@ -38,7 +38,7 @@
     background: white;
 
     &--with-borders {
-      border: 1px solid rgb(191,191,191);
+      box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
     }
   }
 }

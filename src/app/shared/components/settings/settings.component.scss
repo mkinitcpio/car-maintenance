@@ -48,17 +48,12 @@
     @include mixins.scrollable;
 
     height: 100%;
-    padding: 32px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-    background: rgb(247, 247, 247);
-
-    ubuntu-container {
-      margin-bottom: 24px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+    background: $background-secondary;
   }
 
   &__toggle-group {
@@ -137,6 +132,10 @@
     font-family: Ubuntu;
   }
 
+  .mat-form-field-wrapper {
+    width: 100%;
+  }
+
   .mat-button-toggle-button {
     width: 104px;
   }
@@ -161,4 +160,8 @@
   .mat-form-field-ripple {
     background: $color-dangerous !important;
   }
+}
+
+.mat-divider {
+  border-top-color: $separator-color;
 }

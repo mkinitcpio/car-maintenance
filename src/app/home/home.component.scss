@@ -1,8 +1,10 @@
+@import '/src/colors';
+
 .home {
   &__sidenav {
     width: 300px;
 
-    border-right: 1px solid rgba(0,0,0,0.2);
+    border-right: 1px solid $separator-color;
     transition: width 0.5s ease-in-out,
                 border-right 0.5s ease-in;
 

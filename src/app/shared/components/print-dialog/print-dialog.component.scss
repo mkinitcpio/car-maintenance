@@ -51,13 +51,12 @@
 
   &__scroll {
     @include mixins.scrollable;
-
-    padding-bottom: 16px;
+    padding: 1px 1px 16px 1px;
   }
 
   &__divider {
     margin: 0 24px;
-    border-right-color: #ccc;
+    border-right-color: $separator-color;
   }
 
   &__preview-section {
@@ -152,6 +151,7 @@
 
   &__divider {
     margin: 0 38px;
+    border-top-color: $separator-color;
   }
 }
 
