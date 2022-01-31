@@ -27,7 +27,10 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
 
   @listen({ value: true })
-  deleteCategory$ = this.navigationFacade.deleteCategory$;
+  deleteCategory$ = merge(
+    this.navigationFacade.deleteCategory$,
+    this.navigationFacade.deleteCarCategory$,
+  );
 
   @listen({ value: true })
   updatedMaintenance$ = this.categoryDetailsFacade.updatedMaintenance$;

@@ -30,7 +30,10 @@ import { VersionService } from "@core/services/version.service";
 export class NavigationComponent extends AutoCloseable implements OnInit {
 
   @listen({ value: true })
-  deleteCategory$ = this.navigationFacade.deleteCategory$;
+  deleteCategory$ = merge(
+    this.navigationFacade.deleteCategory$,
+    this.navigationFacade.deleteCarCategory$,
+  );
 
   @listen({value: true})
   categories$ = this.navigationFacade.categories$;
