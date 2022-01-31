@@ -1,7 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-const packageJson= require('./package.json');
 require('@electron/remote/main').initialize();
 
 let win: BrowserWindow = null;
@@ -9,12 +8,11 @@ const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
 function createWindow(): BrowserWindow {
-  const { version } = packageJson;
 
   win = new BrowserWindow({
     width: 1280,
     height: 720,
-    title: `Car Maintenance ${version as string}`,
+    title: `Car Maintenance`,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
