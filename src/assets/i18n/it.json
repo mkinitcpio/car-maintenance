@@ -48,7 +48,7 @@
       "TEXT": "Seleziona Categoria"
     },
     "PDF_EXPORT": {
-      "CONFIGURATIONS": "Opzioni",
+      "CONFIGURATIONS": "Impostazioni",
       "PATH": "Percorso",
       "ORDER_AND_VISIBILITY": "Visualizzati",
       "PREVIEW": "Anteprima",
@@ -87,11 +87,12 @@
     "DELETE": "Eliminare",
     "ABOUT": "About",
     "GITHUB": "GitHub",
-    "SETTINGS":"Opzioni",
+    "SETTINGS":"Impostazioni",
     "WHATS_NEW": "Novità",
     "FEEDBACK": "Feedback",
     "CAR": "Automobile",
-    "CATEGORY": "Categoria"
+    "CATEGORY": "Categoria",
+    "UPDATE": "Aggiornamento disponibile"
   },
   "DIALOG": {
     "ADD": "Aggiungi",

@@ -18,9 +18,9 @@ import { DataBaseService } from "../core/database";
 
 import { SideNavigationTrackerService } from "../home/side-navigation-tracker.service";
 import { CarCategoryFormData } from "@core/interfaces/car-category";
-import { NavigationTabEnum } from "@shared/components/settings/navigation-tab.enum";
 import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
+import { VersionService } from "@core/services/version.service";
 
 @Component({
   selector: "app-navigation",
@@ -67,6 +67,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
     public sideNavService: SideNavigationTrackerService,
+    public versionService: VersionService,
   ) {
     super();
   }

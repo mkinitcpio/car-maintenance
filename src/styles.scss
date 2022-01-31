@@ -105,6 +105,14 @@ html, body {
       color: #c7162b !important;
     }
   }
+
+  &.menu-item--update {
+    color: $button-color-primary;
+
+    .mat-icon {
+      color: $button-color-primary !important;
+    }
+  }
 }
 
 .menu-item.mat-menu-item:hover {
@@ -231,4 +239,9 @@ body.no-animations {
   .mat-form-field-ripple {
     background: $color-dangerous !important;
   }
+}
+
+.mat-badge-content {
+  top: -6px !important;
+  background-color: $color-dangerous;
 }

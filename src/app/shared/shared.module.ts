@@ -19,7 +19,6 @@ import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.mod
 import { SettingsModule } from './components/settings/settings.module';
 import { UbuntuCloseButtonModule } from './ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-container.module';
-import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
 import { PrintDialogModule } from './components/print-dialog/print-dialog.module';
 import { TabsModule } from './components/tabs/tabs.module';
 
@@ -45,7 +44,6 @@ import { TabsModule } from './components/tabs/tabs.module';
     DeleteDialogModule,
     UbuntuCloseButtonModule,
     UbuntuContainerModule,
-    FeedbackDialogModule,
     PrintDialogModule,
     TabsModule,
   ],

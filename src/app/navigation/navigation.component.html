@@ -5,7 +5,7 @@
       <mat-icon>add</mat-icon>
     </button>
 
-    <button class="button button__create" mat-button [matMenuTriggerFor]="contextMenu">
+    <button matBadge="!" [matBadgeHidden]="!versionService.hasUpdate" matBadgeSize="small" class="button button__create" mat-button [matMenuTriggerFor]="contextMenu">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
@@ -52,6 +52,11 @@
       <button class="menu-item" mat-menu-item (click)="openRepository()">
         <mat-icon class="menu-item__github-icon" [svgIcon]="'github'"></mat-icon>
         <span>{{"MENU.GITHUB" | translate}}</span>
+      </button>
+      <div *ngIf="versionService.hasUpdate" class="mat-menu__divider"></div>
+      <button *ngIf="versionService.hasUpdate" class="menu-item menu-item--update" mat-menu-item (click)="openReleaseNotes()">
+        <mat-icon>new_releases</mat-icon>
+        <span>{{"MENU.UPDATE" | translate}}</span>
       </button>
   </ng-template>
 </mat-menu>

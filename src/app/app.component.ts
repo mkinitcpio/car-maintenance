@@ -3,7 +3,6 @@ import { DataBaseService } from "./core/database";
 import { AutoCloseable } from "./core/auto-closeable";
 import { SettingsService } from "./shared/components/settings/settings.service";
 import { DOCUMENT } from "@angular/common";
-import { NotificationService } from "@core/services";
 import { ThemeService } from "@core/services/theme.service";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -18,7 +17,6 @@ export class AppComponent extends AutoCloseable {
   constructor(
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
-    private notificationService: NotificationService,
     private themeService: ThemeService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
@@ -40,10 +38,7 @@ export class AppComponent extends AutoCloseable {
     });
 
     this.settingsService.init();
-    
     this.themeService.init();
-
-    
 
     this.dataBaseService.dbExist$.subscribe((exist) => {
       this.dbExist = exist;

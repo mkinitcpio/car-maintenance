@@ -9,9 +9,13 @@ import { MaintenanceEffects } from './state/features/maintenance/effects';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { VersionRepository } from './repositories/version.repository';
 
 @NgModule({
   declarations: [],
+  providers: [
+    VersionRepository,
+  ],
   imports: [
     CommonModule,
     StoreModule.forFeature('carCategory', carCategoryReducer),
