@@ -54,7 +54,7 @@
         <span>{{"MENU.GITHUB" | translate}}</span>
       </button>
       <div *ngIf="versionService.hasUpdate" class="mat-menu__divider"></div>
-      <button *ngIf="versionService.hasUpdate" class="menu-item menu-item--update" mat-menu-item (click)="openReleaseNotes()">
+      <button *ngIf="versionService.hasUpdate" class="menu-item menu-item--update" mat-menu-item>
         <mat-icon>new_releases</mat-icon>
         <span>{{"MENU.UPDATE" | translate}}</span>
       </button>
