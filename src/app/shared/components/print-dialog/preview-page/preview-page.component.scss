@@ -1,3 +1,10 @@
+@import '/src/colors';
+
+:host {
+  display: block;
+  padding: 1px;
+}
+
 .preview-page {
   width: 100%;
   padding: 18px;
@@ -7,7 +14,7 @@
   font-family: Ubuntu;
   background: white;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
   user-select: none;
 
   &__title-container {
@@ -102,7 +109,7 @@
     }
 
     th {
-      color: #111;
+      color: $font-primary;
     }
 
     tr {

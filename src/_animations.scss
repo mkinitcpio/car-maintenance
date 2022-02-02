@@ -1,0 +1,106 @@
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  60% {
+    transform: rotate(180deg) scale(0.8);
+  }
+  70% {
+    transform: rotate(220deg)
+  }
+  80% {
+    transform: rotate(240deg)
+  }
+  90% {
+    transform: rotate(250deg);
+  }
+  to {
+    transform: rotate(255deg) scale(1);
+  }
+}
+
+@keyframes punch {
+  from {
+    transform: scaleX(1);
+  }
+
+  20% {
+    transform: scale(1.2, 1.2);
+  }
+
+  50% {
+    transform: scale(0.8, 0.8);
+  }
+
+  70% {
+    transform: scale(1.1, 1.1);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes movement {
+  from {
+    transform: scaleX(1);
+  }
+
+  20% {
+    transform: scale(1.2, 0.8) translate3d(-4px, 0, 0) rotate(-5deg);
+  }
+
+  50% {
+    transform: scale(1, 1);
+  }
+
+  70% {
+    transform: scale(0.6, 1.4) translate3d(4px, 0, 0) rotate(5deg);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes squeeze {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}

@@ -1,5 +1,21 @@
-@mixin scrollable {
+@mixin scrollable($border-margin: 1px) {
   overflow-y: overlay;
+
+  &::-webkit-scrollbar-thumb {
+    border-top-width: $border-margin;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #79797966;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #797979ad;
+  }
+}
+
+@mixin scrollable-horizontal {
+  overflow-x: overlay;
 
   &:hover::-webkit-scrollbar-thumb {
     background-color: #79797966;

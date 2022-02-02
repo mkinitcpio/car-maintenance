@@ -1,0 +1,19 @@
+<div class="tabs">
+  <div class="tabs__title">
+    <div #tabsRef class="tabs__tabs-section">
+      <div #tabCoverRef class="tabs__tab--cover-selected"></div>
+      <div class="tabs__tab" [class.tabs__tab--selected]="selectedtab === i" *ngFor="let tab of tabs; let i = index;"(click)="onTabSelect(i)">
+      {{tab | translate}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs__content" [class.tabs__content--switched]="selectedtab">
+    <div class="tab-content" [class.tab-content--selected]="selectedtab === 0">
+      <ng-content select="[tab-1]"></ng-content>
+    </div>
+    <div class="tab-content" [class.tab-content--selected]="selectedtab === 1">
+      <ng-content select="[tab-2]"></ng-content>
+    </div>
+  </div>
+</div>

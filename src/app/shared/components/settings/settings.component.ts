@@ -10,6 +10,7 @@ import { languageOptions } from './language-options';
 import { LocaleEnum } from './locale-enum';
 import { MetricSystemEnum } from './metric-system.enum';
 import { CurrencyEnum } from './currency.enum';
+import { NavigationTabEnum } from './navigation-tab.enum';
 import { regionOptions } from './region-options';
 import { currencyOptions } from './currency-options';
 
@@ -30,6 +31,7 @@ export class SettingsComponent implements OnInit {
   public MetricSystemEnum = MetricSystemEnum;
   public IconTypeEnum = IconTypeEnum;
   public CurrencyEnum = CurrencyEnum;
+  public NavigationTabEnum = NavigationTabEnum;
 
 
   constructor(
@@ -92,6 +94,11 @@ export class SettingsComponent implements OnInit {
 
   public onAnimationsChanged(event: MatSlideToggleChange): void {
     this.settingsService.setAnimations(event.checked);
+    this.settingsService.saveSettings();
+  }
+
+  onFirstTabChanged(tab: NavigationTabEnum): void {
+    this.settingsService.setFirstTab(tab);
     this.settingsService.saveSettings();
   }
 }

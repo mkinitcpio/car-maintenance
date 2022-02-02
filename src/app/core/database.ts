@@ -3,8 +3,11 @@ import { CategoryDetail, CategoryDetails } from '../category-details/state/inter
 import { Record } from '../detail/state/interface';
 import { Category } from '../navigation/state/interface';
 import { ElectronService } from './services';
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import { SettingsService } from '../shared/components/settings/settings.service';
+import { CarCategory } from './interfaces/car-category';
+import { Maintenance } from '@core/interfaces/maintenance';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +18,8 @@ export class DataBaseService {
   public readonly initialDataBase = {
     categories: [],
     records: [],
+    cars: [],
+    maintenances: [],
   };
 
   private fileReadConfig: {
@@ -27,6 +32,8 @@ export class DataBaseService {
   private data: {
     categories: Category[],
     records: Record[],
+    cars: CarCategory[],
+    maintenances: Maintenance[],
   };
 
   public databaseError$: Subject<void> = new Subject();
@@ -35,11 +42,12 @@ export class DataBaseService {
     private electronService: ElectronService,
     private settingsService: SettingsService,
   ) {
+    this.data = this.initialDataBase;
   }
 
   public getCategories(): Array<Category> {
     const db = this.data;
-    return db.categories;
+    return [...db.categories, ...db.cars ];
   }
 
   public getRecords(parentId: string): Array<any> {
@@ -52,6 +60,67 @@ export class DataBaseService {
     db.categories.push(category);
 
     this.writeToDataBase();
+  }
+
+  public saveNewCarCategory(carCategory: CarCategory, parts: Category[], maintenance: Maintenance): Observable<CarCategory> {
+    const db = this.data;
+
+    if(db.cars) {
+      db.cars.push(carCategory);
+    } else {
+      db.cars = [carCategory];
+    }
+
+    if(db.maintenances) {
+      db.maintenances.push(maintenance);
+    } else {
+      db.maintenances = [maintenance];
+    }
+
+    db.categories.push(...parts);
+
+    return this.writeToDataBaseAsync().pipe(
+      map(() => carCategory),
+    );
+  }
+
+  public getCarCategory(id: string): Observable<{data: CarCategory, children: Category[]}> {
+    const data = {
+      data: this.data.cars.find(car => car.id === id),
+      children: this.data.categories
+        .filter(category => category.parent === id),
+    };
+
+    return of(data);
+  }
+
+  public editCarCategory(carCategory: CarCategory): Observable<CarCategory> {
+    this.data.cars = this.data.cars.map(c => c.id === carCategory.id ? carCategory : c);
+
+    return this.writeToDataBaseAsync().pipe(
+      map(() => carCategory),
+    );
+  }
+
+  public deleteCarCategory(id: string): Observable<CarCategory> {
+    const carCategory = this.data.cars.find(car => car.id === id);
+    this.data.cars = this.data.cars.filter(car => car.id !== id);
+    const childCategoriesId = this.data.categories.filter(category => category.parent === id).map(c => c.id);
+
+    this.data.categories = this.data.categories.filter(category => category.parent !== id);
+    this.data.records = this.data.records.filter(record => !childCategoriesId.includes(record.parent));
+
+    return this.writeToDataBaseAsync().pipe(
+      map(() => carCategory),
+    );
+  }
+
+  public updateMaintenance(maintenance: Maintenance): Observable<Maintenance> {
+    this.data.maintenances = this.data.maintenances.map(m => m.parent === maintenance.parent ? maintenance : m);
+
+    return this.writeToDataBaseAsync().pipe(
+      map(() => maintenance),
+    );
   }
 
   public saveNewRecord(record: Record): void {
@@ -93,7 +162,7 @@ export class DataBaseService {
 
   public getCategoryDetails(id: string): CategoryDetails {
     const db = this.data;
-    const parentCategory = db.categories.find(category => category.id === id);
+    const parentCategory = db.categories.find(category => category.id === id) || db.cars.find(car => car.id === id);
     const childCategories = db.categories.filter(category => category.parent === id);
     const allRecords = db.records;
 
@@ -107,8 +176,12 @@ export class DataBaseService {
       };
     });
 
+    const maintenance = db.maintenances?.find(maintenance => maintenance.parent === id) || null;
+
     return {
-      name: parentCategory.name,
+      data: parentCategory,
+      type: parentCategory.type,
+      maintenance,
       tables: tablesData,
     };
   }
@@ -130,7 +203,10 @@ export class DataBaseService {
       if(!data?.categories || !data?.records) {
         throw new Error();
       } else {
-        this.data = data;
+        this.data = {
+          ...this.data,
+          ...data,
+        };
       }
       this.dbExist$.next(true);
     } catch(error) {
@@ -144,5 +220,9 @@ export class DataBaseService {
 
   private writeToDataBase(): void {
     this.electronService.fs.writeFile(this.settingsService.settings.databasePath, JSON.stringify(this.data), this.fileWriteConfig, () => {});
+  }
+
+  private writeToDataBaseAsync(): Observable<any> {
+    return of(this.electronService.fs.promises.writeFile(this.settingsService.settings.databasePath, JSON.stringify(this.data)));
   }
 }

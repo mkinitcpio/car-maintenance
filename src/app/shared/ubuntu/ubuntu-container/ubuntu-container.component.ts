@@ -10,6 +10,12 @@ export class UbuntuContainerComponent implements OnInit {
   @Input()
   title: string;
 
+  @Input()
+  hasBordersStyle = true;
+
+  @Input()
+  info: string;
+
   constructor() { }
 
   ngOnInit(): void {

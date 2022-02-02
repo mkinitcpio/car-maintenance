@@ -1,37 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@use '/src/mixins' as mixins;
 html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
 
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
   background-color: white;
 }
 
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '/src/colors';
+@import '/src/animations';
 
 
 .dialog {
   &-custom {
     .mat-dialog-container {
       padding: 0;
-      border-radius: 8px 8px 0 0;
+      border-radius: 8px 8px 8px 8px;
     }
   }
 
   &-settings,
+  &-car,
   &-notes {
     .mat-dialog-container {
-      width: 600px;
       padding: 0;
 
-      border-radius: 8px 8px 0 0;
+      border-radius: 8px 8px 8px 8px;
       overflow: hidden;
     }
   }
 
   &-settings {
+    max-height: 80%;
+
+    .mat-dialog-container {
+      height: auto;
+    }
+  }
+
+  &-car,
+  &-notes {
     max-height: 80%;
 
     .mat-dialog-container {
@@ -54,7 +65,8 @@ html, body {
   font-size: 14px;
   line-height: 1.5;
   background: #333;
-  border-radius: 0 !important;
+  border-radius: 8px !important;
+  white-space: pre-line;
 }
 
 .mat-tooltip--long-text {
@@ -70,14 +82,89 @@ html, body {
   display: flex;
   align-items: center;
 
+  padding: 0 8px;
+
   font-family: 'Ubuntu';
   color: #111;
+  font-size: 14px !important;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 8px;
 
  .mat-icon {
-   margin-right: 4px;
-
-   color: rgb(140, 140, 140);
+   margin-right: 8px;
+   color: #3c3a3a !important;
+   font-size: 20px;
+   height: 20px;
+   width: 20px;
   }
+
+  &.menu-item--delete {
+    color: #c7162b !important;
+
+    .mat-icon {
+      color: #c7162b !important;
+    }
+  }
+
+  &.menu-item--update {
+    color: $button-color-primary;
+
+    .mat-icon {
+      color: $button-color-primary !important;
+    }
+  }
+}
+
+.menu-item.mat-menu-item:hover {
+  background: rgba(0,0,0,0.05) !important;
+
+  .mat-icon {
+    animation: shake 0.5s ease-in both;
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    &.mat-item__icon--add {
+      animation: punch 0.5s ease-in;
+    }
+
+    &.mat-item__icon--rotate {
+      animation: rotation 0.5s ease-in;
+    }
+
+    &.mat-item__icon--delete {
+      animation: squeeze 0.5s ease-in;
+    }
+
+    &.mat-item__icon--add-car {
+      animation: movement 0.5s ease-in;
+    }
+  }
+}
+
+.mat-menu-panel {
+  min-width: initial !important;
+  border-radius: 8px !important;
+  background: #ffffffa3;
+  backdrop-filter: saturate(180%) blur(10px);
+  .cdk-program-focused { 
+    background-color: transparent!important; 
+  }
+
+  .mat-menu-content {
+    padding: 4px !important;
+  }
+
+  .mat-menu__divider {
+    height: 1px;
+    margin: 4px 8px;
+    background: #ccc;
+  }
+}
+
+.mat-select-panel {
+  @include mixins.scrollable();
+  padding: 0 !important;
 }
 
 .app {
@@ -112,6 +199,7 @@ body.no-animations {
 }
 
 ::-webkit-scrollbar {
+  height: 10px;
   width: 10px;
 }
 
@@ -123,4 +211,38 @@ body.no-animations {
   border: 2px solid transparent;
   background-clip: padding-box;
   background-color: transparent;
+}
+
+.mat-form-field {
+  .mat-form-field-ripple {
+    background-color: var(--primary-color);
+   }
+
+   .mat-form-field-required-marker {
+    color: $color-dangerous !important;
+  }
+
+  &.mat-focused {
+    .mat-form-field-ripple {
+      background-color: var(--primary-color);
+     }
+    .mat-select-arrow {
+      color: rgba(0,0,0,.54) !important;
+    }
+  }
+}
+
+.mat-option.mat-selected:not(.mat-option-disabled) {
+  color: var(--primary-color) !important;
+}
+
+.mat-form-field-invalid {
+  .mat-form-field-ripple {
+    background: $color-dangerous !important;
+  }
+}
+
+.mat-badge-content {
+  top: -6px !important;
+  background-color: $color-dangerous;
 }

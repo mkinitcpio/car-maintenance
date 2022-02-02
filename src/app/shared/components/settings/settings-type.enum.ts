@@ -4,4 +4,5 @@ export enum SettingsTypeEnum {
   Language,
   Region,
   All,
+  FirstTab,
 }

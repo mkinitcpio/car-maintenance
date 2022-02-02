@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryTree } from '../navigation/state/interface';
+import { CategoryTree, CategoryTypeEnum } from '../navigation/state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { CategoryDetails } from './state/interface';
 import { Record } from '../detail/state/interface';
@@ -11,6 +11,10 @@ import { NavigationFacade } from '../navigation/state/navigation.facade';
 import { listen } from '../core/decorators';
 import { merge } from 'rxjs';
 import { AutoCloseable } from '../core/auto-closeable';
+import { UtilsService } from '@shared/services/utils.service';
+import { SettingsService } from '@shared/components/settings/settings.service';
+import { ElectronService } from '@core/services';
+import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
 
 @Component({
   selector: 'app-category-details',
@@ -23,7 +27,13 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
 
   @listen({ value: true })
-  deleteCategory$ = this.navigationFacade.deleteCategory$;
+  deleteCategory$ = merge(
+    this.navigationFacade.deleteCategory$,
+    this.navigationFacade.deleteCarCategory$,
+  );
+
+  @listen({ value: true })
+  updatedMaintenance$ = this.categoryDetailsFacade.updatedMaintenance$;
 
   @listen()
   recordChanges$ = merge(
@@ -35,16 +45,32 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   categoryChanges$ = merge(
     this.navigationFacade.newCategory$,
     this.navigationFacade.editCategory$,
+    this.navigationFacade.newCarCategory$,
+    this.navigationFacade.editCarCategory$,
   );
+
+  public CategoryTypeEnum = CategoryTypeEnum;
+  public MetricSystemEnum = MetricSystemEnum;
 
   public id: string;
   public category: CategoryTree;
   public categoryDetails: CategoryDetails;
+  public totalCost: number;
+  public sitesForSearch = [{
+    name: "Amazon",
+    url: "https://www.amazon.com/s?k=",
+  }, {
+    name: "Ebay",
+    url: "https://www.ebay.com/sch/i.html?_nkw=",
+  }];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private utilsSerivce: UtilsService,
     private detailsFacade: DetailsFacade,
+    public settingsService: SettingsService,
+    private electronService: ElectronService,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
     private categoryDetailsFacade: CategoryDetailsFacade,
@@ -55,6 +81,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   ngOnInit(): void {
     this.categoryDetails$.subscribe((categoryDetails) => {
       this.categoryDetails = categoryDetails;
+      this.totalCost = this.categoryDetails.tables.map(table => this.utilsSerivce.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
     });
 
     this.recordChanges$.subscribe(() => {
@@ -65,6 +92,10 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       if(category.parent === this.id || this.id === category.id) {
         this.categoryDetailsFacade.loadCategoryDetails(this.id);
       }
+    });
+
+    this.updatedMaintenance$.subscribe(() => {
+      this.categoryDetailsFacade.loadCategoryDetails(this.id);
     });
 
     this.deleteCategory$.subscribe((category) => {
@@ -110,20 +141,27 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .map(table => ({
         title: table.name,
         records: table.data,
-        totalCost: this.getResultCost(table.data),
+        totalCost: this.utilsSerivce.getResultCost(table.data),
       }));
 
     this.dialogManagerService.openPrintDialog({
-      title: this.categoryDetails.name,
+      title: this.categoryDetails.data.name,
       multiply: true,
       tablesData,
     });
   }
 
-  private getResultCost(records: Record[]): number {
-    const costs = records.map((record) => +record.cost).filter(Boolean);
+  public onTextAreaFocusOut(note: string): void {
+    const maintenance = {...this.categoryDetails.maintenance};
 
-    return costs.reduce((acc, cost) => acc + cost , 0);
+    maintenance.note = note;
+    this.categoryDetailsFacade.updateMaintenance(maintenance);
+  }
+
+  public onSearch(url: string, name: string): void {
+    const parsedName = name.replace(/[ ]/g, '+');
+
+    this.electronService.shell.openExternal(url + parsedName);
   }
 
   private findRecord(id: string): Record {

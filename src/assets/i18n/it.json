@@ -29,6 +29,7 @@
         "REGION": "Stato",
         "DATABASE_PATH": "Database",
         "ICONS": "Icone",
+        "FIRST_TAB": "Prima scheda",
         "MONO": "Mono",
         "CURRENCY": "Moneta",
         "METRIC_SYSTEM": "Sistema metrico",
@@ -38,19 +39,46 @@
         "DEFAULT": "Default"
       },
       "BUTTONS": {
-        "CHANGE": "Cambia"
+        "CHANGE": "Cambia",
+        "CARS": "Automobili",
+        "CATEGORIES": "Categorie"
       }
     },
     "EMPTY": {
       "TEXT": "Seleziona Categoria"
     },
     "PDF_EXPORT": {
-      "CONFIGURATIONS": "Opzioni",
+      "CONFIGURATIONS": "Impostazioni",
       "PATH": "Percorso",
       "ORDER_AND_VISIBILITY": "Visualizzati",
       "PREVIEW": "Anteprima",
       "OTHER": "Altro",
       "TOTAL": "Totale"
+    },
+    "NAVIGATION": {
+      "TABS": {
+        "CATEGORIES": "Categorie",
+        "CARS": "Automobili"
+      }
+    },
+    "CATEGORY_DETAILS": {
+      "WIDGETS": {
+        "INFO": "Informazioni",
+        "NOTE": "Nota",
+        "MILEAGE": "Chilometraggio",
+        "OVERALL_EXPENSE": "Overall expense"
+      },
+      "LABELS": {
+        "YEAR": "Anno",
+        "MAKE": "Lavori",
+        "MODEL": "Modello",
+        "VEHICLE_ID": "Targa",
+        "ENGINE": "Motore"
+      },
+      "TOOLTIPS": {
+        "OVERALL_EXPENSE": "Spese per l'intero periodo di servizio.\n Calcolato dai dati nelle tabelle.",
+        "MILEAGE": "Chilometraggio del veicolo.\n Il valore verrà inserito automaticamente nel campo 'Chilometraggio' al momento della creazione della voce."
+      }
     }
   },
   "MENU": {
@@ -59,9 +87,12 @@
     "DELETE": "Eliminare",
     "ABOUT": "About",
     "GITHUB": "GitHub",
-    "SETTINGS":"Opzioni",
+    "SETTINGS":"Impostazioni",
     "WHATS_NEW": "Novità",
-    "FEEDBACK": "Feedback"
+    "FEEDBACK": "Feedback",
+    "CAR": "Automobile",
+    "CATEGORY": "Categoria",
+    "UPDATE": "Aggiornamento disponibile"
   },
   "DIALOG": {
     "ADD": "Aggiungi",
@@ -79,6 +110,10 @@
       "RECORD": "Eliminare Registrati"
     },
     "CATEGORY": "Categoria",
+    "CAR": "Automobile",
+    "COMMON": "Comune",
+    "INFO": "Informazioni",
+    "PARTS": "Parti",
     "RECORD": "Registrati",
     "BUTTONS": {
       "ADD": "Aggiungi",
@@ -104,10 +139,18 @@
       "ILLUSTRATION": "Illustrazione",
       "MILEAGE": "Chilometraggio",
       "DATE": "Data",
+      "YEAR": "Anno",
+      "MAKE": "Lavori",
+      "MODEL": "Modello",
+      "VEHICLE_ID": "Targa",
+      "ENGINE": "Motore",
       "EXPENSE": "Spesa",
       "COMMENT": "Commenti",
       "TEXT": "Testo",
       "TYPE": "Digita"
+    },
+    "TOOLTIPS": {
+      "CAR_PARTS": "Parti che puoi riparare"
     }
   },
   "ILLUSTRATIONS": {

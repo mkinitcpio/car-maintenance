@@ -1,9 +1,18 @@
 <div class="ubuntu-container">
   <header class="ubuntu-container__header" *ngIf="title">
     {{title}}
+    <mat-icon class="ubuntu-container__info"
+              *ngIf="info"
+              [matTooltip]="info">
+      info
+    </mat-icon>
+
+    <div class="ubuntu-container__actions">
+      <ng-content select="[actions]"></ng-content>
+    </div>
   </header>
 
-  <main class="ubuntu-container__content">
+  <main class="ubuntu-container__content" [class.ubuntu-container__content--with-borders]="hasBordersStyle">
     <ng-content></ng-content>
   </main>
 </div>

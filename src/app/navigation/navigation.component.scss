@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 .navigation {
   height: 100%;
   display: flex;
@@ -20,24 +22,26 @@
   &__buttons {
     display: flex;
     justify-content: flex-end;
-    padding: 8px 12px;
+    padding: 4px 10px;
 
-    border-top: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0,0,0,0.1);
   }
 
   .button {
     font-family: Ubuntu;
     font-weight: normal;
-    color: #111;
+    color: $font-primary;
     min-width: initial;
     padding: 0 8px;
+
+    border-radius: 8px;
 
     &__switcher-icon {
       transition: transform 0.2s ease-in;
     }
   }
 
-  app-categories-tree {
+  app-tabs {
     flex-grow: 1;
 
     transition: opacity 0.15s ease-in 0.15s;
@@ -53,10 +57,13 @@
     background-color: #323030;
     transition: background-color 0.25s ease-out;
 
-    app-categories-tree {
+    app-tabs{
       opacity: 0;
-      z-index: -1;
       transition: opacity 0s;
+
+      app-categories-tree {
+        z-index: -1;
+      }
     }
 
     .navigation__title-container {
@@ -69,4 +76,9 @@
       color: white;
     }
   }
+}
+
+.menu-item__github-icon {
+  height: 18px !important;
+  fill: $font-secondary;
 }

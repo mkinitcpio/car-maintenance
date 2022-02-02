@@ -1,11 +1,13 @@
 @use '/src/mixins' as mixins;
+@import '/src/colors';
 
 .category-details {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &__title-container {
-    padding: 4px 32px;
-    height: 48px;
+    padding: 9px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +26,24 @@
     gap: 8px;
   }
 
-  &__add-button {
+  &__search-button {
+    color: $font-primary;
+    border-radius: 8px;
+  }
+
+  &__notes {
+    padding: 8px;
+    height: 98px;
+    width: 192px;
+    
+    border: 1px solid #bfbfbf;
+    border-radius: 8px;
+    resize: none;
+
+    font-family: Ubuntu;
+  }
+
+  &__export-button {
     min-width: initial;
     padding: 0 8px;
 
@@ -32,54 +51,91 @@
     font-weight: normal;
     background-color: rgb(75,72,72);
     border: 1px solid rgb(43,42,42);
+    border-radius: 8px;
     color: #fff;
-  }
-
-  &__link {
-    color: #222;
-    text-decoration: none;
-
-    &:hover {
-      color: black;
-      .category-details__link-icon {
-        font-size: 20px;
-      }
-    }
-  }
-
-  &__link-icon {
-    font-size: 18px;
-    transition: font-size 0.2s linear;
-  }
-
-  &__scroll-fix {
-    height: 16px;
-    width: 100%;
-    background-color: #fafafa;
-    z-index: 101;
   }
 
   &__content {
     @include mixins.scrollable;
 
-    padding: 0px 32px 32px 32px;
-    height: calc(100% - 122px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    height: 100%;
     position: relative;
   }
 
-  &__table {
-    margin-bottom: 32px;
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .info-section {
+    width: fit-content;
+    display: flex;
+    gap: 16px;
+  }
+
+  .car-info {
+    margin-top: 4px;
+
+    font-family: Ubuntu;
+
+    &__raw {
+      display: flex;
+      margin-bottom: 8px;
+    }
+
+    &__raw:last-child {
+      margin: 0;
+    }
+
+    &__raw-label {
+      width: 112px;
+      font-weight: bold;
+    }
+
+    &__status {
+      display: flex;
+      align-items: center;
+
+      font-family: Ubuntu;
+      font-size: 18px;
+    }
+
+    &__metric-system {
+      margin-left: 4px;
+    }
+
+    &__content {
+      font-family: Ubuntu;
+      font-size: 14px;
+    }
+  }
+
+  &__table-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__table-title {
-    padding: 16px 0;
-    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
     position: sticky;
     top: 0;
 
-    font-size: 24px;
+    font-size: 18px;
     z-index: 101;
     background-color: #fafafa;
     border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+  }
+
+  &__table-actions {
+    font-size: 14px;
   }
 }

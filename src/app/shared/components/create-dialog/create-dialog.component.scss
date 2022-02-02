@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 .create-dialog {
   font-family: "Ubuntu";
 
@@ -44,7 +46,7 @@
       }
 
       mat-label {
-        color: #111;
+        color: $font-primary;
         font-weight: lighter;
         font-size: 20px;
       }
@@ -82,7 +84,8 @@
 .button {
   font-family: Ubuntu;
   font-weight: normal;
-  color: #111;
+  color: $font-primary;
+  border-radius: 8px;
 }
 
 .button__submit {
@@ -95,21 +98,4 @@
   background-color: rgb(75, 72, 72);
   border-color: rgb(48,47,47);
   color: #fff;
-}
-
-.mat-form-field::ng-deep {
-  .mat-form-field-ripple {
-    /*change color of underline when focused*/
-    background-color: #2e96ff;
-   }
-
-   .mat-form-field-required-marker {
-    color: #c7162b !important;
-  }
-}
-
-::ng-deep .mat-form-field-invalid {
-  .mat-form-field-ripple {
-    background: #c7162b !important;
-  }
 }

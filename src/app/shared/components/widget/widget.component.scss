@@ -1,0 +1,42 @@
+@import '/src/colors';
+
+.widget {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  box-sizing: border-box;
+
+  background: white;
+  box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
+
+  border-radius: 8px;
+
+  user-select: none;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    font-family: Ubuntu;
+    font-size: 14px;
+    color: $font-primary;
+  }
+
+  &__info {
+    height: 15px;
+    width: 15px;
+
+    font-size: 15px;
+    color: $font-secondary;
+    cursor: pointer;
+  }
+
+  &__actions {
+    margin-left: auto;
+  }
+}

@@ -1,9 +1,29 @@
-.records-table {
-  font-family: Ubuntu;
-  overflow-y: overlay;
+@use '/src/mixins' as mixins;
+@import '/src/colors';
 
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+.records-table {
+  @include mixins.scrollable;
+  @include mixins.scrollable-horizontal;
+  height: 100%;
+  box-sizing: border-box;
+
+  font-family: Ubuntu;
+  border-radius: 8px;
+
+  &--with-borders {
+    border: 1px solid $separator-color;
+
+    .records-table__row.mat-row:last-child {
+      border-bottom-width: 1px;
+    }
+  }
+
+  &__row {
+    min-height: 42px;
+    border-bottom-color: $separator-color;
+  }
+
+  user-select: none;
 
   &__menu-button {
     cursor: pointer;
@@ -19,6 +39,10 @@
     flex: 0 0 24px;
   }
 
+  .records-table__header {
+    min-height: 48px;
+  }
+
   &__cell-cost {
     flex: 0 0 82px;
   }
@@ -29,7 +53,14 @@
 
   &__cell-note {
     flex: 0 0 48px;
-    color: #666;
+  }
+
+  &__note-icon {
+    height: 20px;
+    width: 20px;
+
+    font-size: 20px;
+    color: #3c3a3a;
   }
 
   &__cell-mileage {
@@ -52,8 +83,8 @@
 
     cursor: pointer;
   }
-
-  .mat-row:hover .records-table__menu-column {
-    visibility: visible;
+  
+  .mat-row:last-child {
+    border-bottom-width: 0;
   }
 }

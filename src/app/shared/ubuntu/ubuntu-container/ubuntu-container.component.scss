@@ -1,20 +1,44 @@
+@import '/src/colors';
+
 :host {
   display: block;
 }
 
 .ubuntu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
   &__header {
-    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 36px;
 
     font-family: 'Ubuntu';
     font-weight: bold;
-    color: #111;
+    color: $font-primary;
+  }
+
+  &__info {
+    height: 14px;
+    width: 14px;
+
+    font-size: 15px;
+    color: $font-secondary;
+    cursor: pointer;
+  }
+
+  &__actions {
+    margin-left: auto;
   }
 
   &__content {
-    border: 1px solid rgb(191,191,191);
-    border-radius: 4px;
+    border-radius: 8px;
     background: white;
+
+    &--with-borders {
+      box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
+    }
   }
 }
