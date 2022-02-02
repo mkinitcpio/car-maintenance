@@ -1,0 +1,85 @@
+@use '/src/mixins' as mixins;
+@import "/src/colors";
+
+:host {
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__tabs-section {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    gap: 4px;
+    height: 32px;
+  }
+
+  &__title {
+    padding: 8px 12px;
+
+    background: $background-header-primary;
+    font-family: Ubuntu;
+    font-size: 14px;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    color: white;
+    z-index: 1;
+    transition: color 0.4s ease-in-out,background-color 0.1s ease-in;
+
+    cursor: pointer;
+
+    &--cover-selected {
+      box-sizing: border-box;
+      position: absolute;
+      height: inherit;
+
+      background-color: #4b4848;
+      border: 1px solid #2b2a2a;
+      border-radius: 8px;
+      transition: left 0.4s ease-in-out;
+    }
+
+    &:not(.tabs__tab.tabs__tab--selected):hover {
+      background-color: #00000026;
+    }
+  }
+
+  &__content {
+    position: relative;
+    left: 0;
+    display: grid;
+    block-size: 100%;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    height: 90%;
+    flex: 1;
+
+    transition: left 0.4s ease-in-out;
+    will-change: left;
+
+    &--switched {
+      left: -100%
+    }
+  }
+
+  .tab-content {
+    @include mixins.scrollable();
+
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+
+    &--selected {
+      opacity: 1;
+    }
+  }
+}

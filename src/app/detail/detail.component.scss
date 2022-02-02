@@ -1,10 +1,14 @@
+@import '/src/colors';
+
 .detail {
   height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  user-select: none;
 
   &__title-container {
-    padding: 4px 32px;
-    height: 48px;
+    padding: 9px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,6 +38,7 @@
     min-width: initial;
     padding: 0 8px;
 
+    border-radius: 8px;
     font-family: Ubuntu;
     font-weight: normal;
     background-color: rgb(75,72,72);
@@ -42,13 +47,21 @@
   }
 
   &__content {
-    padding: 32px;
+    padding: 24px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__table {
+    flex: 1;
     overflow: hidden;
   }
 
   &__empty {
-    height: calc(100% - 112px);
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,24 +81,10 @@
 
   &__cards {
     display: flex;
-    margin-bottom: 16px;
+    gap: 16px;
   }
 
   .card {
-    padding: 16px;
-    margin-right: 16px;
-
-    border-radius: 4px;
-    border: 1px solid silver;
-    background: white;
-
-    &__title {
-      margin-bottom: 4px;
-
-      font-family: Ubuntu;
-      font-size: 12px;
-      color: #666;
-    }
 
     &__stat {
       display: flex;
@@ -93,7 +92,7 @@
 
       font-family: Ubuntu;
       font-size: 18px;
-      color: #111;
+      color: $font-primary;
     }
   }
 }

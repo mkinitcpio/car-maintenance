@@ -1,4 +1,4 @@
-import { Category, CategoryTree } from "./interface";
+import { CategoryTree } from "./interface";
 import { FeatureState, Status } from "../../state/interface";
 
 export const initialState: FeatureState<Array<CategoryTree>> = {

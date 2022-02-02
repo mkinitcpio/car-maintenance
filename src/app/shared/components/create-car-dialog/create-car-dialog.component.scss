@@ -1,0 +1,142 @@
+@use '/src/mixins' as mixins;
+@import '/src/colors';
+
+.create-car-dialog {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: "Ubuntu";
+  background: $background-secondary;
+
+  &__header {
+    height: 50px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: $background-header-primary;
+  }
+
+  &__header-text {
+    color: $font-white;
+  }
+
+  &__container {
+    padding: 16px;
+  }
+
+  &__parts-container {
+    padding: 8px 4px 16px 16px;
+  }
+
+  &__part {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__button-container {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      margin-right: auto;
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+  }
+
+  &__content {
+    @include mixins.scrollable;
+
+    height: 100%;
+    padding: 16px 24px;
+
+    mat-form-field {
+      font-family: 'Ubuntu';
+      font-weight: lighter;
+      width: 100%;
+
+      &.mat-form-field-invalid mat-label {
+        caret-color: $color-dangerous;
+        color: $color-dangerous !important;
+      }
+
+      mat-label {
+        color: $font-primary;
+        font-weight: lighter;
+        font-size: 20px;
+      }
+
+      input:placeholder-shown {
+        font-size: 16px;
+      }
+    }
+
+    mat-error {
+      color: $color-dangerous;
+    }
+  }
+
+  &__columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
+    > * {
+      flex: 1 1 230px;
+    }
+  }
+}
+
+.button {
+  font-family: Ubuntu;
+  font-weight: normal;
+  color: $font-primary;
+  border-radius: 8px;
+  line-height: 37px;
+
+  &--add,
+  &--delete {
+    min-width: initial;
+    padding: 0 8px;
+
+    line-height: 37px;
+  }
+
+  &--delete {
+    color: $color-dangerous;
+  }
+}
+
+.button__submit {
+  background-color: $button-color-primary;
+  border-color: rgba(0,0,0,0.56);
+  color: #fff;
+}
+
+.button__cancel {
+  background-color: $button-color-secondary;
+  border-color: rgb(48,47,47);
+  color: $font-white;
+}
+
+.mat-form-field::ng-deep {
+  .mat-form-field-infix {
+    width: auto !important;
+  }
+}
+
+ubuntu-container {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

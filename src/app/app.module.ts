@@ -23,7 +23,7 @@ import { DataBaseService } from './core/database';
 import {DatabaseSelectModule} from "./database-select/database-select.module";
 import { WelcomePageModule } from "./welcome-page/welcome-page.module";
 
-import { ConstantsService } from "./core/constants.service";
+import { VersionService } from "@core/services/version.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -56,7 +56,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   providers: [
     DataBaseService,
-    ConstantsService,
+    VersionService,
   ],
   bootstrap: [AppComponent]
 })

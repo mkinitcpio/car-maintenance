@@ -11,7 +11,9 @@
 
 App for log your car parts maintenance such as engine, oil and any what you want! Manage cost, date and mileage.
 
-![alt text](https://sun9-9.userapi.com/impg/Wcw_ZvqwpxWRA4PSNcO17AcAo6F1u7D4MUm1hQ/SW6YEBlp_BI.jpg?size=1850x1055&quality=96&proxy=1&sign=6c0f6488e629d78e4c46b60a52339a37&type=album)
+
+<img width="1383" alt="Screen Shot 2022-02-02 at 12 44 20 AM" src="https://user-images.githubusercontent.com/12542028/152056753-1e27068b-cf09-45e8-8108-80ce8093b15c.png">
+
 
 ## Getting Started
 

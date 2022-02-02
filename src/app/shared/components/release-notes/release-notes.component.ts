@@ -1,12 +1,14 @@
-import { Inject, OnInit, ViewChild } from '@angular/core';
+import { Inject, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatSelect } from '@angular/material/select';
-import { ElectronService } from '../../../core/services';
 import { CreateRecordComponent } from '../create-record/create-record.component';
 import { SettingsService } from '../settings/settings.service';
-import { ReleaseNotes } from './interface';
 
+interface SlideShow {
+  links: string[];
+  notes: string[];
+  selected: number;
+}
 @Component({
   selector: 'app-release-notes',
   templateUrl: './release-notes.component.html',
@@ -14,37 +16,64 @@ import { ReleaseNotes } from './interface';
 })
 export class ReleaseNotesComponent implements OnInit {
 
-  @ViewChild('versionSelect', {static: true})
-  versionSelect: MatSelect;
-
-  public releases: string[] = [];
-  public selectedVersion: string = null;
   public appLanguage: string;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public releaseNotes: ReleaseNotes,
+    @Inject(MAT_DIALOG_DATA) public releaseNotes: any,
     public dialogRef: MatDialogRef<CreateRecordComponent>,
     public settingsService: SettingsService,
-    private electronService: ElectronService,
   ) {
-    this.releases = this.releaseNotes.releases;
-    this.selectedVersion = this.releases[0];
   }
 
   ngOnInit(): void {
-    this.versionSelect.valueChange.subscribe((version: string) => {
-      this.selectedVersion = version;
-    });
-
     this.appLanguage = this.settingsService.settings.language === 'it' ? 'en' : this.settingsService.settings.language;
   }
 
-  public onDonateButtonClick(): void {
-    this.electronService.shell.openExternal("https://www.paypal.com/donate/?hosted_button_id=PWGUQ4PZ5FMHJ");
-  }
+  progressSlideShowSection: SlideShow = {
+    links: [
+      'assets/release-notes/1.0.0.png',
+      'assets/release-notes/2.0.0.png',
+      'assets/release-notes/3.0.0.png',
+    ],
+    notes: [
+      "v1.0.0",
+      "v2.0.0",
+      "v3.0.0",
+    ],
+    selected: 0,
+  };
 
-  public onTicketLinkClick(e: Event): void {
-    e.preventDefault();
-    this.electronService.shell.openExternal("https://github.com/mkinitcpio/car-maintenance/issues");
+  carSlideShowSection: SlideShow = {
+    links: [
+      'assets/release-notes/car-1.png',
+      'assets/release-notes/car-2.png',
+    ],
+    notes: [],
+    selected: 0,
+  };
+
+  colorSlideShowSection: SlideShow = {
+    links: [
+      'assets/release-notes/color-purple.png',
+      'assets/release-notes/color-red.png',
+    ],
+    notes: [],
+    selected: 0,
+  };
+
+  public onSlideShowChange(section: SlideShow, direction: number): void {
+    const possiblePosition = section.selected + direction;
+
+    if(possiblePosition === section.links.length) {
+      section.selected = 0;
+      return;
+    }
+
+    if(possiblePosition < 0) {
+      section.selected = section.links.length - 1;
+      return;
+    }
+
+    section.selected = possiblePosition;
   }
 }

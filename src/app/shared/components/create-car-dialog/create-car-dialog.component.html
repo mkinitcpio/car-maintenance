@@ -1,0 +1,89 @@
+<div class="create-car-dialog">
+  <header class="create-car-dialog__header">
+    <div class="create-car-dialog__button-container">
+      <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
+    </div>
+    <div class="create-car-dialog__header-text">{{(data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT") | translate}} {{"DIALOG.CAR" | translate}}</div>
+    <div class="create-car-dialog__button-container">
+      <button class="button button__submit" mat-button (click)="onSubmit()">{{(data.mode === 0 ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT") | translate}}</button>
+    </div>
+  </header>
+
+  <main class="create-car-dialog__content">
+    <form [formGroup]="carForm">
+      <div class="create-car-dialog__columns">
+        <div>
+          <ubuntu-container [title]="'DIALOG.COMMON' | translate">
+            <div class="create-car-dialog__container">
+              <mat-form-field [floatLabel]="'always'">
+                <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
+                <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
+                <mat-error>
+                  {{"DIALOG.VALIDATIONS.NAME" | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ubuntu-container>
+          <ubuntu-container [title]="'DIALOG.INFO' | translate">
+            <div class="create-car-dialog__container">
+              <mat-form-field [floatLabel]="'always'">
+                <mat-label>{{"DIALOG.FIELDS.VEHICLE_ID" | translate}}</mat-label>
+                <input [formControlName]="'vehicleId'" matInput>
+              </mat-form-field>
+              <mat-form-field [floatLabel]="'always'">
+                <mat-label>{{"DIALOG.FIELDS.MAKE" | translate}}</mat-label>
+                <input [formControlName]="'make'" matInput>
+              </mat-form-field>
+              <mat-form-field [floatLabel]="'always'">
+                <mat-label>{{"DIALOG.FIELDS.MODEL" | translate}}</mat-label>
+                <input [formControlName]="'model'" matInput>
+              </mat-form-field>
+              <mat-form-field [floatLabel]="'always'">
+                <mat-label>{{"DIALOG.FIELDS.YEAR" | translate}}</mat-label>
+                <input [formControlName]="'year'" matInput>
+                <mat-error *ngIf="carForm.get('year').hasError('number')">
+                  {{carForm.get('year').getError('number').value | translate}}
+                </mat-error>
+                <mat-error *ngIf="carForm.get('year').hasError('positiveNumber')">
+                  {{carForm.get('year').getError('positiveNumber').value | translate}}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field [floatLabel]="'always'">
+                <mat-label>{{"DIALOG.FIELDS.ENGINE" | translate}}</mat-label>
+                <input [formControlName]="'engine'" matInput>
+              </mat-form-field>
+              <mat-form-field [floatLabel]="'always'">
+                <mat-label>{{"DIALOG.FIELDS.MILEAGE" | translate}}</mat-label>
+                <input [formControlName]="'mileage'" matInput>
+                <mat-error *ngIf="carForm.get('mileage').hasError('number')">
+                  {{carForm.get('mileage').getError('number').value | translate}}
+                </mat-error>
+                <mat-error *ngIf="carForm.get('mileage').hasError('positiveNumber')">
+                  {{carForm.get('mileage').getError('positiveNumber').value | translate}}
+                </mat-error>
+              </mat-form-field></div>
+          </ubuntu-container>
+        </div>
+        <div>
+          <ubuntu-container [title]="'DIALOG.PARTS' | translate" [info]="'DIALOG.TOOLTIPS.CAR_PARTS' | translate">
+            <button actions mat-button class="button button--add" (click)="addPart()" [disabled]="disablePartsForm"><mat-icon>add</mat-icon></button>
+            <div class="create-car-dialog__parts-container">
+              <div formArrayName="parts">
+                <div class="create-car-dialog__part" *ngFor="let partConrol of parts.controls; let i = index">
+                  <span>{{i + 1}}.</span>
+                  <mat-form-field>
+                    <input [formControlName]="i" matInput>
+                    <mat-error>
+                      {{"DIALOG.VALIDATIONS.NAME" | translate}}
+                    </mat-error>
+                  </mat-form-field>
+                  <button class="button button--delete" mat-button (click)="onDeletePart(i)" [disabled]="disablePartsForm"><mat-icon>delete</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </ubuntu-container>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>

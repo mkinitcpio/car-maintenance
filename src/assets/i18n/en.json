@@ -29,6 +29,7 @@
         "REGION": "Region",
         "DATABASE_PATH": "Database",
         "ICONS": "Icons",
+        "FIRST_TAB": "First tab",
         "MONO": "Mono",
         "CURRENCY": "Currency",
         "METRIC_SYSTEM": "Metric system",
@@ -38,7 +39,9 @@
         "DEFAULT": "Default"
       },
       "BUTTONS": {
-        "CHANGE": "Change"
+        "CHANGE": "Change",
+        "CARS": "Cars",
+        "CATEGORIES": "Categories"
       }
     },
     "EMPTY": {
@@ -52,6 +55,31 @@
       "OTHER": "Other",
       "SHOW_TOTAL_SUM": "Show total expense for each table",
       "TOTAL": "Total"
+    },
+    "NAVIGATION": {
+      "TABS": {
+        "CATEGORIES": "Categories",
+        "CARS": "Cars"
+      }
+    },
+    "CATEGORY_DETAILS": {
+      "WIDGETS": {
+        "INFO": "Information",
+        "NOTE": "Note",
+        "MILEAGE": "Mileage",
+        "OVERALL_EXPENSE": "Overall expense"
+      },
+      "LABELS": {
+        "YEAR": "Year",
+        "MAKE": "Make",
+        "MODEL": "Model",
+        "VEHICLE_ID": "License plate",
+        "ENGINE": "Engine"
+      },
+      "TOOLTIPS": {
+        "OVERALL_EXPENSE": "Overall expense",
+        "MILEAGE": "Mileage"
+      }
     }
   },
   "MENU": {
@@ -62,7 +90,10 @@
     "GITHUB": "GitHub",
     "SETTINGS":"Settings",
     "WHATS_NEW": "What's new",
-    "FEEDBACK": "Feedback"
+    "FEEDBACK": "Feedback",
+    "CAR": "Car",
+    "CATEGORY": "Category",
+    "UPDATE": "Update available"
   },
   "DIALOG": {
     "ADD": "Add",
@@ -80,6 +111,10 @@
       "RECORD": "Delete record"
     },
     "CATEGORY": "Category",
+    "CAR": "Car",
+    "COMMON": "Common",
+    "INFO": "Information",
+    "PARTS": "Parts",
     "RECORD": "Record",
     "BUTTONS": {
       "ADD": "Add",
@@ -105,10 +140,18 @@
       "ILLUSTRATION": "Illustration",
       "MILEAGE": "Mileage",
       "DATE": "Date",
+      "YEAR": "Year",
+      "MAKE": "Make",
+      "MODEL": "Model",
+      "VEHICLE_ID": "License plate",
+      "ENGINE": "Engine",
       "EXPENSE": "Expense",
       "COMMENT": "Comment",
       "TEXT": "Text",
       "TYPE": "Type"
+    },
+    "TOOLTIPS": {
+      "CAR_PARTS": "Car parts that you will maintain"
     }
   },
   "ILLUSTRATIONS": {

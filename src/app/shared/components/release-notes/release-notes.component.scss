@@ -1,106 +1,153 @@
+@use '/src/mixins' as mixins;
+@import '/src/colors';
+
 .release-notes {
   position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  font-family: "Ubuntu";
+  background: $background-secondary;
+  user-select: none;
+
+  .container {
+    padding: 24px;
+  }
+
+  &__section-title {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  &__text {
+    font-size: 1.2em;
+  }
 
   &__header {
-    height: 42px;
-    padding: 4px 16px;
+    padding: 8px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background-color: rgb(50, 48, 48);
+    position: absolute;
+    /* width: inherit; */
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba($color: $background-secondary, $alpha: 0.48);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.05);
   }
 
-  &__header-text {
-    color: white;
+  &__video {
+    padding: 24px;
+    aspect-ratio: 16 / 9;
+    object-position: top;
+    object-fit: cover;
+    border-radius: 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  &__button-container {
-    width: 64px;
+  &__content {
+    @include mixins.scrollable(100px);
+    height: 100%;
     display: flex;
-    align-items: center;
-
-    &:first-child {
-      margin-right: auto;
-      justify-content: flex-start;
-    }
-
-    &:last-child {
-      margin-left: auto;
-      justify-content: flex-end;
-    }
+    flex-direction: column;
+    gap: 32px;
+    padding: 132px 32px 32px 32px;
   }
+
+  .button {
+    font-family: Ubuntu;
+    font-weight: normal;
+    color: $font-primary;
+    min-width: initial;
+    padding: 0 8px;
+    height: 128px;
+  }
+}
+
+.image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+              0 2px 2px rgba(0,0,0,0.12), 
+              0 4px 4px rgba(0,0,0,0.12), 
+              0 8px 8px rgba(0,0,0,0.12),
+              0 16px 16px rgba(0,0,0,0.12);
+}
+
+.slide-show {
+  user-select: none;
+  padding: 24px 0;
 
   &__content {
     height: 100%;
     display: flex;
-    flex-direction: column;
-    padding: 32px;
-    overflow: overlay;
+    align-items: center;
+    gap: 16px;
   }
 
-  &__section-title {
-    font-size: 18px;
-    color: black;
+  &__position {
+    position: absolute;
+    height: 26px;
+    bottom: 12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
-  &__change {
-    margin-bottom: 8px;
-
-    font-size: 16px;
-    line-height: 24px;
-    color: #333;
+  &__image-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 
-  &__version-select {
-    width: 64px;
-    align-self: flex-end;
-
-    &::ng-deep .mat-select-value,
-    &::ng-deep .mat-select-arrow {
-      color: white;
-    }
-
-    &::ng-deep .mat-form-field-underline {
-      background: white;
-    }
-  }
-
-  .button {
-    width: 128px;
+  &__note {
     font-family: Ubuntu;
-    font-weight: normal;
-    color: #111;
+    font-size: 1em;
+    display: flex;
+    background: rgba($color: #111, $alpha: 0.7);
+    color: white;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
   }
-  
-  .button__submit {
-    background-color: #0d7f1e;
-    border-color: rgba(0,0,0,0.56);
-    color: #fff;
-  }
 
-  .donate {
-    font-family: Ubuntu;
-    padding: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+  &__indicator {
+    height: 12px;
+    width: 12px;
+    border-radius: 8px;
+    border: 1px solid $separator-color;
+    background-color: white;
+    transition: transform 0.2s ease-in;
+    cursor: pointer;
 
-    h2 {
-      margin-top: 0;
-      font-weight: normal;
-    }
-
-    p {
-      color: #111;
-      line-height: 1.4;
-    }
-
-    &__illustration {
-      width: 100%;
+    &--selected {
+      background-color: $color-primary;
+      border-color: transparent;
+      transform: scale(1.2);
     }
   }
+}
+
+.close-button {
+  color: $font-primary;
+  min-width: initial;
+  padding: 0 8px;
+}
+
+.image-container {
+  padding:24px;
 }

@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 :host {
   display: block;
 }
@@ -24,64 +26,62 @@
     display: flex;
     align-items: center;
     width: 22px;
-    margin-right: 8px;
+    margin: 0px 4px;
   }
 
   &__name {
-    max-width: 180px;
+    max-width: 208px;
 
+    font-size: 14px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
 
   &__icon {
-    width: 22px;
+    width: 18px;
   }
 
   &__content {
     display: flex;
     align-items: center;
-    height: 48px;
-    padding: 0 16px;
+    height: 40px;
+    padding: 0 8px;
 
-    color: rgba(0,0,0,.87);
+    color: $font-primary;
     cursor: pointer;
+    border-radius: 8px;
     line-height: 1.5rem;
-    transition: background-color 0.1s linear;
+    transition: background-color 0.1s ease-out;
 
     &:hover {
-      color: #111;
       background: rgba(0,0,0,0.05);
-    }
-
-    &:hover> .menu-button {
-      visibility: visible;
     }
 
     &--select {
       color: white;
-      background: rgb(233,84,32);
+      background: var(--primary-color);
     }
 
     &--select:hover {
       color: white;
-      background: rgb(216, 82, 35);
-
-      > .menu-button {
-        color: white;
-      }
+      background: var(--primary-color);
     }
   }
 
   &__expand-button-container {
     display: flex;
     align-items: center;
-    width: 24px;
-    margin-right: 8px;
+    height: 22px;
+    width: 22px;
+    margin-left: auto;
   }
 
   &__expand-button {
+    height: 22px;
+    width: 22px;
+
+    font-size: 22px;
     user-select: none;
     transition: transform 0.2s ease-out;
     transform: rotate(0deg);
@@ -89,12 +89,6 @@
     &--expanded {
       transform: rotate(90deg);
     }
-  }
-
-  .menu-button {
-    visibility: hidden;
-    margin-left: auto;
-    color: #111;
   }
 }
 

@@ -3,6 +3,7 @@ export interface Category {
   name: string;
   parent: string;
   illustration?: string;
+  type: CategoryTypeEnum;
 }
 
 export interface CategoryTree {
@@ -10,5 +11,11 @@ export interface CategoryTree {
   name: string;
   parent?: string;
   illustration? : string;
+  type: CategoryTypeEnum;
   children?: Array<CategoryTree>;
+}
+
+export enum CategoryTypeEnum {
+  Category,
+  Car,
 }

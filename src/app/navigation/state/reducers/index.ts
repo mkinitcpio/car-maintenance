@@ -1,8 +1,7 @@
-import { state } from "@angular/animations";
-import { Action, ActionReducer, createReducer, on, State } from "@ngrx/store";
+import { Action, createReducer, on } from "@ngrx/store";
 import { FeatureState, Status } from "../../../state/interface";
 import { initialState } from "../initial-state";
-import { Category, CategoryTree } from "../interface";
+import { Category } from "../interface";
 import { createCategory, createCategorySuccess, deleteCategory, deleteCategorySuccess, editCategory, editCategorySuccess, getCategories, getCategoriesSuccess } from "../actions";
 
 const appReducer = createReducer(

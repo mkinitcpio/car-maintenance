@@ -10,6 +10,7 @@ import { Settings } from './interface';
 import { LanguageEnum } from './language-enum';
 import { LocaleEnum } from './locale-enum';
 import { MetricSystemEnum } from './metric-system.enum';
+import { NavigationTabEnum } from './navigation-tab.enum';
 import { SettingsTypeEnum } from './settings-type.enum';
 
 @Injectable({
@@ -42,7 +43,8 @@ export class SettingsService {
       units: {
         metricSystem: null,
         currency: null,
-      }
+      },
+      firstTab: NavigationTabEnum.Categories,
     };
   }
 
@@ -67,6 +69,10 @@ export class SettingsService {
       this.settings = JSON.parse(this.electronService.fs.readFileSync(this.settingsPath, 'utf8'));
       if(!this.settings.appearance) {
         this.settings.appearance = this.defaultSettings.appearance;
+      }
+
+      if(!this.settings.firstTab === undefined) {
+        this.settings.firstTab = this.defaultSettings.firstTab;
       }
 
       if(this.settings.appearance.animations === undefined) {
@@ -146,6 +152,13 @@ export class SettingsService {
 
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Database,
+    });
+  }
+
+  public setFirstTab(tab: NavigationTabEnum): void {
+    this.settings.firstTab = tab;
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.FirstTab,
     });
   }
 

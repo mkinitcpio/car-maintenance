@@ -20,7 +20,7 @@
       </mat-form-field>
       <mat-form-field [floatLabel]="'always'">
       <mat-label>{{"DIALOG.FIELDS.CATEGORY" | translate}}</mat-label>
-        <mat-select [formControlName]="'parent'">
+        <mat-select [formControlName]="'parent'" [disabled]="data.mode === 1">
           <mat-option *ngFor="let parent of data.parents" [value]="parent.value">
             {{parent.name}}
           </mat-option>
