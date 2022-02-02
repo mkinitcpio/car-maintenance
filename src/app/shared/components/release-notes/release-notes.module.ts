@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { UbuntuCloseButtonModule } from '../../ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
     TranslateModule,
     UbuntuCloseButtonModule,
     MatDividerModule,
+    UbuntuContainerModule,
   ]
 })
 export class ReleaseNotesModule { }

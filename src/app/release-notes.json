@@ -1,213 +1,50 @@
 {
-  "releases": ["2.7.0", "2.6.1", "2.6.0", "2.5.0", "2.4.0", "2.3.0", "2.2.1", "2.2.0", "2.1.0", "2.0.0"],
-  "releaseNotes": {
-    "2.7.0": {
-      "en": {
-        "bugFixes": [],
-        "features": [
-          {"text": "Export all tables of selected category to PDF;"},
-          {"text": "Navigation from category details page to details page by click on title;"},
-          {"text": "Navigation from details page to category details page by click on 'tree' button."}
-        ],
-        "improvements": [
-          {"text": "Custom scrollbar"}
-        ]
-      },
-      "ru": {
-        "features": [
-          {"text": "Экспорт всех таблиц категории в PDF файл;"},
-          {"text": "Перемещение к деталям категории при нажатии на заголовок;"},
-          {"text": "Перемещение к списку сабкатегорий с помощью кнопки в заголовке."}
-        ],
-        "bugFixes": [
-        ],
-        "improvements": [
-          {"text": "Обновленный скроллбар"}
-        ]
-      }
+  "ru": {
+    "notification": {
+      "title": "Уведомление о новой версии"
     },
-    "2.6.1": {
-      "en": {
-        "features": [],
-        "bugFixes": [
-          {"text": "Export to PDF."}
-        ],
-        "improvements": []
-      },
-      "ru": {
-        "features": [],
-        "bugFixes": [
-          {"text": "Экспорт в PDF."}
-        ],
-        "improvements": []
-      }
+    "progress": {
+      "title": "Развитие приложения",
+      "0": "Приложение значительно изменилось относительно первой версии. Добавлялся новый функционал, ломался старый. :D",
+      "1": "Давайте посмотрим, как оно изменилось за прошлый год."
     },
-    "2.6.0": {
-      "ru": {
-        "features": [
-          {"text": "Экспорт в PDF файл;"},
-          {"text": "Скрытие бокового списка;"},
-          {"text": "Перевод на итальянский язык;"},
-          {"text": "Отключение анимации, для повышения производительности."}
-        ],
-        "bugFixes": [
-          {"text": "Прокрутка списка категорий в закрытом состоянии;"},
-          {"text": "Некорректная работа диалога подсписка категорий."}
-        ],
-        "improvements": [
-          {"text": "Добавлен лоадер при зазгрузке приложения."}
-        ]
-      },
-      "en": {
-        "features": [
-          {"text": "Export to PDF;"},
-          {"text": "Italian translation;"},
-          {"text": "Show/hide side bar;"},
-          {"text": "Turn on/off animations to improve performance."}
-        ],
-        "bugFixes": [
-          {"text": "Scroll category list in collapsed state;"},
-          {"text": "Broken category dialog for sub categories."}
-        ],
-        "improvements": [
-          {"text": "Loader for app startup."}
-        ]
-      }
+    "color": {
+      "title": "Цветовая палитра",
+      "0": "Выбор цвета приложения на основе системного цвета в Windows и Mac OS."
     },
-    "2.5.0": {
-      "ru": {
-        "features": [
-          {"text": "Редактирование валюты и единиц измерения в настройках плиложения."}
-        ],
-        "bugFixes": [],
-        "improvements": []
-      },
-      "en": {
-        "features": [
-          {"text": "Editable units at settings dialog."}
-        ],
-        "bugFixes": [],
-        "improvements": []
-      }
+    "redesign": {
+      "title": "Редизайн компонентов",
+      "0": "Редизайн компонентов и анимаций. Меньше отступов - больше пространства для данных!",
+      "1": "Теперь взаимодействие с категориями и записями (добавление, редактирование, удаление) происходит при нажатии на правую кнопку мыши."
     },
-    "2.4.0": {
-      "ru": {
-        "features": [
-          {"text": "Новые иконки."}
-        ],
-        "bugFixes": [],
-        "improvements": [
-          { "text": "Обновление зависимостей." }
-        ]
-      },
-      "en": {
-        "features": [
-          {"text": "New icons."}
-        ],
-        "bugFixes": [],
-        "improvements": [
-          { "text": "Update application dependencies." }
-        ]
-      }
-    },
-    "2.3.0": {
-      "ru": {
-        "features": [
-          {"text": "Виджеты статистики для записей;"},
-          {"text": "Начальный экран для новых пользователей."}
-        ],
-        "bugFixes": [],
-        "improvements": [
-          { "text": "Косметические UI изменения." }
-        ]
-      },
-      "en": {
-        "features": [
-          { "text": "Stat widgets for records;" },
-        { "text": "Welcome page for new users." }],
-        "bugFixes": [],
-        "improvements": [
-          { "text": "Small UI changes." }
-        ]
-      }
-    },
-    "2.2.1": {
-      "ru": {
-        "features": [],
-        "bugFixes": [
-          { "text": "Коллизия кнопки скрытия при длинном имени категории." }
-        ],
-        "improvements": []
-      },
-      "en": {
-        "features": [],
-        "bugFixes": [
-          { "text": "Collision of expand button when category name to long." }
-        ],
-        "improvements": []
-      }
-    },
-    "2.2.0": {
-      "ru": {
-        "features": [
-          { "text": "Выбор цвета иконок в настройках приложения;" },
-          { "text": "Изменение базы данных в настройках приложения." }
-        ],
-        "bugFixes": [],
-        "improvements": [
-          { "text": "UX улучшения в диалогах." }
-        ]
-      },
-      "en": {
-        "features": [
-          { "text": "Change database from settings." },
-          { "text": "Select category icons color from settings;" }
-        ],
-        "bugFixes": [],
-        "improvements": [
-          { "text": "UX in dialogs." }
-        ]
-      }
-    },
-    "2.1.0": {
-      "ru": {
-        "features": [
-          { "text": "Диалог обратной связи, где можно предложить новый функционал или сообщить об ошибке." },
-          { "text": "Возможность повторного просмотра изменений в приложении после закрытия диалога;" }
-        ],
-        "bugFixes": [],
-        "improvements": []
-      },
-      "en": {
-        "features": [
-          { "text": "Reopen 'Release notes' dialog possibility;" },
-          { "text": "Feedback dialog where you can submit bug or request new feature." }
-        ],
-        "bugFixes": [],
-        "improvements": []
-      }
-    },
-    "2.0.0": {
-      "ru": {
-        "features": [
-          { "text": "Меню настроек;" },
-          { "text": "Ссылка на репозиторий приложения;" },
-          { "text": "Поддержка нескольких языков и регионов;" },
-          { "text": "Переработан дизайн в соответствии со стилями Ubuntu." }
-        ],
-        "bugFixes": [],
-        "improvements": []
-      },
-      "en": {
-        "features": [
-          { "text": "Settings menu;" },
-          { "text": "Multilanguage support;" },
-          { "text": "Link to the repository of application;"},
-          { "text": "Redesigned to match Ubuntu styles." }
-        ],
-        "bugFixes": [],
-        "improvements": []
-      }
+    "car": {
+      "title": "Добавление автомобилей",
+      "0": "Возможность добавления нескольких автомобилей для обслуживания с заполнением дополнительных данных таких как: марка, модель двигатель и т.д.",
+      "1": "Поиск деталей на Amazon и Ebay."
     }
-}
+  },
+  "en": {
+    "notification": {
+      "title": "Notification about new version"
+    },
+    "progress": {
+      "title": "Progress of application development",
+      "0": "The application has changed significantly from the first version. New functionality was added, the old one was broken. :D",
+      "1": "Let's see how it has changed over the past year."
+    },
+    "color": {
+      "title": "Application color",
+      "0": "Choose an application color based on the system color on Windows and Mac OS."
+    },
+    "redesign": {
+      "title": "Component redesign",
+      "0": "Redesign of components and animations. Less padding - more data space!",
+      "1": "Now interaction with categories and records (adding, editing, deleting) occurs when you click the right mouse button."
+    },
+    "car": {
+      "title": "Car category support",
+      "0": "Possibility to add several cars for maintenance by filling in additional data such as make, model, engine, etc.",
+      "1": "Search parts on Amazon and Ebay."
+    }
+  }
 }

@@ -65,7 +65,9 @@ export class DialogManagerService {
 
   public openReleaseNotesDialog(data: ReleaseNotes): void {
     this.dialog.open(ReleaseNotesComponent, {
-      width: "580px",
+      maxHeight: "80%",
+      width: "1000px",
+      autoFocus: false,
       panelClass: "dialog-notes",
       data,
     });
