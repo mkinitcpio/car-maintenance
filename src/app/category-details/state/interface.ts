@@ -16,7 +16,7 @@ export interface CategoryDetail {
 }
 
 export interface CategoryDetails {
-  data: CarCategory | Category;
+  data: any;
   maintenance: Maintenance,
   type: CategoryTypeEnum;
   tables: CategoryDetail[];

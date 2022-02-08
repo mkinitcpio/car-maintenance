@@ -26,7 +26,7 @@ export class AppComponent extends AutoCloseable {
 
     this.matIconRegistry.addSvgIcon(
       "github",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/github.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/github.svg")
     );
 
     this.settingsService.animationsStateChanged$.subscribe((enabled) => {
