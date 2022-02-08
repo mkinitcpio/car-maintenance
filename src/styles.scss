@@ -12,6 +12,7 @@ html, body {
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '/src/colors';
 @import '/src/animations';
+@import '/src/fonts';
 
 
 .dialog {
@@ -60,7 +61,7 @@ html, body {
 }
 
 .mat-tooltip {
-  font-family: Ubuntu;
+  font-family: $font-system;
   font-weight: normal;
   font-size: 14px;
   line-height: 1.5;
@@ -75,7 +76,7 @@ html, body {
 
 .mat-select-value-text,
 .mat-date-picker-input {
-  font-family: 'Ubuntu';
+  font-family: $font-system;
 }
 
 .menu-item.mat-menu-item {
@@ -84,7 +85,7 @@ html, body {
 
   padding: 0 8px;
 
-  font-family: 'Ubuntu';
+  font-family: $font-system;
   color: #111;
   font-size: 14px !important;
   height: 36px;
