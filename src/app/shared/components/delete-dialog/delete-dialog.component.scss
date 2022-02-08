@@ -1,7 +1,8 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 .delete-dialog {
-  font-family: Ubuntu;
+  font-family: $font-system;
 
   &__header {
     height: 42px;
@@ -43,7 +44,7 @@
   }
 
   .button {
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-weight: normal;
     color: $font-primary;
     border-radius: 8px;

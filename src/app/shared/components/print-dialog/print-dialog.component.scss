@@ -1,8 +1,9 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .print-dialog {
-  font-family: Ubuntu;
+  font-family: $font-system;
   display: flex;
   height: 100%;
   width: 100%;
@@ -99,7 +100,7 @@
   .mat-button-toggle-label-content {
     line-height: 36px;
     font-size: 14px;
-    font-family: Ubuntu;
+    font-family: $font-system;
   }
 
   .mat-button-toggle-button {
@@ -125,7 +126,7 @@
 }
 
 .column {
-  font-family: Ubuntu;
+  font-family: $font-system;
   padding: 12px;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
@@ -188,7 +189,7 @@
   width: 92px;
 
   border-radius: 8px;
-  font-family: Ubuntu;
+  font-family: $font-system;
   font-weight: normal;
   color: $font-primary;
 }

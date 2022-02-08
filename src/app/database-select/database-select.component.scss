@@ -1,3 +1,5 @@
+@import '/src/fonts';
+
 .database-select {
   height: 100%;
   width: 100%;
@@ -23,7 +25,7 @@ button {
 .button {
   padding: 4px 48px;
 
-  font-family: Ubuntu;
+  font-family: $font-system;
   font-weight: normal;
   font-size: 18px;
   color: #333;

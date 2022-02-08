@@ -1,5 +1,6 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .settings {
   height: 100%;
@@ -8,7 +9,7 @@
   overflow: hidden;
 
   user-select: none;
-  font-family: 'Ubuntu';
+  font-family: $font-system;
 
   &__text {
     margin-right: 12px;
@@ -113,7 +114,7 @@
     min-width: initial;
 
     border-radius: 8px;
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-weight: normal;
     color: $font-primary;
     background-color: rgb(252, 252, 252);
@@ -129,7 +130,7 @@
   .mat-button-toggle-label-content {
     line-height: 36px;
     font-size: 14px;
-    font-family: Ubuntu;
+    font-family: $font-system;
   }
 
   .mat-form-field-wrapper {

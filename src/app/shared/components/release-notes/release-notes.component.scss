@@ -1,5 +1,6 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .release-notes {
   position: relative;
@@ -7,7 +8,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  font-family: "Ubuntu";
+  font-family: $font-system;
   background: $background-secondary;
   user-select: none;
 
@@ -60,7 +61,7 @@
   }
 
   .button {
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-weight: normal;
     color: $font-primary;
     min-width: initial;
@@ -111,7 +112,7 @@
   }
 
   &__note {
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-size: 1em;
     display: flex;
     background: rgba($color: #111, $alpha: 0.7);

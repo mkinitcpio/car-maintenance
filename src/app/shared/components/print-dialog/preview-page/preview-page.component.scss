@@ -1,4 +1,5 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 :host {
   display: block;
@@ -11,7 +12,7 @@
   aspect-ratio: 1 / 1.4142;
 
   overflow: hidden;
-  font-family: Ubuntu;
+  font-family: $font-system;
   background: white;
   box-sizing: border-box;
   box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
@@ -74,7 +75,7 @@
   &__table {
     width: 100%;
 
-    font-family: Ubuntu;
+    font-family: $font-system;
     border: 1px solid black;
     border-bottom: none;
     

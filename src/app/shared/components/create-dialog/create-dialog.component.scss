@@ -1,7 +1,8 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 .create-dialog {
-  font-family: "Ubuntu";
+  font-family: $font-system;
 
   &__header {
     height: 42px;
@@ -36,7 +37,7 @@
     padding: 16px 32px;
 
     mat-form-field {
-      font-family: 'Ubuntu';
+      font-family: $font-system;
       font-weight: lighter;
       width: 100%;
 
@@ -82,7 +83,7 @@
 }
 
 .button {
-  font-family: Ubuntu;
+  font-family: $font-system;
   font-weight: normal;
   color: $font-primary;
   border-radius: 8px;

@@ -40,7 +40,7 @@ export class PrintService {
       <style type="text/css">
         @media print {
           * {
-            font-family: Ubuntu;
+            font-family: system-ui;
           }
 
           .preview-page__title-container {

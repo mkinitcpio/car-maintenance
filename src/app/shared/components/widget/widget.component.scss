@@ -1,4 +1,5 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 .widget {
   width: fit-content;
@@ -22,7 +23,7 @@
     margin-top: 0;
     margin-bottom: 8px;
 
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-size: 14px;
     color: $font-primary;
   }

@@ -1,5 +1,6 @@
 @use '/src/mixins' as mixins;
 @import "/src/colors";
+@import "/src/fonts";
 
 :host {
   overflow: hidden;
@@ -22,7 +23,7 @@
     padding: 8px 12px;
 
     background: $background-header-primary;
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-size: 14px;
   }
 
