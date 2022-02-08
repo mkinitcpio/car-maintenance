@@ -1,5 +1,6 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .category-details {
   height: 100%;
@@ -16,7 +17,7 @@
   }
 
   &__title {
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-size: 24px;
     color: white;
   }
@@ -40,14 +41,14 @@
     border-radius: 8px;
     resize: none;
 
-    font-family: Ubuntu;
+    font-family: $font-system;
   }
 
   &__export-button {
     min-width: initial;
     padding: 0 8px;
 
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-weight: normal;
     background-color: rgb(75,72,72);
     border: 1px solid rgb(43,42,42);
@@ -81,7 +82,7 @@
   .car-info {
     margin-top: 4px;
 
-    font-family: Ubuntu;
+    font-family: $font-system;
 
     &__raw {
       display: flex;
@@ -101,7 +102,7 @@
       display: flex;
       align-items: center;
 
-      font-family: Ubuntu;
+      font-family: $font-system;
       font-size: 18px;
     }
 
@@ -110,7 +111,7 @@
     }
 
     &__content {
-      font-family: Ubuntu;
+      font-family: $font-system;
       font-size: 14px;
     }
   }
