@@ -1,11 +1,12 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 :host {
   display: block;
 }
 
 .categories-tree-node {
-  font-family: 'Ubuntu';
+  font-family: $font-system;
   width: 100%;
   margin: 1px 0;
 
