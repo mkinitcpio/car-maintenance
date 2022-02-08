@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core";
 import { ElectronService } from "./electron/electron.service";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { Subject } from "rxjs";
 @Injectable({
   providedIn: "root",
 })
-export class ThemeService {
+export class ThemeService implements OnDestroy {
   private accentColor$: Subject<string> = new Subject();
   private readonly ubuntuPrimaryColor: string = "e95420";
 
@@ -51,5 +51,9 @@ export class ThemeService {
         }
       );
     }
+  }
+
+  ngOnDestroy(): void {
+    this.electronService.systemPreferences.removeAllListeners("accent-color-changed");
   }
 }
