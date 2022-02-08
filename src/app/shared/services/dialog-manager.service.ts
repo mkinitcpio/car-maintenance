@@ -13,7 +13,6 @@ import { ReleaseNotesComponent } from '../components/release-notes/release-notes
 import { ReleaseNotes } from '../components/release-notes/interface';
 import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
 import { SettingsComponent } from '../components/settings/settings.component';
-import { FeedbackDialogComponent } from '../components/feedback-dialog/feedback-dialog.component';
 import { PrintDialogComponent } from '../components/print-dialog/print-dialog.component';
 import { PrintDialogConfig } from '@shared/components/print-dialog/print-dialog-config';
 import { CreateCarDialogComponent } from '@shared/components/create-car-dialog/create-car-dialog.component';
@@ -111,12 +110,6 @@ export class DialogManagerService {
   }
 
   public openFeedbackDialog(): void {
-    this.dialog
-      .open(FeedbackDialogComponent, {
-        disableClose: true,
-        width: "380px",
-        panelClass: "dialog-custom",
-      });
   }
 
   public openPrintDialog(data: PrintDialogConfig): Observable<void> {

@@ -77,8 +77,8 @@
         "ENGINE": "Engine"
       },
       "TOOLTIPS": {
-        "OVERALL_EXPENSE": "Overall expense",
-        "MILEAGE": "Mileage"
+        "OVERALL_EXPENSE": "Costs for the entire time of service.\n Calculated from data in tables.",
+        "MILEAGE": "Car mileage. The value will be automatically inserted into the 'Mileage' field when the entry is created."
       }
     }
   },
