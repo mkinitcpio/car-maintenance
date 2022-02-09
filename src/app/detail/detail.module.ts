@@ -19,6 +19,7 @@ import { CommonPipesModule } from '../shared/pipes/common-pipes.module';
 import { CurrencyModule } from '../shared/currency/currency.module';
 import { HomeRoutingModule } from 'app/home/home-routing.module';
 import { WidgetModule } from '@shared/components/widget/widget.module';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,6 @@ import { WidgetModule } from '@shared/components/widget/widget.module';
   ],
   imports: [
     CommonModule,
-    SharedModule,
     FormsModule,
     RecordsTableModule,
     ReactiveFormsModule,
@@ -39,6 +39,7 @@ import { WidgetModule } from '@shared/components/widget/widget.module';
     CurrencyModule,
     HomeRoutingModule,
     WidgetModule,
+    ButtonModule,
   ],
   providers: [
     DetailsFacade,

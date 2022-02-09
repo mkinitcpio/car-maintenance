@@ -1,18 +1,19 @@
 <div class="detail">
   <div class="detail__title-container">
     <div class="detail__title">
-      <button mat-button class="detail__add-button" routerLink="/category-details/{{parentId}}">
+      <app-button button-common routerLink="/category-details/{{parentId}}">
         <mat-icon>account_tree</mat-icon>
-      </button>
+      </app-button>
       <span class="detail__title-text">{{name}}</span>
     </div>
     <div class="detail__buttons">
-      <button class="detail__add-button" mat-button (click)="onCreateRecord()">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button *ngIf="dataSourceTable.length" class="detail__add-button" mat-button (click)="onPrint()">
+      <app-button button-common (click)="onCreateRecord()">
+        <mat-icon svgIcon="add-rounded"></mat-icon>
+      </app-button>
+
+      <app-button *ngIf="dataSourceTable.length" button-common (click)="onPrint()">
         <mat-icon>picture_as_pdf</mat-icon>
-      </button>
+      </app-button>
     </div>
   </div>
   <div class="detail__content">
