@@ -45,10 +45,7 @@
     app-tabs{
       opacity: 0;
       transition: opacity 0s;
-
-      app-categories-tree {
-        z-index: -1;
-      }
+      z-index: -1;
     }
 
     .navigation__title-container {
