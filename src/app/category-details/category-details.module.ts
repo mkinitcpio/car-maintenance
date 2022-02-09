@@ -9,7 +9,6 @@ import { CategoryDetailsEffects } from './state/effects';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { HomeRoutingModule } from 'app/home/home-routing.module';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { UtilsService } from '@shared/services/utils.service';
 import { CurrencyModule } from '@shared/currency/currency.module';
@@ -18,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [CategoryDetailsComponent],
@@ -26,7 +26,6 @@ import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-co
     RecordsTableModule,
     HomeRoutingModule,
     MatIconModule,
-    MatButtonModule,
     StoreModule.forFeature('categoryDetails', categoryDetailsReducer),
     EffectsModule.forFeature([CategoryDetailsEffects]),
     TranslateModule,
@@ -36,6 +35,7 @@ import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-co
     MatCheckboxModule,
     MatMenuModule,
     UbuntuContainerModule,
+    ButtonModule,
   ],
   providers: [
     CategoryDetailsFacade,

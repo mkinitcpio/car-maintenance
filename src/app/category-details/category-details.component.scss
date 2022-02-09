@@ -44,18 +44,6 @@
     font-family: $font-system;
   }
 
-  &__export-button {
-    min-width: initial;
-    padding: 0 8px;
-
-    font-family: $font-system;
-    font-weight: normal;
-    background-color: rgb(75,72,72);
-    border: 1px solid rgb(43,42,42);
-    border-radius: 8px;
-    color: #fff;
-  }
-
   &__content {
     @include mixins.scrollable;
 

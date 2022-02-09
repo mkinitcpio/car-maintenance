@@ -6,6 +6,8 @@ import { DOCUMENT } from "@angular/common";
 import { ThemeService } from "@core/services/theme.service";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
+
+import { customIconsSet } from './custom-icons-set';
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -24,10 +26,12 @@ export class AppComponent extends AutoCloseable {
   ) {
     super();
 
-    this.matIconRegistry.addSvgIcon(
-      "github",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/github.svg")
-    );
+    customIconsSet.forEach(icon => {
+      this.matIconRegistry.addSvgIcon(
+        icon.name,
+        this.domSanitizer.bypassSecurityTrustResourceUrl(icon.path),
+      );
+    });
 
     this.settingsService.animationsStateChanged$.subscribe((enabled) => {
       if (enabled) {

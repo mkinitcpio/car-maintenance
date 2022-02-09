@@ -2,7 +2,7 @@
      [class.navigation--minimize]="(sideNavService.collapse$ | async)">
   <div class="navigation__title-container">
     <app-button button-common [matMenuTriggerFor]="creationMenu">
-      <mat-icon>add</mat-icon>
+      <mat-icon [svgIcon]="'add-rounded'"></mat-icon>
     </app-button>
 
     <app-button button-common
@@ -11,7 +11,7 @@
                 [matMenuTriggerFor]="contextMenu"
                 [matBadgeHidden]="!versionService.hasUpdate"
                 matBadgeSize="small">
-      <mat-icon>menu</mat-icon>
+      <mat-icon [svgIcon]="'menu-rounded'"></mat-icon>
     </app-button>
   </div>
   <app-tabs [tabs]="tabs">
