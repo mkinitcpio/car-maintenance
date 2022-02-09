@@ -1,13 +1,18 @@
 <div class="navigation"
      [class.navigation--minimize]="(sideNavService.collapse$ | async)">
   <div class="navigation__title-container">
-    <button class="button button__create" mat-button [matMenuTriggerFor]="creationMenu">
+    <app-button button-common [matMenuTriggerFor]="creationMenu">
       <mat-icon>add</mat-icon>
-    </button>
+    </app-button>
 
-    <button matBadge="!" [matBadgeHidden]="!versionService.hasUpdate" matBadgeSize="small" class="button button__create" mat-button [matMenuTriggerFor]="contextMenu">
+    <app-button button-common
+                [matMenuTriggerFor]="creationMenu"
+                matBadge="!"
+                [matMenuTriggerFor]="contextMenu"
+                [matBadgeHidden]="!versionService.hasUpdate"
+                matBadgeSize="small">
       <mat-icon>menu</mat-icon>
-    </button>
+    </app-button>
   </div>
   <app-tabs [tabs]="tabs">
     <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"
@@ -28,9 +33,9 @@
   </app-tabs>
 
   <div class="navigation__buttons">
-    <button mat-button class="button" appSideNavTracker>
-      <mat-icon class=" button__switcher-icon">chevron_left</mat-icon>
-    </button>
+    <app-button button-transparent appSideNavTracker>
+      <mat-icon class="switcher-icon">chevron_left</mat-icon>
+    </app-button>
   </div>
 </div>
 

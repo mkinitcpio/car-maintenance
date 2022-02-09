@@ -4,12 +4,13 @@
   &__sidenav {
     width: 300px;
 
+    box-sizing: content-box;
     border-right: 1px solid $separator-color;
     transition: width 0.5s ease-in-out,
                 border-right 0.5s ease-in;
 
     &--minimize {
-      width: 64px;
+      width: 66px;
 
       border-color: #282626;
       transition: width 0.5s ease-in-out,
@@ -25,7 +26,7 @@
     transition: margin-left 0.5s ease-in-out;
 
     &--minimize {
-      margin-left: 64px !important;
+      margin-left: 66px !important;
     }
   }
 }
