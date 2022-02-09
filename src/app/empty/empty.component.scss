@@ -1,4 +1,5 @@
 @import '/src/fonts';
+@import '/src/colors';
 
 .empty {
   height: 100%;
@@ -6,20 +7,24 @@
   justify-content: center;
   align-items: center;
 
+  user-select: none;
+
   &__text {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+
     font-family: $font-system;
     font-size: 32px;
-    font-weight: 100;
-    color: #333;
+    font-weight: normal;
+    color: $background-header-primary;
   }
 
   &__icon {
-    height: 64px;
-    width: 64px;
-    margin-right: 16px;
-    font-size: 64px;
-    color: #333;
+    height: 128px;
+    width: 128px;
+
+    font-size: 128px;
   }
 }
