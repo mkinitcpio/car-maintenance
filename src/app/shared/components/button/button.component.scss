@@ -1,0 +1,35 @@
+@import "/src/colors";
+
+:host {
+  &[button-common] {
+    .button {
+      border-color: #2b2a2a;
+      background-color: #4b4848;
+      color: white;
+    }
+  }
+
+  &[button-transparent] {
+    .button {
+      border-color: transparent;
+      background-color: transparent;
+      color: $font-primary;
+    }
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 0 8px;
+
+  height: 38px;
+
+  cursor: pointer;
+}
