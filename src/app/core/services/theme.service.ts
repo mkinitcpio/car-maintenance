@@ -1,7 +1,12 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { ElectronService } from "./electron/electron.service";
-import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { Subject } from "rxjs";
+
+enum SupportedPlatrofmsEnum {
+  Windows = "Windows_NT",
+  Linux = "Linux",
+  Darwin = "Darwin",
+}
 @Injectable({
   providedIn: "root",
 })
@@ -9,7 +14,8 @@ export class ThemeService implements OnDestroy {
   private accentColor$: Subject<string> = new Subject();
   private readonly ubuntuPrimaryColor: string = "e95420";
 
-  constructor(private electronService: ElectronService) {}
+  constructor(private electronService: ElectronService) {
+  }
 
   private getSecondaryColor(color: string, percent: number, opacity = ""): string {
     const calc = (sub1, sub2) =>
@@ -39,17 +45,22 @@ export class ThemeService implements OnDestroy {
       this.changeThemeColors(color);
     });
 
-    if (this.electronService.os.type() === "Linux") {
-      this.changeThemeColors(this.ubuntuPrimaryColor);
-    } else {
-      this.changeThemeColors(this.electronService.systemPreferences.getAccentColor());
-      
-      this.electronService.systemPreferences.on(
-        "accent-color-changed",
-        (_, color) => {
-          this.accentColor$.next(color);
-        }
-      );
+    const primaryColor = this.electronService.os.type() === SupportedPlatrofmsEnum.Linux
+      ? this.ubuntuPrimaryColor
+      : this.electronService.systemPreferences.getAccentColor();
+
+    this.changeThemeColors(primaryColor);
+
+    switch (this.electronService.os.type()) {
+      case SupportedPlatrofmsEnum.Windows: {
+        this.electronService.systemPreferences.on("accent-color-changed", (_, color) => this.accentColor$.next(color));
+        break;
+      }
+      case SupportedPlatrofmsEnum.Darwin: {
+        const primaryColor = this.electronService.systemPreferences.getAccentColor();
+        this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.accentColor$.next(primaryColor));
+        break;
+      }
     }
   }
 
