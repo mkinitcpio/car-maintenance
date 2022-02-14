@@ -76,11 +76,12 @@ export class DialogManagerService {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "380px",
-        panelClass: "dialog-custom",
+        panelClass: "dialog-delete",
         data: {
           text: "DIALOG.DELETE.CATEGORY",
           name: categoryName,
         },
+        autoFocus: false,
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));
@@ -90,7 +91,7 @@ export class DialogManagerService {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "380px",
-        panelClass: "dialog-custom",
+        panelClass: "dialog-delete",
         data: {
           text: "DIALOG.DELETE.RECORD",
           name: categoryName,
