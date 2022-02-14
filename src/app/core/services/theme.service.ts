@@ -57,8 +57,9 @@ export class ThemeService implements OnDestroy {
         break;
       }
       case SupportedPlatrofmsEnum.Darwin: {
-        const primaryColor = this.electronService.systemPreferences.getAccentColor();
-        this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.accentColor$.next(primaryColor));
+        this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.accentColor$.next(
+          this.electronService.systemPreferences.getAccentColor()
+        ));
         break;
       }
     }
