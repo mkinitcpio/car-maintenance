@@ -13,6 +13,7 @@ enum SupportedPlatrofmsEnum {
 export class ThemeService implements OnDestroy {
   private accentColor$: Subject<string> = new Subject();
   private readonly ubuntuPrimaryColor: string = "e95420";
+  private darwinEventListenerId: number = null;
 
   constructor(private electronService: ElectronService) {
   }
@@ -57,7 +58,7 @@ export class ThemeService implements OnDestroy {
         break;
       }
       case SupportedPlatrofmsEnum.Darwin: {
-        this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.accentColor$.next(
+        this.darwinEventListenerId = this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.accentColor$.next(
           this.electronService.systemPreferences.getAccentColor()
         ));
         break;
@@ -67,5 +68,6 @@ export class ThemeService implements OnDestroy {
 
   ngOnDestroy(): void {
     this.electronService.systemPreferences.removeAllListeners("accent-color-changed");
+    this.electronService.systemPreferences.unsubscribeNotification(this.darwinEventListenerId);
   }
 }
