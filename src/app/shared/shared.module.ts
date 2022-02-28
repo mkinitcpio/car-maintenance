@@ -21,6 +21,8 @@ import { UbuntuCloseButtonModule } from './ubuntu/ubuntu-close-button/ubuntu-clo
 import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-container.module';
 import { PrintDialogModule } from './components/print-dialog/print-dialog.module';
 import { TabsModule } from './components/tabs/tabs.module';
+import { ColorSelectorComponent } from './components/color-selector/color-selector.component';
+import { ColorSelectorModule } from './components/color-selector/color-selector.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { TabsModule } from './components/tabs/tabs.module';
     UbuntuContainerModule,
     PrintDialogModule,
     TabsModule,
+    ColorSelectorModule
   ],
   exports: [
     TranslateModule,

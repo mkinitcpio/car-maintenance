@@ -3,6 +3,7 @@ import { IconTypeEnum } from "./icon-type.enum";
 import { CurrencyEnum } from "./currency.enum";
 import { MetricSystemEnum } from "./metric-system.enum";
 import { NavigationTabEnum } from "./navigation-tab.enum";
+import { ColorEnum } from "./colors-enum";
 export interface Settings {
   language: string;
   region: LocaleEnum;
@@ -11,6 +12,7 @@ export interface Settings {
     iconPack: string;
     type: IconTypeEnum;
     animations: boolean;
+    primaryColor:ColorEnum
   },
   units: {
     currency: CurrencyEnum,

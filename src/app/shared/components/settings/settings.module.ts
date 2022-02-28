@@ -14,6 +14,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {ColorSelectorModule} from '../color-selector/color-selector.module'
 
 @NgModule({
   declarations: [SettingsComponent],
@@ -31,6 +32,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatTooltipModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
+    ColorSelectorModule
   ],
   providers: [
     SettingsService,

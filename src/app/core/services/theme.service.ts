@@ -1,12 +1,18 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { ElectronService } from "./electron/electron.service";
 import { Subject } from "rxjs";
+import { filter } from "rxjs/operators";
+
+import { SettingsService } from "@shared/components/settings/settings.service";
+import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
+import { ColorEnum } from "@shared/components/settings/colors-enum";
 
 enum SupportedPlatrofmsEnum {
   Windows = "Windows_NT",
   Linux = "Linux",
   Darwin = "Darwin",
 }
+
 @Injectable({
   providedIn: "root",
 })
@@ -15,10 +21,13 @@ export class ThemeService implements OnDestroy {
   private readonly ubuntuPrimaryColor: string = "e95420";
   private darwinEventListenerId: number = null;
 
-  constructor(private electronService: ElectronService) {
-  }
+  constructor(private electronService: ElectronService) {}
 
-  private getSecondaryColor(color: string, percent: number, opacity = ""): string {
+  private getSecondaryColor(
+    color: string,
+    percent: number,
+    opacity = ""
+  ): string {
     const calc = (sub1, sub2) =>
       Math.min(
         255,
@@ -30,21 +39,26 @@ export class ThemeService implements OnDestroy {
   }
 
   private changeThemeColors(primary: string): void {
+    primary = primary.replace(/#/, "");
+
     document.documentElement.style.setProperty(
       "--primary-color",
-      this.getSecondaryColor(`#${primary}`, 1),
+      this.getSecondaryColor(`#${primary}`, 1)
     );
 
     document.documentElement.style.setProperty(
       "--secondary-color",
-      this.getSecondaryColor(`#${primary}`, 1, "30"),
+      this.getSecondaryColor(`#${primary}`, 1, "30")
     );
   }
 
   public init(): void {
-    this.accentColor$.subscribe((color) => {
-      this.changeThemeColors(color);
-    });
+    this.settingsService.settingsChanged$
+      .pipe(filter((node) => node.type === SettingsTypeEnum.Color))
+      .subscribe(({ value }) => {
+     
+        this.changeThemeColors(value);
+      });
 
     const primaryColor = this.electronService.os.type() === SupportedPlatrofmsEnum.Linux
       ? this.ubuntuPrimaryColor
