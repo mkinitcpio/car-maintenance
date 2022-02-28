@@ -107,9 +107,9 @@
       "IMPROVEMENTS": "Improvements"
     },
     "DELETE": {
-      "TITLE": "Confirm Deletion",
-      "CATEGORY": "Delete category",
-      "RECORD": "Delete record"
+      "TITLE": "Confirm Delete",
+      "CATEGORY": "Do you really want to delete this category? This process cannot be undone.",
+      "RECORD": "Do you really want to delete this record? This process cannot be undone."
     },
     "CATEGORY": "Category",
     "CAR": "Car",

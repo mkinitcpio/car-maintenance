@@ -19,7 +19,7 @@ html, body {
   &-custom {
     .mat-dialog-container {
       padding: 0;
-      border-radius: 8px 8px 8px 8px;
+      border-radius: 8px;
     }
   }
 
@@ -29,8 +29,15 @@ html, body {
     .mat-dialog-container {
       padding: 0;
 
-      border-radius: 8px 8px 8px 8px;
+      border-radius: 8px;
       overflow: hidden;
+    }
+  }
+
+  &-delete {
+    .mat-dialog-container {
+      padding: 0;
+      border-radius: 24px;
     }
   }
 

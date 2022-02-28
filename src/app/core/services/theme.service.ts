@@ -1,11 +1,17 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { ElectronService } from "./electron/electron.service";
-import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { Subject } from "rxjs";
-import { SettingsService } from "@shared/components/settings/settings.service";
 import { filter } from "rxjs/operators";
+
+import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { ColorEnum } from "@shared/components/settings/colors-enum";
+
+enum SupportedPlatrofmsEnum {
+  Windows = "Windows_NT",
+  Linux = "Linux",
+  Darwin = "Darwin",
+}
 
 @Injectable({
   providedIn: "root",
@@ -13,11 +19,9 @@ import { ColorEnum } from "@shared/components/settings/colors-enum";
 export class ThemeService implements OnDestroy {
   private accentColor$: Subject<string> = new Subject();
   private readonly ubuntuPrimaryColor: string = "e95420";
+  private darwinEventListenerId: number = null;
 
-  constructor(
-    private electronService: ElectronService,
-    private settingsService: SettingsService
-  ) {}
+  constructor(private electronService: ElectronService) {}
 
   private getSecondaryColor(
     color: string,
@@ -56,34 +60,28 @@ export class ThemeService implements OnDestroy {
         this.changeThemeColors(value);
       });
 
-    if (this.settingsService.settings.appearance.primaryColor === "Default") {
-      this.accentColor$.subscribe((color) => {
-        this.changeThemeColors(color);
-      });
-      if (this.electronService.os.type() === "Linux") {
-        this.changeThemeColors(this.ubuntuPrimaryColor);
-      } else {
-        this.changeThemeColors(
-          this.electronService.systemPreferences.getAccentColor()
-        );
+    const primaryColor = this.electronService.os.type() === SupportedPlatrofmsEnum.Linux
+      ? this.ubuntuPrimaryColor
+      : this.electronService.systemPreferences.getAccentColor();
 
-        this.electronService.systemPreferences.on(
-          "accent-color-changed",
-          (_, color) => {
-            this.accentColor$.next(color);
-          }
-        );
+    this.changeThemeColors(primaryColor);
+
+    switch (this.electronService.os.type()) {
+      case SupportedPlatrofmsEnum.Windows: {
+        this.electronService.systemPreferences.on("accent-color-changed", (_, color) => this.accentColor$.next(color));
+        break;
       }
-    } else {
-      this.changeThemeColors(
-        this.settingsService.settings.appearance.primaryColor
-      );
+      case SupportedPlatrofmsEnum.Darwin: {
+        this.darwinEventListenerId = this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.accentColor$.next(
+          this.electronService.systemPreferences.getAccentColor()
+        ));
+        break;
+      }
     }
   }
 
   ngOnDestroy(): void {
-    this.electronService.systemPreferences.removeAllListeners(
-      "accent-color-changed"
-    );
+    this.electronService.systemPreferences.removeAllListeners("accent-color-changed");
+    this.electronService.systemPreferences.unsubscribeNotification(this.darwinEventListenerId);
   }
 }

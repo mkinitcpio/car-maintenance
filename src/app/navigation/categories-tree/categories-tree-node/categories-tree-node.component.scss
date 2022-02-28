@@ -84,11 +84,11 @@
 
     font-size: 22px;
     user-select: none;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s linear;
     transform: rotate(0deg);
 
     &--expanded {
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
   }
 }
