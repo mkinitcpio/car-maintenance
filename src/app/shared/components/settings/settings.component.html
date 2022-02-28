@@ -156,6 +156,14 @@
           </mat-slide-toggle>
         </div>
       </div>
+
+<app-color-selector
+(select)="onSelected($event)"
+[colors]="colors"
+[selected]="selected"
+(setDefault)="onSetDefault($event)"
+></app-color-selector>
+      
     </ubuntu-container>
   </main>
 </div>

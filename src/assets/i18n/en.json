@@ -33,7 +33,8 @@
         "MONO": "Mono",
         "CURRENCY": "Currency",
         "METRIC_SYSTEM": "Metric system",
-        "ANIMATION": "Animations"
+        "ANIMATION": "Animations",
+        "COLORS":"Colors"
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"

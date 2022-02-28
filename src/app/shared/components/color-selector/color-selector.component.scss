@@ -1,0 +1,153 @@
+@use "/src/mixins" as mixins;
+@import "/src/colors";
+@import "/src/fonts";
+@import "/src/animations";
+
+:host {
+  display: flex;
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  overflow: hidden;
+}
+
+.color-panel {
+  display: flex;
+  width: 66%;
+}
+
+.colors__item {
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  margin: 0px 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colors__item--default {
+  background-color: #cdcdcd;
+}
+
+.color-panel__divider {
+  height: 24px;
+  width: 1px;
+  margin: 4px;
+  background: #dce1e6;
+}
+
+.settings {
+  &__item-label {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+.tabs {
+  &__tabs-section {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    gap: 4px;
+    height: 32px;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    line-height: 1;
+    z-index: 1;
+    transition: color 0.4s ease-in-out, background-color 0.1s ease-in;
+
+    cursor: pointer;
+
+    &--cover-selected {
+      box-sizing: border-box;
+      position: absolute;
+      height: inherit;
+      width: 28px;
+      background-color: var(--secondary-color);
+      border-radius: 50%;
+      transition: left 0.4s ease-in-out;
+      animation: jello 1s both;
+    }
+
+    &:not(.tabs__tab.tabs__tab--selected):hover {
+      // border-radius: 50%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    left: 0;
+    display: grid;
+    block-size: 100%;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    height: 90%;
+    flex: 1;
+
+    transition: left 0.4s ease-in-out;
+    will-change: left;
+
+    &--switched {
+      left: -100%;
+      animation: jello 1s both;
+    }
+  }
+
+  .tab-content {
+    @include mixins.scrollable();
+
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+
+    &--selected {
+      opacity: 1;
+    }
+  }
+}
+
+.jello {
+  animation: hide-placeholder 1s both;
+}
+
+.done-icon {
+  transform: scale(0);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colors__item--selected {
+  .done-icon {
+    transition: transform 0.3s ease-out;
+    transition-delay: 0.2s;
+    transform: scale(0.7);
+  }
+}
+.show {
+  display: none;
+  animation-delay: 2s;
+  animation: hide-placeholder 0.3s ease-in 
+}
+
+@keyframes hide-placeholder {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}

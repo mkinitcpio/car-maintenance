@@ -33,7 +33,8 @@
           "MONO": "Моно",
           "CURRENCY": "Валюта",
           "METRIC_SYSTEM": "Расстояние",
-          "ANIMATION": "Анимации"
+          "ANIMATION": "Анимации",
+          "COLORS":"Цвета"
         },
         "ICONS_PACK_NAMES": {
           "DEFAULT": "Стандартные"

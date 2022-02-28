@@ -1,0 +1,56 @@
+<div class="settings__item-label">
+  <mat-icon class="settings__item-label-icon">palette</mat-icon>
+  {{ "PAGES.SETTINGS.FIELDS.COLORS" | translate }}
+</div>
+
+<div class="color-panel">
+  <div
+    class="tabs__tabs-section tabs__tab"
+    (click)="onSetDefault();onTabSelect(-1)"
+    
+  >
+    <div *ngIf="selectedtab === -1" class="tabs__tab--cover-selected"></div>
+    <div
+  
+      class="tabs__tab colors__item colors__item--default"
+      
+      [class.colors__item--selected]="selectedtab === -1"
+    >
+      <mat-icon class="done-icon">done</mat-icon>
+    </div>
+  </div>
+
+  <div class="color-panel__divider tabs__tab"></div>
+
+  <div #tabsRef class="tabs__tabs-section">
+    <div
+      [class.show]="shouldShow"
+
+      #tabCoverRef
+      class="tabs__tab--cover-selected"
+    >
+      
+    </div>
+    <div class="tabs__tabs-section">
+      <div
+        class="tabs__tab"
+        [class.tabs__tab--selected]="index"
+        *ngFor="let colors of colors; let i = index"
+        (click)="onTabSelect(i)"
+        (click)="onSelected(colors.color)"
+      >
+        <div
+          [class.colors__item--selected]="selectedtab === i"
+          class="colors__item"
+          [ngStyle]="{
+            'background-color': colors.color
+          }"
+          (click)="onSelected(colors.color)"
+        >
+          <mat-icon class="done-icon">done</mat-icon>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
