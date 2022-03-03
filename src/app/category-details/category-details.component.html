@@ -65,13 +65,13 @@
     </div>
 
     <ubuntu-container [title]="table.name" *ngFor="let table of categoryDetails.tables">
-      <button actions
-              *ngIf="categoryDetails.type == CategoryTypeEnum.Car"
-              mat-icon-button
-              class="category-details__search-button"
-              [matMenuTriggerFor]="contextMenu"
-              [matMenuTriggerData]="{name: table.name}"
-      ><mat-icon>travel_explore</mat-icon></button>
+      <app-button actions
+                  *ngIf="categoryDetails.type == CategoryTypeEnum.Car"
+                  [matMenuTriggerFor]="contextMenu"
+                  [matMenuTriggerData]="{name: table.name}"
+                  button-transparent>
+        <mat-icon>travel_explore</mat-icon>
+      </app-button>
       <app-records-table class="category-details__table"
                          *ngIf="table.data.length"
                          [data]="table.data"

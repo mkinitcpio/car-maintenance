@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
 
+  user-select: none;
+
   &__title-container {
     padding: 9px 24px;
     display: flex;
@@ -25,11 +27,6 @@
   &__buttons {
     display: flex;
     gap: 8px;
-  }
-
-  &__search-button {
-    color: $font-primary;
-    border-radius: 8px;
   }
 
   &__notes {
