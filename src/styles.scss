@@ -16,13 +16,6 @@ html, body {
 
 
 .dialog {
-  &-custom {
-    .mat-dialog-container {
-      padding: 0;
-      border-radius: 8px;
-    }
-  }
-
   &-settings,
   &-car,
   &-notes {
@@ -34,6 +27,7 @@ html, body {
     }
   }
 
+  &-custom,
   &-delete {
     .mat-dialog-container {
       padding: 0;

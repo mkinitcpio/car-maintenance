@@ -1,0 +1,23 @@
+<section class="dialog">
+  <header class="dialog__header">
+    <div class="dialog__title">{{title}}</div>
+    <app-button button-transparent (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </app-button>
+  </header>
+  <main class="dialog__content">
+    <ng-content select="[content]"></ng-content>
+  </main>
+  <footer class="dialog__footer">
+    <button class="button button__cancel"
+            mat-button
+            (click)="onClose()">
+      {{"DIALOG.BUTTONS.CANCEL" | translate}}
+    </button>
+    <button class="button button__submit"
+            mat-button
+            (click)="onSubmit()">
+      {{(mode === FormModeEnum.Create ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT") | translate}}
+    </button>
+  </footer>
+</section>

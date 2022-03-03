@@ -1,81 +1,26 @@
 @import '/src/colors';
 @import '/src/fonts';
 
-.create-record {
-
-  &__header {
-    height: 42px;
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    font-family: $font-system;
-    background-color: rgb(50, 48, 48);
-  }
-
-  &__header-text {
-    color: white;
-  }
-
-  &__button-container {
-    display: flex;
-    align-items: center;
-
-    &:first-child {
-      margin-right: auto;
-      justify-content: flex-start;
-    }
-
-    &:last-child {
-      margin-left: auto;
-      justify-content: flex-end;
-    }
-  }
-
-  &__content {
-    padding: 16px 32px;
-
-    mat-form-field {
-      font-family: $font-system;
-      width: 100%;
-
-      &.mat-form-field-invalid mat-label {
-        caret-color: #c7162b;
-        color: #c7162b !important;
-      }
-
-      mat-label {
-        color: $font-primary;
-        font-size: 20px;
-      }
-
-      input:placeholder-shown {
-        font-size: 16px;
-      }
-    }
-
-    mat-error {
-      color: #c7162b;
-    }
-  }
-}
-
-.button {
+mat-form-field {
   font-family: $font-system;
-  font-weight: normal;
-  color: $font-primary;
-  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+
+  &.mat-form-field-invalid mat-label {
+    caret-color: #c7162b;
+    color: #c7162b !important;
+  }
+
+  mat-label {
+    color: $font-primary;
+    font-size: 20px;
+  }
+
+  input:placeholder-shown {
+    font-size: 16px;
+  }
 }
 
-.button__submit {
-  background-color: #0d7f1e;
-  border-color: rgba(0,0,0,0.56);
-  color: #fff;
-}
-
-.button__cancel {
-  background-color: rgb(75, 72, 72);
-  border-color: rgb(48,47,47);
-  color: #fff;
+mat-error {
+  color: #c7162b;
 }

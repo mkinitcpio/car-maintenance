@@ -1,19 +1,13 @@
 <div class="create-dialog">
-  <header class="create-dialog__header">
-    <div class="create-dialog__button-container">
-      <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
-    </div>
-    <div class="create-dialog__header-text">{{(data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT") | translate}} {{"DIALOG.CATEGORY" | translate}}</div>
-    <div class="create-dialog__button-container">
-      <button class="button button__submit" mat-button (click)="onSubmit()">{{(data.mode === 0 ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT") | translate}}</button>
-    </div>
-  </header>
-
-  <main class="create-dialog__content">
-    <form [formGroup]="categoryForm">
+  <app-dialog [title]="title | async"
+              [mode]="data.mode"
+              (submit)="onSubmit()"
+              (close)="dialogRef.close()"
+  >
+    <form content [formGroup]="categoryForm">
       <mat-form-field [floatLabel]="'always'">
         <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
-        <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
+        <input [required]="true" [formControlName]="'name'" matInput>
         <mat-error>
           {{"DIALOG.VALIDATIONS.NAME" | translate}}
         </mat-error>
@@ -46,5 +40,5 @@
           </mat-select>
         </mat-form-field>
     </form>
-  </main>
+  </app-dialog>
 </div>

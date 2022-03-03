@@ -7,6 +7,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { categoryIllustrationOptions } from './category-illustration-options';
 import { SettingsService } from '../settings/settings.service';
 import { CategoryTypeEnum } from 'app/navigation/state/interface';
+import { TranslateService } from '@ngx-translate/core';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-dialog',
@@ -30,6 +33,7 @@ export class CreateDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<CreateDialogComponent>,
     public settingsService: SettingsService,
+    public translateService: TranslateService,
   ) {}
 
 
@@ -49,11 +53,14 @@ export class CreateDialogComponent implements OnInit {
     }
   }
 
-  public onClose(): void {
-    this.dialogRef.close();
-  }
-
   public getIllustrationName(value: string): string {
     return this.categoryIllustrationOptions.find(option => option.value === value)?.name;
+  }
+
+  public get title(): Observable<string> {
+    return combineLatest([
+      this.translateService.get(this.data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT"),
+      this.translateService.get("DIALOG.CATEGORY"),
+    ]).pipe(map(([mode, dialogType]) => `${mode as string} ${dialogType as string}`));
   }
 }

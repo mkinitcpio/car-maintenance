@@ -1,0 +1,55 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+.dialog {
+  font-family: $font-system;
+  background-color: white;
+  user-select: none;
+
+  &__header {
+    padding: 16px 16px 24px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-left: 12px;
+
+    color: $font-primary;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__content {
+    padding: 0px 32px;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding: 0 24px 24px 24px;
+  }
+}
+
+.button {
+  min-width: 128px;
+
+  font-family: $font-system;
+  font-weight: normal;
+  color: $font-primary;
+  border-radius: 8px;
+}
+
+.button__submit {
+  background-color: #0d7f1e;
+  border-color: rgba(0,0,0,0.56);
+  color: #fff;
+}
+
+.button__cancel {
+  background-color: #f1f1f1;
+  border-color: #f1f1f1;
+  color: $font-primary;
+}

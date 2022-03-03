@@ -7,6 +7,9 @@ import * as CustomValidators from './validators';
 import { CreateRecordComponentData } from './interface';
 
 import { v4 as uuidv4 } from 'uuid';
+import { Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-dialog',
@@ -35,6 +38,7 @@ export class CreateRecordComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: CreateRecordComponentData,
     public dialogRef: MatDialogRef<CreateRecordComponent>,
     private fb: FormBuilder,
+    private translateService: TranslateService,
   ) {}
 
 
@@ -53,5 +57,12 @@ export class CreateRecordComponent implements OnInit {
 
   public onClose(): void {
     this.dialogRef.close();
+  }
+
+  public get title(): Observable<string> {
+    return combineLatest([
+      this.translateService.get(this.data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT"),
+      this.translateService.get("DIALOG.RECORD"),
+    ]).pipe(map(([mode, dialogType]) => `${mode as string} ${dialogType as string}`));
   }
 }
