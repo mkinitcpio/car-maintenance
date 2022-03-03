@@ -69,8 +69,9 @@
     justify-content: center;
 
     font-family: $font-system;
-    font-weight: lighter;
+    font-weight: normal;
     font-size: 32px;
+    color: $font-secondary;
   }
 
   &__empty-text {
