@@ -8,11 +8,11 @@
 .categories-tree-node {
   font-family: $font-system;
   width: 100%;
-  margin: 1px 0;
 
   list-style: none;
 
   &__sub-node {
+    display: flex;
     margin: 0;
     visibility: hidden;
     overflow: hidden;
@@ -21,6 +21,14 @@
     &--expanded {
       visibility: visible;
     }
+  }
+
+  &__sub-node-item {
+    padding: 4px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   &__icon-container {
@@ -37,6 +45,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    transition: transform 0.2s ease-in;
   }
 
   &__icon {
@@ -46,7 +55,7 @@
   &__content {
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 42px;
     padding: 0 8px;
 
     color: $font-primary;
@@ -62,6 +71,10 @@
     &--select {
       color: white;
       background: var(--primary-color);
+
+      .categories-tree-node__name {
+        transform: translate(4px);
+      }
     }
 
     &--select:hover {
@@ -73,22 +86,18 @@
   &__expand-button-container {
     display: flex;
     align-items: center;
-    height: 22px;
-    width: 22px;
+    height: 24px;
+    width: 24px;
     margin-left: auto;
   }
 
   &__expand-button {
-    height: 22px;
-    width: 22px;
-
-    font-size: 22px;
     user-select: none;
     transition: transform 0.2s linear;
     transform: rotate(0deg);
 
     &--expanded {
-      transform: rotate(180deg);
+      transform: rotateX(180deg);
     }
   }
 }

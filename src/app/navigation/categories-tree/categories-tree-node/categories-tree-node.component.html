@@ -8,10 +8,9 @@
        [class.categories-tree-node__content--select]="selected === child.id"
        (click)="onSelect()"
        (contextmenu)="onContextMenu($event)">
-    <div class="categories-tree-node__icon-container">
+    <div class="categories-tree-node__icon-container" *ngIf="!isSubNode">
       <img class="categories-tree-node__icon"
             [class.categories-tree-node__icon--mono]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
-            *ngIf="!isSubNode"
             [src]="iconsPath + (child.illustration || 'wrench.svg')">
     </div>
     <span class="categories-tree-node__name">
@@ -29,15 +28,20 @@
   <ng-container>
     <div class="categories-tree-node__sub-node"
         [class.categories-tree-node__sub-node--expanded]="expand"
-        [style.height]="expand ? child.children.length * 42 + 'px' : 0">
-      <app-categories-tree-node *ngFor="let c of child.children"
-                                [selected]="selected"
-                                [isSubNode]="true"
-                                [child]="c"
-                                (edit)="onEdit(c)"
-                                (select)="onSelect(c)"
-                                (delete)="onDelete(c)">
-      </app-categories-tree-node>
+        [style.height]="expand ? child.children.length * 46 + 'px' : 0">
+      <div class="categories-tree-node__displacer">
+        <app-category-tree-displacer *ngFor="let c of child.children"></app-category-tree-displacer>
+      </div>
+      <div class="categories-tree-node__sub-node-item">
+        <app-categories-tree-node *ngFor="let c of child.children"
+                                  [selected]="selected"
+                                  [isSubNode]="true"
+                                  [child]="c"
+                                  (edit)="onEdit(c)"
+                                  (select)="onSelect(c)"
+                                  (delete)="onDelete(c)">
+        </app-categories-tree-node>
+      </div>
     </div>
   </ng-container>
 </div>
