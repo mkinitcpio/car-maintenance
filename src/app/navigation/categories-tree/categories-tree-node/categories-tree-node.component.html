@@ -18,17 +18,17 @@
     </span>
     <div class="categories-tree-node__expand-button-container">
       <mat-icon class="categories-tree-node__expand-button"
+                svgIcon="expand-more-rounded"
                 [class.categories-tree-node__expand-button--expanded]="expand"
                 *ngIf="child.children?.length"
                 (click)="expand = !expand; $event.stopPropagation()">
-        expand_more
       </mat-icon>
     </div>
   </div>
   <ng-container>
     <div class="categories-tree-node__sub-node"
         [class.categories-tree-node__sub-node--expanded]="expand"
-        [style.height]="expand ? child.children.length * 46 + 'px' : 0">
+        [style.height]="expand ? (child.children.length * 46) + 'px' : 0">
       <div class="categories-tree-node__displacer">
         <app-category-tree-displacer *ngFor="let c of child.children"></app-category-tree-displacer>
       </div>
@@ -49,7 +49,7 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
       <button class="menu-item" mat-menu-item *ngIf="!child.parent" (click)="onAdd()">
-        <mat-icon class="mat-item__icon mat-item__icon--add">add</mat-icon>
+        <mat-icon class="mat-item__icon mat-item__icon--add" svgIcon="add-rounded"></mat-icon>
         <span>{{"MENU.ADD" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="onEdit()">
@@ -58,7 +58,7 @@
       </button>
       <div class="mat-menu__divider"></div>
       <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-        <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
+        <mat-icon class="mat-item__icon mat-item__icon--delete" svgIcon="delete-rounded"></mat-icon>
         <span>{{"MENU.DELETE" | translate}}</span>
       </button>
   </ng-template>

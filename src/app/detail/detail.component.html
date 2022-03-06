@@ -2,7 +2,7 @@
   <div class="detail__title-container">
     <div class="detail__title">
       <app-button button-common routerLink="/category-details/{{parentId}}">
-        <mat-icon>account_tree</mat-icon>
+        <mat-icon svgIcon="tree-rounded"></mat-icon>
       </app-button>
       <span class="detail__title-text">{{name}}</span>
     </div>
@@ -12,7 +12,7 @@
       </app-button>
 
       <app-button *ngIf="dataSourceTable.length" button-common (click)="onPrint()">
-        <mat-icon>picture_as_pdf</mat-icon>
+        <mat-icon svgIcon="export-pdf-rounded"></mat-icon>
       </app-button>
     </div>
   </div>
