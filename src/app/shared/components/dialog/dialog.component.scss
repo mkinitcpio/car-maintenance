@@ -43,8 +43,8 @@
 }
 
 .button__submit {
-  background-color: #0d7f1e;
-  border-color: rgba(0,0,0,0.56);
+  background-color: var(--primary-color);
+  border-color: transparent;
   color: #fff;
 }
 

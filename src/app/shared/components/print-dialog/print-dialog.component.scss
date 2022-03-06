@@ -79,6 +79,10 @@
     justify-content: flex-end;
     margin-top: auto;
     padding-top: 24px;
+
+    .button {
+      min-width: 128px;
+    }
   }
 
 
@@ -203,8 +207,8 @@
 }
 
 .button__submit {
-  background-color: #0d7f1e;
-  border-color: rgba(0,0,0,0.56);
+  background-color: var(--primary-color);
+  border-color: transparent;
   color: #fff;
 }
 
