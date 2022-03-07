@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
 
 @Component({
@@ -14,13 +14,22 @@ export class DialogComponent {
   @Input()
   mode: FormModeEnum;
 
+  @Input()
+  hideFooter = false;
+
   @Output()
   close: EventEmitter<void> = new EventEmitter();
 
   @Output()
   submit: EventEmitter<void> = new EventEmitter();
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    this.contentScrolled = event.target.scrollTop > 12;
+  }
+
   public FormModeEnum = FormModeEnum;
+  public contentScrolled = false;
 
   public onClose(): void {
     this.close.emit();

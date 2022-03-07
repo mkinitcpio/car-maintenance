@@ -1,16 +1,30 @@
+@use '/src/mixins' as mixins;
+
 @import '/src/colors';
 @import '/src/fonts';
 
 .dialog {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+
   font-family: $font-system;
-  background-color: white;
   user-select: none;
 
   &__header {
-    padding: 16px 16px 24px 16px;
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    transition: box-shadow 0.2s ease-in;
+    z-index: 1;
+
+    &--border {
+      box-shadow: 0 1px 0 0 #dce1e6, 0 0 0 1px #e7e8ec;
+    }
   }
 
   &__title {
@@ -22,14 +36,16 @@
   }
 
   &__content {
-    padding: 0px 32px;
+    @include mixins.scrollable;
+    padding: 8px 32px;
+    height: 100%;
   }
 
   &__footer {
     display: flex;
     gap: 8px;
     justify-content: flex-end;
-    padding: 0 24px 24px 24px;
+    padding: 0 24px;
   }
 }
 

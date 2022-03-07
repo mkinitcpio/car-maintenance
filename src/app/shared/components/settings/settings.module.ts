@@ -15,6 +15,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {ColorSelectorModule} from '../color-selector/color-selector.module'
+import { DialogModule } from '../dialog/dialog.module';
 
 @NgModule({
   declarations: [SettingsComponent],
@@ -32,7 +33,8 @@ import {ColorSelectorModule} from '../color-selector/color-selector.module'
     MatTooltipModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
-    ColorSelectorModule
+    ColorSelectorModule,
+    DialogModule,
   ],
   providers: [
     SettingsService,

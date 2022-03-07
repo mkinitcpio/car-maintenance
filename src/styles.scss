@@ -28,6 +28,7 @@ html, body {
   }
 
   &-custom,
+  &-settings,
   &-delete {
     .mat-dialog-container {
       padding: 0;
@@ -56,6 +57,7 @@ html, body {
     height: 600px;
 
     .mat-dialog-container {
+      border-radius: 24px;
       background-color: #f7f7f7;
     }
   }
@@ -247,4 +249,8 @@ body.no-animations {
 .mat-badge-content {
   top: -6px !important;
   background-color: $color-dangerous;
+}
+
+.mat-select-panel {
+  border-radius: 8px !important;
 }
