@@ -37,7 +37,7 @@ export class CategoriesTreeNodeComponent implements OnInit {
   @Output()
   select: EventEmitter<Category> = new EventEmitter();
 
-  public iconsPath: string = null;
+  public iconsPath = `assets/category-icons/${this.settingsService.settings.appearance.iconPack}/${this.settingsService.settings.appearance.type}/`;
   public IconTypeEnum = IconTypeEnum;
 
   public expand = false;
