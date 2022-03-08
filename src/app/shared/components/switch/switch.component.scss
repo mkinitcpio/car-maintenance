@@ -1,0 +1,73 @@
+@import '/src/colors';
+
+:host {
+  height: 24px;
+}
+
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 42px;
+  height: 24px;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  &__placeholder {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 24px;
+    width: 42px;
+
+    border-radius: 8px;
+
+    background-color: $color-primary;
+    transition: left 0.2s ease;
+    z-index: 1;
+  }
+
+  &--checked .switch__placeholder {
+    left: 0;
+  }
+
+  &--checked &__slider:before {
+    transform: translateX(18px);
+  }
+
+  input {
+    width: 0;
+    height: 0;
+
+    opacity: 0;
+  }
+
+  &__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f1f1f1;
+  }
+
+  &__slider:before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+  
+    border-radius: 4px;
+  
+    background-color: white;
+    transition: transform .2s ease;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 4%),
+                0px 1px 1px 0px rgb(0 0 0 / 4%),
+                0px 1px 3px 0px rgb(0 0 0 / 4%);
+    z-index: 2;
+  }
+}
