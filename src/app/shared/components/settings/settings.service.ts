@@ -198,13 +198,4 @@ export class SettingsService {
     this.settings.appearance.primaryColor = color;
     this.settingsChanged$.next({ type: SettingsTypeEnum.Color, value: color });
   }
-
-  setDefaultThemeColor() {
-    this.settings.appearance.primaryColor = ColorEnum.Default;
-
-    this.settingsChanged$.next({
-      type: SettingsTypeEnum.Color,
-      value: ColorEnum.Default,
-    });
-  }
 }

@@ -1,6 +1,5 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { ElectronService } from "./electron/electron.service";
-import { Subject } from "rxjs";
 import { filter } from "rxjs/operators";
 
 import { SettingsService } from "@shared/components/settings/settings.service";
@@ -17,11 +16,13 @@ enum SupportedPlatrofmsEnum {
   providedIn: "root",
 })
 export class ThemeService implements OnDestroy {
-  private accentColor$: Subject<string> = new Subject();
   private readonly ubuntuPrimaryColor: string = "e95420";
   private darwinEventListenerId: number = null;
 
-  constructor(private electronService: ElectronService) {}
+  constructor(
+    private electronService: ElectronService,
+    private settingsService: SettingsService,
+  ) {}
 
   private getSecondaryColor(
     color: string,
@@ -56,32 +57,61 @@ export class ThemeService implements OnDestroy {
     this.settingsService.settingsChanged$
       .pipe(filter((node) => node.type === SettingsTypeEnum.Color))
       .subscribe(({ value }) => {
-     
-        this.changeThemeColors(value);
+        this.changeThemeColors(this.getPrimaryColor());
+        if(this.isPredefinedColor(value as ColorEnum)) {
+          this.unsubscribeFromSystemColorChanges();
+        } else {
+          this.listenSystemColorChanges();
+        }
       });
 
-    const primaryColor = this.electronService.os.type() === SupportedPlatrofmsEnum.Linux
+    const primaryColor = this.getPrimaryColor();
+    this.changeThemeColors(primaryColor);
+    this.listenSystemColorChanges();
+  }
+
+  private getPrimaryColor(): string {
+    let primaryColor = null;
+    const settingsPrimaryColor = this.settingsService.settings.appearance.primaryColor;
+
+    if(settingsPrimaryColor === ColorEnum.Default) {
+      primaryColor = this.getSystemPrimaryColor(this.electronService.os.type());
+    } else {
+      primaryColor = settingsPrimaryColor;
+    }
+
+    return primaryColor;
+  }
+
+  private getSystemPrimaryColor(type: string): string {
+    return type === SupportedPlatrofmsEnum.Linux
       ? this.ubuntuPrimaryColor
       : this.electronService.systemPreferences.getAccentColor();
+  }
 
-    this.changeThemeColors(primaryColor);
-
+  private listenSystemColorChanges(): void {
     switch (this.electronService.os.type()) {
       case SupportedPlatrofmsEnum.Windows: {
-        this.electronService.systemPreferences.on("accent-color-changed", (_, color) => this.accentColor$.next(color));
+        this.electronService.systemPreferences.on("accent-color-changed", (_, color) => this.settingsService.changeThemeColor(ColorEnum.Default));
         break;
       }
       case SupportedPlatrofmsEnum.Darwin: {
-        this.darwinEventListenerId = this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.accentColor$.next(
-          this.electronService.systemPreferences.getAccentColor()
-        ));
+        this.darwinEventListenerId = this.electronService.systemPreferences.subscribeNotification("AppleColorPreferencesChangedNotification", () => this.settingsService.changeThemeColor(ColorEnum.Default));
         break;
       }
     }
   }
 
+  private unsubscribeFromSystemColorChanges(): void {
+    this.electronService.systemPreferences?.removeAllListeners("accent-color-changed");
+    this.electronService.systemPreferences?.unsubscribeNotification(this.darwinEventListenerId);
+  }
+
+  private isPredefinedColor(color: ColorEnum): boolean {
+    return !ColorEnum[color];
+  }
+
   ngOnDestroy(): void {
-    this.electronService.systemPreferences.removeAllListeners("accent-color-changed");
-    this.electronService.systemPreferences.unsubscribeNotification(this.darwinEventListenerId);
+    this.unsubscribeFromSystemColorChanges();
   }
 }

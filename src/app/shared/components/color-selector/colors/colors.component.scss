@@ -1,0 +1,45 @@
+@import '/src/animations';
+
+:host {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  position: relative;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+  transition: opacity 0.2s ease-in;
+
+  &__cover {
+    position: absolute;
+    transition: left 0.4s ease-in-out;
+    z-index: -1;
+  }
+
+  &__color {
+    height: 28px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--disable {
+    opacity: 0.5;
+  }
+}
+
+.cover {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: background-color 0.2s ease-in;
+}
+
+.jello {
+  animation: jello 1s both;
+}

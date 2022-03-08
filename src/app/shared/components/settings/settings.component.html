@@ -5,186 +5,129 @@
   >
     <ng-container content>
       <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.COMMON' | translate">
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">storage</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.DATABASE_PATH" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <div class="settings__item-field settings__item-field--disable">
-              <span class="settings__text"
-                    [matTooltipClass]="'mat-tooltip--long-text'"
-                    [matTooltip]="this.settingsService.settings.databasePath">
-                {{this.settingsService.settings.databasePath}}
-              </span>
-              <button class="edit-button button__create"
-                      mat-button
-                      (click)="onDatabaseChange()">
-                {{'PAGES.SETTINGS.BUTTONS.CHANGE' | translate}}
-              </button>
-            </div>
-          </div>
-        </div>
-  
-        <div *ngIf="false" class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">tab</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.FIRST_TAB" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <mat-button-toggle-group class="settings__toggle-group" [value]="this.settingsService.settings.firstTab" (change)="onFirstTabChanged($event.value)">
-              <mat-button-toggle [value]="NavigationTabEnum.Categories">{{"PAGES.SETTINGS.BUTTONS.CATEGORIES" | translate}}</mat-button-toggle>
-              <mat-button-toggle [value]="NavigationTabEnum.Cars">{{"PAGES.SETTINGS.BUTTONS.CARS" | translate}}</mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>
-        </div>
-      </ubuntu-container>
-  
-      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">language</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.LANG" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <mat-form-field class="settings__item-field">
-              <mat-select [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
-                <mat-option *ngFor="let language of languageOptions" [value]="language.value">
-                  {{ language.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-  
-        <mat-divider></mat-divider>
-  
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">text_format</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.REGION" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <mat-form-field class="settings__item-field">
-              <mat-select [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
-                <mat-option *ngFor="let region of regionOptions" [value]="region.value">
-                  {{ region.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-      </ubuntu-container>
-  
-      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.UNITS' | translate">
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">straighten</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.METRIC_SYSTEM" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <mat-button-toggle-group class="settings__toggle-group" [value]="MetricSystemEnum[settingsService.settings.units?.metricSystem] || MetricSystemEnum[settingsService.settings.region]" (change)="onMetricSystemChanged($event.value)">
-              <mat-button-toggle [value]="MetricSystemEnum.Mi">{{"METRIC_SYSTEM.MILES" | translate}}</mat-button-toggle>
-              <mat-button-toggle [value]="MetricSystemEnum.Km">{{"METRIC_SYSTEM.KILOMETERS" | translate}}</mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>
-        </div>
-  
-        <mat-divider></mat-divider>
-  
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">attach_money</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.CURRENCY" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <mat-form-field class="settings__item-field">
-              <mat-select (valueChange)="onSelectCurrency($event)"
-                          [value]="CurrencyEnum[settingsService.settings.units?.currency] || CurrencyEnum[settingsService.settings.region]">
-                <mat-option *ngFor="let currency of currencyOptions" [value]="currency.value">
-                  {{ currency.name | translate }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-      </ubuntu-container>
-  
-      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">palette</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.COLORS" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <app-color-selector [colors]="colors"
-                                [selected]="settingsService.settings.appearance.primaryColor"
-                                (select)="onSelectColor($event)"
-            ></app-color-selector>
-          </div>
-        </div>
-  
-        <mat-divider></mat-divider>
-  
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">category</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.ICONS" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <div class="settings__item-field settings__item-field--disable">
-              {{"PAGES.SETTINGS.ICONS_PACK_NAMES.DEFAULT" | translate}}
-            </div>
-          </div>
-        </div>
-  
-        <mat-divider></mat-divider>
-  
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">invert_colors</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.MONO" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <mat-slide-toggle class="settings__toggle"
-                              [checked]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
-                              (change)="onColorSelect($event)">
-            </mat-slide-toggle>
-          </div>
-        </div>
-  
-        <mat-divider></mat-divider>
-  
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">animation</mat-icon>
-            {{"PAGES.SETTINGS.FIELDS.ANIMATION" | translate}}
-          </div>
-          <div class="settings__item-container">
-            <mat-slide-toggle class="settings__toggle"
-                              [checked]="settingsService.settings.appearance.animations"
-                              (change)="onAnimationsChanged($event)">
-            </mat-slide-toggle>
-          </div>
-        </div>
-      </ubuntu-container>
-  
-      <ubuntu-container *ngIf="!AppConfig.production" [title]="'Developer'">
-        <div class="settings__item">
-          <div class="settings__item-label">
-            <mat-icon class="settings__item-label-icon">terminal</mat-icon>
-            Dev tools
-          </div>
-          <div class="settings__item-container">
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.DATABASE_PATH' | translate" icon="storage">
+          <div class="settings__item-field settings__item-field--disable">
+            <span class="settings__text"
+                  [matTooltipClass]="'mat-tooltip--long-text'"
+                  [matTooltip]="this.settingsService.settings.databasePath">
+              {{this.settingsService.settings.databasePath}}
+            </span>
             <button class="edit-button button__create"
                     mat-button
-                    (click)="openDevTools()">
-              Open
+                    (click)="onDatabaseChange()">
+              {{'PAGES.SETTINGS.BUTTONS.CHANGE' | translate}}
             </button>
           </div>
-        </div>
+        </app-setting>
+
+        <app-setting *ngIf="false" [label]="'PAGES.SETTINGS.FIELDS.FIRST_TAB' | translate" icon="tab">
+          <mat-button-toggle-group class="settings__toggle-group"
+                                   [value]="this.settingsService.settings.firstTab"
+                                   (change)="onFirstTabChanged($event.value)">
+            <mat-button-toggle [value]="NavigationTabEnum.Categories">
+              {{"PAGES.SETTINGS.BUTTONS.CATEGORIES" | translate}}
+            </mat-button-toggle>
+            <mat-button-toggle [value]="NavigationTabEnum.Cars">
+              {{"PAGES.SETTINGS.BUTTONS.CARS" | translate}}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </app-setting>
+      </ubuntu-container>
+
+      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.LANG' | translate" icon="language">
+          <mat-form-field class="settings__item-field">
+            <mat-select [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
+              <mat-option *ngFor="let language of languageOptions" [value]="language.value">
+                {{ language.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </app-setting>
+
+        <mat-divider></mat-divider>
+
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.REGION' | translate" icon="text_format">
+          <mat-form-field class="settings__item-field">
+            <mat-select [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
+              <mat-option *ngFor="let region of regionOptions" [value]="region.value">
+                {{ region.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </app-setting>
+      </ubuntu-container>
+
+      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.UNITS' | translate">
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.METRIC_SYSTEM' | translate" icon="straighten">
+          <mat-button-toggle-group class="settings__toggle-group"
+                                   [value]="MetricSystemEnum[settingsService.settings.units?.metricSystem] || MetricSystemEnum[settingsService.settings.region]"
+                                   (change)="onMetricSystemChanged($event.value)">
+            <mat-button-toggle [value]="MetricSystemEnum.Mi">
+              {{"METRIC_SYSTEM.MILES" | translate}}
+            </mat-button-toggle>
+            <mat-button-toggle [value]="MetricSystemEnum.Km">
+              {{"METRIC_SYSTEM.KILOMETERS" | translate}}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </app-setting>
+
+        <mat-divider></mat-divider>
+
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.CURRENCY' | translate" icon="attach_money">
+          <mat-form-field class="settings__item-field">
+            <mat-select (valueChange)="onSelectCurrency($event)"
+                        [value]="CurrencyEnum[settingsService.settings.units?.currency] || CurrencyEnum[settingsService.settings.region]">
+              <mat-option *ngFor="let currency of currencyOptions" [value]="currency.value">
+                {{ currency.name | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </app-setting>
+      </ubuntu-container>
+
+      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.COLORS' | translate" icon="palette">
+          <app-color-selector [colors]="colors"
+                              [selected]="settingsService.settings.appearance.primaryColor"
+                              (select)="onSelectColor($event)">
+          </app-color-selector>
+        </app-setting>
+
+        <mat-divider></mat-divider>
+
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.ICONS' | translate" icon="category">
+          <div class="settings__item-field settings__item-field--disable">
+            {{"PAGES.SETTINGS.ICONS_PACK_NAMES.DEFAULT" | translate}}
+          </div>
+        </app-setting>
+
+        <mat-divider></mat-divider>
+
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.MONO' | translate" icon="invert_colors">
+          <app-switch [value]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
+                      (change)="onColorSelect($event)">
+          </app-switch>
+        </app-setting>
+
+        <mat-divider></mat-divider>
+
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.ANIMATION' | translate" icon="animation">
+          <app-switch [value]="settingsService.settings.appearance.animations"
+                      (change)="onAnimationsChanged($event)">
+          </app-switch>
+        </app-setting>
+      </ubuntu-container>
+
+      <ubuntu-container *ngIf="!AppConfig.production" [title]="'Developer'">
+        <app-setting label="Dev tools" icon="terminal">
+          <button class="edit-button button__create"
+                  mat-button
+                  (click)="openDevTools()">
+            Open
+          </button>
+        </app-setting>
       </ubuntu-container>
     </ng-container>
   </app-dialog>
-
 </div>

@@ -14,11 +14,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {ColorSelectorModule} from '../color-selector/color-selector.module'
+import {ColorSelectorModule} from '../color-selector/color-selector.module';
 import { DialogModule } from '../dialog/dialog.module';
+import { SwitchModule } from '../switch/switch.module';
+import { SettingComponent } from './setting/setting.component';
 
 @NgModule({
-  declarations: [SettingsComponent],
+  declarations: [SettingsComponent, SettingComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -31,10 +33,10 @@ import { DialogModule } from '../dialog/dialog.module';
     MatDividerModule,
     MatIconModule,
     MatTooltipModule,
-    MatSlideToggleModule,
     MatButtonToggleModule,
     ColorSelectorModule,
     DialogModule,
+    SwitchModule,
   ],
   providers: [
     SettingsService,

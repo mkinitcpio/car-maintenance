@@ -1,0 +1,11 @@
+<section class="colors" [class.colors--disable]="disable">
+  <div class="colors__color" *ngFor="let color of colors">
+    <app-color [color]="color.color"
+               [selected]="color.color === selectedColor"
+               (click)="onSelect(color.color)">
+    </app-color>
+  </div>
+  <div #coverRef class="colors__cover">
+    <div class="cover" *ngIf="isActive" @flyInOut [style.background]="selectedColor"></div>
+  </div>
+</section>

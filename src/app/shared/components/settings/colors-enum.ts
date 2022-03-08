@@ -1,7 +1,9 @@
 export enum ColorEnum {
-    Default = "Default",
-    Blue = "#506EA7",
-    Orange = "#E95420",
-    Green = "#0D7F1E",
-    Red = "#C7162B",
-  }
+  Default = "Default",
+  VioletCrayola = "#8D3B72",
+  Blue = "#506EA7",
+  Flame = "#E95420",
+  Green = "#71B340",
+  PineGreen = "#037971",
+  Manatee = "#8d99ae",
+}

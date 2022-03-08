@@ -1,12 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { MatDialogRef } from "@angular/material/dialog";
-import { MatSlideToggleChange } from "@angular/material/slide-toggle";
 import { first } from "rxjs/operators";
 import { DataBaseService } from "../../../core/database";
 import { ElectronService } from "../../../core/services";
 import { IconTypeEnum } from "./icon-type.enum";
 import { ColorEnum } from "./colors-enum";
-import { Color } from "./color-interface";
 import { languageOptions } from "./language-options";
 import { LocaleEnum } from "./locale-enum";
 import { MetricSystemEnum } from "./metric-system.enum";
@@ -16,8 +14,10 @@ import { regionOptions } from "./region-options";
 import { currencyOptions } from "./currency-options";
 
 import { SettingsService } from "./settings.service";
-import { ThemeService } from "@core/services/theme.service";
-import { Subject } from "rxjs";
+
+import { colors } from './colors';
+
+import { AppConfig } from 'environments/environment';
 
 @Component({
   selector: "app-settings",
@@ -25,7 +25,7 @@ import { Subject } from "rxjs";
   styleUrls: ["./settings.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
   public languageOptions = languageOptions;
   public regionOptions = regionOptions;
   public currencyOptions = currencyOptions;
@@ -35,26 +35,16 @@ export class SettingsComponent implements OnInit {
   public CurrencyEnum = CurrencyEnum;
   public NavigationTabEnum = NavigationTabEnum;
   public ColorEnum = ColorEnum;
-  public colors: Color[];
+  public colors = colors;
   public selected: string;
+  public readonly AppConfig = AppConfig;
 
   constructor(
     public dialogRef: MatDialogRef<SettingsComponent>,
     public settingsService: SettingsService,
     private electronService: ElectronService,
     private dataBaseService: DataBaseService,
-    private themeService: ThemeService
   ) {}
-
-  ngOnInit(): void {
-    this.colors = this.getColors();
-
-    if (this.selected === undefined) {
-      this.selected = this.settingsService.settings.appearance.primaryColor;
-    }
-
-   
-  }
 
   public onSelectLanguage(language: string): void {
     this.settingsService.setAppLanguage(language);
@@ -66,10 +56,8 @@ export class SettingsComponent implements OnInit {
     this.settingsService.saveSettings();
   }
 
-  public onColorSelect(event: MatSlideToggleChange): void {
-    this.settingsService.setIconType(
-      event.checked ? IconTypeEnum.Mono : IconTypeEnum.Color
-    );
+  public onColorSelect(checked: boolean): void {
+    this.settingsService.setIconType(checked ? IconTypeEnum.Mono : IconTypeEnum.Color);
     this.settingsService.saveSettings();
   }
 
@@ -104,8 +92,8 @@ export class SettingsComponent implements OnInit {
     this.settingsService.saveSettings();
   }
 
-  public onAnimationsChanged(event: MatSlideToggleChange): void {
-    this.settingsService.setAnimations(event.checked);
+  public onAnimationsChanged(checked: boolean): void {
+    this.settingsService.setAnimations(checked);
     this.settingsService.saveSettings();
   }
 
@@ -114,25 +102,12 @@ export class SettingsComponent implements OnInit {
     this.settingsService.saveSettings();
   }
 
-  getColors(): Color[] {
-    let colors = [];
-    for (let element in ColorEnum) {
-      if (ColorEnum[element] !== "Default") {
-        colors.push({ name: element, color: ColorEnum[element] });
-      }
-    }
-    return colors;
-  }
-
-  public onSelected(colors: ColorEnum) {
+  public onSelectColor(colors: ColorEnum) {
     this.settingsService.changeThemeColor(colors);
     this.settingsService.saveSettings();
   }
 
-  public onSetDefault() {
-    this.settingsService.setDefaultThemeColor();
-    this.themeService.init();
-    this.settingsService.saveSettings();
-   
+  public openDevTools(): void {
+    this.electronService.remote.getCurrentWindow().webContents.openDevTools();
   }
 }
