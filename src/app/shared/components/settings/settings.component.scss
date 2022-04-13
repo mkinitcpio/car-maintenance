@@ -38,7 +38,7 @@
     height: 64px;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 16px; 
   }
 
   &__item-label {
@@ -112,6 +112,10 @@
   .mat-button-toggle-button {
     width: 104px;
   }
+  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
+    border: solid 0.5px rgba(0,0,0,.12);
+    box-sizing: content-box;
+}
 }
 
 .mat-form-field.mat-focused {
