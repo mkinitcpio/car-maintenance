@@ -5,6 +5,7 @@ import { filter } from "rxjs/operators";
 import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { ColorEnum } from "@shared/components/settings/colors-enum";
+import { contextIsolated } from "process";
 
 enum SupportedPlatrofmsEnum {
   Windows = "Windows_NT",
@@ -103,8 +104,20 @@ export class ThemeService implements OnDestroy {
   }
 
   private unsubscribeFromSystemColorChanges(): void {
-    this.electronService.systemPreferences?.removeAllListeners("accent-color-changed");
-    this.electronService.systemPreferences?.unsubscribeNotification(this.darwinEventListenerId);
+    switch (this.electronService.os.type()) {
+      case SupportedPlatrofmsEnum.Windows: {
+        this.electronService.systemPreferences.removeAllListeners("accent-color-changed");
+        break;
+      }
+      case SupportedPlatrofmsEnum.Darwin: {
+        this.electronService.systemPreferences.unsubscribeNotification(this.darwinEventListenerId);
+        break;
+      }
+    }
+
+
+    // this.electronService.systemPreferences?.removeAllListeners("accent-color-changed");
+    // this.electronService.systemPreferences?.unsubscribeNotification(this.darwinEventListenerId);
   }
 
   private isPredefinedColor(color: ColorEnum): boolean {
