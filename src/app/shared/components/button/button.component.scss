@@ -13,7 +13,23 @@
     .button {
       border-color: transparent;
       background-color: transparent;
-      color: $font-primary;
+      color: #4b4848;
+
+      transition: background-color 0.1s ease-out;
+
+      &:hover {
+        background: rgba(0,0,0,0.05);
+      }
+    }
+  }
+
+  &[button-transparent--white] {
+    .button {
+      color: white;
+
+      &:hover {
+        background: rgba(1,1,1,.15);
+      }
     }
   }
 }
@@ -26,7 +42,7 @@
   background: transparent;
   color: white;
   border: 1px solid white;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 0 8px;
 
   height: 38px;
