@@ -7,12 +7,13 @@
   @include mixins.scrollable-horizontal;
   height: 100%;
   box-sizing: border-box;
+  padding: 0px 12px 12px 12px;
 
   font-family: $font-system;
-  border-radius: 8px;
+  border-radius: 12px;
 
   &--with-borders {
-    border: 1px solid $separator-color;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 2px 0px;
 
     .records-table__row.mat-row:last-child {
       border-bottom-width: 1px;
@@ -21,7 +22,7 @@
 
   &__row {
     min-height: 42px;
-    border-bottom-color: $separator-color;
+    border-bottom-color: transparent;
   }
 
   user-select: none;
@@ -38,10 +39,14 @@
 
   &__cell-id {
     flex: 0 0 24px;
+    padding-left: 16px;
   }
 
   .records-table__header {
     min-height: 48px;
+    margin-bottom: 8px;
+    border-bottom-color: #efeeee;
+    color: black;
   }
 
   &__cell-cost {
@@ -61,7 +66,7 @@
     width: 20px;
 
     font-size: 20px;
-    color: #3c3a3a;
+    color: #4b4848;
   }
 
   &__cell-mileage {
@@ -79,8 +84,14 @@
     padding-right: 24px;
   }
 
+  .mat-header-cell {
+    color: black;
+  }
+
   .mat-row:hover {
     background: #F7F7F7;
+
+    border-radius: 12px;
 
     cursor: pointer;
   }

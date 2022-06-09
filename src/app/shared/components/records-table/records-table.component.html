@@ -45,11 +45,7 @@
 
   <ng-container matColumnDef="cost">
     <mat-header-cell *matHeaderCellDef class="records-table__cell-cost">
-      {{"RECORDS_TABLE.EXPENSE" | translate}} 
-      (<app-currency [currency]="settingsService.settings.units?.currency"
-                     [size]="CurrencySizeEnum.Small"
-                     [locale]="settingsService.settings.region">
-      </app-currency>)
+      {{"RECORDS_TABLE.EXPENSE" | translate}}
     </mat-header-cell>
     <mat-cell class="records-table__cell-cost" *matCellDef="let row">
       <div class="records-table__cell-text"
@@ -67,7 +63,7 @@
                 *ngIf="row.notes"
                 [matTooltip]="row.notes"
                 [matTooltipPosition]="'above'">
-        description
+        book
       </mat-icon>
     </mat-cell>
   </ng-container>
@@ -90,7 +86,7 @@
     </button>
     <div class="mat-menu__divider"></div>
     <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-      <mat-icon class="mat-item__icon mat-item__icon--delete" svgIcon="delete-rounded"></mat-icon>
+      <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
       <span>{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>

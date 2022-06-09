@@ -1,4 +1,5 @@
 @import "/src/colors";
+@import "/src/fonts";
 
 :host {
   &[button-common] {
@@ -6,6 +7,36 @@
       border-color: #2b2a2a;
       background-color: #4b4848;
       color: white;
+    }
+  }
+
+  &[button-primary] {
+    .button {
+      height: 34px;
+      box-sizing: content-box;
+      font-family: $font-system;
+      background-color: white;
+      color: #4b4848;
+      gap: 0px;
+      transition: gap 0.2s ease-in;
+      justify-content: flex-start;
+
+      ::ng-deep span {
+        opacity: 0;
+        width: 0px;
+        transition: width 0.2s ease-in, opacity 0.2s ease-in;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+
+    .button:hover {
+      gap: 4px;
+      background: rgba(0,0,0,0.05);
+      ::ng-deep span {
+        width: 100%;
+        opacity: 1;
+      }
     }
   }
 
@@ -19,16 +50,6 @@
 
       &:hover {
         background: rgba(0,0,0,0.05);
-      }
-    }
-  }
-
-  &[button-transparent--white] {
-    .button {
-      color: white;
-
-      &:hover {
-        background: rgba(1,1,1,.15);
       }
     }
   }

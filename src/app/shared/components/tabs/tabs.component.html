@@ -1,9 +1,11 @@
 <div class="tabs">
   <div class="tabs__title">
-    <div #tabsRef class="tabs__tabs-section">
-      <div #tabCoverRef class="tabs__tab--cover-selected"></div>
-      <div class="tabs__tab" [class.tabs__tab--selected]="selectedtab === i" *ngFor="let tab of tabs; let i = index;"(click)="onTabSelect(i)">
-      {{tab | translate}}
+    <div class="tabs__title-container">
+      <div #tabsRef class="tabs__tabs-section">
+        <div #tabCoverRef class="tabs__tab--cover-selected"></div>
+        <div class="tabs__tab" [class.tabs__tab--selected]="selectedtab === i" *ngFor="let tab of tabs; let i = index;"(click)="onTabSelect(i)">
+        {{tab | translate}}
+        </div>
       </div>
     </div>
   </div>

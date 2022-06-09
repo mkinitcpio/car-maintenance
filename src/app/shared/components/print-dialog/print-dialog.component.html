@@ -9,7 +9,9 @@
                 [matTooltip]="saveDirectoryPath">
             {{saveDirectoryPath}}
           </span>
-          <button mat-button class="button button__edit" (click)="onEditFilePath()">{{'DIALOG.BUTTONS.CHANGE' | translate}}</button>
+          <app-button button-transparent (click)="onEditFilePath()">
+            <mat-icon>edit</mat-icon>
+          </app-button>
         </div>
       </ubuntu-container>
 
