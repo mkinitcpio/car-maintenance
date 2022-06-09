@@ -12,11 +12,9 @@
                   [matTooltip]="this.settingsService.settings.databasePath">
               {{this.settingsService.settings.databasePath}}
             </span>
-            <button class="edit-button button__create"
-                    mat-button
-                    (click)="onDatabaseChange()">
-              {{'PAGES.SETTINGS.BUTTONS.CHANGE' | translate}}
-            </button>
+            <app-button button-transparent (click)="onDatabaseChange()">
+              <mat-icon>edit</mat-icon>
+            </app-button>
           </div>
         </app-setting>
 

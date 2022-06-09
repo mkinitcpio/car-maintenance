@@ -18,6 +18,7 @@ import {ColorSelectorModule} from '../color-selector/color-selector.module';
 import { DialogModule } from '../dialog/dialog.module';
 import { SwitchModule } from '../switch/switch.module';
 import { SettingComponent } from './setting/setting.component';
+import { ButtonModule } from '../button/button.module';
 
 @NgModule({
   declarations: [SettingsComponent, SettingComponent],
@@ -37,6 +38,7 @@ import { SettingComponent } from './setting/setting.component';
     ColorSelectorModule,
     DialogModule,
     SwitchModule,
+    ButtonModule,
   ],
   providers: [
     SettingsService,

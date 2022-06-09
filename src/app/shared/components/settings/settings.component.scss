@@ -72,15 +72,6 @@
     color: gray;
   }
 
-  &__toggle.mat-checked {
-    .mat-slide-toggle-bar {
-      background-color:var(--secondary-color);
-    }
-    .mat-slide-toggle-thumb {
-      background-color: var(--primary-color);
-    }
-  }
-
   .edit-button {
     padding: 0 12px;
     min-width: initial;
