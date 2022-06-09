@@ -3,6 +3,10 @@
 @import '/src/colors';
 @import '/src/fonts';
 
+:host {
+  height: 100%;
+}
+
 .dialog {
   box-sizing: border-box;
   height: 100%;
@@ -55,7 +59,7 @@
   font-family: $font-system;
   font-weight: normal;
   color: $font-primary;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .button__submit {

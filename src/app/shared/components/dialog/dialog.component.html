@@ -2,7 +2,7 @@
   <header class="dialog__header" [class.dialog__header--border]="contentScrolled">
     <div class="dialog__title">{{title}}</div>
     <app-button button-transparent (click)="onClose()">
-      <mat-icon svgIcon="close-rounded"></mat-icon>
+      <mat-icon>close</mat-icon>
     </app-button>
   </header>
   <main class="dialog__content" (scroll)="onScroll($event)">

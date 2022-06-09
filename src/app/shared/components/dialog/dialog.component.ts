@@ -24,8 +24,8 @@ export class DialogComponent {
   submit: EventEmitter<void> = new EventEmitter();
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event) {
-    this.contentScrolled = event.target.scrollTop > 12;
+  onScroll(event: Event) {
+    this.contentScrolled = (event.target as HTMLElement).scrollTop > 12;
   }
 
   public FormModeEnum = FormModeEnum;
