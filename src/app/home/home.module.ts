@@ -11,9 +11,14 @@ import { DetailModule } from '../detail/detail.module';
 import { EmptyModule } from '../empty/empty.module';
 import { CategoryDetailsModule } from '../category-details/category-details.module';
 import { SideNavigationTrackerService } from './side-navigation-tracker.service';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { ButtonModule } from '@shared/components/button/button.module';
+import { MatIconModule } from '@angular/material/icon';
+import { SideNavTrackerDirective } from '@shared/directives/side-nav-tracker.directive';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, NavigationBarComponent, SideNavTrackerDirective],
   imports: [
     CommonModule,
     SharedModule,
@@ -22,6 +27,9 @@ import { SideNavigationTrackerService } from './side-navigation-tracker.service'
     DetailModule,
     EmptyModule,
     CategoryDetailsModule,
+    ButtonModule,
+    MatIconModule,
+    MatBadgeModule,
   ],
   providers: [
     SideNavigationTrackerService,

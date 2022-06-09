@@ -11,7 +11,6 @@ import { navigationReducer } from './state/reducers';
 import { NavigationFacade } from './state/navigation.facade';
 import { NavigationEffects } from './state/effects';
 import { CategoriesTreeModule } from './categories-tree/categories-tree.module';
-import { SideNavTrackerDirective } from '../shared/directives/side-nav-tracker.directive';
 import { TabsModule } from '@shared/components/tabs/tabs.module';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -19,8 +18,7 @@ import { VersionService } from '@core/services/version.service';
 
 @NgModule({
   declarations: [
-    NavigationComponent,
-    SideNavTrackerDirective
+    NavigationComponent
   ],
   imports: [
     CommonModule,

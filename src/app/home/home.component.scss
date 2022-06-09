@@ -1,20 +1,21 @@
 @import '/src/colors';
 
 .home {
+  display: flex;
+
+  &__sidenav-container {
+    width: 100%;
+  }
+
   &__sidenav {
     width: 300px;
 
     box-sizing: content-box;
-    border-right: 1px solid $separator-color;
-    transition: width 0.5s ease-in-out,
-                border-right 0.5s ease-in;
+    border-right: none;
+    transition: width 0.5s ease-in-out;
 
     &--minimize {
-      width: 66px;
-
-      border-color: #282626;
-      transition: width 0.5s ease-in-out,
-      border-right 0.5s ease-out;
+      width: 16px;
     }
   }
 
@@ -26,7 +27,7 @@
     transition: margin-left 0.5s ease-in-out;
 
     &--minimize {
-      margin-left: 66px !important;
+      margin-left: 16px !important;
     }
   }
 }

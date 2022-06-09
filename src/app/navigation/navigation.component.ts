@@ -56,10 +56,9 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public selected: string = null;
   public categories: CategoryTree[];
   public CategoryTypeEnum = CategoryTypeEnum;
+  public selectedTabIndex = 0;
 
   public tabs = ['PAGES.NAVIGATION.TABS.CATEGORIES', 'PAGES.NAVIGATION.TABS.CARS'];
-
-  private readonly repositoryLink = "https://github.com/mkinitcpio/car-maintenance";
 
   constructor(
     private router: Router,
@@ -214,23 +213,19 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public openSettings(): void {
-    this.dialogManagerService.openSettingsDialog();
-  }
-
-  public openReleaseNotes(): void {
-    this.dialogManagerService.openReleaseNotesDialog(this.releaseNotesService.releaseNotes);
-  }
-
-  public openRepository(): void {
-    this.electronService.shell.openExternal(this.repositoryLink);
-  }
-
   public onFeedback(): void {
     this.dialogManagerService.openFeedbackDialog();
   }
 
   public fitlerCategoriesByType(categories: CategoryTree[] ,type: CategoryTypeEnum): CategoryTree[] {
     return categories.filter(category => category.type === type);
+  }
+
+  public onSelectTab(index: number): void {
+    this.selectedTabIndex = index;
+  }
+
+  public onAdd(selectedTabIndex: number): void {
+    selectedTabIndex ? this.addCarCategory() : this.addCategory();
   }
 }

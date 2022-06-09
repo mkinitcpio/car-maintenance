@@ -1,0 +1,14 @@
+<section class="navigation-bar">
+  <app-button class="navigation-bar__side-nav-button" button-transparent appSideNavTracker>
+    <mat-icon>menu</mat-icon>
+  </app-button>
+  <nav class="navigation-bar__navigation">
+    <app-button button-transparent (click)="onDashboardClick()" matBadge="" matBadgePosition="after" matBadgeSize="small">
+      <mat-icon>dashboard</mat-icon>
+    </app-button>
+    <div class="navigation-bar__divider"></div>
+    <app-button button-transparent (click)="openSettings()">
+      <mat-icon>settings</mat-icon>
+    </app-button>
+  </nav>
+</section>

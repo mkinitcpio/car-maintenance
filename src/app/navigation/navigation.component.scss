@@ -12,12 +12,11 @@
 
   &__title-container {
     box-sizing: border-box;
-    padding: 9px 12px;
+    min-height: 54px;
+    padding: 0px 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    background-color: rgb(50, 48, 48);
   }
 
   &__buttons {
@@ -28,10 +27,6 @@
     border-top: 1px solid rgba(0,0,0,0.1);
   }
 
-  .switcher-icon {
-    transition: transform 0.2s ease-in;
-  }
-
   app-tabs {
     flex-grow: 1;
 
@@ -39,28 +34,12 @@
   }
 
   &--minimize {
-    background-color: #323030;
-    transition: background-color 0.25s ease-out;
-
-    app-tabs{
       opacity: 0;
-      transition: opacity 0s;
-      z-index: -1;
-    }
+      transition: opacity 0.3s;
 
     .navigation__title-container {
       flex-wrap: wrap-reverse;
       gap: 8px;
     }
-
-    .switcher-icon {
-      transform: rotateY(180deg);
-      color: white;
-    }
   }
-}
-
-.menu-item__github-icon {
-  height: 18px !important;
-  fill: $font-secondary;
 }
