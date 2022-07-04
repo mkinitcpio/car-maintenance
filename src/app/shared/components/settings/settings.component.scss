@@ -30,7 +30,7 @@
   }
 
   &__toggle-group {
-    border-radius: 8px !important;
+    border-radius: 12px !important;
   }
 
   &__item {
@@ -59,6 +59,12 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    font-size: 14px;
+
+    &--select {
+      width: 60%;
+    }
   }
 
   &__multi-item-field-container {

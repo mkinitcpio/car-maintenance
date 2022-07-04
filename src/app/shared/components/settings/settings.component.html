@@ -34,24 +34,26 @@
 
       <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.LANG' | translate" icon="language">
-          <mat-form-field class="settings__item-field">
+          <mat-form-field class="settings__item-field settings__item-field--select">
             <mat-select [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
               <mat-option *ngFor="let language of languageOptions" [value]="language.value">
                 {{ language.name }}
               </mat-option>
             </mat-select>
+            <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
           </mat-form-field>
         </app-setting>
 
         <mat-divider></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.REGION' | translate" icon="text_format">
-          <mat-form-field class="settings__item-field">
+          <mat-form-field class="settings__item-field settings__item-field--select">
             <mat-select [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
               <mat-option *ngFor="let region of regionOptions" [value]="region.value">
                 {{ region.name }}
               </mat-option>
             </mat-select>
+            <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
           </mat-form-field>
         </app-setting>
       </ubuntu-container>
@@ -73,13 +75,14 @@
         <mat-divider></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.CURRENCY' | translate" icon="attach_money">
-          <mat-form-field class="settings__item-field">
+          <mat-form-field class="settings__item-field settings__item-field--select">
             <mat-select (valueChange)="onSelectCurrency($event)"
                         [value]="CurrencyEnum[settingsService.settings.units?.currency] || CurrencyEnum[settingsService.settings.region]">
               <mat-option *ngFor="let currency of currencyOptions" [value]="currency.value">
                 {{ currency.name | translate }}
               </mat-option>
             </mat-select>
+            <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
           </mat-form-field>
         </app-setting>
       </ubuntu-container>
