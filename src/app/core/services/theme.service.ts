@@ -5,7 +5,6 @@ import { filter } from "rxjs/operators";
 import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { ColorEnum } from "@shared/components/settings/colors-enum";
-import { contextIsolated } from "process";
 
 enum SupportedPlatrofmsEnum {
   Windows = "Windows_NT",
@@ -50,7 +49,7 @@ export class ThemeService implements OnDestroy {
 
     document.documentElement.style.setProperty(
       "--secondary-color",
-      this.getSecondaryColor(`#${primary}`, 1, "30")
+      this.getSecondaryColor(`#${primary}`, 1, "1f")
     );
   }
 
