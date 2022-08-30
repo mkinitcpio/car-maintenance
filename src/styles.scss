@@ -17,7 +17,6 @@ html, body {
 
 .dialog {
   &-settings,
-  &-car,
   &-notes {
     .mat-dialog-container {
       padding: 0;
@@ -29,6 +28,8 @@ html, body {
 
   &-custom,
   &-settings,
+  &-car,
+  &-account,
   &-delete {
     .mat-dialog-container {
       padding: 0;
@@ -67,10 +68,11 @@ html, body {
   font-family: $font-system;
   font-weight: normal;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.25;
   background: #333;
-  border-radius: 8px !important;
+  border-radius: 12px !important;
   white-space: pre-line;
+  padding: 12px !important;
 }
 
 .mat-tooltip--long-text {
@@ -148,7 +150,7 @@ html, body {
 
 .mat-menu-panel {
   min-width: initial !important;
-  border-radius: 8px !important;
+  border-radius: 12px !important;
   background: #ffffffa3;
   backdrop-filter: saturate(180%) blur(10px);
   .cdk-program-focused { 
@@ -156,13 +158,13 @@ html, body {
   }
 
   .mat-menu-content {
-    padding: 4px !important;
+    padding: 8px !important;
   }
 
   .mat-menu__divider {
     height: 1px;
     margin: 4px 8px;
-    background: #ccc;
+    background: #efeeee;
   }
 }
 
@@ -247,10 +249,174 @@ body.no-animations {
 }
 
 .mat-badge-content {
-  top: -6px !important;
+  top: -2px !important;
+  right: -4px !important;
   background-color: $color-dangerous;
 }
 
 .mat-select-panel {
-  border-radius: 8px !important;
+  border-radius: 12px !important;
+}
+
+.mat-select {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #efefef;
+    background: #fcfcfc;
+    box-sizing: border-box;
+    font-size: 14px;
+    &:focus-visible {
+      outline: 1px solid $color-primary !important;
+    }
+
+    &__expand-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-46%);
+      right: 8px;
+      color: #4b4848;
+    }
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  border-top: 0;
+  padding: 12px 0;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.mat-select-arrow {
+  opacity: 0;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: #f6f6f6;
+}
+
+.mat-form-field-label-wrapper {
+  margin-left: 8px;
+  top: -8px;
+}
+
+.mat-form-field-subscript-wrapper {
+  margin-top: 12px !important;
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+
+.mat-form-field {
+  font-family: $font-system;
+  width: 100%;
+
+  mat-label {
+    color: $font-primary;
+    font-size: 18px !important;
+  }
+
+  &.mat-form-field-invalid mat-label {
+    caret-color: #c7162b;
+    color: #c7162b !important;
+  }
+
+  input:placeholder-shown {
+    font-size: 16px;
+  }
+}
+
+.mat-error {
+  color: #c7162b;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  .mat-input-element {
+    background: #fcfcfc;
+    border: 1px solid #efefef;
+    border-radius: 12px;
+    padding: 12px;
+    box-sizing: border-box;
+    caret-color: $color-primary;
+    transition: padding-left 0.2s ease-in, border-color 0.1s ease-in, background 0.1s ease-in;
+
+    &:focus {
+      padding-left: 16px;
+      border-color: $color-primary;
+      background: white;
+    }
+  }
+
+  &.mat-form-field-invalid {
+    .mat-input-element {
+      border-color: #c7162b;
+      background-color: rgba($color: #c7162b, $alpha: 0.05);
+    }
+  }
+
+  &::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-form-field-subscript-wrapper {
+    margin-left: 8px;
+  }
+}
+
+:focus-visible {
+  outline: 1px solid $color-primary;
+}
+
+//Calendar
+.mat-calendar{
+  font-family: $font-system;
+}
+
+.mat-calendar-period-button {
+  font-family: $font-system;
+}
+
+.mat-calendar-previous-button,
+.mat-calendar-next-button,
+.mat-calendar-period-button,
+.mat-calendar-body-cell-content,
+.mat-datepicker-content {
+  border-radius: 12px !important;
+}
+
+.mat-calendar-next-button,
+.mat-calendar-previous-button {
+  color: #4b4848 !important;
+}
+
+.mat-calendar-table-header th {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b4848;
+}
+
+.mat-datepicker-content {
+  background: #ffffffa3;
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+.mat-calendar-body-today.mat-calendar-body-selected {
+  box-shadow: none;
+}
+
+.mat-calendar-body-selected {
+  background-color: $color-primary;
+}
+
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+  background-color: $color-secondary;
+}
+
+.mat-calendar-controls {
+  margin: 4px 0 12px !important;
 }
