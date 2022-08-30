@@ -1,0 +1,17 @@
+
+
+.account-dialog {
+  &__account-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  &__account-icon {
+    height: 92px;
+    width: 92px;
+
+    font-size: 92px;
+    color: #4b4848;
+  }
+}

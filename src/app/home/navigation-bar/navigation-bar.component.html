@@ -3,10 +3,10 @@
     <mat-icon>menu</mat-icon>
   </app-button>
   <nav class="navigation-bar__navigation">
-    <app-button button-transparent (click)="onDashboardClick()" matBadge="" matBadgePosition="after" matBadgeSize="small">
-      <mat-icon>dashboard</mat-icon>
-    </app-button>
     <div class="navigation-bar__divider"></div>
+    <app-button *ngIf="false" button-transparent (click)="onOpenAccount()">
+      <mat-icon>person</mat-icon>
+    </app-button>
     <app-button button-transparent (click)="openSettings()">
       <mat-icon>settings</mat-icon>
     </app-button>
