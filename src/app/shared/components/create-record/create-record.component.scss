@@ -1,26 +1,35 @@
 @import '/src/colors';
 @import '/src/fonts';
 
-mat-form-field {
-  font-family: $font-system;
-  width: 100%;
-  margin-bottom: 8px;
-
-  &.mat-form-field-invalid mat-label {
-    caret-color: #c7162b;
-    color: #c7162b !important;
+.create-record {
+  .mat-form-field {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 
-  mat-label {
-    color: $font-primary;
-    font-size: 20px;
+  &__note {
+    height: 128px;
+    resize: none;
   }
 
-  input:placeholder-shown {
-    font-size: 16px;
-  }
-}
+  .date-picker {
+    &__toggle {
+      position: absolute;
+      top: -34px;
+      right: 6px;
 
-mat-error {
-  color: #c7162b;
+      font-size: 20px;
+      color: #4b4848;
+    }
+  }
+
+  &__flex-container {
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+      width: 48%;
+    }
+  }
 }

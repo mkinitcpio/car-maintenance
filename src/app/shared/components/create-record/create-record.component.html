@@ -24,33 +24,35 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field [floatLabel]="'always'">
-        <mat-label>{{"DIALOG.FIELDS.EXPENSE" | translate}}</mat-label>
-        <input [required]="true" [formControlName]="'cost'" matInput>
-        <mat-error *ngIf="recordForm.get('cost').hasError('number')">
-          {{recordForm.get('cost').getError('number').value | translate}}
-        </mat-error>
-        <mat-error *ngIf="recordForm.get('cost').hasError('positiveNumber')">
-          {{recordForm.get('cost').getError('positiveNumber').value | translate}}
-        </mat-error>
-        <mat-error *ngIf="recordForm.get('cost').hasError('required')">
-          {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
-        </mat-error>
-      </mat-form-field>
+      <div class="create-record__flex-container">
+        <mat-form-field [floatLabel]="'always'">
+          <mat-label>{{"DIALOG.FIELDS.DATE" | translate}}</mat-label>
+          <input [formControlName]="'date'" matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle class="date-picker__toggle" matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            {{"DIALOG.VALIDATIONS.DATE" | translate}}
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field [floatLabel]="'always'">
-        <mat-label>{{"DIALOG.FIELDS.DATE" | translate}}</mat-label>
-        <input [formControlName]="'date'" matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error>
-          {{"DIALOG.VALIDATIONS.DATE" | translate}}
-        </mat-error>
-      </mat-form-field>
+        <mat-form-field [floatLabel]="'always'">
+          <mat-label>{{"DIALOG.FIELDS.EXPENSE" | translate}}</mat-label>
+          <input [required]="true" [formControlName]="'cost'" matInput>
+          <mat-error *ngIf="recordForm.get('cost').hasError('number')">
+            {{recordForm.get('cost').getError('number').value | translate}}
+          </mat-error>
+          <mat-error *ngIf="recordForm.get('cost').hasError('positiveNumber')">
+            {{recordForm.get('cost').getError('positiveNumber').value | translate}}
+          </mat-error>
+          <mat-error *ngIf="recordForm.get('cost').hasError('required')">
+            {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
 
       <mat-form-field [floatLabel]="'always'">
         <mat-label>{{"DIALOG.FIELDS.COMMENT" | translate}}</mat-label>
-        <textarea [formControlName]="'notes'" matInput></textarea>
+        <textarea class="create-record__note" [formControlName]="'notes'" matInput></textarea>
       </mat-form-field>
     </form>
   </app-dialog>

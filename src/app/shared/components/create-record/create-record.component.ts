@@ -25,7 +25,7 @@ export class CreateRecordComponent implements OnInit {
       CustomValidators.numberValidator,
       CustomValidators.positiveNumberValidator,
     ]),
-    date: this.fb.control(null),
+    date: this.fb.control(new Date()),
     notes: this.fb.control(null),
     parent: this.fb.control(this.data.parent),
     mileage: this.fb.control(null, [
