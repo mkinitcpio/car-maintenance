@@ -8,12 +8,13 @@
   }
   
   &__option-icon {
-    width: 24px;
+    width: 18px;
     margin-right: 8px;
   }
 
   &__illustration-container {
     display: flex;
+    align-items: center;
   }
 
   &__illustration-icon {
@@ -21,27 +22,9 @@
     margin-right: 8px;
   }
 
-  mat-form-field {
-    font-family: $font-system;
-    width: 100%;
-    margin-bottom: 8px;
-
-    &.mat-form-field-invalid mat-label {
-      caret-color: #c7162b;
-      color: #c7162b !important;
+  .mat-form-field {
+    &:not(:last-child) {
+      margin-bottom: 20px;
     }
-
-    mat-label {
-      color: $font-primary;
-      font-size: 20px;
-    }
-
-    input:placeholder-shown {
-      font-size: 16px;
-    }
-  }
-
-  mat-error {
-    color: #c7162b;
   }
 }

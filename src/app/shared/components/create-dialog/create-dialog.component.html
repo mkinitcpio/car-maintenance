@@ -12,13 +12,14 @@
           {{"DIALOG.VALIDATIONS.NAME" | translate}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field [floatLabel]="'always'">
+      <mat-form-field [floatLabel]="'always'" *ngIf="!(data.mode === 1)">
       <mat-label>{{"DIALOG.FIELDS.CATEGORY" | translate}}</mat-label>
-        <mat-select [formControlName]="'parent'" [disabled]="data.mode === 1">
+        <mat-select [formControlName]="'parent'">
           <mat-option *ngFor="let parent of data.parents" [value]="parent.value">
             {{parent.name}}
           </mat-option>
         </mat-select>
+        <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
       </mat-form-field>
       <mat-form-field [floatLabel]="'always'" *ngIf="!categoryForm.get('parent')?.value">
         <mat-label>{{"DIALOG.FIELDS.ILLUSTRATION" | translate}}</mat-label>
@@ -38,6 +39,7 @@
               </span>
             </mat-option>
           </mat-select>
+          <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
         </mat-form-field>
     </form>
   </app-dialog>

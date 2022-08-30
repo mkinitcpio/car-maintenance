@@ -9,9 +9,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { CreateDialogComponent } from './create-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { UbuntuCloseButtonModule } from '../../ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogModule } from '../dialog/dialog.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,9 +25,9 @@ import { DialogModule } from '../dialog/dialog.module';
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    UbuntuCloseButtonModule,
     TranslateModule,
     DialogModule,
+    MatIconModule,
   ],
   entryComponents: [
     CreateDialogComponent,
