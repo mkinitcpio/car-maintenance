@@ -8,7 +8,7 @@
 .ubuntu-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 
   &__header {
     display: flex;
@@ -16,6 +16,7 @@
     gap: 4px;
     height: 36px;
 
+    font-size: 14px;
     font-family: $font-system;
     font-weight: bold;
     color: $font-primary;
