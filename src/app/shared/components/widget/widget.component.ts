@@ -12,4 +12,7 @@ export class WidgetComponent {
 
   @Input()
   info: string;
+
+  @Input()
+  icon: string;
 }

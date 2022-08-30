@@ -1,6 +1,9 @@
 <section class="widget">
-  <h4 class="widget__title" *ngIf="title">
-    {{title}}
+  <div class="widget__title-section" *ngIf="title">
+    <h4 class="widget__title">
+      <mat-icon class="widget__illustration">{{icon}}</mat-icon>
+      {{title}}
+    </h4>
     <mat-icon class="widget__info"
               *ngIf="info"
               [matTooltip]="info">
@@ -10,6 +13,6 @@
     <div class="widget__actions">
       <ng-content select="[actions]"></ng-content>
     </div>
-  </h4>
+  </div>
   <ng-content></ng-content>
 </section>
