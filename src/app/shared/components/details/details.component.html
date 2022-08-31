@@ -1,0 +1,19 @@
+<section class="page">
+  <section class="page__title-section">
+    <div class="page__title">
+      <ng-content select="[buttons-left]"></ng-content>
+      <span class="page__title-text">{{title}}</span>
+    </div>
+    <div class="page__title-buttons">
+      <ng-content select="[buttons-right]"></ng-content>
+    </div>
+  </section>
+
+  <div class="page__content-shadow-cover">
+    <div class="page__shadow page__shadow--cover"></div> 
+    <div class="page__shadow"></div>
+    <div class="page__content">
+      <ng-content select="[content]"></ng-content>
+    </div>
+  </div>
+</section>
