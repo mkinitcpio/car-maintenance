@@ -23,6 +23,10 @@
   }
 
   &__title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
     font-family: $font-system;
     font-size: 18px;
     color: black;
@@ -30,7 +34,7 @@
 
   &__title-buttons {
     display: flex;
-    gap: 8px;
+    gap: 4px;
   }
 
   &__content {

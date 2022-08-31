@@ -20,6 +20,9 @@ import { CurrencyModule } from '../shared/currency/currency.module';
 import { HomeRoutingModule } from 'app/home/home-routing.module';
 import { WidgetModule } from '@shared/components/widget/widget.module';
 import { ButtonModule } from '@shared/components/button/button.module';
+import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
+import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
+import { DetailsModule } from '@shared/components/details/details.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { ButtonModule } from '@shared/components/button/button.module';
     HomeRoutingModule,
     WidgetModule,
     ButtonModule,
+    RichWidgetModule,
+    UbuntuContainerModule,
+    DetailsModule,
   ],
   providers: [
     DetailsFacade,

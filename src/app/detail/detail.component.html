@@ -1,44 +1,79 @@
-<div class="detail">
-  <div class="detail__title-container">
-    <div class="detail__title">
-      <app-button button-common routerLink="/category-details/{{parentId}}">
-        <mat-icon svgIcon="tree-rounded"></mat-icon>
-      </app-button>
-      <span class="detail__title-text">{{name}}</span>
-    </div>
-    <div class="detail__buttons">
-      <app-button button-common (click)="onCreateRecord()">
-        <mat-icon svgIcon="add-rounded"></mat-icon>
-      </app-button>
-
-      <app-button *ngIf="dataSourceTable.length" button-common (click)="onPrint()">
-        <mat-icon svgIcon="export-pdf-rounded"></mat-icon>
-      </app-button>
-    </div>
-  </div>
+<!-- <div class="detail">
   <div class="detail__content">
     <div class="detail__cards">
-      <app-widget [title]="'PAGES.DETAIL.LAST_MODIFIED' | translate">
-        <div class="card__stat">{{lastModifiedDate ? (lastModifiedDate | date:'d MMM, y') : '-'}}</div>
-      </app-widget>
-      <app-widget [title]="'PAGES.DETAIL.OVERALL_EXPENSE' | translate">
-        <div class="card__stat">
-          <span>{{costSum | numberSeparator:this.settingsService.settings.region}}</span>
-          <app-currency [currency]="settingsService.settings.units?.currency"
-                        [locale]="settingsService.settings.region">
-          </app-currency>
-        </div>
-      </app-widget>
+      <app-rich-widget icon="payments"
+                       type="currency"
+                       tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
+                       title="PAGES.DETAIL.OVERALL_EXPENSE"
+                       value="{{costSum}}"
+      >
+      </app-rich-widget>
+      <app-rich-widget icon="edit_calendar"
+                       orientation="horizontal"
+                       type="date"
+                       title="PAGES.DETAIL.LAST_MODIFIED"
+                       value="{{lastModifiedDate}}"
+      >
+      </app-rich-widget>
     </div>
-    <app-records-table class="detail__table"
-                       [data]="dataSourceTable"
-                       [withBorders]="true"
-                       [stretch]="true"
-                       (edit)="onEdit($event)"
-                       (delete)="onDelete($event)">
-    </app-records-table>
+    <ubuntu-container>
+      <app-records-table class="detail__table"
+                         [data]="dataSourceTable"
+                         [stretch]="true"
+                         (edit)="onEdit($event)"
+                         (delete)="onDelete($event)">
+      </app-records-table>
+    </ubuntu-container>
     <div *ngIf="!dataSourceTable.length" class="detail__empty">
       <mat-icon class="detail__empty-text">content_paste</mat-icon>{{"PAGES.DETAIL.EMPTY" | translate}}
     </div>
   </div>
-</div>
+</div> -->
+
+<app-details [title]="name">
+  <ng-container buttons-left>
+    <app-button button-transparent routerLink="/category-details/{{parentId}}">
+      <mat-icon>account_tree</mat-icon>
+    </app-button>
+  </ng-container>
+
+  <ng-container buttons-right>
+    <app-button button-transparent (click)="onCreateRecord()">
+      <mat-icon>add</mat-icon>
+    </app-button>
+
+    <app-button *ngIf="dataSourceTable.length" button-transparent (click)="onPrint()">
+      <mat-icon>picture_as_pdf</mat-icon>
+    </app-button>
+  </ng-container>
+
+  <ng-container content>
+    <div class="detail__cards">
+      <app-rich-widget icon="payments"
+                       type="currency"
+                       tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
+                       [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
+                       value="{{costSum}}"
+      >
+      </app-rich-widget>
+      <app-rich-widget icon="edit_calendar"
+                       orientation="horizontal"
+                       type="date"
+                       [title]="'PAGES.DETAIL.LAST_MODIFIED'"
+                       value="{{lastModifiedDate}}"
+      >
+      </app-rich-widget>
+    </div>
+    <ubuntu-container>
+      <app-records-table class="detail__table"
+                         [data]="dataSourceTable"
+                         [stretch]="true"
+                         (edit)="onEdit($event)"
+                         (delete)="onDelete($event)">
+      </app-records-table>
+    </ubuntu-container>
+    <div *ngIf="!dataSourceTable.length" class="detail__empty">
+      <mat-icon class="detail__empty-text">content_paste</mat-icon>{{"PAGES.DETAIL.EMPTY" | translate}}
+    </div>
+  </ng-container>
+</app-details>
