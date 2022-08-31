@@ -17,7 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
+import { DetailsModule } from '@shared/components/details/details.module';
 import { ButtonModule } from '@shared/components/button/button.module';
+import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
 
 @NgModule({
   declarations: [CategoryDetailsComponent],
@@ -36,6 +38,8 @@ import { ButtonModule } from '@shared/components/button/button.module';
     MatMenuModule,
     UbuntuContainerModule,
     ButtonModule,
+    RichWidgetModule,
+    DetailsModule,
   ],
   providers: [
     CategoryDetailsFacade,
