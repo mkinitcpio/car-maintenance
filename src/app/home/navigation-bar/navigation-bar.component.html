@@ -7,6 +7,14 @@
     <app-button *ngIf="false" button-transparent (click)="onOpenAccount()">
       <mat-icon>person</mat-icon>
     </app-button>
+    <div class="navigation-bar__dev-buttons" *ngIf="!AppConfig.production">
+      <app-button button-transparent (click)="onRefreshApp()">
+        <mat-icon>refresh</mat-icon>
+      </app-button>
+      <app-button button-transparent (click)="onOpenDevTools()">
+        <mat-icon>terminal</mat-icon>
+      </app-button>
+    </div>
     <app-button button-transparent (click)="openSettings()">
       <mat-icon>settings</mat-icon>
     </app-button>

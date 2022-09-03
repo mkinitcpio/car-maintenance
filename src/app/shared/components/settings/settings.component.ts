@@ -106,8 +106,4 @@ export class SettingsComponent {
     this.settingsService.changeThemeColor(colors);
     this.settingsService.saveSettings();
   }
-
-  public openDevTools(): void {
-    this.electronService.remote.getCurrentWindow().webContents.openDevTools();
-  }
 }

@@ -29,6 +29,12 @@
     flex: 1;
   }
 
+  &__dev-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .switcher-icon {
     transition: transform 0.2s ease-in;
 

@@ -119,16 +119,6 @@
           </app-switch>
         </app-setting>
       </ubuntu-container>
-
-      <ubuntu-container *ngIf="!AppConfig.production" [title]="'Developer'">
-        <app-setting label="Dev tools" icon="terminal">
-          <button class="edit-button button__create"
-                  mat-button
-                  (click)="openDevTools()">
-            Open
-          </button>
-        </app-setting>
-      </ubuntu-container>
     </ng-container>
   </app-dialog>
 </div>
