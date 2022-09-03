@@ -24,6 +24,7 @@
       ::ng-deep span {
         opacity: 0;
         width: 0px;
+        padding-right: 4px;
         transition: width 0.2s ease-in, opacity 0.2s ease-in;
         white-space: nowrap;
         overflow: hidden;
