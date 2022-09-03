@@ -77,7 +77,7 @@ export class DialogManagerService {
   public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
-        width: "380px",
+        width: "356px",
         panelClass: "dialog-delete",
         data: {
           text: "DIALOG.DELETE.CATEGORY",
@@ -128,7 +128,7 @@ export class DialogManagerService {
     return this.dialog
       .open(PrintDialogComponent, {
         disableClose: true,
-        width: "820px",
+        width: "864px",
         panelClass: "dialog-print",
         data,
         autoFocus: false,

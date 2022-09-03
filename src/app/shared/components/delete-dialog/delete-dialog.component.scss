@@ -20,18 +20,19 @@
   }
 
   &__title {
+    margin-bottom: 12px;
+
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     color: $font-primary;
   }
 
   &__text {
-    line-height: 1.4;
-    color: $font-secondary;
-  }
+    margin-top: 12px;
 
-  &__header-text {
-    color: white;
+    line-height: 1.4;
+    font-size: 14px;
+    color: $font-secondary;
   }
 
   &__icon {
