@@ -44,7 +44,7 @@
           </mat-form-field>
         </app-setting>
 
-        <mat-divider></mat-divider>
+        <mat-divider class="settings__divider"></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.REGION' | translate" icon="text_format">
           <mat-form-field class="settings__item-field settings__item-field--select">
@@ -72,7 +72,7 @@
           </mat-button-toggle-group>
         </app-setting>
 
-        <mat-divider></mat-divider>
+        <mat-divider class="settings__divider"></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.CURRENCY' | translate" icon="attach_money">
           <mat-form-field class="settings__item-field settings__item-field--select">
@@ -95,7 +95,7 @@
           </app-color-selector>
         </app-setting>
 
-        <mat-divider></mat-divider>
+        <mat-divider class="settings__divider"></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.ICONS' | translate" icon="category">
           <div class="settings__item-field settings__item-field--disable">
@@ -103,7 +103,7 @@
           </div>
         </app-setting>
 
-        <mat-divider></mat-divider>
+        <mat-divider class="settings__divider"></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.MONO' | translate" icon="invert_colors">
           <app-switch [value]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
@@ -111,7 +111,7 @@
           </app-switch>
         </app-setting>
 
-        <mat-divider></mat-divider>
+        <mat-divider class="settings__divider"></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.ANIMATION' | translate" icon="animation">
           <app-switch [value]="settingsService.settings.appearance.animations"

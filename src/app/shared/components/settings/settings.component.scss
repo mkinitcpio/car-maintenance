@@ -78,16 +78,8 @@
     color: gray;
   }
 
-  .edit-button {
-    padding: 0 12px;
-    min-width: initial;
-
-    border-radius: 8px;
-    font-family: $font-system;
-    font-weight: normal;
-    color: $font-primary;
-    background-color: rgb(252, 252, 252);
-    border: 1px solid rgb(196,196,196);
+  &__divider {
+    margin: 0 18px !important;
   }
 
   .mat-button-toggle-checked {

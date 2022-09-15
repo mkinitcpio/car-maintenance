@@ -31,7 +31,7 @@
   &__info-section {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   &__title {
@@ -48,8 +48,8 @@
 
   &__illustration {
     padding: 8px;
-    background-color: $color-primary;
-    color: white;
+    background-color: $color-secondary;
+    color: $color-primary;
     font-size: 24px;
     height: 24px;
     width: 24px;
@@ -64,6 +64,7 @@
   &--horizontal {
     flex-direction: row;
     align-items: center;
+    padding-bottom: 16px;
 
     .rich-widget__info-section {
       margin: initial;

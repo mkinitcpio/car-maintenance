@@ -59,7 +59,7 @@ html, body {
 
     .mat-dialog-container {
       border-radius: 24px;
-      background-color: #f7f7f7;
+      background-color: white;
     }
   }
 }
@@ -261,8 +261,7 @@ body.no-animations {
 .mat-select {
     padding: 12px;
     border-radius: 12px;
-    border: 1px solid #efefef;
-    background: #fcfcfc;
+    border: 1.5px solid #ebebeb;
     box-sizing: border-box;
     font-size: 14px;
     &:focus-visible {
@@ -337,8 +336,7 @@ body.no-animations {
 .mat-form-field {
   font-size: 14px;
   .mat-input-element {
-    background: #fcfcfc;
-    border: 1px solid #efefef;
+    border: 1.5px solid #ebebeb;
     border-radius: 12px;
     padding: 12px;
     box-sizing: border-box;
