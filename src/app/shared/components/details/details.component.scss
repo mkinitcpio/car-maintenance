@@ -5,11 +5,11 @@
 .page {
   height: 100%;
   display: flex;
-  flex-direction: column;
 
   background-color: white;
 
   user-select: none;
+  transition: width 0.5s ease-in-out;
 
   &__title-section {
     box-sizing: border-box;
@@ -35,6 +35,14 @@
   &__title-buttons {
     display: flex;
     gap: 4px;
+  }
+
+  &__main {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   &__content {
@@ -68,10 +76,15 @@
     left: 0px;
     margin-right: 16px;
 
+    transition: width 0.5s ease-in-out;
+
     &--cover {
-      background-color: #fafafa;
       z-index: 0;
+
+      background-color: #fafafa;
       box-shadow: none;
+
+      transition: width 0.5s ease-in-out;
     }
 
     &:after {
@@ -82,5 +95,27 @@
       position: absolute;
       right: -16px;
     }
+  }
+
+  &__sidebar {
+    position: absolute;
+    right: -300px;
+    height: 100%;
+    width: 300px;
+
+    background: white;
+
+    transition: right 0.5s ease-in-out;
+    z-index: 1000;
+
+    &--show {
+      right: 0;
+    }
+  }
+
+  &__sidebar-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
   }
 }

@@ -7,6 +7,22 @@ import { Component, Input } from '@angular/core';
 })
 export class DetailsComponent {
 
+  private readonly SIDEBAR_WIDTH = '300px';
+  private readonly RIGHT_BORDER_WIDTH = '16px';
+
+  public readonly FULL_WIDTH = '100%';
+  public readonly PAGE_WITH_SIDEBAR_WIDTH = `calc(${this.FULL_WIDTH} - ${this.SIDEBAR_WIDTH})`;
+  public readonly PAGE_CONTENT_WIDTH = `calc(${this.FULL_WIDTH} - ${this.RIGHT_BORDER_WIDTH})`;
+  public readonly PAGE_CONTENT_WIDTH_WITH_SIDEBAR = `calc(${this.FULL_WIDTH} - ${this.SIDEBAR_WIDTH} - ${this.RIGHT_BORDER_WIDTH})`;
+
+  public showSidebar = false;
+
   @Input()
   title: string;
+
+  @Input()
+  sidebarButtonIcon: string;
+
+  @Input()
+  sidebarTitle: string;
 }

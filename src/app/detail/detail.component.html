@@ -1,36 +1,4 @@
-<!-- <div class="detail">
-  <div class="detail__content">
-    <div class="detail__cards">
-      <app-rich-widget icon="payments"
-                       type="currency"
-                       tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
-                       title="PAGES.DETAIL.OVERALL_EXPENSE"
-                       value="{{costSum}}"
-      >
-      </app-rich-widget>
-      <app-rich-widget icon="edit_calendar"
-                       orientation="horizontal"
-                       type="date"
-                       title="PAGES.DETAIL.LAST_MODIFIED"
-                       value="{{lastModifiedDate}}"
-      >
-      </app-rich-widget>
-    </div>
-    <ubuntu-container>
-      <app-records-table class="detail__table"
-                         [data]="dataSourceTable"
-                         [stretch]="true"
-                         (edit)="onEdit($event)"
-                         (delete)="onDelete($event)">
-      </app-records-table>
-    </ubuntu-container>
-    <div *ngIf="!dataSourceTable.length" class="detail__empty">
-      <mat-icon class="detail__empty-text">content_paste</mat-icon>{{"PAGES.DETAIL.EMPTY" | translate}}
-    </div>
-  </div>
-</div> -->
-
-<app-details [title]="name">
+<app-details [title]="name" sidebarButtonIcon="history">
   <ng-container buttons-left>
     <app-button button-transparent routerLink="/category-details/{{parentId}}">
       <mat-icon>account_tree</mat-icon>

@@ -1,19 +1,41 @@
-<section class="page">
-  <section class="page__title-section">
-    <div class="page__title">
-      <ng-content select="[buttons-left]"></ng-content>
-      <span class="page__title-text">{{title}}</span>
+<section class="page" [style.width]="showSidebar ? PAGE_WITH_SIDEBAR_WIDTH : FULL_WIDTH">
+  <div class="page__main">
+    <section class="page__title-section">
+      <div class="page__title">
+        <ng-content select="[buttons-left]"></ng-content>
+        <span class="page__title-text">{{title}}</span>
+      </div>
+      <div class="page__title-buttons">
+        <ng-content select="[buttons-right]"></ng-content>
+        <app-button *ngIf="sidebarButtonIcon" [active]="showSidebar" button-transparent (click)="showSidebar = !showSidebar">
+          <mat-icon>{{sidebarButtonIcon}}</mat-icon>
+        </app-button>
+      </div>
+    </section>
+  
+    <div class="page__content-shadow-cover">
+      <div class="page__shadow page__shadow--cover" [style.width]="showSidebar ? PAGE_CONTENT_WIDTH_WITH_SIDEBAR : PAGE_CONTENT_WIDTH"></div> 
+      <div class="page__shadow" [style.width]="showSidebar ? PAGE_CONTENT_WIDTH_WITH_SIDEBAR : PAGE_CONTENT_WIDTH"></div>
+      <div class="page__content">
+        <ng-content select="[content]"></ng-content>
+      </div>
     </div>
-    <div class="page__title-buttons">
-      <ng-content select="[buttons-right]"></ng-content>
-    </div>
-  </section>
+  </div>
 
-  <div class="page__content-shadow-cover">
-    <div class="page__shadow page__shadow--cover"></div> 
-    <div class="page__shadow"></div>
-    <div class="page__content">
-      <ng-content select="[content]"></ng-content>
+  <div *ngIf="sidebarButtonIcon" class="page__sidebar" [class.page__sidebar--show]="showSidebar">
+    <div class="page__sidebar-container">
+      <section class="page__title-section">
+        <div class="page__title">
+          <span class="page__title-text">{{sidebarTitle}}</span>
+        </div>
+      </section>
+      <div class="page__content-shadow-cover">
+        <div class="page__shadow page__shadow--cover"></div>
+        <div class="page__shadow"></div>
+        <div class="page__content">
+          <ng-content select="[sidebar-content]"></ng-content>
+        </div>
+      </div>
     </div>
   </div>
 </section>

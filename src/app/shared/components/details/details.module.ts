@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './details.component';
+import { ButtonModule } from '../button/button.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -8,6 +10,8 @@ import { DetailsComponent } from './details.component';
   ],
   imports: [
     CommonModule,
+    ButtonModule,
+    MatIconModule,
   ],
   exports: [
     DetailsComponent,
