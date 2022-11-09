@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
+import { DialogModule } from '../dialog/dialog.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-co
     TranslateModule,
     MatDividerModule,
     UbuntuContainerModule,
+    DialogModule,
   ]
 })
 export class ReleaseNotesModule { }

@@ -33,8 +33,6 @@
   },
   "linux": {
     "icon": "dist/assets/icons/favicon.png",
-    "target": [
-      "snap"
-    ]
+    "target": "snap"
   }
 }

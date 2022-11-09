@@ -3,6 +3,7 @@ import { DialogManagerService } from '@shared/services/dialog-manager.service';
 import { SideNavigationTrackerService } from '../side-navigation-tracker.service';
 import { AppConfig } from 'environments/environment';
 import { ElectronService } from '@core/services/electron/electron.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -17,6 +18,7 @@ export class NavigationBarComponent {
     public sideNavTracker: SideNavigationTrackerService,
     private dialogManagerService: DialogManagerService,
     private electronService: ElectronService,
+    private router: Router,
   ) { }
 
   public openSettings(): void {
@@ -25,6 +27,10 @@ export class NavigationBarComponent {
 
   public onOpenAccount(): void {
     this.dialogManagerService.openAccountDialog();
+  }
+
+  public navigateToDashboard(): void {
+    this.router.navigate(['dashboard']);
   }
 
   public onRefreshApp(): void {

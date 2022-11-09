@@ -101,10 +101,11 @@
   .mat-button-toggle-button {
     width: 104px;
   }
+  
   .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
-    border: solid 0.5px rgba(0,0,0,.12);
+    border: solid 1.5px rgba(0,0,0,.12);
     box-sizing: content-box;
-}
+  }
 }
 
 .mat-form-field.mat-focused {

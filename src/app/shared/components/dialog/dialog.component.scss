@@ -39,6 +39,12 @@
     font-weight: bold;
   }
 
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
   &__content {
     @include mixins.scrollable;
     padding: 8px 24px;

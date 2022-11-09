@@ -1,0 +1,37 @@
+<app-details [title]="'Dashboard'" sidebarButtonIcon="bell-new" [sidebarTitle]="'Notifications'">
+  <ng-container content>
+    <section class="grid grid--{{gridView}}">
+    <app-dashboard-item type="changelog"
+                        header="4.0.0"
+                        description="See what's new"
+                        class="card"
+                        (click)="openReleaseNotes()">
+    </app-dashboard-item>
+
+    <app-dashboard-item type="feedback"
+                        size="s"
+                        header="Feedback"
+                        description="Request feature report bug"
+                        class="item2"
+                        (click)="openFeedbackDialog()">
+    </app-dashboard-item>
+
+    <app-dashboard-item type="sourceCode"
+                        external="true"
+                        size="s"
+                        header="Source code"
+                        description="Clone, edit and even more"
+                        class="item3"
+                        (click)="openGitHub()">
+    </app-dashboard-item>
+
+        <app-dashboard-item type="documentation"
+                            header="Documentation"
+                            description="How to use?"
+                            external="true"
+                            class="item4"
+                            (click)="openDocumentation()">
+        </app-dashboard-item>
+</section>
+  </ng-container>
+</app-details>

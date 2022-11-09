@@ -11,6 +11,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
+import { DialogModule } from '../dialog/dialog.module';
+import { ButtonModule } from '../button/button.module';
 
 
 
@@ -31,7 +33,8 @@ import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-co
     MatIconModule,
     MatTooltipModule,
     UbuntuContainerModule,
-    MatIconModule,
+    DialogModule,
+    ButtonModule,
   ]
 })
 export class CreateCarDialogModule { }

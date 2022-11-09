@@ -1,22 +1,43 @@
 <section class="navigation-bar">
   <app-button class="navigation-bar__side-nav-button" button-transparent appSideNavTracker>
-    <mat-icon>menu</mat-icon>
+    <mat-icon svgIcon="menu-new"></mat-icon>
   </app-button>
   <nav class="navigation-bar__navigation">
+    <nav class="navigation-bar__common-navigation">
+      <app-button button-transparent (click)="navigateToDashboard()">
+        <mat-icon svgIcon="dashboard-new"></mat-icon>
+      </app-button>
+
+      <ng-container *ngIf="!AppConfig.production">
+        <app-button button-transparent>
+          <mat-icon svgIcon="task-new"></mat-icon>
+        </app-button>
+        <app-button button-transparent>
+          <mat-icon svgIcon="store-new"></mat-icon>
+        </app-button>
+        <app-button button-transparent>
+          <mat-icon svgIcon="chart-new"></mat-icon>
+        </app-button>
+      </ng-container>
+    </nav>
+
     <div class="navigation-bar__divider"></div>
-    <app-button *ngIf="false" button-transparent (click)="onOpenAccount()">
-      <mat-icon>person</mat-icon>
-    </app-button>
+
     <div class="navigation-bar__dev-buttons" *ngIf="!AppConfig.production">
       <app-button button-transparent (click)="onRefreshApp()">
-        <mat-icon>refresh</mat-icon>
+        <mat-icon svgIcon="refresh-new"></mat-icon>
       </app-button>
       <app-button button-transparent (click)="onOpenDevTools()">
-        <mat-icon>terminal</mat-icon>
+        <mat-icon svgIcon="terminal-new"></mat-icon>
       </app-button>
     </div>
+
+    <app-button *ngIf="true" button-transparent (click)="onOpenAccount()">
+      <mat-icon svgIcon="user-new"></mat-icon>
+    </app-button>
+
     <app-button button-transparent (click)="openSettings()">
-      <mat-icon>settings</mat-icon>
+      <mat-icon svgIcon="settings-new"></mat-icon>
     </app-button>
   </nav>
 </section>

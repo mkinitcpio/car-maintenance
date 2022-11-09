@@ -1,0 +1,11 @@
+<app-dialog class="feedback" [title]="'Feedback'"
+              (submit)="onSubmit()"
+              (close)="dialogRef.close()"
+  >
+  <form content [formGroup]="feedbackForm">
+    <mat-form-field [floatLabel]="'always'">
+      <mat-label>Text</mat-label>
+      <textarea class="feedback__note" [formControlName]="'text'" matInput></textarea>
+    </mat-form-field>
+  </form>
+</app-dialog>

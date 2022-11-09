@@ -8,7 +8,7 @@
       <div class="page__title-buttons">
         <ng-content select="[buttons-right]"></ng-content>
         <app-button *ngIf="sidebarButtonIcon" [active]="showSidebar" button-transparent (click)="showSidebar = !showSidebar">
-          <mat-icon>{{sidebarButtonIcon}}</mat-icon>
+          <mat-icon [svgIcon]="sidebarButtonIcon"></mat-icon>
         </app-button>
       </div>
     </section>

@@ -1,141 +1,125 @@
-<div class="release-notes">
-  <header class="release-notes__header">
-      <h1 class="release-notes__title">Car Maintenance 3.0</h1>
-      <button mat-button class="close-button" (click)="dialogRef.close()"><mat-icon>close</mat-icon></button>
-  </header>
+<section class="release-notes">
+  <app-dialog [title]="'Car Maintenance 4.0'"
+              hideFooter="true"
+              (close)="dialogRef.close()"
+    >
+    <main content class="release-notes__content">
 
-  <main class="release-notes__content">
-
-    <ubuntu-container>
-      <div class="container">
-        <div class="release-notes__section-title">
-          {{releaseNotes[appLanguage].progress.title}}
-        </div>
-        <p class="release-notes__text">{{releaseNotes[appLanguage].progress['0']}}</p>
-        <p class="release-notes__text">{{releaseNotes[appLanguage].progress['1']}}</p>
-        <div class="slide-show" style="height: 441px;">
-          <div class="slide-show__content">
-            <button mat-button class="button"
-                    (click)="onSlideShowChange(progressSlideShowSection, -1)">
-              <mat-icon>
-              navigate_before
-              </mat-icon>
-            </button>
-            <div class="slide-show__image-section">
-              <img class="image" [src]="progressSlideShowSection.links[progressSlideShowSection.selected]" alt="">
-              <div class="slide-show__position">
-                <div class="slide-show__indicator"
-                     (click)="progressSlideShowSection.selected = i"
-                     [class.slide-show__indicator--selected]="progressSlideShowSection.selected === i"
-                     *ngFor="let position of progressSlideShowSection.links; let i = index">
+      <ubuntu-container [title]="releaseNotes[appLanguage].progress.title">
+        <div class="container">
+          <p class="release-notes__text">{{releaseNotes[appLanguage].progress['0']}}</p>
+          <p class="release-notes__text">{{releaseNotes[appLanguage].progress['1']}}</p>
+          <div class="slide-show" style="height: 441px;">
+            <div class="slide-show__content">
+              <button mat-button class="button"
+                      (click)="onSlideShowChange(progressSlideShowSection, -1)">
+                <mat-icon>
+                navigate_before
+                </mat-icon>
+              </button>
+              <div class="slide-show__image-section">
+                <img class="image" [src]="progressSlideShowSection.links[progressSlideShowSection.selected]" alt="">
+                <div class="slide-show__position">
+                  <div class="slide-show__indicator"
+                      (click)="progressSlideShowSection.selected = i"
+                      [class.slide-show__indicator--selected]="progressSlideShowSection.selected === i"
+                      *ngFor="let position of progressSlideShowSection.links; let i = index">
+                  </div>
                 </div>
+                <div class="slide-show__note">{{progressSlideShowSection.notes[progressSlideShowSection.selected]}}</div>
               </div>
-              <div class="slide-show__note">{{progressSlideShowSection.notes[progressSlideShowSection.selected]}}</div>
+              <button mat-button class="button"
+                      (click)="onSlideShowChange(progressSlideShowSection, 1)">
+                <mat-icon>
+                navigate_next
+                </mat-icon>
+              </button>
             </div>
-            <button mat-button class="button"
-                    (click)="onSlideShowChange(progressSlideShowSection, 1)">
-              <mat-icon>
-              navigate_next
-              </mat-icon>
-            </button>
           </div>
         </div>
-      </div>
-    </ubuntu-container>
+      </ubuntu-container>
 
-    <ubuntu-container>
-      <div class="container">
-        <div class="release-notes__section-title">
-          {{releaseNotes[appLanguage].color.title}}
-        </div>
-        <p class="release-notes__text">{{releaseNotes[appLanguage].color['0']}}</p>
-        <div class="slide-show">
-          <div class="slide-show__content">
-            <button mat-button class="button"
-                    (click)="onSlideShowChange(colorSlideShowSection, -1)">
-              <mat-icon>
-              navigate_before
-              </mat-icon>
-            </button>
-            <div class="slide-show__image-section">
-              <img class="image" [src]="colorSlideShowSection.links[colorSlideShowSection.selected]" alt="">
-              <div class="slide-show__position">
-                <div class="slide-show__indicator"
-                     (click)="colorSlideShowSection.selected = i"
-                     [class.slide-show__indicator--selected]="colorSlideShowSection.selected === i"
-                     *ngFor="let position of colorSlideShowSection.links; let i = index">
+      <ubuntu-container [title]="releaseNotes[appLanguage].color.title">
+        <div class="container">
+          <p class="release-notes__text">{{releaseNotes[appLanguage].color['0']}}</p>
+          <div class="slide-show">
+            <div class="slide-show__content">
+              <button mat-button class="button"
+                      (click)="onSlideShowChange(colorSlideShowSection, -1)">
+                <mat-icon>
+                navigate_before
+                </mat-icon>
+              </button>
+              <div class="slide-show__image-section">
+                <img class="image" [src]="colorSlideShowSection.links[colorSlideShowSection.selected]" alt="">
+                <div class="slide-show__position">
+                  <div class="slide-show__indicator"
+                      (click)="colorSlideShowSection.selected = i"
+                      [class.slide-show__indicator--selected]="colorSlideShowSection.selected === i"
+                      *ngFor="let position of colorSlideShowSection.links; let i = index">
+                  </div>
                 </div>
+                <div class="slide-show__note" *ngIf="colorSlideShowSection.notes[colorSlideShowSection.selected]">{{colorSlideShowSection.notes[colorSlideShowSection.selected]}}</div>
               </div>
-              <div class="slide-show__note" *ngIf="colorSlideShowSection.notes[colorSlideShowSection.selected]">{{colorSlideShowSection.notes[colorSlideShowSection.selected]}}</div>
+              <button mat-button class="button"
+                      (click)="onSlideShowChange(colorSlideShowSection, 1)">
+                <mat-icon>
+                navigate_next
+                </mat-icon>
+              </button>
             </div>
-            <button mat-button class="button"
-                    (click)="onSlideShowChange(colorSlideShowSection, 1)">
-              <mat-icon>
-              navigate_next
-              </mat-icon>
-            </button>
           </div>
         </div>
-      </div>
-    </ubuntu-container>
+      </ubuntu-container>
 
-    <ubuntu-container>
-      <div class="container">
-        <div class="release-notes__section-title">
-          {{releaseNotes[appLanguage].redesign.title}}
+      <ubuntu-container [title]="releaseNotes[appLanguage].redesign.title">
+        <div class="container">
+          <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['0']}}</p>
+          <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['1']}}</p>
+          <video class="release-notes__video" src="assets/release-notes/components-video.mov" controls></video>
         </div>
-        <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['0']}}</p>
-        <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['1']}}</p>
-        <video class="release-notes__video" src="assets/release-notes/components-video.mov" controls></video>
-      </div>
-    </ubuntu-container>
+      </ubuntu-container>
 
-    <ubuntu-container>
-      <div class="container">
-        <div class="release-notes__section-title">
-          {{releaseNotes[appLanguage].car.title}}
-        </div>
-        <p class="release-notes__text">{{releaseNotes[appLanguage].car['0']}}</p>
-        <p class="release-notes__text">{{releaseNotes[appLanguage].car['1']}}</p>
-        <div class="slide-show">
-          <div class="slide-show__content">
-            <button mat-button class="button"
-                    (click)="onSlideShowChange(carSlideShowSection, -1)">
-              <mat-icon>
-              navigate_before
-              </mat-icon>
-            </button>
-            <div class="slide-show__image-section">
-              <img class="image" [src]="carSlideShowSection.links[carSlideShowSection.selected]" alt="">
-              <div class="slide-show__position">
-                <div class="slide-show__indicator"
-                     (click)="carSlideShowSection.selected = i"
-                     [class.slide-show__indicator--selected]="carSlideShowSection.selected === i"
-                     *ngFor="let position of carSlideShowSection.links; let i = index">
+      <ubuntu-container [title]="releaseNotes[appLanguage].car.title">
+        <div class="container">
+          <p class="release-notes__text">{{releaseNotes[appLanguage].car['0']}}</p>
+          <p class="release-notes__text">{{releaseNotes[appLanguage].car['1']}}</p>
+          <div class="slide-show">
+            <div class="slide-show__content">
+              <button mat-button class="button"
+                      (click)="onSlideShowChange(carSlideShowSection, -1)">
+                <mat-icon>
+                navigate_before
+                </mat-icon>
+              </button>
+              <div class="slide-show__image-section">
+                <img class="image" [src]="carSlideShowSection.links[carSlideShowSection.selected]" alt="">
+                <div class="slide-show__position">
+                  <div class="slide-show__indicator"
+                      (click)="carSlideShowSection.selected = i"
+                      [class.slide-show__indicator--selected]="carSlideShowSection.selected === i"
+                      *ngFor="let position of carSlideShowSection.links; let i = index">
+                  </div>
                 </div>
+                <div class="slide-show__note" *ngIf="carSlideShowSection.notes[colorSlideShowSection.selected]">{{carSlideShowSection.notes[carSlideShowSection.selected]}}</div>
               </div>
-              <div class="slide-show__note" *ngIf="carSlideShowSection.notes[colorSlideShowSection.selected]">{{carSlideShowSection.notes[carSlideShowSection.selected]}}</div>
+              <button mat-button class="button"
+                      (click)="onSlideShowChange(carSlideShowSection, 1)">
+                <mat-icon>
+                navigate_next
+                </mat-icon>
+              </button>
             </div>
-            <button mat-button class="button"
-                    (click)="onSlideShowChange(carSlideShowSection, 1)">
-              <mat-icon>
-              navigate_next
-              </mat-icon>
-            </button>
           </div>
         </div>
-      </div>
-    </ubuntu-container>
-    <ubuntu-container>
-      <div class="container">
-        <div class="release-notes__section-title">
-          {{releaseNotes[appLanguage].notification.title}}
+      </ubuntu-container>
+      <ubuntu-container [title]="releaseNotes[appLanguage].notification.title">
+        <div class="container">
+          <div class="image-container">
+            <img class="image" src="assets/release-notes/notification.png">
+          </div>
         </div>
-        <div class="image-container">
-          <img class="image" src="assets/release-notes/notification.png">
-        </div>
-      </div>
-    </ubuntu-container>
-  </main>
-
-</div>
+      </ubuntu-container>
+    </main>
+  </app-dialog>
+</section>

@@ -21,6 +21,12 @@
     gap: 8px;
   }
 
+  &__common-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   &__side-nav-button{
     align-self: center;
   }

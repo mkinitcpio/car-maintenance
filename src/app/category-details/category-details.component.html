@@ -1,7 +1,7 @@
 <app-details [title]="categoryDetails.data.name" class="category-details">
   <ng-container buttons-right>
     <app-button button-transparent (click)="onPrint()">
-      <mat-icon>picture_as_pdf</mat-icon>
+      <mat-icon svgIcon="printer-new"></mat-icon>
     </app-button>
   </ng-container>
 
@@ -17,7 +17,7 @@
         >
         </app-rich-widget>
 
-        <app-rich-widget icon="payments"
+        <app-rich-widget icon="money-new"
                 type="currency"
                 tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
                 [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
@@ -25,7 +25,7 @@
         >
         </app-rich-widget>
       </div>
-      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.INFO' | translate" icon="feed" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
+      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.INFO' | translate" icon="task-new" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
         <section class="car-info__content">
           <div class="car-info__raw">
             <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.VEHICLE_ID" | translate}}</span>
@@ -53,7 +53,7 @@
           </div>
         </section>
       </app-widget>
-      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.NOTE' | translate" icon="edit" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
+      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.NOTE' | translate" icon="edit-new" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
         <textarea #notesInput class="category-details__notes" [value]="categoryDetails.maintenance.note" placeholder="Type some notes" (focusout)="onTextAreaFocusOut(notesInput.value)"></textarea>
       </app-widget>
     </div>

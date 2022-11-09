@@ -3,17 +3,15 @@
 @import '/src/fonts';
 
 .release-notes {
-  position: relative;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
+
+  user-select: none;
   font-family: $font-system;
   background: $background-secondary;
-  user-select: none;
 
   .container {
-    padding: 24px;
+    padding: 16px;
   }
 
   &__section-title {
@@ -22,7 +20,7 @@
   }
 
   &__text {
-    font-size: 1.2em;
+    font-size: 14px;
   }
 
   &__header {
@@ -52,12 +50,10 @@
   }
 
   &__content {
-    @include mixins.scrollable(100px);
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    padding: 132px 32px 32px 32px;
+    gap: 16px;
   }
 
   .button {

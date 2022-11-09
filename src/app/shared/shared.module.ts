@@ -22,6 +22,7 @@ import { PrintDialogModule } from './components/print-dialog/print-dialog.module
 import { TabsModule } from './components/tabs/tabs.module';
 import { ColorSelectorModule } from './components/color-selector/color-selector.module';
 import { AccountDialogModule } from './components/account-dialog/account-dialog.module';
+import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AccountDialogModule } from './components/account-dialog/account-dialog.
     TabsModule,
     ColorSelectorModule,
     AccountDialogModule,
+    FeedbackDialogModule,
   ],
   exports: [
     TranslateModule,

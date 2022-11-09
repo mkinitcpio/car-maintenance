@@ -19,6 +19,7 @@ import { CreateCarDialogComponent } from '@shared/components/create-car-dialog/c
 
 import { CarCategoryFormData } from '@core/interfaces/car-category';
 import { AccountDialogComponent } from '@shared/components/account-dialog/account-dialog.component';
+import { FeedbackDialogComponent } from '@shared/components/feedback-dialog/feedback-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,7 @@ export class DialogManagerService {
   public openReleaseNotesDialog(data: ReleaseNotes): void {
     this.dialog.open(ReleaseNotesComponent, {
       maxHeight: "80%",
-      width: "1000px",
+      width: "564px",
       autoFocus: false,
       panelClass: "dialog-notes",
       data,
@@ -122,6 +123,12 @@ export class DialogManagerService {
   }
 
   public openFeedbackDialog(): void {
+    this.dialog
+      .open(FeedbackDialogComponent, {
+        disableClose: true,
+        width: "380px",
+        panelClass: "dialog-feedback",
+      });
   }
 
   public openPrintDialog(data: PrintDialogConfig): Observable<void> {

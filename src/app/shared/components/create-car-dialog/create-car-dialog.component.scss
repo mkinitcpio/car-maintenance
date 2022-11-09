@@ -8,28 +8,17 @@
   flex-direction: column;
   overflow: hidden;
   font-family: $font-system;
-  background: $background-secondary;
-
-  &__header {
-    height: 50px;
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background-color: $background-header-primary;
-  }
-
-  &__header-text {
-    color: $font-white;
-  }
 
   &__container {
-    padding: 16px;
+    padding: 24px 16px;
   }
 
   &__parts-container {
-    padding: 8px 4px 16px 16px;
+    padding: 16px 8px 16px 16px;
+
+    .mat-form-field {
+      margin-bottom: 0 !important;
+    }
   }
 
   &__part {
@@ -38,48 +27,17 @@
     gap: 8px;
   }
 
-  &__button-container {
-    display: flex;
-    align-items: center;
-
-    &:first-child {
-      margin-right: auto;
-      justify-content: flex-start;
-    }
-
-    &:last-child {
-      margin-left: auto;
-      justify-content: flex-end;
-    }
+  &__delete-button-icon {
+    color: $color-dangerous;
   }
 
   &__content {
-    @include mixins.scrollable;
+    padding-bottom: 8px;
 
-    height: 100%;
-    padding: 16px 24px;
-
-    mat-form-field {
-      font-family: $font-system;
-      width: 100%;
-
-      &.mat-form-field-invalid mat-label {
-        caret-color: $color-dangerous;
-        color: $color-dangerous !important;
+    .mat-form-field {
+      &:not(:last-child) {
+        margin-bottom: 20px;
       }
-
-      mat-label {
-        color: $font-primary;
-        font-size: 20px;
-      }
-
-      input:placeholder-shown {
-        font-size: 16px;
-      }
-    }
-
-    mat-error {
-      color: $color-dangerous;
     }
   }
 
@@ -91,44 +49,6 @@
     > * {
       flex: 1 1 230px;
     }
-  }
-}
-
-.button {
-  font-family: $font-system;
-  font-weight: normal;
-  color: $font-primary;
-  border-radius: 8px;
-  line-height: 37px;
-
-  &--add,
-  &--delete {
-    min-width: initial;
-    padding: 0 8px;
-
-    line-height: 37px;
-  }
-
-  &--delete {
-    color: $color-dangerous;
-  }
-}
-
-.button__submit {
-  background-color: $button-color-primary;
-  border-color: rgba(0,0,0,0.56);
-  color: #fff;
-}
-
-.button__cancel {
-  background-color: $button-color-secondary;
-  border-color: rgb(48,47,47);
-  color: $font-white;
-}
-
-.mat-form-field::ng-deep {
-  .mat-form-field-infix {
-    width: auto !important;
   }
 }
 

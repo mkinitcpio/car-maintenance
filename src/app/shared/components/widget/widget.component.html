@@ -1,7 +1,7 @@
 <section class="widget">
   <div class="widget__title-section" *ngIf="title">
     <h4 class="widget__title">
-      <mat-icon class="widget__illustration">{{icon}}</mat-icon>
+      <mat-icon class="widget__illustration" [svgIcon]="icon"></mat-icon>
       {{title}}
     </h4>
     <mat-icon class="widget__info"

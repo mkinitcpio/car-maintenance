@@ -13,7 +13,7 @@
 
   &__title-section {
     box-sizing: border-box;
-    height: 54px;
+    min-height: 54px;
     padding: 8px 24px;
     display: flex;
     align-items: center;
@@ -52,7 +52,7 @@
     flex-direction: column;
     box-sizing: border-box;
     height: 100%;
-    gap: 24px;
+    gap: 16px;
     padding: 24px;
     margin-right: 16px;
 

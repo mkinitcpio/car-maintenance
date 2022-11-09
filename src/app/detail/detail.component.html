@@ -1,7 +1,7 @@
-<app-details [title]="name" sidebarButtonIcon="history">
+<app-details [title]="name" sidebarButtonIcon="time-new">
   <ng-container buttons-left>
     <app-button button-transparent routerLink="/category-details/{{parentId}}">
-      <mat-icon>account_tree</mat-icon>
+      <mat-icon svgIcon="tree-new"></mat-icon>
     </app-button>
   </ng-container>
 
@@ -11,20 +11,20 @@
     </app-button>
 
     <app-button *ngIf="dataSourceTable.length" button-transparent (click)="onPrint()">
-      <mat-icon>picture_as_pdf</mat-icon>
+      <mat-icon svgIcon="printer-new"></mat-icon>
     </app-button>
   </ng-container>
 
   <ng-container content>
     <div class="detail__cards">
-      <app-rich-widget icon="payments"
+      <app-rich-widget icon="money-new"
                        type="currency"
                        tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
                        [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
                        value="{{costSum}}"
       >
       </app-rich-widget>
-      <app-rich-widget icon="edit_calendar"
+      <app-rich-widget icon="calendar-edit-new"
                        orientation="horizontal"
                        type="date"
                        [title]="'PAGES.DETAIL.LAST_MODIFIED'"

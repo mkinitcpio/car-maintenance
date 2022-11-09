@@ -17,6 +17,9 @@ export class DialogComponent {
   @Input()
   hideFooter = false;
 
+  @Input()
+  canChangeSize = false;
+
   @Output()
   close: EventEmitter<void> = new EventEmitter();
 
@@ -30,6 +33,7 @@ export class DialogComponent {
 
   public FormModeEnum = FormModeEnum;
   public contentScrolled = false;
+  public size: 'compact' | 'fullScreen' = 'compact';
 
   public onClose(): void {
     this.close.emit();
@@ -37,5 +41,9 @@ export class DialogComponent {
 
   public onSubmit(): void {
     this.submit.emit();
+  }
+
+  public onSwitchSize(): void {
+    this.size = this.size === 'compact' ? 'fullScreen' : 'compact';
   }
 }

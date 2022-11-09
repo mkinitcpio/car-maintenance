@@ -5,6 +5,9 @@ import { SettingsService } from "./shared/components/settings/settings.service";
 import { DOCUMENT } from "@angular/common";
 import { ThemeService } from "@core/services/theme.service";
 import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
+import { iconsNames } from "./icon-names";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -18,11 +21,14 @@ export class AppComponent extends AutoCloseable {
     private settingsService: SettingsService,
     private themeService: ThemeService,
     private matIconRegistry: MatIconRegistry,
+    private domS: DomSanitizer,
     @Inject(DOCUMENT) private document: Document
   ) {
     super();
 
-    this.matIconRegistry.setDefaultFontSetClass("material-symbols-rounded");
+    iconsNames.forEach(name => {
+      this.matIconRegistry.addSvgIcon(`${name}-new`, this.domS.bypassSecurityTrustResourceUrl(`/assets/icons/vuesax/${name}.svg`));
+    });
 
     this.settingsService.animationsStateChanged$.subscribe((enabled) => {
       if (enabled) {

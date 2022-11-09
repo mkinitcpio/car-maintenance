@@ -49,16 +49,16 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
       <button class="menu-item" mat-menu-item *ngIf="!child.parent" (click)="onAdd()">
-        <mat-icon class="mat-item__icon mat-item__icon--add">add</mat-icon>
+        <mat-icon class="mat-item__icon mat-item__icon--add" svgIcon="add-new"></mat-icon>
         <span>{{"MENU.ADD" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="onEdit()">
-        <mat-icon>edit</mat-icon>
+        <mat-icon svgIcon="edit-new"></mat-icon>
         <span>{{"MENU.EDIT" | translate}}</span>
       </button>
       <div class="mat-menu__divider"></div>
       <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-        <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
+        <mat-icon class="mat-item__icon mat-item__icon--delete" svgIcon="trash-new"></mat-icon>
         <span>{{"MENU.DELETE" | translate}}</span>
       </button>
   </ng-template>

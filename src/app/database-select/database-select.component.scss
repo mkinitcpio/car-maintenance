@@ -1,4 +1,5 @@
 @import '/src/fonts';
+@import '/src/colors';
 
 .database-select {
   height: 100%;
@@ -23,18 +24,16 @@ button {
 }
 
 .button {
-  padding: 4px 48px;
+  min-width: 128px;
 
   font-family: $font-system;
   font-weight: normal;
-  font-size: 18px;
-  color: #333;
-  background-color: #c5c5c5;
+  color: $font-primary;
+  border-radius: 12px;
 }
 
 .button__create {
   margin-right: 8px;
-  background-color: #0d7f1e;
-  border-color: rgba(0,0,0,0.56);
+  background-color: var(--primary-color);
   color: #fff;
 }

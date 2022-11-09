@@ -58,6 +58,21 @@
       }
     }
   }
+
+  &[button-large] {
+    .button {
+      padding: 32px 24px;
+      border: 1px solid $color-border;
+      background-color: $color-primary;
+      color: white;
+
+      transition: background-color 0.1s ease-out;
+
+      &:hover {
+        background: rgba(0,0,0,0.05);
+      }
+    }
+  }
 }
 
 .button {

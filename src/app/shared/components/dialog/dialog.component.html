@@ -1,9 +1,14 @@
 <section class="dialog">
   <header class="dialog__header" [class.dialog__header--border]="contentScrolled">
     <div class="dialog__title">{{title}}</div>
-    <app-button button-transparent (click)="onClose()">
-      <mat-icon>close</mat-icon>
-    </app-button>
+    <div class="dialog__buttons">
+      <app-button *ngIf="canChangeSize" button-transparent (click)="onSwitchSize()">
+        <mat-icon>{{size === 'compact' ? 'open_in_full' : 'close_fullscreen'}}</mat-icon>
+      </app-button>
+      <app-button button-transparent (click)="onClose()">
+        <mat-icon>close</mat-icon>
+      </app-button>
+    </div>
   </header>
   <main class="dialog__content" (scroll)="onScroll($event)">
     <ng-content select="[content]"></ng-content>

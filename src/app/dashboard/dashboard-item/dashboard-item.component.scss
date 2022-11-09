@@ -1,0 +1,87 @@
+@import '/src/fonts';
+@import '/src/colors';
+
+.dashboard-item {
+  height: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-family: $font-system;
+  padding: 16px;
+  background: white;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  transition: transform 0.15s ease-in, box-shadow 0.15s ease-in;
+  position: relative;
+
+  &__text-section {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    background: $color-secondary;
+    color: $color-primary;
+    padding: 16px;
+    margin-top: auto;
+    gap: 2px;
+  }
+
+  &__external {
+    position: absolute;
+    color: var(--primary-color);
+    right: 12px;
+    top: 12px;
+    height: 18px;
+    width: 18px;
+    font-size: 18px;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__description {
+    font-size: 14px;
+  }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 4px 0px;
+
+    app-changelog-illustration::ng-deep {
+        #one {
+          animation: 0.5s ease-in-out both a0_t;
+        }
+
+        #two {
+          animation: 0.5s ease-in-out both a1_t;
+        }
+
+        #three {
+          animation: 0.5s ease-in-out both a2_t;
+        }
+    }
+
+    app-source-code-illustration::ng-deep {
+      .code {
+        animation: 1s ease-in code;
+      }
+
+      @for $i from 1 through 8 {
+        .row-#{$i} {
+          animation: 1s ease-in #{'row-' + $i};
+        }
+      }
+    }
+  }
+
+  &--s {
+    background: $color-secondary;
+    .dashboard-item__text-section {
+        width: 51%;
+        padding: 0;
+        background: transparent;
+        color: $color-primary;
+      }
+    }
+  }

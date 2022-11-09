@@ -1,19 +1,13 @@
 <div class="create-car-dialog">
-  <header class="create-car-dialog__header">
-    <div class="create-car-dialog__button-container">
-      <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
-    </div>
-    <div class="create-car-dialog__header-text">{{(data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT") | translate}} {{"DIALOG.CAR" | translate}}</div>
-    <div class="create-car-dialog__button-container">
-      <button class="button button__submit" mat-button (click)="onSubmit()">{{(data.mode === 0 ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT") | translate}}</button>
-    </div>
-  </header>
-
-  <main class="create-car-dialog__content">
-    <form [formGroup]="carForm">
+  <app-dialog [title]="title | async"
+              [canChangeSize]="true"
+              (close)="onClose()"
+              (submit)="onSubmit()"
+  >
+    <form content [formGroup]="carForm" class="create-car-dialog__content">
       <div class="create-car-dialog__columns">
         <div>
-          <ubuntu-container [title]="'DIALOG.COMMON' | translate">
+          <ubuntu-container [title]="'DIALOG.COMMON' | translate" [hasBordersStyle]="false" [flat]="true">
             <div class="create-car-dialog__container">
               <mat-form-field [floatLabel]="'always'">
                 <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
@@ -24,7 +18,7 @@
               </mat-form-field>
             </div>
           </ubuntu-container>
-          <ubuntu-container [title]="'DIALOG.INFO' | translate">
+          <ubuntu-container [title]="'DIALOG.INFO' | translate" [hasBordersStyle]="false" [flat]="true">
             <div class="create-car-dialog__container">
               <mat-form-field [floatLabel]="'always'">
                 <mat-label>{{"DIALOG.FIELDS.VEHICLE_ID" | translate}}</mat-label>
@@ -65,8 +59,10 @@
           </ubuntu-container>
         </div>
         <div>
-          <ubuntu-container [title]="'DIALOG.PARTS' | translate" [info]="'DIALOG.TOOLTIPS.CAR_PARTS' | translate">
-            <button actions mat-button class="button button--add" (click)="addPart()" [disabled]="disablePartsForm"><mat-icon>add</mat-icon></button>
+          <ubuntu-container [title]="'DIALOG.PARTS' | translate" [info]="'DIALOG.TOOLTIPS.CAR_PARTS' | translate" [hasBordersStyle]="false" [flat]="true">
+            <app-button actions button-transparent (click)="addPart()">
+              <mat-icon>add</mat-icon>
+            </app-button>
             <div class="create-car-dialog__parts-container">
               <div formArrayName="parts">
                 <div class="create-car-dialog__part" *ngFor="let partConrol of parts.controls; let i = index">
@@ -77,7 +73,9 @@
                       {{"DIALOG.VALIDATIONS.NAME" | translate}}
                     </mat-error>
                   </mat-form-field>
-                  <button class="button button--delete" mat-button (click)="onDeletePart(i)" [disabled]="disablePartsForm"><mat-icon>delete</mat-icon></button>
+                  <app-button button-transparent (click)="onDeletePart(i)">
+                    <mat-icon class="create-car-dialog__delete-button-icon">delete</mat-icon>
+                  </app-button>
                 </div>
               </div>
             </div>
@@ -85,5 +83,5 @@
         </div>
       </div>
     </form>
-  </main>
+  </app-dialog>
 </div>
