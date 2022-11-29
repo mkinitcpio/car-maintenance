@@ -12,8 +12,34 @@
   overflow: hidden;
   user-select: none;
 
+  &__border {
+    padding: 8px 12px;
+    border-radius: 18px;
+    border: 1.5px solid #ebebeb;
+    position: relative;
+    margin-bottom: 28px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__container-title {
+    position: absolute;
+    top: -15px;
+    left: 18px;
+    background: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 8px;
+  }
+
   &__title {
     margin-top: 0;
+    margin-left: 12px;
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
   }
 
   &__path {
@@ -30,19 +56,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-
-    &--small {
-      padding: 4px 0px;
-    }
-  }
-
-  ubuntu-container {
-    margin-bottom: 12px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    margin: 4px 0 2px 14px
   }
 
   &__config-section {
@@ -55,11 +69,15 @@
   &__scroll {
     @include mixins.scrollable;
     height: 100%;
-    border-radius: 24px;
-    padding: 12px 24px;
+    padding: 16px 0;
 
-    background-color: $background-secondary;
-    box-shadow: inset 0px 1px 3px 1px rgb(0 0 0 / 6%);
+    content-container {
+      margin-bottom: 28px;
+  
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   &__divider {
@@ -75,11 +93,7 @@
     width: 100%;
     height: 100%;
 
-    padding: 24px;
     box-sizing: border-box;
-    background: $background-secondary;
-    border-radius: 24px;
-    box-shadow: inset 0px 1px 3px 1px rgb(0 0 0 / 6%);
   }
 
   &__content {
@@ -143,7 +157,7 @@
 
 .column {
   font-family: $font-system;
-  padding: 12px;
+  padding: 14px 12px 14px 8px;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
   align-items: center;
@@ -167,18 +181,20 @@
   }
 
   &__divider {
-    margin: 0 38px;
+    margin: 0 36px;
     border-top-color: $separator-color;
+    border-top: 1.5px dashed #ebebeb;
   }
 }
 
 
 .cdk-drag-preview {
   box-sizing: border-box;
-  border-radius: 24px !important;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+  .column {
+    border-radius: 12px;
+    border: 1.5px solid #ebebeb;
+  }
 
   .column__divider {
     display: none;
@@ -233,6 +249,10 @@
 
 ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
   background-color: var(--primary-color) !important;
+}
+
+::ng-deep .mat-checkbox .mat-ripple-element {
+  border-radius: 12px !important;
 }
 
 ::ng-deep .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background,

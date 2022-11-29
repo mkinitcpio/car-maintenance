@@ -1,8 +1,8 @@
 <section class="print-dialog">
   <div class="print-dialog__config-section">
-    <h3 class="print-dialog__title">{{'PAGES.PDF_EXPORT.CONFIGURATIONS' | translate}}</h3>
+    <h3 class="print-dialog__title">{{'PAGES.PDF_EXPORT.TITLE' | translate}}</h3>
     <div class="print-dialog__scroll">
-      <ubuntu-container [title]="'PAGES.PDF_EXPORT.PATH' | translate">
+      <content-container [title]="'PAGES.PDF_EXPORT.PATH' | translate">
         <div class="print-dialog__section">
           <span class="print-dialog__path"
                 [matTooltipClass]="'mat-tooltip--long-text'"
@@ -10,13 +10,13 @@
             {{saveDirectoryPath}}
           </span>
           <app-button button-transparent (click)="onEditFilePath()">
-            <mat-icon>edit</mat-icon>
+            <mat-icon svgIcon="edit-new"></mat-icon>
           </app-button>
         </div>
-      </ubuntu-container>
+      </content-container>
 
-      <ubuntu-container [title]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate">
-        <div class="print-dialog__section print-dialog__section--small">
+      <content-container [title]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate">
+        <div>
           <div cdkDropList class="columns" (cdkDropListDropped)="drop($event)">
             <div class="print-dialog__column-container" *ngFor="let column of columns" cdkDrag>
               <div class="column">
@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-      </ubuntu-container>
+      </content-container>
 
       <ubuntu-container *ngIf="false" [title]="'PAGES.PDF_EXPORT.OTHER' | translate">
         <div class="print-dialog__section">
@@ -55,7 +55,6 @@
   </mat-divider>
 
   <div class="print-dialog__preview-section">
-    <h3 class="print-dialog__title">{{'PAGES.PDF_EXPORT.PREVIEW' | translate}}</h3>
     <div class="print-dialog__preview">
       <app-preview-page #print
                         [config]="config"

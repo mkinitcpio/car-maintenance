@@ -17,6 +17,7 @@ import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-cont
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ButtonModule } from '../button/button.module';
+import { ContentContainerModule } from '../content-container/content-container.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ButtonModule } from '../button/button.module';
     MatTooltipModule,
     MatSlideToggleModule,
     ButtonModule,
+    ContentContainerModule,
   ],
   exports: [
     PrintDialogComponent,

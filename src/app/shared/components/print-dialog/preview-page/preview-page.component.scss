@@ -8,14 +8,14 @@
 
 .preview-page {
   width: 100%;
-  padding: 18px;
+  padding: 24px;
   aspect-ratio: 1 / 1.4142;
 
   overflow: hidden;
+  border-radius: 18px;
+  border: 1.5px solid #ebebeb;
   font-family: $font-system;
-  background: white;
   box-sizing: border-box;
-  box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
   user-select: none;
 
   &__title-container {
