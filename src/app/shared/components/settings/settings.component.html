@@ -4,7 +4,7 @@
               (close)="dialogRef.close()"
   >
     <ng-container content>
-      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.COMMON' | translate">
+      <content-container [title]="'PAGES.SETTINGS.SECTIONS.COMMON' | translate">
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.DATABASE_PATH' | translate" icon="storage">
           <div class="settings__item-field settings__item-field--disable">
             <span class="settings__text"
@@ -13,7 +13,7 @@
               {{this.settingsService.settings.databasePath}}
             </span>
             <app-button button-transparent (click)="onDatabaseChange()">
-              <mat-icon>edit</mat-icon>
+              <mat-icon svgIcon="edit-new"></mat-icon>
             </app-button>
           </div>
         </app-setting>
@@ -30,9 +30,9 @@
             </mat-button-toggle>
           </mat-button-toggle-group>
         </app-setting>
-      </ubuntu-container>
+      </content-container>
 
-      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
+      <content-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.LANG' | translate" icon="language">
           <mat-form-field class="settings__item-field settings__item-field--select">
             <mat-select [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
@@ -40,7 +40,7 @@
                 {{ language.name }}
               </mat-option>
             </mat-select>
-            <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
+            <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
           </mat-form-field>
         </app-setting>
 
@@ -53,12 +53,12 @@
                 {{ region.name }}
               </mat-option>
             </mat-select>
-            <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
+            <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
           </mat-form-field>
         </app-setting>
-      </ubuntu-container>
+      </content-container>
 
-      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.UNITS' | translate">
+      <content-container [title]="'PAGES.SETTINGS.SECTIONS.UNITS' | translate">
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.METRIC_SYSTEM' | translate" icon="straighten">
           <mat-button-toggle-group class="settings__toggle-group"
                                    [value]="MetricSystemEnum[settingsService.settings.units?.metricSystem] || MetricSystemEnum[settingsService.settings.region]"
@@ -82,12 +82,12 @@
                 {{ currency.name | translate }}
               </mat-option>
             </mat-select>
-            <mat-icon class="mat-select__expand-icon">expand_more</mat-icon>
+            <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
           </mat-form-field>
         </app-setting>
-      </ubuntu-container>
+      </content-container>
 
-      <ubuntu-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
+      <content-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.COLORS' | translate" icon="palette">
           <app-color-selector [colors]="colors"
                               [selected]="settingsService.settings.appearance.primaryColor"
@@ -118,7 +118,7 @@
                       (change)="onAnimationsChanged($event)">
           </app-switch>
         </app-setting>
-      </ubuntu-container>
+      </content-container>
     </ng-container>
   </app-dialog>
 </div>

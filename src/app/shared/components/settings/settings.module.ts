@@ -17,6 +17,7 @@ import { DialogModule } from '../dialog/dialog.module';
 import { SwitchModule } from '../switch/switch.module';
 import { SettingComponent } from './setting/setting.component';
 import { ButtonModule } from '../button/button.module';
+import { ContentContainerModule } from '../content-container/content-container.module';
 
 @NgModule({
   declarations: [SettingsComponent, SettingComponent],
@@ -26,7 +27,6 @@ import { ButtonModule } from '../button/button.module';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    UbuntuContainerModule,
     TranslateModule,
     MatDividerModule,
     MatIconModule,
@@ -36,6 +36,7 @@ import { ButtonModule } from '../button/button.module';
     DialogModule,
     SwitchModule,
     ButtonModule,
+    ContentContainerModule,
   ],
   providers: [
     SettingsService,

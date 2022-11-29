@@ -8,10 +8,9 @@
 
   user-select: none;
   font-family: $font-system;
-  background: $background-secondary;
 
-  ubuntu-container:not(:last-child) {
-    margin-bottom: 16px;
+  content-container:not(:last-child) {
+    margin-bottom: 32px;
   }
 
   &__text {
@@ -79,7 +78,8 @@
   }
 
   &__divider {
-    margin: 0 18px !important;
+    border-top-width: 1.5px !important;
+    margin: 4px 26px 4px 18px !important;
   }
 
   .mat-button-toggle-checked {

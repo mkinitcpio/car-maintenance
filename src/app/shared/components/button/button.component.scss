@@ -11,6 +11,7 @@
   }
 
   &[button-primary] {
+
     .button {
       height: 34px;
       box-sizing: content-box;
@@ -20,6 +21,10 @@
       gap: 0px;
       transition: gap 0.2s ease-in;
       justify-content: flex-start;
+
+      ::ng-deep mat-icon {
+        min-width: 24px;
+      }
 
       ::ng-deep span {
         opacity: 0;

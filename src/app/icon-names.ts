@@ -19,4 +19,9 @@ export const iconsNames = [
   'tree',
   'time',
   'external',
+  'expand',
+  'close',
+  'speed',
+  'people',
+  'users'
 ];

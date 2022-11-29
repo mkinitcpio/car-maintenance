@@ -30,6 +30,8 @@ export class AppComponent extends AutoCloseable {
       this.matIconRegistry.addSvgIcon(`${name}-new`, this.domS.bypassSecurityTrustResourceUrl(`/assets/icons/vuesax/${name}.svg`));
     });
 
+    this.matIconRegistry.setDefaultFontSetClass('material-symbols-rounded');
+
     this.settingsService.animationsStateChanged$.subscribe((enabled) => {
       if (enabled) {
         this.document.body.classList.remove("no-animations");

@@ -1,4 +1,3 @@
-@import "/src/colors";
 
 .color-panel {
   display: flex;
@@ -7,9 +6,9 @@
 
   &__divider {
     height: 24px;
-    width: 1px;
+    width: 1.5px;
     margin: 4px;
-    background: $color-border;
+    background: #ebebeb;
   }
 
   &__system-color {
