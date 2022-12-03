@@ -11,6 +11,24 @@
   flex-direction: column;
   height: 100%;
 
+  &--bordered {
+    margin-top: 20px;
+    position: relative;
+
+    border-radius: 24px;
+    border: 1.5px solid #ebebeb;
+
+    .tabs__title {
+      position: absolute;
+      top: -21px;
+      left: 50%;
+      z-index: 1;
+
+      background: white;
+      transform: translate(-50%);
+    }
+  }
+
   &__title-container {
     padding: 4px;
 

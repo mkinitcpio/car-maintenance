@@ -101,7 +101,7 @@ html, body {
 
  .mat-icon {
    margin-right: 8px;
-   color: #3c3a3a !important;
+   color: #4b4848 !important;
    font-size: 20px;
    height: 20px;
    width: 20px;
@@ -294,6 +294,10 @@ body.no-animations {
 
 .mat-select-arrow {
   opacity: 0;
+}
+
+.mat-option {
+  font-family: $font-system;
 }
 
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
