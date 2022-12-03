@@ -71,12 +71,8 @@
     height: 100%;
     padding: 16px 0;
 
-    content-container {
-      margin-bottom: 28px;
-  
-      &:last-child {
-        margin-bottom: 0;
-      }
+    content-container:not(:last-child) {
+      margin-bottom: 32px;
     }
   }
 
