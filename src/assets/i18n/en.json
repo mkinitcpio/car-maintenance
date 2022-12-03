@@ -49,11 +49,9 @@
       "TEXT": "Select Category"
     },
     "PDF_EXPORT": {
-      "CONFIGURATIONS": "Configurations",
       "PATH": "Path to save",
       "ORDER_AND_VISIBILITY": "Order and visibility",
-      "PREVIEW": "Preview",
-      "OTHER": "Other",
+      "TITLE": "Export to PDF",
       "SHOW_TOTAL_SUM": "Show total expense for each table",
       "TOTAL": "Total"
     },
