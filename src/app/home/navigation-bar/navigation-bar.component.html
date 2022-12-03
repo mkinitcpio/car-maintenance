@@ -5,18 +5,24 @@
   <nav class="navigation-bar__navigation">
     <nav class="navigation-bar__common-navigation">
       <app-button button-transparent (click)="navigateToDashboard()">
-        <mat-icon svgIcon="dashboard-new"></mat-icon>
+        <mat-icon svgIcon="dashboard-new" matTooltip="Dashboard" matTooltipPosition="right" matTooltipShowDelay="500"></mat-icon>
       </app-button>
 
       <ng-container *ngIf="!AppConfig.production">
-        <app-button button-transparent>
+        <app-button button-transparent matTooltip="Tasks" matTooltipPosition="right" matTooltipShowDelay="500">
           <mat-icon svgIcon="task-new"></mat-icon>
         </app-button>
-        <app-button button-transparent>
+        <app-button button-transparent matTooltip="Store" matTooltipPosition="right" matTooltipShowDelay="500">
           <mat-icon svgIcon="store-new"></mat-icon>
         </app-button>
-        <app-button button-transparent>
+        <app-button button-transparent matTooltip="Statistics" matTooltipPosition="right" matTooltipShowDelay="500">
           <mat-icon svgIcon="chart-new"></mat-icon>
+        </app-button>
+        <app-button button-transparent matTooltip="Users" matTooltipPosition="right" matTooltipShowDelay="500">
+          <mat-icon svgIcon="users-new"></mat-icon>
+        </app-button>
+        <app-button button-transparent matTooltip="People" matTooltipPosition="right" matTooltipShowDelay="500">
+          <mat-icon svgIcon="people-new"></mat-icon>
         </app-button>
       </ng-container>
     </nav>
