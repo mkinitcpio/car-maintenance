@@ -4,12 +4,11 @@
               (close)="dialogRef.close()"
     >
     <main content class="release-notes__content">
-
-      <ubuntu-container [title]="releaseNotes[appLanguage].progress.title">
+      <content-container [title]="releaseNotes[appLanguage].progress.title">
         <div class="container">
           <p class="release-notes__text">{{releaseNotes[appLanguage].progress['0']}}</p>
           <p class="release-notes__text">{{releaseNotes[appLanguage].progress['1']}}</p>
-          <div class="slide-show" style="height: 441px;">
+          <div class="slide-show">
             <div class="slide-show__content">
               <button mat-button class="button"
                       (click)="onSlideShowChange(progressSlideShowSection, -1)">
@@ -37,9 +36,9 @@
             </div>
           </div>
         </div>
-      </ubuntu-container>
+      </content-container>
 
-      <ubuntu-container [title]="releaseNotes[appLanguage].color.title">
+      <content-container [title]="releaseNotes[appLanguage].color.title">
         <div class="container">
           <p class="release-notes__text">{{releaseNotes[appLanguage].color['0']}}</p>
           <div class="slide-show">
@@ -70,17 +69,17 @@
             </div>
           </div>
         </div>
-      </ubuntu-container>
+      </content-container>
 
-      <ubuntu-container [title]="releaseNotes[appLanguage].redesign.title">
+      <content-container [title]="releaseNotes[appLanguage].redesign.title">
         <div class="container">
           <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['0']}}</p>
           <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['1']}}</p>
           <video class="release-notes__video" src="assets/release-notes/components-video.mov" controls></video>
         </div>
-      </ubuntu-container>
+      </content-container>
 
-      <ubuntu-container [title]="releaseNotes[appLanguage].car.title">
+      <content-container [title]="releaseNotes[appLanguage].car.title">
         <div class="container">
           <p class="release-notes__text">{{releaseNotes[appLanguage].car['0']}}</p>
           <p class="release-notes__text">{{releaseNotes[appLanguage].car['1']}}</p>
@@ -112,14 +111,14 @@
             </div>
           </div>
         </div>
-      </ubuntu-container>
-      <ubuntu-container [title]="releaseNotes[appLanguage].notification.title">
+      </content-container>
+      <content-container [title]="releaseNotes[appLanguage].notification.title">
         <div class="container">
           <div class="image-container">
             <img class="image" src="assets/release-notes/notification.png">
           </div>
         </div>
-      </ubuntu-container>
+      </content-container>
     </main>
   </app-dialog>
 </section>

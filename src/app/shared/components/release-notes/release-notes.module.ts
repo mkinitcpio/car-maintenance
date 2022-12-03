@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
 import { DialogModule } from '../dialog/dialog.module';
+import { ContentContainerModule } from '../content-container/content-container.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DialogModule } from '../dialog/dialog.module';
     MatDividerModule,
     UbuntuContainerModule,
     DialogModule,
+    ContentContainerModule,
   ]
 })
 export class ReleaseNotesModule { }
