@@ -10,11 +10,30 @@
   font-family: $font-system;
 
   &__container {
-    padding: 24px 16px;
+    padding: 42px 18px 6px 18px;
+    row-gap: 18px;
+    column-gap: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__parts-inputs-container {
+    @include mixins.scrollable;
+
+    max-height: 278px;
+    padding: 0 0 12px 0;
+    column-gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    align-items: center;
+    justify-content: center;
   }
 
   &__parts-container {
-    padding: 16px 8px 16px 16px;
+    padding: 24px 12px 12px 12px;
 
     .mat-form-field {
       margin-bottom: 0 !important;
@@ -32,30 +51,11 @@
   }
 
   &__content {
+    overflow: hidden;
     padding-bottom: 8px;
-
-    .mat-form-field {
-      &:not(:last-child) {
-        margin-bottom: 20px;
-      }
-    }
-  }
-
-  &__columns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-
-    > * {
-      flex: 1 1 230px;
-    }
   }
 }
 
-ubuntu-container {
-  margin-bottom: 24px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+::ng-deep .mat-form-field-infix {
+  width: inherit !important;
 }

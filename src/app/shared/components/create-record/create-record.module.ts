@@ -11,6 +11,7 @@ import { CreateRecordComponent } from './create-record.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogModule } from '../dialog/dialog.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DialogModule } from '../dialog/dialog.module';
     MatDatepickerModule,
     TranslateModule,
     DialogModule,
+    MatIconModule,
   ],
   entryComponents: [
     CreateRecordComponent,

@@ -43,9 +43,8 @@ export class DialogManagerService {
   public openCarDialog(data: any): Observable<CarCategoryFormData> {
     return this.dialog
       .open(CreateCarDialogComponent, {
-        maxWidth: "50%",
         maxHeight: "90%",
-        width: "768px",
+        width: "512px",
         panelClass: "dialog-car",
         data,
         disableClose: true,
@@ -135,7 +134,7 @@ export class DialogManagerService {
     return this.dialog
       .open(PrintDialogComponent, {
         disableClose: true,
-        width: "864px",
+        width: "856px",
         panelClass: "dialog-print",
         data,
         autoFocus: false,

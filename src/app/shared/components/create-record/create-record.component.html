@@ -28,7 +28,9 @@
         <mat-form-field [floatLabel]="'always'">
           <mat-label>{{"DIALOG.FIELDS.DATE" | translate}}</mat-label>
           <input [formControlName]="'date'" matInput [matDatepicker]="picker">
-          <mat-datepicker-toggle class="date-picker__toggle" matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle class="date-picker__toggle" matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon svgIcon="calendar-edit-new"></mat-icon>
+          </mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error>
             {{"DIALOG.VALIDATIONS.DATE" | translate}}

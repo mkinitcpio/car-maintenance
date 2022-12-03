@@ -13,6 +13,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
 import { DialogModule } from '../dialog/dialog.module';
 import { ButtonModule } from '../button/button.module';
+import { ContentContainerModule } from '../content-container/content-container.module';
+import { TabsModule } from '../tabs/tabs.module';
 
 
 
@@ -35,6 +37,8 @@ import { ButtonModule } from '../button/button.module';
     UbuntuContainerModule,
     DialogModule,
     ButtonModule,
+    ContentContainerModule,
+    TabsModule,
   ]
 })
 export class CreateCarDialogModule { }

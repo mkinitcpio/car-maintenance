@@ -16,6 +16,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { MatIconModule } from '@angular/material/icon';
 import { SideNavTrackerDirective } from '@shared/directives/side-nav-tracker.directive';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [HomeComponent, NavigationBarComponent, SideNavTrackerDirective],
@@ -30,6 +31,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     ButtonModule,
     MatIconModule,
     MatBadgeModule,
+    MatTooltipModule,
   ],
   providers: [
     SideNavigationTrackerService,
