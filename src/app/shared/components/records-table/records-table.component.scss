@@ -57,8 +57,13 @@
     flex: 0 0 84px;
   }
 
+  &__header-note,
   &__cell-note {
     flex: 0 0 48px;
+  }
+
+  &__cell-note {
+    justify-content: center;
   }
 
   &__note-icon {
@@ -82,6 +87,10 @@
   .mat-cell,
   .mat-header-cell {
     padding-right: 24px;
+  }
+
+  .mat-cell {
+    color: #222;
   }
 
   .mat-header-cell {

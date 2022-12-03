@@ -57,12 +57,12 @@
   </ng-container>
 
   <ng-container matColumnDef="notes">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-note"> {{"RECORDS_TABLE.COMMENT" | translate}} </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__header-note"> {{"RECORDS_TABLE.COMMENT" | translate}} </mat-header-cell>
     <mat-cell class="records-table__cell-note" *matCellDef="let row">
       <mat-icon class="records-table__note-icon"
                 *ngIf="row.notes"
                 [matTooltip]="row.notes"
-                [matTooltipPosition]="'above'" svgIcon="bookmark-new">
+                [matTooltipPosition]="'above'" svgIcon="task-new">
       </mat-icon>
     </mat-cell>
   </ng-container>
@@ -80,12 +80,12 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
     <button class="menu-item" mat-menu-item (click)="onEdit()">
-      <mat-icon>edit</mat-icon>
+      <mat-icon svgIcon="edit-new"></mat-icon>
       <span>{{"MENU.EDIT" | translate}}</span>
     </button>
     <div class="mat-menu__divider"></div>
     <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-      <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
+      <mat-icon svgIcon="trash-new" class="mat-item__icon mat-item__icon--delete"></mat-icon>
       <span>{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>
