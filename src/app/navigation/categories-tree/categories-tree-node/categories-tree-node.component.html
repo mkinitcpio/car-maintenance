@@ -18,10 +18,10 @@
     </span>
     <div class="categories-tree-node__expand-button-container">
       <mat-icon class="categories-tree-node__expand-button"
+                svgIcon="expand-new"
                 [class.categories-tree-node__expand-button--expanded]="expand"
                 *ngIf="child.children?.length"
                 (click)="expand = !expand; $event.stopPropagation()">
-        expand_more
       </mat-icon>
     </div>
   </div>
