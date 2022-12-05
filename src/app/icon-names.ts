@@ -23,5 +23,8 @@ export const iconsNames = [
   'close',
   'speed',
   'people',
-  'users'
+  'users',
+  'github',
+  'question',
+  'mail'
 ];

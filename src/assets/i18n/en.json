@@ -2,6 +2,10 @@
   "PAGES": {
     "WELCOME": {
       "SUBTITLE": "Create. Organize. Schedule.",
+      "NEED_HELP": "Need Help?",
+      "GITHUB": "Look at GitHub",
+      "MAIL": "Mail us",
+      "QUESTION": "Ask question",
       "BUTTONS": {
         "GET_STARTED": "Get Started"
       }
@@ -9,7 +13,7 @@
     "DATABASE_SELECT": {
         "TEXT": "Create or select existing Database",
         "CREATE": "Create",
-        "OPEN": "Select"
+        "OPEN": "Open"
     },
     "DETAIL": {
       "EMPTY": "No Records",

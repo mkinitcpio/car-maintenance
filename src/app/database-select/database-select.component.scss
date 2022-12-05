@@ -16,6 +16,13 @@
     font-size: 18px;
     color: #333;
   }
+
+  &__buttons {
+    width: 192px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 
@@ -23,8 +30,11 @@ button {
   background: none;
 }
 
+
+
 .button {
-  min-width: 128px;
+  height: 42px;
+  width: 100%;
 
   font-family: $font-system;
   font-weight: normal;
@@ -33,7 +43,6 @@ button {
 }
 
 .button__create {
-  margin-right: 8px;
   background-color: var(--primary-color);
   color: #fff;
 }

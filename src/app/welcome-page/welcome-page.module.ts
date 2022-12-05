@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatabaseSelectModule } from '../database-select/database-select.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ButtonModule } from '@shared/components/button/button.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     DatabaseSelectModule,
     BrowserAnimationsModule,
+    ButtonModule,
+    MatTooltipModule,
   ],
   exports: [
     WelcomePageComponent,
