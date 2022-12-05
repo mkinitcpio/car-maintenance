@@ -16,6 +16,7 @@
 .welcome-page {
   height: 100%;
   display: flex;
+  overflow: hidden;
 
   font-family: $font-system;
   user-select: none;

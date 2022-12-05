@@ -15,13 +15,13 @@
   </div>
   <div class="welcome-page__buttons">
     <span class="welcome-page__question-text">{{'PAGES.WELCOME.NEED_HELP' | translate}}</span>
-    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.GITHUB' | translate}}">
+    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.GITHUB' | translate}}" (click)="onOpenGitHub()">
       <mat-icon svgIcon="github-new"></mat-icon>
     </app-button>
-    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.MAIL' | translate}}">
+    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.MAIL' | translate}}" (click)="onOpenMail()">
       <mat-icon svgIcon="mail-new"></mat-icon>
     </app-button>
-    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.QUESTION' | translate}}">
+    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.QUESTION' | translate}}" (click)="onOpenFeedback()">
       <mat-icon svgIcon="question-new"></mat-icon>
     </app-button>
   </div>
