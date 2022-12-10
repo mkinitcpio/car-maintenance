@@ -2,7 +2,7 @@
      [class.navigation--minimize]="(sideNavService.collapse$ | async)">
   <div class="navigation__title-container">
     <app-button button-primary (click)="onAdd(selectedTabIndex)">
-      <mat-icon svgIcon="add-new"></mat-icon>
+      <mat-icon svgIcon="add"></mat-icon>
       <span>{{(selectedTabIndex ? "MENU.CAR" : "MENU.CATEGORY" ) | translate}}</span>
     </app-button>
   </div>

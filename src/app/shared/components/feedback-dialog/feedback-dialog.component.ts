@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { v4 as uuidv4 } from 'uuid';
+import { Feedback, FeedbackDialogData, FeedbackTypeOption } from './interfaces';
+import { FeedbackTypeEnum } from './feedback-type.enum';
+
+import { feedbackTypeOptions } from './feedback-type-options';
+import { Subject } from 'rxjs';
+import { Notification } from '@shared/components/notification/interfaces';
+import { NotificationTypeEnum } from '../notification/notification-type.enum';
+import { FeedbackRepository } from '@core/repositories/feedback.repository';
 
 @Component({
   selector: 'app-feedback-dialog',
@@ -12,17 +19,49 @@ import { v4 as uuidv4 } from 'uuid';
 export class FeedbackDialogComponent implements OnInit {
 
   public feedbackForm = new FormGroup({
-    id: this.fb.control(uuidv4()),
     text: this.fb.control(null),
-    type: this.fb.control(0),
+    email: this.fb.control(null),
+    type: this.fb.control(this.data.type || FeedbackTypeEnum.Feature),
   });
 
+  public FeedbackTypeEnum = FeedbackTypeEnum;
+  public feedbackTypeOptions: FeedbackTypeOption[] = feedbackTypeOptions;
+
+  public notification$: Subject<Notification> = new Subject();
+  public loading$: Subject<boolean> = new Subject();
+
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: FeedbackDialogData,
     public dialogRef: MatDialogRef<FeedbackDialogComponent>,
     private fb: FormBuilder,
+    private feedbackRepository: FeedbackRepository,
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  public onSend(): void {
+    this.feedbackForm.markAllAsTouched();
+
+    if(this.feedbackForm.invalid) return;
+
+    this.loading$.next(true);
+    this.feedbackRepository.sendFeedback(this.feedbackForm.value as Feedback)
+      .subscribe(() => {
+        this.loading$.next(false);
+        this.notification$.next({
+          type: NotificationTypeEnum.Success,
+          text: "Successfully sent!",
+        });
+      }, () => {
+        this.loading$.next(false);
+        this.notification$.next({
+          type: NotificationTypeEnum.Error,
+          text: "Error!",
+        });
+      });
   }
 
+  public get disbaleSubmitButton(): boolean {
+    return this.feedbackForm.invalid;
+  }
 }

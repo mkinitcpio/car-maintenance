@@ -101,12 +101,19 @@
   "DIALOG": {
     "ADD": "Add",
     "EDIT": "Edit",
-    "FEEDBACK": "Feedback",
     "RELEASE_NOTES": {
       "TITLE": "Version",
       "NEW_FEATURES": "New Features",
       "BUGFIXES": "Bug Fixes",
       "IMPROVEMENTS": "Improvements"
+    },
+    "FEEDBACK": {
+      "TITLE": "Feedback",
+      "QUESTION_TITLE": "Ask Question",
+      "OPTIONS": {
+        "BUG": "Bug",
+        "FEATURE": "Feature"
+      }
     },
     "DELETE": {
       "TITLE": "Confirm Delete",
@@ -122,6 +129,7 @@
     "BUTTONS": {
       "ADD": "Add",
       "EDIT": "Edit",
+      "SEND": "Send",
       "DELETE": "Delete",
       "CANCEL": "Cancel",
       "CHANGE": "Change",
@@ -131,6 +139,8 @@
     "VALIDATIONS": {
       "NAME": "Enter the Name.",
       "DATE": "Enter the correct Date.",
+      "EMAIL": "Enter valid Email.",
+      "TEXT": "Enter text.",
       "EXPENSE": {
         "REQIRED": "Enter the Expense."
       },

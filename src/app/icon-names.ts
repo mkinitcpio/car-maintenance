@@ -26,5 +26,10 @@ export const iconsNames = [
   'users',
   'github',
   'question',
-  'mail'
+  'mail',
+  'success',
+  'error',
+  'empty',
+  'paper',
+  'paper-empty'
 ];

@@ -1,28 +1,28 @@
 <section class="navigation-bar">
   <app-button class="navigation-bar__side-nav-button" button-transparent appSideNavTracker>
-    <mat-icon svgIcon="menu-new"></mat-icon>
+    <mat-icon svgIcon="menu"></mat-icon>
   </app-button>
   <nav class="navigation-bar__navigation">
     <nav class="navigation-bar__common-navigation">
       <app-button button-transparent (click)="navigateToDashboard()">
-        <mat-icon svgIcon="dashboard-new" matTooltip="Dashboard" matTooltipPosition="right" matTooltipShowDelay="500"></mat-icon>
+        <mat-icon svgIcon="dashboard" matTooltip="Dashboard" matTooltipPosition="right" matTooltipShowDelay="500"></mat-icon>
       </app-button>
 
       <ng-container *ngIf="!AppConfig.production">
         <app-button button-transparent matTooltip="Tasks" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="task-new"></mat-icon>
+          <mat-icon svgIcon="task"></mat-icon>
         </app-button>
         <app-button button-transparent matTooltip="Store" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="store-new"></mat-icon>
+          <mat-icon svgIcon="store"></mat-icon>
         </app-button>
         <app-button button-transparent matTooltip="Statistics" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="chart-new"></mat-icon>
+          <mat-icon svgIcon="chart"></mat-icon>
         </app-button>
         <app-button button-transparent matTooltip="Users" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="users-new"></mat-icon>
+          <mat-icon svgIcon="users"></mat-icon>
         </app-button>
         <app-button button-transparent matTooltip="People" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="people-new"></mat-icon>
+          <mat-icon svgIcon="people"></mat-icon>
         </app-button>
       </ng-container>
     </nav>
@@ -31,19 +31,19 @@
 
     <div class="navigation-bar__dev-buttons" *ngIf="!AppConfig.production">
       <app-button button-transparent (click)="onRefreshApp()">
-        <mat-icon svgIcon="refresh-new"></mat-icon>
+        <mat-icon svgIcon="refresh"></mat-icon>
       </app-button>
       <app-button button-transparent (click)="onOpenDevTools()">
-        <mat-icon svgIcon="terminal-new"></mat-icon>
+        <mat-icon svgIcon="terminal"></mat-icon>
       </app-button>
     </div>
 
     <app-button *ngIf="true" button-transparent (click)="onOpenAccount()">
-      <mat-icon svgIcon="user-new"></mat-icon>
+      <mat-icon svgIcon="user"></mat-icon>
     </app-button>
 
     <app-button button-transparent (click)="openSettings()">
-      <mat-icon svgIcon="settings-new"></mat-icon>
+      <mat-icon svgIcon="settings"></mat-icon>
     </app-button>
   </nav>
 </section>

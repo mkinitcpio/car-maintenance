@@ -1,4 +1,4 @@
-<mat-table *ngIf="data.length" [dataSource]="data" class="records-table" [class.records-table--with-borders]="withBorders">
+<mat-table *ngIf="data.length; else emptyMessage" [dataSource]="data" class="records-table" [class.records-table--with-borders]="withBorders">
   <ng-container matColumnDef="position">
     <mat-header-cell *matHeaderCellDef class="records-table__cell-id"> № </mat-header-cell>
     <mat-cell class="records-table__cell-id"
@@ -62,7 +62,7 @@
       <mat-icon class="records-table__note-icon"
                 *ngIf="row.notes"
                 [matTooltip]="row.notes"
-                [matTooltipPosition]="'above'" svgIcon="task-new">
+                [matTooltipPosition]="'above'" svgIcon="paper">
       </mat-icon>
     </mat-cell>
   </ng-container>
@@ -71,6 +71,16 @@
   <mat-row class="records-table__row" *matRowDef="let row; columns: displayedColumns" (contextmenu)="onContextMenu($event, row)">
   </mat-row>
 </mat-table>
+
+<ng-template #emptyMessage>
+  <section class="records-table__empty">
+    <div class="records-table__empty-container">
+      <mat-icon class="records-table__empty-icon" svgIcon="paper-empty"></mat-icon>
+      <span>No Records</span>
+    </div>
+  </section>
+</ng-template>
+
 <div style="visibility: hidden; position: fixed"
      [style.left]="contextMenuPosition.x"
      [style.top]="contextMenuPosition.y"
@@ -80,12 +90,12 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
     <button class="menu-item" mat-menu-item (click)="onEdit()">
-      <mat-icon svgIcon="edit-new"></mat-icon>
+      <mat-icon svgIcon="edit"></mat-icon>
       <span>{{"MENU.EDIT" | translate}}</span>
     </button>
     <div class="mat-menu__divider"></div>
     <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-      <mat-icon svgIcon="trash-new" class="mat-item__icon mat-item__icon--delete"></mat-icon>
+      <mat-icon svgIcon="trash" class="mat-item__icon mat-item__icon--delete"></mat-icon>
       <span>{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>

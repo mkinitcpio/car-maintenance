@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElectronService } from '@core/services';
+import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
 
 @Component({
@@ -21,11 +22,11 @@ export class WelcomePageComponent {
   }
 
   public onOpenMail(): void {
-    this.electronService.shell.openExternal("mailto:aliaksandr.kazhamiaka@gmail.com");
+    this.electronService.shell.openExternal("mailto:aliaksandr.kazhamiaka@gmail.com?subject=Question");
   }
 
   public onOpenFeedback(): void {
-    this.dialogManagerService.openFeedbackDialog();
+    this.dialogManagerService.openFeedbackDialog(FeedbackTypeEnum.Question);
   }
 
 }

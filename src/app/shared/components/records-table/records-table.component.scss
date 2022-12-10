@@ -108,4 +108,29 @@
   .mat-row:last-child {
     border-bottom-width: 0;
   }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    font-size: 14px;
+    font-family: $font-system;
+    color: #4b4848;
+  }
+
+  &__empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 18px;
+    color: #4b4848;
+  }
+
+  &__empty-icon {
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
+  }
 }

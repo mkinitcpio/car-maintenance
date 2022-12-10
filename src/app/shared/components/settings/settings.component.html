@@ -13,7 +13,7 @@
               {{this.settingsService.settings.databasePath}}
             </span>
             <app-button button-transparent (click)="onDatabaseChange()">
-              <mat-icon svgIcon="edit-new"></mat-icon>
+              <mat-icon svgIcon="edit"></mat-icon>
             </app-button>
           </div>
         </app-setting>
@@ -40,7 +40,7 @@
                 {{ language.name }}
               </mat-option>
             </mat-select>
-            <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
+            <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
           </mat-form-field>
         </app-setting>
 
@@ -53,7 +53,7 @@
                 {{ region.name }}
               </mat-option>
             </mat-select>
-            <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
+            <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
           </mat-form-field>
         </app-setting>
       </content-container>
@@ -82,7 +82,7 @@
                 {{ currency.name | translate }}
               </mat-option>
             </mat-select>
-            <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
+            <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
           </mat-form-field>
         </app-setting>
       </content-container>

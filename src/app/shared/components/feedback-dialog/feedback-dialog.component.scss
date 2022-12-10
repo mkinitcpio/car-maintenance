@@ -7,28 +7,15 @@
     resize: none;
   }
 
-  &__toggle-group {
-    border-radius: 12px !important;
+  .mat-form-field {
+    margin-bottom: 12px;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 
-  .mat-button-toggle-checked {
-    background: var(--primary-color);
-    line-height: initial;
-    color: white;
-  }
-
-  .mat-button-toggle-label-content {
-    line-height: 36px;
+  input:placeholder-shown {
     font-size: 14px;
-    font-family: $font-system;
-  }
-
-  .mat-button-toggle-button {
-    width: 104px;
-  }
-
-  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
-    border: solid 1.5px rgba(0,0,0,.12);
-    box-sizing: content-box;
   }
 }

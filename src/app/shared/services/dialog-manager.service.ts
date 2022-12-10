@@ -20,6 +20,7 @@ import { CreateCarDialogComponent } from '@shared/components/create-car-dialog/c
 import { CarCategoryFormData } from '@core/interfaces/car-category';
 import { AccountDialogComponent } from '@shared/components/account-dialog/account-dialog.component';
 import { FeedbackDialogComponent } from '@shared/components/feedback-dialog/feedback-dialog.component';
+import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -121,12 +122,15 @@ export class DialogManagerService {
       });
   }
 
-  public openFeedbackDialog(): void {
+  public openFeedbackDialog(type?: FeedbackTypeEnum): void {
     this.dialog
       .open(FeedbackDialogComponent, {
         disableClose: true,
         width: "380px",
         panelClass: "dialog-feedback",
+        data: {
+          type,
+        },
       });
   }
 

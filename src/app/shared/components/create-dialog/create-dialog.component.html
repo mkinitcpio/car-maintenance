@@ -19,7 +19,7 @@
             {{parent.name}}
           </mat-option>
         </mat-select>
-        <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
+        <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
       </mat-form-field>
       <mat-form-field [floatLabel]="'always'" *ngIf="!categoryForm.get('parent')?.value">
         <mat-label>{{"DIALOG.FIELDS.ILLUSTRATION" | translate}}</mat-label>
@@ -39,7 +39,7 @@
               </span>
             </mat-option>
           </mat-select>
-          <mat-icon svgIcon="expand-new" class="mat-select__expand-icon"></mat-icon>
+          <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
         </mat-form-field>
     </form>
   </app-dialog>

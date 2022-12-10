@@ -20,6 +20,7 @@ import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-co
 import { DetailsModule } from '@shared/components/details/details.module';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [CategoryDetailsComponent],
@@ -40,6 +41,8 @@ import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.mod
     ButtonModule,
     RichWidgetModule,
     DetailsModule,
+    CurrencyModule,
+    MatDividerModule,
   ],
   providers: [
     CategoryDetailsFacade,

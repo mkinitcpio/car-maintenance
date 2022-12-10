@@ -23,8 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { DataBaseService } from './core/database';
 import {DatabaseSelectModule} from "./database-select/database-select.module";
 import { WelcomePageModule } from "./welcome-page/welcome-page.module";
-
-import { VersionService } from "@core/services/version.service";
+import { RouterModule } from '@angular/router';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -55,10 +54,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25}),
+    RouterModule,
   ],
   providers: [
     DataBaseService,
-    VersionService,
   ],
   bootstrap: [AppComponent]
 })
