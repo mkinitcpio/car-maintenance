@@ -1,25 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
-import { SideNavigationTrackerService } from '../side-navigation-tracker.service';
 import { AppConfig } from 'environments/environment';
 import { ElectronService } from '@core/services/electron/electron.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+
+import { NavigationButton } from './interfaces';
+import { navigationButtons } from './navigation-buttons';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss']
 })
-export class NavigationBarComponent {
+export class NavigationBarComponent implements OnInit {
 
   public AppConfig = AppConfig;
+  public navigationButtons: NavigationButton[] = navigationButtons;
+  public currentRoute = '';
+  public defaultRoute = 'maintenance';
 
   constructor(
-    public sideNavTracker: SideNavigationTrackerService,
     private dialogManagerService: DialogManagerService,
     private electronService: ElectronService,
     private router: Router,
   ) { }
+
+  ngOnInit(): void {
+    this.router.navigate([this.defaultRoute]);
+
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url;
+      });
+  }
 
   public openSettings(): void {
     this.dialogManagerService.openSettingsDialog();
@@ -27,10 +44,6 @@ export class NavigationBarComponent {
 
   public onOpenAccount(): void {
     this.dialogManagerService.openAccountDialog();
-  }
-
-  public navigateToDashboard(): void {
-    this.router.navigate(['dashboard']);
   }
 
   public onRefreshApp(): void {

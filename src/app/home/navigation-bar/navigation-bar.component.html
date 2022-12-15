@@ -3,28 +3,18 @@
     <mat-icon svgIcon="menu"></mat-icon>
   </app-button>
   <nav class="navigation-bar__navigation">
-    <nav class="navigation-bar__common-navigation">
-      <app-button button-transparent (click)="navigateToDashboard()">
-        <mat-icon svgIcon="dashboard" matTooltip="Dashboard" matTooltipPosition="right" matTooltipShowDelay="500"></mat-icon>
-      </app-button>
-
-      <ng-container *ngIf="!AppConfig.production">
-        <app-button button-transparent matTooltip="Tasks" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="task"></mat-icon>
-        </app-button>
-        <app-button button-transparent matTooltip="Store" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="store"></mat-icon>
-        </app-button>
-        <app-button button-transparent matTooltip="Statistics" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="chart"></mat-icon>
-        </app-button>
-        <app-button button-transparent matTooltip="Users" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="users"></mat-icon>
-        </app-button>
-        <app-button button-transparent matTooltip="People" matTooltipPosition="right" matTooltipShowDelay="500">
-          <mat-icon svgIcon="people"></mat-icon>
-        </app-button>
-      </ng-container>
+    <nav class="navigation-bar__modules-routes">
+      <a *ngFor="let button of navigationButtons"
+          class="navigation-bar__button-container"
+          [routerLink]="!currentRoute?.includes(button.route) ? button.route : null"
+          routerLinkActive="navigation-bar__button-container--selected">
+        <div class="navigation-bar__button-selector"></div>
+          <app-button button-transparent
+                      [matTooltip]="button.tooltipText"
+                      matTooltipPosition="right">
+            <mat-icon class="navigation-bar__button-icon" [svgIcon]="button.icon"></mat-icon>
+          </app-button>
+        </a>
     </nav>
 
     <div class="navigation-bar__divider"></div>
@@ -38,7 +28,7 @@
       </app-button>
     </div>
 
-    <app-button *ngIf="true" button-transparent (click)="onOpenAccount()">
+    <app-button *ngIf="false" button-transparent (click)="onOpenAccount()">
       <mat-icon svgIcon="user"></mat-icon>
     </app-button>
 
