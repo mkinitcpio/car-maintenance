@@ -104,6 +104,6 @@
 
 .categories-tree-node__content--select {
   .categories-tree-node__icon--mono {
-    filter: invert(1);
+    filter: brightness(0) invert(1);
   }
 }

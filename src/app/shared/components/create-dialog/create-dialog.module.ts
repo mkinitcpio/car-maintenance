@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogModule } from '../dialog/dialog.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
+import { ContentContainerModule } from '../content-container/content-container.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     TranslateModule,
     DialogModule,
     MatIconModule,
+    MatRippleModule,
+    ContentContainerModule,
   ],
   entryComponents: [
     CreateDialogComponent,

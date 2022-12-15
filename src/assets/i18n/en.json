@@ -150,7 +150,7 @@
     "FIELDS": {
       "NAME": "Name",
       "CATEGORY": "Group",
-      "ILLUSTRATION": "Illustration",
+      "ILLUSTRATION": "Icon",
       "MILEAGE": "Mileage",
       "DATE": "Date",
       "YEAR": "Year",
@@ -162,6 +162,10 @@
       "COMMENT": "Comment",
       "TEXT": "Text",
       "TYPE": "Type"
+    },
+    "ICON_GROUPS": {
+      "CAR_PARTS": "Car parts",
+      "OTHERS": "Others"
     },
     "TOOLTIPS": {
       "CAR_PARTS": "Car parts that you will maintain"

@@ -4,7 +4,7 @@
               (submit)="onSubmit()"
               (close)="dialogRef.close()"
   >
-    <form content [formGroup]="categoryForm">
+    <form class="create-dialog__form" content [formGroup]="categoryForm">
       <mat-form-field [floatLabel]="'always'">
         <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
         <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
@@ -12,35 +12,41 @@
           {{"DIALOG.VALIDATIONS.NAME" | translate}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field [floatLabel]="'always'" *ngIf="!(data.mode === 1)">
-      <mat-label>{{"DIALOG.FIELDS.CATEGORY" | translate}}</mat-label>
-        <mat-select [formControlName]="'parent'">
-          <mat-option *ngFor="let parent of data.parents" [value]="parent.value">
-            {{parent.name}}
-          </mat-option>
-        </mat-select>
-        <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
-      </mat-form-field>
-      <mat-form-field [floatLabel]="'always'" *ngIf="!categoryForm.get('parent')?.value">
-        <mat-label>{{"DIALOG.FIELDS.ILLUSTRATION" | translate}}</mat-label>
-          <mat-select [formControlName]="'illustration'">
-            <mat-select-trigger class="create-dialog__illustration-container">
-              <img class="create-dialog__illustration-icon"
-                   *ngIf="categoryForm.get('illustration').value"
-                   [src]="iconsPath + categoryForm.get('illustration').value">
-              {{getIllustrationName(categoryForm.get('illustration').value) | translate}}
-            </mat-select-trigger>
-            <mat-option *ngFor="let illustrationOption of categoryIllustrationOptions" [value]="illustrationOption.value">
-              <span class="create-dialog__option-content">
-                <img class="create-dialog__option-icon" [src]="iconsPath + illustrationOption.value">
-                <span class="create-dialog__option-text">
-                {{illustrationOption.name | translate}}
-                </span>
-              </span>
-            </mat-option>
-          </mat-select>
-          <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
-        </mat-form-field>
+      <section *ngIf="!data.parentId" class="create-dialog__icons-container">
+        <span class="create-dialog__icons-container-title">{{"DIALOG.FIELDS.ILLUSTRATION" | translate}}</span>
+        <section class="create-dialog__icons-container-content">
+          <div class="create-dialog__icons-section">
+            <span class="create-dialog__icons-section-title">
+              {{"DIALOG.ICON_GROUPS.CAR_PARTS" | translate}}
+            </span>
+            <section class="create-dialog__icon-selector">
+              <div matRipple
+                   class="create-dialog__icon-item"
+                   [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value"
+                   *ngFor="let icon of icons.carParts"
+                   (click)="categoryForm.get('illustration').setValue(icon.value)"
+              >
+                <img class="create-dialog__icon" [src]="iconsPath + icon.value">
+              </div>
+            </section>
+          </div>
+          <div class="create-dialog__icons-section">
+            <span class="create-dialog__icons-section-title">
+              {{"DIALOG.ICON_GROUPS.OTHERS" | translate}}
+            </span>
+            <section class="create-dialog__icon-selector">
+              <div matRipple
+                   class="create-dialog__icon-item"
+                   [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value"
+                   *ngFor="let icon of icons.others"
+                   (click)="categoryForm.get('illustration').setValue(icon.value)"
+              >
+                <img class="create-dialog__icon" [src]="iconsPath + icon.value">
+              </div>
+            </section>
+          </div>
+        </section>
+      </section>
     </form>
   </app-dialog>
 </div>

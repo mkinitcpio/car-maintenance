@@ -1,5 +1,10 @@
-export const categoryIllustrationOptions = [
-  {
+export const icons = {
+  others: [{
+    name: 'ILLUSTRATIONS.OTHER',
+    value: 'wrench.svg',
+  },
+  ],
+  carParts: [{
     name: 'ILLUSTRATIONS.BATTERY',
     value: 'battery.svg',
   },
@@ -35,8 +40,5 @@ export const categoryIllustrationOptions = [
     name: 'ILLUSTRATIONS.WINDSHIELD',
     value: 'windshield.svg',
   },
-  {
-    name: 'ILLUSTRATIONS.OTHER',
-    value: 'wrench.svg',
-  },
-];
+  ],
+};

@@ -2,29 +2,72 @@
 @import '/src/fonts';
 
 .create-dialog {
-  &__option-content {
-    display: flex;
-    align-items: center;
-  }
-  
-  &__option-icon {
-    width: 18px;
-    margin-right: 8px;
-  }
-
-  &__illustration-container {
-    display: flex;
-    align-items: center;
-  }
-
-  &__illustration-icon {
-    width: 18px;
-    margin-right: 8px;
+  &__icon {
+    width: 20px;
   }
 
   .mat-form-field {
-    &:not(:last-child) {
-      margin-bottom: 20px;
+    margin-bottom: 12px;
+  }
+
+  &__icons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  &__icons-container-title {
+    font-size: 14px;
+    margin-left: 10px;
+    font-family: $font-system;
+  }
+
+  &__icons-container-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 18px;
+    border: 1.5px solid #ebebeb;
+    padding: 12px;
+  }
+
+  &__icon-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  &__icons-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__icons-section-title {
+    font-family: $font-system;
+    font-size: 12px;
+    color: $font-primary;
+    font-weight: 500;
+  }
+
+  &__icon-item {
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 38px;
+    width: 38px;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--selected {
+      background: rgba(0, 0, 0, 0.10);
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
     }
   }
 }
