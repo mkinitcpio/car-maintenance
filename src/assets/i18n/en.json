@@ -46,11 +46,11 @@
       "BUTTONS": {
         "CHANGE": "Change",
         "CARS": "Cars",
-        "CATEGORIES": "Categories"
+        "CATEGORIES": "Groups"
       }
     },
     "EMPTY": {
-      "TEXT": "Select Category"
+      "TEXT": "Select Group"
     },
     "PDF_EXPORT": {
       "PATH": "Path to save",
@@ -61,7 +61,7 @@
     },
     "NAVIGATION": {
       "TABS": {
-        "CATEGORIES": "Categories",
+        "CATEGORIES": "Groups",
         "CARS": "Cars"
       }
     },
@@ -95,7 +95,7 @@
     "WHATS_NEW": "What's new",
     "FEEDBACK": "Feedback",
     "CAR": "New car",
-    "CATEGORY": "New сategory",
+    "CATEGORY": "New Group",
     "UPDATE": "Update available"
   },
   "DIALOG": {
@@ -117,10 +117,10 @@
     },
     "DELETE": {
       "TITLE": "Confirm Delete",
-      "CATEGORY": "Do you really want to delete this category? This process cannot be undone.",
+      "CATEGORY": "Do you really want to delete this group? This process cannot be undone.",
       "RECORD": "Do you really want to delete this record? This process cannot be undone."
     },
-    "CATEGORY": "Category",
+    "CATEGORY": "Group",
     "CAR": "Car",
     "COMMON": "Common",
     "INFO": "Information",
@@ -149,7 +149,7 @@
     },
     "FIELDS": {
       "NAME": "Name",
-      "CATEGORY": "Category",
+      "CATEGORY": "Group",
       "ILLUSTRATION": "Illustration",
       "MILEAGE": "Mileage",
       "DATE": "Date",
