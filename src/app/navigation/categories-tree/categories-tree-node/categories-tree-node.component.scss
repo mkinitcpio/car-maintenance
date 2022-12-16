@@ -35,7 +35,6 @@
     display: flex;
     align-items: center;
     width: 22px;
-    margin: 0px 4px;
   }
 
   &__name {
@@ -49,7 +48,7 @@
   }
 
   &__icon {
-    width: 18px;
+    color: #4b4848;
   }
 
   &__content {
@@ -57,6 +56,7 @@
     align-items: center;
     height: 42px;
     padding: 0 8px;
+    gap: 6px;
 
     color: $font-primary;
     cursor: pointer;
@@ -73,7 +73,11 @@
       background: var(--primary-color);
 
       .categories-tree-node__name {
-        transform: translate(4px);
+        transform: translate(2px);
+      }
+
+      .categories-tree-node__icon {
+        color: white;
       }
     }
 
@@ -99,11 +103,5 @@
     &--expanded {
       transform: rotateX(180deg);
     }
-  }
-}
-
-.categories-tree-node__content--select {
-  .categories-tree-node__icon--mono {
-    filter: brightness(0) invert(1);
   }
 }

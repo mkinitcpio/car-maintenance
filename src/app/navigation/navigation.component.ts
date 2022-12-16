@@ -85,7 +85,6 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       .subscribe((deletedCategory) => {
         if(deletedCategory.id === this.selectedCategory?.id || deletedCategory.id === this.selectedCategory?.parent) {
           this.selectedCategory = null;
-          console.log(1);
           this.router.navigate(['maintenance'], { relativeTo: this.route });
         }
       });

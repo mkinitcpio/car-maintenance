@@ -1,44 +1,39 @@
 export const icons = {
   others: [{
-    name: 'ILLUSTRATIONS.OTHER',
-    value: 'wrench.svg',
+    value: 'wrench',
+  },{
+    value: 'folder',
+  },
+  {
+    value: 'star',
   },
   ],
   carParts: [{
-    name: 'ILLUSTRATIONS.BATTERY',
-    value: 'battery.svg',
+    value: 'battery',
   },
   {
-    name: 'ILLUSTRATIONS.ENGINE',
-    value: 'motor.svg',
+    value: 'motor',
   },
   {
-    name: 'ILLUSTRATIONS.WHEEL',
-    value: 'wheel-1.svg',
+    value: 'wheel-1',
   },
   {
-    name: 'ILLUSTRATIONS.OIL',
-    value: 'oil.svg',
+    value: 'oil',
   },
   {
-    name: 'ILLUSTRATIONS.TRANSMISSION',
-    value: 'chassis.svg',
+    value: 'chassis',
   },
   {
-    name: 'ILLUSTRATIONS.HEADLIGHTS',
-    value: 'car-lights-2.svg',
+    value: 'car-lights-2',
   },
   {
-    name: 'ILLUSTRATIONS.BRAKEBLOCK',
-    value: 'brake-block.svg',
+    value: 'brake-block',
   },
   {
-    name: 'ILLUSTRATIONS.SPARK',
-    value: 'spark.svg',
+    value: 'spark',
   },
   {
-    name: 'ILLUSTRATIONS.WINDSHIELD',
-    value: 'windshield.svg',
+    value: 'windshield',
   },
   ],
 };

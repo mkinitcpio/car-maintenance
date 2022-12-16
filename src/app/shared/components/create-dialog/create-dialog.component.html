@@ -22,11 +22,11 @@
             <section class="create-dialog__icon-selector">
               <div matRipple
                    class="create-dialog__icon-item"
-                   [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value"
+                   [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value?.replace('.svg', '')"
                    *ngFor="let icon of icons.carParts"
                    (click)="categoryForm.get('illustration').setValue(icon.value)"
               >
-                <img class="create-dialog__icon" [src]="iconsPath + icon.value">
+                <mat-icon [svgIcon]="'illustrations:' + icon.value"></mat-icon>
               </div>
             </section>
           </div>
@@ -37,11 +37,11 @@
             <section class="create-dialog__icon-selector">
               <div matRipple
                    class="create-dialog__icon-item"
-                   [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value"
+                   [class.create-dialog__icon-item--selected]="icon.value === (categoryForm.get('illustration').value?.replace('.svg', '') || 'wrench')"
                    *ngFor="let icon of icons.others"
                    (click)="categoryForm.get('illustration').setValue(icon.value)"
               >
-                <img class="create-dialog__icon" [src]="iconsPath + icon.value">
+                <mat-icon [svgIcon]="'illustrations:' + icon.value"></mat-icon>
               </div>
             </section>
           </div>

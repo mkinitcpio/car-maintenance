@@ -56,11 +56,6 @@ export class SettingsComponent {
     this.settingsService.saveSettings();
   }
 
-  public onColorSelect(checked: boolean): void {
-    this.settingsService.setIconType(checked ? IconTypeEnum.Mono : IconTypeEnum.Color);
-    this.settingsService.saveSettings();
-  }
-
   public onDatabaseChange(): void {
     const oldDatabasePath = this.settingsService.settings.databasePath;
 

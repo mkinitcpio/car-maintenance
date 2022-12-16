@@ -25,7 +25,7 @@ export class CreateDialogComponent implements OnInit {
     id: new FormControl(uuidv4()),
     name: new FormControl(null, Validators.required),
     parent: new FormControl(this.data.parentId),
-    illustration: new FormControl('wrench.svg'),
+    illustration: new FormControl('wrench'),
     type: new FormControl(CategoryTypeEnum.Category),
   });
 

@@ -7,6 +7,7 @@ import { ThemeService } from "@core/services/theme.service";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 import { iconsNames } from "./icon-names";
+import { groupIllustrationNames } from './group-illustration-names';
 
 @Component({
   selector: "app-root",
@@ -27,6 +28,10 @@ export class AppComponent extends AutoCloseable {
 
     iconsNames.forEach(name => {
       this.matIconRegistry.addSvgIcon(`${name}`, this.domS.bypassSecurityTrustResourceUrl(`/assets/icons/vuesax/${name}.svg`));
+    });
+
+    groupIllustrationNames.forEach(name => {
+      this.matIconRegistry.addSvgIconInNamespace('illustrations', name, this.domS.bypassSecurityTrustResourceUrl(`/assets/group-icons/${name}.svg`));
     });
 
     this.matIconRegistry.setDefaultFontSetClass('material-symbols-rounded');

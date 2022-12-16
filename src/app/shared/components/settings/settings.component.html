@@ -105,14 +105,6 @@
 
         <mat-divider class="settings__divider"></mat-divider>
 
-        <app-setting [label]="'PAGES.SETTINGS.FIELDS.MONO' | translate" icon="invert_colors">
-          <app-switch [value]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
-                      (change)="onColorSelect($event)">
-          </app-switch>
-        </app-setting>
-
-        <mat-divider class="settings__divider"></mat-divider>
-
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.ANIMATION' | translate" icon="animation">
           <app-switch [value]="settingsService.settings.appearance.animations"
                       (change)="onAnimationsChanged($event)">
