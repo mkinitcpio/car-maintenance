@@ -22,9 +22,6 @@ export class CategoriesTreeNodeComponent implements OnInit {
   @Input()
   selected: string;
 
-  @Input()
-  isSubNode = false;
-
   @Output()
   add: EventEmitter<Category> = new EventEmitter();
 

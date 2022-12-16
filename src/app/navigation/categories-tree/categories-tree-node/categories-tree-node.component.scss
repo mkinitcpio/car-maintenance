@@ -79,6 +79,10 @@
       .categories-tree-node__icon {
         color: white;
       }
+
+      .categories-tree-node__expand-button {
+        color: white;
+      }
     }
 
     &--select:hover {
@@ -96,6 +100,7 @@
   }
 
   &__expand-button {
+    color: #4b4848;
     user-select: none;
     transition: transform 0.2s linear;
     transform: rotate(0deg);
