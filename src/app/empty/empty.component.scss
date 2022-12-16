@@ -9,22 +9,19 @@
 
   user-select: none;
 
-  &__text {
+  &__container {
+    font-family: $font-system;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    font-family: $font-system;
-    font-size: 32px;
-    font-weight: normal;
-    color: $font-secondary;
+    gap: 4px;
+    font-size: 18px;
+    color: #4b4848;
   }
 
   &__icon {
-    height: 128px;
-    width: 128px;
-
-    font-size: 128px;
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
   }
 }

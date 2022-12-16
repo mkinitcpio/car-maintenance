@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ElectronService} from "../core/services";
 import {DataBaseService} from "../core/database";
 import { SettingsService } from '../shared/components/settings/settings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-database-select',
@@ -14,6 +15,7 @@ export class DatabaseSelectComponent implements OnInit {
     private electronService: ElectronService,
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {}
@@ -43,6 +45,7 @@ export class DatabaseSelectComponent implements OnInit {
           this.settingsService.setDataBasePath(filePath);
           this.settingsService.saveSettings();
           this.dataBaseService.initDataBase();
+          this.router.navigate(['']);
         }
       });
   }

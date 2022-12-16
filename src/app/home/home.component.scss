@@ -2,32 +2,12 @@
 
 .home {
   display: flex;
-
-  &__sidenav-container {
-    width: 100%;
-  }
-
-  &__sidenav {
-    width: 300px;
-
-    box-sizing: content-box;
-    border-right: none;
-    transition: width 0.5s ease-in-out;
-
-    &--minimize {
-      width: 16px;
-    }
-  }
+  height: 100%;
+  overflow: hidden;
 
   &__content {
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    margin-left: 300px !important;
-
-    transition: margin-left 0.5s ease-in-out;
-
-    &--minimize {
-      margin-left: 16px !important;
-    }
   }
 }

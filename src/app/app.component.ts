@@ -14,7 +14,6 @@ import { iconsNames } from "./icon-names";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent extends AutoCloseable {
-  public dbExist: boolean;
 
   constructor(
     private dataBaseService: DataBaseService,
@@ -42,10 +41,6 @@ export class AppComponent extends AutoCloseable {
 
     this.settingsService.init();
     this.themeService.init();
-
-    this.dataBaseService.dbExist$.subscribe((exist) => {
-      this.dbExist = exist;
-    });
 
     this.dataBaseService.initDataBase();
   }

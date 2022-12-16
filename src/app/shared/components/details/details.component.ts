@@ -18,7 +18,10 @@ export class DetailsComponent {
   public showSidebar = false;
 
   @Input()
-  title: string;
+  title = '';
+
+  @Input()
+  separated = false;
 
   @Input()
   sidebarButtonIcon: string;

@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { DashboardItemModule } from './dashboard-item/dashboard-item.module';
 import { FeedbackDialogModule } from '@shared/components/feedback-dialog/feedback-dialog.module';
 
+import { DashboardRoutingModule } from './dashboard-routing.module';
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -17,6 +19,7 @@ import { FeedbackDialogModule } from '@shared/components/feedback-dialog/feedbac
     MatIconModule,
     DashboardItemModule,
     FeedbackDialogModule,
+    DashboardRoutingModule,
   ],
   exports: [
     DashboardComponent,

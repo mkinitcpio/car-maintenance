@@ -1,4 +1,4 @@
-<section class="page" [style.width]="showSidebar ? PAGE_WITH_SIDEBAR_WIDTH : FULL_WIDTH">
+<section class="page" [class.page--opened-side-bar]="showSidebar" [class.page--separated]="separated">
   <div class="page__main">
     <section class="page__title-section">
       <div class="page__title">
@@ -12,10 +12,9 @@
         </app-button>
       </div>
     </section>
-  
+
     <div class="page__content-shadow-cover">
-      <div class="page__shadow page__shadow--cover" [style.width]="showSidebar ? PAGE_CONTENT_WIDTH_WITH_SIDEBAR : PAGE_CONTENT_WIDTH"></div> 
-      <div class="page__shadow" [style.width]="showSidebar ? PAGE_CONTENT_WIDTH_WITH_SIDEBAR : PAGE_CONTENT_WIDTH"></div>
+      <div class="page__shadow"></div>
       <div class="page__content">
         <ng-content select="[content]"></ng-content>
       </div>
@@ -30,7 +29,6 @@
         </div>
       </section>
       <div class="page__content-shadow-cover">
-        <div class="page__shadow page__shadow--cover"></div>
         <div class="page__shadow"></div>
         <div class="page__content">
           <ng-content select="[sidebar-content]"></ng-content>

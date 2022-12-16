@@ -1,21 +1,6 @@
 <div class="home">
   <app-navigation-bar></app-navigation-bar>
-  <mat-sidenav-container class="home__sidenav-container">
-    <mat-sidenav #sidenav mode="side"
-                  class="home__sidenav"
-                  [class.home__sidenav--minimize]="sideNavTracker.collapse$ | async"
-                  [fixedInViewport]="true"
-                  opened
-    >
-      <app-navigation></app-navigation>
-    </mat-sidenav>
-
-    <mat-sidenav-content fixedInViewport="true"
-                          scrollable="false"
-                          class="home__content"
-                          [class.home__content--minimize]="sideNavTracker.collapse$ | async"
-    >
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <div class="home__content">
+    <router-outlet></router-outlet>
+  </div>
 </div>

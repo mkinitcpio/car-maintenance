@@ -7,7 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { categoryDetailsReducer } from './state/reducers';
 import { CategoryDetailsEffects } from './state/effects';
 import { CategoryDetailsFacade } from './state/category-details.facade';
-import { HomeRoutingModule } from 'app/home/home-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { UtilsService } from '@shared/services/utils.service';
@@ -27,7 +26,6 @@ import { MatDividerModule } from '@angular/material/divider';
   imports: [
     CommonModule,
     RecordsTableModule,
-    HomeRoutingModule,
     MatIconModule,
     StoreModule.forFeature('categoryDetails', categoryDetailsReducer),
     EffectsModule.forFeature([CategoryDetailsEffects]),

@@ -107,7 +107,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
     this.deleteCategory$.subscribe((category) => {
       if(this.id === category.id) {
-        this.router.navigate(['']);
+        this.router.navigate(['maintenance']);
       }
 
       if(this.id === category.parent) {
@@ -183,10 +183,6 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .map((table) => table.data)
       .reduce((acc, curr) => acc.concat(...curr))
       .find((record) => record.id === id);
-  }
-
-  public get hasOpenedPanel(): boolean {
-    return this.expandPanelToggles.some(Boolean);
   }
 
   public toogleExpandStates(state): void {

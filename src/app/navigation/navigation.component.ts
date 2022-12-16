@@ -5,14 +5,12 @@ import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum"
 import { NavigationFacade } from "./state/navigation.facade";
 import { Category, CategoryTree, CategoryTypeEnum } from "./state/interface";
 
-import { NavigationEnd, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { DialogManagerService } from "../shared/services/dialog-manager.service";
 
 import { listen } from "../core/decorators";
 import { merge } from "rxjs";
 import { AutoCloseable } from "../core/auto-closeable";
-import { ElectronService } from "../core/services";
-import { ReleaseNotesService } from "../shared/components/release-notes/release-notes.service";
 import { filter, map, skip, switchMap, take } from "rxjs/operators";
 import { DataBaseService } from "../core/database";
 
@@ -61,10 +59,9 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
-    private electronService: ElectronService,
-    private releaseNotesService: ReleaseNotesService,
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
     public sideNavService: SideNavigationTrackerService,
@@ -78,7 +75,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       .pipe(
         filter(e => e instanceof NavigationEnd),
         map((e: NavigationEnd) => e.url.split('/').filter(Boolean)),
-        map(pathTokens => pathTokens[1]),
+        map(pathTokens => pathTokens[2]),
       )
       .subscribe((selectedCategory) => {
         this.selected = selectedCategory;
@@ -88,7 +85,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       .subscribe((deletedCategory) => {
         if(deletedCategory.id === this.selectedCategory?.id || deletedCategory.id === this.selectedCategory?.parent) {
           this.selectedCategory = null;
-          this.router.navigate(['']);
+          console.log(1);
+          this.router.navigate(['maintenance'], { relativeTo: this.route });
         }
       });
 
@@ -165,9 +163,9 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public onSelectCategory(node: Category): void {
     this.selectedCategory = node;
     if(node.parent) {
-      this.router.navigate(['/details', node.id, node.parent, node.name]);
+      this.router.navigate(['details', node.id, node.parent, node.name], { relativeTo: this.route });
     } else {
-      this.router.navigate(['/category-details', node.id]);
+      this.router.navigate(['category-details', node.id], { relativeTo: this.route });
     }
   }
 

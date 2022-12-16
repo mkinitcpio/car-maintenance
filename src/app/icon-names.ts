@@ -31,5 +31,6 @@ export const iconsNames = [
   'error',
   'empty',
   'paper',
-  'paper-empty'
+  'paper-empty',
+  'folder',
 ];
