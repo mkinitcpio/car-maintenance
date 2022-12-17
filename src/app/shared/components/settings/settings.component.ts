@@ -12,6 +12,7 @@ import { CurrencyEnum } from "./currency.enum";
 import { NavigationTabEnum } from "./navigation-tab.enum";
 import { regionOptions } from "./region-options";
 import { currencyOptions } from "./currency-options";
+import { startPageOptions } from "./start-page-options";
 
 import { SettingsService } from "./settings.service";
 
@@ -29,6 +30,7 @@ export class SettingsComponent {
   public languageOptions = languageOptions;
   public regionOptions = regionOptions;
   public currencyOptions = currencyOptions;
+  public startPageOptions = startPageOptions;
 
   public MetricSystemEnum = MetricSystemEnum;
   public IconTypeEnum = IconTypeEnum;

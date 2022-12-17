@@ -18,6 +18,21 @@
           </div>
         </app-setting>
 
+        <mat-divider class="settings__divider"></mat-divider>
+
+        <app-setting [label]="'Start page' | translate" icon="meeting_room">
+          <div class="settings__item-field settings__item-field--disable">
+            <mat-form-field class="settings__item-field settings__item-field--select">
+              <mat-select [value]="'maintenance'">
+                <mat-option *ngFor="let page of startPageOptions" [value]="page.value">
+                  {{ page.name }}
+                </mat-option>
+              </mat-select>
+              <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
+            </mat-form-field>
+          </div>
+        </app-setting>
+
         <app-setting *ngIf="false" [label]="'PAGES.SETTINGS.FIELDS.FIRST_TAB' | translate" icon="tab">
           <mat-button-toggle-group class="settings__toggle-group"
                                    [value]="this.settingsService.settings.firstTab"
