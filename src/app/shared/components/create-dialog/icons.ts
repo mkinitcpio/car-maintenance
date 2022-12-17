@@ -1,11 +1,18 @@
 export const icons = {
   others: [{
     value: 'wrench',
-  },{
+  },
+  {
     value: 'folder',
   },
   {
     value: 'star',
+  },
+  {
+    value: 'bolt',
+  },
+  {
+    value: 'termostat',
   },
   ],
   carParts: [{

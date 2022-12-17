@@ -10,5 +10,7 @@ export const groupIllustrationNames = [
   'wheel-1',
   'windshield',
   'wrench',
-  'star'
+  'star',
+  'bolt',
+  'termostat',
 ];
