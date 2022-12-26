@@ -15,6 +15,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { MaintenanceModule } from 'app/maintenance/maintenance.module';
 import { SideNavigationTrackerService } from './side-navigation-tracker.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [HomeComponent, NavigationBarComponent],
@@ -30,6 +31,7 @@ import { SideNavigationTrackerService } from './side-navigation-tracker.service'
     MatBadgeModule,
     MatTooltipModule,
     RouterModule,
+    TranslateModule,
   ],
   providers: [
     SideNavigationTrackerService,

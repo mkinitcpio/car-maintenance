@@ -30,6 +30,7 @@
         },
         "FIELDS": {
           "LANG": "Язык",
+          "START_PAGE": "Начальная страница",
           "REGION": "Регион",
           "DATABASE_PATH": "База данных",
           "ICONS": "Иконки",
@@ -107,6 +108,14 @@
       "NEW_FEATURES": "Добавленный функционал",
       "BUGFIXES": "Исправленные ошибки",
       "IMPROVEMENTS": "Улучшения"
+    },
+    "FEEDBACK": {
+      "TITLE": "Обратная связь",
+      "QUESTION_TITLE": "Задать вопрос",
+      "OPTIONS": {
+        "BUG": "Баг",
+        "FEATURE": "Новый функционал"
+      }
     },
     "DELETE": {
       "TITLE": "Подтверждение удаления",
@@ -200,5 +209,12 @@
     "MI": "mi"
   },
   "ERROR": "Упс, что-то пошло не так.",
-  "FEEDBACK_SUCCESS": "Отзыв отправлен."
+  "FEEDBACK_SUCCESS": "Отзыв отправлен.",
+  "NAVIGATIONS": {
+    "DASHBOARD": "Главная",
+    "RECORDS": "Записи",
+    "TASKS": "Задания",
+    "STORAGE": "Склад",
+    "STATISTIC": "Статистика"
+  }
 }

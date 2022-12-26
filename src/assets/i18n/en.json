@@ -30,6 +30,7 @@
       },
       "FIELDS": {
         "LANG": "Language",
+        "START_PAGE": "Start page",
         "REGION": "Region",
         "DATABASE_PATH": "Database",
         "ICONS": "Icons",
@@ -207,5 +208,12 @@
     "MI": "mi"
   },
   "ERROR": "Oops, something was wrong.",
-  "FEEDBACK_SUCCESS": "Feedback submitted."
+  "FEEDBACK_SUCCESS": "Feedback submitted.",
+  "NAVIGATIONS": {
+    "DASHBOARD": "Dashboard",
+    "RECORDS": "Records",
+    "TASKS": "Tasks",
+    "STORAGE": "Storage",
+    "STATISTIC": "Charts"
+  }
 }

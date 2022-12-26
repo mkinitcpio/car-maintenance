@@ -2,23 +2,23 @@ import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
 
 export const startPageOptions = [
   {
-    name: 'Dashboard',
+    name: 'NAVIGATIONS.DASHBOARD',
     value: NavigationEnum.Dashboard,
   },
   {
-    name: 'Records',
+    name: 'NAVIGATIONS.RECORDS',
     value: NavigationEnum.Maintenance,
   },
   {
-    name: 'Tasks',
+    name: 'NAVIGATIONS.TASKS',
     value: NavigationEnum.Tasks,
   },
   {
-    name: 'Storage',
+    name: 'NAVIGATIONS.STORAGE',
     value: NavigationEnum.Storage,
   },
   {
-    name: 'Statistic',
+    name: 'NAVIGATIONS.STATISTIC',
     value: NavigationEnum.Statistic,
   },
 ];
