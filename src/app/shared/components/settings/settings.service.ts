@@ -12,6 +12,7 @@ import { MetricSystemEnum } from "./metric-system.enum";
 import { NavigationTabEnum } from "./navigation-tab.enum";
 import { SettingsTypeEnum } from "./settings-type.enum";
 import { ColorEnum } from "./colors-enum";
+import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
 @Injectable({
   providedIn: "root",
 })
@@ -41,6 +42,7 @@ export class SettingsService {
     this.defaultSettings = {
       language: this.translate.getBrowserLang(),
       databasePath: null,
+      startPage: NavigationEnum.Dashboard,
       region: this.translate.getBrowserLang() as LocaleEnum,
       appearance: {
         iconPack: "default",
@@ -92,7 +94,11 @@ export class SettingsService {
       if (!this.settings.firstTab === undefined) {
         this.settings.firstTab = this.defaultSettings.firstTab;
       }
-     
+
+      if (!this.settings.startPage) {
+        this.settings.startPage = this.defaultSettings.startPage;
+      }
+
       if (this.settings.appearance.primaryColor === undefined) {
         this.settings.appearance.primaryColor = ColorEnum.Default;
       }
@@ -147,6 +153,10 @@ export class SettingsService {
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Database,
     });
+  }
+
+  public setStartPage(navigationRoute: NavigationEnum): void {
+    this.settings.startPage = navigationRoute;
   }
 
   public setMetricSystem(metricSystem: MetricSystemEnum): void {

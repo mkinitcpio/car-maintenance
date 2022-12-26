@@ -5,5 +5,6 @@ export enum SettingsTypeEnum {
   Region,
   All,
   FirstTab,
-  Color
+  Color,
+  StartPage,
 }

@@ -23,9 +23,9 @@
         <app-setting [label]="'Start page' | translate" icon="meeting_room">
           <div class="settings__item-field settings__item-field--disable">
             <mat-form-field class="settings__item-field settings__item-field--select">
-              <mat-select [value]="'maintenance'">
+              <mat-select [value]="settingsService.settings.startPage" (valueChange)="onStartPageChanged($event)">
                 <mat-option *ngFor="let page of startPageOptions" [value]="page.value">
-                  {{ page.name }}
+                  {{page.name}}
                 </mat-option>
               </mat-select>
               <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>

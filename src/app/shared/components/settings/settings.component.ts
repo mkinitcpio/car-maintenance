@@ -19,6 +19,7 @@ import { SettingsService } from "./settings.service";
 import { colors } from './colors';
 
 import { AppConfig } from 'environments/environment';
+import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
 
 @Component({
   selector: "app-settings",
@@ -91,6 +92,11 @@ export class SettingsComponent {
 
   public onAnimationsChanged(checked: boolean): void {
     this.settingsService.setAnimations(checked);
+    this.settingsService.saveSettings();
+  }
+
+  public onStartPageChanged(navigationRoute: NavigationEnum): void {
+    this.settingsService.setStartPage(navigationRoute);
     this.settingsService.saveSettings();
   }
 

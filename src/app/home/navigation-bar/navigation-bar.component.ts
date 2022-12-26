@@ -7,6 +7,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { NavigationButton } from './interfaces';
 import { navigationButtons } from './navigation-buttons';
 import { filter } from 'rxjs/operators';
+import { SettingsService } from '@shared/components/settings/settings.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -23,11 +24,12 @@ export class NavigationBarComponent implements OnInit {
   constructor(
     private dialogManagerService: DialogManagerService,
     private electronService: ElectronService,
+    private settingsService: SettingsService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.router.navigate([this.defaultRoute]);
+    this.router.navigate([this.settingsService.settings.startPage]);
 
     this.router.events
       .pipe(

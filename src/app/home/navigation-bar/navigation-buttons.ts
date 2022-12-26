@@ -1,23 +1,24 @@
 import { NavigationButton } from "./interfaces";
+import { NavigationEnum } from './navigation.enum';
 
 export const navigationButtons: NavigationButton[] = [{
   icon: 'dashboard',
-  route: 'dashboard',
+  route: NavigationEnum.Dashboard,
   tooltipText: 'Dashboard',
 },{
   icon: 'tree',
-  route: 'maintenance',
+  route: NavigationEnum.Maintenance,
   tooltipText: 'Maintenance',
 },{
   icon: 'task',
-  route: 'tasks',
+  route: NavigationEnum.Tasks,
   tooltipText: 'Tasks',
 },{
   icon: 'store',
-  route: 'storage',
+  route: NavigationEnum.Storage,
   tooltipText: 'Storage',
 },{
   icon: 'chart',
-  route: 'statistic',
+  route: NavigationEnum.Statistic,
   tooltipText: 'Statistic',
 }];
