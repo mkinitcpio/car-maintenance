@@ -27,7 +27,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field [floatLabel]="'always'">
-      <mat-label>Text</mat-label>
+      <mat-label>{{"DIALOG.FIELDS.TEXT" | translate}}</mat-label>
       <textarea cdkFocusInitial class="feedback__note" [formControlName]="'text'" matInput [required]="true"></textarea>
       <mat-error *ngIf="feedbackForm.get('text').hasError('required')">
         {{'DIALOG.VALIDATIONS.TEXT' | translate}}
