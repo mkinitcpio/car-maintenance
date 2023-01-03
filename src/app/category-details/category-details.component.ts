@@ -193,4 +193,8 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     const height = 0;
     return `${[...(content.children as any)].reduce((acc, curr) => acc + curr.getBoundingClientRect().height, height)}px`;
   }
+
+  public onNavigateToDetails(id: string, name: string): void {
+    this.router.navigate(['maintenance/details', id, this.categoryDetails.data.id, name]);
+  }
 }

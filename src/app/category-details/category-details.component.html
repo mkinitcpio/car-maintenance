@@ -104,7 +104,10 @@
                *ngFor="let table of categoryDetails.tables; let i = index; let last = last; let first = first"
       >
         <div class="category-details__table-header">
-          <span class="category-details__table-title">{{table.name}}</span>
+          <div class="category-details__table-title" matRipple (click)="onNavigateToDetails(table.id, table.name)">
+            <span class="category-details__table-title-text">{{table.name}}</span>
+              <mat-icon class="category-details__table-title-icon">chevron_right</mat-icon>
+          </div>
           <div class="category-details__panel">
             <div class="category-details__tables-title-buttons">
               <app-button button-transparent (click)="expandPanelToggles[i] = !expandPanelToggles[i]">
