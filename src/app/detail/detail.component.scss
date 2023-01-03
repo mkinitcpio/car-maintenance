@@ -1,60 +1,8 @@
+@use "/src/mixins" as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .detail {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  user-select: none;
-
-  &__title-container {
-    padding: 9px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background-color: rgb(50, 48, 48);
-  }
-
-  &__title {
-    font-family: Ubuntu;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  &__title-text {
-    font-size: 24px;
-    line-height: 25px;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 8px;
-  }
-
-  &__add-button {
-    min-width: initial;
-    padding: 0 8px;
-
-    border-radius: 8px;
-    font-family: Ubuntu;
-    font-weight: normal;
-    background-color: rgb(75,72,72);
-    border: 1px solid rgb(43,42,42);
-    color: #fff;
-  }
-
-  &__content {
-    padding: 24px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    overflow: hidden;
-  }
-
   &__table {
     flex: 1;
     overflow: hidden;
@@ -67,9 +15,10 @@
     align-items: center;
     justify-content: center;
 
-    font-family: Ubuntu;
-    font-weight: lighter;
+    font-family: $font-system;
+    font-weight: normal;
     font-size: 32px;
+    color: $font-secondary;
   }
 
   &__empty-text {
@@ -82,17 +31,5 @@
   &__cards {
     display: flex;
     gap: 16px;
-  }
-
-  .card {
-
-    &__stat {
-      display: flex;
-      align-items: center;
-
-      font-family: Ubuntu;
-      font-size: 18px;
-      color: $font-primary;
-    }
   }
 }

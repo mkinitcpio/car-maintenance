@@ -1,32 +1,40 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 :host {
   display: block;
 }
 
 .categories-tree-node {
-  font-family: 'Ubuntu';
+  font-family: $font-system;
   width: 100%;
-  margin: 1px 0;
 
   list-style: none;
 
   &__sub-node {
-    margin: 0;
+    display: flex;
+
     visibility: hidden;
     overflow: hidden;
-    transition: height 0.2s ease-out;
+    transition: height 225ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &--expanded {
       visibility: visible;
     }
   }
 
+  &__sub-node-item {
+    padding: 4px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   &__icon-container {
     display: flex;
     align-items: center;
     width: 22px;
-    margin: 0px 4px;
   }
 
   &__name {
@@ -36,21 +44,23 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    transition: transform 0.2s ease-in;
   }
 
   &__icon {
-    width: 18px;
+    color: #4b4848;
   }
 
   &__content {
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 42px;
     padding: 0 8px;
+    gap: 6px;
 
     color: $font-primary;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 12px;
     line-height: 1.5rem;
     transition: background-color 0.1s ease-out;
 
@@ -61,6 +71,18 @@
     &--select {
       color: white;
       background: var(--primary-color);
+
+      .categories-tree-node__name {
+        transform: translate(2px);
+      }
+
+      .categories-tree-node__icon {
+        color: white;
+      }
+
+      .categories-tree-node__expand-button {
+        color: white;
+      }
     }
 
     &--select:hover {
@@ -72,28 +94,19 @@
   &__expand-button-container {
     display: flex;
     align-items: center;
-    height: 22px;
-    width: 22px;
+    height: 24px;
+    width: 24px;
     margin-left: auto;
   }
 
   &__expand-button {
-    height: 22px;
-    width: 22px;
-
-    font-size: 22px;
+    color: #4b4848;
     user-select: none;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s linear;
     transform: rotate(0deg);
 
     &--expanded {
-      transform: rotate(90deg);
+      transform: rotateX(180deg);
     }
-  }
-}
-
-.categories-tree-node__content--select {
-  .categories-tree-node__icon--mono {
-    filter: invert(1);
   }
 }

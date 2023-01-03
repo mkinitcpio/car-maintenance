@@ -1,30 +1,28 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 .widget {
   width: fit-content;
   display: flex;
   flex-direction: column;
+  gap: 12px;
   padding: 16px;
 
   box-sizing: border-box;
 
   background: white;
-  box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
+  box-shadow: rgb(0 0 0 / 10%) 0px 1px 2px 0px;
 
-  border-radius: 8px;
+  border-radius: 24px;
 
   user-select: none;
 
-  &__title {
+  &__title-section {
     display: flex;
     align-items: center;
     gap: 4px;
-    margin-top: 0;
-    margin-bottom: 8px;
 
-    font-family: Ubuntu;
-    font-size: 14px;
-    color: $font-primary;
+    font-family: $font-system;
   }
 
   &__info {
@@ -38,5 +36,26 @@
 
   &__actions {
     margin-left: auto;
+  }
+
+  &__title {
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    font-size: 14px;
+    color: #4b4848;
+    gap: 8px;
+    margin: 0px;
+  }
+
+  &__illustration {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    color: $color-primary;
+    padding: 6px;
+    background-color: $color-secondary;
+    border-radius: 10px;
   }
 }

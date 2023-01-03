@@ -1,0 +1,39 @@
+<section class="navigation-bar">
+  <app-button class="navigation-bar__side-nav-button" button-transparent appSideNavTracker>
+    <mat-icon svgIcon="menu"></mat-icon>
+  </app-button>
+  <nav class="navigation-bar__navigation">
+    <nav class="navigation-bar__modules-routes">
+      <a *ngFor="let button of navigationButtons"
+          class="navigation-bar__button-container"
+          [routerLink]="!currentRoute?.includes(button.route) ? button.route : null"
+          routerLinkActive="navigation-bar__button-container--selected">
+        <div class="navigation-bar__button-selector"></div>
+          <app-button button-transparent
+                      [matTooltip]="button.tooltipText | translate"
+                      matTooltipPosition="right">
+            <mat-icon class="navigation-bar__button-icon" [svgIcon]="button.icon"></mat-icon>
+          </app-button>
+        </a>
+    </nav>
+
+    <div class="navigation-bar__divider"></div>
+
+    <div class="navigation-bar__dev-buttons" *ngIf="!AppConfig.production">
+      <app-button button-transparent (click)="onRefreshApp()">
+        <mat-icon svgIcon="refresh"></mat-icon>
+      </app-button>
+      <app-button button-transparent (click)="onOpenDevTools()">
+        <mat-icon svgIcon="terminal"></mat-icon>
+      </app-button>
+    </div>
+
+    <app-button *ngIf="false" button-transparent (click)="onOpenAccount()">
+      <mat-icon svgIcon="user"></mat-icon>
+    </app-button>
+
+    <app-button button-transparent (click)="openSettings()">
+      <mat-icon svgIcon="settings"></mat-icon>
+    </app-button>
+  </nav>
+</section>

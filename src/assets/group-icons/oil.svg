@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<path d="M3.5 21.5L3.5 8.75965L8.82465 4.5L12.207 4.5L14.5 6.79301L14.5 10.329L14.398 10.463C12.8517 12.4973 12 14.1973 12 15.25C12 16.7923 12.858 18.217 14.239 18.968L14.5 19.11L14.5 21.5L3.5 21.5ZM6 9.5C5.72434 9.5 5.5 9.72434 5.5 10L5.5 16C5.5 16.2757 5.72434 16.5 6 16.5L8 16.5C8.27566 16.5 8.5 16.2757 8.5 16L8.5 10C8.5 9.72434 8.27566 9.5 8 9.5L6 9.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<g opacity="1">
+<path d="M8 9L6 9C5.44766 9 5 9.44766 5 10L5 16C5 16.5523 5.44766 17 6 17L8 17C8.55234 17 9 16.5523 9 16L9 10C9 9.44766 8.55234 9 8 9ZM8 16L6 16L6 10L8 10L8 16Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M16.9943 8.33199C16.8047 8.12066 16.534 8 16.25 8C15.966 8 15.6954 8.12066 15.5057 8.33199C15.3987 8.45098 15.2187 8.65633 15 8.91465L15 7C15 6.73465 14.8946 6.48035 14.707 6.29301L13 4.58566L13 3C13 2.44766 12.5523 2 12 2L9 2C8.44766 2 8 2.44766 8 3L8 4.51934L3.37535 8.21898C3.13801 8.40898 3 8.69633 3 9L3 21C3 21.5523 3.44766 22 4 22L14 22C14.5523 22 15 21.5523 15 21L15 19.812C15.401 19.922 15.8146 20 16.25 20C18.8693 20 21 17.869 21 15.25C21 12.9143 17.6633 9.07766 16.9943 8.33199ZM9 3L12 3L12 4L9 4L9 3ZM14 21L4 21L4 9L9 5L12 5L14 7L14 10.1604C12.846 11.6784 11.5 13.766 11.5 15.25C11.5 17.051 12.519 18.602 14 19.407L14 21ZM16.25 19C14.179 19 12.5 17.321 12.5 15.25C12.5 13.179 16.25 9 16.25 9C16.25 9 20 13.179 20 15.25C20 17.321 18.321 19 16.25 19Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+</g>
+</g>
+</g>
+</svg>

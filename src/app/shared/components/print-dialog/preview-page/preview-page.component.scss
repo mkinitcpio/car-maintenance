@@ -1,4 +1,5 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 :host {
   display: block;
@@ -7,14 +8,14 @@
 
 .preview-page {
   width: 100%;
-  padding: 18px;
+  padding: 24px;
   aspect-ratio: 1 / 1.4142;
 
   overflow: hidden;
-  font-family: Ubuntu;
-  background: white;
+  border-radius: 18px;
+  border: 1.5px solid #ebebeb;
+  font-family: $font-system;
   box-sizing: border-box;
-  box-shadow: 0 1px 0 0 $separator-color, 0 0 0 1px #e7e8ec;
   user-select: none;
 
   &__title-container {
@@ -74,7 +75,7 @@
   &__table {
     width: 100%;
 
-    font-family: Ubuntu;
+    font-family: $font-system;
     border: 1px solid black;
     border-bottom: none;
     

@@ -12,9 +12,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { HomeModule } from './home/home.module';
 import { DetailModule } from './detail/detail.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
+import { StorageModule } from './storage/storage.module';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -22,8 +23,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { DataBaseService } from './core/database';
 import {DatabaseSelectModule} from "./database-select/database-select.module";
 import { WelcomePageModule } from "./welcome-page/welcome-page.module";
-
-import { VersionService } from "@core/services/version.service";
+import { MaintenanceModule } from "./maintenance/maintenance.module";
+import { AppRoutingModule } from './app-routing.module';
+import { AppGuard } from './app.guard';
+import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -35,6 +39,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    RouterModule,
+    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     CoreModule,
@@ -43,6 +49,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DetailModule,
     DatabaseSelectModule,
     WelcomePageModule,
+    DashboardModule,
+    MaintenanceModule,
+    StorageModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -56,7 +65,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   providers: [
     DataBaseService,
-    VersionService,
+    AppGuard,
   ],
   bootstrap: [AppComponent]
 })

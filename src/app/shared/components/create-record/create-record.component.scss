@@ -1,82 +1,35 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 .create-record {
+  .mat-form-field {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
 
-  &__header {
-    height: 42px;
-    padding: 4px 8px;
+  &__note {
+    height: 128px;
+    resize: none;
+  }
+
+  .date-picker {
+    &__toggle {
+      position: absolute;
+      top: -34px;
+      right: 6px;
+
+      font-size: 20px;
+      color: #4b4848;
+    }
+  }
+
+  &__flex-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 
-    font-family: "Ubuntu";
-    background-color: rgb(50, 48, 48);
-  }
-
-  &__header-text {
-    color: white;
-  }
-
-  &__button-container {
-    display: flex;
-    align-items: center;
-
-    &:first-child {
-      margin-right: auto;
-      justify-content: flex-start;
-    }
-
-    &:last-child {
-      margin-left: auto;
-      justify-content: flex-end;
+    > * {
+      width: 48%;
     }
   }
-
-  &__content {
-    padding: 16px 32px;
-
-    mat-form-field {
-      font-family: 'Ubuntu';
-      font-weight: lighter;
-      width: 100%;
-
-      &.mat-form-field-invalid mat-label {
-        caret-color: #c7162b;
-        color: #c7162b !important;
-      }
-
-      mat-label {
-        color: $font-primary;
-        font-weight: lighter;
-        font-size: 20px;
-      }
-
-      input:placeholder-shown {
-        font-size: 16px;
-      }
-    }
-
-    mat-error {
-      color: #c7162b;
-    }
-  }
-}
-
-.button {
-  font-family: Ubuntu;
-  font-weight: normal;
-  color: $font-primary;
-  border-radius: 8px;
-}
-
-.button__submit {
-  background-color: #0d7f1e;
-  border-color: rgba(0,0,0,0.56);
-  color: #fff;
-}
-
-.button__cancel {
-  background-color: rgb(75, 72, 72);
-  border-color: rgb(48,47,47);
-  color: #fff;
 }

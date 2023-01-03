@@ -1,23 +1,27 @@
+@import '/src/fonts';
+@import '/src/colors';
+
 .empty {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &__text {
+  user-select: none;
+
+  &__container {
+    font-family: $font-system;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    font-family: Ubuntu;
-    font-size: 32px;
-    font-weight: 100;
-    color: #333;
+    gap: 4px;
+    font-size: 18px;
+    color: #4b4848;
   }
 
   &__icon {
-    height: 64px;
-    width: 64px;
-    margin-right: 16px;
-    font-size: 64px;
-    color: #333;
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
   }
 }

@@ -1,7 +1,8 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-require('@electron/remote/main').initialize();
+import { initialize, enable as enableRemote } from "@electron/remote/main";
+initialize();
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -15,11 +16,13 @@ function createWindow(): BrowserWindow {
     title: `Car Maintenance`,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true,
+      webSecurity: false,
       allowRunningInsecureContent: (serve) ? true : false,
       contextIsolation: false,// true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
     },
   });
+
+  enableRemote(win.webContents);
 
   win.setMenu(null);
   if (serve) {

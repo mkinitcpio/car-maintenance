@@ -17,10 +17,12 @@ import { CreateCarDialogModule } from './components/create-car-dialog/create-car
 import { ReleaseNotesModule } from './components/release-notes/release-notes.module';
 import { DeleteDialogModule } from './components/delete-dialog/delete-dialog.module';
 import { SettingsModule } from './components/settings/settings.module';
-import { UbuntuCloseButtonModule } from './ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { UbuntuContainerModule } from './ubuntu/ubuntu-container/ubuntu-container.module';
 import { PrintDialogModule } from './components/print-dialog/print-dialog.module';
 import { TabsModule } from './components/tabs/tabs.module';
+import { ColorSelectorModule } from './components/color-selector/color-selector.module';
+import { AccountDialogModule } from './components/account-dialog/account-dialog.module';
+import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
 
 @NgModule({
   declarations: [
@@ -42,10 +44,12 @@ import { TabsModule } from './components/tabs/tabs.module';
     CreateCarDialogModule,
     ReleaseNotesModule,
     DeleteDialogModule,
-    UbuntuCloseButtonModule,
     UbuntuContainerModule,
     PrintDialogModule,
     TabsModule,
+    ColorSelectorModule,
+    AccountDialogModule,
+    FeedbackDialogModule,
   ],
   exports: [
     TranslateModule,

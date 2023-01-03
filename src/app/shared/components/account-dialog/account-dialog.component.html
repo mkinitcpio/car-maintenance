@@ -1,0 +1,18 @@
+<div class="account-dialog">
+  <app-dialog [title]="'Account'"
+              hideFooter="true"
+              (close)="onClose()"
+  >
+  <section class="account-dialog__account-container" content>
+    <div class="account-dialog__account-icon-container">
+      <mat-icon svgIcon="user" class="account-dialog__account-icon"></mat-icon>
+    </div>
+    <div class="account-dialog__data">
+      <mat-form-field [floatLabel]="'always'">
+        <mat-label>{{"Name" | translate}}</mat-label>
+        <input cdkFocusInitial matInput>
+      </mat-form-field>
+    </div>
+  </section>
+  </app-dialog>
+</div>

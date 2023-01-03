@@ -5,14 +5,12 @@ import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum"
 import { NavigationFacade } from "./state/navigation.facade";
 import { Category, CategoryTree, CategoryTypeEnum } from "./state/interface";
 
-import { NavigationEnd, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { DialogManagerService } from "../shared/services/dialog-manager.service";
 
 import { listen } from "../core/decorators";
 import { merge } from "rxjs";
 import { AutoCloseable } from "../core/auto-closeable";
-import { ElectronService } from "../core/services";
-import { ReleaseNotesService } from "../shared/components/release-notes/release-notes.service";
 import { filter, map, skip, switchMap, take } from "rxjs/operators";
 import { DataBaseService } from "../core/database";
 
@@ -20,7 +18,6 @@ import { SideNavigationTrackerService } from "../home/side-navigation-tracker.se
 import { CarCategoryFormData } from "@core/interfaces/car-category";
 import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
-import { VersionService } from "@core/services/version.service";
 
 @Component({
   selector: "app-navigation",
@@ -56,21 +53,18 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public selected: string = null;
   public categories: CategoryTree[];
   public CategoryTypeEnum = CategoryTypeEnum;
+  public selectedTabIndex = 0;
 
   public tabs = ['PAGES.NAVIGATION.TABS.CATEGORIES', 'PAGES.NAVIGATION.TABS.CARS'];
 
-  private readonly repositoryLink = "https://github.com/mkinitcpio/car-maintenance";
-
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
-    private electronService: ElectronService,
-    private releaseNotesService: ReleaseNotesService,
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
     public sideNavService: SideNavigationTrackerService,
-    public versionService: VersionService,
   ) {
     super();
   }
@@ -81,7 +75,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       .pipe(
         filter(e => e instanceof NavigationEnd),
         map((e: NavigationEnd) => e.url.split('/').filter(Boolean)),
-        map(pathTokens => pathTokens[1]),
+        map(pathTokens => pathTokens[2]),
       )
       .subscribe((selectedCategory) => {
         this.selected = selectedCategory;
@@ -91,7 +85,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       .subscribe((deletedCategory) => {
         if(deletedCategory.id === this.selectedCategory?.id || deletedCategory.id === this.selectedCategory?.parent) {
           this.selectedCategory = null;
-          this.router.navigate(['']);
+          this.router.navigate(['maintenance']);
         }
       });
 
@@ -168,9 +162,9 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public onSelectCategory(node: Category): void {
     this.selectedCategory = node;
     if(node.parent) {
-      this.router.navigate(['/details', node.id, node.parent, node.name]);
+      this.router.navigate(['details', node.id, node.parent, node.name], { relativeTo: this.route });
     } else {
-      this.router.navigate(['/category-details', node.id]);
+      this.router.navigate(['category-details', node.id], { relativeTo: this.route });
     }
   }
 
@@ -214,23 +208,19 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public openSettings(): void {
-    this.dialogManagerService.openSettingsDialog();
-  }
-
-  public openReleaseNotes(): void {
-    this.dialogManagerService.openReleaseNotesDialog(this.releaseNotesService.releaseNotes);
-  }
-
-  public openRepository(): void {
-    this.electronService.shell.openExternal(this.repositoryLink);
-  }
-
   public onFeedback(): void {
     this.dialogManagerService.openFeedbackDialog();
   }
 
   public fitlerCategoriesByType(categories: CategoryTree[] ,type: CategoryTypeEnum): CategoryTree[] {
     return categories.filter(category => category.type === type);
+  }
+
+  public onSelectTab(index: number): void {
+    this.selectedTabIndex = index;
+  }
+
+  public onAdd(selectedTabIndex: number): void {
+    selectedTabIndex ? this.addCarCategory() : this.addCategory();
   }
 }

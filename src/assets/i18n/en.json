@@ -2,6 +2,10 @@
   "PAGES": {
     "WELCOME": {
       "SUBTITLE": "Create. Organize. Schedule.",
+      "NEED_HELP": "Need Help?",
+      "GITHUB": "Look at GitHub",
+      "MAIL": "Mail us",
+      "QUESTION": "Ask question",
       "BUTTONS": {
         "GET_STARTED": "Get Started"
       }
@@ -9,7 +13,21 @@
     "DATABASE_SELECT": {
         "TEXT": "Create or select existing Database",
         "CREATE": "Create",
-        "OPEN": "Select"
+        "OPEN": "Open"
+    },
+    "DASHBOARD": {
+      "FEEDBACK": {
+        "TITLE": "Feedback",
+        "DESCRIPTION": "Request a feature, report a bug"
+      },
+      "SOURCE_CODE": {
+        "TITLE": "Source code",
+        "DESCRIPTION": "Clone, edit and even more"
+      },
+      "CHANGELOG": {
+        "TITLE": "",
+        "DESCRIPTION": "See what's new"
+      }
     },
     "DETAIL": {
       "EMPTY": "No Records",
@@ -26,6 +44,7 @@
       },
       "FIELDS": {
         "LANG": "Language",
+        "START_PAGE": "Start page",
         "REGION": "Region",
         "DATABASE_PATH": "Database",
         "ICONS": "Icons",
@@ -33,7 +52,8 @@
         "MONO": "Mono",
         "CURRENCY": "Currency",
         "METRIC_SYSTEM": "Metric system",
-        "ANIMATION": "Animations"
+        "ANIMATION": "Animations",
+        "COLORS":"Color"
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"
@@ -41,24 +61,22 @@
       "BUTTONS": {
         "CHANGE": "Change",
         "CARS": "Cars",
-        "CATEGORIES": "Categories"
+        "CATEGORIES": "Groups"
       }
     },
     "EMPTY": {
-      "TEXT": "Select Category"
+      "TEXT": "Select Group"
     },
     "PDF_EXPORT": {
-      "CONFIGURATIONS": "Configurations",
       "PATH": "Path to save",
       "ORDER_AND_VISIBILITY": "Order and visibility",
-      "PREVIEW": "Preview",
-      "OTHER": "Other",
+      "TITLE": "Export to PDF",
       "SHOW_TOTAL_SUM": "Show total expense for each table",
       "TOTAL": "Total"
     },
     "NAVIGATION": {
       "TABS": {
-        "CATEGORIES": "Categories",
+        "CATEGORIES": "Groups",
         "CARS": "Cars"
       }
     },
@@ -91,26 +109,33 @@
     "SETTINGS":"Settings",
     "WHATS_NEW": "What's new",
     "FEEDBACK": "Feedback",
-    "CAR": "Car",
-    "CATEGORY": "Category",
+    "CAR": "New car",
+    "CATEGORY": "New Group",
     "UPDATE": "Update available"
   },
   "DIALOG": {
     "ADD": "Add",
     "EDIT": "Edit",
-    "FEEDBACK": "Feedback",
     "RELEASE_NOTES": {
       "TITLE": "Version",
       "NEW_FEATURES": "New Features",
       "BUGFIXES": "Bug Fixes",
       "IMPROVEMENTS": "Improvements"
     },
-    "DELETE": {
-      "TITLE": "Confirm Deletion",
-      "CATEGORY": "Delete category",
-      "RECORD": "Delete record"
+    "FEEDBACK": {
+      "TITLE": "Feedback",
+      "QUESTION_TITLE": "Ask Question",
+      "OPTIONS": {
+        "BUG": "Bug",
+        "FEATURE": "Feature"
+      }
     },
-    "CATEGORY": "Category",
+    "DELETE": {
+      "TITLE": "Confirm Delete",
+      "CATEGORY": "Do you really want to delete this group? This process cannot be undone.",
+      "RECORD": "Do you really want to delete this record? This process cannot be undone."
+    },
+    "CATEGORY": "Group",
     "CAR": "Car",
     "COMMON": "Common",
     "INFO": "Information",
@@ -119,6 +144,7 @@
     "BUTTONS": {
       "ADD": "Add",
       "EDIT": "Edit",
+      "SEND": "Send",
       "DELETE": "Delete",
       "CANCEL": "Cancel",
       "CHANGE": "Change",
@@ -128,6 +154,8 @@
     "VALIDATIONS": {
       "NAME": "Enter the Name.",
       "DATE": "Enter the correct Date.",
+      "EMAIL": "Enter valid Email.",
+      "TEXT": "Enter text.",
       "EXPENSE": {
         "REQIRED": "Enter the Expense."
       },
@@ -136,8 +164,8 @@
     },
     "FIELDS": {
       "NAME": "Name",
-      "CATEGORY": "Category",
-      "ILLUSTRATION": "Illustration",
+      "CATEGORY": "Group",
+      "ILLUSTRATION": "Icon",
       "MILEAGE": "Mileage",
       "DATE": "Date",
       "YEAR": "Year",
@@ -149,6 +177,10 @@
       "COMMENT": "Comment",
       "TEXT": "Text",
       "TYPE": "Type"
+    },
+    "ICON_GROUPS": {
+      "CAR_PARTS": "Car parts",
+      "OTHERS": "Others"
     },
     "TOOLTIPS": {
       "CAR_PARTS": "Car parts that you will maintain"
@@ -190,5 +222,13 @@
     "MI": "mi"
   },
   "ERROR": "Oops, something was wrong.",
-  "FEEDBACK_SUCCESS": "Feedback submitted."
+  "FEEDBACK_SUCCESS": "Feedback submitted.",
+  "NAVIGATIONS": {
+    "DASHBOARD": "Dashboard",
+    "RECORDS": "Records",
+    "EVENTS": "Events",
+    "STORAGE": "Storage",
+    "STATISTIC": "Charts"
+  },
+  "UNDER_DEV": "Under development"
 }

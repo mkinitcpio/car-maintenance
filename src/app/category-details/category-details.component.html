@@ -1,18 +1,31 @@
-<div class="category-details">
-  <div class="category-details__title-container">
-    <div class="category-details__title">
-      {{categoryDetails.data.name}}
-    </div>
-    <div class="category-details__buttons">
-      <button class="category-details__export-button" mat-button (click)="onPrint()">
-        <mat-icon>picture_as_pdf</mat-icon>
-      </button>
-    </div>
-  </div>
+<app-details [title]="categoryDetails.data.name" class="category-details">
+  <ng-container buttons-right>
+    <app-button button-transparent (click)="onPrint()">
+      <mat-icon svgIcon="printer"></mat-icon>
+    </app-button>
+  </ng-container>
 
-  <div class="category-details__content">
-    <div class="info-section">
-      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.INFO' | translate" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
+  <ng-container content>
+    <div class="category-details__info-section">
+      <div class="category-details__column">
+        <app-rich-widget *ngIf="categoryDetails.type === CategoryTypeEnum.Car"
+                          icon="speed"
+                          type="mileage"
+                          tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.MILEAGE"
+                          [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE'"
+                          value="{{categoryDetails.data.mileage}}"
+        >
+        </app-rich-widget>
+
+        <app-rich-widget icon="money"
+                type="currency"
+                tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
+                [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
+                value="{{totalCost}}"
+        >
+        </app-rich-widget>
+      </div>
+      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.INFO' | translate" icon="task" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
         <section class="car-info__content">
           <div class="car-info__raw">
             <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.VEHICLE_ID" | translate}}</span>
@@ -40,46 +53,90 @@
           </div>
         </section>
       </app-widget>
-  
-      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.NOTE' | translate" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
+      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.NOTE' | translate" icon="edit" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
         <textarea #notesInput class="category-details__notes" [value]="categoryDetails.maintenance.note" placeholder="Type some notes" (focusout)="onTextAreaFocusOut(notesInput.value)"></textarea>
       </app-widget>
-  
-      <div class="category-details__column">
-      <app-widget [title]="'PAGES.DETAIL.OVERALL_EXPENSE' | translate" [info]="'PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE' | translate">
-        <div class="car-info__status">
-          <span>{{totalCost | numberSeparator:this.settingsService.settings.region}}</span>
-          <app-currency [currency]="settingsService.settings.units?.currency"
-                        [locale]="settingsService.settings.region">
-          </app-currency>
-        </div>
-      </app-widget>
-  
-      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE' | translate" *ngIf="categoryDetails.type === CategoryTypeEnum.Car" [info]="'PAGES.CATEGORY_DETAILS.TOOLTIPS.MILEAGE' | translate">
-        <div class="car-info__status">
-          <span>{{categoryDetails.data.mileage | numberSeparator:this.settingsService.settings.region}}</span>
-          <span class="car-info__metric-system">{{ "METRIC_SYSTEM." + (settingsService.settings.units?.metricSystem || MetricSystemEnum[settingsService.settings.region]) | uppercase | translate}}</span>
-        </div>
-      </app-widget>
-    </div>
     </div>
 
-    <ubuntu-container [title]="table.name" *ngFor="let table of categoryDetails.tables">
-      <button actions
-              *ngIf="categoryDetails.type == CategoryTypeEnum.Car"
-              mat-icon-button
-              class="category-details__search-button"
-              [matMenuTriggerFor]="contextMenu"
-              [matMenuTriggerData]="{name: table.name}"
-      ><mat-icon>travel_explore</mat-icon></button>
-      <app-records-table class="category-details__table"
-                         *ngIf="table.data.length"
-                         [data]="table.data"
-                         (edit)="onEdit($event)"
-                         (delete)="onDelete($event)"
-      ></app-records-table>
-    </ubuntu-container>
-  </div>
+    <section *ngIf="false" class="category-details__tables">
+      <section class="category-details__table-container" [class.category-details__table-container--expand]="expandRecordsPanel">
+        <div class="category-details__table-header">
+          <span class="category-details__table-title">Записи <sup>(0)</sup></span>
+          <div class="category-details__panel">
+            <div class="category-details__tables-title-buttons">
+              <app-button button-transparent (click)="expandRecordsPanel = !expandRecordsPanel">
+                <mat-icon class="category-details__expand-button" [class.category-details__expand-button--expand]="expandRecordsPanel" svgIcon="expand"></mat-icon>
+              </app-button>
+            </div>
+          </div>
+
+        </div>
+        <div class="category-details__table-content" #detal [style.height]="expandRecordsPanel ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandRecordsPanel">
+          <app-records-table class="category-details__table"
+                            [data]="[]"
+                            (edit)="onEdit($event)"
+                            (delete)="onDelete($event)"
+          ></app-records-table>
+        </div>
+
+      </section>
+    </section>
+
+    <section class="category-details__tables">
+      <div class="category-details__tables-title">
+        <span>Группы</span>
+        <div class="category-details__tables-title-buttons" *ngIf="false">
+          <app-button button-transparent (click)="onAddRecord()">
+            <mat-icon svgIcon="add"></mat-icon>
+          </app-button>
+          <app-button button-transparent (click)="toogleExpandStates(false)">
+            <mat-icon>unfold_less</mat-icon>
+          </app-button>
+          <app-button button-transparent (click)="toogleExpandStates(true)">
+            <mat-icon>unfold_more</mat-icon>
+          </app-button>
+        </div>
+      </div>
+      <section class="category-details__table-container"
+               [class.category-details__table-container--border-bottom]="table.length !== 1 && ((!first && expandPanelToggles[i + 1]) || (first && expandPanelToggles[i + 1]))"
+               [class.category-details__table-container--border-top]="table.length !== 1 && ((!last && expandPanelToggles[i - 1]) || (last && expandPanelToggles[i - 1]))"
+               [class.category-details__table-container--expand]="expandPanelToggles[i]"
+               *ngFor="let table of categoryDetails.tables; let i = index; let last = last; let first = first"
+      >
+        <div class="category-details__table-header">
+          <span class="category-details__table-title">{{table.name}}</span>
+          <div class="category-details__panel">
+            <div class="category-details__tables-title-buttons">
+              <app-button button-transparent (click)="expandPanelToggles[i] = !expandPanelToggles[i]">
+                <mat-icon class="category-details__expand-button" [class.category-details__expand-button--expand]="expandPanelToggles[i]" svgIcon="expand"></mat-icon>
+              </app-button>
+            </div>
+          </div>
+
+        </div>
+        <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
+          <div *ngIf="false" class="category-details__table-content-panel">
+            <div class="category-details__total">
+              <span class="category-details__total-text">{{'PAGES.DETAIL.OVERALL_EXPENSE' | translate}}</span>
+              <div class="category-details__total-value">
+                <span>{{12332321 | numberSeparator:settingsService.settings.region}}</span>
+                <app-currency [size]="0" [currency]="settingsService.settings.units?.currency"
+                              [locale]="settingsService.settings.region">
+                </app-currency>
+              </div>
+
+            </div>
+          </div>
+          <app-records-table class="category-details__table"
+                            [data]="table.data"
+                            (edit)="onEdit($event)"
+                            (delete)="onDelete($event)"
+          ></app-records-table>
+        </div>
+
+      </section>
+    </section>
+  </ng-container>
 
   <mat-menu #contextMenu="matMenu">
     <ng-template matMenuContent let-name="name">
@@ -91,4 +148,4 @@
       </button>
     </ng-template>
   </mat-menu>
-</div>
+</app-details>

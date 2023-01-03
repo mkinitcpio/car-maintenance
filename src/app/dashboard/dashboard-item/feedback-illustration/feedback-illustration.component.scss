@@ -1,0 +1,9 @@
+@import '/src/colors';
+
+:host {
+  color: $color-primary;
+  position: absolute;
+  width: 112px;
+  bottom: -4px;
+  right: 8px;
+}

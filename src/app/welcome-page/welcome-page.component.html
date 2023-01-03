@@ -1,32 +1,28 @@
 <div class="welcome-page">
-  <div class="welcome-page__content">
-    <img class="welcome-page__app-icon"
-         src="assets/icons/app-icon.png"
-         [@title]="'in'">
-    <div class="welcome-page__title"
-         [@title]="'in'"
-         (@title.done)="typeWriter()">
-      Car Maintenance
+  <div class="welcome-page__form-container">
+    <div class="welcome-page__content">
+      <img class="welcome-page__app-icon"
+           src="assets/icons/app-icon.png">
+      <div class="welcome-page__title">Car Maintenance</div>
+      <div class="welcome-page__sub-title">{{'PAGES.WELCOME.SUBTITLE' | translate}}</div>
+      <app-database-select></app-database-select>
     </div>
-    <div class="welcome-page__sub-title">{{typableSubtitleText}}</div>
-    <div class="welcome-page__stretcher"></div>
-
-    <section class="welcome-page__buttons" [@buttons]="showButtons">
-      <button mat-button
-              class="welcome-page__get-started-button"
-              (click)="onGetStartedButtonClick()">
-        {{"PAGES.WELCOME.BUTTONS.GET_STARTED" | translate}}
-      </button>
-    </section>
-
-    <app-database-select [@selectDatabase]="showSelectDatabaseButtons"></app-database-select>
   </div>
-  <mat-icon [@rotateGear]="showSelectDatabaseButtons"
-            class="welcome-page__gear welcome-page__gear--top">
-    settings
-  </mat-icon>
-  <mat-icon [@rotateGear]="showSelectDatabaseButtons"
-            class="welcome-page__gear welcome-page__gear--bottom">
-    settings
-  </mat-icon>
+
+  <div class="welcome-page__illustration-container">
+    <div class="welcome-page__illustration">
+    </div>
+  </div>
+  <div class="welcome-page__buttons">
+    <span class="welcome-page__question-text">{{'PAGES.WELCOME.NEED_HELP' | translate}}</span>
+    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.QUESTION' | translate}}" (click)="onOpenFeedback()">
+      <mat-icon svgIcon="question"></mat-icon>
+    </app-button>
+    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.MAIL' | translate}}" (click)="onOpenMail()">
+      <mat-icon svgIcon="mail"></mat-icon>
+    </app-button>
+    <app-button button-transparent matTooltip="{{'PAGES.WELCOME.GITHUB' | translate}}" (click)="onOpenGitHub()">
+      <mat-icon svgIcon="github"></mat-icon>
+    </app-button>
+  </div>
 </div>

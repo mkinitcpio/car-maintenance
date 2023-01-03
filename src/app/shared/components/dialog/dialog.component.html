@@ -1,0 +1,42 @@
+<section class="dialog">
+  <div class="loader" *ngIf="loading$ | async">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="notification-container" [class.notification-container--show]="showNotification">
+    <div class="notification notification--{{(notification$ | async)?.type}}">
+      <mat-icon svgIcon="{{(notification$ | async)?.type || 'empty'}}"></mat-icon>
+      <div class="notification__text">
+        {{(notification$ | async)?.text | translate}}
+      </div>
+  </div>
+  </div>
+  <header class="dialog__header" [class.dialog__header--border]="contentScrolled">
+    <div class="dialog__title">{{title | translate}}</div>
+    <div class="dialog__buttons">
+      <app-button button-transparent (click)="onClose()">
+        <mat-icon svgIcon="close"></mat-icon>
+      </app-button>
+    </div>
+  </header>
+  <main class="dialog__content" (scroll)="onScroll($event)">
+    <ng-content select="[content]"></ng-content>
+  </main>
+  <footer *ngIf="!hideFooter" class="dialog__footer">
+    <button class="button button__cancel"
+            mat-button
+            (click)="onClose()">
+      {{"DIALOG.BUTTONS.CANCEL" | translate}}
+    </button>
+    <button class="button button__submit"
+            mat-button
+            [disabled]="disabledSumbitButton"
+            (click)="onSubmit()">
+      {{(submitText || (mode === FormModeEnum.Create ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT")) | translate}}
+    </button>
+  </footer>
+</section>

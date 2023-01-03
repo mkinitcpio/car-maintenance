@@ -8,10 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
-import { UbuntuCloseButtonModule } from '@shared/ubuntu/ubuntu-close-button/ubuntu-close-button.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
+import { DialogModule } from '../dialog/dialog.module';
+import { ButtonModule } from '../button/button.module';
+import { ContentContainerModule } from '../content-container/content-container.module';
+import { TabsModule } from '../tabs/tabs.module';
 
 
 
@@ -28,12 +31,14 @@ import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-co
     MatSelectModule,
     MatButtonModule,
     MatDatepickerModule,
-    UbuntuCloseButtonModule,
     TranslateModule,
     MatIconModule,
     MatTooltipModule,
     UbuntuContainerModule,
-    MatIconModule,
+    DialogModule,
+    ButtonModule,
+    ContentContainerModule,
+    TabsModule,
   ]
 })
 export class CreateCarDialogModule { }

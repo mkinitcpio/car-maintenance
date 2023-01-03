@@ -1,5 +1,5 @@
 {
-  "productName": "Обслуживание Автомобиля",
+  "productName": "Car Maintenance",
   "directories": {
     "output": "release/"
   },
@@ -33,8 +33,6 @@
   },
   "linux": {
     "icon": "dist/assets/icons/favicon.png",
-    "target": [
-      "snap"
-    ]
+    "target": "snap"
   }
 }

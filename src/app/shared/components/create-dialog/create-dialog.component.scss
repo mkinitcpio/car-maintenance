@@ -1,101 +1,73 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 .create-dialog {
-  font-family: "Ubuntu";
+  &__icon {
+    width: 20px;
+  }
 
-  &__header {
-    height: 42px;
-    padding: 4px 8px;
+  .mat-form-field {
+    margin-bottom: 12px;
+  }
+
+  &__icons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  &__icons-container-title {
+    font-size: 14px;
+    margin-left: 10px;
+    font-family: $font-system;
+  }
+
+  &__icons-container-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 18px;
+    border: 1.5px solid #ebebeb;
+    padding: 12px;
+  }
+
+  &__icon-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  &__icons-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__icons-section-title {
+    font-family: $font-system;
+    font-size: 12px;
+    color: $font-primary;
+    font-weight: 500;
+  }
+
+  &__icon-item {
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 38px;
+    width: 38px;
+    border-radius: 12px;
+    color: #4b4848;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
-    background-color: rgb(50, 48, 48);
-  }
-
-  &__header-text {
-    color: white;
-  }
-
-  &__button-container {
-    display: flex;
-    align-items: center;
-
-    &:first-child {
-      margin-right: auto;
-      justify-content: flex-start;
+    &--selected {
+      background: rgba(0, 0, 0, 0.10);
     }
 
-    &:last-child {
-      margin-left: auto;
-      justify-content: flex-end;
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
     }
   }
-
-  &__content {
-    padding: 16px 32px;
-
-    mat-form-field {
-      font-family: 'Ubuntu';
-      font-weight: lighter;
-      width: 100%;
-
-      &.mat-form-field-invalid mat-label {
-        caret-color: #c7162b;
-        color: #c7162b !important;
-      }
-
-      mat-label {
-        color: $font-primary;
-        font-weight: lighter;
-        font-size: 20px;
-      }
-
-      input:placeholder-shown {
-        font-size: 16px;
-      }
-    }
-
-    mat-error {
-      color: #c7162b;
-    }
-  }
-
-  &__option-content {
-    display: flex;
-    align-items: center;
-  }
-  
-  &__option-icon {
-    width: 24px;
-    margin-right: 8px;
-  }
-
-  &__illustration-container {
-    display: flex;
-  }
-
-  &__illustration-icon {
-    width: 18px;
-    margin-right: 8px;
-  }
-}
-
-.button {
-  font-family: Ubuntu;
-  font-weight: normal;
-  color: $font-primary;
-  border-radius: 8px;
-}
-
-.button__submit {
-  background-color: #0d7f1e;
-  border-color: rgba(0,0,0,0.56);
-  color: #fff;
-}
-
-.button__cancel {
-  background-color: rgb(75, 72, 72);
-  border-color: rgb(48,47,47);
-  color: #fff;
 }

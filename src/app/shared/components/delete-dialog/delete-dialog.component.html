@@ -1,15 +1,24 @@
 <div class="delete-dialog">
+  <div class="delete-dialog__close-button-container">
+    <app-button button-transparent (click)="dialogRef.close()">
+      <mat-icon svgIcon="close"></mat-icon>
+    </app-button>
+  </div>
   <header class="delete-dialog__header">
-    <div class="delete-dialog__button-container">
-      <button class="button button__cancel" mat-button (click)="onClose()">{{"DIALOG.BUTTONS.CANCEL" | translate}}</button>
-    </div>
-    <div class="delete-dialog__header-text">{{"DIALOG.DELETE.TITLE" | translate}}</div>
-    <div class="delete-dialog__button-container">
-      <button class="button button__submit" mat-button (click)="onSubmit()">{{"DIALOG.BUTTONS.DELETE" | translate}}</button>
-    </div>
+    <mat-icon class="delete-dialog__icon" svgIcon="trash"></mat-icon>
   </header>
 
   <main class="delete-dialog__content">
-    {{data.text | translate}} "{{data.name}}"?
+    <h2 class="delete-dialog__title">{{"DIALOG.DELETE.TITLE" | translate}}</h2>
+    <p class="delete-dialog__text">{{data.text | translate}}</p>
   </main>
+
+  <footer class="delete-dialog__footer">
+    <button class="button button__cancel" mat-button (click)="onClose()">
+      {{"DIALOG.BUTTONS.CANCEL" | translate}}
+    </button>
+    <button class="button button__submit" mat-button (click)="onSubmit()">
+      {{"DIALOG.BUTTONS.DELETE" | translate}}
+    </button>
+  </footer>
 </div>

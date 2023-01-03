@@ -17,7 +17,10 @@ import { PrintDialogComponent } from '../components/print-dialog/print-dialog.co
 import { PrintDialogConfig } from '@shared/components/print-dialog/print-dialog-config';
 import { CreateCarDialogComponent } from '@shared/components/create-car-dialog/create-car-dialog.component';
 
-import { CarCategory, CarCategoryFormData } from '@core/interfaces/car-category';
+import { CarCategoryFormData } from '@core/interfaces/car-category';
+import { AccountDialogComponent } from '@shared/components/account-dialog/account-dialog.component';
+import { FeedbackDialogComponent } from '@shared/components/feedback-dialog/feedback-dialog.component';
+import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +32,10 @@ export class DialogManagerService {
   public openCategoryDialog(data: any): Observable<Category> {
     return this.dialog
       .open(CreateDialogComponent, {
-        width: "480px",
+        width: "380px",
         panelClass: "dialog-custom",
         data,
+        disableClose: true,
       })
       .afterClosed()
       .pipe<Category>(filter<Category>(Boolean));
@@ -40,9 +44,8 @@ export class DialogManagerService {
   public openCarDialog(data: any): Observable<CarCategoryFormData> {
     return this.dialog
       .open(CreateCarDialogComponent, {
-        maxWidth: "50%",
         maxHeight: "90%",
-        width: "768px",
+        width: "512px",
         panelClass: "dialog-car",
         data,
         disableClose: true,
@@ -54,7 +57,7 @@ export class DialogManagerService {
   public openRecordDialog(data: any): Observable<Record> {
     return this.dialog
       .open(CreateRecordComponent, {
-        width: "480px",
+        width: "380px",
         panelClass: "dialog-custom",
         data,
       })
@@ -65,7 +68,7 @@ export class DialogManagerService {
   public openReleaseNotesDialog(data: ReleaseNotes): void {
     this.dialog.open(ReleaseNotesComponent, {
       maxHeight: "80%",
-      width: "1000px",
+      width: "564px",
       autoFocus: false,
       panelClass: "dialog-notes",
       data,
@@ -75,12 +78,13 @@ export class DialogManagerService {
   public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
-        width: "380px",
-        panelClass: "dialog-custom",
+        width: "356px",
+        panelClass: "dialog-delete",
         data: {
           text: "DIALOG.DELETE.CATEGORY",
           name: categoryName,
         },
+        autoFocus: false,
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));
@@ -90,7 +94,7 @@ export class DialogManagerService {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "380px",
-        panelClass: "dialog-custom",
+        panelClass: "dialog-delete",
         data: {
           text: "DIALOG.DELETE.RECORD",
           name: categoryName,
@@ -104,19 +108,37 @@ export class DialogManagerService {
     this.dialog
       .open(SettingsComponent, {
         disableClose: true,
-        width: "580px",
+        width: "564px",
         panelClass: "dialog-settings",
       });
   }
 
-  public openFeedbackDialog(): void {
+  public openAccountDialog(): void {
+    this.dialog
+      .open(AccountDialogComponent, {
+        disableClose: true,
+        width: "320px",
+        panelClass: "dialog-account",
+      });
+  }
+
+  public openFeedbackDialog(type?: FeedbackTypeEnum): void {
+    this.dialog
+      .open(FeedbackDialogComponent, {
+        disableClose: true,
+        width: "380px",
+        panelClass: "dialog-feedback",
+        data: {
+          type,
+        },
+      });
   }
 
   public openPrintDialog(data: PrintDialogConfig): Observable<void> {
     return this.dialog
       .open(PrintDialogComponent, {
         disableClose: true,
-        width: "820px",
+        width: "856px",
         panelClass: "dialog-print",
         data,
         autoFocus: false,

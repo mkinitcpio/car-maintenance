@@ -1,0 +1,38 @@
+<app-details [title]="'NAVIGATIONS.DASHBOARD' | translate" separated="true">
+  <ng-container content>
+    <section class="grid grid--{{gridView}}">
+    <app-dashboard-item type="changelog"
+                        header="4.0.0"
+                        [description]="'PAGES.DASHBOARD.CHANGELOG.DESCRIPTION' | translate"
+                        class="card"
+                        (click)="openReleaseNotes()">
+    </app-dashboard-item>
+
+    <app-dashboard-item type="feedback"
+                        size="s"
+                        [header]="'PAGES.DASHBOARD.FEEDBACK.TITLE' | translate"
+                        [description]="'PAGES.DASHBOARD.FEEDBACK.DESCRIPTION' | translate"
+                        class="item2"
+                        (click)="openFeedbackDialog()">
+    </app-dashboard-item>
+
+    <app-dashboard-item type="sourceCode"
+                        external="true"
+                        size="s"
+                        [header]="'PAGES.DASHBOARD.SOURCE_CODE.TITLE' | translate"
+                        [description]="'PAGES.DASHBOARD.SOURCE_CODE.DESCRIPTION' | translate"
+                        class="item3"
+                        (click)="openGitHub()">
+    </app-dashboard-item>
+
+    <app-dashboard-item *ngIf="false"
+                        type="documentation"
+                        header="Documentation"
+                        description="How to use?"
+                        external="true"
+                        class="item4"
+                        (click)="openDocumentation()">
+    </app-dashboard-item>
+</section>
+  </ng-container>
+</app-details>

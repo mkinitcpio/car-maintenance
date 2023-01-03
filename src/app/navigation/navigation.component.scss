@@ -1,4 +1,5 @@
 @import '/src/colors';
+@import '/src/fonts';
 
 .navigation {
   height: 100%;
@@ -11,12 +12,11 @@
 
   &__title-container {
     box-sizing: border-box;
-    padding: 9px 12px;
+    min-height: 54px;
+    padding: 0px 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    background-color: rgb(50, 48, 48);
   }
 
   &__buttons {
@@ -27,58 +27,19 @@
     border-top: 1px solid rgba(0,0,0,0.1);
   }
 
-  .button {
-    font-family: Ubuntu;
-    font-weight: normal;
-    color: $font-primary;
-    min-width: initial;
-    padding: 0 8px;
-
-    border-radius: 8px;
-
-    &__switcher-icon {
-      transition: transform 0.2s ease-in;
-    }
-  }
-
   app-tabs {
     flex-grow: 1;
 
     transition: opacity 0.15s ease-in 0.15s;
   }
 
-  .button__create {
-    background-color: rgb(75,72,72);
-    border: 1px solid rgb(43,42,42);
-    color: #fff;
-  }
-
   &--minimize {
-    background-color: #323030;
-    transition: background-color 0.25s ease-out;
-
-    app-tabs{
       opacity: 0;
-      transition: opacity 0s;
-
-      app-categories-tree {
-        z-index: -1;
-      }
-    }
+      transition: opacity 0.3s;
 
     .navigation__title-container {
       flex-wrap: wrap-reverse;
       gap: 8px;
     }
-
-    .button__switcher-icon {
-      transform: rotate(180deg);
-      color: white;
-    }
   }
-}
-
-.menu-item__github-icon {
-  height: 18px !important;
-  fill: $font-secondary;
 }

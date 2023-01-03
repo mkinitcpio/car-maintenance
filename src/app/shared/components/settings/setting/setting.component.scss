@@ -1,0 +1,28 @@
+.setting {
+  display: flex;
+  height: 56px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    line-height: 1rem;
+    font-size: 14px;
+  }
+
+  &__control {
+    display: flex;
+    width: 66%;
+  }
+
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+
+    font-size: 20px;
+    color: #4b4848
+  }
+}

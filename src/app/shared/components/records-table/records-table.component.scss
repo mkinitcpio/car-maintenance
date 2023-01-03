@@ -1,17 +1,19 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .records-table {
   @include mixins.scrollable;
   @include mixins.scrollable-horizontal;
   height: 100%;
   box-sizing: border-box;
+  padding: 0px 12px 12px 12px;
 
-  font-family: Ubuntu;
-  border-radius: 8px;
+  font-family: $font-system;
+  border-radius: 12px;
 
   &--with-borders {
-    border: 1px solid $separator-color;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 2px 0px;
 
     .records-table__row.mat-row:last-child {
       border-bottom-width: 1px;
@@ -20,7 +22,7 @@
 
   &__row {
     min-height: 42px;
-    border-bottom-color: $separator-color;
+    border-bottom-color: transparent;
   }
 
   user-select: none;
@@ -37,10 +39,14 @@
 
   &__cell-id {
     flex: 0 0 24px;
+    padding-left: 16px;
   }
 
   .records-table__header {
     min-height: 48px;
+    margin-bottom: 8px;
+    border-bottom-color: #efeeee;
+    color: black;
   }
 
   &__cell-cost {
@@ -51,8 +57,13 @@
     flex: 0 0 84px;
   }
 
+  &__header-note,
   &__cell-note {
     flex: 0 0 48px;
+  }
+
+  &__cell-note {
+    justify-content: center;
   }
 
   &__note-icon {
@@ -60,7 +71,7 @@
     width: 20px;
 
     font-size: 20px;
-    color: #3c3a3a;
+    color: #4b4848;
   }
 
   &__cell-mileage {
@@ -78,13 +89,48 @@
     padding-right: 24px;
   }
 
+  .mat-cell {
+    color: #222;
+  }
+
+  .mat-header-cell {
+    color: #4b4848;
+  }
+
   .mat-row:hover {
     background: #F7F7F7;
+
+    border-radius: 12px;
 
     cursor: pointer;
   }
   
   .mat-row:last-child {
     border-bottom-width: 0;
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    font-size: 14px;
+    font-family: $font-system;
+    color: #4b4848;
+  }
+
+  &__empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 18px;
+    color: #4b4848;
+  }
+
+  &__empty-icon {
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
   }
 }

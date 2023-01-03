@@ -1,15 +1,12 @@
 <div class="navigation"
      [class.navigation--minimize]="(sideNavService.collapse$ | async)">
   <div class="navigation__title-container">
-    <button class="button button__create" mat-button [matMenuTriggerFor]="creationMenu">
-      <mat-icon>add</mat-icon>
-    </button>
-
-    <button matBadge="!" [matBadgeHidden]="!versionService.hasUpdate" matBadgeSize="small" class="button button__create" mat-button [matMenuTriggerFor]="contextMenu">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <app-button button-primary (click)="onAdd(selectedTabIndex)">
+      <mat-icon svgIcon="add"></mat-icon>
+      <span>{{(selectedTabIndex ? "MENU.CAR" : "MENU.CATEGORY" ) | translate}}</span>
+    </app-button>
   </div>
-  <app-tabs [tabs]="tabs">
+  <app-tabs [tabs]="tabs" (selectedTabIndex)="onSelectTab($event)">
     <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"
                               [selected]="selected"
                               (add)="addCategory($event)"
@@ -26,51 +23,4 @@
                               (delete)="onDelete($event)">
     </app-categories-tree>
   </app-tabs>
-
-  <div class="navigation__buttons">
-    <button mat-button class="button" appSideNavTracker>
-      <mat-icon class=" button__switcher-icon">chevron_left</mat-icon>
-    </button>
-  </div>
 </div>
-
-<mat-menu #contextMenu="matMenu">
-  <ng-template matMenuContent>
-      <button class="menu-item rotate" mat-menu-item (click)="openSettings()">
-        <mat-icon class="mat-item__icon mat-item__icon--rotate">settings</mat-icon>
-        <span>{{"MENU.SETTINGS" | translate}}</span>
-      </button>
-      <div class="mat-menu__divider"></div>
-      <!--TODO: Uncomment when rewrite feedbacks -->
-      <!-- <button class="menu-item" mat-menu-item (click)="onFeedback()">
-        <span>{{"MENU.FEEDBACK" | translate}}</span>
-      </button> -->
-      <button class="menu-item" mat-menu-item (click)="openReleaseNotes()">
-        <mat-icon>newspaper</mat-icon>
-        <span>{{"MENU.WHATS_NEW" | translate}}</span>
-      </button>
-      <button class="menu-item" mat-menu-item (click)="openRepository()">
-        <mat-icon class="menu-item__github-icon" [svgIcon]="'github'"></mat-icon>
-        <span>{{"MENU.GITHUB" | translate}}</span>
-      </button>
-      <div *ngIf="versionService.hasUpdate" class="mat-menu__divider"></div>
-      <button *ngIf="versionService.hasUpdate" class="menu-item menu-item--update" mat-menu-item>
-        <mat-icon>new_releases</mat-icon>
-        <span>{{"MENU.UPDATE" | translate}}</span>
-      </button>
-  </ng-template>
-</mat-menu>
-
-<mat-menu #creationMenu="matMenu">
-  <ng-template matMenuContent>
-      <button class="menu-item rotate" mat-menu-item (click)="addCarCategory()">
-        <mat-icon class="mat-item__icon mat-item__icon--add-car">airport_shuttle</mat-icon>
-        <span>{{"MENU.CAR" | translate}}</span>
-      </button>
-      <button class="menu-item" mat-menu-item (click)="addCategory()">
-        <mat-icon class="mat-item__icon mat-item__icon--add">post_add</mat-icon>
-        <span>{{"MENU.CATEGORY" | translate}}</span>
-      </button>
-  </ng-template>
-</mat-menu>
-

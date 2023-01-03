@@ -1,0 +1,93 @@
+@import '/src/fonts';
+@import '/src/colors';
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.card {
+  grid-area: header;
+
+  &__source-code-illustration {
+    position: absolute;
+    height:74px;
+    right: 8px;
+    bottom: 16px;
+  }
+  &:hover {
+    svg {
+      #one {
+        animation: 0.5s ease-in-out both a0_t;
+      }
+
+      #two {
+        animation: 0.5s ease-in-out both a1_t;
+      }
+
+      #three {
+        animation: 0.5s ease-in-out both a2_t;
+      }
+    }
+  }
+}
+
+.dashboard {
+  &__content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.grid {
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+  display: grid;
+  gap: 16px;
+
+  &--normal {
+    grid-template-columns: repeat(2, 256px);
+    grid-template-rows: repeat(2, 132px);
+    grid-template-areas:
+      "header content"
+      "header item3"
+  }
+
+  &--compact {
+    height: initial;
+    grid-template-columns: repeat(1, 256px);
+    grid-template-rows: repeat(4, 132px);
+    grid-template-areas:
+    "header"
+    "header"
+    "content"
+    "item3";
+  }
+
+  &--medium {
+    grid-template-columns: repeat(2, 256px);
+    grid-template-rows: repeat(2, 132px);
+    grid-template-areas:
+    "header content"
+    "header item3";
+  }
+}
+
+.item1 {
+  grid-area: header;
+}
+
+.item2 {
+  grid-area: content;
+}
+
+.item3 {
+  grid-area: item3;
+}
+
+.item4 {
+  grid-area: item4;
+}

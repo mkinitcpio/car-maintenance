@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<path d="M10.133 19.1927C5.53668 17.3627 2.5 16.1537 2.5 12C2.5 7.84633 5.53668 6.63734 10.133 4.80734L11.191 4.385L11.416 4.72266C13.547 7.91934 13.547 16.0807 11.416 19.2773L11.191 19.615L10.133 19.1927Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<g opacity="1">
+<path d="M15.5 6L21.5 6C21.7763 6 22 5.77633 22 5.5C22 5.22367 21.7763 5 21.5 5L15.5 5C15.2237 5 15 5.22367 15 5.5C15 5.77633 15.2237 6 15.5 6Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M21.5 11.5L15.5 11.5C15.2237 11.5 15 11.7237 15 12C15 12.2763 15.2237 12.5 15.5 12.5L21.5 12.5C21.7763 12.5 22 12.2763 22 12C22 11.7237 21.7763 11.5 21.5 11.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M21.5 18L15.5 18C15.2237 18 15 18.2237 15 18.5C15 18.7763 15.2237 19 15.5 19L21.5 19C21.7763 19 22 18.7763 22 18.5C22 18.2237 21.7763 18 21.5 18Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M21.5 14.75L15.5 14.75C15.2237 14.75 15 14.9737 15 15.25C15 15.5263 15.2237 15.75 15.5 15.75L21.5 15.75C21.7763 15.75 22 15.5263 22 15.25C22 14.9737 21.7763 14.75 21.5 14.75Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M21.5 8.25L15.5 8.25C15.2237 8.25 15 8.47367 15 8.75C15 9.02633 15.2237 9.25 15.5 9.25L21.5 9.25C21.7763 9.25 22 9.02633 22 8.75C22 8.47367 21.7763 8.25 21.5 8.25Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M10.9996 4C10.8753 4 10.7496 4.02332 10.6286 4.07168L9.94828 4.34301C5.33398 6.18 2 7.50699 2 12C2 16.493 5.33398 17.82 9.94801 19.657L10.6284 19.9283C10.7497 19.977 10.8754 20 10.9997 20C11.3264 20 11.642 19.8396 11.832 19.5546C14.0444 16.2363 14.0444 7.76363 11.832 4.44531C11.642 4.16035 11.3263 4 10.9996 4ZM11 19C6 17 3 16 3 12C3 8 6 7 11 5C13 8 13 16 11 19Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+</g>
+</g>
+</g>
+</svg>
