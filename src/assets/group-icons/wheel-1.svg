@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<g opacity="1">
+<path d="M12 21.5C6.76168 21.5 2.5 17.2383 2.5 12C2.5 6.76168 6.76168 2.5 12 2.5C17.2383 2.5 21.5 6.76168 21.5 12C21.5 17.2383 17.2383 21.5 12 21.5ZM12 5.5C8.41602 5.5 5.5 8.41602 5.5 12C5.5 15.584 8.41602 18.5 12 18.5C15.584 18.5 18.5 15.584 18.5 12C18.5 8.41602 15.584 5.5 12 5.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1"/>
+<path d="M11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1"/>
+<g opacity="1">
+<path d="M12 2C6.47734 2 2 6.47699 2 12C2 17.5227 6.47734 22 12 22C17.5227 22 22 17.5227 22 12C22 6.47699 17.5227 2 12 2ZM12 21C7.03734 21 3 16.9627 3 12C3 7.03734 7.03734 3 12 3C16.9627 3 21 7.03734 21 12C21 16.9627 16.9627 21 12 21Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1"/>
+<path d="M12 5C8.13398 5 5 8.13398 5 12C5 15.866 8.13398 19 12 19C15.866 19 19 15.866 19 12C19 8.13398 15.866 5 12 5ZM12.5 6.02535C14.7687 6.21367 16.6837 7.6657 17.5317 9.67703L13.1847 11.0894C13.0104 10.8627 12.7747 10.6894 12.5 10.5917L12.5 6.02535L12.5 6.02535ZM12 11.5C12.2757 11.5 12.5 11.7243 12.5 12C12.5 12.2757 12.2757 12.5 12 12.5C11.7243 12.5 11.5 12.2757 11.5 12C11.5 11.7243 11.7243 11.5 12 11.5ZM11.5 6.02535L11.5 10.5917C11.2257 10.6893 10.99 10.863 10.8154 11.0893L6.46836 9.67699C7.31633 7.66566 9.23133 6.21367 11.5 6.02535ZM6 12C6 11.528 6.06035 11.0707 6.16398 10.6296L10.504 12.0396C10.512 12.34 10.6057 12.6183 10.765 12.8493L8.08535 16.537C6.81102 15.436 6 13.8123 6 12ZM12 18C10.8627 18 9.80199 17.676 8.89465 17.124L11.5773 13.432C11.7123 13.472 11.8523 13.5 12 13.5C12.148 13.5 12.288 13.472 12.423 13.432L15.1053 17.124C14.198 17.676 13.1373 18 12 18ZM15.9143 16.537L13.235 12.849C13.3943 12.618 13.4877 12.3396 13.4957 12.0393L17.8357 10.6293C17.9396 11.0707 18 11.528 18 12C18 13.8123 17.189 15.436 15.9143 16.537Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1"/>
+</g>
+</g>
+</g>
+</g>
+</svg>

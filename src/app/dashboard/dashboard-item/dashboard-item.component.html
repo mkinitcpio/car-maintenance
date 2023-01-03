@@ -1,0 +1,21 @@
+<section mat-ripple class="dashboard-item" [ngClass]="{
+  'dashboard-item--m': size === 'm',
+  'dashboard-item--s': size === 's'
+}">
+  <mat-icon *ngIf="external"
+            class="dashboard-item__external" svgIcon="external">
+  </mat-icon>
+
+  <ng-container [ngSwitch]="type">
+    <app-changelog-illustration *ngSwitchCase="'changelog'"></app-changelog-illustration>
+    <app-documentation-illustration *ngSwitchCase="'documentation'"></app-documentation-illustration>
+    <app-feedback-illustration *ngSwitchCase="'feedback'"></app-feedback-illustration>
+    <app-source-code-illustration *ngSwitchCase="'sourceCode'"></app-source-code-illustration>
+
+    <div *ngSwitchDefault>...</div>
+  </ng-container>
+  <div class="dashboard-item__text-section">
+      <span class="dashboard-item__title">{{header}}</span>
+      <span class="dashboard-item__description">{{description}}</span>
+  </div>
+</section>

@@ -37,7 +37,7 @@ export class ElectronService {
       this.path = window.require('path');
       this.shell = window.require('electron').shell;
       this.remote = window.require('@electron/remote');
-      this.systemPreferences= window.require('@electron/remote').systemPreferences
+      this.systemPreferences= window.require('@electron/remote').systemPreferences;
     }
   }
 }

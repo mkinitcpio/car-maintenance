@@ -33,7 +33,8 @@
         "MONO": "Mono",
         "CURRENCY": "Moneta",
         "METRIC_SYSTEM": "Sistema metrico",
-        "ANIMATION": "Animazioni"
+        "ANIMATION": "Animazioni",
+        "COLORS":"Сolori"
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"
@@ -90,8 +91,8 @@
     "SETTINGS":"Impostazioni",
     "WHATS_NEW": "Novità",
     "FEEDBACK": "Feedback",
-    "CAR": "Automobile",
-    "CATEGORY": "Categoria",
+    "CAR": "Nuova automobile",
+    "CATEGORY": "Nuova categoria",
     "UPDATE": "Aggiornamento disponibile"
   },
   "DIALOG": {
@@ -105,9 +106,9 @@
       "IMPROVEMENTS": "Miglioramenti"
     },
     "DELETE": {
-      "TITLE": "Conferma",
-      "CATEGORY": "Eliminare Categoria",
-      "RECORD": "Eliminare Registrati"
+      "TITLE": "Conferma Cancellazione",
+      "CATEGORY": "Confermi di volere cancellare questi dati? Questo processo non può essere annullato.",
+      "RECORD": "Confermi di volere cancellare questi dati? Questo processo non può essere annullato."
     },
     "CATEGORY": "Categoria",
     "CAR": "Automobile",

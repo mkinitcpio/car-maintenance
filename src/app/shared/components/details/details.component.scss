@@ -1,0 +1,136 @@
+@use '/src/mixins' as mixins;
+@import '/src/colors';
+@import '/src/fonts';
+
+.page {
+  position: relative;
+  height: 100%;
+  display: flex;
+
+  background-color: white;
+
+  user-select: none;
+
+  &__title-section {
+    box-sizing: border-box;
+    min-height: 54px;
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: white;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    font-family: $font-system;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+  }
+
+  &__title-buttons {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__main {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.5s ease-in-out;
+  }
+
+  &__content {
+    @include mixins.scrollable;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    gap: 16px;
+    padding: 24px;
+
+    background-color: #fafafa;
+
+    border-radius: 24px 24px 0 0;
+  }
+  
+  &__content-shadow-cover {
+    height: 100%;
+    overflow: hidden;
+    margin: 0 16px 0 0;
+  }
+
+  &__shadow {
+    position: absolute;
+    height: 100%;
+    border-radius: 24px;
+    right: 0;
+    top: 54px;
+    box-shadow: inset 0px 1px 3px 1px rgb(0 0 0 / 6%);
+    pointer-events: none;
+    z-index: 102;
+    left: 0px;
+    margin: inherit;
+
+    transition: width 0.5s ease-in-out;
+
+    &:after {
+      background: white;
+      content: "";
+      height: 100%;
+      width: 16px;
+      position: absolute;
+      right: -16px;
+    }
+  }
+
+  &__sidebar {
+    position: absolute;
+    right: -300px;
+    height: 100%;
+    width: 300px;
+
+    background: white;
+
+    transition: right 0.5s ease-in-out;
+    z-index: 1000;
+
+    &--show {
+      right: 0;
+    }
+  }
+
+  &__sidebar-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  &--opened-side-bar {
+    .page__main {
+      width: calc(100% - 300px);
+    }
+
+    .page__shadow {
+      width: calc(100% - 300px - 16px);
+    }
+  }
+
+  &--separated {
+    .page__main {
+      width: 100%;
+    }
+
+    .page__content-shadow-cover {
+      margin: 0 16px;
+    }
+  }
+}

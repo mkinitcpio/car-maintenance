@@ -11,6 +11,9 @@ import { FormModeEnum } from '../create-dialog/form-mode.enum';
 import { CategoryTypeEnum } from '@core/state/features/car-category/enums';
 
 import { Data } from './interface';
+import { Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-car-dialog',
@@ -46,6 +49,7 @@ export class CreateCarDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateDialogComponent>,
     public settingsService: SettingsService,
     public fb: FormBuilder,
+    private translateService: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -81,5 +85,12 @@ export class CreateCarDialogComponent implements OnInit {
 
   public onDeletePart(index: number): void {
     this.parts.removeAt(index);
+  }
+
+  public get title(): Observable<string> {
+    return combineLatest([
+      this.translateService.get(this.data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT"),
+      this.translateService.get("DIALOG.CAR"),
+    ]).pipe(map(([mode, dialogType]) => `${mode as string} ${dialogType as string}`));
   }
 }

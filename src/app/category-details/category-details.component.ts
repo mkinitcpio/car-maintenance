@@ -19,7 +19,7 @@ import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum
 @Component({
   selector: 'app-category-details',
   templateUrl: './category-details.component.html',
-  styleUrls: ['./category-details.component.scss']
+  styleUrls: ['./category-details.component.scss'],
 })
 export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
@@ -52,6 +52,11 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public CategoryTypeEnum = CategoryTypeEnum;
   public MetricSystemEnum = MetricSystemEnum;
 
+  public expandPanelToggles: boolean[];
+  public expandRecordsPanel = false;
+
+  public allExpandButtonState = 'expand';
+
   public id: string;
   public category: CategoryTree;
   public categoryDetails: CategoryDetails;
@@ -81,6 +86,8 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   ngOnInit(): void {
     this.categoryDetails$.subscribe((categoryDetails) => {
       this.categoryDetails = categoryDetails;
+      this.expandPanelToggles = Array.from({length: categoryDetails.tables.length}, () => false);
+
       this.totalCost = this.categoryDetails.tables.map(table => this.utilsSerivce.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
     });
 
@@ -100,7 +107,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
     this.deleteCategory$.subscribe((category) => {
       if(this.id === category.id) {
-        this.router.navigate(['']);
+        this.router.navigate(['maintenance']);
       }
 
       if(this.id === category.parent) {
@@ -112,6 +119,13 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       this.id = params['id'];
       this.categoryDetailsFacade.loadCategoryDetails(this.id);
     });
+  }
+
+  public onAddRecord(): void {
+    const data = {
+      mode: FormModeEnum.Create,
+      parent: this.id,
+    };
   }
 
   public onEdit(id: string): void {
@@ -169,5 +183,14 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .map((table) => table.data)
       .reduce((acc, curr) => acc.concat(...curr))
       .find((record) => record.id === id);
+  }
+
+  public toogleExpandStates(state): void {
+    this.expandPanelToggles = Array.from({length: this.expandPanelToggles.length}, () => state);
+  }
+
+  public getContentHeight(content: HTMLElement): string {
+    const height = 0;
+    return `${[...(content.children as any)].reduce((acc, curr) => acc + curr.getBoundingClientRect().height, height)}px`;
   }
 }

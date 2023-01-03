@@ -1,0 +1,13 @@
+<div class="color-panel">
+  <app-switch [value]="selected !== ColorEnum.Default"
+              (change)="onSystemColorToggle($event)">
+  </app-switch>
+
+  <div class="color-panel__divider"></div>
+
+  <app-colors [colors]="colors"
+              [disable]="selected === ColorEnum.Default"
+              [selected]="selected"
+              (select)="onSelected($event)">
+  </app-colors>
+</div>

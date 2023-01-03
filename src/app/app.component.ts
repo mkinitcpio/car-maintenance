@@ -6,28 +6,35 @@ import { DOCUMENT } from "@angular/common";
 import { ThemeService } from "@core/services/theme.service";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
+import { iconsNames } from "./icon-names";
+import { groupIllustrationNames } from './group-illustration-names';
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent extends AutoCloseable {
-  public dbExist: boolean;
 
   constructor(
     private dataBaseService: DataBaseService,
     private settingsService: SettingsService,
     private themeService: ThemeService,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
+    private domS: DomSanitizer,
     @Inject(DOCUMENT) private document: Document
   ) {
     super();
 
-    this.matIconRegistry.addSvgIcon(
-      "github",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/icons/github.svg")
-    );
+    iconsNames.forEach(name => {
+      this.matIconRegistry.addSvgIcon(`${name}`, this.domS.bypassSecurityTrustResourceUrl(`assets/icons/vuesax/${name}.svg`));
+    });
+
+    groupIllustrationNames.forEach(name => {
+      this.matIconRegistry.addSvgIconInNamespace('illustrations', name, this.domS.bypassSecurityTrustResourceUrl(`assets/group-icons/${name}.svg`));
+    });
+
+    this.matIconRegistry.setDefaultFontSetClass('material-symbols-rounded');
 
     this.settingsService.animationsStateChanged$.subscribe((enabled) => {
       if (enabled) {
@@ -39,10 +46,6 @@ export class AppComponent extends AutoCloseable {
 
     this.settingsService.init();
     this.themeService.init();
-
-    this.dataBaseService.dbExist$.subscribe((exist) => {
-      this.dbExist = exist;
-    });
 
     this.dataBaseService.initDataBase();
   }

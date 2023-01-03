@@ -1,0 +1,24 @@
+@import '/src/fonts';
+@import '/src/colors';
+
+.storage {
+  &__dev {
+    color: #4b4848;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__dev-icon {
+    width: 192px;
+    height: 192px;
+    font-size: 192px;
+  }
+
+  &__dev-text {
+    font-size: 24px;
+    font-family: $font-system;
+  }
+}

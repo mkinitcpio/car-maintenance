@@ -1,0 +1,21 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+.feedback {
+  &__note {
+    height: 128px;
+    resize: none;
+  }
+
+  .mat-form-field {
+    margin-bottom: 12px;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  input:placeholder-shown {
+    font-size: 14px;
+  }
+}

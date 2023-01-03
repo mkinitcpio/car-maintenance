@@ -1,0 +1,19 @@
+
+.color-panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__divider {
+    height: 24px;
+    width: 1.5px;
+    margin: 4px;
+    background: #ebebeb;
+  }
+
+  &__system-color {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

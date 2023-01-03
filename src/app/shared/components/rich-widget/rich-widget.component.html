@@ -1,0 +1,22 @@
+<div class="rich-widget" [class.rich-widget--horizontal]="orientation === 'horizontal'">
+  <mat-icon class="rich-widget__info" *ngIf="tooltip" [matTooltip]="tooltip | translate">info</mat-icon>
+  <mat-icon class="rich-widget__illustration" [svgIcon]="icon"></mat-icon>
+  <div class="rich-widget__info-section">
+    <span class="rich-widget__title">{{title | translate}}</span>
+    <span class="rich-widget__value" [ngSwitch]="type">
+      <ng-container *ngSwitchCase="'currency'">
+        <span>{{value | numberSeparator:this.settingsService.settings.region}}</span>
+        <app-currency [currency]="settingsService.settings.units?.currency"
+                      [locale]="settingsService.settings.region">
+        </app-currency>
+      </ng-container>
+      <ng-container *ngSwitchCase="'date'">
+        {{value ? (value | date:'d MMM, y') : '-'}}
+      </ng-container>
+      <ng-container *ngSwitchCase="'mileage'">
+        <span>{{value | numberSeparator:this.settingsService.settings.region}}</span>
+        <span class="rich-widget__metric-system">{{ "METRIC_SYSTEM." + (settingsService.settings.units?.metricSystem || MetricSystemEnum[settingsService.settings.region]) | uppercase | translate}}</span>
+      </ng-container>
+    </span>
+  </div>
+</div>

@@ -1,63 +1,80 @@
 @import '/src/colors';
+@import '/src/fonts';
+@import '/src/animations';
 
 .delete-dialog {
-  font-family: Ubuntu;
+  padding: 16px 16px 24px 16px;
+
+  font-family: $font-system;
+  user-select: none;
+
+  &__close-button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
 
   &__header {
-    height: 42px;
-    padding: 4px 8px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-
-    background-color: rgb(50, 48, 48);
   }
 
-  &__header-text {
-    color: white;
+  &__title {
+    margin-bottom: 12px;
+
+    text-align: center;
+    font-size: 20px;
+    color: $font-primary;
   }
 
-  &__button-container {
-    display: flex;
-    align-items: center;
+  &__text {
+    margin-top: 12px;
 
-    &:first-child {
-      margin-right: auto;
-      justify-content: flex-start;
-    }
+    line-height: 1.4;
+    font-size: 14px;
+    color: $font-secondary;
+  }
 
-    &:last-child {
-      margin-left: auto;
-      justify-content: flex-end;
-    }
+  &__icon {
+    height: 92px;
+    width: 92px;
+
+    font-size: 92px;
+    color: $color-dangerous;
+    animation: squeeze 0.5s ease-in 0.2s;
   }
 
   &__content {
-    padding: 32px;
+    padding: 0 16px;
+    margin-bottom: 24px;
+
+    text-align: center;
   }
 
   &__footer {
     display: flex;
-    justify-content: flex-end;
-    padding: 0px 24px 16px 24px;
+    justify-content: center;
+    gap: 8px;
   }
 
   .button {
-    font-family: Ubuntu;
+    min-width: 128px;
+
+    border-radius: 8px;
+    font-family: $font-system;
     font-weight: normal;
     color: $font-primary;
-    border-radius: 8px;
   }
   
   .button__submit {
-    background-color: #c7162b;
-    border-color: #c7162b;
-    color: #fff;
+    background-color: $color-dangerous;
+    border-color: $color-dangerous;
+    color: white;
   }
 
   .button__cancel {
-    background-color: rgb(75, 72, 72);
-    border-color: rgb(48,47,47);
-    color: #fff;
+    background-color: #f1f1f1;
+    border-color: #f1f1f1;
+    color: $font-primary;
   }
 }

@@ -16,6 +16,8 @@ import { CurrencyModule } from '../../currency/currency.module';
 import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-container.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ButtonModule } from '../button/button.module';
+import { ContentContainerModule } from '../content-container/content-container.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     UbuntuContainerModule,
     MatTooltipModule,
     MatSlideToggleModule,
+    ButtonModule,
+    ContentContainerModule,
   ],
   exports: [
     PrintDialogComponent,

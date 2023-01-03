@@ -9,35 +9,36 @@
        (click)="onSelect()"
        (contextmenu)="onContextMenu($event)">
     <div class="categories-tree-node__icon-container">
-      <img class="categories-tree-node__icon"
-            [class.categories-tree-node__icon--mono]="settingsService.settings.appearance.type === IconTypeEnum.Mono"
-            *ngIf="!isSubNode"
-            [src]="iconsPath + (child.illustration || 'wrench.svg')">
+      <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (child.illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
     </div>
     <span class="categories-tree-node__name">
       {{child.name}}
     </span>
     <div class="categories-tree-node__expand-button-container">
       <mat-icon class="categories-tree-node__expand-button"
+                svgIcon="expand"
                 [class.categories-tree-node__expand-button--expanded]="expand"
                 *ngIf="child.children?.length"
                 (click)="expand = !expand; $event.stopPropagation()">
-        chevron_right
       </mat-icon>
     </div>
   </div>
   <ng-container>
     <div class="categories-tree-node__sub-node"
         [class.categories-tree-node__sub-node--expanded]="expand"
-        [style.height]="expand ? child.children.length * 42 + 'px' : 0">
-      <app-categories-tree-node *ngFor="let c of child.children"
-                                [selected]="selected"
-                                [isSubNode]="true"
-                                [child]="c"
-                                (edit)="onEdit(c)"
-                                (select)="onSelect(c)"
-                                (delete)="onDelete(c)">
-      </app-categories-tree-node>
+        [style.height]="expand ? (child.children.length * 46) + 'px' : 0">
+      <div class="categories-tree-node__displacer">
+        <app-category-tree-displacer *ngFor="let c of child.children"></app-category-tree-displacer>
+      </div>
+      <div class="categories-tree-node__sub-node-item">
+        <app-categories-tree-node *ngFor="let c of child.children"
+                                  [selected]="selected"
+                                  [child]="c"
+                                  (edit)="onEdit(c)"
+                                  (select)="onSelect(c)"
+                                  (delete)="onDelete(c)">
+        </app-categories-tree-node>
+      </div>
     </div>
   </ng-container>
 </div>
@@ -45,16 +46,16 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
       <button class="menu-item" mat-menu-item *ngIf="!child.parent" (click)="onAdd()">
-        <mat-icon class="mat-item__icon mat-item__icon--add">add</mat-icon>
+        <mat-icon class="mat-item__icon mat-item__icon--add" svgIcon="add"></mat-icon>
         <span>{{"MENU.ADD" | translate}}</span>
       </button>
       <button class="menu-item" mat-menu-item (click)="onEdit()">
-        <mat-icon>edit</mat-icon>
+        <mat-icon svgIcon="edit"></mat-icon>
         <span>{{"MENU.EDIT" | translate}}</span>
       </button>
       <div class="mat-menu__divider"></div>
       <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-        <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
+        <mat-icon class="mat-item__icon mat-item__icon--delete" svgIcon="trash"></mat-icon>
         <span>{{"MENU.DELETE" | translate}}</span>
       </button>
   </ng-template>

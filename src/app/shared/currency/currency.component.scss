@@ -4,9 +4,10 @@
 }
 
 .currency {
-  height: 18px;
-
-  font-size: 17px;
+  height: 16px;
+  font-size: 16px;
+  width: 16px;
+  font-variation-settings: 'wght' 900;
 
   &--small {
     height: 14px;

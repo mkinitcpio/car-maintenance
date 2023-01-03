@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<path d="M5 2.5L8 2.5L8 2.5L8 8.5L8 8.5L5 8.5L5 8.5L5 2.5L5 2.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M11 5C11 4.44771 11.4477 4 12 4C12.5523 4 13 4.44771 13 5C13 5.55229 12.5523 6 12 6C11.4477 6 11 5.55229 11 5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<g opacity="1">
+<path d="M16 2.5L19 2.5L19 2.5L19 8.5L19 8.5L16 8.5L16 8.5L16 2.5L16 2.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M5 15.5L8 15.5L8 15.5L8 21.5L8 21.5L5 21.5L5 21.5L5 15.5L5 15.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M16 15.5L19 15.5L19 15.5L19 21.5L19 21.5L16 21.5L16 21.5L16 15.5L16 15.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+</g>
+<path d="M11 19C11 18.4477 11.4477 18 12 18C12.5523 18 13 18.4477 13 19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M7.5 15L5.5 15C4.94766 15 4.5 15.4477 4.5 16L4.5 21C4.5 21.5523 4.94766 22 5.5 22L7.5 22C8.05234 22 8.5 21.5523 8.5 21L8.5 19.5L10.592 19.5C10.799 20.0807 11.349 20.5 12 20.5C12.651 20.5 13.2007 20.0807 13.408 19.5L15.5 19.5L15.5 21C15.5 21.5523 15.9477 22 16.5 22L18.5 22C19.0523 22 19.5 21.5523 19.5 21L19.5 16C19.5 15.4477 19.0523 15 18.5 15L16.5 15C15.9477 15 15.5 15.4477 15.5 16L15.5 18.5L13.408 18.5C13.257 18.0763 12.9237 17.743 12.5 17.592L12.5 6.40801C12.9237 6.25699 13.257 5.92367 13.408 5.5L15.5 5.5L15.5 8C15.5 8.55234 15.9477 9 16.5 9L18.5 9C19.0523 9 19.5 8.55234 19.5 8L19.5 3C19.5 2.44766 19.0523 2 18.5 2L16.5 2C15.9477 2 15.5 2.44766 15.5 3L15.5 4.5L13.408 4.5C13.201 3.91934 12.651 3.5 12 3.5C11.349 3.5 10.7993 3.91934 10.592 4.5L8.5 4.5L8.5 3C8.5 2.44766 8.05234 2 7.5 2L5.5 2C4.94766 2 4.5 2.44766 4.5 3L4.5 8C4.5 8.55234 4.94766 9 5.5 9L7.5 9C8.05234 9 8.5 8.55234 8.5 8L8.5 5.5L10.592 5.5C10.743 5.92367 11.0763 6.25699 11.5 6.40801L11.5 17.5923C11.0763 17.7434 10.743 18.0767 10.592 18.5004L8.5 18.5004L8.5 16C8.5 15.4477 8.05234 15 7.5 15ZM7.5 21L5.5 21L5.5 16L7.5 16L7.5 21ZM16.5 16L18.5 16L18.5 21L16.5 21L16.5 16ZM16.5 3L18.5 3L18.5 8L16.5 8L16.5 3ZM7.5 8L5.5 8L5.5 3L7.5 3L7.5 8ZM12 4.5C12.276 4.5 12.5 4.72367 12.5 5C12.5 5.27602 12.276 5.5 12 5.5C11.724 5.5 11.5 5.27602 11.5 5C11.5 4.72367 11.724 4.5 12 4.5ZM12 18.5C12.276 18.5 12.5 18.7237 12.5 19C12.5 19.276 12.276 19.5 12 19.5C11.724 19.5 11.5 19.276 11.5 19C11.5 18.7237 11.724 18.5 12 18.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>

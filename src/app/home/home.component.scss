@@ -1,31 +1,13 @@
 @import '/src/colors';
 
 .home {
-  &__sidenav {
-    width: 300px;
-
-    border-right: 1px solid $separator-color;
-    transition: width 0.5s ease-in-out,
-                border-right 0.5s ease-in;
-
-    &--minimize {
-      width: 64px;
-
-      border-color: #282626;
-      transition: width 0.5s ease-in-out,
-      border-right 0.5s ease-out;
-    }
-  }
+  display: flex;
+  height: 100%;
+  overflow: hidden;
 
   &__content {
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    margin-left: 300px !important;
-
-    transition: margin-left 0.5s ease-in-out;
-
-    &--minimize {
-      margin-left: 64px !important;
-    }
   }
 }

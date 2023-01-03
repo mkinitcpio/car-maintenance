@@ -1,0 +1,97 @@
+@import "/src/colors";
+@import "/src/fonts";
+
+:host {
+  &[button-common] {
+    .button {
+      border-color: #2b2a2a;
+      background-color: #4b4848;
+      color: white;
+    }
+  }
+
+  &[button-primary] {
+
+    .button {
+      height: 34px;
+      box-sizing: content-box;
+      font-family: $font-system;
+      background-color: white;
+      color: #4b4848;
+      gap: 0px;
+      transition: gap 0.2s ease-in;
+      justify-content: flex-start;
+
+      ::ng-deep mat-icon {
+        min-width: 24px;
+      }
+
+      ::ng-deep span {
+        opacity: 0;
+        width: 0px;
+        padding-right: 4px;
+        transition: width 0.2s ease-in, opacity 0.2s ease-in;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+
+    .button:hover {
+      gap: 4px;
+      background: rgba(0,0,0,0.05);
+      ::ng-deep span {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  &[button-transparent] {
+    .button {
+      border-color: transparent;
+      background-color: transparent;
+      color: #4b4848;
+
+      transition: background-color 0.1s ease-out;
+
+      &:hover {
+        background: rgba(0,0,0,0.05);
+      }
+
+      &--active {
+        background: rgba(0,0,0,0.05);
+      }
+    }
+  }
+
+  &[button-large] {
+    .button {
+      padding: 32px 24px;
+      border: 1px solid $color-border;
+      background-color: $color-primary;
+      color: white;
+
+      transition: background-color 0.1s ease-out;
+
+      &:hover {
+        background: rgba(0,0,0,0.05);
+      }
+    }
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 0 8px;
+
+  height: 38px;
+
+  cursor: pointer;
+}

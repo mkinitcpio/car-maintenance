@@ -1,14 +1,17 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .settings {
   height: 100%;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 
   user-select: none;
-  font-family: 'Ubuntu';
+  font-family: $font-system;
+
+  content-container:not(:last-child) {
+    margin-bottom: 32px;
+  }
 
   &__text {
     margin-right: 12px;
@@ -18,46 +21,15 @@
     overflow: hidden;
   }
 
-  &__header {
-    height: 50px;
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background-color: rgb(50, 48, 48);
-  }
-
-  &__header-text {
-    color: white;
-  }
-
-  &__button-container {
-    width: 28px;
-
-    &:first-child {
-      margin-right: auto;
-    }
-
-    &:last-child {
-      margin-left: auto;
-    }
-  }
-
   &__content {
-    @include mixins.scrollable;
-
     height: 100%;
-    padding: 16px 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-
-    background: $background-secondary;
   }
 
   &__toggle-group {
-    border-radius: 8px !important;
+    border-radius: 12px !important;
   }
 
   &__item {
@@ -65,7 +37,7 @@
     height: 64px;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 16px; 
   }
 
   &__item-label {
@@ -86,6 +58,12 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    font-size: 14px;
+
+    &--select {
+      width: 60%;
+    }
   }
 
   &__multi-item-field-container {
@@ -99,25 +77,9 @@
     color: gray;
   }
 
-  &__toggle.mat-checked {
-    .mat-slide-toggle-bar {
-      background-color:var(--secondary-color);
-    }
-    .mat-slide-toggle-thumb {
-      background-color: var(--primary-color);
-    }
-  }
-
-  .button {
-    padding: 0 12px;
-    min-width: initial;
-
-    border-radius: 8px;
-    font-family: Ubuntu;
-    font-weight: normal;
-    color: $font-primary;
-    background-color: rgb(252, 252, 252);
-    border: 1px solid rgb(196,196,196);
+  &__divider {
+    border-top-width: 1.5px !important;
+    margin: 4px 26px 4px 18px !important;
   }
 
   .mat-button-toggle-checked {
@@ -129,7 +91,7 @@
   .mat-button-toggle-label-content {
     line-height: 36px;
     font-size: 14px;
-    font-family: Ubuntu;
+    font-family: $font-system;
   }
 
   .mat-form-field-wrapper {
@@ -138,6 +100,11 @@
 
   .mat-button-toggle-button {
     width: 104px;
+  }
+  
+  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
+    border: solid 1.5px rgba(0,0,0,.12);
+    box-sizing: content-box;
   }
 }
 
@@ -149,7 +116,7 @@
   .mat-form-field-ripple {
     /*change color of underline when focused*/
     background-color: var(--primary-color);
-}
+  }
 }
 
 .mat-option.mat-selected:not(.mat-option-disabled) {

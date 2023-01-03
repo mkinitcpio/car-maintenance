@@ -1,18 +1,16 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
+@import '/src/fonts';
 
 .release-notes {
-  position: relative;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
-  font-family: "Ubuntu";
-  background: $background-secondary;
+
   user-select: none;
+  font-family: $font-system;
 
   .container {
-    padding: 24px;
+    padding: 0px 12px;
   }
 
   &__section-title {
@@ -20,8 +18,14 @@
     font-weight: bold;
   }
 
+  &__first-title {
+    margin-top: 0;
+  }
+
   &__text {
-    font-size: 1.2em;
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.2;
   }
 
   &__header {
@@ -51,16 +55,14 @@
   }
 
   &__content {
-    @include mixins.scrollable(100px);
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding: 132px 32px 32px 32px;
   }
 
   .button {
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-weight: normal;
     color: $font-primary;
     min-width: initial;
@@ -84,7 +86,6 @@
   padding: 24px 0;
 
   &__content {
-    height: 100%;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -107,11 +108,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
   }
 
   &__note {
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-size: 1em;
     display: flex;
     background: rgba($color: #111, $alpha: 0.7);
@@ -140,14 +140,14 @@
       transform: scale(1.2);
     }
   }
+
+  &__list {
+    padding-left: 20px;
+  }
 }
 
 .close-button {
   color: $font-primary;
   min-width: initial;
   padding: 0 8px;
-}
-
-.image-container {
-  padding:24px;
 }

@@ -1,5 +1,6 @@
 @use '/src/mixins' as mixins;
 @import "/src/colors";
+@import "/src/fonts";
 
 :host {
   overflow: hidden;
@@ -10,6 +11,32 @@
   flex-direction: column;
   height: 100%;
 
+  &--bordered {
+    margin-top: 20px;
+    position: relative;
+
+    border-radius: 24px;
+    border: 1.5px solid #ebebeb;
+
+    .tabs__title {
+      position: absolute;
+      top: -21px;
+      left: 50%;
+      z-index: 1;
+
+      background: white;
+      transform: translate(-50%);
+    }
+  }
+
+  &__title-container {
+    padding: 4px;
+
+    background: #fafafa;
+    border-radius: 12px;
+    box-shadow: inset 0px 1px 2px 1px rgb(0 0 0 / 4%);
+  }
+
   &__tabs-section {
     position: relative;
     box-sizing: border-box;
@@ -19,10 +46,9 @@
   }
 
   &__title {
-    padding: 8px 12px;
+    padding: 0px 8px 4px 8px;
 
-    background: $background-header-primary;
-    font-family: Ubuntu;
+    font-family: $font-system;
     font-size: 14px;
   }
 
@@ -32,7 +58,8 @@
     justify-content: center;
 
     border-radius: 8px;
-    color: white;
+    line-height: 1rem;
+    color: #474747;
     z-index: 1;
     transition: color 0.4s ease-in-out,background-color 0.1s ease-in;
 
@@ -41,16 +68,20 @@
     &--cover-selected {
       box-sizing: border-box;
       position: absolute;
-      height: inherit;
+      height: inherit; 
 
-      background-color: #4b4848;
-      border: 1px solid #2b2a2a;
+      background-color: white;
       border-radius: 8px;
       transition: left 0.4s ease-in-out;
+      box-shadow: rgb(0 0 0 / 10%) 0px 1px 2px 0px;
     }
 
     &:not(.tabs__tab.tabs__tab--selected):hover {
-      background-color: #00000026;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &--selected {
+      color: $font-primary;
     }
   }
 
@@ -83,3 +114,5 @@
     }
   }
 }
+
+

@@ -1,0 +1,28 @@
+.color {
+  height: 24px;
+  width: 24px;
+
+  border-radius: 50%;
+  transition: transform 0.3s ease-in;
+
+  cursor: pointer;
+
+  &--selected {
+    transform: scale(0.9);
+  }
+
+  &__done {
+    color: white;
+    transition: transform 0.2s ease-in 0.2s;
+    transform: scale(0);
+  }
+
+  &--selected .color__done {
+    transform: scale(0.7);
+  }
+
+  &:not(.color--selected):hover {
+    transition-duration: 0.1s;
+    transform: scale(1.1);
+  }
+}

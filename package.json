@@ -1,6 +1,6 @@
 {
   "name": "car-maintenance",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "App for log your car parts maintenance such as engine, oil and any what you want! Manage cost, date and mileage.",
   "homepage": "https://github.com/mkinitcpio/car-maintenance",
   "author": {
@@ -44,10 +44,13 @@
     "@angular/cdk": "12.2.11",
     "@angular/forms": "^12.2.11",
     "@angular/material": "12.2.11",
-    "@electron/remote": "1.2.0",
+    "@electron/remote": "2.0.8",
     "@ngrx/effects": "12.5.0",
     "@ngrx/store": "12.5.0",
     "@ngrx/store-devtools": "12.5.0",
+    "app-builder": "7.0.4",
+    "app-builder-bin": "4.1.2",
+    "material-icons": "1.10.6",
     "uuid": "8.3.1"
   },
   "devDependencies": {
@@ -79,8 +82,8 @@
     "chai": "4.2.0",
     "core-js": "3.6.5",
     "cross-env": "7.0.2",
-    "electron": "13.3.0",
-    "electron-builder": "22.13.1",
+    "electron": "20.0.0",
+    "electron-builder": "23.3.3",
     "electron-reload": "1.5.0",
     "eslint": "7.32.0",
     "eslint-plugin-import": "2.25.3",

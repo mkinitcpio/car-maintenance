@@ -21,7 +21,7 @@ import { CurrencyModule } from '../../currency/currency.module';
     MatIconModule,
     MatTooltipModule,
     TranslateModule,
-    CurrencyModule
+    CurrencyModule,
   ],
   exports: [
     RecordsTableComponent,

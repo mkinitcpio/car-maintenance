@@ -1,4 +1,4 @@
-<mat-table *ngIf="data.length" [dataSource]="data" class="records-table" [class.records-table--with-borders]="withBorders">
+<mat-table *ngIf="data.length; else emptyMessage" [dataSource]="data" class="records-table" [class.records-table--with-borders]="withBorders">
   <ng-container matColumnDef="position">
     <mat-header-cell *matHeaderCellDef class="records-table__cell-id"> № </mat-header-cell>
     <mat-cell class="records-table__cell-id"
@@ -45,11 +45,7 @@
 
   <ng-container matColumnDef="cost">
     <mat-header-cell *matHeaderCellDef class="records-table__cell-cost">
-      {{"RECORDS_TABLE.EXPENSE" | translate}} 
-      (<app-currency [currency]="settingsService.settings.units?.currency"
-                     [size]="CurrencySizeEnum.Small"
-                     [locale]="settingsService.settings.region">
-      </app-currency>)
+      {{"RECORDS_TABLE.EXPENSE" | translate}}
     </mat-header-cell>
     <mat-cell class="records-table__cell-cost" *matCellDef="let row">
       <div class="records-table__cell-text"
@@ -61,13 +57,12 @@
   </ng-container>
 
   <ng-container matColumnDef="notes">
-    <mat-header-cell *matHeaderCellDef class="records-table__cell-note"> {{"RECORDS_TABLE.COMMENT" | translate}} </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="records-table__header-note"> {{"RECORDS_TABLE.COMMENT" | translate}} </mat-header-cell>
     <mat-cell class="records-table__cell-note" *matCellDef="let row">
       <mat-icon class="records-table__note-icon"
                 *ngIf="row.notes"
                 [matTooltip]="row.notes"
-                [matTooltipPosition]="'above'">
-        description
+                [matTooltipPosition]="'above'" svgIcon="paper">
       </mat-icon>
     </mat-cell>
   </ng-container>
@@ -76,6 +71,16 @@
   <mat-row class="records-table__row" *matRowDef="let row; columns: displayedColumns" (contextmenu)="onContextMenu($event, row)">
   </mat-row>
 </mat-table>
+
+<ng-template #emptyMessage>
+  <section class="records-table__empty">
+    <div class="records-table__empty-container">
+      <mat-icon class="records-table__empty-icon" svgIcon="paper-empty"></mat-icon>
+      <span>No Records</span>
+    </div>
+  </section>
+</ng-template>
+
 <div style="visibility: hidden; position: fixed"
      [style.left]="contextMenuPosition.x"
      [style.top]="contextMenuPosition.y"
@@ -85,12 +90,12 @@
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
     <button class="menu-item" mat-menu-item (click)="onEdit()">
-      <mat-icon>edit</mat-icon>
+      <mat-icon svgIcon="edit"></mat-icon>
       <span>{{"MENU.EDIT" | translate}}</span>
     </button>
     <div class="mat-menu__divider"></div>
     <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
-      <mat-icon class="mat-item__icon mat-item__icon--delete">delete</mat-icon>
+      <mat-icon svgIcon="trash" class="mat-item__icon mat-item__icon--delete"></mat-icon>
       <span>{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>

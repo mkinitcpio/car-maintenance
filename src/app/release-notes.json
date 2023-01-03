@@ -1,50 +1,32 @@
 {
   "ru": {
-    "notification": {
-      "title": "Уведомление о новой версии"
-    },
+    "app": "Приложение",
+    "settings": "Настройки",
+    "mainPage": "Главная страница",
     "progress": {
-      "title": "Развитие приложения",
-      "0": "Приложение значительно изменилось относительно первой версии. Добавлялся новый функционал, ломался старый. :D",
-      "1": "Давайте посмотрим, как оно изменилось за прошлый год."
-    },
-    "color": {
-      "title": "Цветовая палитра",
-      "0": "Выбор цвета приложения на основе системного цвета в Windows и Mac OS."
-    },
-    "redesign": {
-      "title": "Редизайн компонентов",
-      "0": "Редизайн компонентов и анимаций. Меньше отступов - больше пространства для данных!",
-      "1": "Теперь взаимодействие с категориями и записями (добавление, редактирование, удаление) происходит при нажатии на правую кнопку мыши."
-    },
-    "car": {
-      "title": "Добавление автомобилей",
-      "0": "Возможность добавления нескольких автомобилей для обслуживания с заполнением дополнительных данных таких как: марка, модель двигатель и т.д.",
-      "1": "Поиск деталей на Amazon и Ebay."
+      "0": "Дизайн компонентов приведен к единому стилю;",
+      "1": "Добавлена панель навигации между модулями приложения. (Изменить стартовую страницу можно в настройках приложения).",
+      "2": "Добавлена возможность выбора цвета в настройках приложения;",
+      "3": "Добавлена возможность написать нам об ошибке или предложить новые функции.",
+      "4": "Название 'Категории' заменены на 'Группы' для лучшего понимания;",
+      "5": "Упрощено добавление группы и выбор иллюстрации в диалоге;",
+      "6": "Добавлены новые иллюстрации для групп;",
+      "7": "Добавлена возможность выбора иллюстрации в подгруппах;"
     }
   },
   "en": {
-    "notification": {
-      "title": "Notification about new version"
-    },
+    "app": "Application",
+    "settings": "Settings",
+    "mainPage": "Dashboard",
     "progress": {
-      "title": "Progress of application development",
-      "0": "The application has changed significantly from the first version. New functionality was added, the old one was broken. :D",
-      "1": "Let's see how it has changed over the past year."
-    },
-    "color": {
-      "title": "Application color",
-      "0": "Choose an application color based on the system color on Windows and Mac OS."
-    },
-    "redesign": {
-      "title": "Component redesign",
-      "0": "Redesign of components and animations. Less padding - more data space!",
-      "1": "Now interaction with categories and records (adding, editing, deleting) occurs when you click the right mouse button."
-    },
-    "car": {
-      "title": "Car category support",
-      "0": "Possibility to add several cars for maintenance by filling in additional data such as make, model, engine, etc.",
-      "1": "Search parts on Amazon and Ebay."
+      "0": "Update components design;",
+      "1": "Add navigation between application modules. (You can change start page in the settings);",
+      "2": "Add support of change application color.",
+      "3": "Add feedback support where you can report a bug or request a new feature.",
+      "4": "Replace 'Categories' by 'Groups';",
+      "5": "Simplify create group dialog;",
+      "6": "Add new illustrations for groups;",
+      "7": "Add illustrations support for sub group;"
     }
   }
 }
