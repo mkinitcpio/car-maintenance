@@ -58,7 +58,7 @@
       </app-widget>
     </div>
 
-    <section class="category-details__tables">
+    <section *ngIf="false" class="category-details__tables">
       <section class="category-details__table-container" [class.category-details__table-container--expand]="expandRecordsPanel">
         <div class="category-details__table-header">
           <span class="category-details__table-title">Записи <sup>(0)</sup></span>
@@ -85,7 +85,7 @@
     <section class="category-details__tables">
       <div class="category-details__tables-title">
         <span>Группы</span>
-        <div class="category-details__tables-title-buttons">
+        <div class="category-details__tables-title-buttons" *ngIf="false">
           <app-button button-transparent (click)="onAddRecord()">
             <mat-icon svgIcon="add"></mat-icon>
           </app-button>
@@ -104,7 +104,7 @@
                *ngFor="let table of categoryDetails.tables; let i = index; let last = last; let first = first"
       >
         <div class="category-details__table-header">
-          <span class="category-details__table-title">{{table.name}} <sup>({{table.data.length}})</sup></span>
+          <span class="category-details__table-title">{{table.name}}</span>
           <div class="category-details__panel">
             <div class="category-details__tables-title-buttons">
               <app-button button-transparent (click)="expandPanelToggles[i] = !expandPanelToggles[i]">
@@ -115,7 +115,7 @@
 
         </div>
         <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
-          <div class="category-details__table-content-panel">
+          <div *ngIf="false" class="category-details__table-content-panel">
             <div class="category-details__total">
               <span class="category-details__total-text">{{'PAGES.DETAIL.OVERALL_EXPENSE' | translate}}</span>
               <div class="category-details__total-value">

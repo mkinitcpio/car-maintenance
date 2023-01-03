@@ -8,6 +8,7 @@ import { DashboardItemModule } from './dashboard-item/dashboard-item.module';
 import { FeedbackDialogModule } from '@shared/components/feedback-dialog/feedback-dialog.module';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     DashboardItemModule,
     FeedbackDialogModule,
     DashboardRoutingModule,
+    TranslateModule,
   ],
   exports: [
     DashboardComponent,

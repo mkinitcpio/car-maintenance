@@ -1,7 +1,7 @@
 export enum NavigationEnum {
   Dashboard = 'dashboard',
   Maintenance = 'maintenance',
-  Tasks = 'tasks',
+  Events = 'events',
   Storage = 'storage',
   Statistic = 'statistic',
 }

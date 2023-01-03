@@ -10,7 +10,7 @@
   font-family: $font-system;
 
   .container {
-    padding: 16px;
+    padding: 0px 12px;
   }
 
   &__section-title {
@@ -18,8 +18,14 @@
     font-weight: bold;
   }
 
+  &__first-title {
+    margin-top: 0;
+  }
+
   &__text {
     font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.2;
   }
 
   &__header {
@@ -133,6 +139,10 @@
       border-color: transparent;
       transform: scale(1.2);
     }
+  }
+
+  &__list {
+    padding-left: 20px;
   }
 }
 

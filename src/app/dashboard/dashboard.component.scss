@@ -49,33 +49,30 @@
   gap: 16px;
 
   &--normal {
-    grid-template-columns: repeat(3, 256px);
+    grid-template-columns: repeat(2, 256px);
     grid-template-rows: repeat(2, 132px);
     grid-template-areas:
-      "header content item4"
-      "header item3 item4"
+      "header content"
+      "header item3"
   }
 
   &--compact {
     height: initial;
     grid-template-columns: repeat(1, 256px);
-    grid-template-rows: repeat(6, 132px);
+    grid-template-rows: repeat(4, 132px);
     grid-template-areas:
     "header"
     "header"
     "content"
-    "item4"
-    "item4"
     "item3";
   }
 
   &--medium {
     grid-template-columns: repeat(2, 256px);
-    grid-template-rows: repeat(3, 132px);
+    grid-template-rows: repeat(2, 132px);
     grid-template-areas:
     "header content"
-    "header item4"
-    "item3 item4";
+    "header item3";
   }
 }
 

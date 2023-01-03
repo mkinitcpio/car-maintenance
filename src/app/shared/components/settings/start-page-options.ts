@@ -10,15 +10,15 @@ export const startPageOptions = [
     value: NavigationEnum.Maintenance,
   },
   {
-    name: 'NAVIGATIONS.TASKS',
-    value: NavigationEnum.Tasks,
+    name: 'NAVIGATIONS.EVENTS',
+    value: NavigationEnum.Events,
   },
   {
     name: 'NAVIGATIONS.STORAGE',
     value: NavigationEnum.Storage,
   },
-  {
-    name: 'NAVIGATIONS.STATISTIC',
-    value: NavigationEnum.Statistic,
-  },
+  // {
+  //   name: 'NAVIGATIONS.STATISTIC',
+  //   value: NavigationEnum.Statistic,
+  // },
 ];

@@ -11,14 +11,10 @@ export const navigationButtons: NavigationButton[] = [{
   tooltipText: "NAVIGATIONS.RECORDS",
 },{
   icon: 'task',
-  route: NavigationEnum.Tasks,
-  tooltipText: "NAVIGATIONS.TASKS",
+  route: NavigationEnum.Events,
+  tooltipText: "NAVIGATIONS.EVENTS",
 },{
   icon: 'store',
   route: NavigationEnum.Storage,
   tooltipText: "NAVIGATIONS.STORAGE",
-},{
-  icon: 'chart',
-  route: NavigationEnum.Statistic,
-  tooltipText: "NAVIGATIONS.STATISTIC",
-}];
+},];

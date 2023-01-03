@@ -27,11 +27,11 @@ export class AppComponent extends AutoCloseable {
     super();
 
     iconsNames.forEach(name => {
-      this.matIconRegistry.addSvgIcon(`${name}`, this.domS.bypassSecurityTrustResourceUrl(`/assets/icons/vuesax/${name}.svg`));
+      this.matIconRegistry.addSvgIcon(`${name}`, this.domS.bypassSecurityTrustResourceUrl(`assets/icons/vuesax/${name}.svg`));
     });
 
     groupIllustrationNames.forEach(name => {
-      this.matIconRegistry.addSvgIconInNamespace('illustrations', name, this.domS.bypassSecurityTrustResourceUrl(`/assets/group-icons/${name}.svg`));
+      this.matIconRegistry.addSvgIconInNamespace('illustrations', name, this.domS.bypassSecurityTrustResourceUrl(`assets/group-icons/${name}.svg`));
     });
 
     this.matIconRegistry.setDefaultFontSetClass('material-symbols-rounded');

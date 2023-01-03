@@ -1,5 +1,8 @@
-<app-details [title]="'Storage'" separated="true">
+<app-details class="storage" [title]="'NAVIGATIONS.STORAGE' | translate" separated="true">
   <ng-container content>
-    WORKS!
+    <section class="storage__dev">
+        <mat-icon class="storage__dev-icon" svgIcon="crane"></mat-icon>
+        <span class="storage__dev-text">{{"UNDER_DEV" | translate}}</span>
+    </section>
   </ng-container>
 </app-details>

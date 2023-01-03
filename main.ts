@@ -16,6 +16,7 @@ function createWindow(): BrowserWindow {
     title: `Car Maintenance`,
     webPreferences: {
       nodeIntegration: true,
+      webSecurity: false,
       allowRunningInsecureContent: (serve) ? true : false,
       contextIsolation: false,// true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
     },

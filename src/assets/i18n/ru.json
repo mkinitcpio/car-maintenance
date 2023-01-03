@@ -15,6 +15,20 @@
       "CREATE": "Создать",
       "OPEN": "Открыть"
   },
+  "DASHBOARD": {
+    "FEEDBACK": {
+      "TITLE": "Обратная связь",
+      "DESCRIPTION": "Напишите нам. Всегда на связи!"
+    },
+    "SOURCE_CODE": {
+      "TITLE": "Исходный код",
+      "DESCRIPTION": "Клонируйте, изменяйте."
+    },
+    "CHANGELOG": {
+      "TITLE": "",
+      "DESCRIPTION": "Что нового?"
+    }
+  },
       "DETAIL": {
         "EMPTY": "Записи отсутствуют",
         "LAST_MODIFIED": "Последнее изменение",
@@ -213,8 +227,9 @@
   "NAVIGATIONS": {
     "DASHBOARD": "Главная",
     "RECORDS": "Записи",
-    "TASKS": "Задания",
+    "EVENTS": "События",
     "STORAGE": "Склад",
     "STATISTIC": "Статистика"
-  }
+  },
+  "UNDER_DEV": "В разработке"
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     canActivate: [AppGuard],
-    children: [  {
+    children: [{
       path: 'maintenance',
       loadChildren: () => import('./maintenance/maintenance.module').then(m => m.MaintenanceModule)
     },{
@@ -20,8 +20,12 @@ const routes: Routes = [
     },{
       path: 'storage',
       loadChildren: () => import('./storage/storage.module').then(m => m.StorageModule)
+    },{
+      path: 'events',
+      loadChildren: () => import('./events/events.module').then(m => m.EventsModule)
     },
-   ]},
+    ],
+  },
   { path: "welcome", component: WelcomePageComponent },
 ];
 

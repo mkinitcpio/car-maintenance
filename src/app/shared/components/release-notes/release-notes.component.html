@@ -1,124 +1,28 @@
 <section class="release-notes">
-  <app-dialog [title]="'Car Maintenance 4.0'"
+  <app-dialog [title]="'Car Maintenance 4.0.0'"
               hideFooter="true"
               (close)="dialogRef.close()"
     >
     <main content class="release-notes__content">
-      <content-container [title]="releaseNotes[appLanguage].progress.title">
-        <div class="container">
-          <p class="release-notes__text">{{releaseNotes[appLanguage].progress['0']}}</p>
-          <p class="release-notes__text">{{releaseNotes[appLanguage].progress['1']}}</p>
-          <div class="slide-show">
-            <div class="slide-show__content">
-              <button mat-button class="button"
-                      (click)="onSlideShowChange(progressSlideShowSection, -1)">
-                <mat-icon>
-                navigate_before
-                </mat-icon>
-              </button>
-              <div class="slide-show__image-section">
-                <img class="image" [src]="progressSlideShowSection.links[progressSlideShowSection.selected]" alt="">
-                <div class="slide-show__position">
-                  <div class="slide-show__indicator"
-                      (click)="progressSlideShowSection.selected = i"
-                      [class.slide-show__indicator--selected]="progressSlideShowSection.selected === i"
-                      *ngFor="let position of progressSlideShowSection.links; let i = index">
-                  </div>
-                </div>
-                <div class="slide-show__note">{{progressSlideShowSection.notes[progressSlideShowSection.selected]}}</div>
-              </div>
-              <button mat-button class="button"
-                      (click)="onSlideShowChange(progressSlideShowSection, 1)">
-                <mat-icon>
-                navigate_next
-                </mat-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-      </content-container>
-
-      <content-container [title]="releaseNotes[appLanguage].color.title">
-        <div class="container">
-          <p class="release-notes__text">{{releaseNotes[appLanguage].color['0']}}</p>
-          <div class="slide-show">
-            <div class="slide-show__content">
-              <button mat-button class="button"
-                      (click)="onSlideShowChange(colorSlideShowSection, -1)">
-                <mat-icon>
-                navigate_before
-                </mat-icon>
-              </button>
-              <div class="slide-show__image-section">
-                <img class="image" [src]="colorSlideShowSection.links[colorSlideShowSection.selected]" alt="">
-                <div class="slide-show__position">
-                  <div class="slide-show__indicator"
-                      (click)="colorSlideShowSection.selected = i"
-                      [class.slide-show__indicator--selected]="colorSlideShowSection.selected === i"
-                      *ngFor="let position of colorSlideShowSection.links; let i = index">
-                  </div>
-                </div>
-                <div class="slide-show__note" *ngIf="colorSlideShowSection.notes[colorSlideShowSection.selected]">{{colorSlideShowSection.notes[colorSlideShowSection.selected]}}</div>
-              </div>
-              <button mat-button class="button"
-                      (click)="onSlideShowChange(colorSlideShowSection, 1)">
-                <mat-icon>
-                navigate_next
-                </mat-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-      </content-container>
-
-      <content-container [title]="releaseNotes[appLanguage].redesign.title">
-        <div class="container">
-          <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['0']}}</p>
-          <p class="release-notes__text">{{releaseNotes[appLanguage].redesign['1']}}</p>
-          <video class="release-notes__video" src="assets/release-notes/components-video.mov" controls></video>
-        </div>
-      </content-container>
-
-      <content-container [title]="releaseNotes[appLanguage].car.title">
-        <div class="container">
-          <p class="release-notes__text">{{releaseNotes[appLanguage].car['0']}}</p>
-          <p class="release-notes__text">{{releaseNotes[appLanguage].car['1']}}</p>
-          <div class="slide-show">
-            <div class="slide-show__content">
-              <button mat-button class="button"
-                      (click)="onSlideShowChange(carSlideShowSection, -1)">
-                <mat-icon>
-                navigate_before
-                </mat-icon>
-              </button>
-              <div class="slide-show__image-section">
-                <img class="image" [src]="carSlideShowSection.links[carSlideShowSection.selected]" alt="">
-                <div class="slide-show__position">
-                  <div class="slide-show__indicator"
-                      (click)="carSlideShowSection.selected = i"
-                      [class.slide-show__indicator--selected]="carSlideShowSection.selected === i"
-                      *ngFor="let position of carSlideShowSection.links; let i = index">
-                  </div>
-                </div>
-                <div class="slide-show__note" *ngIf="carSlideShowSection.notes[colorSlideShowSection.selected]">{{carSlideShowSection.notes[carSlideShowSection.selected]}}</div>
-              </div>
-              <button mat-button class="button"
-                      (click)="onSlideShowChange(carSlideShowSection, 1)">
-                <mat-icon>
-                navigate_next
-                </mat-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-      </content-container>
-      <content-container [title]="releaseNotes[appLanguage].notification.title">
-        <div class="container">
-          <div class="image-container">
-            <img class="image" src="assets/release-notes/notification.png">
-          </div>
-        </div>
-      </content-container>
+      <div class="container">
+        <h3 class="release-notes__first-title">{{releaseNotes[appLanguage].app}}</h3>
+        <ul class="release-notes__list">
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['0']}}</li>
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['4']}}</li>
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['5']}}</li>
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['6']}}</li>
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['7']}}</li>
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['1']}}</li>
+        </ul>
+        <h3>{{releaseNotes[appLanguage].settings}}</h3>
+        <ul class="release-notes__list">
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['2']}}</li>
+        </ul>
+        <h3>{{releaseNotes[appLanguage].mainPage}}</h3>
+        <ul class="release-notes__list">
+          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['3']}}</li>
+        </ul>
+      </div>
     </main>
   </app-dialog>
 </section>

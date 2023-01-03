@@ -1,21 +1,23 @@
 import { Injectable } from "@angular/core";
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from "@angular/router";
+import {CanActivate, Router} from "@angular/router";
 import {Observable} from "rxjs";
 import { tap } from "rxjs/operators";
 import { DataBaseService } from './core/database';
 
+@Injectable({
+  providedIn: 'root',
+})
+export class AppGuard implements CanActivate {
 
-@Injectable()
-export class AppGuard implements CanActivate{
+  constructor(
+    private dataBaseService: DataBaseService,
+    private router: Router,
+  ) {}
 
-  constructor(private dataBaseService: DataBaseService, private router: Router)
-  {
-  }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean{
+  public canActivate(): Observable<boolean> | boolean {
     return this.dataBaseService.dbExist$
       .pipe(
-        tap(exist => {
+        tap((exist) => {
           !exist && this.router.navigate(['welcome']);
         })
       );
