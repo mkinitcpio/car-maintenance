@@ -81,6 +81,7 @@
         }
       },
       "CATEGORY_DETAILS": {
+        "GROUPS": "Группы",
         "WIDGETS": {
           "INFO": "Информация",
           "NOTE": "Заметка",

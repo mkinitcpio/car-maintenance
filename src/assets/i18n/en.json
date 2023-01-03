@@ -22,7 +22,7 @@
       },
       "SOURCE_CODE": {
         "TITLE": "Source code",
-        "DESCRIPTION": "Clone, edit and even more"
+        "DESCRIPTION": "Clone, edit and publish!"
       },
       "CHANGELOG": {
         "TITLE": "",
@@ -81,6 +81,7 @@
       }
     },
     "CATEGORY_DETAILS": {
+      "GROUPS": "Groups",
       "WIDGETS": {
         "INFO": "Information",
         "NOTE": "Note",

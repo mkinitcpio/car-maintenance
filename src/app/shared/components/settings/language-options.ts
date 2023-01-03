@@ -7,8 +7,4 @@ export const languageOptions = [
     name: 'Русский',
     value: 'ru'
   },
-  {
-    name: 'Italiano',
-    value: 'it',
-  },
 ];
