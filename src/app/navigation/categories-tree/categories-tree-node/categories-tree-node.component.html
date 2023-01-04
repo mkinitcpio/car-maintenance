@@ -4,34 +4,38 @@
        [style.top]="contextMenuPosition.y"
        [matMenuTriggerFor]="contextMenu">
   </div>
-  <div matRipple class="categories-tree-node__content"
-       [class.categories-tree-node__content--select]="selected === child.id"
-       (click)="onSelect()"
+  <div class="categories-tree-node__content"
        (contextmenu)="onContextMenu($event)">
-    <div class="categories-tree-node__icon-container">
-      <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (child.illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
+    <div class="categories-tree-node__selection-container" [class.categories-tree-node__content--select]="selected === child.id" (click)="onSelect()" matRipple>
+      <div class="categories-tree-node__icon-container">
+        <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (child.illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
+      </div>
+      <span class="categories-tree-node__name">
+        {{child.name}}
+      </span>
     </div>
-    <span class="categories-tree-node__name">
-      {{child.name}}
-    </span>
-    <div class="categories-tree-node__expand-button-container">
-      <mat-icon class="categories-tree-node__expand-button"
-                svgIcon="expand"
-                [class.categories-tree-node__expand-button--expanded]="expand"
-                *ngIf="child.children?.length"
-                (click)="expand = !expand; $event.stopPropagation()">
-      </mat-icon>
+    <div *ngIf="!isSubGroup" class="categories-tree-node__expand-button-container">
+      <app-button *ngIf="child.children?.length; else empty" button-transparent (click)="expand = !expand;">
+        <mat-icon class="categories-tree-node__expand-button"
+              svgIcon="expand"
+              [class.categories-tree-node__expand-button--expanded]="expand">
+        </mat-icon>
+      </app-button>
+      <ng-template #empty>
+        <div class="categories-tree-node__empty"></div>
+      </ng-template>
     </div>
   </div>
   <ng-container>
     <div class="categories-tree-node__sub-node"
         [class.categories-tree-node__sub-node--expanded]="expand"
-        [style.height]="expand ? (child.children.length * 46) + 'px' : 0">
+        [style.height]="expand ? (child.children.length * 42) + 'px' : 0">
       <div class="categories-tree-node__displacer">
         <app-category-tree-displacer *ngFor="let c of child.children"></app-category-tree-displacer>
       </div>
       <div class="categories-tree-node__sub-node-item">
         <app-categories-tree-node *ngFor="let c of child.children"
+                                  [isSubGroup]="true"
                                   [selected]="selected"
                                   [child]="c"
                                   (edit)="onEdit(c)"

@@ -20,6 +20,9 @@ export class CategoriesTreeNodeComponent implements OnInit {
   child: CategoryTree;
 
   @Input()
+  isSubGroup: boolean;
+  
+  @Input()
   selected: string;
 
   @Output()

@@ -51,22 +51,30 @@
     color: #4b4848;
   }
 
-  &__content {
+  &__selection-container {
+    width: 100%;
     display: flex;
     align-items: center;
-    height: 42px;
-    padding: 0 8px;
+    padding: 0 12px 0 8px;
     gap: 6px;
-
+    border-radius: 12px;
     color: $font-primary;
     cursor: pointer;
-    border-radius: 12px;
-    line-height: 1.5rem;
+    height: 38px;
     transition: background-color 0.1s ease-out;
 
     &:hover {
       background: rgba(0,0,0,0.05);
     }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    line-height: 1.5rem;
+
 
     &--select {
       color: white;
@@ -94,9 +102,16 @@
   &__expand-button-container {
     display: flex;
     align-items: center;
-    height: 24px;
-    width: 24px;
-    margin-left: auto;
+    justify-content: center;
+    height: 38px;
+    min-width: 42px;
+  }
+
+  &__empty {
+    height: 4px;
+    width: 4px;
+    background: #4b4848;
+    border-radius: 50%;
   }
 
   &__expand-button {
