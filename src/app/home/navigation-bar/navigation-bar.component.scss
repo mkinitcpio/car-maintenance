@@ -56,6 +56,8 @@
     display: flex;
     justify-content: center;
 
+    -webkit-user-drag: none;
+
     &--selected {
       .navigation-bar__button-selector {
         transform: translate(0, -50%);
