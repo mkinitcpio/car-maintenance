@@ -4,14 +4,7 @@
     "settings": "Настройки",
     "mainPage": "Главная страница",
     "progress": {
-      "0": "Дизайн компонентов приведен к единому стилю;",
-      "1": "Добавлена панель навигации между модулями приложения. (Изменить стартовую страницу можно в настройках приложения).",
-      "2": "Добавлена возможность выбора цвета в настройках приложения;",
-      "3": "Добавлена возможность написать нам об ошибке или предложить новые функции.",
-      "4": "Название 'Категории' заменены на 'Группы' для лучшего понимания;",
-      "5": "Упрощено добавление группы и выбор иллюстрации в диалоге;",
-      "6": "Добавлены новые иллюстрации для групп;",
-      "7": "Добавлена возможность выбора иллюстрации в подгруппах;"
+      "0": "Исправлено несколько ошибок"
     }
   },
   "en": {
@@ -19,14 +12,7 @@
     "settings": "Settings",
     "mainPage": "Dashboard",
     "progress": {
-      "0": "Update components design;",
-      "1": "Add navigation between application modules. (You can change start page in the settings);",
-      "2": "Add support of change application color.",
-      "3": "Add feedback support where you can report a bug or request a new feature.",
-      "4": "Replace 'Categories' by 'Groups';",
-      "5": "Simplify create group dialog;",
-      "6": "Add new illustrations for groups;",
-      "7": "Add illustrations support for sub group;"
+      "0": "Fixed several bugs"
     }
   }
 }
