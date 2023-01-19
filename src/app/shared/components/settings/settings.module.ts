@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-container.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
