@@ -6,7 +6,7 @@
   </div>
   <div class="categories-tree-node__content"
        (contextmenu)="onContextMenu($event)">
-    <div class="categories-tree-node__selection-container" [class.categories-tree-node__content--select]="selected === child.id" (click)="onSelect()" matRipple>
+    <div class="categories-tree-node__selection-container" [class.categories-tree-node__content--select]="isSelected" (click)="onSelect(child)" matRipple>
       <div class="categories-tree-node__icon-container">
         <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (child.illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
       </div>
@@ -15,10 +15,10 @@
       </span>
     </div>
     <div *ngIf="!isSubGroup" class="categories-tree-node__expand-button-container">
-      <app-button *ngIf="child.children?.length; else empty" button-transparent (click)="expand = !expand;">
+      <app-button *ngIf="child.children?.length; else empty" button-transparent (click)="switchExpandState()">
         <mat-icon class="categories-tree-node__expand-button"
               svgIcon="expand"
-              [class.categories-tree-node__expand-button--expanded]="expand">
+              [class.categories-tree-node__expand-button--expanded]="expanded">
         </mat-icon>
       </app-button>
       <ng-template #empty>
@@ -28,18 +28,16 @@
   </div>
   <ng-container>
     <div class="categories-tree-node__sub-node"
-        [class.categories-tree-node__sub-node--expanded]="expand"
-        [style.height]="expand ? (child.children.length * 42) + 'px' : 0">
+        [class.categories-tree-node__sub-node--expanded]="expanded"
+        [style.height]="expanded ? (child.children?.length * 42) + 'px' : 0">
       <div class="categories-tree-node__displacer">
         <app-category-tree-displacer *ngFor="let c of child.children"></app-category-tree-displacer>
       </div>
       <div class="categories-tree-node__sub-node-item">
         <app-categories-tree-node *ngFor="let c of child.children"
                                   [isSubGroup]="true"
-                                  [selected]="selected"
                                   [child]="c"
                                   (edit)="onEdit(c)"
-                                  (select)="onSelect(c)"
                                   (delete)="onDelete(c)">
         </app-categories-tree-node>
       </div>

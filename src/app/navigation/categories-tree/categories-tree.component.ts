@@ -11,9 +11,6 @@ export class CategoriesTreeComponent implements OnInit {
   @Input()
   catagories: CategoryTree[];
 
-  @Input()
-  selected: string;
-
   @Output()
   add: EventEmitter<Category> = new EventEmitter();
 
@@ -25,8 +22,6 @@ export class CategoriesTreeComponent implements OnInit {
 
   @Output()
   select: EventEmitter<Category> = new EventEmitter();
-
-  public selectedCategory: string = null;
 
   constructor() { }
 
@@ -43,10 +38,6 @@ export class CategoriesTreeComponent implements OnInit {
 
   public onDelete(category: Category): void {
     this.delete.emit(category);
-  }
-
-  public onSelect(category: Category): void {
-    this.select.emit(category);
   }
 
   public trackBy(_: number, category: Category): string {

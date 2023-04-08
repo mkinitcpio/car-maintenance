@@ -8,18 +8,14 @@
   </div>
   <app-tabs [tabs]="tabs" (selectedTabIndex)="onSelectTab($event)">
     <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"
-                              [selected]="selected"
                               (add)="addCategory($event)"
                               (edit)="onEdit($event)"
-                              (select)="onSelectCategory($event)"
                               (delete)="onDelete($event)">
     </app-categories-tree>
 
     <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Car)"
-                              [selected]="selected"
                               (add)="addCategory($event)"
                               (edit)="$event.type === CategoryTypeEnum.Car ? onEditCarCategory($event.id) : onEdit($event)"
-                              (select)="onSelectCategory($event)"
                               (delete)="onDelete($event)">
     </app-categories-tree>
   </app-tabs>
