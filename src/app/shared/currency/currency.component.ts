@@ -4,7 +4,6 @@ import { LocaleEnum } from '../components/settings/locale-enum';
 import { SettingsService } from '../components/settings/settings.service';
 import { CurrencySizeEnum } from './currency-size.enum';
 import { CurrencyRenderEnum } from './currency-render.enum';
-import { CurrencyBase64Enum } from './currency-base64.enum';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ElectronService } from '@core/services';
 import { HttpClient } from '@angular/common/http';
@@ -34,7 +33,6 @@ export class CurrencyComponent implements OnInit {
   public CurrencyEnum = CurrencyEnum;
   public CurrencySizeEnum = CurrencySizeEnum;
   public CurrencyRenderEnum = CurrencyRenderEnum;
-  public CurrencyBase64Enum = CurrencyBase64Enum;
   public currencyBase64SafeUrl: SafeUrl;
 
   constructor(
