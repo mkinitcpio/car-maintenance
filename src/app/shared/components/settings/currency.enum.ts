@@ -3,9 +3,8 @@ export enum CurrencyEnum {
   Rub = 'Rub',
   Usd = 'Usd',
   Eur = "Eur",
-
-  // Backward compatibility with < v2.5
-  us = 'Usd',
-  ru = 'Rub',
-  by = 'Byn',
+  Pound = 'Pound',
+  Yen = 'Yen',
+  Rupee = 'Rupee',
+  Lira = 'Lira',
 }

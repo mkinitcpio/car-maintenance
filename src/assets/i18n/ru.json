@@ -214,8 +214,12 @@
   "CURRENCY": {
     "EURO": "Евро",
     "DOLLAR": "Доллар",
-    "RUSSIAN_RUBLE": "Русский рубль",
-    "BELARUSSIAN_RUBLE": "Белорусский рубль"
+    "RUSSIAN_RUBLE": "Российский рубль",
+    "BELARUSSIAN_RUBLE": "Белорусский рубль",
+    "POUND": "Британский фунт",
+    "YEN": "Йена / Юань",
+    "RUPEE": "Рупия",
+    "LIRA": "Лира"
   },
   "METRIC_SYSTEM": {
     "KILOMETERS": "Километры",

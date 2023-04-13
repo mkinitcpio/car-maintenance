@@ -64,6 +64,10 @@
     &--select {
       width: 60%;
     }
+
+    &--currency {
+      width: 70%;
+    }
   }
 
   &__multi-item-field-container {
@@ -80,6 +84,37 @@
   &__divider {
     border-top-width: 1.5px !important;
     margin: 4px 26px 4px 18px !important;
+  }
+
+  &__currency-preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__currency-icon {
+    position: absolute;
+    width: 19px;
+    height: 20px;
+
+    color: #4b4848;
+  }
+
+  &__currency-name {
+    margin-left: 28px;
+  }
+
+  &__currency-option {
+    display: flex;
+    align-items: center;
+  }
+
+  &__currency-option-icon {
+    height: 19px;
+    width: 20px;
+    margin-right: 8px !important;
+
+    color: #4b4848;
   }
 
   .mat-button-toggle-checked {

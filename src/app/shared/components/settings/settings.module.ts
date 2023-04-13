@@ -17,6 +17,7 @@ import { SwitchModule } from '../switch/switch.module';
 import { SettingComponent } from './setting/setting.component';
 import { ButtonModule } from '../button/button.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
+import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
 
 @NgModule({
   declarations: [SettingsComponent, SettingComponent],
@@ -36,6 +37,7 @@ import { ContentContainerModule } from '../content-container/content-container.m
     SwitchModule,
     ButtonModule,
     ContentContainerModule,
+    CommonPipesModule,
   ],
   providers: [
     SettingsService,

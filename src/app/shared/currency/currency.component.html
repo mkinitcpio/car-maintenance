@@ -1,16 +1,15 @@
-<ng-container *ngIf="(currency && currency !== CurrencyEnum.Byn) || (!currency && locale !== LocaleEnum.By); else currencyText">
+<ng-container *ngIf="currency else currencyText">
   <mat-icon [ngClass]="{
     'currency': true,
     'currency--small': size === CurrencySizeEnum.Small
   }" 
+  [svgIcon]="'currencies:' + (currency | currency)"
   *ngIf="renderAs === CurrencyRenderEnum.Svg"
   >
-    {{currency | currency:locale}}
   </mat-icon>
-
   <img class="currency__image"
        *ngIf="renderAs === CurrencyRenderEnum.Image"
-       [src]="domSanitizer.bypassSecurityTrustUrl('data:image/svg+xml;base64, ' + CurrencyBase64Enum[currency | currency:locale])">
+       [src]="currencyBase64SafeUrl">
 </ng-container>
 
 <ng-template #currencyText>

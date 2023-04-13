@@ -90,11 +90,18 @@
         <mat-divider class="settings__divider"></mat-divider>
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.CURRENCY' | translate" icon="attach_money">
-          <mat-form-field class="settings__item-field settings__item-field--select">
-            <mat-select (valueChange)="onSelectCurrency($event)"
-                        [value]="CurrencyEnum[settingsService.settings.units?.currency] || CurrencyEnum[settingsService.settings.region]">
-              <mat-option *ngFor="let currency of currencyOptions" [value]="currency.value">
-                {{ currency.name | translate }}
+          <mat-form-field class="settings__item-field settings__item-field--currency">
+            <mat-select [value]="settingsService.settings.units.currency" (valueChange)="onSelectCurrency($event)">
+              <mat-select-trigger class="settings__currency-preview">
+                <mat-icon class="settings__currency-icon" [svgIcon]="'currencies:' + getCurrentCurrency().icon"></mat-icon>
+                <span class="settings__currency-name">{{getCurrentCurrency().name | translate}}</span>
+              </mat-select-trigger>
+
+              <mat-option *ngFor="let currency of currencyOptions | orderTranslate:'name'" [value]="currency.value">
+                <div class="settings__currency-option">
+                  <mat-icon class="settings__currency-option-icon" [svgIcon]="'currencies:' + currency.icon"></mat-icon>
+                  <span>{{ currency.name | translate }}</span>
+                </div>
               </mat-option>
             </mat-select>
             <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>

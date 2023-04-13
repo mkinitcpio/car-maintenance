@@ -109,4 +109,8 @@ export class SettingsComponent {
     this.settingsService.changeThemeColor(colors);
     this.settingsService.saveSettings();
   }
+
+  public getCurrentCurrency() {
+    return this.currencyOptions.find((currencyOption) => currencyOption.value === this.settingsService.settings.units.currency);
+  }
 }
