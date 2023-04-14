@@ -131,6 +131,10 @@
         "FEATURE": "Feature"
       }
     },
+    "CURRENCY": {
+      "TITLE": "Update your currency setting",
+      "DESCRIPTION": "Please, update your currency"
+    },
     "DELETE": {
       "TITLE": "Confirm Delete",
       "CATEGORY": "Do you really want to delete this group? This process cannot be undone.",

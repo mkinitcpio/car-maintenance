@@ -16,6 +16,7 @@ import { SettingsComponent } from '../components/settings/settings.component';
 import { PrintDialogComponent } from '../components/print-dialog/print-dialog.component';
 import { PrintDialogConfig } from '@shared/components/print-dialog/print-dialog-config';
 import { CreateCarDialogComponent } from '@shared/components/create-car-dialog/create-car-dialog.component';
+import { CurrencyDialogComponent } from '@shared/components/currency-dialog/currency-dialog.component';
 
 import { CarCategoryFormData } from '@core/interfaces/car-category';
 import { AccountDialogComponent } from '@shared/components/account-dialog/account-dialog.component';
@@ -65,14 +66,16 @@ export class DialogManagerService {
       .pipe<Record>(filter<Record>(Boolean));
   }
 
-  public openReleaseNotesDialog(data: ReleaseNotes): void {
-    this.dialog.open(ReleaseNotesComponent, {
-      maxHeight: "80%",
-      width: "564px",
-      autoFocus: false,
-      panelClass: "dialog-notes",
-      data,
-    });
+  public openReleaseNotesDialog(data: ReleaseNotes): Observable<void> {
+    return this.dialog
+      .open(ReleaseNotesComponent, {
+        maxHeight: "80%",
+        width: "564px",
+        autoFocus: false,
+        panelClass: "dialog-notes",
+        data,
+      })
+      .afterClosed();
   }
 
   public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
@@ -99,6 +102,18 @@ export class DialogManagerService {
           text: "DIALOG.DELETE.RECORD",
           name: categoryName,
         },
+      })
+      .afterClosed()
+      .pipe<boolean>(filter<boolean>(Boolean));
+  }
+
+  public openCurrencyDialog(): Observable<boolean> {
+    return this.dialog
+      .open(CurrencyDialogComponent, {
+        width: "380px",
+        panelClass: "dialog-currency",
+        disableClose: true,
+        autoFocus: false,
       })
       .afterClosed()
       .pipe<boolean>(filter<boolean>(Boolean));

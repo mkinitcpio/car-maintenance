@@ -18,7 +18,7 @@
   <header class="dialog__header" [class.dialog__header--border]="contentScrolled">
     <div class="dialog__title">{{title | translate}}</div>
     <div class="dialog__buttons">
-      <app-button button-transparent (click)="onClose()">
+      <app-button *ngIf="closable" button-transparent (click)="onClose()">
         <mat-icon svgIcon="close"></mat-icon>
       </app-button>
     </div>
