@@ -22,6 +22,9 @@ export class DialogComponent implements OnInit {
   hideFooter = false;
 
   @Input()
+  closable = true;
+
+  @Input()
   submitText: string;
 
   @Input()

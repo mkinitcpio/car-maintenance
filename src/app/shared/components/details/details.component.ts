@@ -21,6 +21,9 @@ export class DetailsComponent {
   title = '';
 
   @Input()
+  icon = '';
+
+  @Input()
   separated = false;
 
   @Input()

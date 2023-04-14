@@ -1,0 +1,36 @@
+<div class="currency-dialog">
+  <app-dialog [title]="''" [hideFooter]="true" [closable]="false">
+    <section class="currency-dialog__container" content>
+      <div class="currency-dialog__icon-container">
+        <mat-icon [svgIcon]="'money'" class="currency-dialog__icon"></mat-icon>
+      </div>
+
+      <div class="currency-dialog__content">
+        <span class="currency-dialog__title">
+          {{'DIALOG.CURRENCY.TITLE' | translate}}
+        </span>
+
+        <span class="currency-dialog__description">
+          {{'DIALOG.CURRENCY.DESCRIPTION' | translate}}
+        </span>
+
+        <mat-form-field>
+          <mat-select (valueChange)="onSelectCurrency($event)">
+            <mat-select-trigger class="currency-dialog__currency-preview">
+              <mat-icon class="currency-dialog__currency-icon" [svgIcon]="'currencies:' + getCurrentCurrency()?.icon"></mat-icon>
+              <span class="currency-dialog__currency-name">{{getCurrentCurrency()?.name | translate}}</span>
+            </mat-select-trigger>
+
+            <mat-option *ngFor="let currency of currencyOptions | orderTranslate:'name'" [value]="currency.value">
+              <div class="currency-dialog__currency-option">
+                <mat-icon class="currency-dialog__currency-option-icon" [svgIcon]="'currencies:' + currency.icon"></mat-icon>
+                <span>{{ currency.name | translate }}</span>
+              </div>
+            </mat-option>
+          </mat-select>
+          <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
+        </mat-form-field>
+      </div>
+    </section>
+  </app-dialog>
+</div>

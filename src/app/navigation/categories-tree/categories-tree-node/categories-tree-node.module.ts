@@ -6,6 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatRippleModule } from '@angular/material/core';
 import { CategoryTreeDisplacerComponent } from '../category-tree-displacer/category-tree-displacer.component';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CategoryTreeDisplacerComponent } from '../category-tree-displacer/categ
     MatMenuModule,
     TranslateModule,
     MatRippleModule,
+    ButtonModule,
   ],
   exports: [
     CategoriesTreeNodeComponent,

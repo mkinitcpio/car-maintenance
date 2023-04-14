@@ -23,6 +23,7 @@ import { TabsModule } from './components/tabs/tabs.module';
 import { ColorSelectorModule } from './components/color-selector/color-selector.module';
 import { AccountDialogModule } from './components/account-dialog/account-dialog.module';
 import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
+import { CurrencyDialogModule } from './components/currency-dialog/currency-dialog.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dial
     ColorSelectorModule,
     AccountDialogModule,
     FeedbackDialogModule,
+    CurrencyDialogModule,
   ],
   exports: [
     TranslateModule,

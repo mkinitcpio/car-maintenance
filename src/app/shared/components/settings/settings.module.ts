@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-container.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
@@ -18,6 +17,7 @@ import { SwitchModule } from '../switch/switch.module';
 import { SettingComponent } from './setting/setting.component';
 import { ButtonModule } from '../button/button.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
+import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
 
 @NgModule({
   declarations: [SettingsComponent, SettingComponent],
@@ -37,6 +37,7 @@ import { ContentContainerModule } from '../content-container/content-container.m
     SwitchModule,
     ButtonModule,
     ContentContainerModule,
+    CommonPipesModule,
   ],
   providers: [
     SettingsService,

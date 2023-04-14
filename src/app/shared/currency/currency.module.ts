@@ -7,7 +7,7 @@ import { CommonPipesModule } from '../pipes/common-pipes.module';
 
 @NgModule({
   declarations: [
-    CurrencyComponent
+    CurrencyComponent,
   ],
   imports: [
     CommonModule,

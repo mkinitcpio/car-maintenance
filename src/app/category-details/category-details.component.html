@@ -1,4 +1,4 @@
-<app-details [title]="categoryDetails.data.name" class="category-details">
+<app-details [title]="categoryDetails.data.name" class="category-details" [icon]="'illustrations:' + (categoryDetails.icon || 'wrench').replace('.svg', '')">
   <ng-container buttons-right>
     <app-button button-transparent (click)="onPrint()">
       <mat-icon svgIcon="printer"></mat-icon>
@@ -58,41 +58,17 @@
       </app-widget>
     </div>
 
-    <section *ngIf="false" class="category-details__tables">
-      <section class="category-details__table-container" [class.category-details__table-container--expand]="expandRecordsPanel">
-        <div class="category-details__table-header">
-          <span class="category-details__table-title">Записи <sup>(0)</sup></span>
-          <div class="category-details__panel">
-            <div class="category-details__tables-title-buttons">
-              <app-button button-transparent (click)="expandRecordsPanel = !expandRecordsPanel">
-                <mat-icon class="category-details__expand-button" [class.category-details__expand-button--expand]="expandRecordsPanel" svgIcon="expand"></mat-icon>
-              </app-button>
-            </div>
-          </div>
-
-        </div>
-        <div class="category-details__table-content" #detal [style.height]="expandRecordsPanel ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandRecordsPanel">
-          <app-records-table class="category-details__table"
-                            [data]="[]"
-                            (edit)="onEdit($event)"
-                            (delete)="onDelete($event)"
-          ></app-records-table>
-        </div>
-
-      </section>
-    </section>
-
     <section class="category-details__tables">
       <div class="category-details__tables-title">
         <span>{{'PAGES.CATEGORY_DETAILS.GROUPS' | translate}}</span>
-        <div class="category-details__tables-title-buttons" *ngIf="false">
-          <app-button button-transparent (click)="onAddRecord()">
+        <div class="category-details__tables-title-buttons">
+          <app-button button-transparent (click)="onAddGroup()">
             <mat-icon svgIcon="add"></mat-icon>
           </app-button>
-          <app-button button-transparent (click)="toogleExpandStates(false)">
+          <app-button *ngIf="false" button-transparent (click)="toogleExpandStates(false)">
             <mat-icon>unfold_less</mat-icon>
           </app-button>
-          <app-button button-transparent (click)="toogleExpandStates(true)">
+          <app-button *ngIf="false" button-transparent (click)="toogleExpandStates(true)">
             <mat-icon>unfold_more</mat-icon>
           </app-button>
         </div>
@@ -104,7 +80,11 @@
                *ngFor="let table of categoryDetails.tables; let i = index; let last = last; let first = first"
       >
         <div class="category-details__table-header">
-          <span class="category-details__table-title">{{table.name}}</span>
+          <div class="category-details__table-title" matRipple (click)="onNavigateToDetails(table.id, table.name)">
+            <mat-icon class="category-details__table-icon" [svgIcon]="'illustrations:' + (table.icon || 'wrench')"></mat-icon>
+            <span class="category-details__table-title-text">{{table.name}}</span>
+            <mat-icon class="category-details__table-title-icon">chevron_right</mat-icon>
+          </div>
           <div class="category-details__panel">
             <div class="category-details__tables-title-buttons">
               <app-button button-transparent (click)="expandPanelToggles[i] = !expandPanelToggles[i]">
@@ -115,18 +95,6 @@
 
         </div>
         <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
-          <div *ngIf="false" class="category-details__table-content-panel">
-            <div class="category-details__total">
-              <span class="category-details__total-text">{{'PAGES.DETAIL.OVERALL_EXPENSE' | translate}}</span>
-              <div class="category-details__total-value">
-                <span>{{12332321 | numberSeparator:settingsService.settings.region}}</span>
-                <app-currency [size]="0" [currency]="settingsService.settings.units?.currency"
-                              [locale]="settingsService.settings.region">
-                </app-currency>
-              </div>
-
-            </div>
-          </div>
           <app-records-table class="category-details__table"
                             [data]="table.data"
                             (edit)="onEdit($event)"

@@ -171,6 +171,7 @@ export class DataBaseService {
 
       return {
         id: category.id,
+        icon: category.illustration,
         name: category.name,
         data: records,
       };
@@ -180,6 +181,7 @@ export class DataBaseService {
 
     return {
       data: parentCategory,
+      icon: parentCategory.illustration,
       type: parentCategory.type,
       maintenance,
       tables: tablesData,

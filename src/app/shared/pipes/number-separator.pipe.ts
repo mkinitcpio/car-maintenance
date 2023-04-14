@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 import { formatNumber } from '@angular/common';
 
 import { LocaleEnum } from '@shared/components/settings/locale-enum';

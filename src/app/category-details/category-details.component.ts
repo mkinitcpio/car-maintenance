@@ -15,6 +15,7 @@ import { UtilsService } from '@shared/services/utils.service';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { ElectronService } from '@core/services';
 import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
+import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/group-tree.service';
 
 @Component({
   selector: 'app-category-details',
@@ -27,6 +28,9 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
 
   @listen({ value: true })
+  records$ = this.detailsFacade.details$;
+
+  @listen({ value: true })
   deleteCategory$ = merge(
     this.navigationFacade.deleteCategory$,
     this.navigationFacade.deleteCarCategory$,
@@ -37,6 +41,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
   @listen()
   recordChanges$ = merge(
+    this.detailsFacade.newDetails$,
     this.detailsFacade.editDetail$,
     this.detailsFacade.deleteDetail$,
   );
@@ -52,7 +57,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public CategoryTypeEnum = CategoryTypeEnum;
   public MetricSystemEnum = MetricSystemEnum;
 
-  public expandPanelToggles: boolean[];
+  public expandPanelToggles: Array<boolean>;
   public expandRecordsPanel = false;
 
   public allExpandButtonState = 'expand';
@@ -60,6 +65,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public id: string;
   public category: CategoryTree;
   public categoryDetails: CategoryDetails;
+  public records: Record[] = [];
   public totalCost: number;
   public sitesForSearch = [{
     name: "Amazon",
@@ -79,6 +85,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
     private categoryDetailsFacade: CategoryDetailsFacade,
+    private groupTreeService: GroupTreeService,
   ) {
     super();
   }
@@ -86,7 +93,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   ngOnInit(): void {
     this.categoryDetails$.subscribe((categoryDetails) => {
       this.categoryDetails = categoryDetails;
-      this.expandPanelToggles = Array.from({length: categoryDetails.tables.length}, () => false);
+      this.expandPanelToggles = Array.from({length: this.categoryDetails.tables.length}, () => false);
 
       this.totalCost = this.categoryDetails.tables.map(table => this.utilsSerivce.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
     });
@@ -121,11 +128,30 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     });
   }
 
+  public onAddGroup(): void {
+    const data = {
+      mode: FormModeEnum.Create,
+      parentId: this.id,
+    };
+
+    this.dialogManagerService
+      .openCategoryDialog(data)
+      .subscribe((group) => {
+        this.navigationFacade.createNewCategory(group);
+      });
+  }
+
   public onAddRecord(): void {
     const data = {
       mode: FormModeEnum.Create,
       parent: this.id,
     };
+
+    this.dialogManagerService
+      .openRecordDialog(data)
+      .subscribe((record) => {
+        this.detailsFacade.createNewRecord(record);
+      });
   }
 
   public onEdit(id: string): void {
@@ -192,5 +218,14 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public getContentHeight(content: HTMLElement): string {
     const height = 0;
     return `${[...(content.children as any)].reduce((acc, curr) => acc + curr.getBoundingClientRect().height, height)}px`;
+  }
+
+  public onNavigateToDetails(id: string, name: string): void {
+    const groupData: GroupData = {
+      routeName: 'details',
+      group: { id, parent: this.categoryDetails.data.id, name },
+    };
+
+    this.groupTreeService.selectedItem(groupData);
   }
 }

@@ -20,6 +20,7 @@ import { DetailsModule } from '@shared/components/details/details.module';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [CategoryDetailsComponent],
@@ -41,6 +42,8 @@ import { MatDividerModule } from '@angular/material/divider';
     DetailsModule,
     CurrencyModule,
     MatDividerModule,
+    MatIconModule,
+    MatRippleModule,
   ],
   providers: [
     CategoryDetailsFacade,

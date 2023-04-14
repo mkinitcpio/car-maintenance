@@ -1,6 +1,6 @@
 <app-details [title]="name">
   <ng-container buttons-left>
-    <app-button button-transparent routerLink="/maintenance/category-details/{{parentId}}">
+    <app-button button-transparent (click)="navigateToParentGroup(parentId)">
       <mat-icon svgIcon="tree"></mat-icon>
     </app-button>
   </ng-container>

@@ -3,7 +3,6 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { first } from "rxjs/operators";
 import { DataBaseService } from "../../../core/database";
 import { ElectronService } from "../../../core/services";
-import { IconTypeEnum } from "./icon-type.enum";
 import { ColorEnum } from "./colors-enum";
 import { languageOptions } from "./language-options";
 import { LocaleEnum } from "./locale-enum";
@@ -34,7 +33,6 @@ export class SettingsComponent {
   public startPageOptions = startPageOptions;
 
   public MetricSystemEnum = MetricSystemEnum;
-  public IconTypeEnum = IconTypeEnum;
   public CurrencyEnum = CurrencyEnum;
   public NavigationTabEnum = NavigationTabEnum;
   public ColorEnum = ColorEnum;
@@ -108,5 +106,9 @@ export class SettingsComponent {
   public onSelectColor(colors: ColorEnum) {
     this.settingsService.changeThemeColor(colors);
     this.settingsService.saveSettings();
+  }
+
+  public getCurrentCurrency() {
+    return this.currencyOptions.find((currencyOption) => currencyOption.value === this.settingsService.settings.units.currency);
   }
 }

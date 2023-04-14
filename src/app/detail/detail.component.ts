@@ -13,8 +13,8 @@ import { CurrencyEnum } from '@shared/components/settings/currency.enum';
 import { currencies } from '@shared/pipes/currencies';
 
 import { listen } from '@core/decorators';
-import { ElectronService } from '@core/services';
 import { AutoCloseable } from '@core/auto-closeable';
+import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/group-tree.service';
 
 @Component({
   selector: 'app-detail',
@@ -53,6 +53,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     private detailsFacade: DetailsFacade,
     public settingsService: SettingsService,
     private dialogManagerService: DialogManagerService,
+    private groupTreeService: GroupTreeService,
   ) {
     super();
   }
@@ -122,6 +123,15 @@ export class DetailComponent extends AutoCloseable implements OnInit {
         }],
       })
       .subscribe(() => {});
+  }
+
+  public navigateToParentGroup(id: string): void {
+    const groupData: GroupData = {
+      routeName: 'category-details',
+      group: { id },
+    };
+
+    this.groupTreeService.selectedItem(groupData);
   }
 
   private getResultCost(records: Record[]): number {

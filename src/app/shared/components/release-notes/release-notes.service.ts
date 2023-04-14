@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ElectronService } from '../../../core/services';
 import { DialogManagerService } from '../../../shared/services/dialog-manager.service';
 import { ReleaseNotes } from './interface';
+import { Observable } from 'rxjs';
 const packageJson= require('../../../../../package.json');
 const releaseNotes = require('../../../release-notes.json');
 
@@ -48,9 +49,9 @@ export class ReleaseNotesService {
     return showChangeLog;
   }
 
-  public showReleaseNotes(): void {
-    this.dialogManagerService.openReleaseNotesDialog(this.releaseNotes);
+  public showReleaseNotes(): Observable<void> {
     this.updateChangeLogConfig(packageJson.version, true);
+    return this.dialogManagerService.openReleaseNotesDialog(this.releaseNotes);
   }
 
   private updateChangeLogConfig(version: string, isShown: boolean): void {

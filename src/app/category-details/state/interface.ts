@@ -11,12 +11,14 @@ export interface FeatureState<T> {
 
 export interface CategoryDetail {
   id: string;
+  icon: string;
   name: string;
   data: Record[];
 }
 
 export interface CategoryDetails {
   data: any;
+  icon: string;
   maintenance: Maintenance,
   type: CategoryTypeEnum;
   tables: CategoryDetail[];

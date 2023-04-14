@@ -141,13 +141,6 @@ export class SettingsService {
     this.settings.region = region;
   }
 
-  public setIconType(type: IconTypeEnum): void {
-    this.settings.appearance.type = type;
-    this.settingsChanged$.next({
-      type: SettingsTypeEnum.Appearance,
-    });
-  }
-
   public setDataBasePath(path: string): void {
     this.settings.databasePath = path;
     this.settingsChanged$.next({

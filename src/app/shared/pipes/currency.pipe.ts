@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { CurrencyEnum } from '../components/settings/currency.enum';
-import { LocaleEnum } from '../components/settings/locale-enum';
 
 import { currencies } from './currencies';
 
@@ -14,7 +13,7 @@ export class CurrencyPipe implements PipeTransform {
 
   constructor(){}
 
-  transform(currency: CurrencyEnum, region: LocaleEnum): string {
-    return currency ? this.currencies[currency] : this.currencies[this.CurrencyEnum[region]];
+  transform(currency: CurrencyEnum): string {
+    return this.currencies[currency];
   }
 }
