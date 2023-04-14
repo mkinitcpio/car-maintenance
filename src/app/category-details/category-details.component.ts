@@ -15,6 +15,7 @@ import { UtilsService } from '@shared/services/utils.service';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { ElectronService } from '@core/services';
 import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
+import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/group-tree.service';
 
 @Component({
   selector: 'app-category-details',
@@ -84,6 +85,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
     private categoryDetailsFacade: CategoryDetailsFacade,
+    private groupTreeService: GroupTreeService,
   ) {
     super();
   }
@@ -219,6 +221,11 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   }
 
   public onNavigateToDetails(id: string, name: string): void {
-    this.router.navigate(['maintenance/details', id, this.categoryDetails.data.id, name]);
+    const groupData: GroupData = {
+      routeName: 'details',
+      group: { id, parent: this.categoryDetails.data.id, name },
+    };
+
+    this.groupTreeService.selectedItem(groupData);
   }
 }

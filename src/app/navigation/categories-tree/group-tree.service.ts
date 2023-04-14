@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CategoryTree } from '../state/interface';
 
+type RouteName = 'details' | 'category-details';
+
 export interface GroupData {
-  routeName: string;
+  routeName: RouteName;
   group: Partial<CategoryTree>;
 }
 
