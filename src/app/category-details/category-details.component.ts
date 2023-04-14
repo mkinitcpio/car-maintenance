@@ -27,6 +27,9 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
 
   @listen({ value: true })
+  records$ = this.detailsFacade.details$;
+
+  @listen({ value: true })
   deleteCategory$ = merge(
     this.navigationFacade.deleteCategory$,
     this.navigationFacade.deleteCarCategory$,
@@ -37,6 +40,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
   @listen()
   recordChanges$ = merge(
+    this.detailsFacade.newDetails$,
     this.detailsFacade.editDetail$,
     this.detailsFacade.deleteDetail$,
   );
@@ -52,7 +56,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public CategoryTypeEnum = CategoryTypeEnum;
   public MetricSystemEnum = MetricSystemEnum;
 
-  public expandPanelToggles: boolean[];
+  public expandPanelToggles: Array<boolean>;
   public expandRecordsPanel = false;
 
   public allExpandButtonState = 'expand';
@@ -60,6 +64,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public id: string;
   public category: CategoryTree;
   public categoryDetails: CategoryDetails;
+  public records: Record[] = [];
   public totalCost: number;
   public sitesForSearch = [{
     name: "Amazon",
@@ -86,7 +91,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   ngOnInit(): void {
     this.categoryDetails$.subscribe((categoryDetails) => {
       this.categoryDetails = categoryDetails;
-      this.expandPanelToggles = Array.from({length: categoryDetails.tables.length}, () => false);
+      this.expandPanelToggles = Array.from({length: this.categoryDetails.tables.length}, () => false);
 
       this.totalCost = this.categoryDetails.tables.map(table => this.utilsSerivce.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
     });
@@ -121,11 +126,30 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     });
   }
 
+  public onAddGroup(): void {
+    const data = {
+      mode: FormModeEnum.Create,
+      parentId: this.id,
+    };
+
+    this.dialogManagerService
+      .openCategoryDialog(data)
+      .subscribe((group) => {
+        this.navigationFacade.createNewCategory(group);
+      });
+  }
+
   public onAddRecord(): void {
     const data = {
       mode: FormModeEnum.Create,
       parent: this.id,
     };
+
+    this.dialogManagerService
+      .openRecordDialog(data)
+      .subscribe((record) => {
+        this.detailsFacade.createNewRecord(record);
+      });
   }
 
   public onEdit(id: string): void {

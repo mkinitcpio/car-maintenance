@@ -3,6 +3,7 @@
     <section class="page__title-section">
       <div class="page__title">
         <ng-content select="[buttons-left]"></ng-content>
+        <mat-icon *ngIf="icon" [svgIcon]="icon"></mat-icon>
         <span class="page__title-text">{{title}}</span>
       </div>
       <div class="page__title-buttons">

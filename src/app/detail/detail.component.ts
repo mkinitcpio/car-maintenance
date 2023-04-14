@@ -13,7 +13,6 @@ import { CurrencyEnum } from '@shared/components/settings/currency.enum';
 import { currencies } from '@shared/pipes/currencies';
 
 import { listen } from '@core/decorators';
-import { ElectronService } from '@core/services';
 import { AutoCloseable } from '@core/auto-closeable';
 
 @Component({

@@ -25,12 +25,12 @@
   &__title {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
 
     font-family: $font-system;
     font-size: 18px;
     font-weight: 500;
-    color: black;
+    color: #313131;
   }
 
   &__title-buttons {
