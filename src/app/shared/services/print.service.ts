@@ -49,8 +49,23 @@ export class PrintService {
             align-items: center;
           }
 
+          .currency {
+            display: flex;
+            align-items: center;
+            margin-left: 6px;
+          }
+
+          .currency__value {
+            font-weight: bold;
+          }
+
           .currency__image {
             height: 18px;
+          }
+
+          .preview-page__cost-section-text {
+            display: flex;
+            align-items: center;
           }
 
           .preview-page__cost-section {

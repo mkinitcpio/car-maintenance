@@ -1,8 +1,8 @@
 export enum CurrencyEnum {
   Byn = 'Byn',
-  Rub = 'Rub',
+  Rub = 'Ruble',
   Usd = 'Usd',
-  Eur = "Eur",
+  Eur = "Euro",
   Pound = 'Pound',
   Yen = 'Yen',
   Rupee = 'Rupee',

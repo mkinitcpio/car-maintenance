@@ -1,20 +1,11 @@
-<ng-container *ngIf="currency else currencyText">
-  <mat-icon [ngClass]="{
-    'currency': true,
-    'currency--small': size === CurrencySizeEnum.Small
-  }" 
-  [svgIcon]="'currencies:' + (currency | currency)"
-  *ngIf="renderAs === CurrencyRenderEnum.Svg"
-  >
+<div class="currency">
+  <span class="currency__value">{{value | numberSeparator:locale}}</span>
+  <mat-icon *ngIf="renderAs === CurrencyRenderEnum.Svg; else img"
+            class="currency__icon"
+            [class.currency__icon--small]="size === CurrencySizeEnum.Small"
+            [svgIcon]="'currencies:' + (currency | currency)">
   </mat-icon>
-  <img class="currency__image"
-       *ngIf="renderAs === CurrencyRenderEnum.Image"
-       [src]="currencyBase64SafeUrl">
-</ng-container>
-
-<ng-template #currencyText>
-  <span [ngClass]="{
-    'currency-text': true,
-    'currency-text--small': size === CurrencySizeEnum.Small
-  }" >BYN</span>
-</ng-template>
+  <ng-template #img>
+    <img class="currency__image" [src]="currencyBase64SafeUrl">
+  </ng-template>
+</div>

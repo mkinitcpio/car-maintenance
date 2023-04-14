@@ -12,13 +12,13 @@
     <div class="preview-page__cost-section">
       <div class="preview-page__cost-section-text">
         <span>{{"PAGES.PDF_EXPORT.TOTAL" | translate}}: </span>
-        <span style="font-weight: bold; white-space: nowrap;">{{cost | numberSeparator:this.settingsService.settings.region}}</span>
+        <app-currency [renderAs]="1"
+                      [size]="0"
+                      [locale]="settingsService.settings.region"
+                      [value]="cost"
+                      [currency]="settingsService.settings.units?.currency">
+        </app-currency>
       </div>
-      <app-currency [locale]="settingsService.settings.region"
-                    [renderAs]="1"
-                    [size]="0"
-                    [currency]="settingsService.settings.units?.currency">
-      </app-currency>
     </div>
   </div>
 
@@ -28,13 +28,13 @@
       <div *ngIf="config.showTablesCostResult" class="preview-page__cost-section">
         <div class="preview-page__cost-section-text">
           <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
-          <span style="font-weight: bold; white-space: nowrap;">{{category.totalCost | numberSeparator:this.settingsService.settings.region}}</span>
+          <app-currency [renderAs]="1"
+                        [size]="0"
+                        [locale]="settingsService.settings.region"
+                        [value]="category.totalCost"
+                        [currency]="settingsService.settings.units?.currency">
+          </app-currency>
         </div>
-        <app-currency [locale]="settingsService.settings.region"
-                      [renderAs]="1"
-                      [size]="0"
-                      [currency]="settingsService.settings.units?.currency">
-        </app-currency>
       </div>
     </div>
     <table class="preview-page__table" mat-table [dataSource]="category.records">

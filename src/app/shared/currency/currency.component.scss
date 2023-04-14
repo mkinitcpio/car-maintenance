@@ -4,23 +4,28 @@
 }
 
 .currency {
-  height: 14px;
-  width: 14px;
-  padding: 2px;
-  margin-left: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 
-  border-radius: 6px;
-  background: #4b4848;
-  color: white;
-  font-size: 14px;
-  font-variation-settings: 'wght' 900;
-
-  &--small {
+  &__icon {
     height: 14px;
     width: 14px;
-
+    padding: 2px;
+  
+    border-radius: 6px;
+    background: #4b4848;
+    color: white;
     font-size: 14px;
-    font-weight: bold;
+    font-variation-settings: 'wght' 900;
+  
+    &--small {
+      height: 14px;
+      width: 14px;
+  
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 
   &__image {

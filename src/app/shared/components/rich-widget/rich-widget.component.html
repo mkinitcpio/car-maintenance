@@ -5,8 +5,8 @@
     <span class="rich-widget__title">{{title | translate}}</span>
     <span class="rich-widget__value" [ngSwitch]="type">
       <ng-container *ngSwitchCase="'currency'">
-        <span>{{value | numberSeparator:this.settingsService.settings.region}}</span>
-        <app-currency [currency]="settingsService.settings.units?.currency"
+        <app-currency [value]="value"
+                      [currency]="settingsService.settings.units?.currency"
                       [locale]="settingsService.settings.region">
         </app-currency>
       </ng-container>

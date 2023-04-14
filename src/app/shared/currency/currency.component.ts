@@ -18,6 +18,9 @@ import { Observable } from 'rxjs';
 export class CurrencyComponent implements OnInit {
 
   @Input()
+  value: number;
+
+  @Input()
   currency: CurrencyEnum;
 
   @Input()
