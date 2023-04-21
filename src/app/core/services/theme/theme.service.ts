@@ -7,7 +7,7 @@ export class ThemeService {
   public setAppColors(baseColor: string): void {
     baseColor = baseColor.replace(/#/, "");
     const primaryColor = this.getColor(`#${baseColor}`, 1);
-    const secondaryColor = this.getColor(`#${baseColor}`, 1);
+    const secondaryColor = this.getColor(`#${baseColor}`, 1, "1f");
 
     document.documentElement.style.setProperty("--primary-color", primaryColor);
     document.documentElement.style.setProperty("--secondary-color", secondaryColor);
