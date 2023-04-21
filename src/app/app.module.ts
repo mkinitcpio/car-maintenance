@@ -21,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { EffectsModule } from '@ngrx/effects';
 import { DataBaseService } from './core/database';
+import { ThemeService, DarwinThemeService, LinuxThemeService, WindowsThemeService } from './core/services/theme';
 import {DatabaseSelectModule} from "./database-select/database-select.module";
 import { WelcomePageModule } from "./welcome-page/welcome-page.module";
 import { MaintenanceModule } from "./maintenance/maintenance.module";
@@ -28,10 +29,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppGuard } from './app.guard';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
+import { ElectronService } from '@core/services';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+enum SupportedPlatrofmsEnum {
+  Windows = "Windows_NT",
+  Linux = "Linux",
+  Darwin = "Darwin",
+}
+
+export function ThemeFactory(electronService: ElectronService): ThemeService {
+  const systemType = electronService.os.type();
+  let themeServiceInstance: ThemeService = null;
+
+  switch(systemType) {
+    case SupportedPlatrofmsEnum.Darwin: {
+      themeServiceInstance = new DarwinThemeService(electronService);
+      break;
+    }
+    case SupportedPlatrofmsEnum.Windows: {
+      themeServiceInstance = new WindowsThemeService(electronService);
+      break;
+    }
+    case SupportedPlatrofmsEnum.Linux: {
+      themeServiceInstance = new LinuxThemeService();
+      break;
+    }
+  }
+
+  return themeServiceInstance;
 }
 
 @NgModule({
@@ -65,7 +95,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   providers: [
     DataBaseService,
-    AppGuard,
+    AppGuard, {
+      provide: ThemeService,
+      useFactory: ThemeFactory,
+      deps: [
+        ElectronService,
+      ]
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -3,12 +3,14 @@ import { DataBaseService } from "./core/database";
 import { AutoCloseable } from "./core/auto-closeable";
 import { SettingsService } from "./shared/components/settings/settings.service";
 import { DOCUMENT } from "@angular/common";
-import { ThemeService } from "@core/services/theme.service";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 import { iconsNames } from "./icon-names";
 import { groupIllustrationNames } from './group-illustration-names';
 import { currencyNames } from './currencies-names';
+import { filter } from "rxjs/operators";
+import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
+import { ThemeService } from "@core/services/theme";
 
 @Component({
   selector: "app-root",
@@ -49,9 +51,13 @@ export class AppComponent extends AutoCloseable {
       }
     });
 
-    this.settingsService.init();
-    this.themeService.init();
+    this.settingsService.settingsChanged$
+      .pipe(filter((node) => node.type === SettingsTypeEnum.Color))
+      .subscribe(({ value }) => {
+        this.themeService.setAppColors(value as string);
+      });
 
+    this.settingsService.init();
     this.dataBaseService.initDataBase();
   }
 }

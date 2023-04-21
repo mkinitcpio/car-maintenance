@@ -125,6 +125,10 @@ export class SettingsService {
     }
     this.setAppLanguage(this.settings.language);
     this.animationsStateChanged$.next(this.settings.appearance.animations);
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Color,
+      value: this.settings.appearance.primaryColor,
+    });
   }
 
   public setAppLanguage(lang: string): void {
