@@ -34,4 +34,5 @@ export const iconsNames = [
   'paper-empty',
   'folder',
   'crane',
+  'schema',
 ];

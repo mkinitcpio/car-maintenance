@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 :host {
   display: block;
 }
@@ -5,17 +7,19 @@
 .content-container {
   padding: 8px 12px;
   border-radius: 18px;
-  border: 1.5px solid #ebebeb;
+  border: 1.5px solid $color-border;
   position: relative;
 
   &__title {
+    padding: 4px 8px;
     position: absolute;
     top: -15px;
     left: 18px;
-    background: white;
+
+    color: $font-color-primary;
+    background: $background-primary;
     font-size: 14px;
     font-weight: bold;
-    padding: 4px 8px;
   }
 
   &:last-child {

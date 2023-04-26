@@ -11,6 +11,7 @@ import { currencyNames } from './currencies-names';
 import { filter } from "rxjs/operators";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { ThemeService } from "@core/services/theme";
+import { AppearanceType } from "@shared/components/settings/interface";
 
 @Component({
   selector: "app-root",
@@ -55,6 +56,12 @@ export class AppComponent extends AutoCloseable {
       .pipe(filter((node) => node.type === SettingsTypeEnum.Color))
       .subscribe(({ value }) => {
         this.themeService.setAppColors(value as string);
+      });
+
+    this.settingsService.settingsChanged$
+      .pipe(filter((node) => node.type === SettingsTypeEnum.Scheme))
+      .subscribe(({ value }) => {
+        this.themeService.setColorScheme(value as AppearanceType);
       });
 
     this.settingsService.init();

@@ -7,7 +7,7 @@
   height: 100%;
   display: flex;
 
-  background-color: white;
+  background-color: $background-primary;
 
   user-select: none;
 
@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: white;
+    background-color: $background-primary;
   }
 
   &__title {
@@ -30,7 +30,7 @@
     font-family: $font-system;
     font-size: 18px;
     font-weight: 500;
-    color: #313131;
+    color: $font-color-primary;
   }
 
   &__title-buttons {
@@ -57,7 +57,7 @@
     gap: 16px;
     padding: 24px;
 
-    background-color: #fafafa;
+    background-color: $background-secondary;
 
     border-radius: 24px 24px 0 0;
   }
@@ -83,7 +83,7 @@
     transition: width 0.5s ease-in-out;
 
     &:after {
-      background: white;
+      background-color: $background-primary;
       content: "";
       height: 100%;
       width: 16px;

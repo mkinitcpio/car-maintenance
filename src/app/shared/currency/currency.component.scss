@@ -1,3 +1,5 @@
+@import '/src/colors';
+
 :host {
   display: flex;
   align-items: center;
@@ -8,14 +10,16 @@
   align-items: center;
   gap: 6px;
 
+  color: $font-color-primary;
+
   &__icon {
     height: 14px;
     width: 14px;
     padding: 2px;
   
     border-radius: 6px;
-    background: #4b4848;
-    color: white;
+    background: $color-button-icon;
+    color: $background-primary;
     font-size: 14px;
     font-variation-settings: 'wght' 900;
   

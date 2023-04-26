@@ -10,7 +10,7 @@ export class LinuxThemeService extends ThemeService {
   private readonly primaryColor: string = "e95420";
 
   constructor() {
-    super();
+    super('linux', ['light', 'dark']);
   }
 
   public setAppColors(color: ColorEnum): void {

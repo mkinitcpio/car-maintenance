@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { Observable, of, timer } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
 import { Notification } from '../notification/interfaces';

@@ -7,7 +7,7 @@
   display: flex;
   height: 100%;
   width: 100%;
-  background: white;
+  background: $background-primary;
 
   overflow: hidden;
   user-select: none;
@@ -37,7 +37,7 @@
   &__title {
     margin-top: 0;
     margin-left: 12px;
-    color: #222;
+    color: $font-color-primary;
     font-size: 18px;
     font-weight: bold;
   }
@@ -49,7 +49,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: gray;
+    color: $font-color-secondary;
   }
 
   &__section {
@@ -159,7 +159,8 @@
   align-items: center;
   gap: 8px;
   box-sizing: border-box;
-  background: white;
+  background: transparent;
+  color: $font-color-primary;
   font-size: 14px;
 
   &__name {
@@ -172,20 +173,21 @@
     font-size: 20px;
     height: 20px;
     width: 20px;
-    color: $button-color-secondary;
+    color: currentColor;
     cursor: move;
   }
 
   &__divider {
     margin: 0 36px;
-    border-top-color: $separator-color;
-    border-top: 1.5px dashed #ebebeb;
+    border-top-color: $color-border;
+    border-top: 1.5px dashed $color-border;
   }
 }
 
 
 .cdk-drag-preview {
   box-sizing: border-box;
+  background: $background-secondary;
 
   .column {
     border-radius: 12px;
@@ -219,7 +221,7 @@
   border-radius: 8px;
   font-family: $font-system;
   font-weight: normal;
-  color: $font-primary;
+  color: $font-color-primary;
 }
 
 .button__submit {
@@ -229,13 +231,17 @@
 }
 
 .button__cancel {
-  background-color: #f1f1f1;
+  background-color: transparent;
   border-color: transparent;
-  color: $font-primary;
+  color: $font-color-primary;
 
   &:hover {
-    background: rgba(0,0,0,0.05);
+    background: $background-button-hover;
   }
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-color: $color-border;
 }
 
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background,

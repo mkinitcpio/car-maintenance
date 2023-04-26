@@ -110,6 +110,20 @@
       </content-container>
 
       <content-container [title]="'PAGES.SETTINGS.SECTIONS.APPEARANCE' | translate">
+        <app-setting [label]="'PAGES.SETTINGS.FIELDS.APPEARANCE' | translate" customIcon="schema">
+          <section class="appearance">
+            <div *ngFor="let schema of themeService.getAvailableSchemas()"
+                  class="appearance__item"
+                  [class.appearance__item--selected]="settingsService.settings.appearance.appearance === schema.type"
+                  (click)="setAppearance(schema.type)">
+              <div mat-ripple class="appearance__illustration appearance__illustration--{{schema.type}}"></div>
+              <span class="appearance__label">{{schema.name | translate}}</span>
+            </div>
+          </section>
+        </app-setting>
+
+        <mat-divider class="settings__divider"></mat-divider>
+
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.COLORS' | translate" icon="palette">
           <app-color-selector [colors]="colors"
                               [selected]="settingsService.settings.appearance.primaryColor"

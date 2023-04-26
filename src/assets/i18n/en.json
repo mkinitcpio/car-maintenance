@@ -53,7 +53,8 @@
         "CURRENCY": "Currency",
         "METRIC_SYSTEM": "Metric system",
         "ANIMATION": "Animations",
-        "COLORS":"Color"
+        "COLORS":"Accent color",
+        "APPEARANCE":"Appearance"
       },
       "ICONS_PACK_NAMES": {
         "DEFAULT": "Default"
@@ -239,5 +240,10 @@
     "STORAGE": "Storage",
     "STATISTIC": "Charts"
   },
-  "UNDER_DEV": "Under development"
+  "UNDER_DEV": "Under development",
+  "SCHEMAS": {
+    "LIGHT": "Light",
+    "DARK": "Dark",
+    "AUTO": "Auto"
+  }
 }

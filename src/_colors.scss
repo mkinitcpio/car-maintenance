@@ -1,21 +1,97 @@
+:root {
+  --background-primary: white;
+  --background-secondary: #fafafa;
+  --background-button-hover: #0000000d;
+  --background-loader: #fafafaad;
+
+
+  --color-border: #ebebeb;
+  --color-button-icon: #4b4848;
+  --color-dangerous: #c7162b;
+
+  --platform-color-primary: #222;
+  --platform-color-secondary: #4b4848;
+
+  --select-expand-icon-color: #4b4848;
+
+  --toggle-active-color: white;
+
+  --menu-border: none;
+
+  --tooltip-background: #333;
+  --tooltip-color: white;
+}
+
+
+html[data-platform='darwin'] {
+  &[data-theme='dark'] {
+    --background-primary: #343434;
+    --background-secondary: #3e3e3e;
+    --background-button-hover: #ffffff12;
+    --background-loader: #343434ad;
+
+    --color-border: #4d4d4d;
+    --color-button-icon: #f7f7f7;
+    --color-dangerous: #b62329;
+
+    --platform-color-primary: white;
+    --platform-color-secondary: #a6a6a6;
+
+    --select-expand-icon-color: #d2d5d9;
+
+    --toggle-active-color: var(--platform-color-primary);
+
+    --menu-border: 1.5px solid var(--color-border);
+
+    --tooltip-background: var(--background-primary);
+    --tooltip-color: var(--platform-color-primary);
+  }
+}
+
+html[data-platform='linux'] {
+  &[data-theme='dark'] {
+    --background-primary: #343434;
+    --background-secondary: #3e3e3e;
+    --background-button-hover: #ffffff12;
+    --background-loader: #343434ad;
+
+    --color-border: #4d4d4d;
+    --color-button-icon: #f7f7f7;
+    --color-dangerous: #8c2226;
+
+    --platform-color-primary: white;
+    --platform-color-secondary: #a6a6a6;
+
+    --select-expand-icon-color: #d2d5d9;
+
+    --toggle-active-color: var(--platform-color-primary);
+
+    --menu-border: 1.5px solid var(--color-border);
+
+    --tooltip-background: var(--background-primary);
+    --tooltip-color: var(--platform-color-primary);
+  }
+}
+
 $color-primary: var(--primary-color);
 $color-secondary: var(--secondary-color);
-$color-dangerous: #c7162b;
-$color-border: #dce1e6;
+$color-dangerous: var(--color-dangerous);
+$color-border: var(--color-border);
+$color-button-icon: var(--color-button-icon);
 
-$font-primary: #222;
-$font-secondary: #3c3a3a;
-$font-white: white;
+$background-primary: var(--background-primary);
+$background-secondary: var(--background-secondary);
+$background-button-hover: var(--background-button-hover);
+$background-loader: var(--background-loader);
 
+$font-color-primary: var(--platform-color-primary);
+$font-color-secondary: var(--platform-color-secondary);
 
-$background-primary: white;
-$background-secondary: #f7f7f7;
-$background-header-primary: #323030;
+$select-expand-icon-color: var(--select-expand-icon-color);
 
-$button-color-primary: #0d7f1e;
-$button-color-secondary: #4b4848;
-$button-color-dangerous: $color-dangerous;
-$button-color-neutral: #fcfcfc;
-$button-color-active: $color-primary;
+$toggle-active-color: var(--toggle-active-color);
 
-$separator-color: #efefef;
+$menu-border: var(--menu-border);
+
+$tooltip-background: var(--tooltip-background);
+$tooltip-color: var(--tooltip-color);

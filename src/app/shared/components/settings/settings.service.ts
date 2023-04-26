@@ -4,7 +4,7 @@ import { BehaviorSubject, Subject } from "rxjs";
 import { ElectronService } from "../../../core/services";
 import { CurrencyEnum } from "./currency.enum";
 import { IconTypeEnum } from "./icon-type.enum";
-import { Settings } from "./interface";
+import { AppearanceType, Settings } from "./interface";
 
 import { LanguageEnum } from "./language-enum";
 import { LocaleEnum } from "./locale-enum";
@@ -13,6 +13,7 @@ import { NavigationTabEnum } from "./navigation-tab.enum";
 import { SettingsTypeEnum } from "./settings-type.enum";
 import { ColorEnum } from "./colors-enum";
 import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
+
 @Injectable({
   providedIn: "root",
 })
@@ -37,7 +38,7 @@ export class SettingsService {
 
   constructor(
     private electronService: ElectronService,
-    private translate: TranslateService
+    private translate: TranslateService,
   ) {
     this.defaultSettings = {
       language: this.translate.getBrowserLang(),
@@ -45,11 +46,11 @@ export class SettingsService {
       startPage: NavigationEnum.Dashboard,
       region: this.translate.getBrowserLang() as LocaleEnum,
       appearance: {
+        appearance: 'light',
         iconPack: "default",
         type: IconTypeEnum.Color,
         animations: true,
         primaryColor: ColorEnum.Default,
-       
       },
       units: {
         metricSystem: null,
@@ -106,6 +107,11 @@ export class SettingsService {
       if (this.settings.appearance.animations === undefined) {
         this.settings.appearance.animations = true;
       }
+
+      if (!this.settings.appearance.appearance) {
+        this.settings.appearance.appearance = this.defaultSettings.appearance.appearance;
+      }
+
     } else {
       const translateExist = this.translate
         .getLangs()
@@ -128,6 +134,11 @@ export class SettingsService {
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Color,
       value: this.settings.appearance.primaryColor,
+    });
+
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Scheme,
+      value: this.settings.appearance.appearance,
     });
   }
 
@@ -190,6 +201,14 @@ export class SettingsService {
     this.settings.firstTab = tab;
     this.settingsChanged$.next({
       type: SettingsTypeEnum.FirstTab,
+    });
+  }
+
+  public setAppearance(appearance: AppearanceType): void {
+    this.settings.appearance.appearance = appearance;
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Scheme,
+      value: appearance,
     });
   }
 

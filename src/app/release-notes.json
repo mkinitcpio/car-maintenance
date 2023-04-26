@@ -1,28 +1,14 @@
 {
   "ru": {
-    "app": "Приложение",
-    "groupDetails": "Группы",
     "settings": "Настройки",
-    "records": "Модуль Записей",
     "progress": {
-      "0": "Новые типы валют! Проверьте настройки, возможно там окажется ваша валюта :)",
-      "1": "Сохранение состояния открытых групп при переключении между модулями приложения",
-      "2": "Небольшие косметические изменения",
-      "3": "Переход в подгруппы по нажатию на заголовок в списке",
-      "4": "Возвращена возможность добавления групп в деталях главной группы"
+      "0": "Выбери светлую или темную сторону в настройках!"
     }
   },
   "en": {
-    "app": "Application",
-    "groupDetails": "Group details",
     "settings": "Settings",
-    "records": "Records Module",
     "progress": {
-      "0": "New types of currencies! Check the settings, maybe your currency will be there :)",
-      "1": "Saving the state of open groups when switching between application modules",
-      "2": "Minor cosmetic changes",
-      "3": "Routing to subgroups by clicking on the heading in the list",
-      "4": "Returned the ability to add groups in the details of the main group"
+      "0": "Choose Dark or Light Side in settings!"
     }
   }
 }

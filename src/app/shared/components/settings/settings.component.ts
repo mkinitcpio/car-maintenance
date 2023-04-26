@@ -19,6 +19,8 @@ import { colors } from './colors';
 
 import { AppConfig } from 'environments/environment';
 import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
+import { AppearanceType } from "./interface";
+import { ThemeService } from "@core/services/theme";
 
 @Component({
   selector: "app-settings",
@@ -45,6 +47,7 @@ export class SettingsComponent {
     public settingsService: SettingsService,
     private electronService: ElectronService,
     private dataBaseService: DataBaseService,
+    public themeService: ThemeService,
   ) {}
 
   public onSelectLanguage(language: string): void {
@@ -105,6 +108,11 @@ export class SettingsComponent {
 
   public onSelectColor(colors: ColorEnum) {
     this.settingsService.changeThemeColor(colors);
+    this.settingsService.saveSettings();
+  }
+
+  public setAppearance(appearance: AppearanceType): void {
+    this.settingsService.setAppearance(appearance);
     this.settingsService.saveSettings();
   }
 

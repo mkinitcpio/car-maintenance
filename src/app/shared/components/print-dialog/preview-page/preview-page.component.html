@@ -13,6 +13,7 @@
       <div class="preview-page__cost-section-text">
         <span>{{"PAGES.PDF_EXPORT.TOTAL" | translate}}: </span>
         <app-currency [renderAs]="1"
+                      [ignoreFontColor]="true"
                       [size]="0"
                       [locale]="settingsService.settings.region"
                       [value]="cost"
@@ -29,6 +30,7 @@
         <div class="preview-page__cost-section-text">
           <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
           <app-currency [renderAs]="1"
+                        [ignoreFontColor]="true"
                         [size]="0"
                         [locale]="settingsService.settings.region"
                         [value]="category.totalCost"

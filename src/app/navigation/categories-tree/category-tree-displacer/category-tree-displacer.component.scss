@@ -18,7 +18,7 @@
     width: 2px;
     margin-left: 5px;
 
-    background: #ebebeb;
+    background: $color-border;
   }
 
   &__sub-line {
@@ -28,8 +28,8 @@
     width: 12px;
 
     border-bottom-left-radius: 8px;
-    border-left: 2px solid #ebebeb;
-    border-bottom: 2px solid #ebebeb;
+    border-left: 2px solid $color-border;
+    border-bottom: 2px solid $color-border;
   }
 }
 

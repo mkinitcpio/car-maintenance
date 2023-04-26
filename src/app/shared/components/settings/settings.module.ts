@@ -18,6 +18,7 @@ import { SettingComponent } from './setting/setting.component';
 import { ButtonModule } from '../button/button.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
 import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [SettingsComponent, SettingComponent],
@@ -38,6 +39,7 @@ import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
     ButtonModule,
     ContentContainerModule,
     CommonPipesModule,
+    MatRippleModule,
   ],
   providers: [
     SettingsService,

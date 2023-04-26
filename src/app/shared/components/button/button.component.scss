@@ -16,8 +16,8 @@
       height: 34px;
       box-sizing: content-box;
       font-family: $font-system;
-      background-color: white;
-      color: #4b4848;
+      background-color: transparent;
+      color: $color-button-icon;
       gap: 0px;
       transition: gap 0.2s ease-in;
       justify-content: flex-start;
@@ -50,12 +50,12 @@
     .button {
       border-color: transparent;
       background-color: transparent;
-      color: #4b4848;
+      color: $color-button-icon;
 
       transition: background-color 0.1s ease-out;
 
       &:hover {
-        background: rgba(0,0,0,0.05);
+        background: $background-button-hover;
       }
 
       &--active {
@@ -87,7 +87,7 @@
   justify-content: center;
   background: transparent;
   color: white;
-  border: 1px solid white;
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: 0 8px;
 

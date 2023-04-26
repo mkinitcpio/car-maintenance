@@ -9,7 +9,7 @@ import { ThemeService } from './theme.service';
 export class DarwinThemeService extends ThemeService {
 
   constructor(private electronService: ElectronService) {
-    super();
+    super('darwin');
   }
 
   public setAppColors(color: ColorEnum): void {

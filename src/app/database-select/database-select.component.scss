@@ -30,19 +30,23 @@ button {
   background: none;
 }
 
-
-
 .button {
   height: 42px;
   width: 100%;
 
   font-family: $font-system;
   font-weight: normal;
-  color: $font-primary;
+  color: $font-color-primary;
   border-radius: 12px;
 }
 
 .button__create {
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: $color-primary;
+  color: $font-color-primary;
+}
+
+.button__cancel {
+  &:hover {
+    background: $background-button-hover;
+  }
 }

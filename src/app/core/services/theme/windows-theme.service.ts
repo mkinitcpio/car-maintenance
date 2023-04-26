@@ -9,7 +9,7 @@ import { ThemeService } from './theme.service';
 export class WindowsThemeService extends ThemeService {
 
   constructor(private electronService: ElectronService) {
-    super();
+    super('windows');
   }
 
   public setAppColors(color: ColorEnum): void {

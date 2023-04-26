@@ -11,5 +11,8 @@ export class SettingComponent {
   label: string;
 
   @Input()
-  icon: string;
+  icon = '';
+
+  @Input()
+  customIcon: string;
 }
