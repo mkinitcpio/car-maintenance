@@ -14,6 +14,8 @@ export class WindowsThemeService extends ThemeService {
 
   public setAppColors(color: ColorEnum): void {
     if(color === ColorEnum.Default) {
+      const color = this.electronService.systemPreferences.getAccentColor();
+      super.setAppColors(color);
       this.electronService.systemPreferences.on("accent-color-changed", (_, color) => {
         super.setAppColors(color);
       });
