@@ -3,7 +3,7 @@ import { ElectronService } from '../../../core/services';
 import { DialogManagerService } from '../../../shared/services/dialog-manager.service';
 import { ReleaseNotes } from './interface';
 import { Observable } from 'rxjs';
-const packageJson= require('../../../../../package.json');
+const packageJson = require('../../../../../package.json');
 const releaseNotes = require('../../../release-notes.json');
 
 @Injectable({
@@ -11,7 +11,10 @@ const releaseNotes = require('../../../release-notes.json');
 })
 export class ReleaseNotesService {
 
-  public readonly changeLogPath: string = this.electronService.os.homedir() + '/.config/Учет/changelog.json';
+  public readonly changeLogPath: string = this.electronService.combineAppConfigsPath(
+    this.electronService.getAppConfigFolderPath(),
+    "changelog.json",
+  );
 
   public releaseNotes: ReleaseNotes = null;
 
@@ -33,7 +36,7 @@ export class ReleaseNotesService {
     this.releaseNotes = releaseNotes as ReleaseNotes;
     const { version } = packageJson;
     let showChangeLog = false;
-    const configExist = this.electronService.fs.existsSync(this.changeLogPath);
+    const configExist = this.electronService.isFileExist(this.changeLogPath);
 
     if(configExist) {
       const changeLog = JSON.parse(this.electronService.fs.readFileSync(this.changeLogPath, this.fileReadConfig));

@@ -40,4 +40,17 @@ export class ElectronService {
       this.systemPreferences= window.require('@electron/remote').systemPreferences;
     }
   }
+
+  public combineAppConfigsPath(...path: Array<string>): string {
+    return this.path.join(...path);
+  }
+
+  public getAppConfigFolderPath(): string {
+    const osAppDataFolder = '.config';
+    return this.path.join(this.os.homedir(), osAppDataFolder, 'Car Maintenance');
+  }
+
+  public isFileExist(filePath: string): boolean {
+    return this.fs.existsSync(filePath);
+  }
 }

@@ -20,12 +20,11 @@ import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
 export class SettingsService {
   public settings: Settings;
 
-  private readonly appConfFolder: string =
-    this.electronService.os.homedir() + "/.config/Учет";
-  private readonly settingsPath: string =
-    this.electronService.os.homedir() + "/.config/Учет/settings.json";
-  private readonly oldConfigPath: string =
-    this.electronService.os.homedir() + "/.config/Учет/conf";
+  private readonly appConfFolder: string = this.electronService.getAppConfigFolderPath();
+  private readonly settingsPath: string = this.electronService.combineAppConfigsPath(
+    this.electronService.getAppConfigFolderPath(),
+    "settings.json",
+  );
   private readonly defaultSettings: Settings = null;
 
   public  selected:string;
@@ -63,20 +62,6 @@ export class SettingsService {
   public init(): void {
     const confExist = this.electronService.fs.existsSync(this.appConfFolder);
     const settingsExist = this.electronService.fs.existsSync(this.settingsPath);
-    const oldConfigExist = this.electronService.fs.existsSync(
-      this.oldConfigPath
-    );
-
-    // Need for migration 1.3.1 => 2.0.0
-    if (oldConfigExist) {
-      const databasePath = this.electronService.fs.readFileSync(
-        this.oldConfigPath,
-        "utf8"
-      );
-
-      this.defaultSettings.databasePath = databasePath;
-      this.electronService.fs.unlinkSync(this.oldConfigPath);
-    }
 
     if (!confExist) {
       this.electronService.fs.mkdirSync(this.appConfFolder, {
