@@ -115,9 +115,12 @@
     align-items: center;
     justify-content: center;
     padding: 48px;
+
     font-size: 14px;
     font-family: $font-system;
     color: $color-button-icon;
+    border-radius: 12px;
+    background-color: $background-primary;
   }
 
   &__empty-container {
