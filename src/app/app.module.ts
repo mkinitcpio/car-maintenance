@@ -6,6 +6,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -30,6 +32,7 @@ import { AppGuard } from './app.guard';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { ElectronService } from '@core/services';
+import { SettingsService } from '@shared/components/settings/settings.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -63,6 +66,8 @@ export function ThemeFactory(electronService: ElectronService): ThemeService {
 
   return themeServiceInstance;
 }
+
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [AppComponent],

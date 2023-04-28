@@ -45,7 +45,7 @@
           <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
           <td mat-cell *matCellDef="let record" [ngSwitch]="column.id"> 
             <span *ngSwitchCase="'date'" class="preview-page__nowrap">
-              {{ record[column.id] | date:dateFormat }}
+              {{ record[column.id] | localizedDate }}
             </span>
             <span *ngSwitchCase="'cost'" class="preview-page__nowrap">
               {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
