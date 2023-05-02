@@ -1,0 +1,30 @@
+html[data-platform='darwin'] {
+  &[data-theme='dark'] {
+    --background-primary: #343434;
+    --background-secondary: #3e3e3e;
+    --background-button-hover: #ffffff12;
+    --background-loader: #343434ad;
+
+    --color-border: #4d4d4d;
+    --color-button-icon: #f7f7f7;
+    --color-dangerous: #b62329;
+
+    --platform-color-primary: white;
+    --platform-color-secondary: #a6a6a6;
+
+    --select-expand-icon-color: #d2d5d9;
+
+    --toggle-active-color: var(--platform-color-primary);
+
+    --menu-border: 1.5px solid var(--color-border);
+
+    --tooltip-background: var(--background-primary);
+    --tooltip-color: var(--platform-color-primary);
+
+    --dashboard-background-secondary: #3e3e3e;
+    --dashboard-illustration-background-primary: #3e3e3e;
+    --dashboard-illustration-background-secondary: var(--background-secondary);
+    --dashboard-illustration-background-tertiary: #4b4848;
+    --dashboard-card-icon-color: #5d5d5d;
+  }
+}

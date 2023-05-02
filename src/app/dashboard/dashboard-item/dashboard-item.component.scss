@@ -1,6 +1,18 @@
 @import '/src/fonts';
 @import '/src/colors';
 
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .dashboard-item {
   height: 100%;
   cursor: pointer;
@@ -19,7 +31,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 16px;
-    background: $color-secondary;
+    background: var(--dashboard-background-secondary);
     color: $color-primary;
     padding: 16px;
     margin-top: auto;
@@ -28,7 +40,7 @@
 
   &__external {
     position: absolute;
-    color: var(--primary-color);
+    color: var(--dashboard-card-icon-color);
     right: 12px;
     top: 12px;
     height: 18px;
@@ -39,10 +51,12 @@
   &__title {
     font-size: 16px;
     font-weight: bold;
+    color: $font-color-primary;
   }
 
   &__description {
     font-size: 14px;
+    color: $font-color-secondary;
   }
 
   &:hover {
@@ -63,25 +77,21 @@
     }
 
     app-source-code-illustration::ng-deep {
-      .code {
-        animation: 1s ease-in code;
-      }
-
-      @for $i from 1 through 8 {
-        .row-#{$i} {
-          animation: 1s ease-in #{'row-' + $i};
+      @for $i from 0 through 2 {
+        .code--fade-#{$i + 1} {
+          animation: fade 0.5s ease-in #{$i * 0.2 + 's'};
         }
       }
     }
   }
 
   &--s {
-    background: $color-secondary;
+    background: $background-primary;
     .dashboard-item__text-section {
         width: 58%;
         padding: 0;
         background: transparent;
-        color: $color-primary;
+        color: $font-color-primary;
       }
     }
   }
