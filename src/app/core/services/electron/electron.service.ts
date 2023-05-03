@@ -6,11 +6,14 @@ import * as childProcess from 'child_process';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
+import * as Store from 'electron-store';
+import { Settings } from '@shared/components/settings/interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ElectronService {
+  private Store: Store;
   ipcRenderer: typeof ipcRenderer;
   webFrame: typeof webFrame;
   remote: typeof remote;
@@ -21,6 +24,11 @@ export class ElectronService {
   shell: typeof shell;
   path: typeof path;
   systemPreferences: typeof remote.systemPreferences;
+  appSettings: Store<Settings>;
+  private _changelog: Store<{
+    version: string,
+    isShown: boolean,
+  }>;
 
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);
@@ -38,6 +46,20 @@ export class ElectronService {
       this.shell = window.require('electron').shell;
       this.remote = window.require('@electron/remote');
       this.systemPreferences= window.require('@electron/remote').systemPreferences;
+      this.Store = window.require('electron-store');
+
+      const Store = window.require('electron-store');
+      this.appSettings = new Store({
+        name: 'appSettings',
+      });
+
+      this._changelog = new Store({
+        name: 'changelog',
+        defaults: {
+          version: '',
+          isShown: false,
+        },
+      });
     }
   }
 
@@ -47,10 +69,22 @@ export class ElectronService {
 
   public getAppConfigFolderPath(): string {
     const osAppDataFolder = '.config';
-    return this.path.join(this.os.homedir(), osAppDataFolder, 'Car Maintenance');
+    return this.path.join(this.os.homedir(), osAppDataFolder, 'Учет');
   }
 
   public isFileExist(filePath: string): boolean {
     return this.fs.existsSync(filePath);
+  }
+
+  public setAppSettingsData(data: Settings): void {
+    this.appSettings.store = data;
+  }
+
+  public setChangelogData(data): void {
+    this._changelog.store = data;
+  }
+
+  public get changelog() {
+    return this._changelog.store;
   }
 }

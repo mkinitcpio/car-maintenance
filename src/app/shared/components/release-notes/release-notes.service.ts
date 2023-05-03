@@ -3,29 +3,14 @@ import { ElectronService } from '../../../core/services';
 import { DialogManagerService } from '../../../shared/services/dialog-manager.service';
 import { ReleaseNotes } from './interface';
 import { Observable } from 'rxjs';
-const packageJson = require('../../../../../package.json');
+const packageJson = require('../../../../../package.json') as { version: string };
 const releaseNotes = require('../../../release-notes.json');
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReleaseNotesService {
-
-  public readonly changeLogPath: string = this.electronService.combineAppConfigsPath(
-    this.electronService.getAppConfigFolderPath(),
-    "changelog.json",
-  );
-
   public releaseNotes: ReleaseNotes = null;
-
-  private fileReadConfig: {
-    flag: 'r',
-    encoding: 'utf8',
-  };
-  private fileWriteConfig: {
-    encoding: 'utf8',
-    flag: 'w',
-  };
 
   constructor(
     private electronService: ElectronService,
@@ -36,17 +21,11 @@ export class ReleaseNotesService {
     this.releaseNotes = releaseNotes as ReleaseNotes;
     const { version } = packageJson;
     let showChangeLog = false;
-    const configExist = this.electronService.isFileExist(this.changeLogPath);
 
-    if(configExist) {
-      const changeLog = JSON.parse(this.electronService.fs.readFileSync(this.changeLogPath, this.fileReadConfig));
+    const changeLog = this.electronService.changelog;
 
-      if(changeLog.version < version || (changeLog.version === version && !changeLog.isShown)) {
-        showChangeLog = true;
-      }
-    } else {
+    if(changeLog.version < version || (changeLog.version === version && !changeLog.isShown)) {
       showChangeLog = true;
-      this.updateChangeLogConfig(version, false);
     }
 
     return showChangeLog;
@@ -62,7 +41,6 @@ export class ReleaseNotesService {
       version,
       isShown,
     };
-
-    this.electronService.fs.writeFileSync(this.changeLogPath, JSON.stringify(changeLogConfig), this.fileWriteConfig);
+    this.electronService.setChangelogData(changeLogConfig);
   }
 }

@@ -2,7 +2,9 @@ import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { initialize, enable as enableRemote } from "@electron/remote/main";
+import * as Store from 'electron-store';
 initialize();
+Store.initRenderer();
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
