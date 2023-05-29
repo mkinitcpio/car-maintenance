@@ -26,8 +26,8 @@
     </app-dashboard-item>
 
     <app-dashboard-item type="documentation"
-                        header="Documentation"
-                        description="How to use?"
+                        [header]="'PAGES.DASHBOARD.DOCUMENTATION.TITLE' | translate"
+                        [description]="'PAGES.DASHBOARD.DOCUMENTATION.DESCRIPTION' | translate"
                         external="true"
                         class="item4"
                         (click)="openDocumentation()">

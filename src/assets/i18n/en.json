@@ -27,6 +27,10 @@
       "CHANGELOG": {
         "TITLE": "",
         "DESCRIPTION": "See what's new"
+      },
+      "DOCUMENTATION": {
+        "TITLE": "Documentation",
+        "DESCRIPTION": "How to use?"
       }
     },
     "DETAIL": {
