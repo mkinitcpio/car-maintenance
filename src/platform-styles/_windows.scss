@@ -1,4 +1,36 @@
 html[data-platform='windows'] {
+  &[data-theme='light'] {
+    --background-primary: white;
+    --background-secondary: #fafafa;
+    --background-button-hover: #0000000d;
+    --background-loader: #fafafaad;
+
+    --color-border: #ebebeb;
+    --color-button-icon: #4b4848;
+    --color-dangerous: #c7162b;
+
+    --platform-color-primary: #222;
+    --platform-color-secondary: #4b4848;
+
+    --select-expand-icon-color: #4b4848;
+
+    --toggle-active-color: white;
+
+    --menu-border: none;
+
+    --tooltip-background: #333;
+    --tooltip-color: white;
+
+    --dashboard-background-primary: var(--background-primary);
+    --dashboard-background-secondary: var(--secondary-color);
+    --dashboard-illustration-background-primary: var(--secondary-color);
+    --dashboard-illustration-background-secondary: var(--background-secondary);
+    --dashboard-illustration-background-tertiary: #4b4848;
+    --dashboard-card-icon-color: var(--platform-color-secondary);
+
+    --widget-icon-background: var(--secondary-color);
+  }
+
   &[data-theme='dark'] {
     --background-primary: #202020;
     --background-secondary: #2b2b2b;
@@ -26,5 +58,7 @@ html[data-platform='windows'] {
     --dashboard-illustration-background-secondary: var(--background-secondary);
     --dashboard-illustration-background-tertiary: #4b4848;
     --dashboard-card-icon-color: #5d5d5d;
+
+    --widget-icon-background: var(--background-secondary);
   }
 }
