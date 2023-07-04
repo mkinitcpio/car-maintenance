@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, Self } from '@angular/core';
 import { ElectronService } from '@core/services';
 import { ReleaseNotes } from '@shared/components/release-notes/interface';
+import { SettingsService } from '@shared/components/settings/settings.service';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
 
 import { ResizeObserverService } from '@shared/services/resize-observer.service';
@@ -19,7 +20,7 @@ type GridView = 'compact' | 'normal' | 'medium';
 export class DashboardComponent implements OnInit {
 
   private readonly GITHUB_REPOSITORY_URL = "https://github.com/mkinitcpio/car-maintenance";
-  private readonly DOCUMENTATION_URL = "https://mkinitcpio.gitbook.io/car-maintenance-1/";
+  private readonly DOCUMENTATION_URL_BASE = "https://mkinitcpio.gitbook.io/car-maintenance";
   public gridView: GridView;
 
   constructor(
@@ -28,6 +29,7 @@ export class DashboardComponent implements OnInit {
     private electronService: ElectronService,
     private dialogService: DialogManagerService,
     @Self() private resizeObserverService: ResizeObserverService,
+    private settingsService: SettingsService,
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +53,9 @@ export class DashboardComponent implements OnInit {
   }
 
   public openDocumentation(): void {
-    this.electronService.shell.openExternal(this.DOCUMENTATION_URL);
+    const documentationUrl = `${this.DOCUMENTATION_URL_BASE}-${this.settingsService.settings.language}`;
+
+    this.electronService.shell.openExternal(documentationUrl);
   }
 
   public openFeedbackDialog(): void {
