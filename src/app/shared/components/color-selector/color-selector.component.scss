@@ -1,3 +1,4 @@
+@import '/src/colors';
 
 .color-panel {
   display: flex;
@@ -8,7 +9,7 @@
     height: 24px;
     width: 1.5px;
     margin: 4px;
-    background: #ebebeb;
+    background: $color-border;
   }
 
   &__system-color {

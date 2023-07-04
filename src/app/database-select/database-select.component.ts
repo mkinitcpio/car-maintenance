@@ -29,7 +29,6 @@ export class DatabaseSelectComponent implements OnInit {
 
           this.dataBaseService.createDatabaseFile(filePath);
           this.settingsService.setDataBasePath(filePath);
-          this.settingsService.saveSettings();
           this.dataBaseService.initDataBase();
           this.router.navigate(['']);
         }
@@ -44,7 +43,6 @@ export class DatabaseSelectComponent implements OnInit {
           const filePath = data.filePaths[0];
 
           this.settingsService.setDataBasePath(filePath);
-          this.settingsService.saveSettings();
           this.dataBaseService.initDataBase();
           this.router.navigate(['']);
         }

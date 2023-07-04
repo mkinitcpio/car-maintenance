@@ -13,7 +13,8 @@
 
   overflow: hidden;
   border-radius: 18px;
-  border: 1.5px solid #ebebeb;
+  border: 1.5px solid $color-border;
+  background: white;
   font-family: $font-system;
   box-sizing: border-box;
   user-select: none;
@@ -110,7 +111,7 @@
     }
 
     th {
-      color: $font-primary;
+      color: black;
     }
 
     tr {

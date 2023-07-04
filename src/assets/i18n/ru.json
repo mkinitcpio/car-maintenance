@@ -27,6 +27,10 @@
     "CHANGELOG": {
       "TITLE": "",
       "DESCRIPTION": "Что нового?"
+    },
+    "DOCUMENTATION": {
+      "TITLE": "Документация",
+      "DESCRIPTION": "Как использовать?"
     }
   },
       "DETAIL": {
@@ -53,7 +57,8 @@
           "CURRENCY": "Валюта",
           "METRIC_SYSTEM": "Расстояние",
           "ANIMATION": "Анимации",
-          "COLORS":"Цвет"
+          "COLORS":"Цвет",
+          "APPEARANCE":"Тема"
         },
         "ICONS_PACK_NAMES": {
           "DEFAULT": "Стандартные"
@@ -240,5 +245,10 @@
     "STORAGE": "Склад",
     "STATISTIC": "Статистика"
   },
-  "UNDER_DEV": "В разработке"
+  "UNDER_DEV": "В разработке",
+  "SCHEMAS": {
+    "LIGHT": "Светлая",
+    "DARK": "Темная",
+    "AUTO": "Авто"
+  }
 }

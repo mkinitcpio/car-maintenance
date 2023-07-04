@@ -1,5 +1,5 @@
 <div class="currency">
-  <span class="currency__value">{{value | numberSeparator:locale}}</span>
+  <span [style.color]="ignoreFontColor ? 'black' : 'unset'" class="currency__value">{{value | numberSeparator:locale}}</span>
   <mat-icon *ngIf="renderAs === CurrencyRenderEnum.Svg; else img"
             class="currency__icon"
             [class.currency__icon--small]="size === CurrencySizeEnum.Small"

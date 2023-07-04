@@ -4,6 +4,28 @@
   color: $color-primary;
   position: absolute;
   width: 112px;
-  bottom: 12px;
-  right: 12px;
+  bottom: 16px;
+  right: 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.source-code-illustration {
+  display: flex;
+  gap: 6px;
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: bold;
+
+    span {
+      font-size: 20px;
+      height: 20px;
+      width: 10px;
+      display: flex;
+      justify-content: center;
+    }
+  }
 }

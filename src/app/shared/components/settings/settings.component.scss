@@ -78,7 +78,7 @@
   }
 
   &__item-field--disable {
-    color: gray;
+    color: $font-color-secondary;
   }
 
   &__divider {
@@ -97,7 +97,7 @@
     width: 19px;
     height: 20px;
 
-    color: #4b4848;
+    color: currentColor;
   }
 
   &__currency-name {
@@ -114,13 +114,13 @@
     width: 20px;
     margin-right: 8px !important;
 
-    color: #4b4848;
+    color: $color-button-icon;
   }
 
   .mat-button-toggle-checked {
-    background: var(--primary-color);
+    background: $color-primary !important;
     line-height: initial;
-    color: white;
+    color: $toggle-active-color !important;
   }
 
   .mat-button-toggle-label-content {
@@ -136,9 +136,14 @@
   .mat-button-toggle-button {
     width: 104px;
   }
-  
+
+  .mat-button-toggle-appearance-standard {
+    color: $font-color-secondary;
+    background-color: $background-secondary;
+  }
+
   .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
-    border: solid 1.5px rgba(0,0,0,.12);
+    border: solid 1.5px $color-border;
     box-sizing: content-box;
   }
 }
@@ -165,5 +170,74 @@
 }
 
 .mat-divider {
-  border-top-color: $separator-color;
+  border-top-color: $color-border;
+}
+
+.appearance {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+
+    cursor: pointer;
+
+    &--selected {
+      .appearance__illustration {
+        border: 2px solid $color-primary;
+      }
+
+      .appearance__label {
+        color: $font-color-primary;
+      }
+    }
+  }
+
+  &__label {
+    font-family: $font-system;
+    color: $font-color-secondary;
+    font-size: 14px;
+  }
+
+  &__illustration {
+    box-sizing: border-box;
+    border: 2px solid $color-border;
+
+    height: 64px;
+    width: 92px;
+    border-radius: 12px;
+
+    &--light {
+      background-color: white;
+    }
+
+    &--dark {
+      background-color: #2b2b2b;
+    }
+
+    &--auto {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 50%;
+        height: 100%;
+        background-color: white;
+      }
+      &:after {
+        position: absolute;
+        content: '';
+        width: 50%;
+        right: 0;
+        height: 100%;
+        background-color: #2b2b2b;
+      }
+    }
+  }
 }

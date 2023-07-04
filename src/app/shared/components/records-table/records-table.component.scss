@@ -9,6 +9,8 @@
   box-sizing: border-box;
   padding: 0px 12px 12px 12px;
 
+  background: $background-primary;
+
   font-family: $font-system;
   border-radius: 12px;
 
@@ -45,7 +47,7 @@
   .records-table__header {
     min-height: 48px;
     margin-bottom: 8px;
-    border-bottom-color: #efeeee;
+    border-bottom-color: $color-border;
     color: black;
   }
 
@@ -54,7 +56,7 @@
   }
 
   &__cell-date {
-    flex: 0 0 84px;
+    flex: 0 0 100px;
   }
 
   &__header-note,
@@ -71,7 +73,6 @@
     width: 20px;
 
     font-size: 20px;
-    color: #4b4848;
   }
 
   &__cell-mileage {
@@ -90,15 +91,15 @@
   }
 
   .mat-cell {
-    color: #222;
+    color: $font-color-primary;
   }
 
   .mat-header-cell {
-    color: #4b4848;
+    color: $font-color-secondary;
   }
 
   .mat-row:hover {
-    background: #F7F7F7;
+    background: $background-button-hover;
 
     border-radius: 12px;
 
@@ -114,9 +115,12 @@
     align-items: center;
     justify-content: center;
     padding: 48px;
+
     font-size: 14px;
     font-family: $font-system;
-    color: #4b4848;
+    color: $color-button-icon;
+    border-radius: 12px;
+    background-color: $background-primary;
   }
 
   &__empty-container {
@@ -125,7 +129,7 @@
     align-items: center;
     gap: 4px;
     font-size: 18px;
-    color: #4b4848;
+    color: $color-button-icon;
   }
 
   &__empty-icon {

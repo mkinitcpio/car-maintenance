@@ -18,6 +18,8 @@
   display: flex;
   overflow: hidden;
 
+  background: $background-primary;
+
   font-family: $font-system;
   user-select: none;
 
@@ -46,7 +48,7 @@
     align-items: center;
 
     background-size: 192px;
-    background-image: url('/assets/illustration.png');
+    background-image: url('~assets/illustration.png');
 
     animation: slide 15s linear infinite;
   }
@@ -65,7 +67,7 @@
     font-weight: bold;
     text-align: center;
     line-height: 1;
-    color: $font-primary;
+    color: $font-color-primary;
   }
 
   &__sub-title {
@@ -73,9 +75,9 @@
     align-items: center;
     margin-bottom: 64px;
 
-    color: #333;
+    color: $font-color-secondary;
     font-size: 18px;
-    font-family: $font-primary;
+    font-family: $font-system;
     text-align: center;
   }
 
@@ -95,7 +97,7 @@
 
     font-family: $font-system;
     font-size: 14px;
-    color: #222;
+    color: $font-color-primary;
   }
 
   &__app-icon {

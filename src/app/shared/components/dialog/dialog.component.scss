@@ -15,6 +15,7 @@
   flex-direction: column;
   padding-bottom: 24px;
 
+  background-color: $background-primary;
   font-family: $font-system;
   user-select: none;
 
@@ -28,14 +29,14 @@
     z-index: 1;
 
     &--border {
-      box-shadow: 0 1px 0 0 #dce1e6, 0 0 0 1px #e7e8ec;
+      border-bottom: 1px solid $color-border;
     }
   }
 
   &__title {
     margin-left: 12px;
 
-    color: $font-primary;
+    color: $font-color-primary;
     font-size: 18px;
     font-weight: bold;
   }
@@ -65,7 +66,7 @@
 
   font-family: $font-system;
   font-weight: normal;
-  color: $font-primary;
+  color: $font-color-primary;
   border-radius: 12px;
 }
 
@@ -81,9 +82,13 @@
 }
 
 .button__cancel {
-  background-color: #f1f1f1;
-  border-color: #f1f1f1;
-  color: $font-primary;
+  background-color: transparent;
+  border-color: transparent;
+  color: $font-color-primary;
+
+  &:hover {
+    background: $background-button-hover;
+  }
 }
 
 .loader {
@@ -94,7 +99,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #eaeaeaad;
+  background: $background-loader;
 }
 
 .notification-container {
@@ -126,10 +131,9 @@
   border-radius: 12px;
   font-size: 14px;
   color: white;
-  // font-weight: bold;
 
   &--error {
-    background-color: #c7162b;
+    background-color: $color-dangerous;
   }
 
   &--success {

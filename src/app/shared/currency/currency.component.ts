@@ -30,6 +30,9 @@ export class CurrencyComponent implements OnInit {
   renderAs: CurrencyRenderEnum = CurrencyRenderEnum.Svg;
 
   @Input()
+  ignoreFontColor = false;
+
+  @Input()
   size: CurrencySizeEnum = CurrencySizeEnum.Medium;
 
   public LocaleEnum = LocaleEnum;

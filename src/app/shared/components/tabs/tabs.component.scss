@@ -16,7 +16,7 @@
     position: relative;
 
     border-radius: 24px;
-    border: 1.5px solid #ebebeb;
+    border: 1.5px solid $color-border;
 
     .tabs__title {
       position: absolute;
@@ -24,7 +24,7 @@
       left: 50%;
       z-index: 1;
 
-      background: white;
+      background: $background-primary;
       transform: translate(-50%);
     }
   }
@@ -32,7 +32,7 @@
   &__title-container {
     padding: 4px;
 
-    background: #fafafa;
+    background-color: $background-secondary;
     border-radius: 12px;
     box-shadow: inset 0px 1px 2px 1px rgb(0 0 0 / 4%);
   }
@@ -59,7 +59,7 @@
 
     border-radius: 8px;
     line-height: 1rem;
-    color: #474747;
+    color: $font-color-secondary;
     z-index: 1;
     transition: color 0.4s ease-in-out,background-color 0.1s ease-in;
 
@@ -70,18 +70,18 @@
       position: absolute;
       height: inherit; 
 
-      background-color: white;
+      background-color: $background-primary;
       border-radius: 8px;
       transition: left 0.4s ease-in-out;
       box-shadow: rgb(0 0 0 / 10%) 0px 1px 2px 0px;
     }
 
     &:not(.tabs__tab.tabs__tab--selected):hover {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: $background-button-hover;
     }
 
     &--selected {
-      color: $font-primary;
+      color: $font-color-primary;
     }
   }
 

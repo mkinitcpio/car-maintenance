@@ -20,7 +20,7 @@
     font-size: 14px;
     font-family: $font-system;
     font-weight: bold;
-    color: $font-primary;
+    color: $font-color-primary;
   }
 
   &__info {
@@ -28,7 +28,7 @@
     width: 14px;
 
     font-size: 15px;
-    color: $font-secondary;
+    color: $font-color-secondary;
     cursor: pointer;
   }
 
@@ -38,7 +38,7 @@
 
   &__content {
     border-radius: 12px;
-    background: white;
+    background: transparent;
 
     &--with-borders {
       box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;

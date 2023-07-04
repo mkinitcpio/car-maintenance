@@ -19,6 +19,8 @@ import { colors } from './colors';
 
 import { AppConfig } from 'environments/environment';
 import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
+import { AppearanceType } from "./interface";
+import { ThemeService } from "@core/services/theme";
 
 @Component({
   selector: "app-settings",
@@ -45,16 +47,15 @@ export class SettingsComponent {
     public settingsService: SettingsService,
     private electronService: ElectronService,
     private dataBaseService: DataBaseService,
+    public themeService: ThemeService,
   ) {}
 
   public onSelectLanguage(language: string): void {
     this.settingsService.setAppLanguage(language);
-    this.settingsService.saveSettings();
   }
 
   public onSelectRegion(region: LocaleEnum): void {
     this.settingsService.setRegion(region);
-    this.settingsService.saveSettings();
   }
 
   public onDatabaseChange(): void {
@@ -68,44 +69,40 @@ export class SettingsComponent {
 
           this.dataBaseService.databaseError$.pipe(first()).subscribe(() => {
             this.settingsService.setDataBasePath(oldDatabasePath);
-            this.settingsService.saveSettings();
           });
 
           this.settingsService.setDataBasePath(filePath);
           this.dataBaseService.initDataBase();
-          this.settingsService.saveSettings();
         }
       });
   }
 
   public onMetricSystemChanged(mSystem: MetricSystemEnum): void {
     this.settingsService.setMetricSystem(mSystem);
-    this.settingsService.saveSettings();
   }
 
   public onSelectCurrency(currency: CurrencyEnum): void {
     this.settingsService.setCurrency(currency);
-    this.settingsService.saveSettings();
   }
 
   public onAnimationsChanged(checked: boolean): void {
     this.settingsService.setAnimations(checked);
-    this.settingsService.saveSettings();
   }
 
   public onStartPageChanged(navigationRoute: NavigationEnum): void {
     this.settingsService.setStartPage(navigationRoute);
-    this.settingsService.saveSettings();
   }
 
   onFirstTabChanged(tab: NavigationTabEnum): void {
     this.settingsService.setFirstTab(tab);
-    this.settingsService.saveSettings();
   }
 
   public onSelectColor(colors: ColorEnum) {
     this.settingsService.changeThemeColor(colors);
-    this.settingsService.saveSettings();
+  }
+
+  public setAppearance(appearance: AppearanceType): void {
+    this.settingsService.setAppearance(appearance);
   }
 
   public getCurrentCurrency() {

@@ -11,7 +11,7 @@
         </app-currency>
       </ng-container>
       <ng-container *ngSwitchCase="'date'">
-        {{value ? (value | date:'d MMM, y') : '-'}}
+        {{value ? (value | localizedDate) : '-'}}
       </ng-container>
       <ng-container *ngSwitchCase="'mileage'">
         <span>{{value | numberSeparator:this.settingsService.settings.region}}</span>

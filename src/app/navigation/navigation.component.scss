@@ -7,8 +7,8 @@
   flex-direction: column;
   overflow: hidden;
 
+  background-color: $background-primary;
   user-select: none;
-  transition: background-color 0.25s ease-in;
 
   &__title-container {
     box-sizing: border-box;
@@ -31,15 +31,5 @@
     flex-grow: 1;
 
     transition: opacity 0.15s ease-in 0.15s;
-  }
-
-  &--minimize {
-      opacity: 0;
-      transition: opacity 0.3s;
-
-    .navigation__title-container {
-      flex-wrap: wrap-reverse;
-      gap: 8px;
-    }
   }
 }

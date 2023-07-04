@@ -1,6 +1,8 @@
+@import '/src/colors';
+
 .setting {
   display: flex;
-  height: 56px;
+  min-height: 56px;
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
@@ -9,6 +11,8 @@
     display: flex;
     align-items: center;
     width: 33.3%;
+
+    color: $font-color-primary;
 
     line-height: 1rem;
     font-size: 14px;
@@ -25,6 +29,6 @@
     margin-right: 8px;
 
     font-size: 20px;
-    color: #4b4848
+    color: currentColor;
   }
 }

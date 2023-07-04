@@ -22,15 +22,17 @@
     height: 98px;
     width: 192px;
 
-    border: 2px solid #f2f2f2;
+    background: $background-secondary;
+    border: 2px solid $color-border;
     border-radius: 12px;
     resize: none;
 
+    color: $font-color-primary;
     font-family: $font-system;
 
     &:focus {
       outline: none !important;
-      border: 2px solid var(--primary-color) !important;
+      border: 2px solid $color-primary !important;
     }
   }
 
@@ -38,7 +40,7 @@
     display: flex;
     flex-direction: column;
 
-    background: white;
+    background: $background-primary;
 
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
     transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -106,7 +108,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: white;
+    background: $background-primary;
     font-family: $font-system;
   }
 
@@ -147,13 +149,13 @@
     padding: 12px 8px 12px 12px;
     height: 38px;
 
-    color: #313131;
+    color: $font-color-primary;
 
     border-radius: 12px;
     cursor: pointer;
 
     &:hover {
-      background: rgba(0,0,0,0.05);
+      background: $background-button-hover;
 
       .category-details__table-title-icon {
         opacity: 1;
@@ -187,14 +189,15 @@
   }
 
   &__tables-title {
-    font-family: $font-system;
-    font-weight: bold;
     margin-bottom: 12px;
     padding: 0 8px 0 16px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    color: $font-color-primary;
+    font-family: $font-system;
+    font-weight: bold;
   }
 
   &__tables-title-buttons {
@@ -230,6 +233,7 @@
     &__raw-label {
       width: 112px;
       font-weight: bold;
+      color: $font-color-secondary;
     }
 
     &__status {
@@ -245,6 +249,7 @@
     }
 
     &__content {
+      color: $font-color-primary;
       font-family: $font-system;
       font-size: 14px;
     }

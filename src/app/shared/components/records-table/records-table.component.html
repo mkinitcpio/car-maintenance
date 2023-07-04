@@ -36,9 +36,9 @@
     <mat-header-cell *matHeaderCellDef class="records-table__cell-date"> {{"RECORDS_TABLE.DATE" | translate}} </mat-header-cell>
     <mat-cell class="records-table__cell-date" *matCellDef="let row">
       <div class="records-table__cell-text"
-           [matTooltip]="row.date | date:dateFormat"
+           [matTooltip]="row.date | localizedDate"
            [matTooltipPosition]="'above'">
-        {{row.date | date:dateFormat}}
+        {{row.date | localizedDate}}
       </div>
     </mat-cell>
   </ng-container>

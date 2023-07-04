@@ -8,6 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NumberSeparatorPipe } from './pipes/number.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 import { CurrencyModule } from '../../currency/currency.module';
+import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CurrencyModule } from '../../currency/currency.module';
     MatTooltipModule,
     TranslateModule,
     CurrencyModule,
+    CommonPipesModule,
   ],
   exports: [
     RecordsTableComponent,

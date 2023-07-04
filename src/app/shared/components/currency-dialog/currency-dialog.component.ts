@@ -20,7 +20,6 @@ export class CurrencyDialogComponent {
 
   public onSelectCurrency(currency: CurrencyEnum): void {
     this.settingsService.setCurrency(currency);
-    this.settingsService.saveSettings();
     this.dialogRef.close();
   }
 

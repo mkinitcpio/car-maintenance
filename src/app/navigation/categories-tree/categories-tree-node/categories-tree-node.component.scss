@@ -48,7 +48,7 @@
   }
 
   &__icon {
-    color: #4b4848;
+    color: $font-color-primary;
   }
 
   &__selection-container {
@@ -58,13 +58,13 @@
     padding: 0 12px 0 8px;
     gap: 6px;
     border-radius: 12px;
-    color: $font-primary;
+    color: $font-color-primary;
     cursor: pointer;
     height: 38px;
     transition: background-color 0.1s ease-out;
 
     &:hover {
-      background: rgba(0,0,0,0.05);
+      background: $background-button-hover;
     }
   }
 
@@ -110,12 +110,11 @@
   &__empty {
     height: 4px;
     width: 4px;
-    background: #4b4848;
+    background: $color-button-icon;
     border-radius: 50%;
   }
 
   &__expand-button {
-    color: #4b4848;
     user-select: none;
     transition: transform 0.2s linear;
     transform: rotate(0deg);

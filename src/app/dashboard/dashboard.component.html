@@ -2,7 +2,7 @@
   <ng-container content>
     <section class="grid grid--{{gridView}}">
     <app-dashboard-item type="changelog"
-                        header="4.1.0"
+                        header="4.2.0"
                         [description]="'PAGES.DASHBOARD.CHANGELOG.DESCRIPTION' | translate"
                         class="card"
                         (click)="openReleaseNotes()">
@@ -25,10 +25,9 @@
                         (click)="openGitHub()">
     </app-dashboard-item>
 
-    <app-dashboard-item *ngIf="false"
-                        type="documentation"
-                        header="Documentation"
-                        description="How to use?"
+    <app-dashboard-item type="documentation"
+                        [header]="'PAGES.DASHBOARD.DOCUMENTATION.TITLE' | translate"
+                        [description]="'PAGES.DASHBOARD.DOCUMENTATION.DESCRIPTION' | translate"
                         external="true"
                         class="item4"
                         (click)="openDocumentation()">

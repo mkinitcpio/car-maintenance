@@ -1,26 +1,17 @@
 <section class="release-notes">
-  <app-dialog [title]="'Car Maintenance 4.1.0'"
+  <app-dialog [title]="'Car Maintenance 4.2.0'"
               hideFooter="true"
               (close)="dialogRef.close()"
     >
     <main content class="release-notes__content">
       <div class="container">
-        <h3 class="release-notes__first-title">{{releaseNotes[appLanguage].app}}</h3>
-        <ul class="release-notes__list">
-          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['2']}}</li>
-        </ul>
-        <h3>{{releaseNotes[appLanguage].settings}}</h3>
+        <h3 class="release-notes__title">{{releaseNotes[appLanguage].settings}}</h3>
         <ul class="release-notes__list">
           <li class="release-notes__text">{{releaseNotes[appLanguage].progress['0']}}</li>
         </ul>
-        <h3>{{releaseNotes[appLanguage].records}}</h3>
+        <h3 class="release-notes__title">{{releaseNotes[appLanguage].welcomePage}}</h3>
         <ul class="release-notes__list">
           <li class="release-notes__text">{{releaseNotes[appLanguage].progress['1']}}</li>
-        </ul>
-        <h3>{{releaseNotes[appLanguage].groupDetails}}</h3>
-        <ul class="release-notes__list">
-          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['3']}}</li>
-          <li class="release-notes__text">{{releaseNotes[appLanguage].progress['4']}}</li>
         </ul>
       </div>
     </main>

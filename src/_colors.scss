@@ -1,21 +1,24 @@
 $color-primary: var(--primary-color);
 $color-secondary: var(--secondary-color);
-$color-dangerous: #c7162b;
-$color-border: #dce1e6;
+$color-dangerous: var(--color-dangerous);
+$color-border: var(--color-border);
+$color-button-icon: var(--color-button-icon);
 
-$font-primary: #222;
-$font-secondary: #3c3a3a;
-$font-white: white;
+$background-primary: var(--background-primary);
+$background-secondary: var(--background-secondary);
+$background-button-hover: var(--background-button-hover);
+$background-loader: var(--background-loader);
 
+$font-color-primary: var(--platform-color-primary);
+$font-color-secondary: var(--platform-color-secondary);
 
-$background-primary: white;
-$background-secondary: #f7f7f7;
-$background-header-primary: #323030;
+$select-expand-icon-color: var(--select-expand-icon-color);
 
-$button-color-primary: #0d7f1e;
-$button-color-secondary: #4b4848;
-$button-color-dangerous: $color-dangerous;
-$button-color-neutral: #fcfcfc;
-$button-color-active: $color-primary;
+$toggle-active-color: var(--toggle-active-color);
 
-$separator-color: #efefef;
+$menu-border: var(--menu-border);
+
+$tooltip-background: var(--tooltip-background);
+$tooltip-color: var(--tooltip-color);
+
+$widget-icon-background: var(--widget-icon-background);

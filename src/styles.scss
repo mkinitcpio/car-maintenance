@@ -12,8 +12,13 @@ html, body {
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '/src/colors';
 @import '/src/animations';
+@import './platform-styles';
 @import '/src/fonts';
 
+
+.mat-dialog-container {
+  background: transparent;
+}
 
 .dialog {
   &-settings,
@@ -62,7 +67,7 @@ html, body {
 
     .mat-dialog-container {
       border-radius: 24px;
-      background-color: white;
+      background-color: $background-primary;
     }
   }
 }
@@ -72,7 +77,9 @@ html, body {
   font-weight: normal;
   font-size: 14px;
   line-height: 1.25;
-  background: #333;
+  color: $tooltip-color;
+  border: $menu-border;
+  background: $tooltip-background;
   border-radius: 12px !important;
   white-space: pre-line;
   padding: 12px !important;
@@ -87,6 +94,10 @@ html, body {
   font-family: $font-system;
 }
 
+.mat-select-value-text {
+  color: $font-color-primary;
+}
+
 .menu-item.mat-menu-item {
   display: flex;
   align-items: center;
@@ -94,7 +105,7 @@ html, body {
   padding: 0 8px;
 
   font-family: $font-system;
-  color: #111;
+  color: $font-color-primary;
   font-size: 14px !important;
   height: 36px;
   line-height: 36px;
@@ -102,31 +113,23 @@ html, body {
 
  .mat-icon {
    margin-right: 8px;
-   color: #4b4848 !important;
+   color: $color-button-icon !important;
    font-size: 20px;
    height: 20px;
    width: 20px;
   }
 
   &.menu-item--delete {
-    color: #c7162b !important;
+    color: $color-dangerous !important;
 
     .mat-icon {
-      color: #c7162b !important;
-    }
-  }
-
-  &.menu-item--update {
-    color: $button-color-primary;
-
-    .mat-icon {
-      color: $button-color-primary !important;
+      color: $color-dangerous !important;
     }
   }
 }
 
 .menu-item.mat-menu-item:hover {
-  background: rgba(0,0,0,0.05) !important;
+  background: $background-button-hover !important;
 
   .mat-icon {
     animation: shake 0.5s ease-in both;
@@ -154,10 +157,12 @@ html, body {
 .mat-menu-panel {
   min-width: initial !important;
   border-radius: 12px !important;
-  background: #ffffffa3;
-  backdrop-filter: saturate(180%) blur(10px);
+  background: $background-primary;
+  border: 1.5px solid $color-border;
+  color: $font-color-primary;
+
   .cdk-program-focused { 
-    background-color: transparent!important; 
+    background-color: transparent!important;
   }
 
   .mat-menu-content {
@@ -167,13 +172,16 @@ html, body {
   .mat-menu__divider {
     height: 1px;
     margin: 4px 8px;
-    background: #efeeee;
+    background: $color-border;
   }
 }
 
 .mat-select-panel {
   @include mixins.scrollable();
   padding: 0 !important;
+  border: $menu-border;
+
+  background: $background-primary;
 }
 
 .app {
@@ -264,9 +272,15 @@ body.no-animations {
 .mat-select {
     padding: 12px;
     border-radius: 12px;
-    border: 1.5px solid #ebebeb;
+    border: 1.5px solid $color-border;
     box-sizing: border-box;
     font-size: 14px;
+    background-color: $background-secondary;
+
+    &:hover {
+     background: $background-button-hover;
+    }
+
     &:focus-visible {
       outline: 1px solid $color-primary !important;
     }
@@ -276,7 +290,8 @@ body.no-animations {
       top: 50%;
       transform: translateY(-46%);
       right: 8px;
-      color: #4b4848;
+      color: $select-expand-icon-color;
+      pointer-events: none;
     }
 }
 
@@ -299,10 +314,21 @@ body.no-animations {
 
 .mat-option {
   font-family: $font-system;
+
+  color: $font-color-primary;
+
+  &:hover:not(.mat-option-disabled) {
+    background-color: $background-button-hover;
+  }
+
+  &.mat-active {
+    background: initial;
+    color: var(--platform-color-primary);
+  }
 }
 
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-  background-color: #f6f6f6;
+  background-color: $background-button-hover;
 }
 
 .mat-form-field-label-wrapper {
@@ -322,30 +348,42 @@ body.no-animations {
   width: 100%;
 
   mat-label {
-    color: $font-primary;
+    color: $font-color-primary;
     font-size: 18px !important;
   }
 
   &.mat-form-field-invalid mat-label {
-    caret-color: #c7162b;
-    color: #c7162b !important;
+    caret-color: $color-dangerous;
+    color: $color-dangerous !important;
+  }
+
+  input {
+    &:hover {
+      background: $background-button-hover;
+     }
   }
 
   input:placeholder-shown {
     font-size: 16px;
   }
+
+  input::placeholder {
+    color: $font-color-secondary;
+  }
 }
 
 .mat-error {
-  color: #c7162b;
+  color: $color-dangerous;
 }
 
 .mat-form-field {
   font-size: 14px;
   .mat-input-element {
-    border: 1.5px solid #ebebeb;
+    border: 1.5px solid $color-border;
     border-radius: 12px;
     padding: 12px;
+    background: $background-secondary;
+    color: $font-color-primary;
     box-sizing: border-box;
     caret-color: $color-primary;
     transition: padding-left 0.2s ease-in, border-color 0.1s ease-in, background 0.1s ease-in;
@@ -353,14 +391,15 @@ body.no-animations {
     &:focus {
       padding-left: 16px;
       border-color: $color-primary;
-      background: white;
+      background:  $background-secondary;
     }
   }
 
   &.mat-form-field-invalid {
     .mat-input-element {
-      border-color: #c7162b;
-      background-color: rgba($color: #c7162b, $alpha: 0.05);
+      caret-color: $color-dangerous;
+      border-color: $color-dangerous;
+      background-color: rgba($color: $color-dangerous, $alpha: 0.05);
     }
   }
 
@@ -391,23 +430,31 @@ body.no-animations {
 .mat-calendar-period-button,
 .mat-calendar-body-cell-content,
 .mat-datepicker-content {
+  color: $font-color-primary;
   border-radius: 12px !important;
+}
+
+.mat-calendar-body-label {
+  color: $font-color-primary;
+}
+
+.mat-calendar-arrow{
+  border-top-color: $font-color-primary;
 }
 
 .mat-calendar-next-button,
 .mat-calendar-previous-button {
-  color: #4b4848 !important;
+  color: $color-button-icon !important;
 }
 
 .mat-calendar-table-header th {
   font-size: 12px;
   font-weight: 500;
-  color: #4b4848;
+  color: $font-color-secondary;
 }
 
 .mat-datepicker-content {
-  background: #ffffffa3;
-  backdrop-filter: saturate(180%) blur(10px);
+  background: $background-primary;
 }
 
 .mat-calendar-body-today.mat-calendar-body-selected {
