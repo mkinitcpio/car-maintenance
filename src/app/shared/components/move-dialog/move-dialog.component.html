@@ -1,0 +1,36 @@
+<div class="move-dialog">
+  <app-dialog [title]="'DIALOG.MOVE.TITLE'"
+              [submitText]="'DIALOG.BUTTONS.MOVE'"
+              [disabledSumbitButton]="!selectedItemId"
+              (close)="dialogRef.close()"
+              (submit)="onSubmit()"
+  >
+    <section content>
+      <div class="move-dialog__panel">
+        <app-input class="records-table__search"
+                   (onChange)="onSearchChange($event)"
+        >
+        </app-input>
+      </div>
+
+      <div class="move-dialog__list">
+        <ng-container *ngFor="let group of items">
+          <div *ngIf="group.items.length" class="move-dialog__group">
+            <span class="move-dialog__group-title">{{group.group}}</span>
+              <div mat-ripple
+                  class="move-dialog__group-item"
+                  [class.move-dialog__group-item--selected]="item.id === selectedItemId"
+                  *ngFor="let item of group.items"
+                  (click)="onSelect(item.id)"
+              >
+                <mat-icon class="move-dialog__list-icon"
+                          [svgIcon]="item.icon">
+                </mat-icon>
+                {{item.name}}
+              </div>
+          </div>
+        </ng-container>
+       </div>
+    </section>
+  </app-dialog>
+</div>
