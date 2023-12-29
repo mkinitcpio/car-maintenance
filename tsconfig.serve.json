@@ -5,10 +5,11 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "ES2022",
     "types": [
       "node"
     ],
+    "module": "commonjs",
     "lib": [
       "es2017",
       "es2016",

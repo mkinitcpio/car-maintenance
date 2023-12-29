@@ -3,9 +3,10 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "outDir": "../out-tsc/app",
-    "module": "esnext",
     "baseUrl": "",
-    "types": []
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "main.ts",

@@ -29,8 +29,5 @@ import { MatIconModule } from '@angular/material/icon';
     DialogModule,
     MatIconModule,
   ],
-  entryComponents: [
-    CreateRecordComponent,
-  ]
 })
 export class CreateRecordModule {}

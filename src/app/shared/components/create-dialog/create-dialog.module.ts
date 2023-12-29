@@ -33,8 +33,5 @@ import { ContentContainerModule } from '../content-container/content-container.m
     MatRippleModule,
     ContentContainerModule,
   ],
-  entryComponents: [
-    CreateDialogComponent,
-  ]
 })
 export class CreateDialogModule {}
