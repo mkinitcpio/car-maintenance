@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { ElectronService } from '../../../core/services';
 import { DialogManagerService } from '../../../shared/services/dialog-manager.service';
 import { ReleaseNotes } from './interface';
 import { Observable } from 'rxjs';
-const packageJson = require('../../../../../package.json') as { version: string };
+import { APP_CONFIG, AppConfig } from 'app/app.config';
 const releaseNotes = require('../../../release-notes.json');
 
 @Injectable({
@@ -15,11 +15,12 @@ export class ReleaseNotesService {
   constructor(
     private electronService: ElectronService,
     private dialogManagerService: DialogManagerService,
+    @Inject(APP_CONFIG) private appConfig: AppConfig,
   ) {}
 
   public isFirstAppStartAfterUpdate(): boolean {
     this.releaseNotes = releaseNotes as ReleaseNotes;
-    const { version } = packageJson;
+    const version = this.appConfig.version;
     let showChangeLog = false;
 
     const changeLog = this.electronService.changelog;
@@ -32,7 +33,7 @@ export class ReleaseNotesService {
   }
 
   public showReleaseNotes(): Observable<void> {
-    this.updateChangeLogConfig(packageJson.version, true);
+    this.updateChangeLogConfig(this.appConfig.version, true);
     return this.dialogManagerService.openReleaseNotesDialog(this.releaseNotes);
   }
 
