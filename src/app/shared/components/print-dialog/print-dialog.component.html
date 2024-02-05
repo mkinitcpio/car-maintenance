@@ -22,7 +22,8 @@
               <div class="column">
                 <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
                 <span class="column__name">{{column.name | translate}}</span>
-                <mat-checkbox [disabled]="column.id === 'name'"
+                <mat-checkbox *ngIf="column.id !== 'name'"
+                              [disableRipple]="true"
                               [checked]="column.visible"
                               (change)="column.visible = !column.visible">
                 </mat-checkbox>
@@ -49,10 +50,6 @@
       <button class="button button__submit" mat-button (click)="onPrint()">{{'DIALOG.BUTTONS.EXPORT' | translate}}</button>
     </div>
   </div>
-
-  <mat-divider class="print-dialog__divider"
-               vertical="true">
-  </mat-divider>
 
   <div class="print-dialog__preview-section">
     <div class="print-dialog__preview">
