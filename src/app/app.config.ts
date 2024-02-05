@@ -8,10 +8,12 @@ export interface AppConfig {
   version: string;
   documentationUrl: string;
   sourceCodeUrl: string;
+  fileEncoding: BufferEncoding;
 }
 
 export const appConfig: AppConfig = {
   version,
   documentationUrl: 'https://mkinitcpio.gitbook.io/car-maintenance',
   sourceCodeUrl: 'https://github.com/mkinitcpio/car-maintenance',
+  fileEncoding: 'utf8',
 };
