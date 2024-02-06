@@ -1,0 +1,24 @@
+@use '/src/mixins' as mixins;
+@import '/src/colors';
+@import '/src/fonts';
+
+.mileage {
+  height: 18px;
+  width: 18px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 6px;
+  font-size: 9px;
+  box-sizing: border-box;
+  line-height: 1;
+
+  background: var(--color-button-icon);
+  color: var(--background-primary);
+
+  &__value {
+    line-height: 18px;
+  }
+}
