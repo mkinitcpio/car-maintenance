@@ -4,7 +4,7 @@ import { from, Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { ElectronService } from '@core/services';
-import { Size } from 'electron/main';
+import { PrintToPDFOptions } from 'electron';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,9 @@ import { Size } from 'electron/main';
 export class PrintService {
 
   private print$: Subject<void> = new Subject();
-  private readonly options= {
+  private readonly options: PrintToPDFOptions = {
     pageSize: "A4",
     printBackground: true,
-    printSelectionOnly: false,
-    landscape: false
   };
 
   constructor(
@@ -157,7 +155,7 @@ export class PrintService {
     `);
 
     win.webContents.on('did-finish-load', () => {
-      from(win.webContents.printToPDF(this.options as any))
+      from(win.webContents.printToPDF(this.options))
         .pipe(switchMap((data) => from(this.electronService.fs.promises.writeFile(pdfFilePath, data))))
         .subscribe(() => {
           this.electronService.shell.openPath(pdfFilePath);
