@@ -20,7 +20,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/material-icons/iconfont/material-icons.css",
               "src/styles.scss"
             ],
             "scripts": [],
@@ -149,14 +148,13 @@
       }
     }
   },
-  "defaultProject": "angular-electron",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "cm",
       "style": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "cm"
     }
   }
 }
