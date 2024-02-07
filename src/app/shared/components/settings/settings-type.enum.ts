@@ -8,4 +8,5 @@ export enum SettingsTypeEnum {
   FirstTab,
   Color,
   StartPage,
+  DetailsTableVisibleColumns,
 }

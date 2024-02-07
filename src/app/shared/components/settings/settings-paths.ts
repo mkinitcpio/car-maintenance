@@ -11,4 +11,5 @@ export const SettingsPaths = {
   MetricSystem: 'units.metricSystem',
   Currency: 'units.currency',
   FirstTab: 'firstTab',
-}
+  DetailsTableVisibleColumns: 'details.table.hiddenColumns',
+};

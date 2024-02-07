@@ -24,4 +24,9 @@ export interface Settings {
     metricSystem: MetricSystemEnum,
   },
   firstTab: NavigationTabEnum,
+  details: {
+    table: {
+      hiddenColumns: string [],
+    }
+  }
 }

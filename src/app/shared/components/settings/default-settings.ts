@@ -24,4 +24,9 @@ export const defaultSettings: Settings = {
     currency: CurrencyEnum.Usd,
   },
   firstTab: NavigationTabEnum.Categories,
+  details: {
+    table: {
+      hiddenColumns: [],
+    },
+  },
 };
