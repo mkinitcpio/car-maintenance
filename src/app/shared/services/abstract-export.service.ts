@@ -5,6 +5,11 @@ import { SaveDialogReturnValue } from 'electron';
 
 export type SaveDialogFileStatus = 'Cancel' | 'Success';
 
+export interface SaveDialogData {
+  status: SaveDialogFileStatus,
+  filePath?: string,
+}
+
 export abstract class AbstractExportService {
 
   constructor(
@@ -12,7 +17,7 @@ export abstract class AbstractExportService {
     protected electronService: ElectronService,
   ) {}
 
-  protected save(filePath: string, data: string): Observable<void> {
+  protected save(filePath: string, data: string | Buffer): Observable<void> {
     return from(
       this.electronService.fs.promises.writeFile(
         filePath,
