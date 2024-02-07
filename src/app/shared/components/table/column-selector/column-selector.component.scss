@@ -1,0 +1,17 @@
+@import '/src/colors';
+
+.mat-menu-item {
+  .mat-icon.checked {
+    pointer-events: none;
+    color: $color-primary !important;
+  }
+  .mat-icon.empty {
+    pointer-events: none;
+  }
+}
+.mat-menu-item.selected {
+  .mat-icon.checked {
+    display: unset;
+    color: $color-primary !important;
+  }
+}

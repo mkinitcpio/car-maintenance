@@ -1,0 +1,19 @@
+<app-button button-transparent [matMenuTriggerFor]="columnMenu">
+  <mat-icon>view_column</mat-icon>
+</app-button>
+
+<mat-menu #columnMenu="matMenu">
+  <ng-template matMenuContent>
+    <div class="mat-menu-content__header">{{'COLUMNS' | translate}}</div>
+    <button *ngFor="let column of columns"
+            class="menu-item"
+            mat-menu-item
+            (click)="onSwitchState($event, column.key)"
+    >
+      <mat-checkbox [checked]="column.visible"
+                    disableRipple="true">
+      </mat-checkbox>
+      {{column.name | translate}}
+    </button>
+  </ng-template>
+</mat-menu>

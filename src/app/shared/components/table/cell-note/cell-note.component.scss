@@ -1,0 +1,14 @@
+@import '/src/colors';
+
+.cell-note {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__icon {
+    height: 20px;
+    width: 20px;
+
+    color: $color-button-icon;
+  }
+}

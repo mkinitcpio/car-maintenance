@@ -1,0 +1,8 @@
+<div class="cell-note" [attr.data-csv]="value || ''">
+  @if (value) {
+    <mat-icon class="cell-note__icon"
+              [matTooltip]="value"
+              [matTooltipPosition]="'above'" svgIcon="paper">
+    </mat-icon>
+  }
+</div>
