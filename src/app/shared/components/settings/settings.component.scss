@@ -62,11 +62,19 @@
     font-size: 14px;
 
     &--select {
-      width: 60%;
+      width: 216px;
+
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
     }
 
     &--currency {
-      width: 70%;
+      width: 216px;
+
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
     }
   }
 
@@ -83,7 +91,7 @@
 
   &__divider {
     border-top-width: 1.5px !important;
-    margin: 4px 26px 4px 18px !important;
+    margin: 8px 26px 8px 18px !important;
   }
 
   &__currency-preview {
@@ -239,5 +247,23 @@
         background-color: #2b2b2b;
       }
     }
+  }
+}
+
+.cm-select {
+  border-radius: 12px !important;
+  margin: 8px 0;
+  background-color: $background-secondary;
+  padding: 8px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .mdc-list-item--selected {
+    color: $color-primary;
+  }
+
+  .mdc-list-item__primary-text {
+    letter-spacing: 0;
   }
 }

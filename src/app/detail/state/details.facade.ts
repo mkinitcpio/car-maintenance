@@ -6,6 +6,7 @@ import {
   getNewDetail,
   getEditDetail,
   getDeleteDetail,
+  getMoveRecords,
 } from './selectors';
 
 import * as actions from './actions';
@@ -20,6 +21,7 @@ export class DetailsFacade {
   public readonly newDetails$ = this.store.select(getNewDetail);
   public readonly editDetail$ = this.store.select(getEditDetail);
   public readonly deleteDetail$ = this.store.select(getDeleteDetail);
+  public readonly moveRecords$ = this.store.select(getMoveRecords);
 
   constructor(private store: Store<any>) {}
 
@@ -37,5 +39,9 @@ export class DetailsFacade {
 
   public editRecord(record: Record): void {
     this.store.dispatch(actions.editRecord( { record }));
+  }
+
+  public moveRecords(parentId: string, recordIds: string[]): void {
+    this.store.dispatch(actions.moveRecords( { parentId, recordIds }));
   }
 }

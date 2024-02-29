@@ -81,6 +81,10 @@
     &--selected {
       background: $background-button-hover;
     }
+
+    &--context-menu {
+      background: $background-button-hover;
+    }
   }
 
   &--column-select {

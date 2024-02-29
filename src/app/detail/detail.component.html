@@ -5,16 +5,6 @@
     </app-button>
   </ng-container>
 
-  <ng-container buttons-right>
-    <app-button button-transparent (click)="onCreateRecord()">
-      <mat-icon svgIcon="add"></mat-icon>
-    </app-button>
-
-    <app-button *ngIf="dataSourceTable.length" button-transparent (click)="onPrint()">
-      <mat-icon svgIcon="printer"></mat-icon>
-    </app-button>
-  </ng-container>
-
   <ng-container content>
     <div class="detail__cards">
       <app-rich-widget icon="money"
@@ -31,13 +21,16 @@
       >
       </app-rich-widget>
     </div>
-    <ubuntu-container>
-      <app-records-table class="detail__table"
-                         [data]="dataSourceTable"
-                         [stretch]="true"
-                         (edit)="onEdit($event)"
-                         (delete)="onDelete($event)">
-      </app-records-table>
-    </ubuntu-container>
+    <cm-table [config]="tableConfig"
+              [data]="dataSourceTable"
+              (add)="onCreate()"
+              (edit)="onEdit($event)"
+              (exportToPDF)="onExportToPDF()"
+              (delete)="onDelete($event)"
+              (move)="onMove($event)"
+              (exportToCSV)="onExportCSV($event)"
+              (columnVisibilityChange)="onColumnVisibilityChanged($event)"
+    >
+    </cm-table>
   </ng-container>
 </app-details>

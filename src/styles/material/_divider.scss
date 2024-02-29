@@ -1,0 +1,10 @@
+:root {
+  --mat-divider-color: #{$color-border};
+  --mat-divider-width: 2px;
+}
+
+.mat-divider.mat-divider-vertical {
+  height: 24px;
+  border-width: 2px;
+  margin: 0 8px;
+}

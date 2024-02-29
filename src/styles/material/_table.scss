@@ -1,0 +1,15 @@
+:root {
+  --mat-table-header-headline-font: #{$font-system};
+  --mat-table-header-headline-size: 12px;
+  --mat-table-row-item-label-text-font: #{$font-system};
+  --mat-table-row-item-label-text-tracking: normal;
+  --mat-table-row-item-label-text-line-height: 1;
+}
+
+.mat-mdc-table .mat-mdc-header-row .mat-mdc-header-cell {
+  background: transparent;
+}
+
+.mat-mdc-table .mat-mdc-cell {
+  background: transparent;
+}

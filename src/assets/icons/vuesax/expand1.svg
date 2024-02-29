@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Untitled">
+<path d="M7.8125 2C4.1725 2 2 4.1725 2 7.8125L2 16.1875C2 19.8375 4.1725 22 7.8125 22L16.1875 22C19.8275 22 22 19.8275 22 16.1875L22 7.8125C22.01 4.1725 19.8275 2 16.1875 2L7.8125 2ZM11.5312 7C11.7821 6.74915 12.2179 6.74915 12.4688 7L15.4062 9.9375C15.6571 10.1883 15.6571 10.6242 15.4062 10.875C15.1554 11.1258 14.7508 11.1258 14.5 10.875L12 8.375L9.5 10.875C9.24915 11.1258 8.8446 11.1194 8.59375 10.875C8.3429 10.6242 8.3429 10.1883 8.59375 9.9375L11.5312 7ZM8.59375 13.125C8.8446 12.8742 9.24915 12.8742 9.5 13.125L12 15.625L14.5 13.125C14.7508 12.8742 15.1554 12.8806 15.4062 13.125C15.6571 13.3758 15.6571 13.8117 15.4062 14.0625L12.4688 17C12.2179 17.2508 11.7821 17.2508 11.5312 17L8.59375 14.0625C8.3429 13.8117 8.3429 13.3758 8.59375 13.125Z" fill="currentColor" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>

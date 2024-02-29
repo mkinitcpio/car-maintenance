@@ -29,6 +29,8 @@ html[data-platform='linux'] {
     --dashboard-card-icon-color: var(--platform-color-secondary);
 
     --widget-icon-background: var(--secondary-color);
+
+    --snackbar-border-color: #333;
   }
 
   &[data-theme='dark'] {
@@ -48,7 +50,7 @@ html[data-platform='linux'] {
 
     --toggle-active-color: var(--platform-color-primary);
 
-    --menu-border: 1.5px solid var(--color-border);
+    --menu-border: 2px solid var(--color-border);
 
     --tooltip-background: var(--background-primary);
     --tooltip-color: var(--platform-color-primary);
@@ -60,5 +62,7 @@ html[data-platform='linux'] {
     --dashboard-card-icon-color: #5d5d5d;
 
     --widget-icon-background: var(--background-secondary);
+
+    --snackbar-border-color: #4d4d4d;
   }
 }

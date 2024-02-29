@@ -4,7 +4,7 @@ import { MoveDialogComponent } from './move-dialog.component';
 import { DialogModule } from '../dialog/dialog.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
-import { InputModule } from '../input/input.module';
+// import { InputModule } from '../search-input/input.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { InputModule } from '../input/input.module';
     DialogModule,
     MatIconModule,
     MatRippleModule,
-    InputModule,
+    // InputModule,
   ],
   exports: [
     MoveDialogComponent,

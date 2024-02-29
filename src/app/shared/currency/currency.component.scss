@@ -8,9 +8,13 @@
 .currency {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 
   color: $font-color-primary;
+
+  &__value {
+    text-wrap: nowrap;
+  }
 
   &__icon {
     height: 14px;
@@ -22,6 +26,7 @@
     color: $background-primary;
     font-size: 14px;
     font-variation-settings: 'wght' 900;
+    line-height: 1;
   
     &--small {
       height: 14px;

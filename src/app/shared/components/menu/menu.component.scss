@@ -1,0 +1,72 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+.cm-menu {
+  display: flex;
+  min-width: 142px;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 8px;
+  background-color: $background-primary;
+  margin-top: 4px;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+  &__divider {
+    height: 1.5px;
+    background-color: $color-border;
+    margin: 8px 12px;
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    background: transparent;
+
+    padding: 0 10px;
+
+    font-family: $font-system;
+    color: $font-color-primary;
+    font-size: 14px !important;
+    min-height: 38px;
+    line-height: 38px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-button-hover;
+    }
+
+    &--delete {
+      color: $color-dangerous !important;
+      &:hover {
+        .cm-menu__icon {
+          animation: squeeze 0.5s ease-in;
+        }
+      }
+    }
+
+    &--edit {
+      &:hover {
+        .cm-menu__icon {
+          animation: shake 0.3s ease-in;
+        }
+      }
+    }
+
+    &--move {
+      &:hover {
+        .cm-menu__icon {
+          animation: squeeze-horizontal 0.5s ease-in;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    height: 18px;
+    line-height: 18px;
+    color: inherit;
+  }
+}

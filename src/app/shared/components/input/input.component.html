@@ -1,13 +1,11 @@
-<div class="input"
-     [class.input--focus]="focused"
-     (click)="onClick(input)"
->
-  <mat-icon class="input__prefix">search</mat-icon>
-  <input #input
-         class="input__element"
-         [placeholder]="'SEARCH' | translate"
-         type="text"
-         (focusout)="onFocus(false)"
-         (focusin)="onFocus(true)"
-  >
+<div class="input">
+  <div class="input__label" [class.input__label--required]="required">
+    <ng-content select="label"></ng-content>
+  </div>
+  <div class="input__container" (click)="onClick()" [class.input__container--focused]="focused">
+    <div class="input__icon">
+      <ng-content select="[cmPrefix]"></ng-content>
+    </div>
+    <input #input [value]="value" (blur)="onBlur()">
+  </div>
 </div>

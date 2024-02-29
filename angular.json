@@ -156,5 +156,8 @@
     "@schematics/angular:directive": {
       "prefix": "cm"
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

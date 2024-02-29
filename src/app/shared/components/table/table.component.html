@@ -37,7 +37,10 @@
           <tr class="cm-table__row"
               [cdkContextMenuTriggerFor]="contextMenu"
               [cdkContextMenuTriggerData]="{$implicit: row}"
+              [class.cm-table__row--context-menu]="contextMenuId === row.id"
               [class.cm-table__row--selected]="selectedRows.isSelected(row.id)"
+              (cdkContextMenuOpened)="contextMenuId = row.id"
+              (cdkContextMenuClosed)="contextMenuId = null"
               (click)="onSelectionChange(row.id)"
           >
             <td class="cm-table__cell cm-table--column-select"
@@ -70,11 +73,21 @@
 </section>
 
 <ng-template #contextMenu let-row>
-  <div cdkMenu>
-    <button *ngIf="selectedRows.selected.length <= 1" class="example-menu-item" (click)="onEdit(row.id)" cdkMenuItem>Edit</button>
-    <button class="example-menu-item" (click)="onMove()" cdkMenuItem>Move</button>
-    <button class="example-menu-item" (click)="onDelete(row)" cdkMenuItem>Delete</button>
-  </div>
+  <cm-menu cdkMenu>
+    <button matRipple class="cm-menu__button cm-menu__button--edit" *ngIf="selectedRows.selected.length <= 1" (click)="onEdit(row.id)" cdkMenuItem>
+      <mat-icon class="cm-menu__icon" svgIcon="edit"></mat-icon>
+      {{"MENU.EDIT" | translate}}
+    </button>
+    <button matRipple class="cm-menu__button cm-menu__button--move" (click)="onMove()" cdkMenuItem>
+      <mat-icon class="cm-menu__icon">compare_arrows</mat-icon>
+      {{"MENU.MOVE" | translate}}
+    </button>
+    <div class="cm-menu__divider"> </div>
+    <button matRipple class="cm-menu__button cm-menu__button--delete" (click)="onDelete(row)" cdkMenuItem>
+      <mat-icon class="cm-menu__icon" svgIcon="trash"></mat-icon>
+      {{"MENU.DELETE" | translate}}
+    </button>
+  </cm-menu>
 </ng-template>
 
 

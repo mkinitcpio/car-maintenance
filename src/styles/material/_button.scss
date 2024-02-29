@@ -1,0 +1,14 @@
+@import '/src/colors';
+
+.mdc-button {
+  &__label {
+    color: inherit;
+    font-family: $font-system;
+    letter-spacing: normal;
+    line-height: 1;
+  }
+
+  &.mat-mdc-button {
+    --mdc-text-button-container-shape: 8px;
+  }
+}

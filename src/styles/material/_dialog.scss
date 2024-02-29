@@ -1,0 +1,18 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+:root {
+  --mdc-dialog-container-shape: 24px;
+  --mdc-dialog-container-color: #{$background-primary};
+}
+
+
+.dialog {
+  &-print {
+    height: 600px;
+  }
+
+  &-settings {
+    height: 80%;
+  }
+}

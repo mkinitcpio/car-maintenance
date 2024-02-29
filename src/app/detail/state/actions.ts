@@ -15,3 +15,6 @@ export const deleteRecordSuccess = createAction('[Details] Delete Record Success
 
 export const editRecord = createAction('[Navigation] Edit Record', props<{ record: Record }>());
 export const editRecordSuccess = createAction('[Navigation] Edit Record Success');
+
+export const moveRecords = createAction('[Details] Move Records', props<{ parentId: string, recordIds: string[] }>());
+export const moveRecordsSuccess = createAction('[Details] Move Records Success');

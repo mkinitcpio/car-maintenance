@@ -2,19 +2,6 @@
   <div class="print-dialog__config-section">
     <h3 class="print-dialog__title">{{'PAGES.PDF_EXPORT.TITLE' | translate}}</h3>
     <div class="print-dialog__scroll">
-      <content-container [title]="'PAGES.PDF_EXPORT.PATH' | translate">
-        <div class="print-dialog__section">
-          <span class="print-dialog__path"
-                [matTooltipClass]="'mat-tooltip--long-text'"
-                [matTooltip]="saveDirectoryPath">
-            {{saveDirectoryPath}}
-          </span>
-          <app-button button-transparent (click)="onEditFilePath()">
-            <mat-icon svgIcon="edit"></mat-icon>
-          </app-button>
-        </div>
-      </content-container>
-
       <content-container [title]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate">
         <div>
           <div cdkDropList class="columns" (cdkDropListDropped)="drop($event)">

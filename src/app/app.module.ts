@@ -34,6 +34,7 @@ import { StoreModule } from '@ngrx/store';
 import { ElectronService } from '@core/services';
 
 import { APP_CONFIG, appConfig } from './app.config';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -110,7 +111,11 @@ registerLocaleData(localeRu, 'ru');
     }, {
       provide: APP_CONFIG,
       useValue: appConfig,
-    }
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {appearance: 'outline'}
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -22,6 +22,9 @@ import { CarCategoryFormData } from '@core/interfaces/car-category';
 import { AccountDialogComponent } from '@shared/components/account-dialog/account-dialog.component';
 import { FeedbackDialogComponent } from '@shared/components/feedback-dialog/feedback-dialog.component';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
+import { MoveDialogComponent } from '@shared/components/move-dialog/move-dialog.component';
+import { MoveDialogData } from '@shared/components/move-dialog/interfaces';
+import { SaveDialogData } from './abstract-export.service';
 
 @Injectable({
   providedIn: 'root'
@@ -149,13 +152,25 @@ export class DialogManagerService {
       });
   }
 
-  public openPrintDialog(data: PrintDialogConfig): Observable<void> {
+  public openPrintDialog(data: PrintDialogConfig): Observable<SaveDialogData | null> {
     return this.dialog
-      .open(PrintDialogComponent, {
+      .open<PrintDialogComponent, PrintDialogConfig, SaveDialogData>
+    (PrintDialogComponent, {
+      disableClose: true,
+      width: "846px",
+      panelClass: "dialog-print",
+      data,
+      autoFocus: false,
+    }).afterClosed();
+  }
+
+  public openMoveDialog(data: MoveDialogData): Observable<string> {
+    return this.dialog
+      .open(MoveDialogComponent, {
         disableClose: true,
-        width: "856px",
-        panelClass: "dialog-print",
+        width: "340px",
         data,
+        panelClass: "dialog-feedback",
         autoFocus: false,
       })
       .afterClosed();

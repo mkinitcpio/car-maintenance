@@ -49,6 +49,14 @@ export class DetailsEffects {
     );
   });
 
+  moveRecords$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(DetailsActions.moveRecords),
+      switchMap(({ parentId, recordIds }) => this.database.moveRecords(parentId, recordIds)),
+      switchMap(() => of(DetailsActions.moveRecordsSuccess())),
+    );
+  });
+
   constructor(
     private actions$: Actions,
     private database: DataBaseService,

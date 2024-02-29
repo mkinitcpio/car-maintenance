@@ -110,6 +110,7 @@
     "ADD": "Add",
     "EDIT": "Edit",
     "DELETE": "Delete",
+    "MOVE": "Move",
     "ABOUT": "About",
     "GITHUB": "GitHub",
     "SETTINGS":"Settings",
@@ -128,6 +129,9 @@
       "BUGFIXES": "Bug Fixes",
       "IMPROVEMENTS": "Improvements"
     },
+    "MOVE": {
+      "TITLE": "Move"
+    },
     "FEEDBACK": {
       "TITLE": "Feedback",
       "QUESTION_TITLE": "Ask Question",
@@ -142,8 +146,11 @@
     },
     "DELETE": {
       "TITLE": "Confirm Delete",
+      "TEXT": "Do you really want to delete {{item}}? This process cannot be undone.",
       "CATEGORY": "Do you really want to delete this group? This process cannot be undone.",
-      "RECORD": "Do you really want to delete this record? This process cannot be undone."
+      "RECORD": "Do you really want to delete this record? This process cannot be undone.",
+      "GROUPS": "groups",
+      "RECORDS": "records"
     },
     "CATEGORY": "Group",
     "CAR": "Car",
@@ -159,7 +166,8 @@
       "CANCEL": "Cancel",
       "CHANGE": "Change",
       "EXPORT": "Export",
-      "SUBMIT": "Submit"
+      "SUBMIT": "Submit",
+      "MOVE": "Move"
     },
     "VALIDATIONS": {
       "NAME": "Enter the Name.",
@@ -217,7 +225,8 @@
     "MILEAGE": "Mileage",
     "DATE": "Date",
     "EXPENSE": "Expense",
-    "COMMENT": "Comment"
+    "COMMENT": "Comment",
+    "CONSUMABLES": "Consumables"
   },
   "CURRENCY": {
     "EURO": "Euro",
@@ -249,5 +258,13 @@
     "LIGHT": "Light",
     "DARK": "Dark",
     "AUTO": "Auto"
+  },
+  "COLUMNS": "Columns",
+  "SEARCH": "Search",
+  "NOTIFICATIONS": {
+    "EXPORT": {
+      "TEXT": "Export completed",
+      "ACTION": "Open"
+    }
   }
 }

@@ -2,8 +2,7 @@
 
 :host {
   display: block;
-  padding: 10px;
-  @include mixins.scrollable;
+  padding: 10px 0 10px 10px;
 }
 
 .categories-tree {

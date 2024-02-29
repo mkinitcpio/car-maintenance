@@ -16,8 +16,9 @@
   }
 }
 
-@mixin scrollable-horizontal {
-  overflow-x: overlay;
+@mixin scrollable-horizontal($padding-bottom: 10px) {
+  overflow-x: auto;
+  padding-bottom: $padding-bottom - 10px !important;
 
   &:hover::-webkit-scrollbar-thumb {
     background-color: #79797966;

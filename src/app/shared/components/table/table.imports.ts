@@ -11,6 +11,8 @@ import { CellTextComponent } from './cell-text/cell-text.component';
 import { CellCostComponent } from './cell-cost/cell-cost.component';
 import { CellMileageComponent } from './cell-mileage/cell-mileage.component';
 import { TablePanelComponent } from './table-panel/table-panel.component';
+import { MenuComponent } from '@shared/components/menu/menu.component';
+import { MatRipple } from "@angular/material/core";
 
 export const imports = [
   CommonModule,
@@ -26,4 +28,6 @@ export const imports = [
   CellCostComponent,
   CellMileageComponent,
   TablePanelComponent,
+  MatRipple,
+  MenuComponent,
 ];

@@ -9,7 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { PreviewPageComponent } from './preview-page/preview-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RecordsTableModule } from '..';
 import { MatTableModule } from '@angular/material/table';
 import { CommonPipesModule } from '../../pipes/common-pipes.module';
 import { CurrencyModule } from '../../currency/currency.module';
@@ -33,7 +32,6 @@ import { ContentContainerModule } from '../content-container/content-container.m
     MatButtonModule,
     TranslateModule,
     MatProgressSpinnerModule,
-    RecordsTableModule,
     MatTableModule,
     CommonPipesModule,
     CurrencyModule,

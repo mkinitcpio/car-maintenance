@@ -1,0 +1,43 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+:root {
+  --mdc-outlined-text-field-error-outline-color: #{$color-dangerous} !important;
+  --mdc-outlined-text-field-outline-width: 1.5px;
+  --mdc-outlined-text-field-input-text-color: #{$font-color-primary};
+  --mdc-outlined-text-field-container-shape: 12px;
+  --mdc-outlined-text-field-outline-color: #{$color-border};
+  --mdc-outlined-text-field-focus-outline-color: #{$color-primary};
+  --mat-form-field-container-vertical-padding: 12px;
+  --mdc-outlined-text-field-hover-label-text-color: #{$font-color-primary} !important;
+  --mdc-outlined-text-field-focus-label-text-color: #{$color-primary} !important;
+  --mdc-outlined-text-field-label-text-color: #{$font-color-primary} !important;
+  --mdc-outlined-text-field-caret-color: #{$font-color-primary} !important;
+  --mdc-outlined-text-field-label-text-font: #{$font-system} !important;
+  --mdc-outlined-text-field-label-text-tracking: 0;
+  --mdc-outlined-text-field-hover-outline-color: #7c7c7c;
+}
+
+.mat-mdc-form-field {
+  display: flex !important;
+}
+
+.mat-mdc-form-field-infix {
+  min-height: unset !important;
+}
+
+.mat-mdc-select-trigger .mat-mdc-select-arrow-wrapper {
+  display: none;
+}
+
+.mat-mdc-option {
+  padding: 0 12px !important;
+  border-radius: 12px;
+  min-height: 42px !important;
+}
+
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  transition: border-color 0.1s ease-in;
+}

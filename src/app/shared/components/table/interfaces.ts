@@ -21,7 +21,6 @@ export interface TableConfig {
   columnVisibility: boolean;
   panel: boolean;
   columnSchemas: Array<ColumnSchema>;
-  hiddenColumns: string[];
 }
 
 export interface RowData {

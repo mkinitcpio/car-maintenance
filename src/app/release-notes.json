@@ -2,17 +2,21 @@
   "ru": {
     "settings": "Настройки",
     "welcomePage": "Стартовая страница",
+    "dashboard": "Главная страница",
     "progress": {
       "0": "Выбери светлую или темную сторону в настройках!",
-      "1": "Добавлена отсутствующая иллюстрация"
+      "1": "Добавлена отсутствующая иллюстрация",
+      "2": "Добавлен виджет документации"
     }
   },
   "en": {
     "settings": "Settings",
     "welcomePage": "Welcome page",
+    "dashboard": "Dashboard page",
     "progress": {
       "0": "Choose Dark or Light Side in settings!",
-      "1": "Added missing picture"
+      "1": "Added missing picture",
+      "2": "Added link to documentation"
     }
   }
 }

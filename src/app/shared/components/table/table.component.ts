@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation, inject, signal } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation, inject, signal } from '@angular/core';
 import { ColumnSchema, RowData, TableConfig } from './interfaces';
 import { defaultTableConfig } from './default-table-config';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -18,7 +18,6 @@ import { CsvService } from './services/csv.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent<T extends RowData> {
-
   @Input() set config(config: TableConfig) {
     this.tableConfig.set(config);
     this.columnSchemas.set(config.columnSchemas
@@ -37,6 +36,7 @@ export class TableComponent<T extends RowData> {
   @Output() delete: EventEmitter<T> = new EventEmitter();
   @Output() exportToCSV: EventEmitter<string[][]> = new EventEmitter();
   @Output() exportToPDF: EventEmitter<void> = new EventEmitter();
+  @Output() columnVisibilityChange: EventEmitter<string []> = new EventEmitter();
 
   private csvService: CsvService = inject(CsvService);
 
@@ -46,6 +46,7 @@ export class TableComponent<T extends RowData> {
 
   public selectedRows = new SelectionModel<string>(true);
   public allRowSelected = false;
+  public contextMenuId: string = null;
 
   public onSelectionChange(id: string): void {
     if(this.tableConfig().actions.selectable) {
@@ -85,12 +86,17 @@ export class TableComponent<T extends RowData> {
   }
 
   public onColumnVisibilityChanged(event: ColumnVisibilityEvent): void {
-    this.columnSchemas.update((prevState) => {
-      const schema = prevState.find(state => state.key === event.key);
-      schema.visible = event.visible;
+    const hiddenColumns = this.columnSchemas()
+      .map(schema => {
+        if(schema.key === event.key) {
+          schema.visible = event.visible;
+        }
+        return schema;
+      })
+      .filter(schema => !schema.visible)
+      .map(schema => schema.key);
 
-      return [...prevState];
-    });
+    this.columnVisibilityChange.emit(hiddenColumns);
   }
 
   public onExportToCSV(header: HTMLElement, table: HTMLElement): void {

@@ -48,13 +48,13 @@
   }
 
   &__content {
-    @include mixins.scrollable;
+    @include mixins.scrollable(24px);
     position: relative;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     height: 100%;
-    gap: 16px;
+    gap: 24px;
     padding: 24px;
 
     background-color: $background-secondary;

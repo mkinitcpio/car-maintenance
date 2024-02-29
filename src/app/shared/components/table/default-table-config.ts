@@ -14,5 +14,4 @@ export const defaultTableConfig: TableConfig = {
   panel: false,
   columnVisibility: true,
   columnSchemas: [],
-  hiddenColumns: [],
 };

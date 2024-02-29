@@ -3,6 +3,7 @@ export interface FeatureState<T> {
   newEntity: EntityState<T>;
   editEntity: EntityState<string>;
   deleteEntity: EntityState<string>;
+  moveEntity?: EntityState<T>;
 }
 
 export enum Status {

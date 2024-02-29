@@ -1,37 +1,62 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Component, ElementRef, Input, ViewChild, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, RequiredValidator } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-input',
+  selector: 'cm-input',
+  standalone: true,
+  imports: [
+    MatIconModule,
+  ],
+  providers: [{ 
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => InputComponent),
+    multi: true
+  }],
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrl: './input.component.scss'
 })
-export class InputComponent implements AfterViewInit {
+export class InputComponent implements ControlValueAccessor {
 
-  @ViewChild('input', { static: true })
-  input: ElementRef<HTMLInputElement>;
+  @ViewChild('input', {static: true}) input: ElementRef<HTMLInputElement>;
+  
+  private _value;
 
-  @Output()
-  onChange: EventEmitter<string> = new EventEmitter();
+  @Input()
+  set value(val) { this._value = val; }
+  get value() { return this._value; }
 
-  public focused = false;
+  @Input() required: boolean = true;
 
-  ngAfterViewInit(): void {
-    fromEvent(this.input.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(150),
-        distinctUntilChanged(),
-      ).subscribe(() => {
-        this.onChange.emit(this.input.nativeElement.value);
-      });
+  focused = false;
+
+  onChanged: any = (value: any) => {};
+  onTouched: any = () => {};
+
+  disabled = false;
+
+  writeValue(value: string): void {
+    this.value = value;
+    this.onChanged(value);
+  }
+  registerOnChange(fn: any): void {
+    this.onChanged = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
-  public onClick(element: HTMLInputElement): void {
-    element.focus();
+  public onClick(): void {
+    this.onTouched();
+    if(!this.focused) this.input.nativeElement.focus();
+    this.focused = true;
   }
 
-  onFocus(isFocus: boolean): void {
-    this.focused = isFocus;
+  public onBlur(): void {
+    this.onTouched();
+    this.focused = false;
   }
 }

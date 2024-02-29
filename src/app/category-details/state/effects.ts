@@ -12,8 +12,11 @@ export class CategoryDetailsEffects {
     return this.actions$.pipe(
       ofType(CategoryDetailsActions.getCategoryDetails),
       switchMap(({ id }) => {
-        const categoryDetails = this.database.getCategoryDetails(id);
-        return of(CategoryDetailsActions.getCategoryDetailsSuccess({ categoryDetails }));
+        return of(this.database.getCategoryDetails(id)).pipe(
+          switchMap((categoryDetails) => {
+            return of(CategoryDetailsActions.getCategoryDetailsSuccess({ categoryDetails }));
+          }),
+        );
       }),
     );
   });
