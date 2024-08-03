@@ -17,6 +17,10 @@ export class NumberSeparatorPipe implements PipeTransform {
       return formatNumber(value, 'en', '1.2-2').replace(/,/g, ' ');
     }
 
+    if (locale === LocaleEnum.Kz) {
+      return formatNumber(value, 'en', '1.2-2').replace('.', ',').replace(/,/g, ' ');
+    }
+
     return null;
   }
 }
