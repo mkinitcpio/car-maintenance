@@ -15,10 +15,11 @@
   box-sizing: border-box;
   line-height: 1;
 
-  background: var(--color-button-icon);
-  color: var(--background-primary);
+  background: $color-border;
+  color: $font-color-primary;
 
   &__value {
     line-height: 18px;
+    font-weight: 600;
   }
 }
