@@ -1,4 +1,4 @@
-import { CurrencyEnum } from './currency.enum';
+import {CurrencyEnum} from './currency.enum';
 
 export const currencyOptions = [
   {
@@ -41,4 +41,9 @@ export const currencyOptions = [
     icon: 'lira',
     value: CurrencyEnum.Lira,
   },
+  {
+    name: 'CURRENCY.TENGE',
+    icon: 'tenge',
+    value: CurrencyEnum.Tenge
+  }
 ];

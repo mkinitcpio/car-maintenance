@@ -7,4 +7,8 @@ export const languageOptions = [
     name: 'Русский',
     value: 'ru'
   },
+  {
+    name: 'Қазақша',
+    value: 'kz'
+  }
 ];
