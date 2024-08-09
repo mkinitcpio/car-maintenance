@@ -8,13 +8,16 @@
   <ng-container content>
     <div class="detail__cards">
       <app-rich-widget icon="money"
+                       transparent="true"
                        type="currency"
                        tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
                        [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
                        value="{{costSum}}"
       >
       </app-rich-widget>
+      <div class="detail__divider"></div>
       <app-rich-widget icon="calendar-edit"
+                       transparent="true"
                        type="date"
                        [title]="'PAGES.DETAIL.LAST_MODIFIED'"
                        value="{{lastModifiedDate}}"
@@ -22,7 +25,7 @@
       </app-rich-widget>
     </div>
     <cm-table [config]="tableConfig"
-              [data]="dataSourceTable"
+              [rows]="dataSourceTable"
               (add)="onCreate()"
               (edit)="onEdit($event)"
               (exportToPDF)="onExportToPDF()"

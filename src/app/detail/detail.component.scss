@@ -4,7 +4,19 @@
 
 .detail {
   &__cards {
+    background: $background-primary;
     display: flex;
-    gap: 16px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    border-radius: 24px;
+    padding: 16px;
+    width: fit-content;
+  }
+
+  &__divider {
+    height: 80%;
+    margin: 0 16px;
+    width: 1.5px;
+    background-color: $color-border;
   }
 }

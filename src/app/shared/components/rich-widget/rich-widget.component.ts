@@ -15,6 +15,7 @@ export class RichWidgetComponent {
   @Input() title: string;
   @Input() icon: string;
   @Input() value: number;
+  @Input() transparent: boolean = false;
   @Input() type: DataType;
   @Input() orientation: Orientation = "vertical";
 

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation, inject, signal } from '@angular/core';
-import { ColumnSchema, RowData, TableConfig } from './interfaces';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, computed, effect, inject, input, output } from '@angular/core';
+import { RowData, TableConfig } from './interfaces';
 import { defaultTableConfig } from './default-table-config';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -16,40 +16,40 @@ import { CsvService } from './services/csv.service';
   styleUrl: './table.component.scss',
   imports,
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent<T extends RowData> {
-  @Input() set config(config: TableConfig) {
-    this.tableConfig.set(config);
-    this.columnSchemas.set(config.columnSchemas
-      .sort((prev, curr) => prev.order - curr.order)
-    );
-  }
 
-  @Input() set data(rows: T[]) {
-    this.clearSelected();
-    this.rows.set(rows);
-  }
+  rows = input<T[]>([]);
+  config = input<TableConfig>(defaultTableConfig);
 
-  @Output() edit: EventEmitter<string> = new EventEmitter();
-  @Output() add: EventEmitter<void> = new EventEmitter();
-  @Output() move: EventEmitter<string[]> = new EventEmitter();
-  @Output() delete: EventEmitter<T> = new EventEmitter();
-  @Output() exportToCSV: EventEmitter<string[][]> = new EventEmitter();
-  @Output() exportToPDF: EventEmitter<void> = new EventEmitter();
-  @Output() columnVisibilityChange: EventEmitter<string []> = new EventEmitter();
+  columnSchemas = computed(() => this.config().columnSchemas.sort(
+    (prev, curr) => prev.order - curr.order)
+  );
 
-  private csvService: CsvService = inject(CsvService);
+  add = output<void>();
+  edit = output<string>();
+  move = output<string[]>();
+  delete = output<T>();
+  exportToCSV = output<string[][]>();
+  exportToPDF = output<void>();
+  columnVisibilityChange = output<string[]>();
 
-  public columnSchemas = signal<ColumnSchema[]>([]);
-  public rows = signal<T[]>([]);
-  public tableConfig = signal<TableConfig>(defaultTableConfig);
+  private csvService = inject(CsvService);
 
   public selectedRows = new SelectionModel<string>(true);
   public allRowSelected = false;
   public contextMenuId: string = null;
 
+  constructor() {
+    effect(() => {
+      this.rows();
+      this.clearSelected();
+    });
+  }
+
   public onSelectionChange(id: string): void {
-    if(this.tableConfig().actions.selectable) {
+    if(this.config().actions.selectable) {
       this.selectedRows.toggle(id);
       this.allRowSelected = this.selectedRows.selected.length === this.rows().length;
     }

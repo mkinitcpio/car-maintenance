@@ -1,6 +1,6 @@
 <section class="cm-table">
-  <cm-table-panel [columnSchemas]="tableConfig().columnSchemas"
-                  *ngIf="tableConfig().panel"
+  <cm-table-panel [columnSchemas]="config().columnSchemas"
+                  *ngIf="config().panel"
                   [selectedRowsCount]="selectedRows.selected.length"
                   (add)="add.emit()"
                   (move)="onMove()"
@@ -13,7 +13,7 @@
       <thead class="cm-table__head">
         <tr #tableHeader class="cm-table__head-row">
           <th class="cm-table__head-cell cm-table--column-select"
-              *ngIf="tableConfig().actions.selectable"
+              *ngIf="config().actions.selectable"
           >
             <mat-checkbox class="checkbox cm-table__checkbox"
                           [checked]="allRowSelected"
@@ -44,7 +44,7 @@
               (click)="onSelectionChange(row.id)"
           >
             <td class="cm-table__cell cm-table--column-select"
-                *ngIf="tableConfig().actions.selectable"
+                *ngIf="config().actions.selectable"
             >
               <mat-checkbox class="cm-table__checkbox"
                             (click)="$event.stopPropagation()"

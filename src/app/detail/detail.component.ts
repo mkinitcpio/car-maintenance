@@ -31,11 +31,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { defaultTableConfig } from '@shared/components/table/default-table-config';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ElectronService } from '@core/services';
-import { TranslateService } from '@ngx-translate/core';
 
 import { columnSchemas } from './detail-table-column-schema.config';
 import { UtilsService } from '@shared/services/utils.service';
 import { ColumnSchema } from '@shared/components/table/interfaces';
+import { TranslateService } from '@ngx-translate/core';
 
 const imports = [
   TableComponent,
@@ -54,7 +54,7 @@ const imports = [
   imports,
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
-
+  
   @listen({ value: true })
     details$ = this.detailsFacade.details$;
 
