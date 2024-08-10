@@ -121,8 +121,6 @@
     height: 19px;
     width: 20px;
     margin-right: 8px !important;
-
-    color: $color-button-icon;
   }
 
   .mat-button-toggle-checked {
@@ -147,12 +145,20 @@
 
   .mat-button-toggle-appearance-standard {
     color: $font-color-secondary;
-    background-color: $background-secondary;
+    background-color: transparent;
+  }
+
+  .mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
+    border-left: solid 1.5px $color-border;
   }
 
   .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
-    border: solid 1.5px $color-border;
-    box-sizing: content-box;
+    border-color: $color-border;
+    border-width: 1.5px;
+  }
+
+  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 42px;
   }
 }
 

@@ -391,3 +391,7 @@ body.no-animations {
 .mat-calendar-controls {
   margin: 4px 0 12px !important;
 }
+
+.cdk-overlay-pane .mat-mdc-select-panel {
+  @include mixins.scrollable();
+}
