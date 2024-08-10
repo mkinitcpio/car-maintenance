@@ -35,3 +35,7 @@ mat-checkbox .mdc-checkbox {
     }
   }
 }
+
+.mat-button-toggle .mat-pseudo-checkbox {
+  display: none;
+}
