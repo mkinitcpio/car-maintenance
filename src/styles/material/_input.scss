@@ -22,6 +22,7 @@
   --mat-form-field-subscript-text-font: #{$font-system};
   --mat-form-field-subscript-text-line-height: 1;
   --mdc-outlined-text-field-input-text-placeholder-color:#{$font-color-secondary};
+  --mat-form-field-container-text-line-height: 1.2;
 }
 
 .mat-mdc-form-field {
@@ -41,12 +42,6 @@
   padding: 0 12px !important;
   border-radius: 12px;
   min-height: 42px !important;
-}
-
-.mdc-notched-outline__leading,
-.mdc-notched-outline__notch,
-.mdc-notched-outline__trailing {
-  // transition: border-color 0.1s ease-in;
 }
 
 .mat-mdc-input-element {

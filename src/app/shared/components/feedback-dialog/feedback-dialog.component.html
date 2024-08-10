@@ -7,8 +7,11 @@
             (close)="dialogRef.close()"
   >
   <form content [formGroup]="feedbackForm">
-    <mat-form-field [floatLabel]="'always'" *ngIf="!data.type">
-      <mat-label>{{"DIALOG.FIELDS.TYPE" | translate}}</mat-label>
+    <div>
+      <div class="form-field__title">
+        {{"DIALOG.FIELDS.TYPE" | translate}}
+      </div>
+      <mat-form-field [floatLabel]="'always'" *ngIf="!data.type">
         <mat-select [formControlName]="'type'">
           <mat-option *ngFor="let option of feedbackTypeOptions" [value]="option.key">
             {{option.value | translate}}
@@ -16,22 +19,33 @@
         </mat-select>
         <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
       </mat-form-field>
-    <mat-form-field [floatLabel]="'always'">
-      <mat-label>Email</mat-label>
-      <input placeholder="email@example.com"
-             formControlName="email"
-             matInput
-             pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
-      <mat-error *ngIf="feedbackForm.get('email').hasError('pattern')">
-        {{'DIALOG.VALIDATIONS.EMAIL' | translate}}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field [floatLabel]="'always'">
-      <mat-label>{{"DIALOG.FIELDS.TEXT" | translate}}</mat-label>
-      <textarea cdkFocusInitial class="feedback__note" [formControlName]="'message'" matInput [required]="true"></textarea>
-      <mat-error *ngIf="feedbackForm.get('message').hasError('required')">
-        {{'DIALOG.VALIDATIONS.TEXT' | translate}}
-      </mat-error>
-    </mat-form-field>
+    </div>
+
+    <div>
+      <div class="form-field__title">
+        {{'Email' | translate}}
+      </div>
+      <mat-form-field [floatLabel]="'always'">
+        <input placeholder="email@example.com"
+              formControlName="email"
+              matInput
+              pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+        <mat-error *ngIf="feedbackForm.get('email').hasError('pattern')">
+          {{'DIALOG.VALIDATIONS.EMAIL' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <div class="form-field__title">
+        {{"DIALOG.FIELDS.TEXT" | translate}}
+      </div>
+      <mat-form-field [floatLabel]="'always'">
+        <textarea cdkFocusInitial class="feedback__note" [formControlName]="'message'" matInput [required]="true"></textarea>
+        <mat-error *ngIf="feedbackForm.get('message').hasError('required')">
+          {{'DIALOG.VALIDATIONS.TEXT' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
   </form>
 </app-dialog>
