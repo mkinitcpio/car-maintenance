@@ -7,30 +7,39 @@
   >
     <section content>
       <div class="move-dialog__panel">
-        <!-- <app-input class="records-table__search"
-                   (onChange)="onSearchChange($event)"
-        >
-        </app-input> -->
+        <mat-form-field>
+          <input [placeholder]="'DIALOG.MOVE.SEARCH' | translate" cdkFocusInitial matInput (keyup)="onSearchChange($event)">
+        </mat-form-field>
       </div>
 
-      <div class="move-dialog__list">
-        <ng-container *ngFor="let group of items">
-          <div *ngIf="group.items.length" class="move-dialog__group">
-            <span class="move-dialog__group-title">{{group.group}}</span>
-              <div mat-ripple
-                  class="move-dialog__group-item"
-                  [class.move-dialog__group-item--selected]="item.id === selectedItemId"
-                  *ngFor="let item of group.items"
-                  (click)="onSelect(item.id)"
-              >
-                <mat-icon class="move-dialog__list-icon"
-                          [svgIcon]="item.icon">
-                </mat-icon>
-                {{item.name}}
-              </div>
-          </div>
-        </ng-container>
-       </div>
+      @if(items.length === 0) {
+        <div class="move-dialog__empty">
+          <mat-icon class="move-dialog__empty-icon">search</mat-icon>
+          <span class="move-dialog__empty-text">{{"DIALOG.MOVE.NO_SEARCH_RESULT" | translate}}</span>
+        </div>
+      } @else {
+        <div class="move-dialog__list">
+          <ng-container *ngFor="let group of items">
+            <div *ngIf="group.items.length" class="move-dialog__group">
+              <span class="move-dialog__group-title">{{group.group}}</span>
+                <ng-container *ngFor="let item of group.items">
+                  <div mat-ripple
+                        class="move-dialog__group-item"
+                        [class.move-dialog__group-item--selected]="item.id === selectedItemId"
+                        *ngIf="item.id !== data.parent"
+                        (click)="onSelect(item.id)"
+                  >
+                    <mat-icon class="move-dialog__list-icon"
+                              [svgIcon]="item.icon">
+                    </mat-icon>
+                    {{item.name}}
+                  </div>
+                </ng-container>
+
+            </div>
+          </ng-container>
+         </div>
+      }
     </section>
   </app-dialog>
 </div>

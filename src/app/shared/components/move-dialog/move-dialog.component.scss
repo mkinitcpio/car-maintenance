@@ -7,8 +7,27 @@
   color: $font-color-primary;
   font-size: 14px;
 
-  &__panel {
-    margin-bottom: 12px;
+  &__empty {
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    color: $font-color-secondary;
+  }
+
+  &__empty-text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+
+  &__empty-icon {
+    margin-top: 64px;
+    --icon-size: 64px;
+    height: var(--icon-size);
+    width: var(--icon-size);
+    font-size: var(--icon-size);
   }
 
   &__list {

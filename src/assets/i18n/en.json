@@ -134,7 +134,9 @@
       "IMPROVEMENTS": "Improvements"
     },
     "MOVE": {
-      "TITLE": "Move"
+      "TITLE": "Move",
+      "SEARCH": "Search",
+      "NO_SEARCH_RESULT": "No Search Result"
     },
     "FEEDBACK": {
       "TITLE": "Feedback",
@@ -240,7 +242,8 @@
     "POUND": "Pound sterling",
     "YEN": "Yen / Yuán",
     "RUPEE": "Rupee",
-    "LIRA": "Lira"
+    "LIRA": "Lira",
+    "TENGE": "Tenge"
   },
   "METRIC_SYSTEM": {
     "KILOMETERS": "Kilometers",

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MoveDialogData, MoveToItem } from './interfaces';
 
@@ -9,13 +9,15 @@ import { MoveDialogData, MoveToItem } from './interfaces';
 })
 export class MoveDialogComponent implements OnInit {
 
+  data = inject<MoveDialogData>(MAT_DIALOG_DATA);
+  dialogRef = inject(MatDialogRef<MoveDialogComponent>);
+
   public selectedItemId: string;
   public items = [];
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: MoveDialogData,
-    public dialogRef: MatDialogRef<MoveDialogComponent>,
-  ) { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
     this.items = this.convertToGroup(this.data.moveToItems);
@@ -25,11 +27,11 @@ export class MoveDialogComponent implements OnInit {
     this.selectedItemId = id;
   }
 
-  public onSearchChange(searchValue: string): void {
+  public onSearchChange(event: any): void {
     const searchedItems = this.data.moveToItems.filter(item => {
       const itemName = item.name.toLowerCase();
 
-      return itemName.includes(searchValue.toLowerCase());
+      return itemName.includes(event.target.value.toLowerCase() as string) && item.id !== this.data.parent;
     });
 
     this.items = this.convertToGroup(searchedItems);

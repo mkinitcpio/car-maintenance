@@ -16,6 +16,7 @@ export class ExportService extends AbstractExportService {
   private readonly options: PrintToPDFOptions = {
     pageSize: "A4",
     printBackground: true,
+    landscape: true,
   };
 
   constructor() {

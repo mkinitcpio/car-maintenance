@@ -134,7 +134,9 @@
       "IMPROVEMENTS": "Жақсартулар"
     },
     "MOVE": {
-      "TITLE": "Жылжыту"
+      "TITLE": "Жылжыту",
+      "SEARCH": "Іздеу",
+      "NO_SEARCH_RESULT": "Табылған жоқ"
     },
     "FEEDBACK": {
       "TITLE": "Кері байланыс",
@@ -237,7 +239,8 @@
     "POUND": "Британдық фунт",
     "YEN": "Йена / Юань",
     "RUPEE": "Рупия",
-    "LIRA": "Лира"
+    "LIRA": "Лира",
+    "TENGE": "Теңге"
   },
   "METRIC_SYSTEM": {
     "KILOMETERS": "Километр",

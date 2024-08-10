@@ -6,5 +6,6 @@ export interface MoveToItem {
 }
 
 export interface MoveDialogData {
+  parent: string,
   moveToItems: Array<MoveToItem>;
 }
