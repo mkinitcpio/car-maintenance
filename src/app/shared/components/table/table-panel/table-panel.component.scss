@@ -15,18 +15,11 @@
   &__selection {
     display: flex;
     align-items: center;
-    padding: 0 12px;
     font-weight: 600;
     color: #4b4848;
   }
 
   &__selection-delete {
     color: $color-dangerous;
-  }
-
-  &__selection-text {
-    text-wrap: nowrap;
-    font-size: 14px;
-    margin-right: 8px;
   }
 }

@@ -1,20 +1,15 @@
 <section class="table-panel">
   @if (selectedRowsCount()) {
     <div class="table-panel__selection">
-      <!-- <span [ngPlural]="selectedRowsCount" class="table-panel__selection-text">
-        {{selectedRowsCount}}
-        <ng-template ngPluralCase="=1">row</ng-template>
-        <ng-template ngPluralCase="other">rows</ng-template>
-      </span> -->
       <app-button button-transparent (click)="move.emit()">
         <mat-icon>compare_arrows</mat-icon>
       </app-button>
       <app-button button-transparent (click)="delete.emit()">
         <mat-icon class="table-panel__selection-delete" svgIcon="trash"></mat-icon>
       </app-button>
+      <mat-divider *ngIf="hasData()" vertical="true"></mat-divider>
     </div>
   }
-  <div class="table-panel__expander"></div>
   <app-button button-transparent (click)="add.emit()">
     <mat-icon>add</mat-icon>
   </app-button>
