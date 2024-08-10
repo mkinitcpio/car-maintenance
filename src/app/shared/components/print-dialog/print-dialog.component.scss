@@ -202,10 +202,12 @@
 
 .cdk-drag-preview {
   box-sizing: border-box;
-  background: $background-secondary;
 
   .column {
+    box-sizing: border-box;
     border-radius: 12px;
+    height: 52px;
+    background: $background-secondary;
     border: 2px solid $color-primary;
   }
 
