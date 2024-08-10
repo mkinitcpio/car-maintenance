@@ -217,7 +217,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
         take(1),
         stateValue<CategoryTree[]>,
         map((groups) => this.getMoveToItems(groups)),
-        switchMap((moveToItems) => this.dialogManagerService.openMoveDialog({ moveToItems })),
+        switchMap((moveToItems) => this.dialogManagerService.openMoveDialog({ parent: this.id, moveToItems })),
         filter(Boolean),
       )
       .subscribe((parentId: string) => {
