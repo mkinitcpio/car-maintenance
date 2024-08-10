@@ -10,8 +10,7 @@
   font-family: $font-system;
 
   &__container {
-    padding: 42px 18px 6px 18px;
-    row-gap: 18px;
+    padding: 42px 8px 6px 18px;
     column-gap: 18px;
     display: grid;
     grid-template-columns: repeat(2, 48%);
@@ -25,6 +24,7 @@
 
     max-height: 278px;
     padding: 0 0 12px 0;
+    row-gap: 8px;
     column-gap: 16px;
     display: grid;
     grid-template-columns: repeat(2, 48%);
@@ -33,7 +33,7 @@
   }
 
   &__parts-container {
-    padding: 24px 12px 12px 12px;
+    padding: 24px 8px 12px 18px;
 
     .mat-form-field {
       margin-bottom: 0 !important;
@@ -42,8 +42,12 @@
 
   &__part {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 8px;
+  }
+
+  &__delete-button {
+    margin-top: 4px;
   }
 
   &__delete-button-icon {
