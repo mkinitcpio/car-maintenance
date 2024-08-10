@@ -1,0 +1,17 @@
+@import '/src/colors';
+
+:root {
+  --mat-datepicker-calendar-container-background-color: #{$background-primary};
+  --mat-datepicker-calendar-header-text-color: #{$font-color-secondary};
+  --mat-datepicker-calendar-date-text-color: #{$font-color-primary};
+  --mat-datepicker-calendar-period-button-text-color: #{$font-color-primary};
+  --mat-datepicker-calendar-body-label-text-color: #{$font-color-primary};
+  --mat-datepicker-calendar-date-today-selected-state-outline-color: none;
+  --mat-datepicker-calendar-date-selected-state-background-color: #{$color-primary};
+  --mat-datepicker-calendar-date-hover-state-background-color: #{$color-secondary};
+  --mat-datepicker-calendar-text-font: #{$font-system};
+  --mat-datepicker-calendar-header-divider-color: #{$color-border};
+  --mat-datepicker-calendar-period-button-icon-color: #{$font-color-primary};
+  --mat-datepicker-calendar-date-today-outline-color: #{$color-primary};
+  
+}
