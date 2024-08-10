@@ -1,9 +1,11 @@
 <section class="cm-table">
   <cm-table-panel [columnSchemas]="config().columnSchemas"
                   *ngIf="config().panel"
+                  [hasData]="rows().length"
                   [selectedRowsCount]="selectedRows.selected.length"
                   (add)="add.emit()"
                   (move)="onMove()"
+                  (delete)="onDelete()"
                   (exportToPDF)="onExportToPDF()"
                   (exportToCSV)="onExportToCSV(tableHeader, table)"
                   (onVisibilityChanged)="onColumnVisibilityChanged($event)">
@@ -33,38 +35,49 @@
         </tr>
       </thead>
       <tbody class="cm-table__body">
-        @for (row of rows(); track row.id) {
-          <tr class="cm-table__row"
-              [cdkContextMenuTriggerFor]="contextMenu"
-              [cdkContextMenuTriggerData]="{$implicit: row}"
-              [class.cm-table__row--context-menu]="contextMenuId === row.id"
-              [class.cm-table__row--selected]="selectedRows.isSelected(row.id)"
-              (cdkContextMenuOpened)="contextMenuId = row.id"
-              (cdkContextMenuClosed)="contextMenuId = null"
-              (click)="onSelectionChange(row.id)"
-          >
-            <td class="cm-table__cell cm-table--column-select"
-                *ngIf="config().actions.selectable"
+        @if (rows().length) {
+          @for (row of rows(); track row.id) {
+            <tr class="cm-table__row"
+                [cdkContextMenuTriggerFor]="contextMenu"
+                [cdkContextMenuTriggerData]="{$implicit: row}"
+                [class.cm-table__row--context-menu]="contextMenuId === row.id"
+                [class.cm-table__row--selected]="selectedRows.isSelected(row.id)"
+                (cdkContextMenuOpened)="contextMenuId = row.id"
+                (cdkContextMenuClosed)="contextMenuId = null"
+                (click)="onSelectionChange(row.id)"
             >
-              <mat-checkbox class="cm-table__checkbox"
-                            (click)="$event.stopPropagation()"
-                            [checked]="selectedRows.isSelected(row.id)"
-                            (change)="onSelectionChange(row.id)"
-                            disableRipple="true">
-              </mat-checkbox>
-            </td>
-            @for (schema of columnSchemas(); track $index) {
-              <td *ngIf="schema.visible"
-                  class="cm-table__cell cm-table--column-{{schema.key}} cm-table__cell--{{schema.key}}"
-                  [ngSwitch]="schema.type"
+              <td class="cm-table__cell cm-table--column-select"
+                  *ngIf="config().actions.selectable"
               >
-                <cm-cell-note *ngSwitchCase="'note'" [value]="row[schema.key]"></cm-cell-note>
-                <cm-cell-date *ngSwitchCase="'date'" [value]="row[schema.key]"></cm-cell-date>
-                <cm-cell-cost *ngSwitchCase="'cost'" [value]="row[schema.key]"></cm-cell-cost>
-                <cm-cell-mileage *ngSwitchCase="'mileage'" [value]="row[schema.key]"></cm-cell-mileage>
-                <cm-cell-text *ngSwitchDefault [value]="row[schema.key]"></cm-cell-text>
+                <mat-checkbox class="cm-table__checkbox"
+                              (click)="$event.stopPropagation()"
+                              [checked]="selectedRows.isSelected(row.id)"
+                              (change)="onSelectionChange(row.id)"
+                              disableRipple="true">
+                </mat-checkbox>
               </td>
-            }
+              @for (schema of columnSchemas(); track $index) {
+                <td *ngIf="schema.visible"
+                    class="cm-table__cell cm-table--column-{{schema.key}} cm-table__cell--{{schema.key}}"
+                    [ngSwitch]="schema.type"
+                >
+                  <cm-cell-note *ngSwitchCase="'note'" [value]="row[schema.key]"></cm-cell-note>
+                  <cm-cell-date *ngSwitchCase="'date'" [value]="row[schema.key]"></cm-cell-date>
+                  <cm-cell-cost *ngSwitchCase="'cost'" [value]="row[schema.key]"></cm-cell-cost>
+                  <cm-cell-mileage *ngSwitchCase="'mileage'" [value]="row[schema.key]"></cm-cell-mileage>
+                  <cm-cell-text *ngSwitchDefault [value]="row[schema.key]"></cm-cell-text>
+                </td>
+              }
+            </tr>
+          }
+        } @else {
+          <tr>
+            <td [attr.colspan]="emptyMessageWidth()">
+              <div class="cm-table__empty">
+                <mat-icon class="cm-table__empty-icon" svgIcon="paper-empty"></mat-icon>
+                <span class="cm-table__empty-text">{{"PAGES.DETAIL.EMPTY" | translate}}</span>
+              </div>
+            </td>
           </tr>
         }
       </tbody>

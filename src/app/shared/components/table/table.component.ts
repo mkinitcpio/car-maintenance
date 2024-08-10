@@ -26,6 +26,10 @@ export class TableComponent<T extends RowData> {
     (prev, curr) => prev.order - curr.order)
   );
 
+  emptyMessageWidth = computed(
+    () => this.config().actions.selectable ? this.columnSchemas().length + 1 : this.columnSchemas().length
+  );
+
   add = output<void>();
   edit = output<string>();
   move = output<string[]>();

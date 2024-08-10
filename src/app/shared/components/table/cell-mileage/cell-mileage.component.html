@@ -1,4 +1,4 @@
 <span class="cell-mileage" [attr.data-csv]="value | numberSeparator:this.settingsService.settings.region">
-  {{value | numberSeparator:this.settingsService.settings.region}}
+  {{value | numberSeparator:this.settingsService.settings.region:true}}
   <cm-mileage></cm-mileage>
 </span>
