@@ -93,6 +93,7 @@
         </div>
         <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
           <cm-table [config]="tableConfig"
+                    [transparent]="true"
                     [rows]="table.data"
                     (edit)="onEdit($event)"
                     (delete)="onDelete($event)">

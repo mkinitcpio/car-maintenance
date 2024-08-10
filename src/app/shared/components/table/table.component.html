@@ -1,4 +1,4 @@
-<section class="cm-table">
+<section class="cm-table" [class.cm-table--transparent]="transparent()">
   <cm-table-panel [columnSchemas]="config().columnSchemas"
                   *ngIf="config().panel"
                   [hasData]="rows().length"

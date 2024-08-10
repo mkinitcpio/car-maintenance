@@ -21,6 +21,7 @@ export class TableComponent<T extends RowData> {
 
   rows = input<T[]>([]);
   config = input<TableConfig>(defaultTableConfig);
+  transparent = input<boolean>(false);
 
   columnSchemas = computed(() => this.config().columnSchemas.sort(
     (prev, curr) => prev.order - curr.order)

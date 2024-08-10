@@ -17,6 +17,10 @@
   overflow-x: auto;
   box-sizing: border-box;
 
+  &--transparent {
+    box-shadow: none;
+  }
+
   &__table-section {
     @include mixins.scrollable-horizontal;
   }
