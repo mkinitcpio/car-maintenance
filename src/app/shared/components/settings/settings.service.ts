@@ -75,6 +75,10 @@ export class SettingsService {
     this.settings.language = lang;
     this.electronService.appSettings.set(SettingsPaths.Language, lang);
     this.translate.setDefaultLang(lang);
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Language,
+      value: lang,
+    });
   }
 
   public setAnimations(state: boolean): void {
