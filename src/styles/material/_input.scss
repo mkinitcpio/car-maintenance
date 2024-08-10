@@ -16,10 +16,17 @@
   --mdc-outlined-text-field-label-text-font: #{$font-system} !important;
   --mdc-outlined-text-field-label-text-tracking: 0;
   --mdc-outlined-text-field-hover-outline-color: #7c7c7c;
+  --mdc-outlined-text-field-label-text-size: 14px;
+  --mat-form-field-container-height: 43px;
+  --mat-form-field-subscript-text-tracking: 0;
+  --mat-form-field-subscript-text-font: #{$font-system};
+  --mat-form-field-subscript-text-line-height: 1;
+  --mdc-outlined-text-field-input-text-placeholder-color:#{$font-color-secondary};
 }
 
 .mat-mdc-form-field {
   display: flex !important;
+  font-family: #{$font-system} !important;
 }
 
 .mat-mdc-form-field-infix {
@@ -39,5 +46,45 @@
 .mdc-notched-outline__leading,
 .mdc-notched-outline__notch,
 .mdc-notched-outline__trailing {
-  transition: border-color 0.1s ease-in;
+  // transition: border-color 0.1s ease-in;
+}
+
+.mat-mdc-input-element {
+  font-size: 14px !important;
+}
+
+.mat-mdc-form-field-input-control {
+  letter-spacing: normal !important;
+}
+
+.mat-mdc-form-field-icon-suffix {
+  padding: 0 12px 0 8px !important;
+}
+
+.mat-mdc-form-field-error-wrapper {
+padding: 0 7px !important;
+}
+
+.mat-mdc-form-field-error {
+  margin-top: -3px;
+}
+
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  --mdc-icon-button-state-layer-size: 34px;
+  padding: 4px;
+}
+
+.form-field__title {
+  margin-left: 10px;
+  margin-bottom: 4px;
+
+  color: $font-color-primary;
+  font-family: $font-system;
+  font-size: 14px;
+  columns: $font-color-primary;
+}
+
+.form-field__title-required {
+  color: $color-dangerous;
 }

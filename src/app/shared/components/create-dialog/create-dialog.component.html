@@ -5,8 +5,11 @@
               (close)="dialogRef.close()"
   >
     <form class="create-dialog__form" content [formGroup]="categoryForm">
+      <div class="form-field__title">
+        {{"DIALOG.FIELDS.NAME" | translate}}
+        <span class="form-field__title-required">*</span>
+      </div>
       <mat-form-field [floatLabel]="'always'">
-        <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
         <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
         <mat-error>
           {{"DIALOG.VALIDATIONS.NAME" | translate}}

@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogModule } from '../dialog/dialog.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MileageComponent } from '../mileage/mileage.component';
+import { CurrencyModule } from '@shared/currency/currency.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     TranslateModule,
     DialogModule,
     MatIconModule,
+    MileageComponent,
+    CurrencyModule,
   ],
 })
 export class CreateRecordModule {}

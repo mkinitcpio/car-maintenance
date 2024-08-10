@@ -5,57 +5,75 @@
               (close)="onClose()"
   >
     <form content [formGroup]="recordForm">
-      <mat-form-field [floatLabel]="'always'">
-        <mat-label>{{"DIALOG.FIELDS.NAME" | translate}}</mat-label>
-        <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
-        <mat-error *ngIf="recordForm.get('name').hasError('required')">
-          {{"DIALOG.VALIDATIONS.NAME" | translate}}
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field [floatLabel]="'always'">
-        <mat-label>{{"DIALOG.FIELDS.MILEAGE" | translate}}</mat-label>
-        <input [formControlName]="'mileage'" matInput>
-        <mat-error *ngIf="recordForm.get('mileage').hasError('number')">
-          {{recordForm.get('mileage').getError('number').value | translate}}
-        </mat-error>
-        <mat-error *ngIf="recordForm.get('mileage').hasError('positiveNumber')">
-          {{recordForm.get('mileage').getError('positiveNumber').value | translate}}
-        </mat-error>
-      </mat-form-field>
-
-      <div class="create-record__flex-container">
-        <mat-form-field [floatLabel]="'always'">
-          <mat-label>{{"DIALOG.FIELDS.DATE" | translate}}</mat-label>
-          <input [formControlName]="'date'" matInput [matDatepicker]="picker">
-          <mat-datepicker-toggle class="date-picker__toggle" matSuffix [for]="picker">
-            <mat-icon matDatepickerToggleIcon svgIcon="calendar-edit"></mat-icon>
-          </mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error>
-            {{"DIALOG.VALIDATIONS.DATE" | translate}}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field [floatLabel]="'always'">
-          <mat-label>{{"DIALOG.FIELDS.EXPENSE" | translate}}</mat-label>
-          <input [required]="true" [formControlName]="'cost'" matInput>
-          <mat-error *ngIf="recordForm.get('cost').hasError('number')">
-            {{recordForm.get('cost').getError('number').value | translate}}
-          </mat-error>
-          <mat-error *ngIf="recordForm.get('cost').hasError('positiveNumber')">
-            {{recordForm.get('cost').getError('positiveNumber').value | translate}}
-          </mat-error>
-          <mat-error *ngIf="recordForm.get('cost').hasError('required')">
-            {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
+      <div>
+        <div class="form-field__title">
+          {{"DIALOG.FIELDS.NAME" | translate}}
+          <span class="form-field__title-required">*</span>
+        </div>
+        <mat-form-field>
+          <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
+          <mat-error *ngIf="recordForm.get('name').hasError('required')">
+            {{"DIALOG.VALIDATIONS.NAME" | translate}}
           </mat-error>
         </mat-form-field>
       </div>
 
-      <mat-form-field [floatLabel]="'always'">
-        <mat-label>{{"DIALOG.FIELDS.COMMENT" | translate}}</mat-label>
-        <textarea class="create-record__note" [formControlName]="'notes'" matInput></textarea>
-      </mat-form-field>
+      <div>
+        <div class="form-field__title">{{"DIALOG.FIELDS.MILEAGE" | translate}}</div>
+        <mat-form-field>
+          <cm-mileage matSuffix></cm-mileage>
+          <input [formControlName]="'mileage'" matInput>
+          <mat-error *ngIf="recordForm.get('mileage').hasError('number')">
+            {{recordForm.get('mileage').getError('number').value | translate}}
+          </mat-error>
+          <mat-error *ngIf="recordForm.get('mileage').hasError('positiveNumber')">
+            {{recordForm.get('mileage').getError('positiveNumber').value | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="create-record__flex-container">
+        <div>
+          <div class="form-field__title">{{"DIALOG.FIELDS.DATE" | translate}}</div>
+          <mat-form-field class="create-record__date-picker">
+            <input [formControlName]="'date'" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle class="date-picker__toggle" matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon svgIcon="calendar-edit"></mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>
+              {{"DIALOG.VALIDATIONS.DATE" | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <div class="form-field__title">
+            {{"DIALOG.FIELDS.EXPENSE" | translate}}
+            <span class="form-field__title-required">*</span>
+          </div>
+          <mat-form-field>
+            <app-currency matSuffix [currency]="settingsService.settings.units.currency"></app-currency>
+            <input [required]="true" [formControlName]="'cost'" matInput>
+            <mat-error *ngIf="recordForm.get('cost').hasError('number')">
+              {{recordForm.get('cost').getError('number').value | translate}}
+            </mat-error>
+            <mat-error *ngIf="recordForm.get('cost').hasError('positiveNumber')">
+              {{recordForm.get('cost').getError('positiveNumber').value | translate}}
+            </mat-error>
+            <mat-error *ngIf="recordForm.get('cost').hasError('required')">
+              {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-field__title">{{"DIALOG.FIELDS.COMMENT" | translate}}</div>
+        <mat-form-field>
+          <textarea class="create-record__note" [formControlName]="'notes'" matInput></textarea>
+        </mat-form-field>
+      </div>
     </form>
   </app-dialog>
 </div>
