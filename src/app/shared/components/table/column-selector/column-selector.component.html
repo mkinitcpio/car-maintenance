@@ -4,16 +4,18 @@
 
 <mat-menu #columnMenu="matMenu">
   <ng-template matMenuContent>
-    <div class="mat-menu-content__header">{{'COLUMNS' | translate}}</div>
+    <div class="mat-menu-content__header">{{'MENU.TITLE.COLUMNS' | translate}}</div>
     <button *ngFor="let column of columns"
-            class="menu-item"
+            class="menu-item menu-item--column-selector"
             mat-menu-item
             (click)="onSwitchState($event, column.key)"
     >
       <mat-checkbox [checked]="column.visible"
                     disableRipple="true">
       </mat-checkbox>
-      {{column.name | translate}}
+      <span>
+        {{column.name | translate}}
+      </span>
     </button>
   </ng-template>
 </mat-menu>

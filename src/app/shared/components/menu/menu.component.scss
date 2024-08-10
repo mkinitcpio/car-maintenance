@@ -19,7 +19,7 @@
   &__button {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 
     background: transparent;
 
@@ -40,6 +40,11 @@
 
     &--delete {
       color: $color-dangerous !important;
+
+      .cm-menu__icon {
+        color: $color-dangerous;
+      }
+
       &:hover {
         .cm-menu__icon {
           animation: squeeze 0.5s ease-in;
@@ -65,8 +70,8 @@
   }
 
   &__icon {
-    height: 18px;
-    line-height: 18px;
-    color: inherit;
+    height: 20px;
+    line-height: 20px;
+    color: $color-button-icon;
   }
 }

@@ -8,6 +8,7 @@ import { ColumnSchema } from '../interfaces';
 import { ColumnVisibilityEvent } from '../column-selector/interfaces';
 import { MatDividerModule } from '@angular/material/divider';
 import { NgPlural, NgPluralCase } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ import { NgPlural, NgPluralCase } from '@angular/common';
     MatDividerModule,
     NgPlural,
     NgPluralCase,
+    TranslateModule,
   ],
 })
 export class TablePanelComponent {

@@ -118,7 +118,11 @@
     "FEEDBACK": "Feedback",
     "CAR": "New car",
     "CATEGORY": "New Group",
-    "UPDATE": "Update available"
+    "UPDATE": "Update available",
+    "TITLE" : {
+      "EXPORT": "Export",
+      "COLUMNS": "Columns"
+    }
   },
   "DIALOG": {
     "ADD": "Add",
@@ -259,7 +263,6 @@
     "DARK": "Dark",
     "AUTO": "Auto"
   },
-  "COLUMNS": "Columns",
   "SEARCH": "Search",
   "NOTIFICATIONS": {
     "EXPORT": {

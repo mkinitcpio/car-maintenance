@@ -28,7 +28,7 @@
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
-    <div class="mat-menu-content__header">Export to</div>
+    <div class="mat-menu-content__header">{{"MENU.TITLE.EXPORT" | translate}}</div>
     <button class="menu-item"
             mat-menu-item
             (click)="exportToPDF.emit()">

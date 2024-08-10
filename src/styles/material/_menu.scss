@@ -6,8 +6,10 @@
   --mat-menu-item-label-text-font: #{$font-system};
   --mat-menu-container-color: #{$background-primary};
   --mat-menu-item-label-text-tracking: normal;
-  --mat-menu-item-label-text-weight: 500;
+  --mat-menu-item-label-text-weight: 400;
   --mat-menu-item-hover-state-layer-color: #{$background-button-hover};
+  --mat-menu-item-with-icon-leading-spacing: 12px;
+  --mat-menu-item-with-icon-trailing-spacing: 12px;
 }
 
 .menu-item.mat-mdc-menu-item {
@@ -30,7 +32,7 @@
  .mat-icon {
    margin-right: 6px;
    color: $color-button-icon !important;
-   width: 18px;
+   width: 20px;
   }
 
   &.menu-item--delete {
@@ -38,6 +40,14 @@
 
     .mat-icon {
       color: $color-dangerous !important;
+    }
+  }
+
+  &.menu-item--column-selector {
+    .mat-mdc-menu-item-text {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
   }
 }
