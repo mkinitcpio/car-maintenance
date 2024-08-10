@@ -16,7 +16,6 @@ import { CsvService } from './services/csv.service';
   styleUrl: './table.component.scss',
   imports,
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent<T extends RowData> {
 
