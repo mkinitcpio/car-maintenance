@@ -6,19 +6,20 @@ import { LocaleEnum } from '@shared/components/settings/locale-enum';
 @Pipe({name: 'numberSeparator'})
 export class NumberSeparatorPipe implements PipeTransform {
 
+  private digitsInfo = '1.2-2';
+
   constructor() { }
 
-  transform(value: number, locale: LocaleEnum): string {
+  transform(value: number, locale: LocaleEnum, ignoreАractionalPart = false): string {
+    if(ignoreАractionalPart) {
+      this.digitsInfo = null;
+    }
     if(locale === LocaleEnum.Us) {
-      return formatNumber(value, 'en', '1.2-2');
+      return formatNumber(value, 'en', this.digitsInfo);
     }
 
-    if(locale === LocaleEnum.Ru || locale === LocaleEnum.By) {
-      return formatNumber(value, 'en', '1.2-2').replace(/,/g, ' ');
-    }
-
-    if (locale === LocaleEnum.Kz) {
-      return formatNumber(value, 'en', '1.2-2').replace('.', ',').replace(/,/g, ' ');
+    if(locale === LocaleEnum.Ru || locale === LocaleEnum.By || locale === LocaleEnum.Kz) {
+      return formatNumber(value, 'ru');
     }
 
     return null;
