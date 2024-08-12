@@ -1,8 +1,10 @@
-@mixin scrollable($border-margin: 1px) {
-  overflow-y: overlay;
+@mixin scrollable($padding-right: 10px) {
+  scrollbar-gutter: stable;
+  overflow-y: auto;
+  padding-right: $padding-right - 10px !important;
 
   &::-webkit-scrollbar-thumb {
-    border-top-width: $border-margin;
+    border-top-width: 1px;
   }
 
   &:hover::-webkit-scrollbar-thumb {
@@ -14,8 +16,9 @@
   }
 }
 
-@mixin scrollable-horizontal {
-  overflow-x: overlay;
+@mixin scrollable-horizontal($padding-bottom: 10px) {
+  overflow-x: auto;
+  padding-bottom: $padding-bottom - 10px !important;
 
   &:hover::-webkit-scrollbar-thumb {
     background-color: #79797966;

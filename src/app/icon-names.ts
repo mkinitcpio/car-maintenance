@@ -35,4 +35,7 @@ export const iconsNames = [
   'folder',
   'crane',
   'schema',
+  'collapse',
+  'expand1',
+  'csv',
 ];

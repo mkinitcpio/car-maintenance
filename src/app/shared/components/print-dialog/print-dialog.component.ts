@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ColumnConfig, PreviewPageConfig } from './preview-page/preview-page-config';
@@ -8,7 +8,8 @@ import { ElectronService } from '@core/services';
 
 import { defaultColumns } from './preview-page/default-columns';
 import { PrintDialogConfig } from './print-dialog-config';
-import { PrintService } from '../../services/print.service';
+import { ExportService } from '@shared/services/export.service';
+import { SaveDialogData } from '@shared/services/abstract-export.service';
 
 @Component({
   selector: 'app-print-dialog',
@@ -16,6 +17,8 @@ import { PrintService } from '../../services/print.service';
   styleUrls: ['./print-dialog.component.scss'],
 })
 export class PrintDialogComponent implements OnInit {
+
+  private exportService: ExportService = inject(ExportService);
 
   private readonly MAX_RECORDS_FOR_PREVIEW = 5;
 
@@ -27,8 +30,7 @@ export class PrintDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: PrintDialogConfig,
-    public dialogRef: MatDialogRef<PrintDialogComponent>,
-    public printService: PrintService,
+    public dialogRef: MatDialogRef<PrintDialogComponent, SaveDialogData>,
     private electronService: ElectronService,
   ) {
   }
@@ -52,23 +54,11 @@ export class PrintDialogComponent implements OnInit {
   }
 
   public onPrint(): void {
-    const fileName = this.data.multiply ? this.data.title : this.data.tablesData[0].title;
+    const title = this.data.multiply ? this.data.title : this.data.tablesData[0].title;
+    const defaultFileName = `${title} (${(new Date().toLocaleDateString())}).pdf`.replace(/\//g, '\u2215');
 
-    this.printService
-      .print(fileName, this.saveDirectoryPath, this.print.nativeElement.outerHTML as string)
-      .subscribe(() => {
-        this.dialogRef.close();
-      });
-  }
-
-  public onEditFilePath(): void {
-    this.electronService.dialog
-      .showOpenDialog({properties: ['openDirectory']})
-      .then((data) => {
-        if(data.filePaths.length) {
-          const newPath = data.filePaths[0];
-          this.saveDirectoryPath = newPath;
-        }
-      });
+    this.exportService
+      .toPDF(defaultFileName, this.print.nativeElement.outerHTML as string)
+      .subscribe((data) => data.filePath && this.dialogRef.close(data));
   }
 }

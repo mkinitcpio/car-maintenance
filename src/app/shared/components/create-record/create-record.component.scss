@@ -9,17 +9,18 @@
   }
 
   &__note {
-    height: 128px;
+    min-height: 128px;
     resize: none;
+  }
+
+  &__date-picker::ng-deep {
+     .mat-mdc-form-field-icon-suffix {
+      padding: 0 4px !important;
+    }
   }
 
   .date-picker {
     &__toggle {
-      position: absolute;
-      top: -34px;
-      right: 6px;
-
-      font-size: 20px;
       color: $color-button-icon;
     }
   }

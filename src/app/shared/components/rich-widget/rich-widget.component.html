@@ -1,5 +1,4 @@
-<div class="rich-widget" [class.rich-widget--horizontal]="orientation === 'horizontal'">
-  <mat-icon class="rich-widget__info" *ngIf="tooltip" [matTooltip]="tooltip | translate">info</mat-icon>
+<div class="rich-widget" [class.rich-widget--horizontal]="orientation === 'horizontal'" [class.rich-widget--background]="!transparent">
   <mat-icon class="rich-widget__illustration" [svgIcon]="icon"></mat-icon>
   <div class="rich-widget__info-section">
     <span class="rich-widget__title">{{title | translate}}</span>

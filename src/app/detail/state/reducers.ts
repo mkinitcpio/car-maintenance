@@ -2,9 +2,10 @@ import { Action, createReducer, on } from "@ngrx/store";
 import { FeatureState, Status } from "../../state/interface";
 import { initialState } from "./initial-state";
 import { Record } from "./interface";
-import { getRecords, getRecordsSuccess, createRecord, createRecordsSuccess, editRecord, editRecordSuccess, deleteRecord, deleteRecordSuccess } from './actions';
+import { getRecords, getRecordsSuccess, createRecord, createRecordsSuccess, editRecord, editRecordSuccess, deleteRecord, deleteRecordSuccess, moveRecords, moveRecordsSuccess } from './actions';
 
-const appReducer = createReducer(initialState,
+const appReducer = createReducer(
+  initialState,
   on(getRecords, state => ({
     ...state,
     entity: {
@@ -45,11 +46,11 @@ const appReducer = createReducer(initialState,
       error: null,
     }
   })),
-  on(deleteRecordSuccess, (state, { id }) => ({
+  on(deleteRecordSuccess, (state, { ids }) => ({
     ...state,
     deleteEntity: {
       status: Status.Success,
-      value: id,
+      value: ids,
       error: null,
     }
   })),
@@ -64,6 +65,22 @@ const appReducer = createReducer(initialState,
   on(editRecordSuccess, (state) => ({
     ...state,
     editEntity: {
+      status: Status.Success,
+      value: null,
+      error: null,
+    },
+  })),
+  on(moveRecords, (state) => ({
+    ...state,
+    moveEntity: {
+      status: Status.Loading,
+      value: null,
+      error: null,
+    },
+  })),
+  on(moveRecordsSuccess, (state) => ({
+    ...state,
+    moveEntity: {
       status: Status.Success,
       value: null,
       error: null,

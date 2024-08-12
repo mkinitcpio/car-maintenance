@@ -1,0 +1,276 @@
+{
+  "PAGES": {
+    "WELCOME": {
+      "SUBTITLE": "Жасаңыз. Ұйымдастырыңыз. Жоспарлаңыз.",
+      "NEED_HELP": "Көмек керек пе?",
+      "GITHUB": "GitHub-та қараңыз",
+      "MAIL": "Хат жазыңыз",
+      "QUESTION": "Сұрақ қойыңыз",
+      "BUTTONS": {
+        "GET_STARTED": "Бастау"
+      }
+    },
+    "DATABASE_SELECT": {
+      "TEXT": "Дерекқорды жасаңыз немесе бар дерекқорды таңдаңыз",
+      "CREATE": "Жасау",
+      "OPEN": "Ашу"
+  },
+  "DASHBOARD": {
+    "FEEDBACK": {
+      "TITLE": "Кері байланыс",
+      "DESCRIPTION": "Бізге жазыңыз. Әрқашан байланыстамыз!"
+    },
+    "SOURCE_CODE": {
+      "TITLE": "Бастапқы код",
+      "DESCRIPTION": "Клонданыңыз, өзгертіңіз."
+    },
+    "CHANGELOG": {
+      "TITLE": "",
+      "DESCRIPTION": "Не жаңалық?"
+    },
+    "DOCUMENTATION": {
+      "TITLE": "Құжаттама",
+      "DESCRIPTION": "Қалай пайдалану керек?"
+    }
+  },
+  "DETAIL": {
+    "EMPTY": "Жазбалар жоқ",
+    "LAST_MODIFIED": "Соңғы өзгеріс",
+    "OVERALL_EXPENSE": "Жалпы шығын"
+  },
+  "SETTINGS": {
+    "TITLE": "Баптаулар",
+    "SECTIONS": {
+      "COMMON": "Жалпы",
+      "LANG": "Тіл және аймақ",
+      "APPEARANCE": "Сыртқы көрініс",
+      "UNITS": "Валюта және өлшем бірліктері"
+    },
+    "FIELDS": {
+      "LANG": "Тіл",
+      "START_PAGE": "Бастау беті",
+      "REGION": "Аймақ",
+      "DATABASE_PATH": "Дерекқор",
+      "ICONS": "Белгілер",
+      "FIRST_TAB": "Бірінші қойынды",
+      "MONO": "Моно",
+      "CURRENCY": "Валюта",
+      "METRIC_SYSTEM": "Қашықтық",
+      "ANIMATION": "Анимациялар",
+      "COLORS":"Түс",
+      "APPEARANCE":"Тақырып"
+    },
+    "ICONS_PACK_NAMES": {
+      "DEFAULT": "Әдепкі"
+    },
+    "BUTTONS": {
+      "CHANGE": "Өзгерту",
+      "CARS": "Автомобильдер",
+      "CATEGORIES": "Топтар"
+    }
+  },
+  "EMPTY": {
+    "TEXT": "Топты таңдаңыз"
+  },
+  "PDF_EXPORT": {
+    "PATH": "Сақтау жолы",
+    "ORDER_AND_VISIBILITY": "Тәртіп және көрсетілім",
+    "TITLE": "PDF-ке экспорттау",
+    "SHOW_TOTAL_SUM": "Кестелер үшін шығындарды көрсету",
+    "TOTAL": "Жалпы"
+  },
+  "NAVIGATION": {
+    "TABS": {
+      "CATEGORIES": "Топтар",
+      "CARS": "Автомобильдер"
+    }
+  },
+  "CATEGORY_DETAILS": {
+    "GROUPS": "Топтар",
+    "WIDGETS": {
+      "INFO": "Ақпарат",
+      "NOTE": "Ескерту",
+      "MILEAGE": "Жүріс",
+      "OVERALL_EXPENSE": "Жалпы шығын"
+    },
+    "LABELS": {
+      "YEAR": "Шығарылған жылы",
+      "MAKE": "Марка",
+      "MODEL": "Модель",
+      "VEHICLE_ID": "Автомобиль идентификаторы",
+      "ENGINE": "Қозғалтқыш"
+    },
+    "TOOLTIPS": {
+      "OVERALL_EXPENSE": "Барлық қызмет көрсету үшін шығындар.\n Кестелердегі деректерден есептеледі.",
+      "MILEAGE": "Автомобильдің жүрісі.\n Жазба жасау кезінде бұл мән 'Жүріс' өрісіне автоматты түрде енгізіледі."
+    }
+  }
+  },
+  "MENU": {
+    "ADD": "Қосу",
+    "EDIT": "Өңдеу",
+    "DELETE": "Жою",
+    "MOVE": "Жылжыту",
+    "ABOUT": "Қолданба туралы",
+    "GITHUB": "GitHub",
+    "SETTINGS":"Баптаулар",
+    "WHATS_NEW": "Не жаңалық",
+    "FEEDBACK": "Кері байланыс",
+    "CAR": " Жаңа автомобиль",
+    "CATEGORY": "Жаңа топ",
+    "UPDATE": "Жаңарту қолжетімді",
+    "TITLE" : {
+      "EXPORT": "Экспорттау",
+      "COLUMNS": "Бағандар"
+    }
+  },
+  "DIALOG": {
+    "ADD": "Қосу",
+    "EDIT": "Өңдеу",
+    "RELEASE_NOTES": {
+      "TITLE": "Нұсқа",
+      "NEW_FEATURES": "Қосылған функциялар",
+      "BUGFIXES": "Қателер түзетілді",
+      "IMPROVEMENTS": "Жақсартулар"
+    },
+    "MOVE": {
+      "TITLE": "Жылжыту",
+      "SEARCH": "Іздеу",
+      "NO_SEARCH_RESULT": "Табылған жоқ"
+    },
+    "FEEDBACK": {
+      "TITLE": "Кері байланыс",
+      "QUESTION_TITLE": "Сұрақ қою",
+      "OPTIONS": {
+        "BUG": "Қате",
+        "FEATURE": "Жаңа функция"
+      }
+    },
+    "CURRENCY": {
+      "TITLE": "Валюта баптауларын жаңарту",
+      "DESCRIPTION": "Таңдалған валютаны жаңартыңыз"
+    },
+    "DELETE": {
+      "TITLE": "Жоюды растау",
+      "TEXT": "<b class=\"primary-text-color\">{{name}}</b> қайтарымсыз жойғыңыз келетініне сенімдісіз бе?",
+      "DECLESIONS": {
+        "RECORDS": ["Жазба", "Жазбаны"],
+        "GROUPS": "Топты"
+      }
+    },
+    "CATEGORY": "Топтар",
+    "CAR": "Автомобильдер",
+    "COMMON": "Жалпы",
+    "INFO": "Ақпарат",
+    "PARTS": "Автокөлік бөлшектері",
+    "RECORD": "Жазбалар",
+    "BUTTONS": {
+      "ADD": "Қосу",
+      "EDIT": "Сақтау",
+      "SEND": "Жіберу",
+      "DELETE": "Жою",
+      "CANCEL": "Бас тарту",
+      "CHANGE": "Өзгерту",
+      "EXPORT": "Экспорттау",
+      "SUBMIT": "Жіберу",
+      "MOVE": "Жылжыту"
+    },
+    "FIELDS": {
+      "NAME": "Аты",
+      "CATEGORY": "Топтар",
+      "ILLUSTRATION": "Белгіше",
+      "MILEAGE": "Жүріс",
+      "DATE": "Күні",
+      "YEAR": "Шығарылған жылы",
+      "MAKE": "Марка",
+      "MODEL": "Модель",
+      "VEHICLE_ID": "Автомобиль идентификаторы",
+      "ENGINE": "Қозғалтқыш",
+      "EXPENSE": "Шығын",
+      "COMMENT": "Ескерту",
+      "TEXT": "Мәтін",
+      "TYPE": "Түрі"
+    },
+    "VALIDATIONS": {
+      "NAME": "Атын енгізіңіз.",
+      "DATE": "Дұрыс күнді енгізіңіз.",
+      "EMAIL": "Дұрыс электронды поштаны енгізіңіз.",
+      "TEXT": "Мәтінді енгізіңіз.",
+      "EXPENSE": {
+        "REQIRED": "Шығынды енгізіңіз."
+      },
+      "NUMBER": "Сандық мәнді енгізіңіз.",
+      "POSITIVE": "Теріс емес мәнді енгізіңіз."
+    },
+    "ICON_GROUPS": {
+      "CAR_PARTS": "Автомобиль бөлшектері",
+      "OTHERS": "Басқалар"
+    },
+    "TOOLTIPS": {
+      "CAR_PARTS": "Сіз қызмет көрсететін бөлшектер"
+    }
+  },
+  "ILLUSTRATIONS": {
+    "ENGINE": "Қозғалтқыш",
+    "BATTERY": "Аккумулятор",
+    "WHEEL": "Дөңгелек",
+    "OIL": "Май",
+    "TRANSMISSION": "Трансмиссия",
+    "HEADLIGHTS": "Шамдар",
+    "OTHER": "Басқа",
+    "BRAKEBLOCK": "Тежегіш қалыптары",
+    "SPARK": "Шам",
+    "WINDSHIELD": "Швабралар"
+  },
+  "RECORDS_TABLE": {
+    "NAME": "Аты",
+    "MILEAGE": "Жүріс",
+    "DATE": "Күні",
+    "EXPENSE": "Шығын",
+    "COMMENT": "Ескерту",
+    "CONSUMABLES": "Тұтынушылар"
+  },
+  "FEEDBACK_TYPES": {
+    "BUG": "Қате",
+    "IMPROVEMENT": "Жақсарту"
+  },
+  "CURRENCY": {
+    "EURO": "Еуро",
+    "DOLLAR": "Доллар",
+    "RUSSIAN_RUBLE": "Ресей рублі",
+    "BELARUSSIAN_RUBLE": "Беларусь рублі",
+    "POUND": "Британдық фунт",
+    "YEN": "Йена / Юань",
+    "RUPEE": "Рупия",
+    "LIRA": "Лира",
+    "TENGE": "Теңге"
+  },
+  "METRIC_SYSTEM": {
+    "KILOMETERS": "Километр",
+    "MILES": "Миль",
+    "KM": "км",
+    "MI": "mi"
+  },
+  "ERROR": "Ой, бірдеңе дұрыс болмады.",
+  "FEEDBACK_SUCCESS": "Кері байланыс жіберілді.",
+  "NAVIGATIONS": {
+    "DASHBOARD": "Басты бет",
+    "RECORDS": "Жазбалар",
+    "EVENTS": "Оқиғалар",
+    "STORAGE": "Қойма",
+    "STATISTIC": "Статистика"
+  },
+  "UNDER_DEV": "Даму үстінде",
+  "SCHEMAS": {
+    "LIGHT": "Жарық",
+    "DARK": "Қараңғы",
+    "AUTO": "Авто"
+  },
+  "SEARCH": "Іздеу",
+  "NOTIFICATIONS": {
+    "EXPORT": {
+      "TEXT": "Экспорт аяқталды",
+      "ACTION": "Ашу"
+    }
+  }
+}

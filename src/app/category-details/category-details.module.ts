@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryDetailsComponent } from './category-details.component';
-import { RecordsTableModule } from '../shared/components';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { categoryDetailsReducer } from './state/reducers';
@@ -21,12 +20,12 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
+import { TableComponent } from '@shared/components/table/table.component';
 
 @NgModule({
   declarations: [CategoryDetailsComponent],
   imports: [
     CommonModule,
-    RecordsTableModule,
     MatIconModule,
     StoreModule.forFeature('categoryDetails', categoryDetailsReducer),
     EffectsModule.forFeature([CategoryDetailsEffects]),
@@ -44,6 +43,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatDividerModule,
     MatIconModule,
     MatRippleModule,
+    TableComponent,
   ],
   providers: [
     CategoryDetailsFacade,

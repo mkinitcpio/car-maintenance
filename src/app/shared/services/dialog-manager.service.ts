@@ -22,6 +22,9 @@ import { CarCategoryFormData } from '@core/interfaces/car-category';
 import { AccountDialogComponent } from '@shared/components/account-dialog/account-dialog.component';
 import { FeedbackDialogComponent } from '@shared/components/feedback-dialog/feedback-dialog.component';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
+import { MoveDialogComponent } from '@shared/components/move-dialog/move-dialog.component';
+import { MoveDialogData } from '@shared/components/move-dialog/interfaces';
+import { SaveDialogData } from './abstract-export.service';
 
 @Injectable({
   providedIn: 'root'
@@ -78,14 +81,14 @@ export class DialogManagerService {
       .afterClosed();
   }
 
-  public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
+  public openDeleteCategoryDialog(params: { name }): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "356px",
         panelClass: "dialog-delete",
         data: {
-          text: "DIALOG.DELETE.CATEGORY",
-          name: categoryName,
+          text: "DIALOG.DELETE.TEXT",
+          params,
         },
         autoFocus: false,
       })
@@ -93,14 +96,14 @@ export class DialogManagerService {
       .pipe<boolean>(filter<boolean>(Boolean));
   }
 
-  public openDeleteRecordDialog(categoryName: string): Observable<boolean> {
+  public openDeleteRecordDialog(params: { name }): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "380px",
         panelClass: "dialog-delete",
         data: {
-          text: "DIALOG.DELETE.RECORD",
-          name: categoryName,
+          text: "DIALOG.DELETE.TEXT",
+          params,
         },
       })
       .afterClosed()
@@ -149,13 +152,25 @@ export class DialogManagerService {
       });
   }
 
-  public openPrintDialog(data: PrintDialogConfig): Observable<void> {
+  public openPrintDialog(data: PrintDialogConfig): Observable<SaveDialogData | null> {
     return this.dialog
-      .open(PrintDialogComponent, {
+      .open<PrintDialogComponent, PrintDialogConfig, SaveDialogData>
+    (PrintDialogComponent, {
+      disableClose: true,
+      width: "846px",
+      panelClass: "dialog-print",
+      data,
+      autoFocus: false,
+    }).afterClosed();
+  }
+
+  public openMoveDialog(data: MoveDialogData): Observable<string> {
+    return this.dialog
+      .open(MoveDialogComponent, {
         disableClose: true,
-        width: "856px",
-        panelClass: "dialog-print",
+        width: "340px",
         data,
+        panelClass: "dialog-feedback",
         autoFocus: false,
       })
       .afterClosed();

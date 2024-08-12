@@ -62,11 +62,19 @@
     font-size: 14px;
 
     &--select {
-      width: 60%;
+      width: 216px;
+
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
     }
 
     &--currency {
-      width: 70%;
+      width: 216px;
+
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
     }
   }
 
@@ -83,7 +91,7 @@
 
   &__divider {
     border-top-width: 1.5px !important;
-    margin: 4px 26px 4px 18px !important;
+    margin: 8px 26px 8px 18px !important;
   }
 
   &__currency-preview {
@@ -101,7 +109,7 @@
   }
 
   &__currency-name {
-    margin-left: 28px;
+    margin-left: 24px;
   }
 
   &__currency-option {
@@ -113,8 +121,6 @@
     height: 19px;
     width: 20px;
     margin-right: 8px !important;
-
-    color: $color-button-icon;
   }
 
   .mat-button-toggle-checked {
@@ -139,12 +145,20 @@
 
   .mat-button-toggle-appearance-standard {
     color: $font-color-secondary;
-    background-color: $background-secondary;
+    background-color: transparent;
+  }
+
+  .mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
+    border-left: solid 1.5px $color-border;
   }
 
   .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
-    border: solid 1.5px $color-border;
-    box-sizing: content-box;
+    border-color: $color-border;
+    border-width: 1.5px;
+  }
+
+  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 42px;
   }
 }
 
@@ -239,5 +253,23 @@
         background-color: #2b2b2b;
       }
     }
+  }
+}
+
+.cm-select {
+  border-radius: 12px !important;
+  margin: 8px 0;
+  background-color: $background-secondary;
+  padding: 8px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .mdc-list-item--selected {
+    color: $color-primary;
+  }
+
+  .mdc-list-item__primary-text {
+    letter-spacing: 0;
   }
 }

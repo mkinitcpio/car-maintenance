@@ -2,19 +2,6 @@
   <div class="print-dialog__config-section">
     <h3 class="print-dialog__title">{{'PAGES.PDF_EXPORT.TITLE' | translate}}</h3>
     <div class="print-dialog__scroll">
-      <content-container [title]="'PAGES.PDF_EXPORT.PATH' | translate">
-        <div class="print-dialog__section">
-          <span class="print-dialog__path"
-                [matTooltipClass]="'mat-tooltip--long-text'"
-                [matTooltip]="saveDirectoryPath">
-            {{saveDirectoryPath}}
-          </span>
-          <app-button button-transparent (click)="onEditFilePath()">
-            <mat-icon svgIcon="edit"></mat-icon>
-          </app-button>
-        </div>
-      </content-container>
-
       <content-container [title]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate">
         <div>
           <div cdkDropList class="columns" (cdkDropListDropped)="drop($event)">
@@ -22,7 +9,8 @@
               <div class="column">
                 <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
                 <span class="column__name">{{column.name | translate}}</span>
-                <mat-checkbox [disabled]="column.id === 'name'"
+                <mat-checkbox *ngIf="column.id !== 'name'"
+                              [disableRipple]="true"
                               [checked]="column.visible"
                               (change)="column.visible = !column.visible">
                 </mat-checkbox>
@@ -49,10 +37,6 @@
       <button class="button button__submit" mat-button (click)="onPrint()">{{'DIALOG.BUTTONS.EXPORT' | translate}}</button>
     </div>
   </div>
-
-  <mat-divider class="print-dialog__divider"
-               vertical="true">
-  </mat-divider>
 
   <div class="print-dialog__preview-section">
     <div class="print-dialog__preview">

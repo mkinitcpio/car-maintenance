@@ -7,4 +7,5 @@ export enum CurrencyEnum {
   Yen = 'Yen',
   Rupee = 'Rupee',
   Lira = 'Lira',
+  Tenge = 'Tenge'
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryTree, CategoryTypeEnum } from '../navigation/state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
@@ -9,13 +9,16 @@ import { DetailsFacade } from '../detail/state/details.facade';
 import { DialogManagerService } from '../shared/services/dialog-manager.service';
 import { NavigationFacade } from '../navigation/state/navigation.facade';
 import { listen } from '../core/decorators';
-import { merge } from 'rxjs';
+import { Observable, combineLatest, filter, merge, switchMap, take } from 'rxjs';
 import { AutoCloseable } from '../core/auto-closeable';
 import { UtilsService } from '@shared/services/utils.service';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { ElectronService } from '@core/services';
 import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
 import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/group-tree.service';
+import { defaultTableConfig } from '@shared/components/table/default-table-config';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-category-details',
@@ -25,34 +28,34 @@ import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/grou
 export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
   @listen({ value: true })
-  categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
+    categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
 
   @listen({ value: true })
-  records$ = this.detailsFacade.details$;
+    records$ = this.detailsFacade.details$;
 
   @listen({ value: true })
-  deleteCategory$ = merge(
-    this.navigationFacade.deleteCategory$,
-    this.navigationFacade.deleteCarCategory$,
-  );
+    deleteCategory$ = merge(
+      this.navigationFacade.deleteCategory$,
+      this.navigationFacade.deleteCarCategory$,
+    );
 
   @listen({ value: true })
-  updatedMaintenance$ = this.categoryDetailsFacade.updatedMaintenance$;
+    updatedMaintenance$ = this.categoryDetailsFacade.updatedMaintenance$;
 
   @listen()
-  recordChanges$ = merge(
-    this.detailsFacade.newDetails$,
-    this.detailsFacade.editDetail$,
-    this.detailsFacade.deleteDetail$,
-  );
+    recordChanges$ = merge(
+      this.detailsFacade.newDetails$,
+      this.detailsFacade.editDetail$,
+      this.detailsFacade.deleteDetail$,
+    );
 
   @listen({ value: true })
-  categoryChanges$ = merge(
-    this.navigationFacade.newCategory$,
-    this.navigationFacade.editCategory$,
-    this.navigationFacade.newCarCategory$,
-    this.navigationFacade.editCarCategory$,
-  );
+    categoryChanges$ = merge(
+      this.navigationFacade.newCategory$,
+      this.navigationFacade.editCategory$,
+      this.navigationFacade.newCarCategory$,
+      this.navigationFacade.editCarCategory$,
+    );
 
   public CategoryTypeEnum = CategoryTypeEnum;
   public MetricSystemEnum = MetricSystemEnum;
@@ -67,21 +70,20 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public categoryDetails: CategoryDetails;
   public records: Record[] = [];
   public totalCost: number;
-  public sitesForSearch = [{
-    name: "Amazon",
-    url: "https://www.amazon.com/s?k=",
-  }, {
-    name: "Ebay",
-    url: "https://www.ebay.com/sch/i.html?_nkw=",
-  }];
+
+  public tableConfig = defaultTableConfig;
+  private exportTranslatedText: [text: string, action: string];
+
+  private snackBar = inject(MatSnackBar);
+  private electronService = inject(ElectronService);
+  private translateService: TranslateService = inject(TranslateService);
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private utilsSerivce: UtilsService,
+    private utilsService: UtilsService,
     private detailsFacade: DetailsFacade,
     public settingsService: SettingsService,
-    private electronService: ElectronService,
     private navigationFacade: NavigationFacade,
     private dialogManagerService: DialogManagerService,
     private categoryDetailsFacade: CategoryDetailsFacade,
@@ -95,7 +97,40 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       this.categoryDetails = categoryDetails;
       this.expandPanelToggles = Array.from({length: this.categoryDetails.tables.length}, () => false);
 
-      this.totalCost = this.categoryDetails.tables.map(table => this.utilsSerivce.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
+      this.totalCost = this.categoryDetails.tables.map(table => this.utilsService.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
+      this.tableConfig = {...this.tableConfig};
+      this.tableConfig.actions.selectable = false;
+      this.tableConfig.columnSchemas = [{
+        key: 'name',
+        name: 'RECORDS_TABLE.NAME',
+        type: 'text',
+        order: 1,
+        visible: true,
+      },{
+        key: 'cost',
+        name: 'RECORDS_TABLE.EXPENSE',
+        type: 'cost',
+        order: 2,
+        visible: true,
+      },{
+        key: 'mileage',
+        name: 'RECORDS_TABLE.MILEAGE',
+        type: 'mileage',
+        order: 3,
+        visible: true,
+      },{
+        key: 'date',
+        name: 'RECORDS_TABLE.DATE',
+        type: 'date',
+        order: 5,
+        visible: true,
+      },{
+        key: 'notes',
+        name: 'RECORDS_TABLE.COMMENT',
+        type: 'note',
+        order: 6,
+        visible: true,
+      }];
     });
 
     this.recordChanges$.subscribe(() => {
@@ -126,6 +161,10 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       this.id = params['id'];
       this.categoryDetailsFacade.loadCategoryDetails(this.id);
     });
+
+    this.getExportTranslatedText()
+      .pipe(take(1))
+      .subscribe((translatedText) => this.exportTranslatedText = translatedText);
   }
 
   public onAddGroup(): void {
@@ -169,10 +208,15 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   }
 
   public onDelete(record: Record): void {
-    this.dialogManagerService
-      .openDeleteRecordDialog(record.name)
+    this.utilsService.getDeclensionWord("DIALOG.DELETE.DECLESIONS.RECORDS", 1)
+      .pipe(
+        take(1),
+        switchMap((translation) => {
+          return this.dialogManagerService.openDeleteRecordDialog({ name: `${1} ${translation}` });
+        })
+      )
       .subscribe(() => {
-        this.detailsFacade.deleteRecord(record.id);
+        this.detailsFacade.deleteRecord([record.id]);
       });
   }
 
@@ -181,13 +225,26 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .map(table => ({
         title: table.name,
         records: table.data,
-        totalCost: this.utilsSerivce.getResultCost(table.data),
+        totalCost: this.utilsService.getResultCost(table.data),
       }));
 
     this.dialogManagerService.openPrintDialog({
       title: this.categoryDetails.data.name,
       multiply: true,
       tablesData,
+    }).pipe(
+      filter((data) => !!data?.filePath),
+    ).subscribe(saveData => {
+      if(saveData?.status === "Success") {
+        const [text, action] = this.exportTranslatedText;
+
+        this.snackBar.open('');
+        this.snackBar.open(text, action, { duration: 4000 })
+          .onAction()
+          .subscribe(() => {
+            this.electronService.shell.openPath(saveData.filePath);
+          });
+      }
     });
   }
 
@@ -196,12 +253,6 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
     maintenance.note = note;
     this.categoryDetailsFacade.updateMaintenance(maintenance);
-  }
-
-  public onSearch(url: string, name: string): void {
-    const parsedName = name.replace(/[ ]/g, '+');
-
-    this.electronService.shell.openExternal(url + parsedName);
   }
 
   private findRecord(id: string): Record {
@@ -227,5 +278,16 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     };
 
     this.groupTreeService.selectedItem(groupData);
+  }
+
+  public get isAllExpanded(): boolean {
+    return this.expandPanelToggles.every(toggle => toggle);
+  }
+
+  private getExportTranslatedText(): Observable<[string, string]> {
+    return combineLatest([
+      this.translateService.get("NOTIFICATIONS.EXPORT.TEXT"),
+      this.translateService.get("NOTIFICATIONS.EXPORT.ACTION"),
+    ]);
   }
 }

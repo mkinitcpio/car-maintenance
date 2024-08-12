@@ -10,8 +10,11 @@ export const getRecordsSuccess = createAction(
 export const createRecord = createAction('[Details] Create Record', props<{ record: Record }>());
 export const createRecordsSuccess = createAction('[Details] Create Record Success');
 
-export const deleteRecord = createAction('[Details] Delete Record', props<{ id: string }>());
-export const deleteRecordSuccess = createAction('[Details] Delete Record Success', props<{ id: string }>());
+export const deleteRecord = createAction('[Details] Delete Record', props<{ ids: string[] }>());
+export const deleteRecordSuccess = createAction('[Details] Delete Record Success', props<{ ids: string[] }>());
 
 export const editRecord = createAction('[Navigation] Edit Record', props<{ record: Record }>());
 export const editRecordSuccess = createAction('[Navigation] Edit Record Success');
+
+export const moveRecords = createAction('[Details] Move Records', props<{ parentId: string, recordIds: string[] }>());
+export const moveRecordsSuccess = createAction('[Details] Move Records Success');

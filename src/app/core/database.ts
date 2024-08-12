@@ -14,7 +14,6 @@ import { map } from 'rxjs/operators';
 })
 export class DataBaseService {
 
-  public readonly confPath: string = this.electronService.os.homedir() + '/.config/Учет/conf';
   public readonly initialDataBase = {
     categories: [],
     records: [],
@@ -139,9 +138,9 @@ export class DataBaseService {
     this.writeToDataBase();
   }
 
-  public deleteRecord(id: string): void {
+  public deleteRecord(records: string[]): void {
     const db = this.data;
-    db.records = db.records.filter(record => record.id !== id);
+    db.records = db.records.filter(record => !records.includes(record.id));
 
     this.writeToDataBase();
   }
@@ -186,6 +185,23 @@ export class DataBaseService {
       maintenance,
       tables: tablesData,
     };
+  }
+
+  public moveRecords(parentId: string, records: Array<string>): Observable<string> {
+    const db = this.data;
+
+    db.records = db.records.map(record => {
+      if(records.includes(record.id)) {
+        record = {
+          ...record,
+          parent: parentId,
+        };
+      }
+
+      return record;
+    });
+
+    return this.writeToDataBaseAsync();
   }
 
   public dbExist$: Subject<boolean> = new BehaviorSubject(false);

@@ -1,0 +1,106 @@
+<section class="cm-table" [class.cm-table--transparent]="transparent()">
+  <cm-table-panel [columnSchemas]="config().columnSchemas"
+                  *ngIf="config().panel"
+                  [hasData]="rows().length"
+                  [selectedRowsCount]="selectedRows.selected.length"
+                  (add)="add.emit()"
+                  (move)="onMove()"
+                  (delete)="onDelete()"
+                  (exportToPDF)="onExportToPDF()"
+                  (exportToCSV)="onExportToCSV(tableHeader, table)"
+                  (onVisibilityChanged)="onColumnVisibilityChanged($event)">
+  </cm-table-panel>
+  <section class="cm-table__table-section">
+    <table #table class="cm-table__table">
+      <thead class="cm-table__head">
+        <tr #tableHeader class="cm-table__head-row">
+          <th class="cm-table__head-cell cm-table--column-select"
+              *ngIf="config().actions.selectable"
+          >
+            <mat-checkbox class="checkbox cm-table__checkbox"
+                          [checked]="allRowSelected"
+                          disableRipple="true"
+                          (change)="onAllRowToggle($event)"
+                          [indeterminate]="someRowSelected"
+            >
+            </mat-checkbox>
+          </th>
+          @for (schema of columnSchemas(); track $index) {
+              <th [attr.data-csv]="schema.name | translate"
+                  *ngIf="schema.visible" class="cm-table__head-cell cm-table--column-{{schema.key}} cm-table__head-cell--{{schema.key}}"
+              >
+                {{schema.name | translate}}
+              </th>
+          }
+        </tr>
+      </thead>
+      <tbody class="cm-table__body">
+        @if (rows().length) {
+          @for (row of rows(); track row.id) {
+            <tr class="cm-table__row"
+                [cdkContextMenuTriggerFor]="contextMenu"
+                [cdkContextMenuTriggerData]="{$implicit: row}"
+                [class.cm-table__row--context-menu]="contextMenuId === row.id"
+                [class.cm-table__row--selected]="selectedRows.isSelected(row.id)"
+                (cdkContextMenuOpened)="contextMenuId = row.id"
+                (cdkContextMenuClosed)="contextMenuId = null"
+                (click)="onSelectionChange(row.id)"
+            >
+              <td class="cm-table__cell cm-table--column-select"
+                  *ngIf="config().actions.selectable"
+              >
+                <mat-checkbox class="cm-table__checkbox"
+                              (click)="$event.stopPropagation()"
+                              [checked]="selectedRows.isSelected(row.id)"
+                              (change)="onSelectionChange(row.id)"
+                              disableRipple="true">
+                </mat-checkbox>
+              </td>
+              @for (schema of columnSchemas(); track $index) {
+                <td *ngIf="schema.visible"
+                    class="cm-table__cell cm-table--column-{{schema.key}} cm-table__cell--{{schema.key}}"
+                    [ngSwitch]="schema.type"
+                >
+                  <cm-cell-note *ngSwitchCase="'note'" [value]="row[schema.key]"></cm-cell-note>
+                  <cm-cell-date *ngSwitchCase="'date'" [value]="row[schema.key]"></cm-cell-date>
+                  <cm-cell-cost *ngSwitchCase="'cost'" [value]="row[schema.key]"></cm-cell-cost>
+                  <cm-cell-mileage *ngSwitchCase="'mileage'" [value]="row[schema.key]"></cm-cell-mileage>
+                  <cm-cell-text *ngSwitchDefault [value]="row[schema.key]"></cm-cell-text>
+                </td>
+              }
+            </tr>
+          }
+        } @else {
+          <tr>
+            <td [attr.colspan]="emptyMessageWidth()">
+              <div class="cm-table__empty">
+                <mat-icon class="cm-table__empty-icon" svgIcon="paper-empty"></mat-icon>
+                <span class="cm-table__empty-text">{{"PAGES.DETAIL.EMPTY" | translate}}</span>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</section>
+
+<ng-template #contextMenu let-row>
+  <cm-menu cdkMenu>
+    <button matRipple class="cm-menu__button cm-menu__button--edit" *ngIf="selectedRows.selected.length <= 1" (click)="onEdit(row.id)" cdkMenuItem>
+      <mat-icon class="cm-menu__icon" svgIcon="edit"></mat-icon>
+      {{"MENU.EDIT" | translate}}
+    </button>
+    <button matRipple class="cm-menu__button cm-menu__button--move" (click)="onMove()" cdkMenuItem>
+      <mat-icon class="cm-menu__icon">compare_arrows</mat-icon>
+      {{"MENU.MOVE" | translate}}
+    </button>
+    <div class="cm-menu__divider"> </div>
+    <button matRipple class="cm-menu__button cm-menu__button--delete" (click)="onDelete(row)" cdkMenuItem>
+      <mat-icon class="cm-menu__icon" svgIcon="trash"></mat-icon>
+      {{"MENU.DELETE" | translate}}
+    </button>
+  </cm-menu>
+</ng-template>
+
+

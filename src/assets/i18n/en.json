@@ -110,6 +110,7 @@
     "ADD": "Add",
     "EDIT": "Edit",
     "DELETE": "Delete",
+    "MOVE": "Move",
     "ABOUT": "About",
     "GITHUB": "GitHub",
     "SETTINGS":"Settings",
@@ -117,7 +118,11 @@
     "FEEDBACK": "Feedback",
     "CAR": "New car",
     "CATEGORY": "New Group",
-    "UPDATE": "Update available"
+    "UPDATE": "Update available",
+    "TITLE" : {
+      "EXPORT": "Export",
+      "COLUMNS": "Columns"
+    }
   },
   "DIALOG": {
     "ADD": "Add",
@@ -127,6 +132,11 @@
       "NEW_FEATURES": "New Features",
       "BUGFIXES": "Bug Fixes",
       "IMPROVEMENTS": "Improvements"
+    },
+    "MOVE": {
+      "TITLE": "Move",
+      "SEARCH": "Search",
+      "NO_SEARCH_RESULT": "No Search Result"
     },
     "FEEDBACK": {
       "TITLE": "Feedback",
@@ -142,8 +152,12 @@
     },
     "DELETE": {
       "TITLE": "Confirm Delete",
-      "CATEGORY": "Do you really want to delete this group? This process cannot be undone.",
-      "RECORD": "Do you really want to delete this record? This process cannot be undone."
+      "GROUPS": "groups",
+      "TEXT": "Do you really want to delete <b class=\"primary-text-color\">{{name}}</b>?<br>This process cannot be undone.",
+      "DECLESIONS": {
+        "RECORDS": ["record", "records"],
+        "GROUPS": "group"
+      }
     },
     "CATEGORY": "Group",
     "CAR": "Car",
@@ -159,7 +173,8 @@
       "CANCEL": "Cancel",
       "CHANGE": "Change",
       "EXPORT": "Export",
-      "SUBMIT": "Submit"
+      "SUBMIT": "Submit",
+      "MOVE": "Move"
     },
     "VALIDATIONS": {
       "NAME": "Enter the Name.",
@@ -217,7 +232,8 @@
     "MILEAGE": "Mileage",
     "DATE": "Date",
     "EXPENSE": "Expense",
-    "COMMENT": "Comment"
+    "COMMENT": "Comment",
+    "CONSUMABLES": "Consumables"
   },
   "CURRENCY": {
     "EURO": "Euro",
@@ -227,7 +243,8 @@
     "POUND": "Pound sterling",
     "YEN": "Yen / Yuán",
     "RUPEE": "Rupee",
-    "LIRA": "Lira"
+    "LIRA": "Lira",
+    "TENGE": "Tenge"
   },
   "METRIC_SYSTEM": {
     "KILOMETERS": "Kilometers",
@@ -249,5 +266,12 @@
     "LIGHT": "Light",
     "DARK": "Dark",
     "AUTO": "Auto"
+  },
+  "SEARCH": "Search",
+  "NOTIFICATIONS": {
+    "EXPORT": {
+      "TEXT": "Export completed",
+      "ACTION": "Open"
+    }
   }
 }

@@ -2,6 +2,7 @@ $color-primary: var(--primary-color);
 $color-secondary: var(--secondary-color);
 $color-dangerous: var(--color-dangerous);
 $color-border: var(--color-border);
+$color-divider: var(--color-divider);
 $color-button-icon: var(--color-button-icon);
 
 $background-primary: var(--background-primary);
@@ -22,3 +23,8 @@ $tooltip-background: var(--tooltip-background);
 $tooltip-color: var(--tooltip-color);
 
 $widget-icon-background: var(--widget-icon-background);
+
+$stack-icon-color: var(--stack-icon-color);
+$stack-icon-background: var(--stack-icon-background);
+
+$snackbar-border-color: var(--snackbar-border-color);

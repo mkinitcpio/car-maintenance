@@ -1,0 +1,84 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+:host {
+  &.ng-invalid.ng-touched {
+
+    .input__label {
+      color: $color-dangerous;
+    }
+
+    .input__container {
+      border-color: $color-dangerous;
+    }
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  font-family: $font-system;
+  color: $font-color-primary;
+  margin-bottom: 18px;
+
+  &__container {
+    display: flex;
+    border: 2px solid $color-border;
+    border-radius: 12px;
+    padding: 0 12px;
+    gap: 4px;
+    box-sizing: border-box;
+    height: 42px;
+    align-items: center;
+    background: $background-secondary;
+    transition: border-color 0.2s ease-in;
+    width: 100%;
+
+    &--focused {
+      border-color: $color-primary;
+    }
+
+    &:hover {
+      cursor: text;
+      background: var(--background-button-hover);
+    }
+
+    input {
+      appearance: none;
+      background-color: transparent;
+      box-sizing: border-box;
+      width: 100%;
+      border: none;
+      caret-color: $color-primary;
+      font-size: 14px;
+      color: $font-color-primary;
+      font-family: $font-system;
+      transition: padding-left 0.2s ease-in;
+      line-height: 2;
+
+      &:focus {
+        padding-left: 4px;
+      }
+    }
+  }
+
+  &__label {
+    margin-left: 10px;
+    font-size: 14px;
+
+    &--required {
+      &:after {
+        content: '*';
+        color: $color-dangerous;
+        margin-left: 2px;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    color: $color-button-icon;
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from '../settings/settings.service';
 
 @Component({
   selector: 'app-create-dialog',
@@ -17,6 +18,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./create-record.component.scss']
 })
 export class CreateRecordComponent implements OnInit {
+
+  public settingsService: SettingsService = inject(SettingsService);
 
   public recordForm = new FormGroup({
     id: this.fb.control(uuidv4()),

@@ -13,6 +13,7 @@ import { ColorEnum } from "./colors-enum";
 import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
 import { SettingsPaths } from './settings-paths';
 import { defaultSettings } from './default-settings';
+import * as Store from 'electron-store';
 
 @Injectable({
   providedIn: "root",
@@ -20,6 +21,10 @@ import { defaultSettings } from './default-settings';
 export class SettingsService {
   public get settings(): Settings {
     return this.electronService.appSettings.store;
+  }
+
+  public get store(): Store<Settings> {
+    return this.electronService.appSettings;
   }
 
   private readonly settingsPath: string = this.electronService.combineAppConfigsPath(
@@ -70,6 +75,10 @@ export class SettingsService {
     this.settings.language = lang;
     this.electronService.appSettings.set(SettingsPaths.Language, lang);
     this.translate.setDefaultLang(lang);
+    this.settingsChanged$.next({
+      type: SettingsTypeEnum.Language,
+      value: lang,
+    });
   }
 
   public setAnimations(state: boolean): void {
@@ -133,5 +142,13 @@ export class SettingsService {
 
     settings.appearance.appearance = 'light';
     this.electronService.setAppSettingsData(settings);
+  }
+
+  public setVisibleColumnsForDetailsTable(hiddenColumns: string[]): void {
+    this.electronService.appSettings.set(SettingsPaths.DetailsTableVisibleColumns, hiddenColumns);
+  }
+
+  public getDetailsHiddenVisibleColumns(): string[] {
+    return this.store.get(SettingsPaths.DetailsTableVisibleColumns, defaultSettings.details.table.hiddenColumns);
   }
 }

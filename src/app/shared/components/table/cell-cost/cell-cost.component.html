@@ -1,0 +1,5 @@
+<app-currency [value]="value"
+              [attr.data-csv]="value | numberSeparator:settingsService.settings.region"
+              [currency]="settingsService.settings.units?.currency"
+              [locale]="settingsService.settings.region">
+</app-currency>

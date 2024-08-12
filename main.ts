@@ -6,7 +6,7 @@ import * as Store from 'electron-store';
 initialize();
 Store.initRenderer();
 
-let win: BrowserWindow = null;
+let win: BrowserWindow | null = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
 
@@ -31,9 +31,7 @@ function createWindow(): BrowserWindow {
 
     win.webContents.openDevTools();
 
-    require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/node_modules/electron`)
-    });
+    require('electron-reloader')(module);
     win.loadURL('http://localhost:4200');
 
   } else {

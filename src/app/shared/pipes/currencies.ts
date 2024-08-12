@@ -9,4 +9,5 @@ export const currencies = {
   [CurrencyEnum.Yen]: "yen",
   [CurrencyEnum.Rupee]: "rupee",
   [CurrencyEnum.Lira]: "lira",
+  [CurrencyEnum.Tenge]: "tenge"
 };

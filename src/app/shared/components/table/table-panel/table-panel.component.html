@@ -1,0 +1,40 @@
+<section class="table-panel">
+  @if (selectedRowsCount()) {
+    <div class="table-panel__selection">
+      <app-button button-transparent (click)="move.emit()">
+        <mat-icon>compare_arrows</mat-icon>
+      </app-button>
+      <app-button button-transparent (click)="delete.emit()">
+        <mat-icon class="table-panel__selection-delete" svgIcon="trash"></mat-icon>
+      </app-button>
+      <mat-divider *ngIf="hasData()" vertical="true"></mat-divider>
+    </div>
+  }
+  <app-button button-transparent (click)="add.emit()">
+    <mat-icon>add</mat-icon>
+  </app-button>
+  <app-button *ngIf="hasData()" button-transparent [matMenuTriggerFor]="contextMenu">
+    <mat-icon>file_download</mat-icon>
+  </app-button>
+  <mat-divider *ngIf="hasData()" vertical="true"></mat-divider>
+  <cm-column-selector *ngIf="hasData()" [columnConfigs]="columnSchemas()" (onVisibilityChanged)="onVisibilityChanged.emit($event)">
+  </cm-column-selector>
+</section>
+
+<mat-menu #contextMenu="matMenu">
+  <ng-template matMenuContent>
+    <div class="mat-menu-content__header">{{"MENU.TITLE.EXPORT" | translate}}</div>
+    <button class="menu-item"
+            mat-menu-item
+            (click)="exportToPDF.emit()">
+      <mat-icon svgIcon="printer"></mat-icon>
+      <span>PDF</span>
+    </button>
+    <button class="menu-item"
+            (click)="exportToCSV.emit()"
+            mat-menu-item>
+      <mat-icon svgIcon="csv"></mat-icon>
+      <span>CSV</span>
+    </button>
+  </ng-template>
+</mat-menu>

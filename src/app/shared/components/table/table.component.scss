@@ -1,0 +1,137 @@
+@use '/src/mixins' as mixins;
+@import '/src/colors';
+@import '/src/fonts';
+
+.cm-table {
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: $font-color-primary;
+  background-color: $background-primary;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  border-radius: 24px;
+  overflow-x: auto;
+  box-sizing: border-box;
+
+  &--transparent {
+    box-shadow: none;
+  }
+
+  &__table-section {
+    @include mixins.scrollable-horizontal;
+  }
+
+  &__head-cell,
+  &__cell {
+    height: 32px;
+    padding: 4px 12px;
+
+    line-height: 30px;
+    border: 0px solid transparent;
+
+    &:first-child {
+      padding-left: 16px;
+
+      border-radius: 12px 0 0 12px;
+    }
+
+    &:last-child {
+      padding-right: 16px;
+
+      border-radius: 0 12px 12px 0;
+    }
+  }
+
+  &__table {
+    width: 100%;
+
+    font-family: $font-system;
+    border-spacing: 0 4px;
+  }
+
+  &__empty {
+    height: 164px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $font-color-secondary;
+    gap: 4px;
+  }
+
+  &__empty-text {
+    font-size: 18px;
+  }
+
+
+  &__empty-icon {
+    --icon-size: 48px;
+    height: var(--icon-size);
+    width: var(--icon-size);
+    font-size: var(--icon-size);
+  }
+
+  &__head-row {
+    height: 42px;
+
+    color: $font-color-primary;
+    background-color: $background-button-hover;
+
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 12px;
+  }
+
+  &__head-cell {
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  &__checkbox {
+    display: flex !important;
+  }
+
+  &__row {
+    font-size: 14px;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      background: $background-button-hover;
+    }
+
+    &--selected {
+      background: $background-button-hover;
+    }
+
+    &--context-menu {
+      background: $background-button-hover;
+    }
+  }
+
+  &--column-select {
+    padding: 0 6px;
+  }
+
+  &--column-date {
+    text-align: center;
+  }
+
+  &--column-mileage {
+    text-align: end;
+  }
+
+  &--column-cost {
+    text-align: -webkit-right;
+  }
+
+  &--column-name {
+    padding-left: 4px;
+
+    text-align: left;
+  }
+}

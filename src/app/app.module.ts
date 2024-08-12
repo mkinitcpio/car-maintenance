@@ -32,7 +32,9 @@ import { AppGuard } from './app.guard';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { ElectronService } from '@core/services';
-import { SettingsService } from '@shared/components/settings/settings.service';
+
+import { APP_CONFIG, appConfig } from './app.config';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -46,7 +48,7 @@ enum SupportedPlatrofmsEnum {
 }
 
 export function ThemeFactory(electronService: ElectronService): ThemeService {
-  const systemType = electronService.os.type();
+  const systemType = electronService.os.type() as SupportedPlatrofmsEnum;
   let themeServiceInstance: ThemeService = null;
 
   switch(systemType) {
@@ -106,6 +108,13 @@ registerLocaleData(localeRu, 'ru');
       deps: [
         ElectronService,
       ]
+    }, {
+      provide: APP_CONFIG,
+      useValue: appConfig,
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {appearance: 'outline'}
     },
   ],
   bootstrap: [AppComponent]

@@ -1,9 +1,9 @@
 <div class="currency">
-  <span [style.color]="ignoreFontColor ? 'black' : 'unset'" class="currency__value">{{value | numberSeparator:locale}}</span>
-  <mat-icon *ngIf="renderAs === CurrencyRenderEnum.Svg; else img"
+  <span [style.color]="ignoreFontColor() ? 'black' : 'unset'" class="currency__value">{{value() | numberSeparator:locale()}}</span>
+  <mat-icon *ngIf="renderAs() === CurrencyRenderEnum.Svg; else img"
             class="currency__icon"
-            [class.currency__icon--small]="size === CurrencySizeEnum.Small"
-            [svgIcon]="'currencies:' + (currency | currency)">
+            [class.currency__icon--small]="size() === CurrencySizeEnum.Small"
+            [svgIcon]="'currencies:' + (currency() | currency)">
   </mat-icon>
   <ng-template #img>
     <img class="currency__image" [src]="currencyBase64SafeUrl">

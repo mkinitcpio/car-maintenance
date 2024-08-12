@@ -63,13 +63,10 @@
         <span>{{'PAGES.CATEGORY_DETAILS.GROUPS' | translate}}</span>
         <div class="category-details__tables-title-buttons">
           <app-button button-transparent (click)="onAddGroup()">
-            <mat-icon svgIcon="add"></mat-icon>
+            <mat-icon>add</mat-icon>
           </app-button>
-          <app-button *ngIf="false" button-transparent (click)="toogleExpandStates(false)">
-            <mat-icon>unfold_less</mat-icon>
-          </app-button>
-          <app-button *ngIf="false" button-transparent (click)="toogleExpandStates(true)">
-            <mat-icon>unfold_more</mat-icon>
+          <app-button button-transparent (click)="toogleExpandStates(isAllExpanded ? false: true)">
+            <mat-icon [svgIcon]="isAllExpanded ? 'collapse' : 'expand1'"></mat-icon>
           </app-button>
         </div>
       </div>
@@ -95,25 +92,14 @@
 
         </div>
         <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
-          <app-records-table class="category-details__table"
-                            [data]="table.data"
-                            (edit)="onEdit($event)"
-                            (delete)="onDelete($event)"
-          ></app-records-table>
+          <cm-table [config]="tableConfig"
+                    [transparent]="true"
+                    [rows]="table.data"
+                    (edit)="onEdit($event)"
+                    (delete)="onDelete($event)">
+          </cm-table>
         </div>
-
       </section>
     </section>
   </ng-container>
-
-  <mat-menu #contextMenu="matMenu">
-    <ng-template matMenuContent let-name="name">
-      <button class="menu-item"
-              *ngFor="let site of sitesForSearch"
-              mat-menu-item
-              (click)="onSearch(site.url, name)">
-        <span>{{site.name}}</span>
-      </button>
-    </ng-template>
-  </mat-menu>
 </app-details>

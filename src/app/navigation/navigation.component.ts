@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 
 import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum";
@@ -19,6 +19,7 @@ import { CarCategoryFormData } from "@core/interfaces/car-category";
 import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { GroupData, GroupTreeService } from "./categories-tree/group-tree.service";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-navigation",
@@ -48,6 +49,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     this.navigationFacade.deleteCarCategory$,
     this.navigationFacade.editCarCategory$,
   );
+
+  private translateService = inject(TranslateService);
 
   public dataSource = new MatTreeNestedDataSource<any>();
   public selectedCategory: Category;
@@ -189,7 +192,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   public onDelete(category: Category): void {
-    this.dialogManagerService.openDeleteCategoryDialog(category.name)
+    this.translateService.get("DIALOG.DELETE.DECLESIONS.GROUPS")
+      .pipe(switchMap(translation => this.dialogManagerService.openDeleteCategoryDialog({name: translation})))
       .subscribe(() => {
         if(category.type === CategoryTypeEnum.Category) {
           this.navigationFacade.deleteCategory(category);

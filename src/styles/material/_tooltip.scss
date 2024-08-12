@@ -1,0 +1,19 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+.mdc-tooltip.mat-mdc-tooltip .mdc-tooltip__surface {
+  font-family: $font-system;
+  font-weight: normal;
+  font-size: 12px;
+  color: $tooltip-color;
+  border: $menu-border;
+  background-color: $tooltip-background;
+  border-radius: 12px !important;
+  white-space: pre-line;
+  padding: 12px !important;
+  letter-spacing: 0;
+}
+
+.mat-tooltip--long-text {
+  word-break: break-all;
+}

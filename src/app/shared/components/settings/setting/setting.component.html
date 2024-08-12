@@ -1,7 +1,7 @@
 <section class="setting">
   <span class="setting__label">
-    <mat-icon [svgIcon]="customIcon">{{icon}}</mat-icon>
-    {{label}}
+    <mat-icon [svgIcon]="customIcon()">{{icon()}}</mat-icon>
+    {{label()}}
   </span>
   <div class="setting__control">
     <ng-content></ng-content>

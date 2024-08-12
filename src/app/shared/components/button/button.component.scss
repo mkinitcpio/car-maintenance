@@ -78,6 +78,12 @@
       }
     }
   }
+
+  &[aria-expanded="true"] {
+    .button {
+      background: rgba(0,0,0,0.05);
+    }
+  }
 }
 
 .button {

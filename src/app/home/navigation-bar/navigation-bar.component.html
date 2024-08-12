@@ -6,16 +6,21 @@
     <nav class="navigation-bar__modules-routes">
       <a *ngFor="let button of navigationButtons"
           class="navigation-bar__button-container"
-          [routerLink]="!currentRoute?.includes(button.route) ? button.route : null"
-          routerLinkActive="navigation-bar__button-container--selected">
+          [routerLink]="'/' + button.route"
+          routerLinkActive="navigation-bar__button-container--selected"
+      >
         <div class="navigation-bar__button-selector"></div>
-          <app-button button-transparent
-                      [matTooltip]="button.tooltipText | translate"
-                      matTooltipPosition="right"
-                      matTooltipShowDelay="500">
-            <mat-icon class="navigation-bar__button-icon" [svgIcon]="button.icon"></mat-icon>
-          </app-button>
-        </a>
+        <app-button button-transparent
+                    [matTooltip]="button.tooltipText | translate"
+                    matTooltipPosition="right"
+                    matTooltipShowDelay="500"
+        >
+          <mat-icon class="navigation-bar__button-icon"
+                    [svgIcon]="button.icon"
+          >
+          </mat-icon>
+        </app-button>
+      </a>
     </nav>
 
     <div class="navigation-bar__divider"></div>

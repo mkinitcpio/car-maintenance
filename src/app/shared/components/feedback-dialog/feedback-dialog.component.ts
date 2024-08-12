@@ -19,7 +19,8 @@ import { FeedbackRepository } from '@core/repositories/feedback.repository';
 export class FeedbackDialogComponent implements OnInit {
 
   public feedbackForm = new FormGroup({
-    text: this.fb.control(null),
+    name: this.fb.control("Some name"),
+    message: this.fb.control(null),
     email: this.fb.control(null),
     type: this.fb.control(this.data.type || FeedbackTypeEnum.Feature),
   });

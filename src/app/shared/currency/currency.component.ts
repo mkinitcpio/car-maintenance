@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { CurrencyEnum } from '../components/settings/currency.enum';
 import { LocaleEnum } from '../components/settings/locale-enum';
 import { SettingsService } from '../components/settings/settings.service';
@@ -16,24 +16,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
+  
+  size = input<CurrencySizeEnum>(CurrencySizeEnum.Medium);
+  value = input<number>();
+  locale = input<LocaleEnum>();
+  currency = input<CurrencyEnum>();
+  renderAs = input<CurrencyRenderEnum>(CurrencyRenderEnum.Svg);
+  ignoreFontColor = input<boolean>(false);
 
-  @Input()
-  value: number;
-
-  @Input()
-  currency: CurrencyEnum;
-
-  @Input()
-  locale: LocaleEnum;
-
-  @Input()
-  renderAs: CurrencyRenderEnum = CurrencyRenderEnum.Svg;
-
-  @Input()
-  ignoreFontColor = false;
-
-  @Input()
-  size: CurrencySizeEnum = CurrencySizeEnum.Medium;
+  httpClient = inject(HttpClient);
+  domSanitizer = inject(DomSanitizer);
+  settingsService = inject(SettingsService);
+  electronService = inject(ElectronService);
 
   public LocaleEnum = LocaleEnum;
   public CurrencyEnum = CurrencyEnum;
@@ -41,16 +35,13 @@ export class CurrencyComponent implements OnInit {
   public CurrencyRenderEnum = CurrencyRenderEnum;
   public currencyBase64SafeUrl: SafeUrl;
 
-  constructor(
-    public settingsService: SettingsService,
-    public domSanitizer: DomSanitizer,
-    public electronService: ElectronService,
-    public httpClient: HttpClient,
-  ) { }
+  constructor() {
+
+  }
 
   public ngOnInit(): void {
-    if(this.renderAs === this.CurrencyRenderEnum.Image) {
-      const currency = this.currency.toLowerCase();
+    if(this.renderAs() === this.CurrencyRenderEnum.Image) {
+      const currency = this.currency().toLowerCase();
       this.getBase64CurrencySafeUrl(currency).subscribe(safeUrl => this.currencyBase64SafeUrl = safeUrl);
     }
   }

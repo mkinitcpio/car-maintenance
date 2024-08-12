@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { PageNotFoundComponent, RecordsTableModule } from './components/';
+import { PageNotFoundComponent } from './components/';
 import { WebviewDirective } from './directives/';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../core/material.module';
 
 import { DialogManagerService } from './services/dialog-manager.service';
 import { UtilsService } from './services/utils.service';
-import { PrintService } from './services/print.service';
 import { CreateRecordModule } from './components/create-record/create-record.module';
 import { CreateDialogModule } from './components/create-dialog/create-dialog.module';
 import { CreateCarDialogModule } from './components/create-car-dialog/create-car-dialog.module';
@@ -24,6 +23,7 @@ import { ColorSelectorModule } from './components/color-selector/color-selector.
 import { AccountDialogModule } from './components/account-dialog/account-dialog.module';
 import { FeedbackDialogModule } from './components/feedback-dialog/feedback-dialog.module';
 import { CurrencyDialogModule } from './components/currency-dialog/currency-dialog.module';
+import { MoveDialogModule } from './components/move-dialog/move-dialog.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,6 @@ import { CurrencyDialogModule } from './components/currency-dialog/currency-dial
   ],
   providers: [
     DialogManagerService,
-    PrintService,
     UtilsService,
   ],
   imports: [
@@ -52,13 +51,13 @@ import { CurrencyDialogModule } from './components/currency-dialog/currency-dial
     AccountDialogModule,
     FeedbackDialogModule,
     CurrencyDialogModule,
+    MoveDialogModule,
   ],
   exports: [
     TranslateModule,
     WebviewDirective,
     FormsModule,
     MaterialModule,
-    RecordsTableModule,
     SettingsModule,
   ],
 })

@@ -1,4 +1,4 @@
-export const currencyNames = [
+export const currencyNames: string[] = [
   'pound',
   'euro',
   'ruble',
@@ -7,4 +7,5 @@ export const currencyNames = [
   'yen',
   'rupee',
   'lira',
+  'tenge'
 ];

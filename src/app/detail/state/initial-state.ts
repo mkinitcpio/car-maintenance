@@ -21,5 +21,10 @@ export const initialState: FeatureState<Array<Record>> = {
     value: null,
     error: null,
     status: Status.Init,
+  },
+  moveEntity: {
+    value: null,
+    error: null,
+    status: Status.Init,
   }
 };

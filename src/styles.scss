@@ -12,81 +12,39 @@ html, body {
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '/src/colors';
 @import '/src/animations';
-@import './platform-styles';
 @import '/src/fonts';
+@import './styles/';
 
-
-.mat-dialog-container {
-  background: transparent;
+:root {
+  --mat-select-enabled-trigger-text-color: #{$font-color-primary};
+  --mat-select-trigger-text-font: #{$font-system};
+  --mat-select-trigger-text-tracking: 0;
+  --mat-select-trigger-text-size: 14px;
+  --mat-option-label-text-color: #{$font-color-primary};
+  --mat-select-panel-background-color: #{$background-secondary};
+  --mat-option-label-text-font: system-ui;
+  --mat-option-label-text-size: 14px;
+  --mat-option-selected-state-label-text-color: #{$color-primary};
+  --mat-option-selected-state-layer-color: #{$background-button-hover};
+  --mat-option-label-text-tracking: 0;
 }
 
-.dialog {
-  &-settings,
-  &-notes {
-    .mat-dialog-container {
-      padding: 0;
+html {
+  --mdc-snackbar-container-shape: 12px;
+  --mat-snack-bar-button-color: #{$color-primary};
+  --mdc-snackbar-supporting-text-font: #{$font-system};
+}
 
-      border-radius: 8px;
-      overflow: hidden;
-    }
-  }
-
-  &-custom,
-  &-settings,
-  &-car,
-  &-account,
-  &-notes,
-  &-feedback,
-  &-currency,
-  &-delete {
-    .mat-dialog-container {
-      padding: 0;
-      border-radius: 24px;
-    }
-  }
-
-  &-settings {
-    max-height: 80%;
-
-    .mat-dialog-container {
-      height: auto;
-    }
-  }
-
-  &-car,
-  &-notes {
-    max-height: 80%;
-
-    .mat-dialog-container {
-      height: auto;
-    }
-  }
-
-  &-print {
-    height: 600px;
-
-    .mat-dialog-container {
-      border-radius: 24px;
-      background-color: $background-primary;
-    }
+.mdc-snackbar {
+  .mdc-snackbar__label {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    user-select: none;
   }
 }
 
-.mat-tooltip {
-  font-family: $font-system;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 1.25;
-  color: $tooltip-color;
-  border: $menu-border;
-  background: $tooltip-background;
-  border-radius: 12px !important;
-  white-space: pre-line;
-  padding: 12px !important;
-}
-
-.mat-tooltip--long-text {
-  word-break: break-all;
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  border: 1.5px solid $snackbar-border-color;
 }
 
 .mat-select-value-text,
@@ -98,80 +56,40 @@ html, body {
   color: $font-color-primary;
 }
 
-.menu-item.mat-menu-item {
-  display: flex;
-  align-items: center;
-
-  padding: 0 8px;
-
-  font-family: $font-system;
-  color: $font-color-primary;
-  font-size: 14px !important;
-  height: 36px;
-  line-height: 36px;
-  border-radius: 8px;
-
- .mat-icon {
-   margin-right: 8px;
-   color: $color-button-icon !important;
-   font-size: 20px;
-   height: 20px;
-   width: 20px;
-  }
-
-  &.menu-item--delete {
-    color: $color-dangerous !important;
-
-    .mat-icon {
-      color: $color-dangerous !important;
-    }
+.mat-menu-content {
+  &__header {
+    font-size: 13px;
+    font-family: $font-system;
+    color: $font-color-primary;
+    padding: 2px 0 8px 8px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    border-bottom: 1.5px solid $color-border;
+    user-select: none;
   }
 }
 
-.menu-item.mat-menu-item:hover {
-  background: $background-button-hover !important;
 
-  .mat-icon {
-    animation: shake 0.5s ease-in both;
-    backface-visibility: hidden;
-    perspective: 1000px;
-
-    &.mat-item__icon--add {
-      animation: punch 0.5s ease-in;
-    }
-
-    &.mat-item__icon--rotate {
-      animation: rotation 0.5s ease-in;
-    }
-
-    &.mat-item__icon--delete {
-      animation: squeeze 0.5s ease-in;
-    }
-
-    &.mat-item__icon--add-car {
-      animation: movement 0.5s ease-in;
-    }
-  }
-}
-
-.mat-menu-panel {
+.mat-mdc-menu-panel {
   min-width: initial !important;
-  border-radius: 12px !important;
+  border-radius: 20px !important;
   background: $background-primary;
-  border: 1.5px solid $color-border;
+  // border: $menu-border;
   color: $font-color-primary;
+  margin-top: 4px;
 
   .cdk-program-focused { 
     background-color: transparent!important;
   }
 
-  .mat-menu-content {
+  .mat-mdc-menu-content {
     padding: 8px !important;
+    min-width: 128px;
   }
 
   .mat-menu__divider {
-    height: 1px;
-    margin: 4px 8px;
+    height: 1.5px;
+    margin: 8px 10px;
     background: $color-border;
   }
 }
@@ -272,7 +190,7 @@ body.no-animations {
 .mat-select {
     padding: 12px;
     border-radius: 12px;
-    border: 1.5px solid $color-border;
+    border: 2px solid $color-border;
     box-sizing: border-box;
     font-size: 14px;
     background-color: $background-secondary;
@@ -288,7 +206,7 @@ body.no-animations {
     &__expand-icon {
       position: absolute;
       top: 50%;
-      transform: translateY(-46%);
+      transform: translate(58%, -50%);
       right: 8px;
       color: $select-expand-icon-color;
       pointer-events: none;
@@ -379,7 +297,7 @@ body.no-animations {
 .mat-form-field {
   font-size: 14px;
   .mat-input-element {
-    border: 1.5px solid $color-border;
+    border: 2px solid $color-border;
     border-radius: 12px;
     padding: 12px;
     background: $background-secondary;
@@ -413,7 +331,7 @@ body.no-animations {
 }
 
 :focus-visible {
-  outline: 1px solid $color-primary;
+  outline: none;
 }
 
 //Calendar
@@ -471,4 +389,16 @@ body.no-animations {
 
 .mat-calendar-controls {
   margin: 4px 0 12px !important;
+}
+
+.cdk-overlay-pane .mat-mdc-select-panel {
+  @include mixins.scrollable();
+}
+
+.primary-text-color {
+  color: $font-color-primary;
+}
+
+.cdk-global-scrollblock {
+  overflow-y: hidden;
 }

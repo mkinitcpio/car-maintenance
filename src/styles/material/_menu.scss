@@ -1,0 +1,86 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+:root {
+  --mat-menu-item-label-text-size: 14px;
+  --mat-menu-item-label-text-font: #{$font-system};
+  --mat-menu-container-color: #{$background-primary};
+  --mat-menu-item-label-text-tracking: normal;
+  --mat-menu-item-label-text-weight: 400;
+  --mat-menu-item-hover-state-layer-color: #{$background-button-hover};
+  --mat-menu-item-with-icon-leading-spacing: 12px;
+  --mat-menu-item-with-icon-trailing-spacing: 12px;
+}
+
+.menu-item.mat-mdc-menu-item {
+  display: flex;
+  align-items: center;
+
+  padding: 0 10px;
+
+  font-family: $font-system;
+  color: $font-color-primary;
+  font-size: 14px !important;
+  min-height: 38px;
+  line-height: 38px;
+  border-radius: 12px;
+
+  &.mat-item--delete:hover {
+    background: #c7162b12 !important;
+  }
+
+ .mat-icon {
+   margin-right: 6px;
+   color: $color-button-icon !important;
+   width: 20px;
+  }
+
+  &.menu-item--delete {
+    color: $color-dangerous !important;
+
+    .mat-icon {
+      color: $color-dangerous !important;
+    }
+  }
+
+  &.menu-item--column-selector {
+    .mat-mdc-menu-item-text {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+}
+
+.menu-item.mat-mdc-menu-item:hover {
+  background: $background-button-hover !important;
+
+  .mat-icon {
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    &.mat-item__icon--add {
+      animation: punch 0.5s ease-in;
+    }
+
+    &.mat-item__icon--edit {
+      animation: shake 0.30s ease-in;
+    }
+
+    &.mat-item__icon--rotate {
+      animation: rotation 0.5s ease-in;
+    }
+
+    &.mat-item__icon--delete {
+      animation: squeeze 0.5s ease-in;
+    }
+
+    &.mat-item__icon--move {
+      animation: squeeze-horizontal 0.5s ease-in;
+    }
+
+    &.mat-item__icon--add-car {
+      animation: movement 0.5s ease-in;
+    }
+  }
+}

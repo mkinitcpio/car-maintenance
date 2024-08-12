@@ -1,0 +1,15 @@
+<div class="stack-item-list">
+  <ng-container *ngFor="let item of items; let i = index">
+    <div class="stack-item-list__item" *ngIf="i < maxCount">
+      <mat-icon class="stack-item-list__illustration" [svgIcon]="'illustrations:' + item.icon"></mat-icon>
+    </div>
+  </ng-container>
+  <div class="stack-item-list__show-more-button"
+      matRipple
+      *ngIf="items.length > maxCount"
+      [matTooltip]="'Click to see all parts' | translate"
+      [matTooltipPosition]="'above'"
+      (click)="onShowMore()">
+    <div class="stack-item-list__show-more-button-icon">+{{items.length - maxCount}}</div>
+  </div>
+</div>

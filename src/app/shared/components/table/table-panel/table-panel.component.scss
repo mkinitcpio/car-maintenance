@@ -1,0 +1,25 @@
+@import '/src/colors';
+@import '/src/fonts';
+
+.table-panel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  font-family: $font-system;
+
+  &__expander {
+    width: 100%;
+  }
+
+  &__selection {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: #4b4848;
+  }
+
+  &__selection-delete {
+    color: $color-dangerous;
+  }
+}

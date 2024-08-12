@@ -12,7 +12,7 @@ export class LocalizedDatePipe implements PipeTransform {
   }
 
   transform(value: number, pattern = 'mediumDate'): any {
-    const lang = this.settingsService.settings.language === 'ru' ? 'ru' : 'en_US';
+    const lang = this.settingsService.settings.language === 'en' ? 'en_US' : 'ru';
     const datePipe: DatePipe = new DatePipe(lang);
 
     return datePipe.transform(value, pattern);

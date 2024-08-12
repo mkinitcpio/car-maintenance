@@ -23,7 +23,7 @@
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.START_PAGE' | translate" icon="meeting_room">
           <div class="settings__item-field settings__item-field--disable">
             <mat-form-field class="settings__item-field settings__item-field--select">
-              <mat-select [value]="settingsService.settings.startPage" (valueChange)="onStartPageChanged($event)">
+              <mat-select hideSingleSelectionIndicator="true" panelClass="cm-select" [value]="settingsService.settings.startPage" (valueChange)="onStartPageChanged($event)">
                 <mat-option *ngFor="let page of startPageOptions" [value]="page.value">
                   {{page.name | translate}}
                 </mat-option>
@@ -50,7 +50,7 @@
       <content-container [title]="'PAGES.SETTINGS.SECTIONS.LANG' | translate">
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.LANG' | translate" icon="language">
           <mat-form-field class="settings__item-field settings__item-field--select">
-            <mat-select [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
+            <mat-select hideSingleSelectionIndicator="true" panelClass="cm-select" [value]="settingsService.settings.language" (valueChange)="onSelectLanguage($event)">
               <mat-option *ngFor="let language of languageOptions" [value]="language.value">
                 {{ language.name }}
               </mat-option>
@@ -63,7 +63,7 @@
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.REGION' | translate" icon="text_format">
           <mat-form-field class="settings__item-field settings__item-field--select">
-            <mat-select [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
+            <mat-select hideSingleSelectionIndicator="true" panelClass="cm-select" [value]="settingsService.settings.region" (valueChange)="onSelectRegion($event)">
               <mat-option *ngFor="let region of regionOptions" [value]="region.value">
                 {{ region.name }}
               </mat-option>
@@ -91,7 +91,7 @@
 
         <app-setting [label]="'PAGES.SETTINGS.FIELDS.CURRENCY' | translate" icon="attach_money">
           <mat-form-field class="settings__item-field settings__item-field--currency">
-            <mat-select [value]="settingsService.settings.units.currency" (valueChange)="onSelectCurrency($event)">
+            <mat-select hideSingleSelectionIndicator="true" panelClass="cm-select" [value]="settingsService.settings.units.currency" (valueChange)="onSelectCurrency($event)">
               <mat-select-trigger class="settings__currency-preview">
                 <mat-icon class="settings__currency-icon" [svgIcon]="'currencies:' + getCurrentCurrency().icon"></mat-icon>
                 <span class="settings__currency-name">{{getCurrentCurrency().name | translate}}</span>
