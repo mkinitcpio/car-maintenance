@@ -25,11 +25,6 @@
   }
 }
 
-
-button {
-  background: none;
-}
-
 .button {
   height: 42px;
   width: 100%;
@@ -38,15 +33,15 @@ button {
   font-weight: normal;
   color: $font-color-primary;
   border-radius: 12px;
-}
 
-.button__create {
-  background-color: $color-primary;
-  color: #fff;
-}
+  &.button__create {
+    background-color: $color-primary;
+    color: #fff;
+  }
 
-.button__cancel {
-  &:hover {
-    background: $background-button-hover;
+  &.button__cancel {
+    &:hover {
+      background: $background-button-hover;
+    }
   }
 }

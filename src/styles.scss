@@ -398,3 +398,7 @@ body.no-animations {
 .primary-text-color {
   color: $font-color-primary;
 }
+
+.cdk-global-scrollblock {
+  overflow-y: hidden;
+}
