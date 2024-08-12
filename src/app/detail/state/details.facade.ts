@@ -33,8 +33,8 @@ export class DetailsFacade {
     this.store.dispatch(actions.createRecord({ record }));
   }
 
-  public deleteRecord(id: string): void {
-    this.store.dispatch(actions.deleteRecord({ id }));
+  public deleteRecord(ids: string[]): void {
+    this.store.dispatch(actions.deleteRecord({ ids }));
   }
 
   public editRecord(record: Record): void {

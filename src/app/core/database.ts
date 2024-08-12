@@ -138,9 +138,9 @@ export class DataBaseService {
     this.writeToDataBase();
   }
 
-  public deleteRecord(id: string): void {
+  public deleteRecord(records: string[]): void {
     const db = this.data;
-    db.records = db.records.filter(record => record.id !== id);
+    db.records = db.records.filter(record => !records.includes(record.id));
 
     this.writeToDataBase();
   }

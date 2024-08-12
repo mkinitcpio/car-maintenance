@@ -81,14 +81,14 @@ export class DialogManagerService {
       .afterClosed();
   }
 
-  public openDeleteCategoryDialog(categoryName: string): Observable<boolean> {
+  public openDeleteCategoryDialog(params: { name }): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "356px",
         panelClass: "dialog-delete",
         data: {
-          text: "DIALOG.DELETE.CATEGORY",
-          name: categoryName,
+          text: "DIALOG.DELETE.TEXT",
+          params,
         },
         autoFocus: false,
       })
@@ -96,14 +96,14 @@ export class DialogManagerService {
       .pipe<boolean>(filter<boolean>(Boolean));
   }
 
-  public openDeleteRecordDialog(categoryName: string): Observable<boolean> {
+  public openDeleteRecordDialog(params: { name }): Observable<boolean> {
     return this.dialog
       .open(DeleteDialogComponent, {
         width: "380px",
         panelClass: "dialog-delete",
         data: {
-          text: "DIALOG.DELETE.RECORD",
-          name: categoryName,
+          text: "DIALOG.DELETE.TEXT",
+          params,
         },
       })
       .afterClosed()

@@ -34,7 +34,7 @@ export class TableComponent<T extends RowData> {
   add = output<void>();
   edit = output<string>();
   move = output<string[]>();
-  delete = output<T>();
+  delete = output<string[]>();
   exportToCSV = output<string[][]>();
   exportToPDF = output<void>();
   columnVisibilityChange = output<string[]>();
@@ -77,8 +77,12 @@ export class TableComponent<T extends RowData> {
     this.edit.emit(id);
   }
 
-  public onDelete(row: T): void {
-    this.delete.emit(row);
+  public onDelete(row?: T): void {
+    const selectedRows  = this.selectedRows.hasValue()
+      ? this.selectedRows.selected
+      : [row.id];
+
+    this.delete.emit(selectedRows);
   }
 
   public onMove(): void {

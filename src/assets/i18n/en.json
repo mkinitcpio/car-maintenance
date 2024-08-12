@@ -152,11 +152,12 @@
     },
     "DELETE": {
       "TITLE": "Confirm Delete",
-      "TEXT": "Do you really want to delete {{item}}? This process cannot be undone.",
-      "CATEGORY": "Do you really want to delete this group? This process cannot be undone.",
-      "RECORD": "Do you really want to delete this record? This process cannot be undone.",
       "GROUPS": "groups",
-      "RECORDS": "records"
+      "TEXT": "Do you really want to delete <b class=\"primary-text-color\">{{name}}</b>?<br>This process cannot be undone.",
+      "DECLESIONS": {
+        "RECORDS": ["record", "records"],
+        "GROUPS": "group"
+      }
     },
     "CATEGORY": "Group",
     "CAR": "Car",

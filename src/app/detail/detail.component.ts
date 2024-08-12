@@ -153,11 +153,16 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public onDelete(record: Record): void {
-    this.dialogManagerService
-      .openDeleteRecordDialog(record.name)
+  public onDelete(rowIds: string[]): void {
+    this.utilsService.getDeclensionWord("DIALOG.DELETE.DECLESIONS.RECORDS", rowIds.length)
+      .pipe(
+        take(1),
+        switchMap((translation) => {
+          return this.dialogManagerService.openDeleteRecordDialog({ name: `${rowIds.length} ${translation}` });
+        })
+      )
       .subscribe(() => {
-        this.detailsFacade.deleteRecord(record.id);
+        this.detailsFacade.deleteRecord(rowIds);
       });
   }
 

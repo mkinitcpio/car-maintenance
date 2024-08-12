@@ -32,9 +32,9 @@ export class DetailsEffects {
   deleteRecord$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType(DetailsActions.deleteRecord),
-      switchMap(({ id }) => {
-        this.database.deleteRecord(id);
-        return of( DetailsActions.deleteRecordSuccess({ id }));
+      switchMap(({ ids }) => {
+        this.database.deleteRecord(ids);
+        return of( DetailsActions.deleteRecordSuccess({ ids }));
       }),
     );
   });

@@ -10,7 +10,7 @@
 
   <main class="delete-dialog__content">
     <h2 class="delete-dialog__title">{{"DIALOG.DELETE.TITLE" | translate}}</h2>
-    <p class="delete-dialog__text">{{data.text | translate}}</p>
+    <p class="delete-dialog__text" [innerHTML]="data.text | translate:data.params"></p>
   </main>
 
   <footer class="delete-dialog__footer">

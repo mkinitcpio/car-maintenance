@@ -46,11 +46,11 @@ const appReducer = createReducer(
       error: null,
     }
   })),
-  on(deleteRecordSuccess, (state, { id }) => ({
+  on(deleteRecordSuccess, (state, { ids }) => ({
     ...state,
     deleteEntity: {
       status: Status.Success,
-      value: id,
+      value: ids,
       error: null,
     }
   })),

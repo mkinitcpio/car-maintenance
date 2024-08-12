@@ -394,3 +394,7 @@ body.no-animations {
 .cdk-overlay-pane .mat-mdc-select-panel {
   @include mixins.scrollable();
 }
+
+.primary-text-color {
+  color: $font-color-primary;
+}

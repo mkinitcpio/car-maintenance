@@ -9,7 +9,7 @@ import { DetailsFacade } from '../detail/state/details.facade';
 import { DialogManagerService } from '../shared/services/dialog-manager.service';
 import { NavigationFacade } from '../navigation/state/navigation.facade';
 import { listen } from '../core/decorators';
-import { Observable, combineLatest, delay, filter, merge, take, timer } from 'rxjs';
+import { Observable, combineLatest, filter, merge, switchMap, take } from 'rxjs';
 import { AutoCloseable } from '../core/auto-closeable';
 import { UtilsService } from '@shared/services/utils.service';
 import { SettingsService } from '@shared/components/settings/settings.service';
@@ -81,7 +81,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private utilsSerivce: UtilsService,
+    private utilsService: UtilsService,
     private detailsFacade: DetailsFacade,
     public settingsService: SettingsService,
     private navigationFacade: NavigationFacade,
@@ -97,7 +97,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       this.categoryDetails = categoryDetails;
       this.expandPanelToggles = Array.from({length: this.categoryDetails.tables.length}, () => false);
 
-      this.totalCost = this.categoryDetails.tables.map(table => this.utilsSerivce.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
+      this.totalCost = this.categoryDetails.tables.map(table => this.utilsService.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
       this.tableConfig = {...this.tableConfig};
       this.tableConfig.actions.selectable = false;
       this.tableConfig.columnSchemas = [{
@@ -208,10 +208,15 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   }
 
   public onDelete(record: Record): void {
-    this.dialogManagerService
-      .openDeleteRecordDialog(record.name)
+    this.utilsService.getDeclensionWord("DIALOG.DELETE.DECLESIONS.RECORDS", 1)
+      .pipe(
+        take(1),
+        switchMap((translation) => {
+          return this.dialogManagerService.openDeleteRecordDialog({ name: `${1} ${translation}` });
+        })
+      )
       .subscribe(() => {
-        this.detailsFacade.deleteRecord(record.id);
+        this.detailsFacade.deleteRecord([record.id]);
       });
   }
 
@@ -220,7 +225,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .map(table => ({
         title: table.name,
         records: table.data,
-        totalCost: this.utilsSerivce.getResultCost(table.data),
+        totalCost: this.utilsService.getResultCost(table.data),
       }));
 
     this.dialogManagerService.openPrintDialog({
