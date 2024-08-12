@@ -1,17 +1,14 @@
-import { Inject, OnInit } from '@angular/core';
+import { inject, Inject, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CreateRecordComponent } from '../create-record/create-record.component';
 import { SettingsService } from '../settings/settings.service';
+import { AppConfig, APP_CONFIG } from 'app/app.config';
 
 interface ReleaseNote {
-  dashboard: string;
-  welcomePage: string;
-  settings: string;
-  progress: {
-    [key: number]: string;
-  };
-}
+  title: string;
+  news: string[];
+};
 
 @Component({
   selector: 'app-release-notes',
@@ -19,16 +16,20 @@ interface ReleaseNote {
   styleUrls: ['./release-notes.component.scss']
 })
 export class ReleaseNotesComponent implements OnInit {
-  public releaseNote: ReleaseNote;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public releaseNotes: any,
-    public dialogRef: MatDialogRef<CreateRecordComponent>,
-    public settingsService: SettingsService,
-  ) {
+  public appConfig = inject<AppConfig>(APP_CONFIG);
+  public dialogRef = inject(MatDialogRef<CreateRecordComponent>);
+
+  private settingsService = inject(SettingsService);
+  private releaseNotesData = inject<{[key: string]: ReleaseNote[]}>(MAT_DIALOG_DATA);
+
+  public releaseNotes: ReleaseNote[];
+
+  constructor() {
+
   }
 
   ngOnInit(): void {
-    this.releaseNote = this.releaseNotes[this.settingsService.settings.language === 'it' ? 'en' : this.settingsService.settings.language];
+    this.releaseNotes = this.releaseNotesData[this.settingsService.settings.language];
   }
 }

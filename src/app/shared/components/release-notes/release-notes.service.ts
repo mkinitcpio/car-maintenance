@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ElectronService } from '../../../core/services';
 import { DialogManagerService } from '../../../shared/services/dialog-manager.service';
 import { ReleaseNotes } from './interface';
@@ -12,11 +12,13 @@ const releaseNotes = require('../../../release-notes.json');
 export class ReleaseNotesService {
   public releaseNotes: ReleaseNotes = null;
 
-  constructor(
-    private electronService: ElectronService,
-    private dialogManagerService: DialogManagerService,
-    @Inject(APP_CONFIG) private appConfig: AppConfig,
-  ) {}
+  private electronService = inject(ElectronService);
+  private dialogManagerService = inject(DialogManagerService);
+  private appConfig = inject<AppConfig>(APP_CONFIG);
+
+  constructor() {
+
+  }
 
   public isFirstAppStartAfterUpdate(): boolean {
     this.releaseNotes = releaseNotes as ReleaseNotes;
