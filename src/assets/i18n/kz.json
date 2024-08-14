@@ -158,6 +158,9 @@
         "GROUPS": "Топты"
       }
     },
+    "LABELS": {
+      "TITLE": "Таңбалар"
+    },
     "CATEGORY": "Топтар",
     "CAR": "Автомобильдер",
     "COMMON": "Жалпы",
@@ -187,9 +190,13 @@
       "VEHICLE_ID": "Автомобиль идентификаторы",
       "ENGINE": "Қозғалтқыш",
       "EXPENSE": "Шығын",
+      "LABELS": "Таңбалар",
       "COMMENT": "Ескерту",
       "TEXT": "Мәтін",
       "TYPE": "Түрі"
+    },
+    "PLACEHOLDERS": {
+      "NEW_LABEL": "Жаңа таңба..."
     },
     "VALIDATIONS": {
       "NAME": "Атын енгізіңіз.",
@@ -208,6 +215,9 @@
     },
     "TOOLTIPS": {
       "CAR_PARTS": "Сіз қызмет көрсететін бөлшектер"
+    },
+    "HINTS": {
+      "LABELS": "Мәтінді жазып, Enter басыңыз"
     }
   },
   "ILLUSTRATIONS": {
@@ -228,7 +238,8 @@
     "DATE": "Күні",
     "EXPENSE": "Шығын",
     "COMMENT": "Ескерту",
-    "CONSUMABLES": "Тұтынушылар"
+    "CONSUMABLES": "Тұтынушылар",
+    "LABELS": "Таңбалар"
   },
   "FEEDBACK_TYPES": {
     "BUG": "Қате",
@@ -272,5 +283,8 @@
       "TEXT": "Экспорт аяқталды",
       "ACTION": "Ашу"
     }
+  },
+  "STACK_ITEM_LIST": {
+    "SHOW_ALL": "Бәрін көрсету"
   }
 }

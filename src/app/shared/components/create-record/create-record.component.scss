@@ -2,11 +2,7 @@
 @import '/src/fonts';
 
 .create-record {
-  .mat-form-field {
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
-  }
+  height: 100%;
 
   &__note {
     min-height: 128px;
@@ -17,6 +13,10 @@
      .mat-mdc-form-field-icon-suffix {
       padding: 0 4px !important;
     }
+  }
+
+  .create-record__chip-remove-button {
+    color: $color-button-icon;
   }
 
   .date-picker {

@@ -23,6 +23,7 @@ import { AccountDialogComponent } from '@shared/components/account-dialog/accoun
 import { FeedbackDialogComponent } from '@shared/components/feedback-dialog/feedback-dialog.component';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 import { MoveDialogComponent } from '@shared/components/move-dialog/move-dialog.component';
+import { LabelsDialogComponent } from '@shared/components/labels-dialog/labels-dialog.component';
 import { MoveDialogData } from '@shared/components/move-dialog/interfaces';
 import { SaveDialogData } from './abstract-export.service';
 
@@ -62,8 +63,9 @@ export class DialogManagerService {
     return this.dialog
       .open(CreateRecordComponent, {
         width: "380px",
-        panelClass: "dialog-custom",
+        panelClass: "dialog-records",
         data,
+        disableClose: true,
       })
       .afterClosed()
       .pipe<Record>(filter<Record>(Boolean));
@@ -171,6 +173,18 @@ export class DialogManagerService {
         width: "340px",
         data,
         panelClass: "dialog-feedback",
+        autoFocus: false,
+      })
+      .afterClosed();
+  }
+
+  public openLabelsDialog(data: string[]): Observable<void> {
+    return this.dialog
+      .open(LabelsDialogComponent, {
+        disableClose: true,
+        width: "340px",
+        data,
+        panelClass: "dialog-labels",
         autoFocus: false,
       })
       .afterClosed();

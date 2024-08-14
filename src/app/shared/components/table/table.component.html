@@ -65,6 +65,7 @@
                   <cm-cell-date *ngSwitchCase="'date'" [value]="row[schema.key]"></cm-cell-date>
                   <cm-cell-cost *ngSwitchCase="'cost'" [value]="row[schema.key]"></cm-cell-cost>
                   <cm-cell-mileage *ngSwitchCase="'mileage'" [value]="row[schema.key]"></cm-cell-mileage>
+                  <cm-cell-labels *ngSwitchCase="'labels'" [value]="row[schema.key]"></cm-cell-labels>
                   <cm-cell-text *ngSwitchDefault [value]="row[schema.key]"></cm-cell-text>
                 </td>
               }

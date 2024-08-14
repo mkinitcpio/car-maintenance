@@ -14,7 +14,7 @@
     cursor: pointer;
     margin-left: -4px;
     border-radius: 50%;
-    background: $stack-icon-background;
+    background: $color-border;
     height: 28px;
     display: flex;
     width: 28px;
@@ -22,13 +22,23 @@
     justify-content: center;
     border: 2px solid $background-primary;
     line-height: 1;
+    transition: scale 0.15s ease-in-out;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 500;
   }
 
   &__illustration {
     width: 16px;
     height: 16px;
     font-size: 16px;
-    color: $stack-icon-color;
+    color: $color-button-icon;
   }
 
   &__show-more-button {
@@ -43,7 +53,7 @@
 
     border-radius: 50%;
     border: 2px solid $background-primary;
-    background-color: $stack-icon-background;
+    background-color: $color-border;
     font-weight: bold;
     color: $font-color-primary;
     cursor: pointer;

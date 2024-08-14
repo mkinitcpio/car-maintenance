@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { Component, computed, inject, Inject, model, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
@@ -11,6 +11,9 @@ import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsService } from '../settings/settings.service';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { DataBaseService } from '@core/database';
 
 @Component({
   selector: 'app-create-dialog',
@@ -20,6 +23,17 @@ import { SettingsService } from '../settings/settings.service';
 export class CreateRecordComponent implements OnInit {
 
   public settingsService: SettingsService = inject(SettingsService);
+
+  public readonly allLabels: string[];
+
+  readonly currentLabel = model('');
+  readonly filteredLabels = computed(() => {
+    const currentLabel = this.currentLabel().toLowerCase();
+
+    return currentLabel
+      ? this.allLabels.filter(label => label.toLowerCase().includes(currentLabel))
+      : this.allLabels.slice();
+  });
 
   public recordForm = new FormGroup({
     id: this.fb.control(uuidv4()),
@@ -35,6 +49,7 @@ export class CreateRecordComponent implements OnInit {
       CustomValidators.numberValidator,
       CustomValidators.positiveNumberValidator,
     ]),
+    labels: this.fb.control([]),
   });
 
   constructor(
@@ -42,7 +57,10 @@ export class CreateRecordComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateRecordComponent>,
     private fb: FormBuilder,
     private translateService: TranslateService,
-  ) {}
+    database: DataBaseService,
+  ) {
+    this.allLabels = database.getLabels();
+  }
 
 
   ngOnInit(): void {
@@ -63,9 +81,40 @@ export class CreateRecordComponent implements OnInit {
   }
 
   public get title(): Observable<string> {
-    return combineLatest([
+    return combineLatest<[string, string]>([
       this.translateService.get(this.data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT"),
       this.translateService.get("DIALOG.RECORD"),
-    ]).pipe(map(([mode, dialogType]) => `${mode as string} ${dialogType as string}`));
+    ]).pipe(map(([mode, dialogType]) => `${mode} ${dialogType}`));
+  }
+
+  public removeLabel(index: number): void {
+    const labels = [...this.recordForm.get('labels').value];
+
+    if(index >= 0) {
+      labels.splice(index, 1);
+      this.recordForm.get('labels').patchValue(labels);
+    }
+  }
+
+  public addLabel(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    if (value) {
+      const labels = [...this.recordForm.get('labels').value];
+
+      labels.push(value);
+      this.recordForm.get('labels').patchValue(labels);
+      this.currentLabel.set('');
+      event.chipInput!.clear();
+    }
+  }
+
+  public selectLabel(event: MatAutocompleteSelectedEvent): void {
+    const labels = this.recordForm.get('labels').value;
+
+    labels.push(event.option.viewValue);
+    this.recordForm.get('labels').patchValue(labels);
+    this.currentLabel.set('');
+    event.option.deselect();
   }
 }

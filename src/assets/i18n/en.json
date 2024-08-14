@@ -159,6 +159,9 @@
         "GROUPS": "group"
       }
     },
+    "LABELS": {
+      "TITLE": "Tags"
+    },
     "CATEGORY": "Group",
     "CAR": "Car",
     "COMMON": "Common",
@@ -199,9 +202,13 @@
       "VEHICLE_ID": "License plate",
       "ENGINE": "Engine",
       "EXPENSE": "Expense",
+      "LABELS": "Tags",
       "COMMENT": "Comment",
       "TEXT": "Text",
       "TYPE": "Type"
+    },
+    "PLACEHOLDERS": {
+      "NEW_LABEL": "New tag..."
     },
     "ICON_GROUPS": {
       "CAR_PARTS": "Car parts",
@@ -209,6 +216,9 @@
     },
     "TOOLTIPS": {
       "CAR_PARTS": "Car parts that you will maintain"
+    },
+    "HINTS": {
+      "LABELS": "Type text and press Enter to create a new tag"
     }
   },
   "ILLUSTRATIONS": {
@@ -233,7 +243,8 @@
     "DATE": "Date",
     "EXPENSE": "Expense",
     "COMMENT": "Comment",
-    "CONSUMABLES": "Consumables"
+    "CONSUMABLES": "Consumables",
+    "LABELS": "Tags"
   },
   "CURRENCY": {
     "EURO": "Euro",
@@ -273,5 +284,8 @@
       "TEXT": "Export completed",
       "ACTION": "Open"
     }
+  },
+  "STACK_ITEM_LIST": {
+    "SHOW_ALL": "Show all"
   }
 }

@@ -1,0 +1,21 @@
+@use '/src/mixins' as mixins;
+
+@import '/src/colors';
+
+.mat-mdc-standard-chip {
+  --mdc-chip-label-text-color: #{$font-color-primary} !important;
+  --mdc-chip-elevated-container-color: #{$color-border} !important;
+  --mdc-chip-container-shape-radius: 10px;
+  --mdc-chip-label-text-font: #{$font-system} !important;
+  --mdc-chip-label-text-tracking: 0;
+}
+
+div.mat-mdc-autocomplete-panel.mdc-menu-surface--open {
+  border-radius: 12px !important;
+  margin: 8px 0;
+  padding: 8px;
+  background: $background-secondary;
+}
+.cdk-overlay-pane .mat-mdc-autocomplete-panel {
+  @include mixins.scrollable();
+}

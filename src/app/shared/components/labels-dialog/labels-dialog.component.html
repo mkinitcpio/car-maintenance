@@ -1,0 +1,11 @@
+<app-dialog class="labels"
+            [title]="'DIALOG.LABELS.TITLE'"
+            hideFooter="true"
+            (close)="dialogRef.close()"
+  >
+  <section class="labels__content" content>
+    @for (label of labels; track $index) {
+      <div class="labels__label">{{label}}</div>
+    }
+  </section>
+</app-dialog>

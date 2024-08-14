@@ -10,5 +10,10 @@
     width: 20px;
 
     color: $color-button-icon;
+    transition: scale 0.15s ease-in-out;
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 }

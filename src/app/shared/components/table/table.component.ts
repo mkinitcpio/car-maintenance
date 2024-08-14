@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, computed, effect, inject, input, output } from '@angular/core';
+import { Component, ViewEncapsulation, computed, effect, inject, input, output } from '@angular/core';
 import { RowData, TableConfig } from './interfaces';
 import { defaultTableConfig } from './default-table-config';
 import { MatCheckboxChange } from '@angular/material/checkbox';

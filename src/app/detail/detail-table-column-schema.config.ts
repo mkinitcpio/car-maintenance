@@ -19,15 +19,21 @@ export const columnSchemas: ColumnSchema[] = [{
   order: 3,
   visible: true,
 },{
+  key: 'labels',
+  name: 'RECORDS_TABLE.LABELS',
+  type: 'labels',
+  order: 5,
+  visible: true,
+},{
   key: 'date',
   name: 'RECORDS_TABLE.DATE',
   type: 'date',
-  order: 5,
+  order: 6,
   visible: true,
 },{
   key: 'notes',
   name: 'RECORDS_TABLE.COMMENT',
   type: 'note',
-  order: 6,
+  order: 7,
   visible: true,
 }];

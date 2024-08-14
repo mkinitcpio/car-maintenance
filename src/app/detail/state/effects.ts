@@ -12,9 +12,16 @@ export class DetailsEffects {
     return this.actions$.pipe(
       ofType(DetailsActions.getRecords),
       switchMap(({ id }) => {
-        const data = this.database.getRecords(id);
+        const records = this.database.getRecords(id).map((record) => {
+          record = {
+            ...record,
+            labels: record.labels || [],
+          };
 
-        return of(DetailsActions.getRecordsSuccess({ records: data }));
+          return record;
+        });
+
+        return of(DetailsActions.getRecordsSuccess({ records }));
       }),
     );
   });

@@ -158,6 +158,9 @@
         "GROUPS": "группу"
       }
     },
+    "LABELS": {
+      "TITLE": "Метки"
+    },
     "CATEGORY": "Группы",
     "CAR": "Автомобиля",
     "COMMON": "Общие",
@@ -187,9 +190,13 @@
       "VEHICLE_ID": "Идентификатор автомобиля",
       "ENGINE": "Двигатель",
       "EXPENSE": "Расход",
+      "LABELS": "Метки",
       "COMMENT": "Заметка",
       "TEXT": "Текст",
       "TYPE": "Тип"
+    },
+    "PLACEHOLDERS": {
+      "NEW_LABEL": "Новая метка..."
     },
     "VALIDATIONS": {
       "NAME": "Введите Имя.",
@@ -208,6 +215,9 @@
     },
     "TOOLTIPS": {
       "CAR_PARTS": "Запчасти, которые вы будете обслуживать"
+    },
+    "HINTS": {
+      "LABELS": "Введите текст и нажмите Enter, чтобы создать метку"
     }
   },
   "ILLUSTRATIONS": {
@@ -228,7 +238,8 @@
     "DATE": "Дата",
     "EXPENSE": "Расход",
     "COMMENT": "Заметка",
-    "CONSUMABLES": "Расходники"
+    "CONSUMABLES": "Расходники",
+    "LABELS": "Метки"
   },
   "FEEDBACK_TYPES": {
     "BUG": "Ошибка",
@@ -272,5 +283,8 @@
       "TEXT": "Экспорт завершён",
       "ACTION": "Открыть"
     }
+  },
+  "STACK_ITEM_LIST": {
+    "SHOW_ALL": "Показать все"
   }
 }

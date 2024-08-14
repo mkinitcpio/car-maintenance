@@ -6,4 +6,5 @@ export interface Record {
   cost: string;
   mileage: number;
   notes: string;
+  labels: string[];
 }

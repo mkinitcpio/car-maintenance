@@ -1,15 +1,32 @@
 <div class="stack-item-list">
-  <ng-container *ngFor="let item of items; let i = index">
-    <div class="stack-item-list__item" *ngIf="i < maxCount">
-      <mat-icon class="stack-item-list__illustration" [svgIcon]="'illustrations:' + item.icon"></mat-icon>
+  @for(item of items(); track $index; let i = $index) {
+    <div class="stack-item-list__item"
+         *ngIf="i < maxCount"
+         [matTooltip]="item.name"
+         matTooltipPosition="before"
+         matTooltipShowDelay="200"
+  >
+      @if (item.icon) {
+        <mat-icon class="stack-item-list__illustration" [svgIcon]="'illustrations:' + item.icon"></mat-icon>
+      } @else {
+        <span class="stack-item-list__text">
+          {{item.name[0]}}
+        </span>
+      }
     </div>
-  </ng-container>
-  <div class="stack-item-list__show-more-button"
-      matRipple
-      *ngIf="items.length > maxCount"
-      [matTooltip]="'Click to see all parts' | translate"
-      [matTooltipPosition]="'above'"
-      (click)="onShowMore()">
-    <div class="stack-item-list__show-more-button-icon">+{{items.length - maxCount}}</div>
-  </div>
+  }
+
+  @if(items().length > maxCount) {
+    <div class="stack-item-list__show-more-button"
+        matRipple
+        [matTooltip]="'STACK_ITEM_LIST.SHOW_ALL' | translate"
+        [matTooltipPosition]="'above'"
+        (click)="onShowMore($event)"
+    >
+      <div class="stack-item-list__show-more-button-icon">
+        +{{items().length - maxCount}}
+      </div>
+    </div>
+  }
+
 </div>

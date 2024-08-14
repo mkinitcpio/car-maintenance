@@ -1,19 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import { StackItem } from './interface';
+import { imports } from './stack-item-list.imports';
 
 @Component({
-  selector: 'stack-item-list',
+  standalone: true,
+  imports,
+  selector: 'cm-stack-item-list',
   templateUrl: './stack-item-list.component.html',
-  styleUrls: ['./stack-item-list.component.scss']
+  styleUrls: ['./stack-item-list.component.scss'],
 })
 export class StackItemListComponent {
 
-  @Input() items: Array<StackItem>;
+  items = input.required<StackItem[]>();
+  showMore = output<void>();
 
   public readonly maxCount = 3;
-  public showMore = true;
 
-  public onShowMore(): void {
+  public onShowMore(event: MouseEvent): void {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    this.showMore.emit();
   }
 }

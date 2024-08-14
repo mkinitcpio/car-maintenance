@@ -1,0 +1,7 @@
+<div [attr.data-csv]="value()"
+     class="cell-labels"
+>
+  <cm-stack-item-list [items]="stackItemList()"
+                      (showMore)="openLabelsDialog()">
+  </cm-stack-item-list>
+</div>

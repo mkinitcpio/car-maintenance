@@ -84,3 +84,17 @@ padding: 0 7px !important;
 .form-field__title-required {
   color: $color-dangerous;
 }
+
+.form-field__labels {
+  margin-bottom: 8px;
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-hint-wrapper {
+  padding: 0 9px;
+}
+
+.mat-mdc-form-field-hint {
+  margin-top: -3px;
+  margin-bottom: 8px;
+  color: $font-color-secondary;
+}

@@ -19,6 +19,7 @@ export class DataBaseService {
     records: [],
     cars: [],
     maintenances: [],
+    labels: [],
   };
 
   private fileReadConfig: {
@@ -33,6 +34,7 @@ export class DataBaseService {
     records: Record[],
     cars: CarCategory[],
     maintenances: Maintenance[],
+    labels: string[],
   };
 
   public databaseError$: Subject<void> = new Subject();
@@ -49,7 +51,7 @@ export class DataBaseService {
     return [...db.categories, ...db.cars ];
   }
 
-  public getRecords(parentId: string): Array<any> {
+  public getRecords(parentId: string): Array<Record> {
     const db = this.data;
     return db.records.filter((record) => record.parent === parentId);
   }
@@ -124,7 +126,12 @@ export class DataBaseService {
 
   public saveNewRecord(record: Record): void {
     const db = this.data;
+
     db.records.push(record);
+
+    if(record.labels.length) {
+      this.updateLabels(record.labels);
+    }
 
     this.writeToDataBase();
   }
@@ -154,7 +161,12 @@ export class DataBaseService {
 
   public editRecord(record: Record): void {
     const db = this.data;
+
     db.records = db.records.map(r => r.id === record.id ? record : r);
+
+    if(record.labels.length) {
+      this.updateLabels(record.labels);
+    }
 
     this.writeToDataBase();
   }
@@ -236,11 +248,25 @@ export class DataBaseService {
     this.electronService.fs.writeFileSync(path, JSON.stringify(this.initialDataBase), this.fileWriteConfig);
   }
 
+  public getLabels(): string[] {
+    return this.data.labels;
+  }
+
   private writeToDataBase(): void {
     this.electronService.fs.writeFile(this.settingsService.settings.databasePath, JSON.stringify(this.data), this.fileWriteConfig, () => {});
   }
 
   private writeToDataBaseAsync(): Observable<any> {
     return of(this.electronService.fs.promises.writeFile(this.settingsService.settings.databasePath, JSON.stringify(this.data)));
+  }
+
+  private updateLabels(labels: string[]): void {
+    if(this.data.labels?.length) {
+      this.data.labels = [
+        ...new Set([...labels, ...this.data.labels])
+      ];
+    } else {
+      this.data.labels = [...labels];
+    }
   }
 }
