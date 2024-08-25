@@ -15,8 +15,4 @@ export const regionOptions = [
     name: 'Казахстан',
     value: 'kz'
   },
-  {
-    name: 'Израиль',
-    value: 'il'
-  }
 ];
