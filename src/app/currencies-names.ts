@@ -7,5 +7,6 @@ export const currencyNames: string[] = [
   'yen',
   'rupee',
   'lira',
-  'tenge'
+  'tenge',
+  'shekel'
 ];

@@ -45,5 +45,10 @@ export const currencyOptions = [
     name: 'CURRENCY.TENGE',
     icon: 'tenge',
     value: CurrencyEnum.Tenge
+  },
+  {
+    name: 'CURRENCY.SHEKEL',
+    icon: 'shekel',
+    value: CurrencyEnum.Shekel
   }
 ];

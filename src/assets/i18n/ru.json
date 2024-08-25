@@ -254,7 +254,8 @@
     "YEN": "Йена / Юань",
     "RUPEE": "Рупия",
     "LIRA": "Лира",
-    "TENGE": "Тенге"
+    "TENGE": "Тенге",
+    "SHEKEL": "Новый Ше́кель"
   },
   "METRIC_SYSTEM": {
     "KILOMETERS": "Километры",
