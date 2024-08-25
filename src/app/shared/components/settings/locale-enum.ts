@@ -3,5 +3,4 @@ export enum LocaleEnum {
   Ru = 'ru',
   By = 'by',
   Kz = 'kz',
-  Il = 'il',
 }
