@@ -10,5 +10,5 @@ export const languageOptions = [
   {
     name: 'Қазақша',
     value: 'kz'
-  }
+  },
 ];
