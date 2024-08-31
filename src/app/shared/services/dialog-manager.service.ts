@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -188,5 +188,21 @@ export class DialogManagerService {
         autoFocus: false,
       })
       .afterClosed();
+  }
+
+  public openDefaultDialog<Data, Result>(
+    component: any,
+    data: Data,
+  ): Observable<Result> {
+    return this.dialog
+      .open(component, {
+        width: "380px",
+        panelClass: "default-dialog-panel",
+        data,
+        disableClose: true,
+        exitAnimationDuration: '0ms'
+      })
+      .afterClosed()
+      .pipe<Result>(filter<Result>(Boolean));
   }
 }

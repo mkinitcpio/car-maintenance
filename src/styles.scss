@@ -78,7 +78,7 @@ html {
   color: $font-color-primary;
   margin-top: 4px;
 
-  .cdk-program-focused { 
+  .cdk-program-focused {
     background-color: transparent!important;
   }
 
@@ -401,4 +401,11 @@ body.no-animations {
 
 .cdk-global-scrollblock {
   overflow-y: hidden;
+}
+
+.default-dialog-panel {
+  position: fixed !important;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
 }

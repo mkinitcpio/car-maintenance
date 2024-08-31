@@ -20,6 +20,8 @@ import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { GroupData, GroupTreeService } from "./categories-tree/group-tree.service";
 import { TranslateService } from "@ngx-translate/core";
+import {CreateCarDialogComponent} from '@shared/components/create-car-dialog/create-car-dialog.component';
+import {CreateDialogComponent} from '@shared/components/create-dialog/create-dialog.component';
 
 @Component({
   selector: "app-navigation",
@@ -129,7 +131,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     };
 
     this.dialogManagerService
-      .openCategoryDialog(data)
+      .openDefaultDialog<any, Category>(CreateDialogComponent, data)
       .subscribe((category: Category) => {
         this.navigationFacade.createNewCategory(category);
       });
@@ -141,7 +143,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     };
 
     this.dialogManagerService
-      .openCarDialog(data)
+      .openDefaultDialog<any, CarCategoryFormData>(CreateCarDialogComponent, data)
       .subscribe((carCategoryFormData: CarCategoryFormData) => {
         this.navigationFacade.addCarCategory(carCategoryFormData);
       });
@@ -171,7 +173,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       formData,
     };
 
-    this.dialogManagerService.openCategoryDialog(data)
+    this.dialogManagerService
+      .openDefaultDialog<any, Category>(CreateDialogComponent, data)
       .subscribe((category: Category | CarCategoryFormData) => {
         this.navigationFacade.editCategory(category);
       });
@@ -182,7 +185,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       take(1),
       switchMap((carCategory: any) => {
         const formData : CarCategoryFormData = {...carCategory.data, parts: carCategory.children};
-        return this.dialogManagerService.openCarDialog({ mode: FormModeEnum.Edit, formData });
+        return this.dialogManagerService.openDefaultDialog<any, CarCategoryFormData>(CreateCarDialogComponent, { mode: FormModeEnum.Edit, formData });
       })
     ).subscribe((data) => {
       this.navigationFacade.editCarCategory(data);

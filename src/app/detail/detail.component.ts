@@ -36,6 +36,7 @@ import { columnSchemas } from './detail-table-column-schema.config';
 import { UtilsService } from '@shared/services/utils.service';
 import { ColumnSchema } from '@shared/components/table/interfaces';
 import { TranslateService } from '@ngx-translate/core';
+import {CreateRecordComponent} from '@shared/components/create-record/create-record.component';
 
 const imports = [
   TableComponent,
@@ -54,7 +55,7 @@ const imports = [
   imports,
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
-  
+
   @listen({ value: true })
     details$ = this.detailsFacade.details$;
 
@@ -133,7 +134,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     };
 
     this.dialogManagerService
-      .openRecordDialog(data)
+      .openDefaultDialog<any, Record>(CreateRecordComponent, data)
       .subscribe((record: Record) => {
         this.detailsFacade.createNewRecord(record);
       });
@@ -147,7 +148,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     };
 
     this.dialogManagerService
-      .openRecordDialog(data)
+      .openDefaultDialog<any, Record>(CreateRecordComponent, data)
       .subscribe((record: Record) => {
         this.detailsFacade.editRecord(record);
       });

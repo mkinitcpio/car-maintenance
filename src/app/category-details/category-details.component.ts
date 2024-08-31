@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryTree, CategoryTypeEnum } from '../navigation/state/interface';
+import {Category, CategoryTree, CategoryTypeEnum} from '../navigation/state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { CategoryDetails } from './state/interface';
 import { Record } from '../detail/state/interface';
@@ -19,6 +19,8 @@ import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/grou
 import { defaultTableConfig } from '@shared/components/table/default-table-config';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import {CreateRecordComponent} from '@shared/components/create-record/create-record.component';
+import {CreateDialogComponent} from '@shared/components/create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-category-details',
@@ -174,7 +176,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     };
 
     this.dialogManagerService
-      .openCategoryDialog(data)
+      .openDefaultDialog<any, Category>(CreateDialogComponent, data)
       .subscribe((group) => {
         this.navigationFacade.createNewCategory(group);
       });
@@ -187,7 +189,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     };
 
     this.dialogManagerService
-      .openRecordDialog(data)
+      .openDefaultDialog<any, Record>(CreateRecordComponent, data)
       .subscribe((record) => {
         this.detailsFacade.createNewRecord(record);
       });
@@ -201,7 +203,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     };
 
     this.dialogManagerService
-      .openRecordDialog(data)
+      .openDefaultDialog<any, Record>(CreateRecordComponent, data)
       .subscribe((record: Record) => {
         this.detailsFacade.editRecord(record);
       });
