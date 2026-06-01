@@ -15,15 +15,17 @@
       </span>
     </div>
     <div *ngIf="!isSubGroup" class="categories-tree-node__expand-button-container">
-      <app-button *ngIf="child.children?.length; else empty" button-transparent (click)="switchExpandState()">
-        <mat-icon class="categories-tree-node__expand-button"
-              svgIcon="expand"
-              [class.categories-tree-node__expand-button--expanded]="expanded">
-        </mat-icon>
-      </app-button>
-      <ng-template #empty>
+      @if (child.children?.length) {
+        <button cm-button variant="transparent" shape="rounded" (click)="switchExpandState()">
+          <mat-icon
+                class="categories-tree-node__expand-button"
+                svgIcon="expand"
+                [class.categories-tree-node__expand-button--expanded]="expanded"
+          />
+        </button>
+      } @else {
         <div class="categories-tree-node__empty"></div>
-      </ng-template>
+      }
     </div>
   </div>
   <ng-container>

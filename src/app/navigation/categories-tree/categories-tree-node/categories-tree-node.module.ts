@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatRippleModule } from '@angular/material/core';
 import { CategoryTreeDisplacerComponent } from '../category-tree-displacer/category-tree-displacer.component';
 import { ButtonModule } from '@shared/components/button/button.module';
+import { CmButton } from "@shared/components/button/button";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ButtonModule } from '@shared/components/button/button.module';
     TranslateModule,
     MatRippleModule,
     ButtonModule,
-  ],
+    CmButton
+],
   exports: [
     CategoriesTreeNodeComponent,
   ]

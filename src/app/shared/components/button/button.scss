@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: center;
   height: 42px;
+  min-width: 42px;
   padding: 0;
 
   border: none;
@@ -76,6 +77,14 @@
 
     &[disabled] {
       background-color: m.mix-color($color-dangerous, white, 60%);
+    }
+  }
+
+  &--transparent {
+    background: transparent;
+
+    &:hover {
+      background: var(--background-button-hover);
     }
   }
 
