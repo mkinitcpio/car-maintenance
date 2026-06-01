@@ -31,9 +31,9 @@ html, body {
 }
 
 html {
-  --mdc-snackbar-container-shape: 12px;
+  --mat-snackbar-container-shape: 12px;
   --mat-snack-bar-button-color: #{$color-primary};
-  --mdc-snackbar-supporting-text-font: #{$font-system};
+  --mat-snackbar-supporting-text-font: #{$font-system};
 }
 
 .mdc-snackbar {

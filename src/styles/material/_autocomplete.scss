@@ -3,11 +3,11 @@
 @import '/src/colors';
 
 .mat-mdc-standard-chip {
-  --mdc-chip-label-text-color: #{$font-color-primary} !important;
-  --mdc-chip-elevated-container-color: #{$color-border} !important;
-  --mdc-chip-container-shape-radius: 10px;
-  --mdc-chip-label-text-font: #{$font-system} !important;
-  --mdc-chip-label-text-tracking: 0;
+  --mat-chip-label-text-color: #{$font-color-primary} !important;
+  --mat-chip-elevated-container-color: #{$color-border} !important;
+  --mat-chip-container-shape-radius: 10px;
+  --mat-chip-label-text-font: #{$font-system} !important;
+  --mat-chip-label-text-tracking: 0;
 }
 
 div.mat-mdc-autocomplete-panel.mdc-menu-surface--open {

@@ -2,26 +2,26 @@
 @import '/src/fonts';
 
 :root {
-  --mdc-outlined-text-field-error-outline-color: #{$color-dangerous} !important;
-  --mdc-outlined-text-field-outline-width: 1.5px;
-  --mdc-outlined-text-field-input-text-color: #{$font-color-primary};
-  --mdc-outlined-text-field-container-shape: 12px;
-  --mdc-outlined-text-field-outline-color: #{$color-border};
-  --mdc-outlined-text-field-focus-outline-color: #{$color-primary};
+  --mat-form-field-outlined-error-outline-color: #{$color-dangerous} !important;
+  --mat-form-field-outlined-outline-width: 1.5px;
+  --mat-form-field-outlined-input-text-color: #{$font-color-primary};
+  --mat-form-field-outlined-container-shape: 12px;
+  --mat-form-field-outlined-outline-color: #{$color-border};
+  --mat-form-field-outlined-focus-outline-color: #{$color-primary};
   --mat-form-field-container-vertical-padding: 12px;
-  --mdc-outlined-text-field-hover-label-text-color: #{$font-color-primary} !important;
-  --mdc-outlined-text-field-focus-label-text-color: #{$color-primary} !important;
-  --mdc-outlined-text-field-label-text-color: #{$font-color-primary} !important;
-  --mdc-outlined-text-field-caret-color: #{$font-color-primary} !important;
-  --mdc-outlined-text-field-label-text-font: #{$font-system} !important;
-  --mdc-outlined-text-field-label-text-tracking: 0;
-  --mdc-outlined-text-field-hover-outline-color: #7c7c7c;
-  --mdc-outlined-text-field-label-text-size: 14px;
+  --mat-form-field-outlined-hover-label-text-color: #{$font-color-primary} !important;
+  --mat-form-field-outlined-focus-label-text-color: #{$color-primary} !important;
+  --mat-form-field-outlined-label-text-color: #{$font-color-primary} !important;
+  --mat-form-field-outlined-caret-color: #{$font-color-primary} !important;
+  --mat-form-field-outlined-label-text-font: #{$font-system} !important;
+  --mat-form-field-outlined-label-text-tracking: 0;
+  --mat-form-field-outlined-hover-outline-color: #7c7c7c;
+  --mat-form-field-outlined-label-text-size: 14px;
   --mat-form-field-container-height: 43px;
   --mat-form-field-subscript-text-tracking: 0;
   --mat-form-field-subscript-text-font: #{$font-system};
   --mat-form-field-subscript-text-line-height: 1;
-  --mdc-outlined-text-field-input-text-placeholder-color:#{$font-color-secondary};
+  --mat-form-field-outlined-input-text-placeholder-color:#{$font-color-secondary};
   --mat-form-field-container-text-line-height: 1.2;
 }
 
@@ -67,7 +67,7 @@ padding: 0 7px !important;
 
 
 .mat-mdc-icon-button.mat-mdc-button-base {
-  --mdc-icon-button-state-layer-size: 34px;
+  --mat-icon-button-state-layer-size: 34px;
   padding: 4px;
 }
 
