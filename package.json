@@ -54,9 +54,9 @@
     "@angular/platform-browser-dynamic": "19.2.24",
     "@angular/router": "19.2.24",
     "@electron/remote": "2.1.2",
-    "@ngrx/effects": "18.0.2",
-    "@ngrx/store": "18.0.2",
-    "@ngrx/store-devtools": "18.0.2",
+    "@ngrx/effects": "19.2.1",
+    "@ngrx/store": "19.2.1",
+    "@ngrx/store-devtools": "19.2.1",
     "app-builder": "7.0.4",
     "app-builder-bin": "4.2.0",
     "electron-store": "8.1.0",
@@ -67,7 +67,7 @@
     "zone.js": "0.15.1"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "18.0.0",
+    "@angular-builders/custom-webpack": "19.0.0",
     "@angular-eslint/builder": "18.2.0",
     "@angular-eslint/eslint-plugin": "18.2.0",
     "@angular-eslint/eslint-plugin-template": "18.2.0",
