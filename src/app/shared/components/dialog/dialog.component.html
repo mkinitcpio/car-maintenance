@@ -23,9 +23,11 @@
     }
     <div class="dialog__title">{{title | translate}}</div>
     <div class="dialog__buttons">
-      <app-button *ngIf="closable" button-transparent (click)="onClose()">
-        <mat-icon svgIcon="close"></mat-icon>
-      </app-button>
+      @if (closable) {
+        <button cm-button variant="transparent" (click)="onClose()">
+          <mat-icon svgIcon="close"></mat-icon>
+        </button>
+      }
     </div>
   </header>
   <main class="dialog__content" (scroll)="onScroll($event)">

@@ -34,7 +34,6 @@ import { DialogModule } from '../dialog/dialog.module';
     MatProgressSpinnerModule,
     MatTableModule,
     CommonPipesModule,
-    CurrencyComponent,
     UbuntuContainerModule,
     MatTooltipModule,
     MatSlideToggleModule,
