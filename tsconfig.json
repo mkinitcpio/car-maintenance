@@ -7,14 +7,18 @@
     "declaration": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "ES2022",
     "baseUrl": "./src",
     "paths": {
-      "@shared/*": ["app/shared/*"],
-      "@core/*": ["app/core/*"],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ]
     },
     "useDefineForClassFields": false,
     "typeRoots": [

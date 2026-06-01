@@ -1,8 +1,8 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component, inject, Inject, DOCUMENT } from "@angular/core";
 import { DataBaseService } from "./core/database";
 import { AutoCloseable } from "./core/auto-closeable";
 import { SettingsService } from "./shared/components/settings/settings.service";
-import { DOCUMENT } from "@angular/common";
+
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 import { iconsNames } from "./icon-names";
