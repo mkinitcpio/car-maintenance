@@ -12,9 +12,10 @@ import { NotificationTypeEnum } from '../notification/notification-type.enum';
 import { FeedbackRepository } from '@core/repositories/feedback.repository';
 
 @Component({
-  selector: 'app-feedback-dialog',
-  templateUrl: './feedback-dialog.component.html',
-  styleUrls: ['./feedback-dialog.component.scss']
+    selector: 'app-feedback-dialog',
+    templateUrl: './feedback-dialog.component.html',
+    styleUrls: ['./feedback-dialog.component.scss'],
+    standalone: false
 })
 export class FeedbackDialogComponent implements OnInit {
 

@@ -11,9 +11,10 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-currency',
-  templateUrl: './currency.component.html',
-  styleUrls: ['./currency.component.scss']
+    selector: 'app-currency',
+    templateUrl: './currency.component.html',
+    styleUrls: ['./currency.component.scss'],
+    standalone: false
 })
 export class CurrencyComponent implements OnInit {
   

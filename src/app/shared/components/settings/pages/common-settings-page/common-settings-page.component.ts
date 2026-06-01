@@ -14,21 +14,20 @@ import { first } from 'rxjs/operators';
 import { NavigationEnum } from 'app/home/navigation-bar/navigation.enum';
 
 @Component({
-  selector: 'cm-common-settings-page',
-  standalone: true,
-  imports: [
-    MatDivider,
-    SettingComponent,
-    TranslateModule,
-    ButtonModule,
-    MatIcon,
-    MatTooltip,
-    MatSelect,
-    MatFormField,
-    MatOption,
-  ],
-  templateUrl: './common-settings-page.component.html',
-  styleUrl: './common-settings-page.component.scss'
+    selector: 'cm-common-settings-page',
+    imports: [
+        MatDivider,
+        SettingComponent,
+        TranslateModule,
+        ButtonModule,
+        MatIcon,
+        MatTooltip,
+        MatSelect,
+        MatFormField,
+        MatOption,
+    ],
+    templateUrl: './common-settings-page.component.html',
+    styleUrl: './common-settings-page.component.scss'
 })
 export class CommonSettingsPageComponent {
 

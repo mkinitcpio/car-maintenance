@@ -5,9 +5,10 @@ import { SettingsService } from '../settings/settings.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-currency-dialog',
-  templateUrl: './currency-dialog.component.html',
-  styleUrls: ['./currency-dialog.component.scss']
+    selector: 'app-currency-dialog',
+    templateUrl: './currency-dialog.component.html',
+    styleUrls: ['./currency-dialog.component.scss'],
+    standalone: false
 })
 export class CurrencyDialogComponent {
 

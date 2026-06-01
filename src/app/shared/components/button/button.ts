@@ -6,7 +6,6 @@ import { MatRippleModule } from "@angular/material/core";
     selector: `
         button[cm-button]
     `,
-    standalone: true,
     templateUrl: './button.html',
     styleUrls: [
         './button.scss'
@@ -19,7 +18,7 @@ import { MatRippleModule } from "@angular/material/core";
     encapsulation: ViewEncapsulation.None,
     imports: [
         MatRippleModule,
-    ],
+    ]
 })
 export class CmButton extends ButtonBase {
 

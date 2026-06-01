@@ -2,7 +2,8 @@ import { Directive, HostListener } from '@angular/core';
 import { SideNavigationTrackerService } from '../../home/side-navigation-tracker.service';
 
 @Directive({
-  selector: '[appSideNavTracker]'
+    selector: '[appSideNavTracker]',
+    standalone: false
 })
 export class SideNavTrackerDirective {
 

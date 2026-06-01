@@ -4,9 +4,10 @@ import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-ty
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
 
 @Component({
-  selector: 'app-welcome-page',
-  templateUrl: './welcome-page.component.html',
-  styleUrls: ['./welcome-page.component.scss'],
+    selector: 'app-welcome-page',
+    templateUrl: './welcome-page.component.html',
+    styleUrls: ['./welcome-page.component.scss'],
+    standalone: false
 })
 export class WelcomePageComponent {
 

@@ -21,9 +21,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-category-details',
-  templateUrl: './category-details.component.html',
-  styleUrls: ['./category-details.component.scss'],
+    selector: 'app-category-details',
+    templateUrl: './category-details.component.html',
+    styleUrls: ['./category-details.component.scss'],
+    standalone: false
 })
 export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 

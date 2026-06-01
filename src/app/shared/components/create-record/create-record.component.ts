@@ -16,9 +16,10 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { DataBaseService } from '@core/database';
 
 @Component({
-  selector: 'app-create-dialog',
-  templateUrl: './create-record.component.html',
-  styleUrls: ['./create-record.component.scss']
+    selector: 'app-create-dialog',
+    templateUrl: './create-record.component.html',
+    styleUrls: ['./create-record.component.scss'],
+    standalone: false
 })
 export class CreateRecordComponent implements OnInit {
 

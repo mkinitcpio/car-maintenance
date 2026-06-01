@@ -5,13 +5,12 @@ import { StackItemListComponent } from '@shared/components/stack-item-list/stack
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
 
 @Component({
-  standalone: true,
-  selector: 'cm-cell-labels',
-  templateUrl: './cell-labels.component.html',
-  styleUrl: './cell-labels.component.scss',
-  imports: [
-    StackItemListComponent
-  ],
+    selector: 'cm-cell-labels',
+    templateUrl: './cell-labels.component.html',
+    styleUrl: './cell-labels.component.scss',
+    imports: [
+        StackItemListComponent
+    ]
 })
 export class CellLabelsComponent {
 

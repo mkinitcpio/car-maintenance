@@ -4,7 +4,10 @@ import { CurrencyEnum } from '../components/settings/currency.enum';
 
 import { currencies } from './currencies';
 
-@Pipe({name: 'currency'})
+@Pipe({
+    name: 'currency',
+    standalone: false
+})
 export class CurrencyPipe implements PipeTransform {
 
   private currencies = currencies;

@@ -4,9 +4,10 @@ type DashboardItemSize = 'm' | 's';
 type DashboardContentType = 'changelog' | 'feedback' | 'sourceCode' | 'documentation';
 
 @Component({
-  selector: 'app-dashboard-item',
-  templateUrl: './dashboard-item.component.html',
-  styleUrls: ['./dashboard-item.component.scss']
+    selector: 'app-dashboard-item',
+    templateUrl: './dashboard-item.component.html',
+    styleUrls: ['./dashboard-item.component.scss'],
+    standalone: false
 })
 export class DashboardItemComponent implements OnInit {
 

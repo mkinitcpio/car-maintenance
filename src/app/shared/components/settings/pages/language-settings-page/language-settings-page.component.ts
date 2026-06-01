@@ -10,18 +10,17 @@ import { LocaleEnum } from '../../locale-enum';
 import { SelectOption } from '../../interface';
 
 @Component({
-  selector: 'cm-language-settings-page',
-  standalone: true,
-  imports: [
-    SettingComponent,
-    MatDivider,
-    MatFormField,
-    MatIcon,
-    MatSelectModule,
-    TranslateModule,
-  ],
-  templateUrl: './language-settings-page.component.html',
-  styleUrl: './language-settings-page.component.scss'
+    selector: 'cm-language-settings-page',
+    imports: [
+        SettingComponent,
+        MatDivider,
+        MatFormField,
+        MatIcon,
+        MatSelectModule,
+        TranslateModule,
+    ],
+    templateUrl: './language-settings-page.component.html',
+    styleUrl: './language-settings-page.component.scss'
 })
 export class LanguageSettingsPageComponent {
 

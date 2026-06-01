@@ -11,22 +11,21 @@ import { CommonModule, NgPlural, NgPluralCase } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  standalone: true,
-  selector: 'cm-table-panel',
-  templateUrl: './table-panel.component.html',
-  styleUrl: './table-panel.component.scss',
-  imports: [
-    MatIconModule,
-    MatRippleModule,
-    ButtonModule,
-    MatMenuModule,
-    ColumnSelectorComponent,
-    MatDividerModule,
-    NgPlural,
-    NgPluralCase,
-    TranslateModule,
-    CommonModule,
-  ],
+    selector: 'cm-table-panel',
+    templateUrl: './table-panel.component.html',
+    styleUrl: './table-panel.component.scss',
+    imports: [
+        MatIconModule,
+        MatRippleModule,
+        ButtonModule,
+        MatMenuModule,
+        ColumnSelectorComponent,
+        MatDividerModule,
+        NgPlural,
+        NgPluralCase,
+        TranslateModule,
+        CommonModule,
+    ]
 })
 export class TablePanelComponent {
 

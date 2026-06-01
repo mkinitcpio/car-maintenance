@@ -3,18 +3,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, RequiredValidator } from '@ang
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'cm-input',
-  standalone: true,
-  imports: [
-    MatIconModule,
-  ],
-  providers: [{ 
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => InputComponent),
-    multi: true
-  }],
-  templateUrl: './input.component.html',
-  styleUrl: './input.component.scss'
+    selector: 'cm-input',
+    imports: [
+        MatIconModule,
+    ],
+    providers: [{
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => InputComponent),
+            multi: true
+        }],
+    templateUrl: './input.component.html',
+    styleUrl: './input.component.scss'
 })
 export class InputComponent implements ControlValueAccessor {
 

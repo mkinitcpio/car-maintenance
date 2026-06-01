@@ -12,9 +12,10 @@ import { ExportService } from '@shared/services/export.service';
 import { SaveDialogData } from '@shared/services/abstract-export.service';
 
 @Component({
-  selector: 'app-print-dialog',
-  templateUrl: './print-dialog.component.html',
-  styleUrls: ['./print-dialog.component.scss'],
+    selector: 'app-print-dialog',
+    templateUrl: './print-dialog.component.html',
+    styleUrls: ['./print-dialog.component.scss'],
+    standalone: false
 })
 export class PrintDialogComponent implements OnInit {
 

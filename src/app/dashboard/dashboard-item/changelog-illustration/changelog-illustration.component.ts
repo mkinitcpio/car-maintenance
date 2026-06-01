@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-changelog-illustration',
-  templateUrl: './changelog-illustration.component.html',
-  styleUrls: ['./changelog-illustration.component.scss'],
+    selector: 'app-changelog-illustration',
+    templateUrl: './changelog-illustration.component.html',
+    styleUrls: ['./changelog-illustration.component.scss'],
+    standalone: false
 })
 export class ChangelogIllustrationComponent implements OnInit {
 

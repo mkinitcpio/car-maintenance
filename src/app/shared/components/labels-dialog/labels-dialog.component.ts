@@ -3,13 +3,12 @@ import { DialogModule } from '../dialog/dialog.module';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'cm-labels-dialog',
-  standalone: true,
-  imports: [
-    DialogModule,
-  ],
-  templateUrl: './labels-dialog.component.html',
-  styleUrl: './labels-dialog.component.scss'
+    selector: 'cm-labels-dialog',
+    imports: [
+        DialogModule,
+    ],
+    templateUrl: './labels-dialog.component.html',
+    styleUrl: './labels-dialog.component.scss'
 })
 export class LabelsDialogComponent {
 

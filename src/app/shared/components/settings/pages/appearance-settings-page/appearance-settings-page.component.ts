@@ -12,17 +12,16 @@ import { Color } from '../../color-interface';
 import { ThemeService } from '@core/services/theme';
 
 @Component({
-  selector: 'cm-appearance-settings-page',
-  standalone: true,
-  imports: [
-    MatDivider,
-    SettingComponent,
-    TranslateModule,
-    ColorSelectorModule,
-    SwitchModule,
-  ],
-  templateUrl: './appearance-settings-page.component.html',
-  styleUrl: './appearance-settings-page.component.scss'
+    selector: 'cm-appearance-settings-page',
+    imports: [
+        MatDivider,
+        SettingComponent,
+        TranslateModule,
+        ColorSelectorModule,
+        SwitchModule,
+    ],
+    templateUrl: './appearance-settings-page.component.html',
+    styleUrl: './appearance-settings-page.component.scss'
 })
 export class AppearanceSettingsPageComponent {
 

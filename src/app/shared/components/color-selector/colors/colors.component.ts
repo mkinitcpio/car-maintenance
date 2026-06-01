@@ -4,28 +4,27 @@ import { Color } from '@shared/components/settings/color-interface';
 import { ColorEnum } from '@shared/components/settings/colors-enum';
 
 @Component({
-  selector: 'app-colors',
-  templateUrl: './colors.component.html',
-  styleUrls: ['./colors.component.scss'],
-  animations: [
-    trigger("flyInOut", [
-      transition(":enter", [
-        style({
-          transform: 'scale(0)',
-        }),
-        animate('0.2s 0.2s ease-in', style({
-          transform: "scale(1)" 
-        }),
-        ),
-      ]),
-      transition(":leave", [
-        animate('0.2s ease-in', style({
-          transform: 'scale(0)',
-        }),
-        ),
-      ]),
-    ]),
-  ],
+    selector: 'app-colors',
+    templateUrl: './colors.component.html',
+    styleUrls: ['./colors.component.scss'],
+    animations: [
+        trigger("flyInOut", [
+            transition(":enter", [
+                style({
+                    transform: 'scale(0)',
+                }),
+                animate('0.2s 0.2s ease-in', style({
+                    transform: "scale(1)"
+                })),
+            ]),
+            transition(":leave", [
+                animate('0.2s ease-in', style({
+                    transform: 'scale(0)',
+                })),
+            ]),
+        ]),
+    ],
+    standalone: false
 })
 export class ColorsComponent {
 

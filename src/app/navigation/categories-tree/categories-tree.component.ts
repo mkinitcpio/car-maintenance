@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category, CategoryTree } from '../state/interface';
 
 @Component({
-  selector: 'app-categories-tree',
-  templateUrl: './categories-tree.component.html',
-  styleUrls: ['./categories-tree.component.scss']
+    selector: 'app-categories-tree',
+    templateUrl: './categories-tree.component.html',
+    styleUrls: ['./categories-tree.component.scss'],
+    standalone: false
 })
 export class CategoriesTreeComponent implements OnInit {
 

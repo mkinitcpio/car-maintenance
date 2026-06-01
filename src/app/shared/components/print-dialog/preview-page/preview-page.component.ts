@@ -8,9 +8,10 @@ import { appImageBase64 } from './app-image.base64';
 import { PrintDialogConfig } from '../print-dialog-config';
 
 @Component({
-  selector: 'app-preview-page',
-  templateUrl: './preview-page.component.html',
-  styleUrls: ['./preview-page.component.scss'],
+    selector: 'app-preview-page',
+    templateUrl: './preview-page.component.html',
+    styleUrls: ['./preview-page.component.scss'],
+    standalone: false
 })
 export class PreviewPageComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MoveDialogData, MoveToItem } from './interfaces';
 
 @Component({
-  selector: 'app-move-dialog',
-  templateUrl: './move-dialog.component.html',
-  styleUrls: ['./move-dialog.component.scss']
+    selector: 'app-move-dialog',
+    templateUrl: './move-dialog.component.html',
+    styleUrls: ['./move-dialog.component.scss'],
+    standalone: false
 })
 export class MoveDialogComponent implements OnInit {
 

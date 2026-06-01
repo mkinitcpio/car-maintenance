@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ubuntu-container',
-  templateUrl: './ubuntu-container.component.html',
-  styleUrls: ['./ubuntu-container.component.scss']
+    selector: 'ubuntu-container',
+    templateUrl: './ubuntu-container.component.html',
+    styleUrls: ['./ubuntu-container.component.scss'],
+    standalone: false
 })
 export class UbuntuContainerComponent implements OnInit {
 

@@ -16,9 +16,10 @@ import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-create-car-dialog',
-  templateUrl: './create-car-dialog.component.html',
-  styleUrls: ['./create-car-dialog.component.scss']
+    selector: 'app-create-car-dialog',
+    templateUrl: './create-car-dialog.component.html',
+    styleUrls: ['./create-car-dialog.component.scss'],
+    standalone: false
 })
 export class CreateCarDialogComponent implements OnInit {
 

@@ -5,9 +5,10 @@ import { Category, CategoryTree } from '../../state/interface';
 import { GroupTreeService } from '../group-tree.service';
 
 @Component({
-  selector: 'app-categories-tree-node',
-  templateUrl: './categories-tree-node.component.html',
-  styleUrls: ['./categories-tree-node.component.scss']
+    selector: 'app-categories-tree-node',
+    templateUrl: './categories-tree-node.component.html',
+    styleUrls: ['./categories-tree-node.component.scss'],
+    standalone: false
 })
 export class CategoriesTreeNodeComponent {
 

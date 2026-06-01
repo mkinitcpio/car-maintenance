@@ -13,10 +13,11 @@ const releaseNotes: ReleaseNotes = require('../release-notes.json');
 type GridView = 'compact' | 'normal' | 'medium';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  providers: [ ResizeObserverService ]
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    providers: [ResizeObserverService],
+    standalone: false
 })
 export class DashboardComponent implements OnInit {
 

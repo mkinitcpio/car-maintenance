@@ -5,9 +5,10 @@ import { SettingsService } from '../settings/settings.service';
 import { DataType, Orientation } from './types';
 
 @Component({
-  selector: 'app-rich-widget',
-  templateUrl: './rich-widget.component.html',
-  styleUrls: ['./rich-widget.component.scss']
+    selector: 'app-rich-widget',
+    templateUrl: './rich-widget.component.html',
+    styleUrls: ['./rich-widget.component.scss'],
+    standalone: false
 })
 export class RichWidgetComponent {
 

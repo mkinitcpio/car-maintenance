@@ -11,21 +11,20 @@ import { CurrencyEnum } from '../../currency.enum';
 import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
 
 @Component({
-  selector: 'cm-currency-settings-page',
-  standalone: true,
-  imports: [
-    SettingComponent,
-    TranslateModule,
-    ButtonModule,
-    MatIcon,
-    MatSelect,
-    MatFormField,
-    MatOption,
-    MatSelectTrigger,
-    CommonPipesModule,
-  ],
-  templateUrl: './currency-settings-page.component.html',
-  styleUrl: './currency-settings-page.component.scss'
+    selector: 'cm-currency-settings-page',
+    imports: [
+        SettingComponent,
+        TranslateModule,
+        ButtonModule,
+        MatIcon,
+        MatSelect,
+        MatFormField,
+        MatOption,
+        MatSelectTrigger,
+        CommonPipesModule,
+    ],
+    templateUrl: './currency-settings-page.component.html',
+    styleUrl: './currency-settings-page.component.scss'
 })
 export class CurrencySettingsPageComponent {
   public settingsService = inject(SettingsService);

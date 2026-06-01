@@ -11,9 +11,10 @@ interface ReleaseNote {
 };
 
 @Component({
-  selector: 'app-release-notes',
-  templateUrl: './release-notes.component.html',
-  styleUrls: ['./release-notes.component.scss']
+    selector: 'app-release-notes',
+    templateUrl: './release-notes.component.html',
+    styleUrls: ['./release-notes.component.scss'],
+    standalone: false
 })
 export class ReleaseNotesComponent implements OnInit {
 

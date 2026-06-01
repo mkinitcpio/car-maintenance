@@ -18,13 +18,14 @@ import { MatDrawerMode, MatSidenav, MatSidenavContainer } from "@angular/materia
 import { ResizeObserverService } from "@shared/services/resize-observer.service";
 
 @Component({
-  selector: "app-settings",
-  templateUrl: "./settings.component.html",
-  styleUrls: ["./settings.component.scss"],
-  encapsulation: ViewEncapsulation.None,
-  providers: [
-    ResizeObserverService,
-  ]
+    selector: "app-settings",
+    templateUrl: "./settings.component.html",
+    styleUrls: ["./settings.component.scss"],
+    encapsulation: ViewEncapsulation.None,
+    providers: [
+        ResizeObserverService,
+    ],
+    standalone: false
 })
 export class SettingsComponent implements AfterViewInit {
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'storage',
-  templateUrl: './storage.component.html',
-  styleUrls: ['./storage.component.scss']
+    selector: 'storage',
+    templateUrl: './storage.component.html',
+    styleUrls: ['./storage.component.scss'],
+    standalone: false
 })
 export class StorageComponent implements OnInit {
 

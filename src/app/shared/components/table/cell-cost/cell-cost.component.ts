@@ -4,14 +4,13 @@ import { CurrencyModule } from '@shared/currency/currency.module';
 import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
 
 @Component({
-  standalone: true,
-  selector: 'cm-cell-cost',
-  templateUrl: './cell-cost.component.html',
-  styleUrl: './cell-cost.component.scss',
-  imports: [
-    CurrencyModule,
-    CommonPipesModule,
-  ],
+    selector: 'cm-cell-cost',
+    templateUrl: './cell-cost.component.html',
+    styleUrl: './cell-cost.component.scss',
+    imports: [
+        CurrencyModule,
+        CommonPipesModule,
+    ]
 })
 export class CellCostComponent {
 

@@ -3,7 +3,10 @@ import { formatNumber } from '@angular/common';
 
 import { LocaleEnum } from '@shared/components/settings/locale-enum';
 
-@Pipe({name: 'numberSeparator'})
+@Pipe({
+    name: 'numberSeparator',
+    standalone: false
+})
 export class NumberSeparatorPipe implements PipeTransform {
 
   private digitsInfo = '1.2-2';

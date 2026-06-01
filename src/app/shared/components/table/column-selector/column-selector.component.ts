@@ -10,18 +10,17 @@ import { ColumnVisibilityEvent } from './interfaces';
 import { CmCheckbox } from '@shared/components/checkbox/checkbox';
 
 @Component({
-  standalone: true,
-  selector: 'cm-column-selector',
-  templateUrl: './column-selector.component.html',
-  styleUrls: ['./column-selector.component.scss'],
-  imports: [
-    MatMenuModule,
-    MatIconModule,
-    ButtonModule,
-    TranslateModule,
-    CommonModule,
-    CmCheckbox,
-  ],
+    selector: 'cm-column-selector',
+    templateUrl: './column-selector.component.html',
+    styleUrls: ['./column-selector.component.scss'],
+    imports: [
+        MatMenuModule,
+        MatIconModule,
+        ButtonModule,
+        TranslateModule,
+        CommonModule,
+        CmCheckbox,
+    ]
 })
 export class ColumnSelectorComponent {
 

@@ -3,9 +3,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Data } from 'electron';
 
 @Component({
-  selector: 'app-account-dialog',
-  templateUrl: './account-dialog.component.html',
-  styleUrls: ['./account-dialog.component.scss']
+    selector: 'app-account-dialog',
+    templateUrl: './account-dialog.component.html',
+    styleUrls: ['./account-dialog.component.scss'],
+    standalone: false
 })
 export class AccountDialogComponent implements OnInit {
 

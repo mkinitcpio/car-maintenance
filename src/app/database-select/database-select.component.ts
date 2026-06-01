@@ -5,9 +5,10 @@ import { SettingsService } from '../shared/components/settings/settings.service'
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-database-select',
-  templateUrl: './database-select.component.html',
-  styleUrls: ['./database-select.component.scss']
+    selector: 'app-database-select',
+    templateUrl: './database-select.component.html',
+    styleUrls: ['./database-select.component.scss'],
+    standalone: false
 })
 export class DatabaseSelectComponent implements OnInit {
 
