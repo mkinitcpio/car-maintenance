@@ -1,18 +1,20 @@
 <section class="widget">
-  <div class="widget__title-section" *ngIf="title">
-    <h4 class="widget__title">
-      <mat-icon class="widget__illustration" [svgIcon]="icon"></mat-icon>
-      {{title}}
-    </h4>
-    <mat-icon class="widget__info"
-              *ngIf="info"
-              [matTooltip]="info">
-      info
-    </mat-icon>
-
-    <div class="widget__actions">
-      <ng-content select="[actions]"></ng-content>
+  @if (title) {
+    <div class="widget__title-section">
+      <h4 class="widget__title">
+        <mat-icon class="widget__illustration" [svgIcon]="icon"></mat-icon>
+        {{title}}
+      </h4>
+      @if (info) {
+        <mat-icon class="widget__info"
+          [matTooltip]="info">
+          info
+        </mat-icon>
+      }
+      <div class="widget__actions">
+        <ng-content select="[actions]"></ng-content>
+      </div>
     </div>
-  </div>
+  }
   <ng-content></ng-content>
 </section>

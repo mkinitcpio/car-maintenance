@@ -21,12 +21,14 @@
               <span class="currency-dialog__currency-name">{{getCurrentCurrency()?.name | translate}}</span>
             </mat-select-trigger>
 
-            <mat-option *ngFor="let currency of currencyOptions | orderTranslate:'name'" [value]="currency.value">
-              <div class="currency-dialog__currency-option">
-                <mat-icon class="currency-dialog__currency-option-icon" [svgIcon]="'currencies:' + currency.icon"></mat-icon>
-                <span>{{ currency.name | translate }}</span>
-              </div>
-            </mat-option>
+            @for (currency of currencyOptions | orderTranslate:'name'; track currency) {
+              <mat-option [value]="currency.value">
+                <div class="currency-dialog__currency-option">
+                  <mat-icon class="currency-dialog__currency-option-icon" [svgIcon]="'currencies:' + currency.icon"></mat-icon>
+                  <span>{{ currency.name | translate }}</span>
+                </div>
+              </mat-option>
+            }
           </mat-select>
           <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
         </mat-form-field>

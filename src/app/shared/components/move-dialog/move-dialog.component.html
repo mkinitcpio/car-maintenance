@@ -1,10 +1,10 @@
 <div class="move-dialog">
   <app-dialog [title]="'DIALOG.MOVE.TITLE'"
-              [submitText]="'DIALOG.BUTTONS.MOVE'"
-              [disabledSumbitButton]="!selectedItemId"
-              (close)="dialogRef.close()"
-              (submit)="onSubmit()"
-  >
+    [submitText]="'DIALOG.BUTTONS.MOVE'"
+    [disabledSumbitButton]="!selectedItemId"
+    (close)="dialogRef.close()"
+    (submit)="onSubmit()"
+    >
     <section content>
       <div class="move-dialog__panel">
         <mat-form-field>
@@ -19,26 +19,28 @@
         </div>
       } @else {
         <div class="move-dialog__list">
-          <ng-container *ngFor="let group of items">
-            <div *ngIf="group.items.length" class="move-dialog__group">
-              <span class="move-dialog__group-title">{{group.group}}</span>
-                <ng-container *ngFor="let item of group.items">
-                  <div mat-ripple
-                        class="move-dialog__group-item"
-                        [class.move-dialog__group-item--selected]="item.id === selectedItemId"
-                        *ngIf="item.id !== data.parent"
-                        (click)="onSelect(item.id)"
-                  >
-                    <mat-icon class="move-dialog__list-icon"
-                              [svgIcon]="item.icon">
-                    </mat-icon>
-                    {{item.name}}
-                  </div>
-                </ng-container>
-
-            </div>
-          </ng-container>
-         </div>
+          @for (group of items; track group) {
+            @if (group.items.length) {
+              <div class="move-dialog__group">
+                <span class="move-dialog__group-title">{{group.group}}</span>
+                @for (item of group.items; track item) {
+                  @if (item.id !== data.parent) {
+                    <div mat-ripple
+                      class="move-dialog__group-item"
+                      [class.move-dialog__group-item--selected]="item.id === selectedItemId"
+                      (click)="onSelect(item.id)"
+                      >
+                      <mat-icon class="move-dialog__list-icon"
+                        [svgIcon]="item.icon">
+                      </mat-icon>
+                      {{item.name}}
+                    </div>
+                  }
+                }
+              </div>
+            }
+          }
+        </div>
       }
     </section>
   </app-dialog>

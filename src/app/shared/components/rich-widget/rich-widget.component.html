@@ -2,20 +2,22 @@
   <mat-icon class="rich-widget__illustration" [svgIcon]="icon"></mat-icon>
   <div class="rich-widget__info-section">
     <span class="rich-widget__title">{{title | translate}}</span>
-    <span class="rich-widget__value" [ngSwitch]="type">
-      <ng-container *ngSwitchCase="'currency'">
-        <app-currency [value]="value"
-                      [currency]="settingsService.settings.units?.currency"
-                      [locale]="settingsService.settings.region">
-        </app-currency>
-      </ng-container>
-      <ng-container *ngSwitchCase="'date'">
-        {{value ? (value | localizedDate) : '-'}}
-      </ng-container>
-      <ng-container *ngSwitchCase="'mileage'">
-        <span>{{value | numberSeparator:this.settingsService.settings.region}}</span>
-        <span class="rich-widget__metric-system">{{ "METRIC_SYSTEM." + (settingsService.settings.units?.metricSystem || MetricSystemEnum[settingsService.settings.region]) | uppercase | translate}}</span>
-      </ng-container>
+    <span class="rich-widget__value">
+      @switch (type) {
+        @case ('currency') {
+          <app-currency [value]="value"
+            [currency]="settingsService.settings.units?.currency"
+            [locale]="settingsService.settings.region">
+          </app-currency>
+        }
+        @case ('date') {
+          {{value ? (value | localizedDate) : '-'}}
+        }
+        @case ('mileage') {
+          <span>{{value | numberSeparator:this.settingsService.settings.region}}</span>
+          <span class="rich-widget__metric-system">{{ "METRIC_SYSTEM." + (settingsService.settings.units?.metricSystem || MetricSystemEnum[settingsService.settings.region]) | uppercase | translate}}</span>
+        }
+      }
     </span>
   </div>
 </div>

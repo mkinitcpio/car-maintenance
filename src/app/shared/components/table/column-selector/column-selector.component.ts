@@ -4,7 +4,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
+
 
 import { ColumnVisibilityEvent } from './interfaces';
 import { CmCheckbox } from '@shared/components/checkbox/checkbox';
@@ -14,13 +14,12 @@ import { CmCheckbox } from '@shared/components/checkbox/checkbox';
     templateUrl: './column-selector.component.html',
     styleUrls: ['./column-selector.component.scss'],
     imports: [
-        MatMenuModule,
-        MatIconModule,
-        ButtonModule,
-        TranslateModule,
-        CommonModule,
-        CmCheckbox,
-    ]
+    MatMenuModule,
+    MatIconModule,
+    ButtonModule,
+    TranslateModule,
+    CmCheckbox
+]
 })
 export class ColumnSelectorComponent {
 

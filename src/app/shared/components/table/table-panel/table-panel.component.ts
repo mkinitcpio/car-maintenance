@@ -7,7 +7,7 @@ import { ColumnSelectorComponent } from '../column-selector/column-selector.comp
 import { ColumnSchema } from '../interfaces';
 import { ColumnVisibilityEvent } from '../column-selector/interfaces';
 import { MatDividerModule } from '@angular/material/divider';
-import { CommonModule, NgPlural, NgPluralCase } from '@angular/common';
+import { NgPlural, NgPluralCase } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -15,17 +15,16 @@ import { TranslateModule } from '@ngx-translate/core';
     templateUrl: './table-panel.component.html',
     styleUrl: './table-panel.component.scss',
     imports: [
-        MatIconModule,
-        MatRippleModule,
-        ButtonModule,
-        MatMenuModule,
-        ColumnSelectorComponent,
-        MatDividerModule,
-        NgPlural,
-        NgPluralCase,
-        TranslateModule,
-        CommonModule,
-    ]
+    MatIconModule,
+    MatRippleModule,
+    ButtonModule,
+    MatMenuModule,
+    ColumnSelectorComponent,
+    MatDividerModule,
+    NgPlural,
+    NgPluralCase,
+    TranslateModule
+]
 })
 export class TablePanelComponent {
 

@@ -5,14 +5,16 @@
 <mat-menu #columnMenu="matMenu">
   <ng-template matMenuContent>
     <div class="mat-menu-content__header">{{'MENU.TITLE.COLUMNS' | translate}}</div>
-    <button *ngFor="let column of columns"
-            class="menu-item menu-item--column-selector"
-            mat-menu-item
-            (click)="onSwitchState($event, column.key)"
-    >
-      <cm-checkbox [value]="column.visible">
-        {{column.name | translate}}
-      </cm-checkbox>
-    </button>
+    @for (column of columns; track column) {
+      <button
+        class="menu-item menu-item--column-selector"
+        mat-menu-item
+        (click)="onSwitchState($event, column.key)"
+        >
+        <cm-checkbox [value]="column.visible">
+          {{column.name | translate}}
+        </cm-checkbox>
+      </button>
+    }
   </ng-template>
 </mat-menu>

@@ -4,39 +4,45 @@
   </app-button>
   <nav class="navigation-bar__navigation">
     <nav class="navigation-bar__modules-routes">
-      <a *ngFor="let button of navigationButtons"
+      @for (button of navigationButtons; track button) {
+        <a
           class="navigation-bar__button-container"
           [routerLink]="'/' + button.route"
           routerLinkActive="navigation-bar__button-container--selected"
-      >
-        <div class="navigation-bar__button-selector"></div>
-        <app-button button-transparent
-                    [matTooltip]="button.tooltipText | translate"
-                    matTooltipPosition="right"
-                    matTooltipShowDelay="500"
-        >
-          <mat-icon class="navigation-bar__button-icon"
-                    [svgIcon]="button.icon"
           >
-          </mat-icon>
-        </app-button>
-      </a>
+          <div class="navigation-bar__button-selector"></div>
+          <app-button button-transparent
+            [matTooltip]="button.tooltipText | translate"
+            matTooltipPosition="right"
+            matTooltipShowDelay="500"
+            >
+            <mat-icon class="navigation-bar__button-icon"
+              [svgIcon]="button.icon"
+              >
+            </mat-icon>
+          </app-button>
+        </a>
+      }
     </nav>
 
     <div class="navigation-bar__divider"></div>
 
-    <div class="navigation-bar__dev-buttons" *ngIf="!AppConfig.production">
-      <app-button button-transparent (click)="onRefreshApp()">
-        <mat-icon svgIcon="refresh"></mat-icon>
-      </app-button>
-      <app-button button-transparent (click)="onOpenDevTools()">
-        <mat-icon svgIcon="terminal"></mat-icon>
-      </app-button>
-    </div>
+    @if (!AppConfig.production) {
+      <div class="navigation-bar__dev-buttons">
+        <app-button button-transparent (click)="onRefreshApp()">
+          <mat-icon svgIcon="refresh"></mat-icon>
+        </app-button>
+        <app-button button-transparent (click)="onOpenDevTools()">
+          <mat-icon svgIcon="terminal"></mat-icon>
+        </app-button>
+      </div>
+    }
 
-    <app-button *ngIf="false" button-transparent (click)="onOpenAccount()">
-      <mat-icon svgIcon="user"></mat-icon>
-    </app-button>
+    @if (false) {
+      <app-button button-transparent (click)="onOpenAccount()">
+        <mat-icon svgIcon="user"></mat-icon>
+      </app-button>
+    }
 
     <app-button button-transparent (click)="openSettings()">
       <mat-icon svgIcon="settings"></mat-icon>

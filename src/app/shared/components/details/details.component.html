@@ -3,14 +3,18 @@
     <section class="page__title-section">
       <div class="page__title">
         <ng-content select="[buttons-left]"></ng-content>
-        <mat-icon *ngIf="icon" [svgIcon]="icon"></mat-icon>
+        @if (icon) {
+          <mat-icon [svgIcon]="icon"></mat-icon>
+        }
         <span class="page__title-text">{{title}}</span>
       </div>
       <div class="page__title-buttons">
         <ng-content select="[buttons-right]"></ng-content>
-        <app-button *ngIf="sidebarButtonIcon" [active]="showSidebar" button-transparent (click)="showSidebar = !showSidebar">
-          <mat-icon [svgIcon]="sidebarButtonIcon"></mat-icon>
-        </app-button>
+        @if (sidebarButtonIcon) {
+          <app-button [active]="showSidebar" button-transparent (click)="showSidebar = !showSidebar">
+            <mat-icon [svgIcon]="sidebarButtonIcon"></mat-icon>
+          </app-button>
+        }
       </div>
     </section>
 
@@ -22,19 +26,21 @@
     </div>
   </div>
 
-  <div *ngIf="sidebarButtonIcon" class="page__sidebar" [class.page__sidebar--show]="showSidebar">
-    <div class="page__sidebar-container">
-      <section class="page__title-section">
-        <div class="page__title">
-          <span class="page__title-text">{{sidebarTitle}}</span>
-        </div>
-      </section>
-      <div class="page__content-shadow-cover">
-        <div class="page__shadow"></div>
-        <div class="page__content">
-          <ng-content select="[sidebar-content]"></ng-content>
+  @if (sidebarButtonIcon) {
+    <div class="page__sidebar" [class.page__sidebar--show]="showSidebar">
+      <div class="page__sidebar-container">
+        <section class="page__title-section">
+          <div class="page__title">
+            <span class="page__title-text">{{sidebarTitle}}</span>
+          </div>
+        </section>
+        <div class="page__content-shadow-cover">
+          <div class="page__shadow"></div>
+          <div class="page__content">
+            <ng-content select="[sidebar-content]"></ng-content>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  }
 </section>

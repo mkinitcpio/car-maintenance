@@ -1,24 +1,28 @@
 <app-dialog class="feedback"
-            [title]="data.type === FeedbackTypeEnum.Question ? 'DIALOG.FEEDBACK.QUESTION_TITLE' : 'DIALOG.FEEDBACK.TITLE'"
-            [submitText]="'DIALOG.BUTTONS.SEND'"
-            [notification$]="notification$"
-            [loading$]="loading$"
-            (submit)="onSend()"
-            (close)="dialogRef.close()"
+  [title]="data.type === FeedbackTypeEnum.Question ? 'DIALOG.FEEDBACK.QUESTION_TITLE' : 'DIALOG.FEEDBACK.TITLE'"
+  [submitText]="'DIALOG.BUTTONS.SEND'"
+  [notification$]="notification$"
+  [loading$]="loading$"
+  (submit)="onSend()"
+  (close)="dialogRef.close()"
   >
   <form content [formGroup]="feedbackForm">
     <div>
       <div class="form-field__title">
         {{"DIALOG.FIELDS.TYPE" | translate}}
       </div>
-      <mat-form-field [floatLabel]="'always'" *ngIf="!data.type">
-        <mat-select [formControlName]="'type'">
-          <mat-option *ngFor="let option of feedbackTypeOptions" [value]="option.key">
-            {{option.value | translate}}
-          </mat-option>
-        </mat-select>
-        <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
-      </mat-form-field>
+      @if (!data.type) {
+        <mat-form-field [floatLabel]="'always'">
+          <mat-select [formControlName]="'type'">
+            @for (option of feedbackTypeOptions; track option) {
+              <mat-option [value]="option.key">
+                {{option.value | translate}}
+              </mat-option>
+            }
+          </mat-select>
+          <mat-icon svgIcon="expand" class="mat-select__expand-icon"></mat-icon>
+        </mat-form-field>
+      }
     </div>
 
     <div>
@@ -27,12 +31,14 @@
       </div>
       <mat-form-field [floatLabel]="'always'">
         <input placeholder="email@example.com"
-              formControlName="email"
-              matInput
-              pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
-        <mat-error *ngIf="feedbackForm.get('email').hasError('pattern')">
-          {{'DIALOG.VALIDATIONS.EMAIL' | translate}}
-        </mat-error>
+          formControlName="email"
+          matInput
+          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+        @if (feedbackForm.get('email').hasError('pattern')) {
+          <mat-error>
+            {{'DIALOG.VALIDATIONS.EMAIL' | translate}}
+          </mat-error>
+        }
       </mat-form-field>
     </div>
 
@@ -42,9 +48,11 @@
       </div>
       <mat-form-field [floatLabel]="'always'">
         <textarea cdkFocusInitial class="feedback__note" [formControlName]="'message'" matInput [required]="true"></textarea>
-        <mat-error *ngIf="feedbackForm.get('message').hasError('required')">
-          {{'DIALOG.VALIDATIONS.TEXT' | translate}}
-        </mat-error>
+        @if (feedbackForm.get('message').hasError('required')) {
+          <mat-error>
+            {{'DIALOG.VALIDATIONS.TEXT' | translate}}
+          </mat-error>
+        }
       </mat-form-field>
     </div>
   </form>

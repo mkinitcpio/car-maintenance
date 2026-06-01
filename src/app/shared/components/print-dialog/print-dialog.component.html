@@ -1,36 +1,42 @@
 <app-dialog [title]="'PAGES.PDF_EXPORT.TITLE' | translate"
-            [hideFooter]="true"
-            (close)="dialogRef.close()"
->
+  [hideFooter]="true"
+  (close)="dialogRef.close()"
+  >
   <section content class="print-dialog">
     <div class="print-dialog__config-section">
       <div class="print-dialog__scroll">
         <content-container [title]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate">
           <div>
             <div cdkDropList class="columns" (cdkDropListDropped)="drop($event)">
-              <div class="print-dialog__column-container" *ngFor="let column of columns" cdkDrag>
-                <div class="column">
-                  <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
-                  <span class="column__name">{{column.name | translate}}</span>
-                  <cm-checkbox *ngIf="column.id !== 'name'"
-                                [value]="column.visible"
-                                (change)="column.visible = !column.visible">
-                  </cm-checkbox>
+              @for (column of columns; track column) {
+                <div class="print-dialog__column-container" cdkDrag>
+                  <div class="column">
+                    <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
+                    <span class="column__name">{{column.name | translate}}</span>
+                    @if (column.id !== 'name') {
+                      <cm-checkbox
+                        [value]="column.visible"
+                        (change)="column.visible = !column.visible">
+                      </cm-checkbox>
+                    }
+                  </div>
+                  <mat-divider class="column__divider"></mat-divider>
                 </div>
-                <mat-divider class="column__divider"></mat-divider>
-              </div>
+              }
             </div>
           </div>
         </content-container>
 
-        <content-container *ngIf="true" [title]="'PAGES.PDF_EXPORT.OTHER' | translate">
-          <div class="print-dialog__section">
-            <span>{{'PAGES.PDF_EXPORT.SHOW_TOTAL_SUM' | translate}}</span>
-            <app-switch [value]="config.showTablesCostResult"
-                        (change)="config.showTablesCostResult = !config.showTablesCostResult">
-            </app-switch>
-          </div>
-        </content-container>
+        @if (true) {
+          <content-container [title]="'PAGES.PDF_EXPORT.OTHER' | translate">
+            <div class="print-dialog__section">
+              <span>{{'PAGES.PDF_EXPORT.SHOW_TOTAL_SUM' | translate}}</span>
+              <app-switch [value]="config.showTablesCostResult"
+                (change)="config.showTablesCostResult = !config.showTablesCostResult">
+              </app-switch>
+            </div>
+          </content-container>
+        }
       </div>
 
       <div class="print-dialog__buttons">
@@ -46,8 +52,8 @@
     <div class="print-dialog__preview-section">
       <div class="print-dialog__preview">
         <app-preview-page #print
-                          [config]="config"
-                          [data]="data">
+          [config]="config"
+          [data]="data">
         </app-preview-page>
       </div>
     </div>

@@ -1,9 +1,9 @@
 <div class="create-record">
   <app-dialog [title]="title | async"
-              [mode]="data.mode"
-              (submit)="onSubmit()"
-              (close)="onClose()"
-  >
+    [mode]="data.mode"
+    (submit)="onSubmit()"
+    (close)="onClose()"
+    >
     <form content [formGroup]="recordForm">
       <div>
         <div class="form-field__title">
@@ -12,9 +12,11 @@
         </div>
         <mat-form-field>
           <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
-          <mat-error *ngIf="recordForm.get('name').hasError('required')">
-            {{"DIALOG.VALIDATIONS.NAME" | translate}}
-          </mat-error>
+          @if (recordForm.get('name').hasError('required')) {
+            <mat-error>
+              {{"DIALOG.VALIDATIONS.NAME" | translate}}
+            </mat-error>
+          }
         </mat-form-field>
       </div>
 
@@ -23,12 +25,16 @@
         <mat-form-field>
           <cm-mileage matSuffix></cm-mileage>
           <input [formControlName]="'mileage'" matInput>
-          <mat-error *ngIf="recordForm.get('mileage').hasError('number')">
-            {{recordForm.get('mileage').getError('number').value | translate}}
-          </mat-error>
-          <mat-error *ngIf="recordForm.get('mileage').hasError('positiveNumber')">
-            {{recordForm.get('mileage').getError('positiveNumber').value | translate}}
-          </mat-error>
+          @if (recordForm.get('mileage').hasError('number')) {
+            <mat-error>
+              {{recordForm.get('mileage').getError('number').value | translate}}
+            </mat-error>
+          }
+          @if (recordForm.get('mileage').hasError('positiveNumber')) {
+            <mat-error>
+              {{recordForm.get('mileage').getError('positiveNumber').value | translate}}
+            </mat-error>
+          }
         </mat-form-field>
       </div>
 
@@ -55,15 +61,21 @@
           <mat-form-field>
             <app-currency matSuffix [currency]="settingsService.settings.units.currency"></app-currency>
             <input [required]="true" [formControlName]="'cost'" matInput>
-            <mat-error *ngIf="recordForm.get('cost').hasError('number')">
-              {{recordForm.get('cost').getError('number').value | translate}}
-            </mat-error>
-            <mat-error *ngIf="recordForm.get('cost').hasError('positiveNumber')">
-              {{recordForm.get('cost').getError('positiveNumber').value | translate}}
-            </mat-error>
-            <mat-error *ngIf="recordForm.get('cost').hasError('required')">
-              {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
-            </mat-error>
+            @if (recordForm.get('cost').hasError('number')) {
+              <mat-error>
+                {{recordForm.get('cost').getError('number').value | translate}}
+              </mat-error>
+            }
+            @if (recordForm.get('cost').hasError('positiveNumber')) {
+              <mat-error>
+                {{recordForm.get('cost').getError('positiveNumber').value | translate}}
+              </mat-error>
+            }
+            @if (recordForm.get('cost').hasError('required')) {
+              <mat-error>
+                {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
+              </mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -75,23 +87,23 @@
 
         <mat-form-field class="form-field__labels">
           <mat-chip-grid #labelsRef [formControlName]="'labels'">
-          @for (label of recordForm.get('labels').value; track $index) {
-            <mat-chip-row (removed)="removeLabel($index)">
-              {{label}}
-              <button class="create-record__chip-remove-button" matChipRemove>
-                <mat-icon>close</mat-icon>
-              </button>
-            </mat-chip-row>
-          }
+            @for (label of recordForm.get('labels').value; track $index) {
+              <mat-chip-row (removed)="removeLabel($index)">
+                {{label}}
+                <button class="create-record__chip-remove-button" matChipRemove>
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-chip-row>
+            }
           </mat-chip-grid>
 
           <input [placeholder]="'DIALOG.PLACEHOLDERS.NEW_LABEL' | translate"
-                 [matChipInputFor]="labelsRef"
-                 [(ngModel)]="currentLabel"
-                 [ngModelOptions]="{standalone: true}"
-                 [matAutocomplete]="auto"
-                 (matChipInputTokenEnd)="addLabel($event)"
-          />
+            [matChipInputFor]="labelsRef"
+            [(ngModel)]="currentLabel"
+            [ngModelOptions]="{standalone: true}"
+            [matAutocomplete]="auto"
+            (matChipInputTokenEnd)="addLabel($event)"
+            />
 
           <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectLabel($event)">
             @for (label of filteredLabels(); track label) {

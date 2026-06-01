@@ -1,9 +1,9 @@
 <div class="create-car-dialog">
   <app-dialog [title]="title | async"
-              [mode]="data.mode"
-              (close)="onClose()"
-              (submit)="onSubmit()"
-  >
+    [mode]="data.mode"
+    (close)="onClose()"
+    (submit)="onSubmit()"
+    >
     <form content [formGroup]="carForm" class="create-car-dialog__content">
       <app-tabs [tabs]="['DIALOG.COMMON', 'DIALOG.PARTS']" tabWidth="140" bordered="true">
         <div tab-1>
@@ -50,12 +50,16 @@
               </div>
               <mat-form-field>
                 <input [formControlName]="'year'" matInput>
-                <mat-error *ngIf="carForm.get('year').hasError('number')">
-                  {{carForm.get('year').getError('number').value | translate}}
-                </mat-error>
-                <mat-error *ngIf="carForm.get('year').hasError('positiveNumber')">
-                  {{carForm.get('year').getError('positiveNumber').value | translate}}
-                </mat-error>
+                @if (carForm.get('year').hasError('number')) {
+                  <mat-error>
+                    {{carForm.get('year').getError('number').value | translate}}
+                  </mat-error>
+                }
+                @if (carForm.get('year').hasError('positiveNumber')) {
+                  <mat-error>
+                    {{carForm.get('year').getError('positiveNumber').value | translate}}
+                  </mat-error>
+                }
               </mat-form-field>
             </div>
             <div>
@@ -72,12 +76,16 @@
               </div>
               <mat-form-field>
                 <input [formControlName]="'mileage'" matInput>
-                <mat-error *ngIf="carForm.get('mileage').hasError('number')">
-                  {{carForm.get('mileage').getError('number').value | translate}}
-                </mat-error>
-                <mat-error *ngIf="carForm.get('mileage').hasError('positiveNumber')">
-                  {{carForm.get('mileage').getError('positiveNumber').value | translate}}
-                </mat-error>
+                @if (carForm.get('mileage').hasError('number')) {
+                  <mat-error>
+                    {{carForm.get('mileage').getError('number').value | translate}}
+                  </mat-error>
+                }
+                @if (carForm.get('mileage').hasError('positiveNumber')) {
+                  <mat-error>
+                    {{carForm.get('mileage').getError('positiveNumber').value | translate}}
+                  </mat-error>
+                }
               </mat-form-field>
             </div>
           </div>
@@ -90,18 +98,20 @@
             <div>
               <div formArrayName="parts">
                 <div class="create-car-dialog__parts-inputs-container">
-                <div class="create-car-dialog__part" *ngFor="let partConrol of parts.controls; let i = index">
-                  <mat-form-field>
-                    <input [formControlName]="i" matInput>
-                    <mat-error>
-                      {{"DIALOG.VALIDATIONS.NAME" | translate}}
-                    </mat-error>
-                  </mat-form-field>
-                  <app-button class="create-car-dialog__delete-button" button-transparent (click)="onDeletePart(i)">
-                    <mat-icon class="create-car-dialog__delete-button-icon">delete</mat-icon>
-                  </app-button>
+                  @for (partConrol of parts.controls; track partConrol; let i = $index) {
+                    <div class="create-car-dialog__part">
+                      <mat-form-field>
+                        <input [formControlName]="i" matInput>
+                        <mat-error>
+                          {{"DIALOG.VALIDATIONS.NAME" | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                      <app-button class="create-car-dialog__delete-button" button-transparent (click)="onDeletePart(i)">
+                        <mat-icon class="create-car-dialog__delete-button-icon">delete</mat-icon>
+                      </app-button>
+                    </div>
+                  }
                 </div>
-              </div>
               </div>
             </div>
           </ubuntu-container>

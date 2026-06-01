@@ -1,19 +1,21 @@
 <section class="dialog">
-  <div class="loader" *ngIf="loading$ | async">
-    <div class="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  @if (loading$ | async) {
+    <div class="loader">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </div>
+  }
   <div class="notification-container" [class.notification-container--show]="showNotification">
     <div class="notification notification--{{(notification$ | async)?.type}}">
       <mat-icon svgIcon="{{(notification$ | async)?.type || 'empty'}}"></mat-icon>
       <div class="notification__text">
         {{(notification$ | async)?.text | translate}}
       </div>
-  </div>
+    </div>
   </div>
   <header class="dialog__header" [class.dialog__header--border]="contentScrolled">
     @if (sideMenuButton()) {
@@ -33,12 +35,14 @@
   <main class="dialog__content" (scroll)="onScroll($event)">
     <ng-content select="[content]"></ng-content>
   </main>
-  <footer *ngIf="!hideFooter" class="dialog__footer">
-    <button cm-button variant="secondary" (click)="onClose()">
-      {{"DIALOG.BUTTONS.CANCEL" | translate}}
-    </button>
-    <button [disabled]="disabledSumbitButton" cm-button variant="primary" (click)="onSubmit()">
-      {{(submitText || (mode === FormModeEnum.Create ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT")) | translate}}
-    </button>
-  </footer>
+  @if (!hideFooter) {
+    <footer class="dialog__footer">
+      <button cm-button variant="secondary" (click)="onClose()">
+        {{"DIALOG.BUTTONS.CANCEL" | translate}}
+      </button>
+      <button [disabled]="disabledSumbitButton" cm-button variant="primary" (click)="onSubmit()">
+        {{(submitText || (mode === FormModeEnum.Create ? "DIALOG.BUTTONS.ADD" : "DIALOG.BUTTONS.EDIT")) | translate}}
+      </button>
+    </footer>
+  }
 </section>

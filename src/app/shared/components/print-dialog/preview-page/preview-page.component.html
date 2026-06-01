@@ -6,59 +6,73 @@
 
   <hr class="preview-page__divider">
 
-  <div *ngIf="data.multiply" class="preview-page__title-container">
-    <h2 class="preview-page__category-title">{{data.title}}</h2>
-
-    <div class="preview-page__cost-section">
-      <div class="preview-page__cost-section-text">
-        <span>{{"PAGES.PDF_EXPORT.TOTAL" | translate}}: </span>
-        <app-currency [renderAs]="1"
-                      [ignoreFontColor]="true"
-                      [size]="0"
-                      [locale]="settingsService.settings.region"
-                      [value]="cost"
-                      [currency]="settingsService.settings.units?.currency">
-        </app-currency>
-      </div>
-    </div>
-  </div>
-
-  <section class="preview-page__category-section" *ngFor="let category of data.tablesData">
+  @if (data.multiply) {
     <div class="preview-page__title-container">
-      <h3 class="preview-page__title">{{category.title}}</h3>
-      <div *ngIf="config.showTablesCostResult" class="preview-page__cost-section">
+      <h2 class="preview-page__category-title">{{data.title}}</h2>
+      <div class="preview-page__cost-section">
         <div class="preview-page__cost-section-text">
-          <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
+          <span>{{"PAGES.PDF_EXPORT.TOTAL" | translate}}: </span>
           <app-currency [renderAs]="1"
-                        [ignoreFontColor]="true"
-                        [size]="0"
-                        [locale]="settingsService.settings.region"
-                        [value]="category.totalCost"
-                        [currency]="settingsService.settings.units?.currency">
+            [ignoreFontColor]="true"
+            [size]="0"
+            [locale]="settingsService.settings.region"
+            [value]="cost"
+            [currency]="settingsService.settings.units?.currency">
           </app-currency>
         </div>
       </div>
     </div>
-    <table class="preview-page__table" mat-table [dataSource]="category.records">
-      <ng-container *ngFor="let column of config.columns">
-        <ng-container [matColumnDef]="column.id">
-          <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
-          <td mat-cell *matCellDef="let record" [ngSwitch]="column.id"> 
-            <span *ngSwitchCase="'date'" class="preview-page__nowrap">
-              {{ record[column.id] | localizedDate }}
-            </span>
-            <span *ngSwitchCase="'cost'" class="preview-page__nowrap">
-              {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
-            </span>
-            <span *ngSwitchCase="'mileage'" class="preview-page__nowrap">
-              {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
-            </span>
-          <ng-container *ngSwitchDefault>{{ record[column.id] }}</ng-container> </td>
-        </ng-container>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </section>
-</div>
+  }
+
+  @for (category of data.tablesData; track category) {
+    <section class="preview-page__category-section">
+      <div class="preview-page__title-container">
+        <h3 class="preview-page__title">{{category.title}}</h3>
+        @if (config.showTablesCostResult) {
+          <div class="preview-page__cost-section">
+            <div class="preview-page__cost-section-text">
+              <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
+              <app-currency [renderAs]="1"
+                [ignoreFontColor]="true"
+                [size]="0"
+                [locale]="settingsService.settings.region"
+                [value]="category.totalCost"
+                [currency]="settingsService.settings.units?.currency">
+              </app-currency>
+            </div>
+          </div>
+        }
+      </div>
+      <table class="preview-page__table" mat-table [dataSource]="category.records">
+        @for (column of config.columns; track column) {
+          <ng-container [matColumnDef]="column.id">
+            <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
+            <td mat-cell *matCellDef="let record">
+              @switch (column.id) {
+                @case ('date') {
+                  <span class="preview-page__nowrap">
+                    {{ record[column.id] | localizedDate }}
+                  </span>
+                }
+                @case ('cost') {
+                  <span class="preview-page__nowrap">
+                    {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
+                  </span>
+                }
+                @case ('mileage') {
+                  <span class="preview-page__nowrap">
+                    {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
+                  </span>
+                }
+                @default {
+                  {{ record[column.id] }}
+                  } }
+                </td>
+              </ng-container>
+            }
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </section>
+      }
+    </div>

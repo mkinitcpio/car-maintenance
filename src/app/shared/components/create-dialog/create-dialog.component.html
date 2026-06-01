@@ -1,9 +1,9 @@
 <div class="create-dialog">
   <app-dialog [title]="title | async"
-              [mode]="data.mode"
-              (submit)="onSubmit()"
-              (close)="dialogRef.close()"
-  >
+    [mode]="data.mode"
+    (submit)="onSubmit()"
+    (close)="dialogRef.close()"
+    >
     <form class="create-dialog__form" content [formGroup]="categoryForm">
       <div class="form-field__title">
         {{"DIALOG.FIELDS.NAME" | translate}}
@@ -23,14 +23,15 @@
               {{"DIALOG.ICON_GROUPS.CAR_PARTS" | translate}}
             </span>
             <section class="create-dialog__icon-selector">
-              <div matRipple
-                   class="create-dialog__icon-item"
-                   [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value?.replace('.svg', '')"
-                   *ngFor="let icon of icons.carParts"
-                   (click)="categoryForm.get('illustration').setValue(icon.value)"
-              >
-                <mat-icon [svgIcon]="'illustrations:' + icon.value"></mat-icon>
-              </div>
+              @for (icon of icons.carParts; track icon) {
+                <div matRipple
+                  class="create-dialog__icon-item"
+                  [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value?.replace('.svg', '')"
+                  (click)="categoryForm.get('illustration').setValue(icon.value)"
+                  >
+                  <mat-icon [svgIcon]="'illustrations:' + icon.value"></mat-icon>
+                </div>
+              }
             </section>
           </div>
           <div class="create-dialog__icons-section">
@@ -38,14 +39,15 @@
               {{"DIALOG.ICON_GROUPS.OTHERS" | translate}}
             </span>
             <section class="create-dialog__icon-selector">
-              <div matRipple
-                   class="create-dialog__icon-item"
-                   [class.create-dialog__icon-item--selected]="icon.value === (categoryForm.get('illustration').value?.replace('.svg', '') || 'wrench')"
-                   *ngFor="let icon of icons.others"
-                   (click)="categoryForm.get('illustration').setValue(icon.value)"
-              >
-                <mat-icon [svgIcon]="'illustrations:' + icon.value"></mat-icon>
-              </div>
+              @for (icon of icons.others; track icon) {
+                <div matRipple
+                  class="create-dialog__icon-item"
+                  [class.create-dialog__icon-item--selected]="icon.value === (categoryForm.get('illustration').value?.replace('.svg', '') || 'wrench')"
+                  (click)="categoryForm.get('illustration').setValue(icon.value)"
+                  >
+                  <mat-icon [svgIcon]="'illustrations:' + icon.value"></mat-icon>
+                </div>
+              }
             </section>
           </div>
         </section>

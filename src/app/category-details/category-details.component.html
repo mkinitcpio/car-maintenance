@@ -8,54 +8,56 @@
   <ng-container content>
     <div class="category-details__info-section">
       <div class="category-details__column">
-        <app-rich-widget *ngIf="categoryDetails.type === CategoryTypeEnum.Car"
-                          icon="speed"
-                          type="mileage"
-                          tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.MILEAGE"
-                          [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE'"
-                          value="{{categoryDetails.data.mileage}}"
-        >
-        </app-rich-widget>
+        @if (categoryDetails.type === CategoryTypeEnum.Car) {
+          <app-rich-widget
+            icon="speed"
+            type="mileage"
+            tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.MILEAGE"
+            [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE'"
+            value="{{categoryDetails.data.mileage}}"
+            >
+          </app-rich-widget>
+        }
 
         <app-rich-widget icon="money"
-                type="currency"
-                tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
-                [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
-                value="{{totalCost}}"
-        >
+          type="currency"
+          tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
+          [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
+          value="{{totalCost}}"
+          >
         </app-rich-widget>
       </div>
-      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.INFO' | translate" icon="task" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
-        <section class="car-info__content">
-          <div class="car-info__raw">
-            <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.VEHICLE_ID" | translate}}</span>
-            <span class="car-info__raw-data">{{categoryDetails.data.vehicleId || '-'}}</span>
-          </div>
-  
-          <div class="car-info__raw">
-            <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.MAKE" | translate}}</span>
-            <span class="car-info__raw-data">{{categoryDetails.data.make || '-'}}</span>
-          </div>
-  
-          <div class="car-info__raw">
-            <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.MODEL" | translate}}</span>
-            <span class="car-info__raw-data">{{categoryDetails.data.model || '-'}}</span>
-          </div>
-  
-          <div class="car-info__raw">
-            <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.YEAR" | translate}}</span>
-            <span class="car-info__raw-data">{{categoryDetails.data.year || '-'}}</span>
-          </div>
-  
-          <div class="car-info__raw">
-            <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.ENGINE" | translate}}</span>
-            <span class="car-info__raw-data">{{categoryDetails.data.engine || '-'}}</span>
-          </div>
-        </section>
-      </app-widget>
-      <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.NOTE' | translate" icon="edit" *ngIf="categoryDetails.type === CategoryTypeEnum.Car">
-        <textarea #notesInput class="category-details__notes" [value]="categoryDetails.maintenance.note" placeholder="Type some notes" (focusout)="onTextAreaFocusOut(notesInput.value)"></textarea>
-      </app-widget>
+      @if (categoryDetails.type === CategoryTypeEnum.Car) {
+        <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.INFO' | translate" icon="task">
+          <section class="car-info__content">
+            <div class="car-info__raw">
+              <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.VEHICLE_ID" | translate}}</span>
+              <span class="car-info__raw-data">{{categoryDetails.data.vehicleId || '-'}}</span>
+            </div>
+            <div class="car-info__raw">
+              <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.MAKE" | translate}}</span>
+              <span class="car-info__raw-data">{{categoryDetails.data.make || '-'}}</span>
+            </div>
+            <div class="car-info__raw">
+              <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.MODEL" | translate}}</span>
+              <span class="car-info__raw-data">{{categoryDetails.data.model || '-'}}</span>
+            </div>
+            <div class="car-info__raw">
+              <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.YEAR" | translate}}</span>
+              <span class="car-info__raw-data">{{categoryDetails.data.year || '-'}}</span>
+            </div>
+            <div class="car-info__raw">
+              <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.ENGINE" | translate}}</span>
+              <span class="car-info__raw-data">{{categoryDetails.data.engine || '-'}}</span>
+            </div>
+          </section>
+        </app-widget>
+      }
+      @if (categoryDetails.type === CategoryTypeEnum.Car) {
+        <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.NOTE' | translate" icon="edit">
+          <textarea #notesInput class="category-details__notes" [value]="categoryDetails.maintenance.note" placeholder="Type some notes" (focusout)="onTextAreaFocusOut(notesInput.value)"></textarea>
+        </app-widget>
+      }
     </div>
 
     <section class="category-details__tables">
@@ -70,36 +72,36 @@
           </app-button>
         </div>
       </div>
-      <section class="category-details__table-container"
-               [class.category-details__table-container--border-bottom]="table.length !== 1 && ((!first && expandPanelToggles[i + 1]) || (first && expandPanelToggles[i + 1]))"
-               [class.category-details__table-container--border-top]="table.length !== 1 && ((!last && expandPanelToggles[i - 1]) || (last && expandPanelToggles[i - 1]))"
-               [class.category-details__table-container--expand]="expandPanelToggles[i]"
-               *ngFor="let table of categoryDetails.tables; let i = index; let last = last; let first = first"
-      >
-        <div class="category-details__table-header">
-          <div class="category-details__table-title" matRipple (click)="onNavigateToDetails(table.id, table.name)">
-            <mat-icon class="category-details__table-icon" [svgIcon]="'illustrations:' + (table.icon || 'wrench')"></mat-icon>
-            <span class="category-details__table-title-text">{{table.name}}</span>
-            <mat-icon class="category-details__table-title-icon">chevron_right</mat-icon>
-          </div>
-          <div class="category-details__panel">
-            <div class="category-details__tables-title-buttons">
-              <app-button button-transparent (click)="expandPanelToggles[i] = !expandPanelToggles[i]">
-                <mat-icon class="category-details__expand-button" [class.category-details__expand-button--expand]="expandPanelToggles[i]" svgIcon="expand"></mat-icon>
-              </app-button>
+      @for (table of categoryDetails.tables; track table; let i = $index; let last = $last; let first = $first) {
+        <section class="category-details__table-container"
+          [class.category-details__table-container--border-bottom]="table.length !== 1 && ((!first && expandPanelToggles[i + 1]) || (first && expandPanelToggles[i + 1]))"
+          [class.category-details__table-container--border-top]="table.length !== 1 && ((!last && expandPanelToggles[i - 1]) || (last && expandPanelToggles[i - 1]))"
+          [class.category-details__table-container--expand]="expandPanelToggles[i]"
+          >
+          <div class="category-details__table-header">
+            <div class="category-details__table-title" matRipple (click)="onNavigateToDetails(table.id, table.name)">
+              <mat-icon class="category-details__table-icon" [svgIcon]="'illustrations:' + (table.icon || 'wrench')"></mat-icon>
+              <span class="category-details__table-title-text">{{table.name}}</span>
+              <mat-icon class="category-details__table-title-icon">chevron_right</mat-icon>
+            </div>
+            <div class="category-details__panel">
+              <div class="category-details__tables-title-buttons">
+                <app-button button-transparent (click)="expandPanelToggles[i] = !expandPanelToggles[i]">
+                  <mat-icon class="category-details__expand-button" [class.category-details__expand-button--expand]="expandPanelToggles[i]" svgIcon="expand"></mat-icon>
+                </app-button>
+              </div>
             </div>
           </div>
-
-        </div>
-        <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
-          <cm-table [config]="tableConfig"
-                    [transparent]="true"
-                    [rows]="table.data"
-                    (edit)="onEdit($event)"
-                    (delete)="onDelete($event)">
-          </cm-table>
-        </div>
-      </section>
+          <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
+            <cm-table [config]="tableConfig"
+              [transparent]="true"
+              [rows]="table.data"
+              (edit)="onEdit($event)"
+              (delete)="onDelete($event)">
+            </cm-table>
+          </div>
+        </section>
+      }
     </section>
   </ng-container>
 </app-details>
