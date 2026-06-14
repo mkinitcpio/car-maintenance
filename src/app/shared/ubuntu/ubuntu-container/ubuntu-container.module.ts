@@ -5,11 +5,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [UbuntuContainerComponent],
   imports: [
     CommonModule,
     MatTooltipModule,
     MatIconModule,
+    UbuntuContainerComponent,
   ],
   exports: [
     UbuntuContainerComponent,

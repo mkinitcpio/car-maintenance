@@ -10,8 +10,7 @@ describe('UbuntuContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UbuntuContainerComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [UbuntuContainerComponent, TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
@@ -24,6 +23,6 @@ describe('UbuntuContainerComponent', () => {
   });
 
   it('defaults hasBordersStyle to true', () => {
-    expect(component.hasBordersStyle).toBe(true);
+    expect(component.hasBordersStyle()).toBe(true);
   });
 });

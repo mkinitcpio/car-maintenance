@@ -1,25 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
-    selector: 'ubuntu-container',
-    templateUrl: './ubuntu-container.component.html',
-    styleUrls: ['./ubuntu-container.component.scss'],
-    standalone: false
+  selector: 'ubuntu-container',
+  templateUrl: './ubuntu-container.component.html',
+  styleUrls: ['./ubuntu-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatTooltip,
+    MatIcon,
+  ],
 })
-export class UbuntuContainerComponent implements OnInit {
+export class UbuntuContainerComponent {
 
-  @Input()
-  title: string;
-
-  @Input()
-  hasBordersStyle = true;
-
-  @Input()
-  info: string;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  readonly title = input<string>();
+  readonly hasBordersStyle = input(true);
+  readonly info = input<string>();
 
 }
