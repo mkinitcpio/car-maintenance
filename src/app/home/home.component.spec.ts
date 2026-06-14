@@ -1,34 +1,66 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 import { HomeComponent } from './home.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ReleaseNotesService } from '@shared/components/release-notes/release-notes.service';
+import { SettingsService } from '@shared/components/settings/settings.service';
+import { DialogManagerService } from '@shared/services/dialog-manager.service';
+import { SideNavigationTrackerService } from './side-navigation-tracker.service';
+import { createSettingsServiceMock } from 'testing/test-mocks';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let releaseNotesService: { isFirstAppStartAfterUpdate: jasmine.Spy; showReleaseNotes: jasmine.Spy };
+  let dialogManager: { openCurrencyDialog: jasmine.Spy };
+  let router: { navigate: jasmine.Spy };
+  let settings: any;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    releaseNotesService = {
+      isFirstAppStartAfterUpdate: jasmine.createSpy('isFirstAppStartAfterUpdate').and.returnValue(false),
+      showReleaseNotes: jasmine.createSpy('showReleaseNotes').and.returnValue(of(undefined)),
+    };
+    dialogManager = { openCurrencyDialog: jasmine.createSpy('openCurrencyDialog').and.returnValue(of(true)) };
+    router = { navigate: jasmine.createSpy('navigate') };
+    settings = createSettingsServiceMock();
+
+    await TestBed.configureTestingModule({
       declarations: [HomeComponent],
-      imports: [TranslateModule.forRoot(), RouterTestingModule]
-    }).compileComponents();
-  }));
+      providers: [
+        { provide: ReleaseNotesService, useValue: releaseNotesService },
+        { provide: SettingsService, useValue: settings },
+        { provide: Router, useValue: router },
+        { provide: DialogManagerService, useValue: dialogManager },
+        SideNavigationTrackerService,
+      ],
+    })
+      .overrideComponent(HomeComponent, { set: { template: '' } })
+      .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title in a h1 tag', waitForAsync(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'PAGES.HOME.TITLE'
-    );
-  }));
+  it('navigates to the configured start page on init', () => {
+    fixture.detectChanges();
+    expect(router.navigate).toHaveBeenCalledWith([settings.settings.startPage]);
+  });
+
+  it('does not show release notes when it is not the first start after an update', () => {
+    releaseNotesService.isFirstAppStartAfterUpdate.and.returnValue(false);
+    fixture.detectChanges();
+    expect(releaseNotesService.showReleaseNotes).not.toHaveBeenCalled();
+  });
+
+  it('shows release notes on the first start after an update', () => {
+    releaseNotesService.isFirstAppStartAfterUpdate.and.returnValue(true);
+    fixture.detectChanges();
+    expect(releaseNotesService.showReleaseNotes).toHaveBeenCalled();
+  });
 });

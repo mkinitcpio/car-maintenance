@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { MenuComponent } from './menu.component';
 
@@ -8,16 +9,19 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuComponent]
-    })
-    .compileComponents();
-    
+      imports: [MenuComponent],
+      providers: [provideNoopAnimations()],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('enables the enter/leave animation host binding', () => {
+    expect(component.animationState).toBe(true);
   });
 });

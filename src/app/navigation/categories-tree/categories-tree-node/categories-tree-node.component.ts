@@ -1,17 +1,22 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { SettingsService } from '../../../shared/components/settings/settings.service';
-import { Category, CategoryTree } from '../../state/interface';
-import { GroupTreeService } from '../group-tree.service';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from "@angular/core";
+import { MatMenuTrigger } from "@angular/material/menu";
+import { SettingsService } from "../../../shared/components/settings/settings.service";
+import { Category, CategoryTree } from "../../state/interface";
+import { GroupTreeService } from "../group-tree.service";
 
 @Component({
-    selector: 'app-categories-tree-node',
-    templateUrl: './categories-tree-node.component.html',
-    styleUrls: ['./categories-tree-node.component.scss'],
-    standalone: false
+  selector: "app-categories-tree-node",
+  templateUrl: "./categories-tree-node.component.html",
+  styleUrls: ["./categories-tree-node.component.scss"],
+  standalone: false,
 })
 export class CategoriesTreeNodeComponent {
-
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
 
@@ -35,7 +40,7 @@ export class CategoriesTreeNodeComponent {
 
   public expand = false;
 
-  contextMenuPosition = { x: '0px', y: '0px' };
+  contextMenuPosition = { x: "0px", y: "0px" };
 
   constructor(
     public settingsService: SettingsService,
@@ -54,24 +59,24 @@ export class CategoriesTreeNodeComponent {
   }
 
   public onEdit(category?: Category): void {
-    this.edit.emit(category || this.child as Category);
+    this.edit.emit(category || (this.child as Category));
   }
 
   public onDelete(category?: Category): void {
-    this.delete.emit(category || this.child as Category);
+    this.delete.emit(category || (this.child as Category));
   }
 
   public onSelect(category: CategoryTree): void {
-    const {id, parent, name} = category;
+    const { id, parent, name } = category;
 
-    if(category.parent) {
+    if (category.parent) {
       this.groupTreeService.selectedItem({
-        routeName: 'details',
+        routeName: "details",
         group: { id, parent, name },
       });
     } else {
       this.groupTreeService.selectedItem({
-        routeName: 'category-details',
+        routeName: "category-details",
         group: { id },
       });
     }

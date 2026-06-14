@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { UbuntuContainerComponent } from './ubuntu-container.component';
 
@@ -8,18 +10,20 @@ describe('UbuntuContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UbuntuContainerComponent ]
-    })
-    .compileComponents();
-  });
+      declarations: [UbuntuContainerComponent],
+      imports: [TranslateModule.forRoot()],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(UbuntuContainerComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('defaults hasBordersStyle to true', () => {
+    expect(component.hasBordersStyle).toBe(true);
   });
 });

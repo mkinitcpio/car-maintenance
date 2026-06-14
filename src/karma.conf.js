@@ -1,6 +1,11 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
+// Electron prints dev-only security warnings (missing CSP, etc.) for karma's
+// test page. They never appear in the packaged app, so silence them to keep the
+// test output readable.
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -13,7 +18,11 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client:{
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
+      // Launch a real window instead of an iframe: in Electron only top-level
+      // windows receive `nodeIntegration` privileges, which the `electron-renderer`
+      // webpack target (require/global/fs/electron externals) relies on.
+      useIframe: false
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../coverage'),
@@ -24,6 +33,9 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
+    // The first run has to JIT-compile the whole app, so give the browser some
+    // slack before karma considers it inactive.
+    browserNoActivityTimeout: 60000,
     browsers: ['AngularElectron'],
     customLaunchers: {
       AngularElectron: {
@@ -35,8 +47,11 @@ module.exports = function (config) {
           webPreferences: {
             nodeIntegration: true,
             nodeIntegrationInSubFrames: true,
-            allowRunningInsecureContent: true,
-            enableRemoteModule: true
+            // Since Electron 12 `contextIsolation` defaults to `true`, which hides
+            // Node globals (`require`, `global`, ...) from the renderer's main world.
+            // The test bundle is built with `target: electron-renderer` and needs them.
+            contextIsolation: false,
+            sandbox: false
           }
         }
       }
