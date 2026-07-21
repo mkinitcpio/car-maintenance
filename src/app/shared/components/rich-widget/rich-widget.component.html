@@ -1,8 +1,8 @@
 <div class="rich-widget" [class.rich-widget--horizontal]="orientation === 'horizontal'" [class.rich-widget--background]="!transparent">
   <mat-icon class="rich-widget__illustration" [svgIcon]="icon"></mat-icon>
   <div class="rich-widget__info-section">
-    <span class="rich-widget__title">{{title | translate}}</span>
-    <span class="rich-widget__value">
+    <span cmTextBody="b3" class="rich-widget__title">{{title | translate}}</span>
+    <span cmTextBody="b1:medium" class="rich-widget__value">
       @switch (type) {
         @case ('currency') {
           <app-currency [value]="value"

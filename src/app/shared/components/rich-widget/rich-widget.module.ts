@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CurrencyModule } from '@shared/currency/currency.module';
 import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CurrencyModule,
     CommonPipesModule,
     MatTooltipModule,
-  ],
+    CmTextBody,
+],
   exports: [
     RichWidgetComponent,
   ]

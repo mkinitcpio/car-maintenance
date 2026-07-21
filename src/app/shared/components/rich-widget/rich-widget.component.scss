@@ -32,12 +32,10 @@
   &__info-section {
     display: flex;
     flex-direction: column-reverse;
-    gap: 4px;
+    gap: 2px;
   }
 
   &__title {
-    font-size: 12px;
-    font-weight: 400;
     color: $font-color-secondary;
   }
 
@@ -46,8 +44,6 @@
     align-items: center;
 
     color: $font-color-primary;
-    font-size: 14px;
-    font-weight: 500;
   }
 
   &__illustration {
