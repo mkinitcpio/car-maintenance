@@ -1,0 +1,17 @@
+@use "/src/fonts";
+
+.cm-text-body {
+
+  &--b1 {
+    font: 14px/1.6 fonts.$font-system;
+  }
+
+  &--b2 {
+    font: 13px/1.6 fonts.$font-system;
+  }
+
+  &--b3 {
+    font: 12px/1.6 fonts.$font-system;
+    letter-spacing: 0.2;
+  }
+}
