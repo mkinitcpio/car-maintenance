@@ -1,5 +1,5 @@
 <div class="currency">
-  <span [style.color]="ignoreFontColor() ? 'black' : 'unset'" class="currency__value">{{value() | numberSeparator:locale()}}</span>
+  <span cmTextBody="b1:medium" [style.color]="ignoreFontColor() ? 'black' : 'unset'" class="currency__value">{{value() | numberSeparator:locale()}}</span>
   @if (renderAs() === CurrencyRenderEnum.Svg) {
     <mat-icon
       class="currency__icon"

@@ -61,7 +61,7 @@
     </div>
 
     <section class="category-details__tables">
-      <div class="category-details__tables-title">
+      <div cmTextHeader="h2" class="category-details__tables-title">
         <span>{{'PAGES.CATEGORY_DETAILS.GROUPS' | translate}}</span>
         <div class="category-details__tables-title-buttons">
           <app-button button-transparent (click)="onAddGroup()">
@@ -81,7 +81,7 @@
           <div class="category-details__table-header">
             <div class="category-details__table-title" matRipple (click)="onNavigateToDetails(table.id, table.name)">
               <mat-icon class="category-details__table-icon" [svgIcon]="'illustrations:' + (table.icon || 'wrench')"></mat-icon>
-              <span class="category-details__table-title-text">{{table.name}}</span>
+              <span cmTextBody="b1:strong" class="category-details__table-title-text">{{table.name}}</span>
               <mat-icon class="category-details__table-title-icon">chevron_right</mat-icon>
             </div>
             <div class="category-details__panel">

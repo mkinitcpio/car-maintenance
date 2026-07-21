@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CurrencyComponent } from './currency.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonPipesModule } from '../pipes/common-pipes.module';
+import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CommonPipesModule } from '../pipes/common-pipes.module';
     CommonModule,
     MatIconModule,
     CommonPipesModule,
-  ],
+    CmTextBody,
+],
   exports: [
     CurrencyComponent,
   ]

@@ -1,6 +1,7 @@
 import { Component, ElementRef, input, Input, ViewEncapsulation } from "@angular/core";
 import { ButtonBase } from "./button.base";
 import { MatRippleModule } from "@angular/material/core";
+import { CmTextBody } from "../typography/text-body/text-body";
 
 @Component({
     selector: `
@@ -17,8 +18,9 @@ import { MatRippleModule } from "@angular/material/core";
     },
     encapsulation: ViewEncapsulation.None,
     imports: [
-        MatRippleModule,
-    ]
+    MatRippleModule,
+    CmTextBody
+]
 })
 export class CmButton extends ButtonBase {
 

@@ -1,5 +1,5 @@
+@use "/src/fonts";
 @import "/src/colors";
-@import "/src/fonts";
 
 :host {
   &[button-common] {
@@ -15,7 +15,7 @@
     .button {
       height: 34px;
       box-sizing: content-box;
-      font-family: $font-system;
+      font-family: fonts.$font-system;
       background-color: transparent;
       color: $color-button-icon;
       gap: 0px;

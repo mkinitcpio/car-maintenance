@@ -21,6 +21,8 @@ import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.mod
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
 import { TableComponent } from '@shared/components/table/table.component';
+import { CmTextHeader } from "@shared/components/typography/text-header/text-header";
+import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @NgModule({
   declarations: [CategoryDetailsComponent],
@@ -44,7 +46,9 @@ import { TableComponent } from '@shared/components/table/table.component';
     MatIconModule,
     MatRippleModule,
     TableComponent,
-  ],
+    CmTextHeader,
+    CmTextBody
+],
   providers: [
     CategoryDetailsFacade,
     UtilsService,

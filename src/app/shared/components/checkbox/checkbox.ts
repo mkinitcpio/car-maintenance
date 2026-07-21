@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CmTextBody } from '../typography/text-body/text-body';
 
 @Component({
   selector: 'cm-checkbox',
@@ -10,7 +11,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => CmCheckbox),
     multi: true
-   }],
+  }],
+  imports: [
+    CmTextBody,
+  ]
 })
 export class CmCheckbox implements ControlValueAccessor {
 
