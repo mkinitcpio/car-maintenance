@@ -1,1 +1,8 @@
-<p cmlineClamp="1" cmTextBody="b1" [attr.data-csv]="value" class="cell-text">{{value}}</p>
+<span
+  class="cell-text"
+  cmlineClamp="1"
+  cmTextBody="b1"
+  [attr.data-csv]="value()"
+>
+  {{value()}}
+</span>
