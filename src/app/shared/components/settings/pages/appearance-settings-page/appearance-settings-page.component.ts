@@ -10,16 +10,18 @@ import { SwitchModule } from '@shared/components/switch/switch.module';
 import { ColorSelectorModule } from '@shared/components/color-selector/color-selector.module';
 import { Color } from '../../color-interface';
 import { ThemeService } from '@core/services/theme';
+import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @Component({
     selector: 'cm-appearance-settings-page',
     imports: [
-        MatDivider,
-        SettingComponent,
-        TranslateModule,
-        ColorSelectorModule,
-        SwitchModule,
-    ],
+    MatDivider,
+    SettingComponent,
+    TranslateModule,
+    ColorSelectorModule,
+    SwitchModule,
+    CmTextBody,
+],
     templateUrl: './appearance-settings-page.component.html',
     styleUrl: './appearance-settings-page.component.scss'
 })

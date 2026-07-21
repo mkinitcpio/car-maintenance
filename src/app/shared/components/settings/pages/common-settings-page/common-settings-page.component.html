@@ -1,6 +1,7 @@
 <app-setting [label]="'PAGES.SETTINGS.FIELDS.DATABASE_PATH' | translate" icon="storage">
   <div class="settings__item-field settings__item-field--disable">
     <span class="settings__text"
+          cmlineClamp="1"
           [matTooltipClass]="'mat-tooltip--long-text'"
           [matTooltip]="this.settingsService.settings.databasePath">
       {{this.settingsService.settings.databasePath}}

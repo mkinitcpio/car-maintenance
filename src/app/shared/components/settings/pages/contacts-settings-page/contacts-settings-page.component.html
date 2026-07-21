@@ -1,12 +1,12 @@
 <div class="cm-contact-settings-page">
-  <div class="cm-contact-settings-page__info">
+  <div cmTextBody="b1" class="cm-contact-settings-page__info">
     {{'PAGES.SETTINGS.TEXT.CONTACTS' | translate}}
   </div>
   <div class="cm-contact-settings-page__contacts">
     @for (contact of contacts(); track $index) {
       <div class="cm-contact-settings-page__contact" matRipple>
         <mat-icon class="cm-contact-settings-page__icon" [svgIcon]="contact.icon"></mat-icon>
-        <div class="cm-contact-settings-page__name">{{contact.name}}</div>
+        <div cmTextBody="b1" class="cm-contact-settings-page__name">{{contact.name}}</div>
       </div>
     }
   </div>

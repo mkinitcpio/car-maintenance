@@ -40,12 +40,9 @@
   }
 
   &__group-title {
-    font-family: $font-system;
-    font-size: 14px;
     width: 100%;
     padding: 10px;
     text-align: center;
-    font-weight: 500;
     color: $font-color-primary;
   }
 
@@ -64,10 +61,8 @@
     padding: 0 12px;
     gap: 6px;
     border-radius: 21px;
-    font-size: 14px;
     color: $font-color-primary;
     cursor: pointer;
-    font-family: $font-system;
     height: 42px;
     min-width: 192px;
     transition: background-color 0.1s ease-out;
@@ -84,6 +79,7 @@
     font-size: var(--size);
     width: var(--size);
     height: var(--size);
+    line-height: var(--size);
   }
 
   &__sidenav-content {
@@ -99,10 +95,6 @@
 
   &__text {
     margin-right: 12px;
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
   }
 
   &__content {

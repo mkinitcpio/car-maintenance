@@ -30,6 +30,8 @@ import {
   CurrencySettingsPageComponent,
   AppearanceSettingsPageComponent,
 } from './pages';
+import { CmTextBody } from "../typography/text-body/text-body";
+import { CmTextHeader } from "../typography/text-header/text-header";
 
 @NgModule({
   declarations: [SettingsComponent],
@@ -60,7 +62,9 @@ import {
     SettingComponent,
     CurrencySettingsPageComponent,
     AppearanceSettingsPageComponent,
-  ],
+    CmTextBody,
+    CmTextHeader,
+],
   providers: [
     SettingsService,
   ],

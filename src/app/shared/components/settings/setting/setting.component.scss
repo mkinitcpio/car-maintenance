@@ -12,9 +12,6 @@
     width: 33.3%;
 
     color: $font-color-primary;
-
-    line-height: 1rem;
-    font-size: 14px;
   }
 
   &__control {
@@ -28,6 +25,7 @@
     margin-right: 8px;
 
     font-size: 20px;
+    line-height: 20px;
     color: currentColor;
   }
 }

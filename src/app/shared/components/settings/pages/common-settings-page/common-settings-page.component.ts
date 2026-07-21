@@ -12,20 +12,22 @@ import { ElectronService } from '@core/services';
 import { DataBaseService } from '@core/database';
 import { first } from 'rxjs/operators';
 import { NavigationEnum } from 'app/home/navigation-bar/navigation.enum';
+import { CmLineClamp } from "@shared/directives/line-clamp/line-clamp";
 
 @Component({
     selector: 'cm-common-settings-page',
     imports: [
-        MatDivider,
-        SettingComponent,
-        TranslateModule,
-        ButtonModule,
-        MatIcon,
-        MatTooltip,
-        MatSelect,
-        MatFormField,
-        MatOption,
-    ],
+    MatDivider,
+    SettingComponent,
+    TranslateModule,
+    ButtonModule,
+    MatIcon,
+    MatTooltip,
+    MatSelect,
+    MatFormField,
+    MatOption,
+    CmLineClamp,
+],
     templateUrl: './common-settings-page.component.html',
     styleUrl: './common-settings-page.component.scss'
 })

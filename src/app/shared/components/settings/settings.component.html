@@ -18,7 +18,7 @@
                  [class.settings__group--bottom]="group.isBottom"
                  (click)="selectGroup(group.page)">
               <mat-icon class="settings__group-icon">{{group.icon}}</mat-icon>
-              <span>{{group.name | translate}}</span>
+              <span cmTextBody="b1">{{group.name | translate}}</span>
             </div>
           }
         </div>
@@ -26,7 +26,7 @@
       
         <mat-sidenav-content class="settings__sidenav-content">
           @if (sidenavMode() === 'over') {
-            <div class="settings__group-title">
+            <div cmTextHeader="h3" class="settings__group-title">
               {{pageTitle() | translate}}
             </div>
           }
@@ -34,29 +34,31 @@
             <div class="settings__sidenav-wrapper">
               @switch (selectedSettingsGroup()) {
                 @case ('common') {
-                  <cm-common-settings-page></cm-common-settings-page>
+                  <cm-common-settings-page/>
                 }
                 @case ('currency') {
-                  <cm-currency-settings-page [currencyOptions]="currencyOptions$$()"></cm-currency-settings-page>
+                  <cm-currency-settings-page [currencyOptions]="currencyOptions$$()"/>
                 }
                 @case ('units') {
-                  <cm-units-settings-page [region]="settingsService.settings.region"
-                                          [metricSystem]="settingsService.settings.units?.metricSystem">
-                  </cm-units-settings-page>
+                  <cm-units-settings-page
+                    [region]="settingsService.settings.region"
+                    [metricSystem]="settingsService.settings.units?.metricSystem"
+                  />
                 }
                 @case ('language') {
-                  <cm-language-settings-page [languageOptions]="languageOptions"
-                                             [regionOptions]="regionOptions">
-                  </cm-language-settings-page>
+                  <cm-language-settings-page
+                    [languageOptions]="languageOptions"
+                    [regionOptions]="regionOptions"
+                  />
                 }
                 @case ('appearance') {
-                  <cm-appearance-settings-page [colors]="colors"></cm-appearance-settings-page>
+                  <cm-appearance-settings-page [colors]="colors"/>
                 }
                 @case ('contact') {
-                  <cm-contacts-settings-page></cm-contacts-settings-page>
+                  <cm-contacts-settings-page/>
                 }
                 @case ('about') {
-                  <cm-about-settings-page></cm-about-settings-page>
+                  <cm-about-settings-page/>
                 }
               }
             </div>
