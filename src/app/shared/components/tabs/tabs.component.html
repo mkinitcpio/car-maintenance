@@ -5,6 +5,7 @@
         <div #tabCoverRef class="tabs__tab--cover-selected"></div>
         @for (tab of tabs; track tab; let i = $index) {
           <div class="tabs__tab"
+            cmTextBody="b1"
             [class.tabs__tab--selected]="selectedtab === i"
             matBadge="!"
             matBadgeSize="small"
