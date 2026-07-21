@@ -81,14 +81,11 @@
     color: $font-color-primary;
     background-color: $background-button-hover;
 
-    font-size: 12px;
-    font-weight: 500;
     border-radius: 12px;
   }
 
   &__head-cell {
     color: inherit;
-    font-weight: inherit;
   }
 
   &__checkbox {

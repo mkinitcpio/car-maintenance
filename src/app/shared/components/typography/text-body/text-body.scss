@@ -1,6 +1,7 @@
 @use "/src/fonts";
 
 .cm-text-body {
+  color: blue !important;
 
   &--b1 {
     font: 14px/1.6 fonts.$font-system;
@@ -12,6 +13,5 @@
 
   &--b3 {
     font: 12px/1.6 fonts.$font-system;
-    letter-spacing: 0.2;
   }
 }

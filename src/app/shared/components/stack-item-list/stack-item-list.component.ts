@@ -4,8 +4,8 @@ import { StackItem } from './interface';
 import { imports } from './stack-item-list.imports';
 
 @Component({
-  standalone: true,
   imports,
+  standalone: true,
   selector: 'cm-stack-item-list',
   templateUrl: './stack-item-list.component.html',
   styleUrls: ['./stack-item-list.component.scss'],

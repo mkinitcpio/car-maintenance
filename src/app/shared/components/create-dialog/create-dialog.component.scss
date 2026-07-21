@@ -23,8 +23,6 @@
     margin-left: 10px;
 
     color: $font-color-primary;
-    font-family: $font-system;
-    font-size: 14px;
     columns: $font-color-primary;
   }
 
@@ -52,10 +50,7 @@
   }
 
   &__icons-section-title {
-    font-family: $font-system;
-    font-size: 12px;
     color: $font-color-primary;
-    font-weight: 500;
   }
 
   &__icon-item {

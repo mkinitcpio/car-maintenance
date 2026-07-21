@@ -14,6 +14,8 @@ import { DialogModule } from '../dialog/dialog.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { ContentContainerModule } from '../content-container/content-container.module';
+import { CmTextHeader } from "../typography/text-header/text-header";
+import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ContentContainerModule } from '../content-container/content-container.m
     MatIconModule,
     MatRippleModule,
     ContentContainerModule,
-  ],
+    CmTextHeader,
+    CmTextBody,
+],
 })
 export class CreateDialogModule {}

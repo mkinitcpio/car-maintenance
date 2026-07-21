@@ -27,8 +27,10 @@
           }
           @for (schema of columnSchemas(); track $index) {
             @if (schema.visible) {
-              <th [attr.data-csv]="schema.name | translate"
+              <th
+                [attr.data-csv]="schema.name | translate"
                 class="cm-table__head-cell cm-table--column-{{schema.key}} cm-table__head-cell--{{schema.key}}"
+                cmTextHeader="h4:medium"
                 >
                 {{schema.name | translate}}
               </th>

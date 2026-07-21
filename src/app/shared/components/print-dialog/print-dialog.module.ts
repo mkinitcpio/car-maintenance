@@ -19,6 +19,7 @@ import { CmButton } from '../button/button';
 import { CmCheckbox } from '../checkbox/checkbox';
 import { SwitchModule } from '../switch/switch.module';
 import { DialogModule } from '../dialog/dialog.module';
+import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DialogModule } from '../dialog/dialog.module';
     CmCheckbox,
     SwitchModule,
     DialogModule,
-  ],
+    CmTextBody
+],
   exports: [
     PrintDialogComponent,
   ]

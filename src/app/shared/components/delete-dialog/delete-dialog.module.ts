@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from '../button/button.module';
 import { CmButton } from '../button/button';
 import { CmTextHeader } from "../typography/text-header/text-header";
+import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
   declarations: [DeleteDialogComponent],
@@ -16,6 +17,7 @@ import { CmTextHeader } from "../typography/text-header/text-header";
     CmButton,
     ButtonModule,
     CmTextHeader,
+    CmTextBody,
 ],
   exports: [
     DeleteDialogComponent,

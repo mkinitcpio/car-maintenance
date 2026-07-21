@@ -403,3 +403,9 @@ body.no-animations {
 .cdk-global-scrollblock {
   overflow-y: hidden;
 }
+
+.cm-line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

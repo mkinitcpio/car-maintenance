@@ -14,6 +14,7 @@ import { TablePanelComponent } from './table-panel/table-panel.component';
 import { MenuComponent } from '@shared/components/menu/menu.component';
 import { MatRipple } from "@angular/material/core";
 import { CmCheckbox } from "../checkbox/checkbox";
+import { CmTextHeader } from "../typography/text-header/text-header";
 
 export const imports = [
   CommonModule,
@@ -32,4 +33,5 @@ export const imports = [
   MatRipple,
   MenuComponent,
   CmCheckbox,
+  CmTextHeader,
 ];

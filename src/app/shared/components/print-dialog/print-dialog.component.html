@@ -12,7 +12,7 @@
                 <div class="print-dialog__column-container" cdkDrag>
                   <div class="column">
                     <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
-                    <span class="column__name">{{column.name | translate}}</span>
+                    <span cmTextBody="b1" class="column__name">{{column.name | translate}}</span>
                     @if (column.id !== 'name') {
                       <cm-checkbox
                         [value]="column.visible"

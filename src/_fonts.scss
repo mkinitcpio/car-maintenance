@@ -35,3 +35,13 @@ html[data-platform='windows'] {
 }
 
 $font-system: var(--font-system);
+
+.cm-text {
+  &--strong {
+    font-weight: bold;
+  }
+
+  &--medium {
+    font-weight: 500;
+  }
+}

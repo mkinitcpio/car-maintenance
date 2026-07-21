@@ -21,17 +21,11 @@
     align-items: center;
     justify-content: center;
     border: 2px solid $background-primary;
-    line-height: 1;
     transition: scale 0.15s ease-in-out;
 
     &:hover {
       scale: 1.1;
     }
-  }
-
-  &__text {
-    font-size: 12px;
-    font-weight: 500;
   }
 
   &__illustration {
