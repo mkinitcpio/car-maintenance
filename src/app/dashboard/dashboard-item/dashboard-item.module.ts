@@ -7,6 +7,8 @@ import { DocumentationIllustrationComponent } from './documentation-illustration
 import { FeedbackIllustrationComponent } from './feedback-illustration/feedback-illustration.component';
 import { SourceCodeIllustrationComponent } from './source-code-illustration/source-code-illustration.component';
 import { MatRippleModule } from '@angular/material/core';
+import { CmTextHeader } from "@shared/components/typography/text-header/text-header";
+import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MatRippleModule } from '@angular/material/core';
     CommonModule,
     MatIconModule,
     MatRippleModule,
-  ],
+    CmTextHeader,
+    CmTextBody
+],
   exports: [
     DashboardItemComponent,
   ]

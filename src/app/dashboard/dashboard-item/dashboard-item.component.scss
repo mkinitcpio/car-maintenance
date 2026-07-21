@@ -35,7 +35,6 @@
     color: $color-primary;
     padding: 16px;
     margin-top: auto;
-    gap: 2px;
   }
 
   &__external {
@@ -49,13 +48,10 @@
   }
 
   &__title {
-    font-size: 16px;
-    font-weight: bold;
     color: $font-color-primary;
   }
 
   &__description {
-    font-size: 14px;
     color: $font-color-secondary;
   }
 
