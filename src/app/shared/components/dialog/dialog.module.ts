@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ButtonModule } from '../button/button.module';
 import { CmButton } from '../button/button';
 import { TranslateModule } from '@ngx-translate/core';
+import { CmTextHeader } from "../typography/text-header/text-header";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     TranslateModule,
     CmButton,
-  ],
+    CmTextHeader,
+],
   exports: [
     DialogComponent,
   ]

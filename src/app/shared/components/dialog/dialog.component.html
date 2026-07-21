@@ -23,7 +23,7 @@
         <mat-icon svgIcon="menu"></mat-icon>
       </app-button>
     }
-    <div class="dialog__title">{{title | translate}}</div>
+    <div class="dialog__title" cmTextHeader="h1">{{title | translate}}</div>
     <div class="dialog__buttons">
       @if (closable) {
         <button cm-button variant="transparent" (click)="onClose()">
