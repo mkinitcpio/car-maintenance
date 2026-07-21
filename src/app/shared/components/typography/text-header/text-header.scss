@@ -1,0 +1,17 @@
+@use "/src/fonts";
+
+.cm-text-header {
+  color: red;
+
+  &--h1 {
+    font: 18px/1.6 fonts.$font-system bold;
+  }
+
+  &--h2 {
+    font: 16px/1.6 fonts.$font-system bold;
+  }
+
+  &--h3 {
+    font: 14px/1.6 fonts.$font-system bold;
+  }
+}
