@@ -6,10 +6,10 @@
     <main content class="release-notes__content">
       <div class="container">
         @for (note of releaseNotes; track $index) {
-          <h3 class="release-notes__title">{{note.title}}</h3>
+          <h3 cmTextHeader="h2" class="release-notes__title">{{note.title}}</h3>
           <ul class="release-notes__list">
             @for (text of note.news; track $index) {
-              <li class="release-notes__text">{{text}}</li>
+              <li cmTextBody="b1" class="release-notes__text">{{text}}</li>
             }
           </ul>
         }

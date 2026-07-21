@@ -11,6 +11,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
 import { DialogModule } from '../dialog/dialog.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
+import { CmTextBody } from "../typography/text-body/text-body";
+import { CmTextHeader } from "../typography/text-header/text-header";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { ContentContainerModule } from '../content-container/content-container.m
     UbuntuContainerModule,
     DialogModule,
     ContentContainerModule,
-  ]
+    CmTextBody,
+    CmTextHeader
+]
 })
 export class ReleaseNotesModule { }
