@@ -9,7 +9,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { CommonPipesModule } from '../../pipes/common-pipes.module';
-import { CurrencyComponent } from '@shared/currency/currency.component';
 import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-container.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -19,6 +18,7 @@ import { CmButton } from '../button/button';
 import { CmCheckbox } from '../checkbox/checkbox';
 import { SwitchModule } from '../switch/switch.module';
 import { DialogModule } from '../dialog/dialog.module';
+import { CurrencyModule } from '../../currency/currency.module';
 import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
@@ -44,7 +44,8 @@ import { CmTextBody } from "../typography/text-body/text-body";
     CmCheckbox,
     SwitchModule,
     DialogModule,
-    CmTextBody
+    CmTextBody,
+    CurrencyModule
 ],
   exports: [
     PrintDialogComponent,

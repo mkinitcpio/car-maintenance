@@ -6,7 +6,7 @@
     >
     <form content [formGroup]="recordForm">
       <div>
-        <div class="form-field__title">
+        <div cmTextBody="b1" class="form-field__title">
           {{"DIALOG.FIELDS.NAME" | translate}}
           <span class="form-field__title-required">*</span>
         </div>
@@ -21,7 +21,7 @@
       </div>
 
       <div>
-        <div class="form-field__title">{{"DIALOG.FIELDS.MILEAGE" | translate}}</div>
+        <div cmTextBody="b1" class="form-field__title">{{"DIALOG.FIELDS.MILEAGE" | translate}}</div>
         <mat-form-field>
           <cm-mileage matSuffix></cm-mileage>
           <input [formControlName]="'mileage'" matInput>
@@ -40,7 +40,7 @@
 
       <div class="create-record__flex-container">
         <div>
-          <div class="form-field__title">{{"DIALOG.FIELDS.DATE" | translate}}</div>
+          <div cmTextBody="b1" class="form-field__title">{{"DIALOG.FIELDS.DATE" | translate}}</div>
           <mat-form-field class="create-record__date-picker">
             <input [formControlName]="'date'" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle class="date-picker__toggle" matSuffix [for]="picker">
@@ -54,7 +54,7 @@
         </div>
 
         <div>
-          <div class="form-field__title">
+          <div cmTextBody="b1" class="form-field__title">
             {{"DIALOG.FIELDS.EXPENSE" | translate}}
             <span class="form-field__title-required">*</span>
           </div>
@@ -81,7 +81,7 @@
       </div>
 
       <div>
-        <div class="form-field__title">
+        <div cmTextBody="b1" class="form-field__title">
           {{"DIALOG.FIELDS.LABELS" | translate}}
         </div>
 
@@ -89,7 +89,7 @@
           <mat-chip-grid #labelsRef [formControlName]="'labels'">
             @for (label of recordForm.get('labels').value; track $index) {
               <mat-chip-row (removed)="removeLabel($index)">
-                {{label}}
+                <span cmTextBody="b1">{{label}}</span>
                 <button class="create-record__chip-remove-button" matChipRemove>
                   <mat-icon>close</mat-icon>
                 </button>
@@ -112,12 +112,12 @@
               </mat-option>
             }
           </mat-autocomplete>
-          <mat-hint>{{'DIALOG.HINTS.LABELS' | translate}}</mat-hint>
+          <mat-hint cmTextBody="b3">{{'DIALOG.HINTS.LABELS' | translate}}</mat-hint>
         </mat-form-field>
       </div>
 
       <div>
-        <div class="form-field__title">{{"DIALOG.FIELDS.COMMENT" | translate}}</div>
+        <div cmTextBody="b1" class="form-field__title">{{"DIALOG.FIELDS.COMMENT" | translate}}</div>
         <mat-form-field>
           <textarea class="create-record__note" [formControlName]="'notes'" matInput></textarea>
         </mat-form-field>

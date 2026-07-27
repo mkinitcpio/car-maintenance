@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ColumnVisibilityEvent } from './interfaces';
 import { CmCheckbox } from '@shared/components/checkbox/checkbox';
+import { CmTextHeader } from "@shared/components/typography/text-header/text-header";
 
 @Component({
     selector: 'cm-column-selector',
@@ -18,7 +19,8 @@ import { CmCheckbox } from '@shared/components/checkbox/checkbox';
     MatIconModule,
     ButtonModule,
     TranslateModule,
-    CmCheckbox
+    CmCheckbox,
+    CmTextHeader
 ]
 })
 export class ColumnSelectorComponent {

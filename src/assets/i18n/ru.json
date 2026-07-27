@@ -83,7 +83,8 @@
         "ORDER_AND_VISIBILITY": "Порядок и отображение",
         "TITLE": "Экспорт в PDF",
         "SHOW_TOTAL_SUM": "Показать затраты для таблиц",
-        "TOTAL": "Итог"
+        "TOTAL": "Итог",
+        "OTHER": "Другое"
       },
       "NAVIGATION": {
         "TABS": {
@@ -158,7 +159,7 @@
     },
     "DELETE": {
       "TITLE": "Подтверждение удаления",
-      "TEXT": "Вы уверены, что хотите удалить <b class=\"primary-text-color\">{{name}}</b>?",
+      "TEXT": "Вы уверены, что хотите удалить <span class=\"cm-text--strong cm-text-body cm-text-body--b1 primary-text-color\">{{name}}</span>?",
       "DECLESIONS": {
         "RECORDS": ["запись", "записи", "записей"],
         "GROUPS": "группу"

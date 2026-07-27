@@ -1,9 +1,7 @@
 @use '/src/mixins' as mixins;
 @import '/src/colors';
-@import '/src/fonts';
 
 .print-dialog {
-  font-family: $font-system;
   display: flex;
   gap: 12px;
   height: 100%;
@@ -98,7 +96,6 @@
 }
 
 .column {
-  font-family: $font-system;
   padding: 16px 8px;
   display: flex;
   align-items: center;
@@ -106,7 +103,6 @@
   box-sizing: border-box;
   background: transparent;
   color: $font-color-primary;
-  font-size: 14px;
 
   &__name {
     width: 100%;

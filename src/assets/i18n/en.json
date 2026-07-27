@@ -83,7 +83,8 @@
       "ORDER_AND_VISIBILITY": "Order and visibility",
       "TITLE": "Export to PDF",
       "SHOW_TOTAL_SUM": "Show total expense for each table",
-      "TOTAL": "Total"
+      "TOTAL": "Total",
+      "OTHER": "Other"
     },
     "NAVIGATION": {
       "TABS": {

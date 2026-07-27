@@ -4,7 +4,7 @@
 
 <mat-menu #columnMenu="matMenu">
   <ng-template matMenuContent>
-    <div class="mat-menu-content__header">{{'MENU.TITLE.COLUMNS' | translate}}</div>
+    <div cmTextHeader="h4" class="mat-menu-content__header">{{'MENU.TITLE.COLUMNS' | translate}}</div>
     @for (column of columns; track column) {
       <button
         class="menu-item menu-item--column-selector"

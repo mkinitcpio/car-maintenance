@@ -30,7 +30,7 @@
         @if (true) {
           <content-container [title]="'PAGES.PDF_EXPORT.OTHER' | translate">
             <div class="print-dialog__section">
-              <span>{{'PAGES.PDF_EXPORT.SHOW_TOTAL_SUM' | translate}}</span>
+              <span cmTextBody="b1">{{'PAGES.PDF_EXPORT.SHOW_TOTAL_SUM' | translate}}</span>
               <app-switch [value]="config.showTablesCostResult"
                 (change)="config.showTablesCostResult = !config.showTablesCostResult">
               </app-switch>

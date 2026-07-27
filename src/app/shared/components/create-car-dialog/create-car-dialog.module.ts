@@ -15,6 +15,7 @@ import { DialogModule } from '../dialog/dialog.module';
 import { ButtonModule } from '../button/button.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
 import { TabsModule } from '../tabs/tabs.module';
+import { CmTextBody } from "../typography/text-body/text-body";
 
 
 
@@ -39,6 +40,7 @@ import { TabsModule } from '../tabs/tabs.module';
     ButtonModule,
     ContentContainerModule,
     TabsModule,
-  ]
+    CmTextBody,
+]
 })
 export class CreateCarDialogModule { }

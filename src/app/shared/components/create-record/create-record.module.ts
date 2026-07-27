@@ -16,6 +16,7 @@ import { MileageComponent } from '../mileage/mileage.component';
 import { CurrencyModule } from '@shared/currency/currency.module';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CmTextBody } from '../typography/text-body/text-body';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     CurrencyModule,
     MatChipsModule,
     MatAutocompleteModule,
+    CmTextBody,
   ],
 })
 export class CreateRecordModule {}
