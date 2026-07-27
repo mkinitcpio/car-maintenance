@@ -7,8 +7,9 @@ import { ColumnSelectorComponent } from '../column-selector/column-selector.comp
 import { ColumnSchema } from '../interfaces';
 import { ColumnVisibilityEvent } from '../column-selector/interfaces';
 import { MatDividerModule } from '@angular/material/divider';
-import { NgPlural, NgPluralCase } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { CmTextHeader } from "@shared/components/typography/text-header/text-header";
+import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @Component({
     selector: 'cm-table-panel',
@@ -21,9 +22,9 @@ import { TranslateModule } from '@ngx-translate/core';
     MatMenuModule,
     ColumnSelectorComponent,
     MatDividerModule,
-    NgPlural,
-    NgPluralCase,
-    TranslateModule
+    TranslateModule,
+    CmTextHeader,
+    CmTextBody
 ]
 })
 export class TablePanelComponent {

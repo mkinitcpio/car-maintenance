@@ -31,18 +31,18 @@
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
-    <div class="mat-menu-content__header">{{"MENU.TITLE.EXPORT" | translate}}</div>
+    <div cmTextHeader="h4" class="mat-menu-content__header">{{"MENU.TITLE.EXPORT" | translate}}</div>
     <button class="menu-item"
       mat-menu-item
       (click)="exportToPDF.emit()">
       <mat-icon svgIcon="printer"></mat-icon>
-      <span>PDF</span>
+      <span cmTextBody="b1">PDF</span>
     </button>
     <button class="menu-item"
       (click)="exportToCSV.emit()"
       mat-menu-item>
       <mat-icon svgIcon="csv"></mat-icon>
-      <span>CSV</span>
+      <span cmTextBody="b1">CSV</span>
     </button>
   </ng-template>
 </mat-menu>
