@@ -18,15 +18,12 @@
       </div>
     </section>
 
-    <div class="page__content-shadow-cover">
-      <div class="page__shadow"></div>
-      <div class="page__content">
-        <ng-content select="[content]"></ng-content>
-      </div>
+    <div class="page__content">
+      <ng-content select="[content]"></ng-content>
     </div>
   </div>
 
-  @if (sidebarButtonIcon) {
+  @if (true) {
     <div class="page__sidebar" [class.page__sidebar--show]="showSidebar">
       <div class="page__sidebar-container">
         <section class="page__title-section">
