@@ -1,0 +1,15 @@
+<section class="widgets-panel">
+
+  @for(widget of data(); track $index) {
+    <section class="widgets-panel__widget">
+      <app-rich-widget [icon]="widget.icon"
+                       [transparent]="widget.transparent"
+                       [type]="widget.type"
+                       [tooltip]="widget.tooltip"
+                       [title]="widget.title"
+                       [value]="widget.value"
+      >
+      </app-rich-widget>
+    </section>
+  }
+</section>

@@ -15,6 +15,8 @@ import { CmTextBody } from "../typography/text-body/text-body";
         '[class]': '"cm-button--" + variant',
         '[class.cm-button--default]': 'shape() === "default"',
         '[class.cm-button--rounded]': 'shape() === "rounded"',
+        '[class.cm-button--medium]': 'size() === "default"',
+        '[class.cm-button--small]': 'size() === "small"',
     },
     encapsulation: ViewEncapsulation.None,
     imports: [
@@ -28,6 +30,8 @@ export class CmButton extends ButtonBase {
     variant: string = 'primary';
 
     shape = input<'rounded' | 'default'>('default');
+
+    size = input<'default' | 'small'>('default');
 
     constructor(elementRef: ElementRef) {
         super(elementRef);

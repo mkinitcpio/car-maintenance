@@ -4,17 +4,12 @@
 
 .cm-table {
   width: 100%;
-  padding: 12px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 
   color: $font-color-primary;
-  background-color: $background-primary;
 
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  border-radius: 24px;
-  overflow-x: auto;
   box-sizing: border-box;
 
   &--transparent {
@@ -22,13 +17,13 @@
   }
 
   &__table-section {
-    @include mixins.scrollable-horizontal;
+    // @include mixins.scrollable-horizontal;
   }
 
   &__head-cell,
   &__cell {
-    height: 32px;
-    padding: 4px 12px;
+    height: 42px;
+    padding: 0 12px;
 
     line-height: 30px;
     border: 0px solid transparent;
@@ -36,18 +31,22 @@
     &:first-child {
       padding-left: 16px;
 
-      border-radius: 12px 0 0 12px;
+      border-radius: 21px 0 0 21px;
     }
 
     &:last-child {
       padding-right: 16px;
 
-      border-radius: 0 12px 12px 0;
+      border-radius: 0 21px 21px 0;
     }
   }
 
   &__table {
     width: 100%;
+    padding: 12px 16px;
+    background-color: $background-primary;
+    border-radius: 12px 12px 24px 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
 
     font-family: $font-system;
     border-spacing: 0 4px;

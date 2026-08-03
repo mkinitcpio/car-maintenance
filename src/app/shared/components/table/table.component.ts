@@ -43,7 +43,7 @@ export class TableComponent<T extends RowData> {
 
   public selectedRows = new SelectionModel<string>(true);
   public allRowSelected = false;
-  public contextMenuId: string = null;
+  public contextMenuId: string | null = null;
 
   constructor() {
     effect(() => {

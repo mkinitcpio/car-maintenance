@@ -5,8 +5,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 4px;
 
   font-family: $font-system;
+  background-color: $background-primary;
+  border-radius: 24px 24px 12px 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 12px 16px;
 
   &__expander {
     width: 100%;
@@ -14,6 +19,7 @@
 
   &__selection {
     display: flex;
+    gap: 4px;
     align-items: center;
     font-weight: 600;
     color: #4b4848;

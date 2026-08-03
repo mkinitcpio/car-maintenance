@@ -1,24 +1,24 @@
 <section class="table-panel">
   @if (selectedRowsCount()) {
     <div class="table-panel__selection">
-      <app-button button-transparent (click)="move.emit()">
+      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="move.emit()">
         <mat-icon>compare_arrows</mat-icon>
-      </app-button>
-      <app-button button-transparent (click)="delete.emit()">
+      </button>
+      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="delete.emit()">
         <mat-icon class="table-panel__selection-delete" svgIcon="trash"></mat-icon>
-      </app-button>
+      </button>
       @if (hasData()) {
         <mat-divider vertical="true"></mat-divider>
       }
     </div>
   }
-  <app-button button-transparent (click)="add.emit()">
+  <button cm-button cm-button size="small" variant="transparent" shape="rounded" (click)="add.emit()">
     <mat-icon>add</mat-icon>
-  </app-button>
+  </button>
   @if (hasData()) {
-    <app-button button-transparent [matMenuTriggerFor]="contextMenu">
+    <button cm-button cm-button size="small" variant="transparent" shape="rounded" [matMenuTriggerFor]="contextMenu">
       <mat-icon>file_download</mat-icon>
-    </app-button>
+    </button>
   }
   @if (hasData()) {
     <mat-divider vertical="true"></mat-divider>

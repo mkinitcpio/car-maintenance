@@ -15,6 +15,7 @@ import { MenuComponent } from '@shared/components/menu/menu.component';
 import { MatRipple } from "@angular/material/core";
 import { CmCheckbox } from "../checkbox/checkbox";
 import { CmTextHeader } from "../typography/text-header/text-header";
+import { CmTextBody } from "../typography/text-body/text-body";
 
 export const imports = [
   CommonModule,
@@ -34,4 +35,5 @@ export const imports = [
   MenuComponent,
   CmCheckbox,
   CmTextHeader,
+  CmTextBody,
 ];

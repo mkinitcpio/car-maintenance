@@ -20,8 +20,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
-  min-width: 42px;
   padding: 0;
 
   border: none;
@@ -65,6 +63,15 @@
     }
   }
 
+  &--neutral {
+    background-color: $background-primary;
+    color: $font-color-primary;
+
+    &:hover {
+      background: $background-button-hover;
+    }
+  }
+
   &--dangerous {
     background-color: $color-dangerous;
     color: white;
@@ -84,6 +91,23 @@
     &:hover {
       background: var(--background-button-hover);
     }
+  }
+
+
+  &--medium {
+    height: 42px;
+    min-width: 42px;
+  }
+
+  &--small {
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+
+    .cm-button__container {
+      padding: 0;
+    }
+
   }
 
   &:active {

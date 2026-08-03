@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule } from '@ngx-translate/core';
 import { CmTextHeader } from "@shared/components/typography/text-header/text-header";
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
+import { CmButton } from "@shared/components/button/button";
 
 @Component({
     selector: 'cm-table-panel',
@@ -24,7 +25,8 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
     MatDividerModule,
     TranslateModule,
     CmTextHeader,
-    CmTextBody
+    CmTextBody,
+    CmButton
 ]
 })
 export class TablePanelComponent {

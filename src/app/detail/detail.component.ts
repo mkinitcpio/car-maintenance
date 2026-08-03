@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable, combineLatest, merge } from 'rxjs';
@@ -36,6 +36,9 @@ import { columnSchemas } from './detail-table-column-schema.config';
 import { UtilsService } from '@shared/services/utils.service';
 import { ColumnSchema } from '@shared/components/table/interfaces';
 import { TranslateService } from '@ngx-translate/core';
+import { WidgetsPanel } from '../shared/components/widgets-panel/widgets-panel';
+import { Widget } from '../shared/components/widgets-panel/interface';
+import { CmButton } from "@shared/components/button/button";
 
 const imports = [
   TableComponent,
@@ -44,6 +47,8 @@ const imports = [
   MatIconModule,
   RichWidgetModule,
   MatMenuModule,
+  WidgetsPanel,
+  CmButton,
 ];
 
 @Component({
@@ -73,9 +78,29 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   public id: string = null;
   public dataSourceTable: Record[] = [];
   public name: string = null;
-  public costSum = 0;
-  public lastModifiedDate: Date = null;
   public currencies = currencies;
+  
+  public costSum = signal<number>(0);
+  public lastModifiedDate = signal<Date | null>(null);
+
+  public widgets = computed<Widget[]>(() => {
+    const widgets: Widget[] = [{
+      title: 'PAGES.DETAIL.OVERALL_EXPENSE',
+      type: 'currency',
+      transparent: true,
+      icon: 'money',
+      value: this.costSum(),
+      orientation: 'vertical',
+    }, {
+      title: 'PAGES.DETAIL.LAST_MODIFIED',
+      type: 'date',
+      transparent: true,
+      icon: 'calendar-edit',
+      value: this.lastModifiedDate() as Date,
+    }];
+
+    return widgets;
+  });
 
   public CurrencyEnum = CurrencyEnum;
 
@@ -106,8 +131,8 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   ngOnInit(): void {
     this.details$.subscribe((categoryDetails) => {
       this.dataSourceTable = categoryDetails;
-      this.costSum = this.utilsService.getResultCost(this.dataSourceTable);
-      this.lastModifiedDate = this.utilsService.getLastDate(this.dataSourceTable);
+      this.costSum.set(this.utilsService.getResultCost(this.dataSourceTable));
+      this.lastModifiedDate.set(this.utilsService.getLastDate(this.dataSourceTable));
     });
 
     this.route.params.subscribe((params) => {

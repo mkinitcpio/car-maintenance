@@ -1,29 +1,12 @@
 <app-details [title]="name">
   <ng-container buttons-left>
-    <app-button button-transparent (click)="navigateToParentGroup(parentId)">
+    <button cm-button variant="neutral" shape="rounded" (click)="navigateToParentGroup(parentId)">
       <mat-icon svgIcon="tree"></mat-icon>
-    </app-button>
+    </button>
   </ng-container>
 
   <ng-container content>
-    <div class="detail__cards">
-      <app-rich-widget icon="money"
-                       transparent="true"
-                       type="currency"
-                       tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
-                       [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
-                       value="{{costSum}}"
-      >
-      </app-rich-widget>
-      <div class="detail__divider"></div>
-      <app-rich-widget icon="calendar-edit"
-                       transparent="true"
-                       type="date"
-                       [title]="'PAGES.DETAIL.LAST_MODIFIED'"
-                       value="{{lastModifiedDate}}"
-      >
-      </app-rich-widget>
-    </div>
+    <cm-widgets-panel [data]="widgets()"></cm-widgets-panel>
     <cm-table [config]="tableConfig"
               [rows]="dataSourceTable"
               (add)="onCreate()"

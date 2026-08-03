@@ -109,17 +109,18 @@
     @if (selectedRows.selected.length <= 1) {
       <button matRipple class="cm-menu__button cm-menu__button--edit" (click)="onEdit(row.id)" cdkMenuItem>
         <mat-icon class="cm-menu__icon" svgIcon="edit"></mat-icon>
-        {{"MENU.EDIT" | translate}}
+        <span cmTextBody="b1">{{"MENU.EDIT" | translate}}</span>
       </button>
     }
     <button matRipple class="cm-menu__button cm-menu__button--move" (click)="onMove()" cdkMenuItem>
       <mat-icon class="cm-menu__icon">compare_arrows</mat-icon>
-      {{"MENU.MOVE" | translate}}
+      <span cmTextBody="b1">{{"MENU.MOVE" | translate}}</span>
     </button>
     <div class="cm-menu__divider"> </div>
     <button matRipple class="cm-menu__button cm-menu__button--delete" (click)="onDelete(row)" cdkMenuItem>
       <mat-icon class="cm-menu__icon" svgIcon="trash"></mat-icon>
-      {{"MENU.DELETE" | translate}}
+      <span cmTextBody="b1">{{"MENU.DELETE" | translate}}</span>
+
     </button>
   </cm-menu>
 </ng-template>
