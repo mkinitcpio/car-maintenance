@@ -28,6 +28,10 @@
 
   cursor: pointer;
 
+  .mat-icon {
+    color: var(--color-button-icon);
+  }
+
   &__container {
     display: flex;
     align-items: center;
@@ -91,6 +95,10 @@
     &:hover {
       background: var(--background-button-hover);
     }
+  }
+
+  &--active {
+    background: var(--background-button-hover);
   }
 
 

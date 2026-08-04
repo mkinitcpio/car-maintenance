@@ -58,17 +58,17 @@
     @if (!child.parent) {
       <button class="menu-item" mat-menu-item (click)="onAdd()">
         <mat-icon class="mat-item__icon mat-item__icon--add" svgIcon="add"></mat-icon>
-        <span>{{"MENU.ADD" | translate}}</span>
+        <span cmTextBody="b1">{{"MENU.ADD" | translate}}</span>
       </button>
     }
     <button class="menu-item" mat-menu-item (click)="onEdit()">
       <mat-icon class="mat-item__icon mat-item__icon--edit" svgIcon="edit"></mat-icon>
-      <span>{{"MENU.EDIT" | translate}}</span>
+      <span cmTextBody="b1">{{"MENU.EDIT" | translate}}</span>
     </button>
     <div class="mat-menu__divider"></div>
     <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
       <mat-icon class="mat-item__icon mat-item__icon--delete" svgIcon="trash"></mat-icon>
-      <span>{{"MENU.DELETE" | translate}}</span>
+      <span cmTextBody="b1">{{"MENU.DELETE" | translate}}</span>
     </button>
   </ng-template>
 </mat-menu>

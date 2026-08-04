@@ -3,9 +3,7 @@
 @import '/src/fonts';
 
 .move-dialog {
-  font-family: $font-system;
   color: $font-color-primary;
-  font-size: 14px;
 
   &__empty {
     height: 256px;
@@ -48,14 +46,12 @@
 
   &__group-title {
     position: sticky;
-    padding: 4px 0 8px 0;
+    padding-bottom: 8px;
     top: 0;
     z-index: 1;
 
     color: $font-color-secondary;
     background-color: $background-primary;
-    font-size: 13px;
-    font-weight: 500;
   }
 
   &__group-item {

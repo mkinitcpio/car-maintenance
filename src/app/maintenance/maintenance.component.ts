@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { SideNavigationTrackerService } from 'app/home/side-navigation-tracker.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-maintenance',
@@ -7,13 +6,6 @@ import { SideNavigationTrackerService } from 'app/home/side-navigation-tracker.s
     styleUrls: ['./maintenance.component.scss'],
     standalone: false
 })
-export class MaintenanceComponent implements OnInit {
-
-  constructor(
-    public sideNavTracker: SideNavigationTrackerService,
-  ) { }
-
-  ngOnInit(): void {
-  }
+export class MaintenanceComponent {
 
 }

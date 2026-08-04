@@ -1,34 +1,17 @@
 @import '/src/colors';
 
-.home {
+.maintenance {
   display: flex;
   height: 100%;
 
-  &__sidenav-container {
-    width: 100%;
-  }
-
-  &__sidenav {
+  &__navigation {
     width: 324px;
-
-    box-sizing: content-box;
-    border-right: none;
-    transition: width 0.5s ease-in-out;
-
-    &--minimize {
-      width: 16px;
-    }
+    min-width: 324px;
   }
 
   &__content {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
-    margin-left: 324px !important;
-
-    transition: margin-left 0.5s ease-in-out;
-
-    &--minimize {
-      margin-left: 16px !important;
-    }
   }
 }

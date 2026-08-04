@@ -8,7 +8,7 @@
   >
   <form content [formGroup]="feedbackForm">
     <div>
-      <div class="form-field__title">
+      <div cmTextBody="b1" class="form-field__title">
         {{"DIALOG.FIELDS.TYPE" | translate}}
       </div>
       @if (!data.type) {
@@ -26,7 +26,7 @@
     </div>
 
     <div>
-      <div class="form-field__title">
+      <div cmTextBody="b1" class="form-field__title">
         {{'Email' | translate}}
       </div>
       <mat-form-field [floatLabel]="'always'">
@@ -43,7 +43,7 @@
     </div>
 
     <div>
-      <div class="form-field__title">
+      <div cmTextBody="b1" class="form-field__title">
         {{"DIALOG.FIELDS.TEXT" | translate}}
       </div>
       <mat-form-field [floatLabel]="'always'">

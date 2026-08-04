@@ -10,6 +10,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FeedbackRepository } from '@core/repositories/feedback.repository';
+import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FeedbackRepository } from '@core/repositories/feedback.repository';
     MatButtonToggleModule,
     TranslateModule,
     MatIconModule,
-  ],
+    CmTextBody
+],
   providers: [
     FeedbackRepository,
   ],

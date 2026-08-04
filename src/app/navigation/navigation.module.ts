@@ -15,6 +15,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { CmButton } from "@shared/components/button/button";
 
 @NgModule({
   declarations: [
@@ -25,14 +26,15 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('navigation', navigationReducer),
-    EffectsModule.forFeature([ NavigationEffects ]),
+    EffectsModule.forFeature([NavigationEffects]),
     CategoriesTreeModule,
     TabsModule,
     MatBadgeModule,
     ButtonModule,
     MatIconModule,
     TranslateModule,
-  ],
+    CmButton
+],
   providers: [
     NavigationFacade,
   ],

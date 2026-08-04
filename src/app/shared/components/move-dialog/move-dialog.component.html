@@ -22,7 +22,7 @@
           @for (group of items; track group) {
             @if (group.items.length) {
               <div class="move-dialog__group">
-                <span class="move-dialog__group-title">{{group.group}}</span>
+                <span cmTextHeader="h4" class="move-dialog__group-title">{{group.group}}</span>
                 @for (item of group.items; track item) {
                   @if (item.id !== data.parent) {
                     <div mat-ripple
@@ -33,7 +33,7 @@
                       <mat-icon class="move-dialog__list-icon"
                         [svgIcon]="item.icon">
                       </mat-icon>
-                      {{item.name}}
+                      <span cmTextBody="b1">{{item.name}}</span>
                     </div>
                   }
                 }

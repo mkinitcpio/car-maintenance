@@ -16,7 +16,7 @@ import { ButtonModule } from '../button/button.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
 import { CmButton } from '../button/button';
 import { CmCheckbox } from '../checkbox/checkbox';
-import { SwitchModule } from '../switch/switch.module';
+import { SwitchComponent } from '../switch/switch.component';
 import { DialogModule } from '../dialog/dialog.module';
 import { CurrencyModule } from '../../currency/currency.module';
 import { CmTextBody } from "../typography/text-body/text-body";
@@ -42,7 +42,7 @@ import { CmTextBody } from "../typography/text-body/text-body";
     ContentContainerModule,
     CmButton,
     CmCheckbox,
-    SwitchModule,
+    SwitchComponent,
     DialogModule,
     CmTextBody,
     CurrencyModule

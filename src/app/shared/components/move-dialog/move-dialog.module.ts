@@ -7,6 +7,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
+import { CmTextHeader } from "../typography/text-header/text-header";
+import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { TranslateModule } from '@ngx-translate/core';
     MatInputModule,
     MatFormFieldModule,
     TranslateModule,
-  ],
+    CmTextHeader,
+    CmTextBody
+],
   exports: [
     MoveDialogComponent,
   ]
