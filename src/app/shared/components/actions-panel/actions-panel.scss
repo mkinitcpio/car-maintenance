@@ -1,0 +1,22 @@
+@import '/src/colors';
+
+.actions-panel {
+  display: flex;
+  background-color: $background-primary;
+  padding: 4px;
+  border-radius: 30px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 4px;
+  align-items: center;
+  color: #4b4848;
+  transform: scale(1);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+}

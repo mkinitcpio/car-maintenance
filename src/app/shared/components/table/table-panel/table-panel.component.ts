@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CmTextHeader } from "@shared/components/typography/text-header/text-header";
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 import { CmButton } from "@shared/components/button/button";
+import { ActionsPanel } from '../../actions-panel/actions-panel';
 
 @Component({
     selector: 'cm-table-panel',
@@ -26,7 +27,8 @@ import { CmButton } from "@shared/components/button/button";
     TranslateModule,
     CmTextHeader,
     CmTextBody,
-    CmButton
+    CmButton,
+    ActionsPanel,
 ]
 })
 export class TablePanelComponent {

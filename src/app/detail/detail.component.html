@@ -1,8 +1,11 @@
 <app-details [title]="name">
   <ng-container buttons-left>
-    <button cm-button variant="neutral" shape="rounded" (click)="navigateToParentGroup(parentId)">
-      <mat-icon svgIcon="tree"></mat-icon>
-    </button>
+    <cm-actions-panel>
+      <button cm-button variant="neutral" shape="rounded" size="small" (click)="navigateToParentGroup(parentId)">
+        <mat-icon svgIcon="tree"></mat-icon>
+      </button>
+    </cm-actions-panel>
+
   </ng-container>
 
   <ng-container content>

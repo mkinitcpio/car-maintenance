@@ -39,6 +39,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { WidgetsPanel } from '../shared/components/widgets-panel/widgets-panel';
 import { Widget } from '../shared/components/widgets-panel/interface';
 import { CmButton } from "@shared/components/button/button";
+import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
 
 const imports = [
   TableComponent,
@@ -49,6 +50,7 @@ const imports = [
   MatMenuModule,
   WidgetsPanel,
   CmButton,
+  ActionsPanel
 ];
 
 @Component({

@@ -16,13 +16,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { UbuntuContainerModule } from '@shared/ubuntu/ubuntu-container/ubuntu-container.module';
 import { DetailsModule } from '@shared/components/details/details.module';
-import { ButtonModule } from '@shared/components/button/button.module';
 import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
 import { TableComponent } from '@shared/components/table/table.component';
 import { CmTextHeader } from "@shared/components/typography/text-header/text-header";
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
+import { CmButton } from "@shared/components/button/button";
+import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
 
 @NgModule({
   declarations: [CategoryDetailsComponent],
@@ -38,7 +39,6 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
     MatCheckboxModule,
     MatMenuModule,
     UbuntuContainerModule,
-    ButtonModule,
     RichWidgetModule,
     DetailsModule,
     CurrencyModule,
@@ -47,7 +47,9 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
     MatRippleModule,
     TableComponent,
     CmTextHeader,
-    CmTextBody
+    CmTextBody,
+    CmButton,
+    ActionsPanel,
 ],
   providers: [
     CategoryDetailsFacade,

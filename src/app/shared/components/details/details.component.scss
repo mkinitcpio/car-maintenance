@@ -18,8 +18,8 @@
     left: 0;
     z-index: 1;
     box-sizing: border-box;
-    min-height: 54px;
-    padding: 8px 24px;
+    min-height: 64px;
+    padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,7 +61,7 @@
     height: 100%;
     gap: 24px;
     padding: 24px;
-    padding-top: 72px;
+    padding-top: 82px;
 
     background-color: $background-secondary;
 

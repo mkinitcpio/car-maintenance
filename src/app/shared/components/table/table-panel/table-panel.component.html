@@ -1,31 +1,46 @@
 <section class="table-panel">
-  @if (selectedRowsCount()) {
-    <div class="table-panel__selection">
-      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="move.emit()">
-        <mat-icon>compare_arrows</mat-icon>
-      </button>
-      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="delete.emit()">
-        <mat-icon class="table-panel__selection-delete" svgIcon="trash"></mat-icon>
-      </button>
-      @if (hasData()) {
-        <mat-divider vertical="true"></mat-divider>
-      }
-    </div>
-  }
-  <button cm-button cm-button size="small" variant="transparent" shape="rounded" (click)="add.emit()">
-    <mat-icon>add</mat-icon>
-  </button>
-  @if (hasData()) {
-    <button cm-button cm-button size="small" variant="transparent" shape="rounded" [matMenuTriggerFor]="contextMenu">
-      <mat-icon>file_download</mat-icon>
+  <cm-actions-panel class="table-panel__group table-panel__group--dynamic" [class.table-panel__group--show]="selectedRowsCount()">
+    <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="move.emit()">
+      <mat-icon>compare_arrows</mat-icon>
     </button>
-  }
+    <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="delete.emit()">
+      <mat-icon class="table-panel__group-delete" svgIcon="trash"></mat-icon>
+    </button>
+  </cm-actions-panel>
+
+  <cm-actions-panel>
+    <button
+      cm-button
+      size="small"
+      variant="transparent"
+      shape="rounded"
+      (click)="add.emit()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    @if (hasData()) {
+      <button
+        cm-button
+        size="small"
+        variant="transparent"
+        shape="rounded"
+        [matMenuTriggerFor]="contextMenu"
+        #menu="matMenuTrigger"
+        [active]="menu.menuOpen"
+      >
+        <mat-icon>file_download</mat-icon>
+      </button>
+    }
+  </cm-actions-panel>
+
   @if (hasData()) {
-    <mat-divider vertical="true"></mat-divider>
-  }
-  @if (hasData()) {
-    <cm-column-selector [columnConfigs]="columnSchemas()" (onVisibilityChanged)="onVisibilityChanged.emit($event)">
-    </cm-column-selector>
+    <cm-actions-panel>
+      <cm-column-selector
+        [columnConfigs]="columnSchemas()"
+        (onVisibilityChanged)="onVisibilityChanged.emit($event)"
+      />
+    </cm-actions-panel>
   }
 </section>
 
