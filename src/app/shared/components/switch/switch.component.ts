@@ -1,20 +1,19 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 
 @Component({
-    selector: 'app-switch',
+    selector: 'cm-switch',
     templateUrl: './switch.component.html',
     styleUrls: ['./switch.component.scss'],
-    standalone: false
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SwitchComponent {
 
-  @Input()
-  value: boolean;
+  readonly value = input<boolean>();
 
-  @Output()
-  change: EventEmitter<boolean> = new EventEmitter();
+  readonly change = output<boolean>();
 
-  public onChange(event): void {
+  public onChange(event: any): void {
     event.stopPropagation();
     this.change.emit(event.target.checked as boolean);
   }

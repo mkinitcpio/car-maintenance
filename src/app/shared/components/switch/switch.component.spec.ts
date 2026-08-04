@@ -9,7 +9,7 @@ describe('SwitchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SwitchComponent],
+      imports: [SwitchComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

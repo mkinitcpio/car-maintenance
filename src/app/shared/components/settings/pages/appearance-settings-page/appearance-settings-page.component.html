@@ -25,7 +25,7 @@
 <mat-divider class="settings__divider"></mat-divider>
 
 <app-setting [label]="'PAGES.SETTINGS.FIELDS.ANIMATION' | translate" icon="animation">
-  <app-switch [value]="settingsService.settings.appearance.animations"
+  <cm-switch [value]="settingsService.settings.appearance.animations"
               (change)="onAnimationsChanged($event)">
-  </app-switch>
+  </cm-switch>
 </app-setting>

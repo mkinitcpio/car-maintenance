@@ -1,8 +1,10 @@
 <app-details [title]="categoryDetails.data.name" class="category-details" [icon]="'illustrations:' + (categoryDetails.icon || 'wrench').replace('.svg', '')">
   <ng-container buttons-right>
-    <app-button button-transparent (click)="onPrint()">
-      <mat-icon svgIcon="printer"></mat-icon>
-    </app-button>
+    <cm-actions-panel>
+      <button cm-button size="small" variant="transparent" shape="rounded" (click)="onPrint()">
+        <mat-icon svgIcon="printer"></mat-icon>
+      </button>
+    </cm-actions-panel>
   </ng-container>
 
   <ng-container content>
@@ -64,12 +66,14 @@
       <div cmTextHeader="h2" class="category-details__tables-title">
         <span>{{'PAGES.CATEGORY_DETAILS.GROUPS' | translate}}</span>
         <div class="category-details__tables-title-buttons">
-          <app-button button-transparent (click)="onAddGroup()">
-            <mat-icon>add</mat-icon>
-          </app-button>
-          <app-button button-transparent (click)="toogleExpandStates(isAllExpanded ? false: true)">
-            <mat-icon [svgIcon]="isAllExpanded ? 'collapse' : 'expand1'"></mat-icon>
-          </app-button>
+          <cm-actions-panel>
+            <button cm-button size="small" variant="transparent" shape="rounded" (click)="onAddGroup()">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button cm-button size="small" variant="transparent" shape="rounded" (click)="toogleExpandStates(isAllExpanded ? false: true)">
+              <mat-icon>{{isAllExpanded ? 'unfold_less' : 'unfold_more'}}</mat-icon>
+            </button>
+          </cm-actions-panel>
         </div>
       </div>
       @for (table of categoryDetails.tables; track table; let i = $index; let last = $last; let first = $first) {
@@ -86,9 +90,19 @@
             </div>
             <div class="category-details__panel">
               <div class="category-details__tables-title-buttons">
-                <app-button button-transparent (click)="expandPanelToggles[i] = !expandPanelToggles[i]">
-                  <mat-icon class="category-details__expand-button" [class.category-details__expand-button--expand]="expandPanelToggles[i]" svgIcon="expand"></mat-icon>
-                </app-button>
+                <button
+                  cm-button
+                  size="small"
+                  variant="transparent"
+                  shape="rounded"
+                  (click)="expandPanelToggles[i] = !expandPanelToggles[i]"
+                >
+                  <mat-icon
+                    class="category-details__expand-button"
+                    [class.category-details__expand-button--expand]="expandPanelToggles[i]"
+                    svgIcon="expand"
+                  />
+                </button>
               </div>
             </div>
           </div>

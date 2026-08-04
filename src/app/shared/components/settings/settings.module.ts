@@ -13,7 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {ColorSelectorModule} from '../color-selector/color-selector.module';
 import { DialogModule } from '../dialog/dialog.module';
-import { SwitchModule } from '../switch/switch.module';
+import { SwitchComponent } from '../switch/switch.component';
 import { SettingComponent } from './setting/setting.component';
 import { ButtonModule } from '../button/button.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
@@ -48,7 +48,7 @@ import { CmTextHeader } from "../typography/text-header/text-header";
     MatButtonToggleModule,
     ColorSelectorModule,
     DialogModule,
-    SwitchModule,
+    SwitchComponent,
     ButtonModule,
     ContentContainerModule,
     CommonPipesModule,

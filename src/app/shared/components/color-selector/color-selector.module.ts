@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ColorsModule } from './colors/colors.module';
-import { SwitchModule } from '../switch/switch.module';
+import { SwitchComponent } from '../switch/switch.component';
 
 @NgModule({
   declarations: [ColorSelectorComponent],
@@ -14,7 +14,7 @@ import { SwitchModule } from '../switch/switch.module';
     MatIconModule,
     TranslateModule,
     ColorsModule,
-    SwitchModule,
+    SwitchComponent,
   ],
   exports: [
     ColorSelectorComponent,
