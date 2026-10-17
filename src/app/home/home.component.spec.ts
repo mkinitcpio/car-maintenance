@@ -27,7 +27,7 @@ describe('HomeComponent', () => {
     settings = createSettingsServiceMock();
 
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      imports: [HomeComponent],
       providers: [
         { provide: ReleaseNotesService, useValue: releaseNotesService },
         { provide: SettingsService, useValue: settings },
@@ -36,7 +36,7 @@ describe('HomeComponent', () => {
         SideNavigationTrackerService,
       ],
     })
-      .overrideComponent(HomeComponent, { set: { template: '' } })
+      .overrideComponent(HomeComponent, { set: { template: '', imports: [] } })
       .compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);

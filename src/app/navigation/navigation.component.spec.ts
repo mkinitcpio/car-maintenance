@@ -50,7 +50,7 @@ describe('NavigationComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [NavigationComponent],
+      imports: [NavigationComponent],
       providers: [
         { provide: NavigationFacade, useValue: facade },
         { provide: DialogManagerService, useValue: dialogManager },
@@ -63,7 +63,7 @@ describe('NavigationComponent', () => {
         GroupTreeService,
       ],
     })
-      .overrideComponent(NavigationComponent, { set: { template: '' } })
+      .overrideComponent(NavigationComponent, { set: { template: '', imports: [] } })
       .compileComponents();
 
     fixture = TestBed.createComponent(NavigationComponent);

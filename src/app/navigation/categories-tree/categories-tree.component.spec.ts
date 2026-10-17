@@ -11,9 +11,9 @@ describe('CategoriesTreeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CategoriesTreeComponent],
+      imports: [CategoriesTreeComponent],
     })
-      .overrideComponent(CategoriesTreeComponent, { set: { template: '' } })
+      .overrideComponent(CategoriesTreeComponent, { set: { template: '', imports: [] } })
       .compileComponents();
 
     fixture = TestBed.createComponent(CategoriesTreeComponent);

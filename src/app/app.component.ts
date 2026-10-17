@@ -1,4 +1,5 @@
 import { Component, inject, Inject, DOCUMENT } from "@angular/core";
+import { RouterModule } from "@angular/router";
 import { DataBaseService } from "./core/database";
 import { AutoCloseable } from "./core/auto-closeable";
 import { SettingsService } from "./shared/components/settings/settings.service";
@@ -19,7 +20,10 @@ import { DateAdapter } from "@angular/material/core";
     selector: "app-root",
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
-    standalone: false
+    standalone: true,
+    imports: [
+        RouterModule,
+    ],
 })
 export class AppComponent extends AutoCloseable {
 

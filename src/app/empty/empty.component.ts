@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
+import { DetailsModule } from '@shared/components/details/details.module';
 
 @Component({
-    selector: 'app-empty',
-    templateUrl: './empty.component.html',
-    styleUrls: ['./empty.component.scss'],
-    standalone: false
+  selector: 'app-empty',
+  templateUrl: './empty.component.html',
+  styleUrls: ['./empty.component.scss'],
+  standalone: true,
+  imports: [
+    DetailsModule,
+    MatIconModule,
+    TranslateModule,
+  ],
 })
 export class EmptyComponent implements OnInit {
 

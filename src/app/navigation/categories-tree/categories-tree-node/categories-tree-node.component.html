@@ -5,68 +5,71 @@
     [matMenuTriggerFor]="contextMenu">
   </div>
   <div class="categories-tree-node__content"
-    (contextmenu)="onContextMenu($event)">
-    <div class="categories-tree-node__selection-container" [class.categories-tree-node__selection-container--selected]="isSelected" (click)="onSelect(child)" matRipple>
+    (contextmenu)="onContextMenu($event, child())">
+    <div class="categories-tree-node__selection-container" [class.categories-tree-node__selection-container--selected]="isSelected(child())" (click)="onSelect(child())" matRipple>
       <div class="categories-tree-node__icon-container">
-        <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (child.illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
+        <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (child().illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
       </div>
       <span cmTextBody="b1" cmlineClamp="1" class="categories-tree-node__name">
-        {{child.name}}
+        {{child().name}}
       </span>
     </div>
-    @if (!isSubGroup) {
-      <div class="categories-tree-node__expand-button-container">
-        @if (child.children?.length) {
-          <button cm-button variant="transparent" shape="rounded" (click)="switchExpandState()">
-            <mat-icon
-              class="categories-tree-node__expand-button"
-              svgIcon="expand"
-              [class.categories-tree-node__expand-button--expanded]="expanded"
-              />
-          </button>
-        } @else {
-          <div class="categories-tree-node__empty"></div>
-        }
-      </div>
-    }
-  </div>
-  <ng-container>
-    <div class="categories-tree-node__sub-node"
-      [class.categories-tree-node__sub-node--expanded]="expanded"
-      [style.height]="expanded ? (child.children?.length * 48) + 'px' : 0">
-      <div class="categories-tree-node__displacer">
-        @for (c of child.children; track c) {
-          <app-category-tree-displacer></app-category-tree-displacer>
-        }
-      </div>
-      <div class="categories-tree-node__sub-node-item">
-        @for (c of child.children; track c) {
-          <app-categories-tree-node
-            [isSubGroup]="true"
-            [child]="c"
-            (edit)="onEdit(c)"
-            (delete)="onDelete(c)">
-          </app-categories-tree-node>
-        }
-      </div>
+    <div class="categories-tree-node__expand-button-container">
+      @if (child().children?.length) {
+        <button cm-button variant="transparent" shape="rounded" (click)="switchExpandState()">
+          <mat-icon
+            class="categories-tree-node__expand-button"
+            svgIcon="expand"
+            [class.categories-tree-node__expand-button--expanded]="expanded"
+            />
+        </button>
+      } @else {
+        <div class="categories-tree-node__empty"></div>
+      }
     </div>
-  </ng-container>
+  </div>
+  <div class="categories-tree-node__sub-node"
+    [class.categories-tree-node__sub-node--expanded]="expanded"
+    [style.height]="expanded ? (child().children?.length * 48) + 'px' : 0">
+    <div class="categories-tree-node__displacer">
+      @for (c of child().children; track c) {
+        <app-category-tree-displacer></app-category-tree-displacer>
+      }
+    </div>
+    <div class="categories-tree-node__sub-node-item">
+      @for (c of child().children; track c) {
+        <div class="categories-tree-node">
+          <div class="categories-tree-node__content"
+            (contextmenu)="onContextMenu($event, c)">
+            <div class="categories-tree-node__selection-container" [class.categories-tree-node__selection-container--selected]="isSelected(c)" (click)="onSelect(c)" matRipple>
+              <div class="categories-tree-node__icon-container">
+                <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (c.illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
+              </div>
+              <span cmTextBody="b1" cmlineClamp="1" class="categories-tree-node__name">
+                {{c.name}}
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
 </div>
 
 <mat-menu #contextMenu="matMenu">
   <ng-template matMenuContent>
-    @if (!child.parent) {
-      <button class="menu-item" mat-menu-item (click)="onAdd()">
+    @if (!contextMenuCategory?.parent) {
+      <button class="menu-item" mat-menu-item (click)="onAdd(contextMenuCategory)">
         <mat-icon class="mat-item__icon mat-item__icon--add" svgIcon="add"></mat-icon>
         <span cmTextBody="b1">{{"MENU.ADD" | translate}}</span>
       </button>
     }
-    <button class="menu-item" mat-menu-item (click)="onEdit()">
+    <button class="menu-item" mat-menu-item (click)="onEdit(contextMenuCategory)">
       <mat-icon class="mat-item__icon mat-item__icon--edit" svgIcon="edit"></mat-icon>
       <span cmTextBody="b1">{{"MENU.EDIT" | translate}}</span>
     </button>
     <div class="mat-menu__divider"></div>
-    <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete()">
+    <button class="menu-item menu-item--delete" mat-menu-item (click)="onDelete(contextMenuCategory)">
       <mat-icon class="mat-item__icon mat-item__icon--delete" svgIcon="trash"></mat-icon>
       <span cmTextBody="b1">{{"MENU.DELETE" | translate}}</span>
     </button>

@@ -24,7 +24,7 @@ describe('DashboardComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [DashboardComponent],
+      imports: [DashboardComponent],
       providers: [
         provideMockElectronService(),
         provideMockSettingsService(),
@@ -36,6 +36,7 @@ describe('DashboardComponent', () => {
       .overrideComponent(DashboardComponent, {
         set: {
           template: '',
+          imports: [],
           providers: [{ provide: ResizeObserverService, useValue: resizeObserverMock }],
         },
       })

@@ -10,8 +10,7 @@ describe('EventsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EventsComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [EventsComponent, TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

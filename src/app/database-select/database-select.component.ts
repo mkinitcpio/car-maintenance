@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 import {ElectronService} from "../core/services";
 import {DataBaseService} from "../core/database";
 import { SettingsService } from '../shared/components/settings/settings.service';
@@ -8,7 +10,11 @@ import { Router } from '@angular/router';
     selector: 'app-database-select',
     templateUrl: './database-select.component.html',
     styleUrls: ['./database-select.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [
+        MatButtonModule,
+        TranslateModule,
+    ],
 })
 export class DatabaseSelectComponent implements OnInit {
 

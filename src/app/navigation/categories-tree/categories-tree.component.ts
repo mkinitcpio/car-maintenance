@@ -1,13 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category, CategoryTree } from '../state/interface';
+import { CategoriesTreeNodeComponent } from './categories-tree-node/categories-tree-node.component';
 
 @Component({
     selector: 'app-categories-tree',
     templateUrl: './categories-tree.component.html',
     styleUrls: ['./categories-tree.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [
+        CategoriesTreeNodeComponent,
+    ],
 })
-export class CategoriesTreeComponent implements OnInit {
+export class CategoriesTreeComponent {
 
   @Input()
   catagories: CategoryTree[];
@@ -20,14 +24,6 @@ export class CategoriesTreeComponent implements OnInit {
 
   @Output()
   delete: EventEmitter<Category> = new EventEmitter();
-
-  @Output()
-  select: EventEmitter<Category> = new EventEmitter();
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   public onAdd(category: Category): void {
     this.add.emit(category);

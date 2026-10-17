@@ -25,7 +25,7 @@ describe('AppComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      imports: [AppComponent],
       providers: [
         { provide: DataBaseService, useValue: database },
         { provide: SettingsService, useValue: settings },
@@ -35,7 +35,7 @@ describe('AppComponent', () => {
         { provide: DateAdapter, useValue: { setLocale: jasmine.createSpy('setLocale') } },
       ],
     })
-      .overrideComponent(AppComponent, { set: { template: '' } })
+      .overrideComponent(AppComponent, { set: { template: '', imports: [] } })
       .compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);

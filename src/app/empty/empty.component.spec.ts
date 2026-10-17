@@ -10,8 +10,7 @@ describe('EmptyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmptyComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [EmptyComponent, TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 import { ElectronService } from '@core/services';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
+import { ButtonModule } from '@shared/components/button/button.module';
+import { DatabaseSelectComponent } from '../database-select/database-select.component';
 
 @Component({
     selector: 'app-welcome-page',
     templateUrl: './welcome-page.component.html',
     styleUrls: ['./welcome-page.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatTooltipModule,
+        TranslateModule,
+        ButtonModule,
+        DatabaseSelectComponent,
+    ],
 })
 export class WelcomePageComponent {
 

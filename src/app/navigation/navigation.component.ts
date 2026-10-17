@@ -1,4 +1,6 @@
 import { Component, inject, OnInit } from "@angular/core";
+import { MatIconModule } from "@angular/material/icon";
+import { TranslateModule } from "@ngx-translate/core";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 
 import { FormModeEnum } from "../shared/components/create-dialog/form-mode.enum";
@@ -20,12 +22,22 @@ import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { GroupData, GroupTreeService } from "./categories-tree/group-tree.service";
 import { TranslateService } from "@ngx-translate/core";
+import { ButtonModule } from "@shared/components/button/button.module";
+import { TabsModule } from "@shared/components/tabs/tabs.module";
+import { CategoriesTreeComponent } from "./categories-tree/categories-tree.component";
 
 @Component({
     selector: "app-navigation",
     templateUrl: "./navigation.component.html",
     styleUrls: ["./navigation.component.scss"],
-    standalone: false
+    standalone: true,
+    imports: [
+        ButtonModule,
+        MatIconModule,
+        TranslateModule,
+        TabsModule,
+        CategoriesTreeComponent,
+    ],
 })
 export class NavigationComponent extends AutoCloseable implements OnInit {
 

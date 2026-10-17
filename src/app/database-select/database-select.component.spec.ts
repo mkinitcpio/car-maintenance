@@ -23,7 +23,7 @@ describe('DatabaseSelectComponent', () => {
     router = { navigate: jasmine.createSpy('navigate') };
 
     await TestBed.configureTestingModule({
-      declarations: [DatabaseSelectComponent],
+      imports: [DatabaseSelectComponent],
       providers: [
         provideMockElectronService(),
         provideMockDataBaseService(),
@@ -31,7 +31,7 @@ describe('DatabaseSelectComponent', () => {
         { provide: Router, useValue: router },
       ],
     })
-      .overrideComponent(DatabaseSelectComponent, { set: { template: '' } })
+      .overrideComponent(DatabaseSelectComponent, { set: { template: '', imports: [] } })
       .compileComponents();
 
     fixture = TestBed.createComponent(DatabaseSelectComponent);

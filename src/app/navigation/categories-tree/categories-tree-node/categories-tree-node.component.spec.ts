@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CategoriesTreeNodeComponent } from './categories-tree-node.component';
 import { GroupTreeService } from '../group-tree.service';
 import { CategoryTree, CategoryTypeEnum } from '../../state/interface';
-import { provideMockSettingsService } from 'testing/test-mocks';
 
 describe('CategoriesTreeNodeComponent', () => {
   let component: CategoriesTreeNodeComponent;
@@ -14,15 +13,15 @@ describe('CategoriesTreeNodeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CategoriesTreeNodeComponent],
-      providers: [provideMockSettingsService()],
+      imports: [CategoriesTreeNodeComponent],
+      providers: [],
     })
-      .overrideComponent(CategoriesTreeNodeComponent, { set: { template: '' } })
+      .overrideComponent(CategoriesTreeNodeComponent, { set: { template: '', imports: [] } })
       .compileComponents();
 
     fixture = TestBed.createComponent(CategoriesTreeNodeComponent);
     component = fixture.componentInstance;
-    component.child = child;
+    component.child.set(child);
     groupTreeService = TestBed.inject(GroupTreeService);
   });
 
@@ -70,10 +69,10 @@ describe('CategoriesTreeNodeComponent', () => {
   });
 
   it('reports selection state based on the group-tree service', () => {
-    expect(component.isSelected).toBe(false);
+    expect(component.isSelected(component.child)).toBe(false);
 
     groupTreeService.selectedItem({ routeName: 'category-details', group: { id: 'c1' } });
-    expect(component.isSelected).toBe(true);
+    expect(component.isSelected(component.child)).toBe(true);
   });
 
   it('delegates expand toggling to the group-tree service', () => {
@@ -86,14 +85,15 @@ describe('CategoriesTreeNodeComponent', () => {
     expect(component.expanded).toBe(false);
   });
 
-  it('opens the context menu at the cursor position', () => {
+  it('opens the context menu at the cursor position for the clicked category', () => {
     const openMenu = jasmine.createSpy('openMenu');
     component.contextMenu = { openMenu } as any;
     const event = { preventDefault: jasmine.createSpy('preventDefault'), clientX: 12, clientY: 34 } as any;
 
-    component.onContextMenu(event);
+    component.onContextMenu(event, child);
 
     expect(event.preventDefault).toHaveBeenCalled();
+    expect(component.contextMenuCategory).toBe(child);
     expect(component.contextMenuPosition).toEqual({ x: '12px', y: '34px' });
     expect(openMenu).toHaveBeenCalled();
   });
