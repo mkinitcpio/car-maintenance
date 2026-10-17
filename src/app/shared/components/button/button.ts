@@ -1,6 +1,6 @@
 import { Component, ElementRef, input, Input, ViewEncapsulation } from "@angular/core";
 import { ButtonBase } from "./button.base";
-import { MatRippleModule } from "@angular/material/core";
+import { MatRipple, MatRippleModule } from "@angular/material/core";
 import { CmTextBody } from "../typography/text-body/text-body";
 
 @Component({
@@ -19,9 +19,9 @@ import { CmTextBody } from "../typography/text-body/text-body";
         '[class.cm-button--small]': 'size() === "small"',
         '[class.cm-button--active]': 'active()',
     },
+    hostDirectives: [MatRipple],
     encapsulation: ViewEncapsulation.None,
     imports: [
-    MatRippleModule,
     CmTextBody
 ]
 })

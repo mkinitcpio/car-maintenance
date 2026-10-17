@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "skipLibCheck": true
+  },
+  "include": [
+    "**/*.d.ts",
+    "stories/**/*.stories.ts",
+    "../.storybook/main.ts",
+    "../.storybook/preview.ts"
+  ]
+}

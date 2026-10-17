@@ -129,6 +129,41 @@
               "main.ts"
             ]
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "browserTarget": "angular-electron:storybook-build",
+            "configDir": ".storybook",
+            "compodoc": false,
+            "tsConfig": "src/tsconfig.storybook.json",
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "browserTarget": "angular-electron:storybook-build",
+            "configDir": ".storybook",
+            "compodoc": false,
+            "tsConfig": "src/tsconfig.storybook.json",
+            "outputDir": "storybook-static"
+          }
+        },
+        "storybook-build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/storybook",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.storybook.json",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "assets": [
+              "src/assets"
+            ]
+          }
         }
       }
     },

@@ -6,6 +6,8 @@
 /out-tsc
 /app-builds
 /release
+/storybook-static
+/dist-storybook
 main.js
 src/**/*.js
 !src/karma.conf.js
