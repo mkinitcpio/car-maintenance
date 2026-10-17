@@ -5,7 +5,7 @@ import { LocaleEnum } from '@shared/components/settings/locale-enum';
 
 @Pipe({
     name: 'numberSeparator',
-    standalone: false
+    standalone: true
 })
 export class NumberSeparatorPipe implements PipeTransform {
 

@@ -6,7 +6,7 @@ import { DialogModule } from '../dialog/dialog.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
+import { OrderTranslatePipe } from '@shared/pipes/order-translation.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
-    CommonPipesModule,
+    OrderTranslatePipe,
     TranslateModule,
   ],
   exports: [

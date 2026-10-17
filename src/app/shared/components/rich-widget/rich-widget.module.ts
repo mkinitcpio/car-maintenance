@@ -4,7 +4,8 @@ import { RichWidgetComponent } from './rich-widget.component';
 import { MatIconModule } from "@angular/material/icon";
 import { TranslateModule } from '@ngx-translate/core';
 import { CurrencyModule } from '@shared/currency/currency.module';
-import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
+import { LocalizedDatePipe } from '@shared/pipes/localized-date.pipe';
+import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CmTextBody } from "../typography/text-body/text-body";
 
@@ -17,7 +18,8 @@ import { CmTextBody } from "../typography/text-body/text-body";
     MatIconModule,
     TranslateModule,
     CurrencyModule,
-    CommonPipesModule,
+    LocalizedDatePipe,
+    NumberSeparatorPipe,
     MatTooltipModule,
     CmTextBody,
 ],

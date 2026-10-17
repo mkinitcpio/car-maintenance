@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
+import { LocalizedDatePipe } from '@shared/pipes/localized-date.pipe';
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @Component({
@@ -7,7 +7,7 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
     templateUrl: './cell-date.component.html',
     styleUrl: './cell-date.component.scss',
     imports: [
-    CommonPipesModule,
+    LocalizedDatePipe,
     CmTextBody,
 ]
 })

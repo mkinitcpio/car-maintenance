@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
     name: 'orderTranslate',
-    standalone: false
+    standalone: true
 })
 export class OrderTranslatePipe implements PipeTransform {
 

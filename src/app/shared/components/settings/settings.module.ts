@@ -17,7 +17,6 @@ import { SwitchComponent } from '../switch/switch.component';
 import { SettingComponent } from './setting/setting.component';
 import { ButtonModule } from '../button/button.module';
 import { ContentContainerModule } from '../content-container/content-container.module';
-import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -51,7 +50,6 @@ import { CmTextHeader } from "../typography/text-header/text-header";
     SwitchComponent,
     ButtonModule,
     ContentContainerModule,
-    CommonPipesModule,
     MatRippleModule,
     MatSidenavModule,
     ContactsSettingsPageComponent,

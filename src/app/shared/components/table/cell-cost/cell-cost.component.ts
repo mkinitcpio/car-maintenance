@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { CurrencyModule } from '@shared/currency/currency.module';
-import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
+import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
 
 @Component({
     selector: 'cm-cell-cost',
@@ -9,7 +9,7 @@ import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
     styleUrl: './cell-cost.component.scss',
     imports: [
         CurrencyModule,
-        CommonPipesModule,
+        NumberSeparatorPipe,
     ]
 })
 export class CellCostComponent {

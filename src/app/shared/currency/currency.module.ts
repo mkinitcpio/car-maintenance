@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CurrencyComponent } from './currency.component';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonPipesModule } from '../pipes/common-pipes.module';
+import { CurrencyPipe } from '../pipes/currency.pipe';
+import { NumberSeparatorPipe } from '../pipes/number-separator.pipe';
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 
@@ -13,7 +14,8 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
   imports: [
     CommonModule,
     MatIconModule,
-    CommonPipesModule,
+    CurrencyPipe,
+    NumberSeparatorPipe,
     CmTextBody,
 ],
   exports: [

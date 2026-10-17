@@ -8,7 +8,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { SettingComponent } from '../../setting/setting.component';
 import { SettingsService } from '../../settings.service';
 import { CurrencyEnum } from '../../currency.enum';
-import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
+import { OrderTranslatePipe } from '@shared/pipes/order-translation.pipe';
 
 @Component({
     selector: 'cm-currency-settings-page',
@@ -21,7 +21,7 @@ import { CommonPipesModule } from '@shared/pipes/common-pipes.module';
         MatFormField,
         MatOption,
         MatSelectTrigger,
-        CommonPipesModule,
+        OrderTranslatePipe,
     ],
     templateUrl: './currency-settings-page.component.html',
     styleUrl: './currency-settings-page.component.scss'

@@ -8,7 +8,8 @@ import { PreviewPageComponent } from './preview-page/preview-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
-import { CommonPipesModule } from '../../pipes/common-pipes.module';
+import { LocalizedDatePipe } from '../../pipes/localized-date.pipe';
+import { NumberSeparatorPipe } from '../../pipes/number-separator.pipe';
 import { UbuntuContainerModule } from '../../ubuntu/ubuntu-container/ubuntu-container.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -34,7 +35,8 @@ import { CmTextBody } from "../typography/text-body/text-body";
     TranslateModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    CommonPipesModule,
+    LocalizedDatePipe,
+    NumberSeparatorPipe,
     UbuntuContainerModule,
     MatTooltipModule,
     MatSlideToggleModule,

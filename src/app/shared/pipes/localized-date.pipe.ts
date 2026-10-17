@@ -5,7 +5,7 @@ import { SettingsService } from '@shared/components/settings/settings.service';
 @Pipe({
     name: 'localizedDate',
     pure: false,
-    standalone: false
+    standalone: true
 })
 export class LocalizedDatePipe implements PipeTransform {
 

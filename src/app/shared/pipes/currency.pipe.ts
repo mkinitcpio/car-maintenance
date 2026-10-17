@@ -6,13 +6,11 @@ import { currencies } from './currencies';
 
 @Pipe({
     name: 'currency',
-    standalone: false
+    standalone: true
 })
 export class CurrencyPipe implements PipeTransform {
 
   private currencies = currencies;
-
-  private CurrencyEnum = CurrencyEnum;
 
   constructor(){}
 
