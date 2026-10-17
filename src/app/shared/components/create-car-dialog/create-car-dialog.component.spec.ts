@@ -16,8 +16,7 @@ describe('CreateCarDialogComponent', () => {
     dialogRef = createMatDialogRefMock();
 
     await TestBed.configureTestingModule({
-      declarations: [CreateCarDialogComponent],
-      imports: [ReactiveFormsModule, TranslateModule.forRoot()],
+      imports: [CreateCarDialogComponent, ReactiveFormsModule, TranslateModule.forRoot()],
       providers: [...provideDialog({ mode: FormModeEnum.Create }, dialogRef), provideMockSettingsService()],
     })
       .overrideComponent(CreateCarDialogComponent, { set: { template: '' } })

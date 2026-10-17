@@ -1,4 +1,7 @@
 import { trigger, transition, animate, style } from '@angular/animations';
+import { ColorComponent } from './color/color.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Color } from '@shared/components/settings/color-interface';
 import { ColorEnum } from '@shared/components/settings/colors-enum';
@@ -24,7 +27,7 @@ import { ColorEnum } from '@shared/components/settings/colors-enum';
             ]),
         ]),
     ],
-    standalone: false
+    imports: [CommonModule, MatIconModule, ColorComponent]
 })
 export class ColorsComponent {
 

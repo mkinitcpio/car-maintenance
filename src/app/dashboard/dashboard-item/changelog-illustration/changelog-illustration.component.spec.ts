@@ -6,7 +6,7 @@ import { ChangelogIllustrationComponent } from './changelog-illustration.compone
 describe('ChangelogIllustrationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChangelogIllustrationComponent],
+      imports: [ChangelogIllustrationComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });

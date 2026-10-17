@@ -8,7 +8,7 @@ describe('ColorSelectorComponent', () => {
   let fixture: ComponentFixture<ColorSelectorComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({ declarations: [ColorSelectorComponent] })
+    await TestBed.configureTestingModule({ imports: [ColorSelectorComponent] })
       .overrideComponent(ColorSelectorComponent, { set: { template: '' } })
       .compileComponents();
 

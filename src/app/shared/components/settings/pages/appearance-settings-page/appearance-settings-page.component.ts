@@ -6,7 +6,7 @@ import { MatDivider } from "@angular/material/divider";
 import { TranslateModule } from "@ngx-translate/core";
 import { SettingComponent } from "../../setting/setting.component";
 import { SwitchComponent } from "@shared/components/switch/switch.component";
-import { ColorSelectorModule } from "@shared/components/color-selector/color-selector.module";
+import { ColorSelectorComponent } from "@shared/components/color-selector/color-selector.component";
 import { Color } from "../../color-interface";
 import { ThemeService } from "@core/services/theme";
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
@@ -17,7 +17,7 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
     MatDivider,
     SettingComponent,
     TranslateModule,
-    ColorSelectorModule,
+    ColorSelectorComponent,
     SwitchComponent,
     CmTextBody,
   ],

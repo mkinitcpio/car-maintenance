@@ -1,4 +1,10 @@
 import { Component, EventEmitter, HostListener, input, Input, OnInit, output, Output } from '@angular/core';
+import { CmTextHeader } from '../typography/text-header/text-header';
+import { CmButton } from '../button/button';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { ButtonComponent } from '../button/button.component';
+import { CommonModule } from '@angular/common';
 import { Observable, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
@@ -9,7 +15,14 @@ import { NotificationTypeEnum } from '../notification/notification-type.enum';
     selector: 'app-dialog',
     templateUrl: './dialog.component.html',
     styleUrls: ['./dialog.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        ButtonComponent,
+        MatIconModule,
+        TranslateModule,
+        CmButton,
+        CmTextHeader,
+    ]
 })
 export class DialogComponent implements OnInit {
 

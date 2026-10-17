@@ -4,8 +4,8 @@ import { ElectronService } from '@core/services';
 import { ReleaseNotes } from '@shared/components/release-notes/interface';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
-import { DetailsModule } from '@shared/components/details/details.module';
-import { DashboardItemModule } from './dashboard-item/dashboard-item.module';
+import { DetailsComponent } from '@shared/components/details/details.component';
+import { DashboardItemComponent } from './dashboard-item/dashboard-item.component';
 
 import { ResizeObserverService } from '@shared/services/resize-observer.service';
 import { APP_CONFIG, AppConfig } from 'app/app.config';
@@ -21,8 +21,8 @@ type GridView = 'compact' | 'normal' | 'medium';
     styleUrls: ['./dashboard.component.scss'],
     standalone: true,
     imports: [
-        DetailsModule,
-        DashboardItemModule,
+        DetailsComponent,
+        DashboardItemComponent,
         TranslateModule,
     ],
     providers: [ResizeObserverService],

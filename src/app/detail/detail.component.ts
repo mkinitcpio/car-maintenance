@@ -24,9 +24,9 @@ import { stateValue } from '@core/rx-operators';
 import { MoveToItem } from '@shared/components/move-dialog/interfaces';
 import { TableComponent } from '@shared/components/table/table.component';
 import { MatIconModule } from '@angular/material/icon';
-import { DetailsModule } from '@shared/components/details/details.module';
-import { ButtonModule } from '@shared/components/button/button.module';
-import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
+import { DetailsComponent } from '@shared/components/details/details.component';
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { RichWidgetComponent } from '@shared/components/rich-widget/rich-widget.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { defaultTableConfig } from '@shared/components/table/default-table-config';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -43,10 +43,10 @@ import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
 
 const imports = [
   TableComponent,
-  DetailsModule,
-  ButtonModule,
+  DetailsComponent,
+  ButtonComponent,
   MatIconModule,
-  RichWidgetModule,
+  RichWidgetComponent,
   MatMenuModule,
   WidgetsPanel,
   CmButton,

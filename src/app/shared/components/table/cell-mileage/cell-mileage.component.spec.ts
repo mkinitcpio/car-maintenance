@@ -23,7 +23,7 @@ describe('CellMileageComponent', () => {
   });
 
   it('renders the separated mileage value with the unit label', () => {
-    component.value = 120000;
+    fixture.componentRef.setInput('value', 120000);
     fixture.detectChanges();
 
     const span: HTMLElement = fixture.nativeElement.querySelector('.cell-mileage');

@@ -26,7 +26,7 @@ describe('PrintDialogComponent', () => {
     exportService = { toPDF: jasmine.createSpy('toPDF').and.returnValue(of({ status: 'Success', filePath: '/out.pdf' })) };
 
     await TestBed.configureTestingModule({
-      declarations: [PrintDialogComponent],
+      imports: [PrintDialogComponent],
       providers: [
         ...provideDialog(JSON.parse(JSON.stringify(data)), dialogRef),
         provideMockElectronService(),

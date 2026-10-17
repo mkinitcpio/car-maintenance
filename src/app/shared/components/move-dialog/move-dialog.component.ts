@@ -1,4 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CmTextBody } from '../typography/text-body/text-body';
+import { CmTextHeader } from '../typography/text-header/text-header';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { DialogComponent } from '../dialog/dialog.component';
+import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MoveDialogData, MoveToItem } from './interfaces';
 
@@ -6,7 +15,17 @@ import { MoveDialogData, MoveToItem } from './interfaces';
     selector: 'app-move-dialog',
     templateUrl: './move-dialog.component.html',
     styleUrls: ['./move-dialog.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        DialogComponent,
+        MatIconModule,
+        MatRippleModule,
+        MatInputModule,
+        MatFormFieldModule,
+        TranslateModule,
+        CmTextHeader,
+        CmTextBody,
+    ]
 })
 export class MoveDialogComponent implements OnInit {
 

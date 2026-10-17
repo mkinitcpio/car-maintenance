@@ -1,5 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CmTextBody } from '../typography/text-body/text-body';
+import { CmTextHeader } from '../typography/text-header/text-header';
+import { ContentContainerComponent } from '../content-container/content-container.component';
+import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from './form-mode.enum';
 
@@ -7,7 +18,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { icons } from './icons';
 import { SettingsService } from '../settings/settings.service';
 import { CategoryTypeEnum } from 'app/navigation/state/interface';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -15,7 +26,22 @@ import { map } from 'rxjs/operators';
     selector: 'app-create-dialog',
     templateUrl: './create-dialog.component.html',
     styleUrls: ['./create-dialog.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        TranslateModule,
+        DialogComponent,
+        MatIconModule,
+        MatRippleModule,
+        ContentContainerComponent,
+        CmTextHeader,
+        CmTextBody,
+    ]
 })
 export class CreateDialogComponent implements OnInit {
 

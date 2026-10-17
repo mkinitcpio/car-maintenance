@@ -1,4 +1,24 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
+import { PreviewPageComponent } from './preview-page/preview-page.component';
+import { CurrencyComponent } from '../../currency/currency.component';
+import { CmTextBody } from '../typography/text-body/text-body';
+import { DialogComponent } from '../dialog/dialog.component';
+import { SwitchComponent } from '../switch/switch.component';
+import { CmCheckbox } from '../checkbox/checkbox';
+import { CmButton } from '../button/button';
+import { ContentContainerComponent } from '../content-container/content-container.component';
+import { ButtonComponent } from '../button/button.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UbuntuContainerComponent } from '../../ubuntu/ubuntu-container/ubuntu-container.component';
+import { NumberSeparatorPipe } from '../../pipes/number-separator.pipe';
+import { LocalizedDatePipe } from '../../pipes/localized-date.pipe';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Inject, OnInit, ViewChild, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -15,7 +35,29 @@ import { SaveDialogData } from '@shared/services/abstract-export.service';
     selector: 'app-print-dialog',
     templateUrl: './print-dialog.component.html',
     styleUrls: ['./print-dialog.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        DragDropModule,
+        MatIconModule,
+        MatDividerModule,
+        TranslateModule,
+        MatProgressSpinnerModule,
+        MatTableModule,
+        LocalizedDatePipe,
+        NumberSeparatorPipe,
+        UbuntuContainerComponent,
+        MatTooltipModule,
+        MatSlideToggleModule,
+        ButtonComponent,
+        ContentContainerComponent,
+        CmButton,
+        CmCheckbox,
+        SwitchComponent,
+        DialogComponent,
+        CmTextBody,
+        CurrencyComponent,
+        PreviewPageComponent,
+    ]
 })
 export class PrintDialogComponent implements OnInit {
 

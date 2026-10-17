@@ -6,7 +6,7 @@ import { DocumentationIllustrationComponent } from './documentation-illustration
 describe('DocumentationIllustrationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DocumentationIllustrationComponent],
+      imports: [DocumentationIllustrationComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });

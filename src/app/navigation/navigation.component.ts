@@ -22,8 +22,8 @@ import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { GroupData, GroupTreeService } from "./categories-tree/group-tree.service";
 import { TranslateService } from "@ngx-translate/core";
-import { ButtonModule } from "@shared/components/button/button.module";
-import { TabsModule } from "@shared/components/tabs/tabs.module";
+import { ButtonComponent } from "@shared/components/button/button.component";
+import { TabsComponent } from "@shared/components/tabs/tabs.component";
 import { CategoriesTreeComponent } from "./categories-tree/categories-tree.component";
 
 @Component({
@@ -32,10 +32,10 @@ import { CategoriesTreeComponent } from "./categories-tree/categories-tree.compo
     styleUrls: ["./navigation.component.scss"],
     standalone: true,
     imports: [
-        ButtonModule,
+        ButtonComponent,
         MatIconModule,
         TranslateModule,
-        TabsModule,
+        TabsComponent,
         CategoriesTreeComponent,
     ],
 })

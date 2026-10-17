@@ -15,7 +15,7 @@ describe('CurrencyDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CurrencyDialogComponent],
+      imports: [CurrencyDialogComponent],
       providers: [...provideDialog({}, dialogRef), provideMockSettingsService()],
       schemas: [NO_ERRORS_SCHEMA],
     })

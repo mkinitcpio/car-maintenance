@@ -1,4 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { DialogComponent } from '../dialog/dialog.component';
+import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Data } from 'electron';
 
@@ -6,7 +12,14 @@ import { Data } from 'electron';
     selector: 'app-account-dialog',
     templateUrl: './account-dialog.component.html',
     styleUrls: ['./account-dialog.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        DialogComponent,
+        MatIconModule,
+        MatInputModule,
+        MatFormFieldModule,
+        TranslateModule,
+    ]
 })
 export class AccountDialogComponent implements OnInit {
 

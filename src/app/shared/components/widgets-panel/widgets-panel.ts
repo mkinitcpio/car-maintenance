@@ -1,5 +1,5 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { RichWidgetModule } from '../rich-widget/rich-widget.module';
+import { RichWidgetComponent } from '../rich-widget/rich-widget.component';
 import { Widget } from './interface';
 
 @Component({
@@ -8,7 +8,7 @@ import { Widget } from './interface';
   styleUrls: ['./widgets-panel.scss'],
   standalone: true,
   imports: [
-    RichWidgetModule,
+    RichWidgetComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

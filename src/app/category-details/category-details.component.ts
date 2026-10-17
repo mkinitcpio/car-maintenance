@@ -20,9 +20,9 @@ import { ElectronService } from '@core/services';
 import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
 import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/group-tree.service';
 import { defaultTableConfig } from '@shared/components/table/default-table-config';
-import { DetailsModule } from '@shared/components/details/details.module';
-import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
-import { WidgetModule } from '@shared/components/widget/widget.module';
+import { DetailsComponent } from '@shared/components/details/details.component';
+import { RichWidgetComponent } from '@shared/components/rich-widget/rich-widget.component';
+import { WidgetComponent } from '@shared/components/widget/widget.component';
 import { TableComponent } from '@shared/components/table/table.component';
 import { ActionsPanel } from '@shared/components/actions-panel/actions-panel';
 import { CmButton } from '@shared/components/button/button';
@@ -37,9 +37,9 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./category-details.component.scss'],
     standalone: true,
     imports: [
-        DetailsModule,
-        RichWidgetModule,
-        WidgetModule,
+        DetailsComponent,
+        RichWidgetComponent,
+        WidgetComponent,
         TableComponent,
         ActionsPanel,
         CmButton,

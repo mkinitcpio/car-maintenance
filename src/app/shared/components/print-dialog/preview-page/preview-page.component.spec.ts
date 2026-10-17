@@ -10,7 +10,7 @@ describe('PreviewPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PreviewPageComponent],
+      imports: [PreviewPageComponent],
       providers: [provideMockSettingsService()],
       schemas: [NO_ERRORS_SCHEMA],
     })

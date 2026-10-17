@@ -21,7 +21,7 @@ describe('CategoriesTreeNodeComponent', () => {
 
     fixture = TestBed.createComponent(CategoriesTreeNodeComponent);
     component = fixture.componentInstance;
-    component.child.set(child);
+    fixture.componentRef.setInput('child', child);
     groupTreeService = TestBed.inject(GroupTreeService);
   });
 
@@ -69,10 +69,10 @@ describe('CategoriesTreeNodeComponent', () => {
   });
 
   it('reports selection state based on the group-tree service', () => {
-    expect(component.isSelected(component.child)).toBe(false);
+    expect(component.isSelected(component.child())).toBe(false);
 
     groupTreeService.selectedItem({ routeName: 'category-details', group: { id: 'c1' } });
-    expect(component.isSelected(component.child)).toBe(true);
+    expect(component.isSelected(component.child())).toBe(true);
   });
 
   it('delegates expand toggling to the group-tree service', () => {

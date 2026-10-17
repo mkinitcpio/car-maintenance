@@ -6,7 +6,7 @@ import { FeedbackIllustrationComponent } from './feedback-illustration.component
 describe('FeedbackIllustrationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FeedbackIllustrationComponent],
+      imports: [FeedbackIllustrationComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });

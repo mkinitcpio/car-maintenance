@@ -19,8 +19,7 @@ describe('CreateRecordComponent', () => {
     database.getLabels.and.returnValue(['Oil', 'Air', 'Brake']);
 
     await TestBed.configureTestingModule({
-      declarations: [CreateRecordComponent],
-      imports: [ReactiveFormsModule, TranslateModule.forRoot()],
+      imports: [CreateRecordComponent, ReactiveFormsModule, TranslateModule.forRoot()],
       providers: [
         ...provideDialog({ mode: FormModeEnum.Create, parent: 'p1' }, dialogRef),
         provideMockSettingsService(),

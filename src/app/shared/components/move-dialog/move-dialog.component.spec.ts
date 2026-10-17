@@ -17,7 +17,7 @@ describe('MoveDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MoveDialogComponent],
+      imports: [MoveDialogComponent],
       providers: provideDialog({ moveToItems, parent: 'x' }, dialogRef),
       schemas: [NO_ERRORS_SCHEMA],
     })

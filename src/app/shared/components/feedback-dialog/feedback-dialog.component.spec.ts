@@ -16,8 +16,7 @@ describe('FeedbackDialogComponent', () => {
     repository = { sendFeedback: jasmine.createSpy('sendFeedback').and.returnValue(of(undefined)) };
 
     await TestBed.configureTestingModule({
-      declarations: [FeedbackDialogComponent],
-      imports: [ReactiveFormsModule],
+      imports: [FeedbackDialogComponent, ReactiveFormsModule],
       providers: [
         ...provideDialog({ type: undefined }, createMatDialogRefMock()),
         { provide: FeedbackRepository, useValue: repository },

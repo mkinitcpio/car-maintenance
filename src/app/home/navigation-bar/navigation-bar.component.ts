@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
-import { ButtonModule } from '@shared/components/button/button.module';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { AppConfig } from 'environments/environment';
 import { ElectronService } from '@core/services/electron/electron.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -20,7 +20,7 @@ import { filter } from 'rxjs/operators';
     standalone: true,
     imports: [
         RouterModule,
-        ButtonModule,
+        ButtonComponent,
         MatIconModule,
         MatTooltipModule,
         TranslateModule,

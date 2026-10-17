@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-widget',
     templateUrl: './widget.component.html',
     styleUrls: ['./widget.component.scss'],
-    standalone: false
+    imports: [CommonModule, MatIconModule, MatTooltipModule]
 })
 export class WidgetComponent {
 

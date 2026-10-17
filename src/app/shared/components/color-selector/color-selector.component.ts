@@ -4,6 +4,11 @@ import {
   Input,
   Output,
 } from "@angular/core";
+import { SwitchComponent } from '../switch/switch.component';
+import { ColorsComponent } from './colors/colors.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { ColorEnum } from "../settings/colors-enum";
 
 interface Color {
@@ -15,7 +20,13 @@ interface Color {
     selector: "app-color-selector",
     templateUrl: "./color-selector.component.html",
     styleUrls: ["./color-selector.component.scss"],
-    standalone: false
+    imports: [
+        CommonModule,
+        MatIconModule,
+        TranslateModule,
+        ColorsComponent,
+        SwitchComponent,
+    ]
 })
 export class ColorSelectorComponent {
 

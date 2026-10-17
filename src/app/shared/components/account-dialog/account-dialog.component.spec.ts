@@ -12,8 +12,7 @@ describe('AccountDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AccountDialogComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [AccountDialogComponent, TranslateModule.forRoot()],
       providers: provideDialog({}, dialogRef),
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();

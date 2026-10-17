@@ -1,5 +1,15 @@
 import { Component, computed, inject, Inject, model, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { CmTextBody } from '../typography/text-body/text-body';
+import { CurrencyComponent } from '@shared/currency/currency.component';
+import { MileageComponent } from '../mileage/mileage.component';
+import { MatIconModule } from '@angular/material/icon';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { FormGroup, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
 import * as CustomValidators from './validators';
@@ -9,17 +19,33 @@ import { CreateRecordComponentData } from './interface';
 import { v4 as uuidv4 } from 'uuid';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { SettingsService } from '../settings/settings.service';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DataBaseService } from '@core/database';
 
 @Component({
     selector: 'app-create-dialog',
     templateUrl: './create-record.component.html',
     styleUrls: ['./create-record.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        TranslateModule,
+        DialogComponent,
+        MatIconModule,
+        MileageComponent,
+        CurrencyComponent,
+        MatChipsModule,
+        MatAutocompleteModule,
+        CmTextBody,
+    ]
 })
 export class CreateRecordComponent implements OnInit {
 

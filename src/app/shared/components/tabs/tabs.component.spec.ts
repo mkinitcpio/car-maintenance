@@ -7,7 +7,7 @@ describe('TabsComponent', () => {
   let fixture: ComponentFixture<TabsComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({ declarations: [TabsComponent] })
+    await TestBed.configureTestingModule({ imports: [TabsComponent] })
       .overrideComponent(TabsComponent, { set: { template: '' } })
       .compileComponents();
 

@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { SettingComponent } from '../../setting/setting.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonModule } from '@shared/components/button/button.module';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatFormField, MatOption, MatSelect } from '@angular/material/select';
@@ -20,7 +20,7 @@ import { CmLineClamp } from "@shared/directives/line-clamp/line-clamp";
     MatDivider,
     SettingComponent,
     TranslateModule,
-    ButtonModule,
+    ButtonComponent,
     MatIcon,
     MatTooltip,
     MatSelect,

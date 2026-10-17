@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ElectronService } from '@core/services';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
-import { ButtonModule } from '@shared/components/button/button.module';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { DatabaseSelectComponent } from '../database-select/database-select.component';
 
 @Component({
@@ -17,7 +17,7 @@ import { DatabaseSelectComponent } from '../database-select/database-select.comp
         MatIconModule,
         MatTooltipModule,
         TranslateModule,
-        ButtonModule,
+        ButtonComponent,
         DatabaseSelectComponent,
     ],
 })

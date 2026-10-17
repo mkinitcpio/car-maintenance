@@ -4,7 +4,7 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonModule } from '@shared/components/button/button.module';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { SettingComponent } from '../../setting/setting.component';
 import { SettingsService } from '../../settings.service';
 import { CurrencyEnum } from '../../currency.enum';
@@ -15,7 +15,7 @@ import { OrderTranslatePipe } from '@shared/pipes/order-translation.pipe';
     imports: [
         SettingComponent,
         TranslateModule,
-        ButtonModule,
+        ButtonComponent,
         MatIcon,
         MatSelect,
         MatFormField,

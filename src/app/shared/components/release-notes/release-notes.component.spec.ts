@@ -18,8 +18,7 @@ describe('ReleaseNotesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ReleaseNotesComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [ReleaseNotesComponent, TranslateModule.forRoot()],
       providers: [
         ...provideDialog(releaseNotesData, createMatDialogRefMock()),
         provideMockSettingsService(),

@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CurrencyComponent } from '../../../currency/currency.component';
+import { NumberSeparatorPipe } from '../../../pipes/number-separator.pipe';
+import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
+import { MatTableModule } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
 
 import { ColumnConfig, PreviewPageConfig } from './preview-page-config';
 import { SettingsService } from '../../settings/settings.service';
@@ -6,12 +11,20 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { appImageBase64 } from './app-image.base64';
 import { PrintDialogConfig } from '../print-dialog-config';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-preview-page',
     templateUrl: './preview-page.component.html',
     styleUrls: ['./preview-page.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        MatTableModule,
+        LocalizedDatePipe,
+        NumberSeparatorPipe,
+        CurrencyComponent,
+        TranslateModule,
+    ]
 })
 export class PreviewPageComponent implements OnInit {
 

@@ -14,8 +14,7 @@ describe('CreateDialogComponent', () => {
   beforeEach(async () => {
     dialogRef = createMatDialogRefMock();
     await TestBed.configureTestingModule({
-      declarations: [CreateDialogComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [CreateDialogComponent, TranslateModule.forRoot()],
       providers: [
         ...provideDialog({ parentId: 'p1', mode: FormModeEnum.Create }, dialogRef),
         provideMockSettingsService(),

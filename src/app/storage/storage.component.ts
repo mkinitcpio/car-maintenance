@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { DetailsModule } from '@shared/components/details/details.module';
+import { DetailsComponent } from '@shared/components/details/details.component';
 
 @Component({
     selector: 'storage',
@@ -9,7 +9,7 @@ import { DetailsModule } from '@shared/components/details/details.module';
     styleUrls: ['./storage.component.scss'],
     standalone: true,
     imports: [
-        DetailsModule,
+        DetailsComponent,
         TranslateModule,
         MatIconModule,
     ],

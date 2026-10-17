@@ -1,10 +1,14 @@
 import { Component, Input } from '@angular/core';
+import { CmTextHeader } from '@shared/components/typography/text-header/text-header';
+import { MatIconModule } from '@angular/material/icon';
+import { ButtonComponent } from '../button/button.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-details',
     templateUrl: './details.component.html',
     styleUrls: ['./details.component.scss'],
-    standalone: false
+    imports: [CommonModule, ButtonComponent, MatIconModule, CmTextHeader]
 })
 export class DetailsComponent {
 

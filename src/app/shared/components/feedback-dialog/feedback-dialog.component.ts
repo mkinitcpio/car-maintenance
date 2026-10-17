@@ -1,5 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { CmTextBody } from '../typography/text-body/text-body';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DialogComponent } from '../dialog/dialog.component';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { Feedback, FeedbackDialogData, FeedbackTypeOption } from './interfaces';
@@ -15,7 +24,19 @@ import { FeedbackRepository } from '@core/repositories/feedback.repository';
     selector: 'app-feedback-dialog',
     templateUrl: './feedback-dialog.component.html',
     styleUrls: ['./feedback-dialog.component.scss'],
-    standalone: false
+    imports: [
+        CommonModule,
+        DialogComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonToggleModule,
+        TranslateModule,
+        MatIconModule,
+        CmTextBody,
+    ]
 })
 export class FeedbackDialogComponent implements OnInit {
 

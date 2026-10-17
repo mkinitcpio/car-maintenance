@@ -1,10 +1,14 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { CmTextBody } from '../typography/text-body/text-body';
+import { MatBadgeModule } from '@angular/material/badge';
+import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],
-    standalone: false
+    imports: [CommonModule, TranslateModule, MatBadgeModule, CmTextBody]
 })
 export class TabsComponent implements OnInit, AfterViewInit {
 

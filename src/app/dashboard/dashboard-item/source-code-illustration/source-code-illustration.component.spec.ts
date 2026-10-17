@@ -6,7 +6,7 @@ import { SourceCodeIllustrationComponent } from './source-code-illustration.comp
 describe('SourceCodeIllustrationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SourceCodeIllustrationComponent],
+      imports: [SourceCodeIllustrationComponent],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });

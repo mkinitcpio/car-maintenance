@@ -13,8 +13,7 @@ describe('DeleteDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DeleteDialogComponent],
-      imports: [TranslateModule.forRoot()],
+      imports: [DeleteDialogComponent, TranslateModule.forRoot()],
       providers: provideDialog({ text: 'DIALOG.DELETE.TEXT', params: { name: 'Oil' } }, dialogRef),
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();

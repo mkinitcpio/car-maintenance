@@ -15,7 +15,7 @@ describe('SettingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SettingsComponent],
+      imports: [SettingsComponent],
       providers: [...provideDialog({}, createMatDialogRefMock()), provideMockSettingsService()],
       schemas: [NO_ERRORS_SCHEMA],
     })
