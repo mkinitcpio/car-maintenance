@@ -9,12 +9,22 @@ import { ElectronService } from '@core/services';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
+import { CmTextBody } from '@shared/components/typography/text-body/text-body';
+import { CurrencyPipe } from '@shared/pipes/currency.pipe';
+import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
 
 @Component({
     selector: 'app-currency',
     templateUrl: './currency.component.html',
     styleUrls: ['./currency.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [
+        MatIconModule,
+        CmTextBody,
+        CurrencyPipe,
+        NumberSeparatorPipe,
+    ],
 })
 export class CurrencyComponent implements OnInit {
   

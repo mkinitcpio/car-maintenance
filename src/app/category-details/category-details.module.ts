@@ -9,7 +9,7 @@ import { CategoryDetailsFacade } from './state/category-details.facade';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { UtilsService } from '@shared/services/utils.service';
-import { CurrencyModule } from '@shared/currency/currency.module';
+import { CurrencyComponent } from '@shared/currency/currency.component';
 import { WidgetModule } from '@shared/components/widget/widget.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -33,7 +33,7 @@ import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
     StoreModule.forFeature('categoryDetails', categoryDetailsReducer),
     EffectsModule.forFeature([CategoryDetailsEffects]),
     TranslateModule,
-    CurrencyModule,
+    CurrencyComponent,
     WidgetModule,
     MatInputModule,
     MatCheckboxModule,
@@ -41,7 +41,6 @@ import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
     UbuntuContainerModule,
     RichWidgetModule,
     DetailsModule,
-    CurrencyModule,
     MatDividerModule,
     MatIconModule,
     MatRippleModule,

@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DialogModule } from '../dialog/dialog.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MileageComponent } from '../mileage/mileage.component';
-import { CurrencyModule } from '@shared/currency/currency.module';
+import { CurrencyComponent } from '@shared/currency/currency.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CmTextBody } from '../typography/text-body/text-body';
@@ -34,7 +34,7 @@ import { CmTextBody } from '../typography/text-body/text-body';
     DialogModule,
     MatIconModule,
     MileageComponent,
-    CurrencyModule,
+    CurrencyComponent,
     MatChipsModule,
     MatAutocompleteModule,
     CmTextBody,

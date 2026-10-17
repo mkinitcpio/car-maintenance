@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { SettingsService } from '@shared/components/settings/settings.service';
-import { CurrencyModule } from '@shared/currency/currency.module';
+import { CurrencyComponent } from '@shared/currency/currency.component';
 import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
 
 @Component({
@@ -8,7 +8,7 @@ import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
     templateUrl: './cell-cost.component.html',
     styleUrl: './cell-cost.component.scss',
     imports: [
-        CurrencyModule,
+        CurrencyComponent,
         NumberSeparatorPipe,
     ]
 })

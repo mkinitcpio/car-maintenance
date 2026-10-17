@@ -19,7 +19,7 @@ import { CmButton } from '../button/button';
 import { CmCheckbox } from '../checkbox/checkbox';
 import { SwitchComponent } from '../switch/switch.component';
 import { DialogModule } from '../dialog/dialog.module';
-import { CurrencyModule } from '../../currency/currency.module';
+import { CurrencyComponent } from '../../currency/currency.component';
 import { CmTextBody } from "../typography/text-body/text-body";
 
 @NgModule({
@@ -47,7 +47,7 @@ import { CmTextBody } from "../typography/text-body/text-body";
     SwitchComponent,
     DialogModule,
     CmTextBody,
-    CurrencyModule
+    CurrencyComponent
 ],
   exports: [
     PrintDialogComponent,
