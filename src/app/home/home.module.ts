@@ -6,7 +6,6 @@ import { HomeComponent } from './home.component';
 import { NavigationModule } from '../navigation/navigation.module';
 import { DetailModule } from '../detail/detail.module';
 import { EmptyModule } from '../empty/empty.module';
-import { CategoryDetailsModule } from '../category-details/category-details.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,7 +23,6 @@ import { TranslateModule } from '@ngx-translate/core';
     NavigationModule,
     DetailModule,
     EmptyModule,
-    CategoryDetailsModule,
     MaintenanceModule,
     ButtonModule,
     MatIconModule,

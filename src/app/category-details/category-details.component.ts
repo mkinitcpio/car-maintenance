@@ -1,5 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { CategoryTree, CategoryTypeEnum } from '../navigation/state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { CategoryDetails } from './state/interface';
@@ -17,6 +20,14 @@ import { ElectronService } from '@core/services';
 import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
 import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/group-tree.service';
 import { defaultTableConfig } from '@shared/components/table/default-table-config';
+import { DetailsModule } from '@shared/components/details/details.module';
+import { RichWidgetModule } from '@shared/components/rich-widget/rich-widget.module';
+import { WidgetModule } from '@shared/components/widget/widget.module';
+import { TableComponent } from '@shared/components/table/table.component';
+import { ActionsPanel } from '@shared/components/actions-panel/actions-panel';
+import { CmButton } from '@shared/components/button/button';
+import { CmTextHeader } from '@shared/components/typography/text-header/text-header';
+import { CmTextBody } from '@shared/components/typography/text-body/text-body';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -24,7 +35,20 @@ import { TranslateService } from '@ngx-translate/core';
     selector: 'app-category-details',
     templateUrl: './category-details.component.html',
     styleUrls: ['./category-details.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [
+        DetailsModule,
+        RichWidgetModule,
+        WidgetModule,
+        TableComponent,
+        ActionsPanel,
+        CmButton,
+        CmTextHeader,
+        CmTextBody,
+        MatIconModule,
+        MatRippleModule,
+        TranslateModule,
+    ],
 })
 export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
