@@ -62,6 +62,7 @@
           "MONO": "Моно",
           "CURRENCY": "Валюта",
           "METRIC_SYSTEM": "Расстояние",
+          "NUMBER_FORMAT": "Формат чисел",
           "ANIMATION": "Анимации",
           "COLORS":"Цвет",
           "APPEARANCE":"Тема"
@@ -218,6 +219,7 @@
     },
     "ICON_GROUPS": {
       "CAR_PARTS": "Части автомобиля",
+      "CAR": "Автомобиль",
       "OTHERS": "Другие"
     },
     "TOOLTIPS": {

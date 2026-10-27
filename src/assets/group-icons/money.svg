@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<path d="M4 6L20 6C21.105 6 22 6.895 22 8L22 16C22 17.105 21.105 18 20 18L4 18C2.895 18 2 17.105 2 16L2 8C2 6.895 2.895 6 4 6ZM15.2 12A3.2 3.2 0 1 0 8.8 12A3.2 3.2 0 1 0 15.2 12Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M4.5 10.8L7 10.8L7 13.2L4.5 13.2ZM17 10.8L19.5 10.8L19.5 13.2L17 13.2Z" fill="currentColor" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<path d="M5 2C3.8 4 3 5 3 6.3C3 7.5 3.9 8.4 5 8.4C6.1 8.4 7 7.5 7 6.3C7 5 6.2 4 5 2Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M12 1.2C10.8 3.2 10 4.2 10 5.5C10 6.7 10.9 7.6 12 7.6C13.1 7.6 14 6.7 14 5.5C14 4.2 13.2 3.2 12 1.2Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M19 2C17.8 4 17 5 17 6.3C17 7.5 17.9 8.4 19 8.4C20.1 8.4 21 7.5 21 6.3C21 5 20.2 4 19 2Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M2.5 18.8L2.5 16C2.5 15 3.2 14.2 4.2 13.9L6 13.4L8 10.4C8.4 9.8 9.1 9.4 9.8 9.4L14.2 9.4C14.9 9.4 15.6 9.8 16 10.4L18 13.4L19.8 13.9C20.8 14.2 21.5 15 21.5 16L21.5 18.8C21.5 19.4 21 20 20.3 20L3.7 20C3 20 2.5 19.4 2.5 18.8ZM8.5 13.3L9 11.2C9.1 10.9 9.3 10.7 9.5 10.7L11.3 10.7L11.3 13.3ZM12.7 10.7L14.5 10.7C14.7 10.7 14.9 10.9 15 11.2L15.5 13.3L12.7 13.3Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M8.4 19.5A1.9 1.9 0 1 1 4.6 19.5A1.9 1.9 0 1 1 8.4 19.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M19.4 19.5A1.9 1.9 0 1 1 15.6 19.5A1.9 1.9 0 1 1 19.4 19.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>

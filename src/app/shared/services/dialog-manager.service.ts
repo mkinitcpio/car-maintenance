@@ -38,7 +38,7 @@ export class DialogManagerService {
     return this.dialog
       .open(CreateDialogComponent, {
         width: "380px",
-        panelClass: "dialog-custom",
+        panelClass: "dialog-category",
         data,
         disableClose: true,
       })

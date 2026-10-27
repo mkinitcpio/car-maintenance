@@ -62,6 +62,7 @@
         "MONO": "Mono",
         "CURRENCY": "Currency",
         "METRIC_SYSTEM": "Metric system",
+        "NUMBER_FORMAT": "Number format",
         "ANIMATION": "Animations",
         "COLORS":"Accent color",
         "APPEARANCE":"Appearance"
@@ -219,6 +220,7 @@
     },
     "ICON_GROUPS": {
       "CAR_PARTS": "Car parts",
+      "CAR": "Car",
       "OTHERS": "Others"
     },
     "TOOLTIPS": {

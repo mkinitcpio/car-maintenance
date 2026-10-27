@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<path d="M5 4L19 4C20.105 4 21 4.895 21 6L21 19C21 20.105 20.105 21 19 21L5 21C3.895 21 3 20.105 3 19L3 6C3 4.895 3.895 4 5 4ZM5 8L19 8L19 19L5 19Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M6.5 2L8 2L8 5.5L6.5 5.5ZM16 2L17.5 2L17.5 5.5L16 5.5Z" fill="currentColor" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M8.9 12.5A0.9 0.9 0 1 0 7.1 12.5A0.9 0.9 0 1 0 8.9 12.5ZM12.9 12.5A0.9 0.9 0 1 0 11.1 12.5A0.9 0.9 0 1 0 12.9 12.5ZM16.9 12.5A0.9 0.9 0 1 0 15.1 12.5A0.9 0.9 0 1 0 16.9 12.5ZM8.9 16.5A0.9 0.9 0 1 0 7.1 16.5A0.9 0.9 0 1 0 8.9 16.5ZM12.9 16.5A0.9 0.9 0 1 0 11.1 16.5A0.9 0.9 0 1 0 12.9 16.5ZM16.9 16.5A0.9 0.9 0 1 0 15.1 16.5A0.9 0.9 0 1 0 16.9 16.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>

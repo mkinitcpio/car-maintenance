@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 24 24" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="Layer-1">
+<g opacity="1">
+<path d="M9.5 1L14.5 1L14.5 2.5L9.5 2.5Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M12 2.5L16.5 12L12 21.5L7.5 12ZM12 5.2L15.2 12L12 18.8L8.8 12Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M16.5 11.2L22 11.2L22 12.8L16.5 12.8Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M20.7 9.3L22.3 9.3L22.3 14.7L20.7 14.7Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M8 21.5L16 21.5L16 23L8 23Z" fill="currentColor" fill-rule="evenodd" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>
