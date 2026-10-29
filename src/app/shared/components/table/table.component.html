@@ -92,10 +92,11 @@
         } @else {
           <tr>
             <td [attr.colspan]="emptyMessageWidth()">
-              <div class="cm-table__empty">
-                <mat-icon class="cm-table__empty-icon" svgIcon="paper-empty"></mat-icon>
-                <span class="cm-table__empty-text">{{"PAGES.DETAIL.EMPTY" | translate}}</span>
-              </div>
+              <cm-empty-state
+                class="cm-table__empty"
+                size="s"
+                text="PAGES.DETAIL.EMPTY">
+              </cm-empty-state>
             </td>
           </tr>
         }

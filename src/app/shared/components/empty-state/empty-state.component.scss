@@ -1,0 +1,121 @@
+@import '/src/fonts';
+@import '/src/colors';
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: $font-color-secondary;
+
+  user-select: none;
+
+  &__illustration {
+    height: auto;
+    width: 168px;
+    overflow: visible;
+  }
+
+  &__text {
+    color: $font-color-secondary;
+    text-align: center;
+  }
+
+  &--s &__illustration {
+    width: 112px;
+  }
+
+  &--l &__illustration {
+    width: 216px;
+  }
+
+  &__blob {
+    fill: var(--secondary-color);
+  }
+
+  &__paper-sheet {
+    fill: var(--background-primary);
+    stroke: currentColor;
+    stroke-opacity: 0.1;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.07))
+      drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+  }
+
+  &__paper-fold {
+    fill: none;
+    stroke: currentColor;
+    stroke-opacity: 0.1;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  &__paper-line {
+    fill: $color-primary;
+    opacity: 0.2;
+
+    &--heading {
+      opacity: 0.4;
+    }
+  }
+
+  // Car silhouette from assets/group-icons/car.svg (fill inherited by paths)
+  &__car-icon {
+    fill: var(--primary-color);
+  }
+
+  &__paper {
+    animation: 6s ease-in-out infinite empty-state-float;
+  }
+
+  &__dot {
+    fill: var(--primary-color);
+    opacity: 0.9;
+  }
+
+  &__ring {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 2.5;
+    opacity: 0.7;
+  }
+
+  &__sparkle {
+    fill: var(--primary-color);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: 3.6s ease-in-out infinite empty-state-twinkle;
+
+    &--2 {
+      animation-delay: 1.2s;
+    }
+  }
+}
+
+@keyframes empty-state-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes empty-state-twinkle {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

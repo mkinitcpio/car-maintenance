@@ -1,0 +1,34 @@
+<div class="empty-state empty-state--{{ size() }}">
+  <svg
+    class="empty-state__illustration"
+    viewBox="0 0 200 160"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true">
+
+    <path
+      class="empty-state__blob"
+      d="M100 22C120 22 132 34 146 44C160 54 158 74 152 90C146 106 134 124 112 128C90 132 66 130 54 116C42 102 40 84 46 66C52 48 70 30 100 22Z" />
+
+    <g class="empty-state__paper">
+      <path
+        class="empty-state__paper-sheet"
+        d="M76 30H118L142 54V128C142 133.5 137.5 138 132 138H76C70.5 138 66 133.5 66 128V40C66 34.5 70.5 30 76 30Z" />
+      <path
+        class="empty-state__paper-fold"
+        d="M118 30V44C118 49.5 122.5 54 128 54H142" />
+      <rect class="empty-state__paper-line empty-state__paper-line--heading" x="80" y="64" width="36" height="8" rx="4" />
+      <rect class="empty-state__paper-line" x="80" y="82" width="48" height="6" rx="3" />
+      <rect class="empty-state__paper-line" x="80" y="96" width="40" height="6" rx="3" />
+    </g>
+
+    <circle class="empty-state__dot" cx="34" cy="52" r="5" />
+    <circle class="empty-state__ring" cx="168" cy="38" r="4" />
+
+    <path class="empty-state__sparkle empty-state__sparkle--1" d="M183 64L185 70L191 72L185 74L183 80L181 74L175 72L181 70Z" />
+    <path class="empty-state__sparkle empty-state__sparkle--2" d="M30 102L31.5 106.5L36 108L31.5 109.5L30 114L28.5 109.5L24 108L28.5 106.5Z" />
+  </svg>
+
+  @if (text()) {
+    <span cmTextBody="b1:strong" class="empty-state__text">{{ text() | translate }}</span>
+  }
+</div>
