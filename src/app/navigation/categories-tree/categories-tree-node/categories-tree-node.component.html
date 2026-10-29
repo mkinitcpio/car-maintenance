@@ -32,12 +32,12 @@
     [class.categories-tree-node__sub-node--expanded]="expanded"
     [style.height]="expanded ? (child().children?.length * 48) + 'px' : 0">
     <div class="categories-tree-node__displacer">
-      @for (c of child().children; track c) {
+      @for (c of child().children; track c.id) {
         <app-category-tree-displacer></app-category-tree-displacer>
       }
     </div>
     <div class="categories-tree-node__sub-node-item">
-      @for (c of child().children; track c) {
+      @for (c of child().children; track c.id) {
         <div class="categories-tree-node">
           <div class="categories-tree-node__content"
             (contextmenu)="onContextMenu($event, c)">

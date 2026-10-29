@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { DetailsComponent } from '@shared/components/details/details.component';
+import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 
 @Component({
   selector: 'app-empty',
@@ -10,15 +10,10 @@ import { DetailsComponent } from '@shared/components/details/details.component';
   standalone: true,
   imports: [
     DetailsComponent,
-    MatIconModule,
+    EmptyStateComponent,
     TranslateModule,
   ],
 })
-export class EmptyComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class EmptyComponent {
 
 }

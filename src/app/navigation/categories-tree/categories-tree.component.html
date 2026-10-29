@@ -1,5 +1,5 @@
 <div class="categories-tree">
-  @for (category of catagories; track trackBy($index, category)) {
+  @for (category of catagories; track category.id) {
     <app-categories-tree-node
       [child]="category"
       (add)="onAdd($event)"

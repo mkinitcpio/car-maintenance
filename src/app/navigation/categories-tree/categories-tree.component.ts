@@ -36,8 +36,4 @@ export class CategoriesTreeComponent {
   public onDelete(category: Category): void {
     this.delete.emit(category);
   }
-
-  public trackBy(_: number, category: Category): string {
-    return category.id;
-  }
 }

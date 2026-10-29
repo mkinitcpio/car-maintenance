@@ -16,6 +16,7 @@ import { MatRipple } from "@angular/material/core";
 import { CmCheckbox } from "../checkbox/checkbox";
 import { CmTextHeader } from "../typography/text-header/text-header";
 import { CmTextBody } from "../typography/text-body/text-body";
+import { EmptyStateComponent } from "../empty-state/empty-state.component";
 
 export const imports = [
   CommonModule,
@@ -36,4 +37,5 @@ export const imports = [
   CmCheckbox,
   CmTextHeader,
   CmTextBody,
+  EmptyStateComponent,
 ];

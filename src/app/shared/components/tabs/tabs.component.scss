@@ -31,11 +31,11 @@
 
   &__title-container {
     box-sizing: border-box;
-    height: 42px;
+    height: 50px;
     padding: 4px;
 
     background-color: $background-secondary;
-    border-radius: 21px;
+    border-radius: 25px;
     box-shadow: inset 0px 1px 2px 1px rgb(0 0 0 / 4%);
   }
 
@@ -57,6 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     height: 100%;
 
     border-radius: 20px;
@@ -73,7 +74,7 @@
       height: 100%;
 
       background-color: $background-primary;
-      border-radius: 20px;
+      border-radius: 21px;
       transition: left 0.4s ease-in-out;
       box-shadow: rgb(0 0 0 / 10%) 0px 1px 2px 0px;
     }
@@ -103,6 +104,13 @@
     &--switched {
       left: -100%
     }
+  }
+
+  &__icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
   }
 
   .tab-content {

@@ -20,7 +20,6 @@ import { ActionsPanel } from '../../actions-panel/actions-panel';
     imports: [
     MatIconModule,
     MatRippleModule,
-    ButtonComponent,
     MatMenuModule,
     ColumnSelectorComponent,
     MatDividerModule,
@@ -29,7 +28,7 @@ import { ActionsPanel } from '../../actions-panel/actions-panel';
     CmTextBody,
     CmButton,
     ActionsPanel,
-]
+],
 })
 export class TablePanelComponent {
 

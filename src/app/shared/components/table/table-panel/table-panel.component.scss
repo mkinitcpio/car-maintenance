@@ -1,13 +1,13 @@
 @import '/src/colors';
 @import '/src/fonts';
 
-
 @keyframes fadeInScale {
   0% {
     opacity: 0;
     transform: scale(0.9);
   }
   50% {
+    opacity: 0.5;
     transform: scale(1.05);
   }
   100% {
@@ -17,11 +17,18 @@
 }
 
 @keyframes fadeOut {
-  0% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
   50% {
+    opacity: 0.5;
     transform: scale(1.05);
   }
-  100% { opacity: 0; transform: scale(0.9); }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 }
 
 .table-panel {
@@ -40,19 +47,11 @@
     color: $color-dangerous;
   }
 
-  &__group {
-    opacity: 0;
-    pointer-events: none;
-
-    &:not(.table-panel__group--show) {
-      animation: fadeOut 0.2s ease-in forwards;
-    }
-
-    &--show {
-      animation: fadeInScale 0.2s ease-out forwards;
-      pointer-events: all;
-    }
+  &__group--enter {
+    animation: fadeInScale 0.2s ease-out forwards;
   }
 
-
+  &__group--leave {
+    animation: fadeOut 0.2s ease-in forwards;
+  }
 }

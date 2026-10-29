@@ -1,12 +1,14 @@
 <section class="table-panel">
-  <cm-actions-panel class="table-panel__group table-panel__group--dynamic" [class.table-panel__group--show]="selectedRowsCount()">
-    <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="move.emit()">
-      <mat-icon>compare_arrows</mat-icon>
-    </button>
-    <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="delete.emit()">
-      <mat-icon class="table-panel__group-delete" svgIcon="trash"></mat-icon>
-    </button>
-  </cm-actions-panel>
+  @if (selectedRowsCount()) {
+    <cm-actions-panel class="table-panel__group" animate.enter="table-panel__group--enter" animate.leave="table-panel__group--leave">
+      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="move.emit()">
+        <mat-icon>compare_arrows</mat-icon>
+      </button>
+      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="delete.emit()">
+        <mat-icon class="table-panel__group-delete" svgIcon="trash"></mat-icon>
+      </button>
+    </cm-actions-panel>
+  }
 
   <cm-actions-panel>
     <button

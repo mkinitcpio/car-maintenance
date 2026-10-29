@@ -12,7 +12,10 @@
             [matBadgeHidden]="badgesVisibilityArray[i]"
             (click)="onTabSelect(i)"
             >
-            {{tab | translate}}
+            @if(tab.icon) {
+              <mat-icon class="tabs__icon" [svgIcon]="tab.icon"/>
+            }
+            {{tab.label | translate}}
           </div>
         }
       </div>

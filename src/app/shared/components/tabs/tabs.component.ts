@@ -3,12 +3,14 @@ import { CmTextBody } from '../typography/text-body/text-body';
 import { MatBadgeModule } from '@angular/material/badge';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { Tab } from './interface';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],
-    imports: [CommonModule, TranslateModule, MatBadgeModule, CmTextBody]
+    imports: [CommonModule, TranslateModule, MatBadgeModule, CmTextBody, MatIcon]
 })
 export class TabsComponent implements OnInit, AfterViewInit {
 
@@ -17,7 +19,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   @ViewChild('tabsTitle', {static: true}) tabsTitle: ElementRef;
 
   @Input()
-  tabs: string[];
+  tabs: Tab[];
 
   @Input()
   tabWidth: number;

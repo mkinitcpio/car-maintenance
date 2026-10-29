@@ -7,17 +7,15 @@
           [routerLink]="'/' + button.route"
           routerLinkActive="navigation-bar__button-container--selected"
           >
-          <div class="navigation-bar__button-selector"></div>
-          <app-button button-transparent
+          <button
+            cm-button
+            variant="transparent"
             [matTooltip]="button.tooltipText | translate"
             matTooltipPosition="right"
             matTooltipShowDelay="500"
-            >
-            <mat-icon class="navigation-bar__button-icon"
-              [svgIcon]="button.icon"
-              >
-            </mat-icon>
-          </app-button>
+          >
+            <mat-icon class="navigation-bar__button-icon" [svgIcon]="button.icon"/>
+          </button>
         </a>
       }
     </nav>
@@ -26,23 +24,39 @@
 
     @if (!AppConfig.production) {
       <div class="navigation-bar__dev-buttons">
-        <app-button button-transparent (click)="onRefreshApp()">
-          <mat-icon svgIcon="refresh"></mat-icon>
-        </app-button>
-        <app-button button-transparent (click)="onOpenDevTools()">
-          <mat-icon svgIcon="terminal"></mat-icon>
-        </app-button>
+        <button
+          cm-button
+          variant="transparent"
+          (click)="onRefreshApp()"
+        >
+          <mat-icon svgIcon="refresh"/>
+        </button>
+        <button
+          cm-button
+          variant="transparent"
+          (click)="onOpenDevTools()"
+        >
+          <mat-icon svgIcon="terminal"/>
+        </button>
       </div>
     }
 
     @if (false) {
-      <app-button button-transparent (click)="onOpenAccount()">
-        <mat-icon svgIcon="user"></mat-icon>
-      </app-button>
+      <button
+        cm-button
+        variant="transparent"
+        (click)="onOpenAccount()"
+      >
+        <mat-icon svgIcon="user"/>
+      </button>
     }
 
-    <app-button button-transparent (click)="openSettings()">
-      <mat-icon svgIcon="settings"></mat-icon>
-    </app-button>
+    <button
+      cm-button
+      variant="transparent"
+      (click)="openSettings()"
+    >
+      <mat-icon svgIcon="settings"/>
+    </button>
   </nav>
 </section>

@@ -1,4 +1,32 @@
 export const icons = {
+  car: [{
+    value: 'car',
+  },
+  {
+    value: 'odometer',
+  },
+  {
+    value: 'car-key',
+  },
+  {
+    value: 'car-wash',
+  },
+  {
+    value: 'garage',
+  },
+  {
+    value: 'diagnostics',
+  },
+  {
+    value: 'documents',
+  },
+  {
+    value: 'jack',
+  },
+  {
+    value: 'car-audio',
+  },
+  ],
   others: [{
     value: 'wrench',
   },
@@ -13,6 +41,30 @@ export const icons = {
   },
   {
     value: 'termostat',
+  },
+  {
+    value: 'calendar',
+  },
+  {
+    value: 'clock',
+  },
+  {
+    value: 'bell',
+  },
+  {
+    value: 'money',
+  },
+  {
+    value: 'toolbox',
+  },
+  {
+    value: 'snowflake',
+  },
+  {
+    value: 'journal',
+  },
+  {
+    value: 'gift',
   },
   ],
   carParts: [{
@@ -41,6 +93,54 @@ export const icons = {
   },
   {
     value: 'windshield',
+  },
+  {
+    value: 'air-filter',
+  },
+  {
+    value: 'brake-disc',
+  },
+  {
+    value: 'exhaust',
+  },
+  {
+    value: 'fuel',
+  },
+  {
+    value: 'radiator',
+  },
+  {
+    value: 'shock-absorber',
+  },
+  {
+    value: 'steering-wheel',
+  },
+  {
+    value: 'timing-belt',
+  },
+  {
+    value: 'transmission',
+  },
+  {
+    value: 'cabin-filter',
+  },
+  {
+    value: 'coolant',
+  },
+  {
+    value: 'injector',
+  },
+  {
+    value: 'turbo',
+  },
+  {
+    value: 'bearing',
+  },
+  {
+    value: 'seat',
+  },
+  {
+    value: 'wiper',
   },
   ],
 };

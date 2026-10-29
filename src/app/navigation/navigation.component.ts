@@ -72,7 +72,14 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public CategoryTypeEnum = CategoryTypeEnum;
   public selectedTabIndex = 0;
 
-  public tabs = ['PAGES.NAVIGATION.TABS.CATEGORIES', 'PAGES.NAVIGATION.TABS.CARS'];
+  public tabs = [{
+    icon: 'tree',
+    label: 'PAGES.NAVIGATION.TABS.CATEGORIES'
+  }, {
+    icon: 'illustrations:car',
+    label: 'PAGES.NAVIGATION.TABS.CARS'
+    }
+  ];
 
   constructor(
     private router: Router,

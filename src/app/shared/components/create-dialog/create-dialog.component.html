@@ -36,6 +36,22 @@
           </div>
           <div class="create-dialog__icons-section">
             <span cmTextHeader="h4:medium" class="create-dialog__icons-section-title">
+              {{"DIALOG.ICON_GROUPS.CAR" | translate}}
+            </span>
+            <section class="create-dialog__icon-selector">
+              @for (icon of icons.car; track icon) {
+                <div matRipple
+                  class="create-dialog__icon-item"
+                  [class.create-dialog__icon-item--selected]="icon.value === categoryForm.get('illustration').value?.replace('.svg', '')"
+                  (click)="categoryForm.get('illustration').setValue(icon.value)"
+                  >
+                  <mat-icon [svgIcon]="'illustrations:' + icon.value"></mat-icon>
+                </div>
+              }
+            </section>
+          </div>
+          <div class="create-dialog__icons-section">
+            <span cmTextHeader="h4:medium" class="create-dialog__icons-section-title">
               {{"DIALOG.ICON_GROUPS.OTHERS" | translate}}
             </span>
             <section class="create-dialog__icon-selector">

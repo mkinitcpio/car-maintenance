@@ -4,7 +4,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
-import { ButtonComponent } from '@shared/components/button/button.component';
 import { AppConfig } from 'environments/environment';
 import { ElectronService } from '@core/services/electron/electron.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -12,6 +11,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { NavigationButton } from './interfaces';
 import { navigationButtons } from './navigation-buttons';
 import { filter } from 'rxjs/operators';
+import { CmButton } from '@shared/components/button/button';
 
 @Component({
     selector: 'app-navigation-bar',
@@ -19,12 +19,12 @@ import { filter } from 'rxjs/operators';
     styleUrls: ['./navigation-bar.component.scss'],
     standalone: true,
     imports: [
-        RouterModule,
-        ButtonComponent,
-        MatIconModule,
-        MatTooltipModule,
-        TranslateModule,
-    ],
+    RouterModule,
+    MatIconModule,
+    MatTooltipModule,
+    TranslateModule,
+    CmButton
+],
 })
 export class NavigationBarComponent implements OnInit {
 
