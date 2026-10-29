@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ColumnSchema } from '../interfaces';
 import { MatMenuModule } from '@angular/material/menu';
-import { ButtonComponent } from '@shared/components/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -18,7 +17,6 @@ import { CmButton } from "@shared/components/button/button";
     imports: [
     MatMenuModule,
     MatIconModule,
-    ButtonComponent,
     TranslateModule,
     CmCheckbox,
     CmTextHeader,

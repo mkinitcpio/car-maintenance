@@ -19,9 +19,9 @@
   </div>
   <header class="dialog__header" [class.dialog__header--border]="contentScrolled">
     @if (sideMenuButton()) {
-      <app-button button-transparent (click)="sideButtonClick.emit()">
+      <button cm-button variant="transparent" (click)="sideButtonClick.emit()">
         <mat-icon svgIcon="menu"></mat-icon>
-      </app-button>
+      </button>
     }
     <div class="dialog__title" cmTextHeader="h1">{{title | translate}}</div>
     <div class="dialog__buttons">

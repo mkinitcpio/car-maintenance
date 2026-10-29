@@ -21,7 +21,59 @@
     max-height: 700px;
   }
 
-  &-category {
-    height: 80vh;
+
+  &-side {
+    height: calc(100vh - 24px);
+  }
+
+  &-side.cdk-overlay-pane {
+    .mat-mdc-dialog-surface {
+      transform: translateX(0);
+
+      border-radius: 24px;
+    }
+
+    .mdc-dialog--open .mat-mdc-dialog-surface {
+      animation: side-dialog-slide-in var(--mat-dialog-transition-duration, 250ms) cubic-bezier(0, 0, 0.2, 1) both;
+    }
+
+    .mdc-dialog--closing .mat-mdc-dialog-surface {
+      transform: translateX(100%);
+      animation: side-dialog-slide-out var(--mat-dialog-transition-duration, 200ms) cubic-bezier(0.4, 0, 1, 1) both;
+    }
+
+    .mdc-dialog--closing .mat-mdc-dialog-inner-container {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes side-dialog-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes side-dialog-slide-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+body.no-animations {
+  .dialog-side.cdk-overlay-pane {
+
+    .mdc-dialog--open .mat-mdc-dialog-surface,
+    .mdc-dialog--closing .mat-mdc-dialog-surface {
+      animation: none;
+    }
   }
 }

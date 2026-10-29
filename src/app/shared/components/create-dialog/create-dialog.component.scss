@@ -4,7 +4,8 @@
 @import '/src/fonts';
 
 .create-dialog {
-    height: 100%;
+  height: 100%;
+
   &__icon {
     width: 20px;
   }
@@ -61,11 +62,9 @@
     box-sizing: border-box;
     height: 38px;
     width: 38px;
-    border-radius: 12px;
-    color: $color-button-icon;
+    border-radius: 19px;
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
 }

@@ -2,7 +2,6 @@ import { Component, input, output } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { ButtonComponent } from '@shared/components/button/button.component';
 import { ColumnSelectorComponent } from '../column-selector/column-selector.component';
 import { ColumnSchema } from '../interfaces';
 import { ColumnVisibilityEvent } from '../column-selector/interfaces';

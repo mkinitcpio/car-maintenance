@@ -2,7 +2,6 @@ import { Component, inject, signal } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { SettingComponent } from '../../setting/setting.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonComponent } from '@shared/components/button/button.component';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatFormField, MatOption, MatSelect } from '@angular/material/select';
@@ -13,6 +12,7 @@ import { DataBaseService } from '@core/database';
 import { first } from 'rxjs/operators';
 import { NavigationEnum } from 'app/home/navigation-bar/navigation.enum';
 import { CmLineClamp } from "@shared/directives/line-clamp/line-clamp";
+import { CmButton } from '@shared/components/button/button';
 
 @Component({
     selector: 'cm-common-settings-page',
@@ -20,13 +20,13 @@ import { CmLineClamp } from "@shared/directives/line-clamp/line-clamp";
     MatDivider,
     SettingComponent,
     TranslateModule,
-    ButtonComponent,
     MatIcon,
     MatTooltip,
     MatSelect,
     MatFormField,
     MatOption,
     CmLineClamp,
+    CmButton
 ],
     templateUrl: './common-settings-page.component.html',
     styleUrl: './common-settings-page.component.scss'

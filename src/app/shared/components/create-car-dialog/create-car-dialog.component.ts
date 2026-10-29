@@ -1,8 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
-import { TabsComponent } from '../tabs/tabs.component';
-import { ContentContainerComponent } from '../content-container/content-container.component';
-import { ButtonComponent } from '../button/button.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { UbuntuContainerComponent } from '@shared/ubuntu/ubuntu-container/ubuntu-container.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -28,30 +25,29 @@ import { Data } from './interface';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { CmButton } from '../button/button';
 
 @Component({
     selector: 'app-create-car-dialog',
     templateUrl: './create-car-dialog.component.html',
     styleUrls: ['./create-car-dialog.component.scss'],
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatDatepickerModule,
-        TranslateModule,
-        MatIconModule,
-        MatTooltipModule,
-        UbuntuContainerComponent,
-        DialogComponent,
-        ButtonComponent,
-        ContentContainerComponent,
-        TabsComponent,
-        CmTextBody,
-    ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    TranslateModule,
+    MatIconModule,
+    MatTooltipModule,
+    UbuntuContainerComponent,
+    DialogComponent,
+    CmTextBody,
+    CmButton
+]
 })
 export class CreateCarDialogComponent implements OnInit {
 

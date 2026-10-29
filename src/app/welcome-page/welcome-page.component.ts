@@ -5,8 +5,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ElectronService } from '@core/services';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
-import { ButtonComponent } from '@shared/components/button/button.component';
 import { DatabaseSelectComponent } from '../database-select/database-select.component';
+import { CmButton } from '@shared/components/button/button';
 
 @Component({
     selector: 'app-welcome-page',
@@ -14,12 +14,12 @@ import { DatabaseSelectComponent } from '../database-select/database-select.comp
     styleUrls: ['./welcome-page.component.scss'],
     standalone: true,
     imports: [
-        MatIconModule,
-        MatTooltipModule,
-        TranslateModule,
-        ButtonComponent,
-        DatabaseSelectComponent,
-    ],
+    MatIconModule,
+    MatTooltipModule,
+    TranslateModule,
+    DatabaseSelectComponent,
+    CmButton
+],
 })
 export class WelcomePageComponent {
 

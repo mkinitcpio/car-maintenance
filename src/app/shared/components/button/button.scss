@@ -42,19 +42,17 @@
     padding: 0 8px;
   }
 
-  &__label {
-  }
-
   &--primary {
     background-color: $color-primary;
     color: white;
 
-    &:hover {
+    &:hover:not([disabled]) {
       background: m.mix-color($color-primary, white, 10%);
     }
 
     &[disabled] {
-      background-color: m.mix-color($color-primary, white, 60%);
+      user-select: none;
+      opacity: 0.6;
     }
   }
 
@@ -85,6 +83,7 @@
     }
 
     &[disabled] {
+      user-select: none;
       background-color: m.mix-color($color-dangerous, white, 60%);
     }
   }
@@ -118,7 +117,7 @@
 
   }
 
-  &:active {
+  &:active:not([disabled]) {
     animation: press 0.2s ease-in-out backwards;
   }
 }

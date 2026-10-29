@@ -22,9 +22,9 @@ import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { GroupData, GroupTreeService } from "./categories-tree/group-tree.service";
 import { TranslateService } from "@ngx-translate/core";
-import { ButtonComponent } from "@shared/components/button/button.component";
 import { TabsComponent } from "@shared/components/tabs/tabs.component";
 import { CategoriesTreeComponent } from "./categories-tree/categories-tree.component";
+import { CmButton } from "@shared/components/button/button";
 
 @Component({
     selector: "app-navigation",
@@ -32,12 +32,12 @@ import { CategoriesTreeComponent } from "./categories-tree/categories-tree.compo
     styleUrls: ["./navigation.component.scss"],
     standalone: true,
     imports: [
-        ButtonComponent,
-        MatIconModule,
-        TranslateModule,
-        TabsComponent,
-        CategoriesTreeComponent,
-    ],
+    MatIconModule,
+    TranslateModule,
+    TabsComponent,
+    CategoriesTreeComponent,
+    CmButton
+],
 })
 export class NavigationComponent extends AutoCloseable implements OnInit {
 

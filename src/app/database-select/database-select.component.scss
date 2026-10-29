@@ -9,39 +9,10 @@
   align-items: center;
   justify-content: center;
 
-  &__text {
-    margin-bottom: 16px;
-
-    font-family: system-ui;
-    font-size: 18px;
-    color: #333;
-  }
-
   &__buttons {
     width: 192px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-  }
-}
-
-.button {
-  height: 42px;
-  width: 100%;
-
-  font-family: $font-system;
-  font-weight: normal;
-  color: $font-color-primary;
-  border-radius: 12px;
-
-  &.button__create {
-    background-color: $color-primary;
-    color: #fff;
-  }
-
-  &.button__cancel {
-    &:hover {
-      background: $background-button-hover;
-    }
   }
 }

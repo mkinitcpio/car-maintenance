@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { CmTextHeader } from '../typography/text-header/text-header';
-import { ButtonComponent } from '../button/button.component';
 import { CmButton } from '../button/button';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
@@ -17,7 +16,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
         TranslateModule,
         MatIconModule,
         CmButton,
-        ButtonComponent,
         CmTextHeader,
         CmTextBody,
     ]

@@ -6,9 +6,9 @@
           [matTooltip]="this.settingsService.settings.databasePath">
       {{this.settingsService.settings.databasePath}}
     </span>
-    <app-button button-transparent (click)="onDatabaseChange()">
+    <button cm-button variant="transparent" (click)="onDatabaseChange()">
       <mat-icon svgIcon="edit"></mat-icon>
-    </app-button>
+    </button>
   </div>
 </app-setting>
 

@@ -20,16 +20,11 @@
   }
 
   &__parts-inputs-container {
-    @include mixins.scrollable;
-
     max-height: 278px;
     padding: 0 0 12px 0;
-    row-gap: 8px;
-    column-gap: 16px;
-    display: grid;
-    grid-template-columns: repeat(2, 48%);
-    align-items: center;
-    justify-content: center;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
   }
 
   &__parts-container {
@@ -42,8 +37,11 @@
 
   &__part {
     display: flex;
-    align-items: start;
     gap: 8px;
+  }
+
+  &__part-input {
+    width: 100%;
   }
 
   &__delete-button {
@@ -55,7 +53,6 @@
   }
 
   &__content {
-    overflow: hidden;
     padding-bottom: 8px;
   }
 }

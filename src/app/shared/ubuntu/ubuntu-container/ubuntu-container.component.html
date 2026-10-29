@@ -1,7 +1,9 @@
 <div class="ubuntu-container">
   @if (title()) {
     <header class="ubuntu-container__header">
-      {{title()}}
+      <span cmTextHeader="h2">
+        {{title()}}
+      </span>
 
       @if (info()) {
         <mat-icon
@@ -15,13 +17,26 @@
       <div class="ubuntu-container__actions">
         <ng-content select="[actions]"></ng-content>
       </div>
+      <div>
+        <button cm-button variant="transparent" (click)="toggle()">
+          <mat-icon
+            class="ubuntu-container__expand-button"
+            [class.ubuntu-container__expand-button--expanded]="expandContent()"
+          >
+            keyboard_arrow_up
+          </mat-icon>
+        </button>
+      </div>
     </header>
   }
 
-  <main
-    class="ubuntu-container__content"
-    [class.ubuntu-container__content--with-borders]="hasBordersStyle()"
-  >
-    <ng-content></ng-content>
-  </main>
+  @if (expandContent()) {
+    <main
+      class="ubuntu-container__content"
+      [class.ubuntu-container__content--with-borders]="hasBordersStyle()"
+    >
+      <ng-content></ng-content>
+    </main>
+  }
+
 </div>

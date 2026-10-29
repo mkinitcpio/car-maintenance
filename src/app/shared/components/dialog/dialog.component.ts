@@ -3,7 +3,6 @@ import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmButton } from '../button/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ButtonComponent } from '../button/button.component';
 import { CommonModule } from '@angular/common';
 import { Observable, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -17,7 +16,6 @@ import { NotificationTypeEnum } from '../notification/notification-type.enum';
     styleUrls: ['./dialog.component.scss'],
     imports: [
         CommonModule,
-        ButtonComponent,
         MatIconModule,
         TranslateModule,
         CmButton,

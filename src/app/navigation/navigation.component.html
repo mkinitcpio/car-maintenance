@@ -1,9 +1,9 @@
 <div class="navigation">
   <div class="navigation__title-container">
-    <app-button button-primary (click)="onAdd(selectedTabIndex)">
-      <mat-icon svgIcon="add"></mat-icon>
+    <button cm-button variant="transparent" (click)="onAdd(selectedTabIndex)">
+      <mat-icon>add</mat-icon>
       <span>{{(selectedTabIndex ? "MENU.CAR" : "MENU.CATEGORY" ) | translate}}</span>
-    </app-button>
+    </button>
   </div>
   <app-tabs [tabs]="tabs" (selectedTabIndex)="onSelectTab($event)">
     <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"

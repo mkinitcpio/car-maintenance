@@ -14,12 +14,8 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    height: 36px;
     margin-left: 6px;
 
-    font-size: 14px;
-    font-family: $font-system;
-    font-weight: bold;
     color: $font-color-primary;
   }
 
@@ -39,9 +35,13 @@
   &__content {
     border-radius: 12px;
     background: transparent;
+  }
 
-    &--with-borders {
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  &__expand-button {
+    transition: transform 0.2s ease-in;
+
+    &--expanded {
+      transform: rotateX(180deg);
     }
   }
 }

@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -27,6 +27,16 @@ import { LabelsDialogComponent } from '@shared/components/labels-dialog/labels-d
 import { MoveDialogData } from '@shared/components/move-dialog/interfaces';
 import { SaveDialogData } from './abstract-export.service';
 
+export const SIDE_DIALOG_CONFIG: Pick<MatDialogConfig, 'position' | 'enterAnimationDuration' | 'exitAnimationDuration'> = {
+  position: {
+    top: '12px',
+    right: '12px',
+    bottom: '12px',
+  },
+  enterAnimationDuration: '250ms',
+  exitAnimationDuration: '200ms',
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,9 +48,10 @@ export class DialogManagerService {
     return this.dialog
       .open(CreateDialogComponent, {
         width: "380px",
-        panelClass: "dialog-category",
+        panelClass: "dialog-side",
         data,
         disableClose: true,
+        ...SIDE_DIALOG_CONFIG,
       })
       .afterClosed()
       .pipe<Category>(filter<Category>(Boolean));
@@ -49,11 +60,11 @@ export class DialogManagerService {
   public openCarDialog(data: any): Observable<CarCategoryFormData> {
     return this.dialog
       .open(CreateCarDialogComponent, {
-        maxHeight: "90%",
-        width: "512px",
-        panelClass: "dialog-car",
+        width: "380px",
+        panelClass: "dialog-side",
         data,
         disableClose: true,
+        ...SIDE_DIALOG_CONFIG,
       })
       .afterClosed()
       .pipe<CarCategoryFormData>(filter<CarCategoryFormData>(Boolean));
@@ -63,9 +74,10 @@ export class DialogManagerService {
     return this.dialog
       .open(CreateRecordComponent, {
         width: "380px",
-        panelClass: "dialog-records",
+        panelClass: "dialog-side",
         data,
         disableClose: true,
+        ...SIDE_DIALOG_CONFIG,
       })
       .afterClosed()
       .pipe<Record>(filter<Record>(Boolean));
