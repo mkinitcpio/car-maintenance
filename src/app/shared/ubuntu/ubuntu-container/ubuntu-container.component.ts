@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { CmTextHeader } from '@shared/components/typography/text-header/text-header';
@@ -24,7 +24,7 @@ export class UbuntuContainerComponent {
 
   readonly expand = input<boolean>(true);
 
-  readonly expandContent = linkedSignal(() => this.expand());
+  readonly expandContent = signal(true);
 
 
   public toggle(): void {

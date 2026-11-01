@@ -6,9 +6,6 @@ import { SettingsService } from "./shared/components/settings/settings.service";
 
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
-import { iconsNames } from "./icon-names";
-import { groupIllustrationNames } from './group-illustration-names';
-import { currencyNames } from './currencies-names';
 import { filter } from "rxjs/operators";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { LanguageEnum } from "@shared/components/settings/language-enum";
@@ -39,17 +36,11 @@ export class AppComponent extends AutoCloseable {
   ) {
     super();
 
-    iconsNames.forEach(name => {
-      this.matIconRegistry.addSvgIcon(`${name}`, this.domS.bypassSecurityTrustResourceUrl(`assets/icons/vuesax/${name}.svg`));
-    });
+    this.matIconRegistry.addSvgIconSet(this.domS.bypassSecurityTrustResourceUrl('assets/sprites/vuesax.svg'));
 
-    groupIllustrationNames.forEach(name => {
-      this.matIconRegistry.addSvgIconInNamespace('illustrations', name, this.domS.bypassSecurityTrustResourceUrl(`assets/group-icons/${name}.svg`));
-    });
+    this.matIconRegistry.addSvgIconSetInNamespace('illustrations', this.domS.bypassSecurityTrustResourceUrl('assets/sprites/illustrations.svg'));
 
-    currencyNames.forEach(name => {
-      this.matIconRegistry.addSvgIconInNamespace('currencies', name, this.domS.bypassSecurityTrustResourceUrl(`assets/icons/currencies/${name}.svg`));
-    });
+    this.matIconRegistry.addSvgIconSetInNamespace('currencies', this.domS.bypassSecurityTrustResourceUrl('assets/sprites/currencies.svg'));
 
     this.matIconRegistry.setDefaultFontSetClass('material-symbols-rounded');
 

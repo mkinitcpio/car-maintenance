@@ -25,4 +25,19 @@ describe('UbuntuContainerComponent', () => {
   it('defaults hasBordersStyle to true', () => {
     expect(component.hasBordersStyle()).toBe(true);
   });
+
+  it('collapses the content on toggle', () => {
+    const collapsible = fixture.nativeElement.querySelector('.ubuntu-container__collapsible');
+    expect(collapsible.classList.contains('ubuntu-container__collapsible--collapsed')).toBe(false);
+
+    component.toggle();
+    fixture.detectChanges();
+
+    expect(collapsible.classList.contains('ubuntu-container__collapsible--collapsed')).toBe(true);
+
+    component.toggle();
+    fixture.detectChanges();
+
+    expect(collapsible.classList.contains('ubuntu-container__collapsible--collapsed')).toBe(false);
+  });
 });

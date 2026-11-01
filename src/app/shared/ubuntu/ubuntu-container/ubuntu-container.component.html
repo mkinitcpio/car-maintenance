@@ -23,20 +23,23 @@
             class="ubuntu-container__expand-button"
             [class.ubuntu-container__expand-button--expanded]="expandContent()"
           >
-            keyboard_arrow_up
+            keyboard_arrow_down
           </mat-icon>
         </button>
       </div>
     </header>
   }
 
-  @if (expandContent()) {
+  <div
+    class="ubuntu-container__collapsible"
+    [class.ubuntu-container__collapsible--collapsed]="!expandContent()"
+  >
     <main
       class="ubuntu-container__content"
       [class.ubuntu-container__content--with-borders]="hasBordersStyle()"
     >
       <ng-content></ng-content>
     </main>
-  }
+  </div>
 
 </div>

@@ -13,14 +13,14 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let settings: any;
   let database: any;
-  let iconRegistry: { addSvgIcon: jasmine.Spy; addSvgIconInNamespace: jasmine.Spy; setDefaultFontSetClass: jasmine.Spy };
+  let iconRegistry: { addSvgIconSet: jasmine.Spy; addSvgIconSetInNamespace: jasmine.Spy; setDefaultFontSetClass: jasmine.Spy };
 
   beforeEach(async () => {
     settings = createSettingsServiceMock();
     database = createDataBaseServiceMock();
     iconRegistry = {
-      addSvgIcon: jasmine.createSpy('addSvgIcon'),
-      addSvgIconInNamespace: jasmine.createSpy('addSvgIconInNamespace'),
+      addSvgIconSet: jasmine.createSpy('addSvgIconSet'),
+      addSvgIconSetInNamespace: jasmine.createSpy('addSvgIconSetInNamespace'),
       setDefaultFontSetClass: jasmine.createSpy('setDefaultFontSetClass'),
     };
 
@@ -46,10 +46,13 @@ describe('AppComponent', () => {
   });
 
   it('registers the application svg icons', () => {
-    expect(iconRegistry.addSvgIcon).toHaveBeenCalled();
-    expect(iconRegistry.addSvgIconInNamespace).toHaveBeenCalledWith(
+    expect(iconRegistry.addSvgIconSet).toHaveBeenCalledWith(jasmine.anything());
+    expect(iconRegistry.addSvgIconSetInNamespace).toHaveBeenCalledWith(
       'illustrations',
-      jasmine.any(String),
+      jasmine.anything(),
+    );
+    expect(iconRegistry.addSvgIconSetInNamespace).toHaveBeenCalledWith(
+      'currencies',
       jasmine.anything(),
     );
     expect(iconRegistry.setDefaultFontSetClass).toHaveBeenCalledWith('material-symbols-rounded');
