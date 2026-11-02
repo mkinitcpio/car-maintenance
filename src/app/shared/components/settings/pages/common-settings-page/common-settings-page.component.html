@@ -3,8 +3,8 @@
     <span class="settings__text"
           cmlineClamp="1"
           [matTooltipClass]="'mat-tooltip--long-text'"
-          [matTooltip]="this.settingsService.settings.databasePath">
-      {{this.settingsService.settings.databasePath}}
+          [matTooltip]="this.settingsService.settingsSignal().databasePath">
+      {{this.settingsService.settingsSignal().databasePath}}
     </span>
     <button cm-button variant="transparent" (click)="onDatabaseChange()">
       <mat-icon svgIcon="edit"></mat-icon>
@@ -18,7 +18,7 @@
   <div class="settings__item-field settings__item-field--disable">
     <mat-form-field class="settings__item-field settings__item-field--select">
       <mat-select hideSingleSelectionIndicator="true"
-                  panelClass="cm-select" [value]="settingsService.settings.startPage"
+                  panelClass="cm-select" [value]="settingsService.settingsSignal().startPage"
                   (valueChange)="onStartPageChanged($event)"
       >
         @for (page of startPageOptions$$(); track $index) {

@@ -7,7 +7,7 @@
  * Every spec that (directly or transitively) needs `ElectronService` must use
  * the mock below instead of letting the real service be constructed.
  */
-import { Provider } from '@angular/core';
+import { Provider, computed } from '@angular/core';
 import { BehaviorSubject, Subject, of } from 'rxjs';
 
 import { ElectronService } from '@core/services';
@@ -131,8 +131,15 @@ export function provideMockElectronService(settings?: Settings): Provider {
 
 /** A `SettingsService` double exposing the members components read most often. */
 export function createSettingsServiceMock(settings: Settings = defaultSettings): any {
+  const settingsSignal = computed<Settings>(() => ({ ...settings }));
+
   return {
     settings,
+    settingsSignal,
+    language: computed(() => settingsSignal().language),
+    region: computed(() => settingsSignal().region),
+    units: computed(() => settingsSignal().units),
+    appearance: computed(() => settingsSignal().appearance),
     store: createElectronStoreMock(settings as any),
     selected: null,
     settingsChanged$: new BehaviorSubject<{ type: SettingsTypeEnum; value?: any }>({

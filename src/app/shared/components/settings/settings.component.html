@@ -41,8 +41,8 @@
                 }
                 @case ('units') {
                   <cm-units-settings-page
-                    [region]="settingsService.settings.region"
-                    [metricSystem]="settingsService.settings.units?.metricSystem"
+                    [region]="settingsService.region()"
+                    [metricSystem]="settingsService.units()?.metricSystem"
                   />
                 }
                 @case ('language') {

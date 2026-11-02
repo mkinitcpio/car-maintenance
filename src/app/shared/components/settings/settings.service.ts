@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, computed, signal } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { BehaviorSubject, Subject } from "rxjs";
 import { ElectronService } from "../../../core/services";
@@ -21,6 +21,27 @@ import * as Store from 'electron-store';
 export class SettingsService {
   public get settings(): Settings {
     return this.electronService.appSettings.store;
+  }
+
+  /**
+   * Signal view of the settings store. Updated on every settings write via
+   * {@link touch}. Returns a fresh top-level object so signal consumers
+   * are notified even when electron-store mutates nested objects in place.
+   */
+  public readonly settingsSignal = computed<Settings>(() => {
+    this.settingsVersion();
+    return { ...this.electronService.appSettings.store };
+  });
+
+  public readonly language = computed(() => this.settingsSignal().language);
+  public readonly region = computed(() => this.settingsSignal().region);
+  public readonly units = computed(() => this.settingsSignal().units);
+  public readonly appearance = computed(() => this.settingsSignal().appearance);
+
+  private readonly settingsVersion = signal(0);
+
+  private touch(): void {
+    this.settingsVersion.update(version => version + 1);
   }
 
   public get store(): Store<Settings> {
@@ -69,9 +90,12 @@ export class SettingsService {
       type: SettingsTypeEnum.Scheme,
       value: this.settings.appearance.appearance,
     });
+
+    this.touch();
   }
 
   public setAppLanguage(lang: string): void {
+    this.touch();
     this.settings.language = lang;
     this.electronService.appSettings.set(SettingsPaths.Language, lang);
     this.translate.setDefaultLang(lang);
@@ -82,15 +106,18 @@ export class SettingsService {
   }
 
   public setAnimations(state: boolean): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.Animations, state);
     this.animationsStateChanged$.next(state);
   }
 
   public setRegion(region: LocaleEnum): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.Region, region);
   }
 
   public setDataBasePath(path: string): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.DatabasePath, path);
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Database,
@@ -98,10 +125,12 @@ export class SettingsService {
   }
 
   public setStartPage(navigationRoute: NavigationEnum): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.StartPage, navigationRoute);
   }
 
   public setMetricSystem(metricSystem: MetricSystemEnum): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.MetricSystem, metricSystem);
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Database,
@@ -109,6 +138,7 @@ export class SettingsService {
   }
 
   public setCurrency(currency: CurrencyEnum): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.Currency, currency);
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Database,
@@ -116,6 +146,7 @@ export class SettingsService {
   }
 
   public setFirstTab(tab: NavigationTabEnum): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.FirstTab, tab);
     this.settingsChanged$.next({
       type: SettingsTypeEnum.FirstTab,
@@ -123,6 +154,7 @@ export class SettingsService {
   }
 
   public setAppearance(appearance: AppearanceType): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.Appearance, appearance);
     this.settingsChanged$.next({
       type: SettingsTypeEnum.Scheme,
@@ -131,6 +163,7 @@ export class SettingsService {
   }
 
   public changeThemeColor(color: ColorEnum): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.PrimaryColor, color);
     this.settingsChanged$.next({ type: SettingsTypeEnum.Color, value: color });
   }
@@ -145,6 +178,7 @@ export class SettingsService {
   }
 
   public setVisibleColumnsForDetailsTable(hiddenColumns: string[]): void {
+    this.touch();
     this.electronService.appSettings.set(SettingsPaths.DetailsTableVisibleColumns, hiddenColumns);
   }
 

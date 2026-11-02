@@ -2,7 +2,7 @@
   <section class="appearance">
     @for (schema of themeService.getAvailableSchemas(); track $index) {
       <div class="appearance__item"
-           [class.appearance__item--selected]="settingsService.settings.appearance.appearance === schema.type"
+           [class.appearance__item--selected]="settingsService.appearance().appearance === schema.type"
            (click)="setAppearance(schema.type)"
       >
         <div mat-ripple class="appearance__illustration appearance__illustration--{{schema.type}}"></div>
@@ -17,7 +17,7 @@
 
 <app-setting [label]="'PAGES.SETTINGS.FIELDS.COLORS' | translate" icon="palette">
   <app-color-selector [colors]="colors()"
-                      [selected]="settingsService.settings.appearance.primaryColor"
+                      [selected]="settingsService.appearance().primaryColor"
                       (select)="onSelectColor($event)">
   </app-color-selector>
 </app-setting>
@@ -25,7 +25,7 @@
 <mat-divider class="settings__divider"></mat-divider>
 
 <app-setting [label]="'PAGES.SETTINGS.FIELDS.ANIMATION' | translate" icon="animation">
-  <cm-switch [value]="settingsService.settings.appearance.animations"
+  <cm-switch [value]="settingsService.appearance().animations"
               (change)="onAnimationsChanged($event)">
   </cm-switch>
 </app-setting>

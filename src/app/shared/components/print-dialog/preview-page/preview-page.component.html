@@ -15,9 +15,9 @@
           <app-currency [renderAs]="1"
             [ignoreFontColor]="true"
             [size]="0"
-            [locale]="settingsService.settings.region"
+            [locale]="settingsService.region()"
             [value]="cost"
-            [currency]="settingsService.settings.units?.currency">
+            [currency]="settingsService.units()?.currency">
           </app-currency>
         </div>
       </div>
@@ -35,9 +35,9 @@
               <app-currency [renderAs]="1"
                 [ignoreFontColor]="true"
                 [size]="0"
-                [locale]="settingsService.settings.region"
+                [locale]="settingsService.region()"
                 [value]="category.totalCost"
-                [currency]="settingsService.settings.units?.currency">
+                [currency]="settingsService.units()?.currency">
               </app-currency>
             </div>
           </div>
@@ -56,12 +56,12 @@
                 }
                 @case ('cost') {
                   <span class="preview-page__nowrap">
-                    {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
+                    {{ record[column.id] | numberSeparator:this.settingsService.region() }}
                   </span>
                 }
                 @case ('mileage') {
                   <span class="preview-page__nowrap">
-                    {{ record[column.id] | numberSeparator:this.settingsService.settings.region }}
+                    {{ record[column.id] | numberSeparator:this.settingsService.region() }}
                   </span>
                 }
                 @default {

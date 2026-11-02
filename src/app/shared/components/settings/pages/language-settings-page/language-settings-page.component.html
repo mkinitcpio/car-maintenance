@@ -2,7 +2,7 @@
   <mat-form-field class="settings__item-field settings__item-field--select">
     <mat-select hideSingleSelectionIndicator="true"
                 panelClass="cm-select"
-                [value]="settingsService.settings.language"
+                [value]="settingsService.language()"
                 (valueChange)="onSelectLanguage($event)"
       >
         @for (language of languageOptions(); track $index) {
@@ -21,7 +21,7 @@
   <mat-form-field class="settings__item-field settings__item-field--select">
     <mat-select hideSingleSelectionIndicator="true"
                 panelClass="cm-select"
-                [value]="settingsService.settings.region"
+                [value]="settingsService.region()"
                 (valueChange)="onSelectRegion($event)"
     >
       @for (region of regionOptions(); track $index) {
