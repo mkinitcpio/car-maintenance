@@ -1,18 +1,18 @@
-<section class="page" [class.page--opened-side-bar]="showSidebar" [class.page--separated]="separated">
+<section class="page" [class.page--opened-side-bar]="showSidebar" [class.page--separated]="separated()">
   <div class="page__main">
     <section class="page__title-section">
       <div class="page__title">
         <ng-content select="[buttons-left]"></ng-content>
-        @if (icon) {
-          <mat-icon [svgIcon]="icon"></mat-icon>
+        @if (icon()) {
+          <mat-icon [svgIcon]="icon()"></mat-icon>
         }
-        <span cmTextHeader="h1" class="page__title-text">{{title}}</span>
+        <span cmTextHeader="h1" class="page__title-text">{{title()}}</span>
       </div>
       <div class="page__title-buttons">
         <ng-content select="[buttons-right]"></ng-content>
-        @if (sidebarButtonIcon) {
+        @if (sidebarButtonIcon()) {
           <button cm-button variant="transparent" [active]="showSidebar" button-transparent (click)="showSidebar = !showSidebar">
-            <mat-icon [svgIcon]="sidebarButtonIcon"></mat-icon>
+            <mat-icon [svgIcon]="sidebarButtonIcon()"></mat-icon>
           </button>
         }
       </div>
@@ -28,7 +28,7 @@
       <div class="page__sidebar-container">
         <section class="page__title-section">
           <div class="page__title">
-            <span class="page__title-text">{{sidebarTitle}}</span>
+            <span class="page__title-text">{{sidebarTitle()}}</span>
           </div>
         </section>
         <div class="page__content-shadow-cover">

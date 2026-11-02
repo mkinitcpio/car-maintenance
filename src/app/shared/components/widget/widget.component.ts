@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -11,12 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class WidgetComponent {
 
-  @Input()
-  title: string;
+  title = input<string>();
 
-  @Input()
-  info: string;
+  info = input<string>();
 
-  @Input()
-  icon: string;
+  icon = input<string>();
 }

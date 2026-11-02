@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
@@ -29,13 +29,13 @@ import { DataType, Orientation } from './types';
 })
 export class RichWidgetComponent {
 
-  @Input() tooltip: string;
-  @Input() title: string;
-  @Input() icon: string;
-  @Input() value: number;
-  @Input() transparent: boolean = false;
-  @Input() type: DataType;
-  @Input() orientation: Orientation = "vertical";
+  tooltip = input<string>();
+  title = input<string>();
+  icon = input<string>();
+  value = input<number>();
+  transparent = input<boolean>(false);
+  type = input<DataType>();
+  orientation = input<Orientation>("vertical");
 
   public MetricSystemEnum = MetricSystemEnum;
 

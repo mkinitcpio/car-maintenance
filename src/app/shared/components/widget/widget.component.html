@@ -1,13 +1,13 @@
 <section class="widget">
-  @if (title) {
+  @if (title()) {
     <div class="widget__title-section">
       <h4 class="widget__title">
-        <mat-icon class="widget__illustration" [svgIcon]="icon"></mat-icon>
-        {{title}}
+        <mat-icon class="widget__illustration" [svgIcon]="icon()"></mat-icon>
+        {{title()}}
       </h4>
-      @if (info) {
+      @if (info()) {
         <mat-icon class="widget__info"
-          [matTooltip]="info">
+          [matTooltip]="info()">
           info
         </mat-icon>
       }

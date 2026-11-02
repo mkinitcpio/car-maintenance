@@ -2,9 +2,9 @@ import { trigger, transition, animate, style } from '@angular/animations';
 import { ColorComponent } from './color/color.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { Color } from '@shared/components/settings/color-interface';
-import { ColorEnum } from '@shared/components/settings/colors-enum';
+import { Component, ElementRef, ViewChild, effect, input, output } from '@angular/core';
+import { Color } from '../../settings/color-interface';
+import { ColorEnum } from '../../settings/colors-enum';
 
 @Component({
     selector: 'app-colors',
@@ -33,36 +33,36 @@ export class ColorsComponent {
 
   @ViewChild("coverRef", { static: true }) coverRef: ElementRef;
 
-  @Input()
-  colors: Color[];
+  colors = input.required<Color[]>();
 
-  @Input()
-  disable: boolean;
+  disable = input<boolean>();
 
-  @Input()
-  set selected(color: ColorEnum) {
-    const index = this.colors.findIndex(c => c.color === color);
+  selected = input.required<ColorEnum>();
 
-    if(index != -1) {
-      this.isActive = true;
-      this.animateCoverMovement();
-      this.updateTabCoverPosition(index);
-    } else {
-      this.isActive = false;
-    }
+  constructor() {
+    effect(() => {
+      const index = this.colors().findIndex(c => c.color === this.selected());
 
-    this.selectedColor = color;
+      if(index != -1) {
+        this.isActive = true;
+        this.animateCoverMovement();
+        this.updateTabCoverPosition(index);
+      } else {
+        this.isActive = false;
+      }
+
+      this.selectedColor = this.selected();
+    });
   }
 
-  @Output()
-  select: EventEmitter<ColorEnum> = new EventEmitter();
+  select = output<ColorEnum>();
 
   private readonly tabWidth = 28;
   public selectedColor: ColorEnum;
   public isActive = false;
 
   public onSelect(selectedColor: ColorEnum): void {
-    !this.disable && this.select.emit(selectedColor);
+    !this.disable() && this.select.emit(selectedColor);
   }
 
   private updateTabCoverPosition(offset: number): void {

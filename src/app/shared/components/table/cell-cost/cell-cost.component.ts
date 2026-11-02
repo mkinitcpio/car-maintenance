@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, input, inject } from '@angular/core';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { CurrencyComponent } from '@shared/currency/currency.component';
 import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
@@ -14,7 +14,7 @@ import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
 })
 export class CellCostComponent {
 
-  @Input() value: number;
+  value = input<number>();
 
   public settingsService = inject(SettingsService);
 }

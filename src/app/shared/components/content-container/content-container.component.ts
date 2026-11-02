@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CommonModule } from '@angular/common';
 
@@ -10,6 +10,5 @@ import { CommonModule } from '@angular/common';
 })
 export class ContentContainerComponent {
 
-  @Input()
-  title: string;
+  title = input<string>();
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { SourceCodeIllustrationComponent } from './source-code-illustration/source-code-illustration.component';
 import { FeedbackIllustrationComponent } from './feedback-illustration/feedback-illustration.component';
 import { DocumentationIllustrationComponent } from './documentation-illustration/documentation-illustration.component';
@@ -30,20 +30,15 @@ type DashboardContentType = 'changelog' | 'feedback' | 'sourceCode' | 'documenta
 })
 export class DashboardItemComponent implements OnInit {
 
-  @Input()
-  external: boolean;
+  external = input<boolean>();
 
-  @Input()
-  type: DashboardContentType;
+  type = input<DashboardContentType>();
 
-  @Input()
-  size: DashboardItemSize = 'm';
+  size = input<DashboardItemSize>('m');
 
-  @Input()
-  header: string;
+  header = input<string>();
 
-  @Input()
-  description: string;
+  description = input<string>();
 
   constructor() { }
 

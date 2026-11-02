@@ -20,6 +20,6 @@ describe('DashboardItemComponent', () => {
 
   it('creates with a default medium size', () => {
     expect(component).toBeTruthy();
-    expect(component.size).toBe('m');
+    expect(component.size()).toBe('m');
   });
 });

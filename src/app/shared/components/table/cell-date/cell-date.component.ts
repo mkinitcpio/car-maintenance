@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { LocalizedDatePipe } from '@shared/pipes/localized-date.pipe';
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
@@ -12,5 +12,5 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 ]
 })
 export class CellDateComponent {
-  @Input() value: number;
+  value = input<number>();
 }

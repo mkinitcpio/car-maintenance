@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, input, Input, OnInit, output, Output } from '@angular/core';
+import { Component, HostListener, OnInit, input, output } from '@angular/core';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmButton } from '../button/button';
 import { TranslateModule } from '@ngx-translate/core';
@@ -24,37 +24,27 @@ import { NotificationTypeEnum } from '../notification/notification-type.enum';
 })
 export class DialogComponent implements OnInit {
 
-  @Input()
-  title: string;
+  title = input<string>();
 
-  @Input()
-  mode: FormModeEnum;
+  mode = input<FormModeEnum>();
 
-  @Input()
-  hideFooter = false;
+  hideFooter = input<boolean>(false);
 
-  @Input()
-  closable = true;
+  closable = input<boolean>(true);
 
-  @Input()
-  submitText: string;
+  submitText = input<string>();
 
-  @Input()
-  disabledSumbitButton = false;
+  disabledSumbitButton = input<boolean>(false);
 
   public showNotification = false;
 
-  @Input()
-  notification$: Observable<Notification>;
+  notification$ = input<Observable<Notification>>();
 
-  @Input()
-  loading$: Observable<boolean>;
+  loading$ = input<Observable<boolean>>();
 
-  @Output()
-  close: EventEmitter<void> = new EventEmitter();
+  close = output<void>();
 
-  @Output()
-  submit: EventEmitter<void> = new EventEmitter();
+  submit = output<void>();
 
   sideMenuButton = input<boolean>(false);
   sideButtonClick = output<void>();
@@ -70,7 +60,7 @@ export class DialogComponent implements OnInit {
   public contentScrolled = false;
 
   ngOnInit(): void {
-    this.notification$?.pipe(
+    this.notification$()?.pipe(
       switchMap(() => {
         this.showNotification = true;
         return timer(2500);

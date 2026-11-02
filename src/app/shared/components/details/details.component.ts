@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CmTextHeader } from '@shared/components/typography/text-header/text-header';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -22,18 +22,13 @@ export class DetailsComponent {
 
   public showSidebar = false;
 
-  @Input()
-  title = '';
+  title = input<string>('');
 
-  @Input()
-  icon = '';
+  icon = input<string>('');
 
-  @Input()
-  separated = false;
+  separated = input<boolean>(false);
 
-  @Input()
-  sidebarButtonIcon: string;
+  sidebarButtonIcon = input<string>();
 
-  @Input()
-  sidebarTitle: string;
+  sidebarTitle = input<string>();
 }

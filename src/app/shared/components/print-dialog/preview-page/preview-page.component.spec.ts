@@ -19,16 +19,16 @@ describe('PreviewPageComponent', () => {
 
     fixture = TestBed.createComponent(PreviewPageComponent);
     component = fixture.componentInstance;
-    component.config = {
+    fixture.componentRef.setInput('config', {
       showTablesCostResult: true,
       columns: [
         { id: 'name', visible: true } as any,
         { id: 'cost', visible: false } as any,
       ],
-    };
-    component.data = {
+    });
+    fixture.componentRef.setInput('data', {
       tablesData: [{ title: 'T', totalCost: 0, records: [{ cost: '10' }, { cost: '20' }, { cost: '' }] as any }],
-    } as any;
+    } as any);
   });
 
   it('sums the record costs on init', () => {

@@ -3,7 +3,12 @@ import { fn } from 'storybook/test';
 
 import { CmCheckbox } from '../app/shared/components/checkbox/checkbox';
 
-type CheckboxWithArgs = CmCheckbox & { label: string };
+type CheckboxWithArgs = Omit<CmCheckbox, 'value' | 'disabled' | 'intermideate'> & {
+  value: boolean;
+  disabled: boolean;
+  intermideate: boolean;
+  label: string;
+};
 
 const meta: Meta<CheckboxWithArgs> = {
   title: 'Shared/Checkbox',

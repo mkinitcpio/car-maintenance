@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, Input, ViewEncapsulation } from "@angular/core";
+import { Component, ElementRef, ViewEncapsulation, input } from "@angular/core";
 import { ButtonBase } from "./button.base";
 import { MatRipple, MatRippleModule } from "@angular/material/core";
 import { CmTextBody } from "../typography/text-body/text-body";
@@ -12,7 +12,7 @@ import { CmTextBody } from "../typography/text-body/text-body";
         './button.scss'
     ],
     host: {
-        '[class]': '"cm-button--" + variant',
+        '[class]': '"cm-button--" + variant()',
         '[class.cm-button--default]': 'shape() === "default"',
         '[class.cm-button--rounded]': 'shape() === "rounded"',
         '[class.cm-button--medium]': 'size() === "default"',
@@ -27,8 +27,7 @@ import { CmTextBody } from "../typography/text-body/text-body";
 })
 export class CmButton extends ButtonBase {
 
-    @Input()
-    variant: string = 'primary';
+    variant = input<string>('primary');
 
     shape = input<'rounded' | 'default'>('default');
 

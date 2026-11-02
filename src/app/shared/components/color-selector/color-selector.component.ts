@@ -1,8 +1,7 @@
 import {
   Component,
-  EventEmitter,
-  Input,
-  Output,
+  input,
+  output,
 } from "@angular/core";
 import { SwitchComponent } from '../switch/switch.component';
 import { ColorsComponent } from './colors/colors.component';
@@ -30,17 +29,13 @@ interface Color {
 })
 export class ColorSelectorComponent {
 
-  @Input()
-  selected: string;
+  selected = input<string>();
 
-  @Input()
-  colors: Color[];
+  colors = input<Color[]>();
 
-  @Output()
-  select: EventEmitter<string> = new EventEmitter();
+  select = output<string>();
 
-  @Output()
-  setDefault: EventEmitter<string> = new EventEmitter();
+  setDefault = output<string>();
 
   public ColorEnum = ColorEnum;
 

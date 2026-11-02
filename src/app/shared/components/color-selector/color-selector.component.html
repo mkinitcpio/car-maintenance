@@ -1,13 +1,13 @@
 <div class="color-panel">
-  <cm-switch [value]="selected !== ColorEnum.Default"
+  <cm-switch [value]="selected() !== ColorEnum.Default"
               (change)="onSystemColorToggle($event)">
   </cm-switch>
 
   <div class="color-panel__divider"></div>
 
-  <app-colors [colors]="colors"
-              [disable]="selected === ColorEnum.Default"
-              [selected]="selected"
+  <app-colors [colors]="colors()"
+              [disable]="selected() === ColorEnum.Default"
+              [selected]="selected()"
               (select)="onSelected($event)">
   </app-colors>
 </div>

@@ -1,5 +1,5 @@
-<section class="colors" [class.colors--disable]="disable">
-  @for (color of colors; track color) {
+<section class="colors" [class.colors--disable]="disable()">
+  @for (color of colors(); track color) {
     <div class="colors__color">
       <app-color [color]="color.color"
         [selected]="color.color === selectedColor"

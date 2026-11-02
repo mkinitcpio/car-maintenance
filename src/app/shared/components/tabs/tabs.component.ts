@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, input, output } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { MatBadgeModule } from '@angular/material/badge';
 import { TranslateModule } from '@ngx-translate/core';
@@ -18,20 +18,15 @@ export class TabsComponent implements OnInit, AfterViewInit {
   @ViewChild('tabsRef', {static: true}) tabsRef: ElementRef;
   @ViewChild('tabsTitle', {static: true}) tabsTitle: ElementRef;
 
-  @Input()
-  tabs: Tab[];
+  tabs = input<Tab[]>();
 
-  @Input()
-  tabWidth: number;
+  tabWidth = input<number>();
 
-  @Input()
-  bordered: boolean;
+  bordered = input<boolean>();
 
-  @Input()
-  badgesVisibilityArray: boolean[] = [true, true];
+  badgesVisibilityArray = input<boolean[]>([true, true]);
 
-  @Output()
-  selectedTabIndex: EventEmitter<number> = new EventEmitter();
+  selectedTabIndex = output<number>();
 
   public selectedtab = 0;
   public _tabWidth = 0;
@@ -39,10 +34,10 @@ export class TabsComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngAfterViewInit(): void {
-    this._tabWidth = this.getTabWidth(this.tabsRef, this.tabs.length);
+    this._tabWidth = this.getTabWidth(this.tabsRef, this.tabs().length);
     this.tabCoverRef.nativeElement.style.width = `${this._tabWidth}px`;
 
-    if(this.tabWidth) {
+    if(this.tabWidth()) {
       this.tabsTitle.nativeElement.style.margin = "0 auto";
     }
 
@@ -65,7 +60,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   }
 
   private getTabWidth(tabsRef: ElementRef, tabsCount: number): number {
-    return this.tabWidth || (tabsRef.nativeElement.clientWidth - ((tabsCount - 1) * 4)) / tabsCount;
+    return this.tabWidth() || (tabsRef.nativeElement.clientWidth - ((tabsCount - 1) * 4)) / tabsCount;
   }
 
   private updateTabCoverPosition(offset: number): void {

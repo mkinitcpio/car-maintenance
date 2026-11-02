@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { ColumnSchema } from '../interfaces';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,20 +25,17 @@ import { CmButton } from "@shared/components/button/button";
 })
 export class ColumnSelectorComponent {
 
-  @Input()
-  set columnConfigs(columnConfigs: ColumnSchema[]){
-    this.columns = this.getColumnsWithoutIgnoredColumns(columnConfigs);
-  }
+  columnConfigs = input<ColumnSchema[]>();
 
-  public columns: ColumnSchema[];
+  public columns = computed<ColumnSchema[]>(() => this.getColumnsWithoutIgnoredColumns(this.columnConfigs() ?? []));
 
-  @Output() onVisibilityChanged: EventEmitter<ColumnVisibilityEvent> = new EventEmitter();
+  onVisibilityChanged = output<ColumnVisibilityEvent>();
 
   onSwitchState($event:any, key: string) {
     $event.stopPropagation();
     // $event.preventDefault();
 
-    const visible = !this.columns.find(column => column.key === key).visible;
+    const visible = !this.columns().find(column => column.key === key).visible;
     const event: ColumnVisibilityEvent = {
       key,
       visible,

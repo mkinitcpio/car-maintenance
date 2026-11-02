@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import { Component, forwardRef, input, linkedSignal, output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CmTextBody } from '../typography/text-body/text-body';
 
@@ -18,28 +18,21 @@ import { CmTextBody } from '../typography/text-body/text-body';
 })
 export class CmCheckbox implements ControlValueAccessor {
 
-  @Input()
-  value: boolean;
+  value = input<boolean>(false);
+  valueState = linkedSignal<boolean>(() => this.value());
 
-  @Input()
-  intermideate: boolean;
+  disabled = input<boolean>(false);
+  disabledState = linkedSignal<boolean>(() => this.disabled());
 
-  @Output()
-  change: EventEmitter<boolean> = new EventEmitter();
+  intermideate = input<boolean>();
 
-  @Input()
-  set disabled(disabled: boolean) {
-    this.isDisabled = disabled;
-  };
+  change = output<boolean>();
+
 
   onChange: (_: any) => void = () => {};
 
-  public isDisabled: boolean;
-
-  constructor() { }
-
   writeValue(value: boolean): void {
-    this.value = value;
+    this.valueState.update(() => value);
   }
 
   onTouched: () => void;
@@ -51,13 +44,13 @@ export class CmCheckbox implements ControlValueAccessor {
   registerOnChange(fn: (_: any) => {}): void {
     this.onChange = fn;
   }
-  setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+  setDisabledState(disabled: boolean): void {
+    this.disabledState.update(() => disabled);
   }
 
   onClick(): void {
-    this.value = !this.value;
-    this.onChange(this.value);
-    this.change.emit(this.value);
+    this.valueState.update((value) => !value);
+    this.onChange(this.valueState());
+    this.change.emit(this.valueState());
   }
 }

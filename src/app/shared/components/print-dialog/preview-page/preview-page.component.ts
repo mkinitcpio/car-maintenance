@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { CurrencyComponent } from '../../../currency/currency.component';
 import { NumberSeparatorPipe } from '../../../pipes/number-separator.pipe';
 import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
@@ -28,11 +28,9 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class PreviewPageComponent implements OnInit {
 
-  @Input()
-  config: PreviewPageConfig;
+  config = input<PreviewPageConfig>();
 
-  @Input()
-  data: PrintDialogConfig;
+  data = input<PrintDialogConfig>();
 
   public cost = 0;
   public isMultiply: boolean;
@@ -46,7 +44,7 @@ export class PreviewPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const costs = this.data.tablesData
+    const costs = this.data().tablesData
       .map(table => table.records)
       .flat(1)
       .map(record => +record.cost)
@@ -60,7 +58,7 @@ export class PreviewPageComponent implements OnInit {
   }
 
   get displayedColumns(): any {
-    return this.config.columns.filter((column) => column.visible).map(c => c.id);
+    return this.config().columns.filter((column) => column.visible).map(c => c.id);
   }
 
   private getResultCost(costs: number[]): number {

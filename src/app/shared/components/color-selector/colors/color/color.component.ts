@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ColorEnum } from '@shared/components/settings/colors-enum';
 
@@ -9,9 +9,7 @@ import { ColorEnum } from '@shared/components/settings/colors-enum';
     imports: [MatIconModule]
 })
 export class ColorComponent {
-  @Input()
-  color: ColorEnum;
+  color = input<ColorEnum>();
 
-  @Input()
-  selected: boolean;
+  selected = input<boolean>();
 }

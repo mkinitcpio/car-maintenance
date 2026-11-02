@@ -2,8 +2,8 @@
   <input
   class="checkbox__checkbox"
   type="checkbox"
-  [checked]="value"
-  [disabled]="isDisabled"
+  [checked]="valueState()"
+  [disabled]="disabledState()"
   (click)="onClick()"
   (change)="$event.stopPropagation()">
   <label cmTextBody="b1" class="checkbox__description">

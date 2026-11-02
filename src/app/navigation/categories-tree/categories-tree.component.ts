@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Category, CategoryTree } from '../state/interface';
 import { CategoriesTreeNodeComponent } from './categories-tree-node/categories-tree-node.component';
 
@@ -13,17 +13,13 @@ import { CategoriesTreeNodeComponent } from './categories-tree-node/categories-t
 })
 export class CategoriesTreeComponent {
 
-  @Input()
-  catagories: CategoryTree[];
+  catagories = input<CategoryTree[]>();
 
-  @Output()
-  add: EventEmitter<Category> = new EventEmitter();
+  add = output<Category>();
 
-  @Output()
-  edit: EventEmitter<Category> = new EventEmitter();
+  edit = output<Category>();
 
-  @Output()
-  delete: EventEmitter<Category> = new EventEmitter();
+  delete = output<Category>();
 
   public onAdd(category: Category): void {
     this.add.emit(category);

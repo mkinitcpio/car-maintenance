@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -12,5 +12,5 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ]
 })
 export class CellNoteComponent {
-  @Input() value: string;
+  value = input<string>();
 }

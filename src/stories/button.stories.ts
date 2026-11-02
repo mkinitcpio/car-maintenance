@@ -3,7 +3,11 @@ import { fn } from 'storybook/test';
 
 import { CmButton } from '../app/shared/components/button/button';
 
-type ButtonWithArgs = CmButton & {
+type ButtonWithArgs = Omit<CmButton, 'variant' | 'shape' | 'size' | 'active'> & {
+  variant: string;
+  shape: string;
+  size: string;
+  active: boolean;
   label: string;
   onClick: (event: unknown) => void;
 };

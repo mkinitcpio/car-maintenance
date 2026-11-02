@@ -26,7 +26,7 @@ describe('CellCostComponent', () => {
   });
 
   it('passes the cost value down to the currency component', () => {
-    component.value = 1234;
+    fixture.componentRef.setInput('value', 1234);
     fixture.detectChanges();
 
     expect(fixture.nativeElement.querySelector('app-currency')).not.toBeNull();

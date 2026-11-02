@@ -22,7 +22,7 @@ describe('CellDateComponent', () => {
   });
 
   it('renders a formatted, localized date for the value', () => {
-    component.value = new Date('2022-01-15T00:00:00').getTime();
+    fixture.componentRef.setInput('value', new Date('2022-01-15T00:00:00').getTime());
     fixture.detectChanges();
 
     const cell: HTMLElement = fixture.nativeElement.querySelector('.cell-date');
