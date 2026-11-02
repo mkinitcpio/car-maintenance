@@ -42,7 +42,7 @@
                 @case ('units') {
                   <cm-units-settings-page
                     [region]="settingsService.region()"
-                    [metricSystem]="settingsService.units()?.metricSystem"
+                    [metricSystem]="$safeNavigationMigration(settingsService.units()?.metricSystem)"
                   />
                 }
                 @case ('language') {

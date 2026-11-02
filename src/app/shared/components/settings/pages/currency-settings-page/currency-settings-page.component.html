@@ -1,6 +1,6 @@
 <app-setting [label]="'PAGES.SETTINGS.FIELDS.CURRENCY' | translate" icon="attach_money">
   <mat-form-field class="settings__item-field settings__item-field--currency">
-    <mat-select hideSingleSelectionIndicator="true" panelClass="cm-select" [value]="settingsService.units()?.currency" (valueChange)="onSelectCurrency($event)">
+    <mat-select hideSingleSelectionIndicator="true" panelClass="cm-select" [value]="$safeNavigationMigration(settingsService.units()?.currency)" (valueChange)="onSelectCurrency($event)">
       <mat-select-trigger class="settings__currency-preview">
         <mat-icon class="settings__currency-icon" [svgIcon]="'currencies:' + currentCurrency$$().icon"></mat-icon>
         <span class="settings__currency-name">{{currentCurrency$$().name | translate}}</span>

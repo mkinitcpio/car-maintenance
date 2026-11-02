@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CmLineClamp } from './line-clamp';
 
 @Component({
   imports: [CmLineClamp],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `<p [cmLineClamp]="lines">Test content</p>`
 })
 class TestHostComponent {

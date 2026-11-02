@@ -17,8 +17,8 @@
         <mat-form-field>
           <mat-select (valueChange)="onSelectCurrency($event)">
             <mat-select-trigger class="currency-dialog__currency-preview">
-              <mat-icon class="currency-dialog__currency-icon" [svgIcon]="'currencies:' + getCurrentCurrency()?.icon"></mat-icon>
-              <span class="currency-dialog__currency-name">{{getCurrentCurrency()?.name | translate}}</span>
+              <mat-icon class="currency-dialog__currency-icon" [svgIcon]="'currencies:' + $safeNavigationMigration(getCurrentCurrency()?.icon)"></mat-icon>
+              <span class="currency-dialog__currency-name">{{$safeNavigationMigration(getCurrentCurrency()?.name) | translate}}</span>
             </mat-select-trigger>
 
             @for (currency of currencyOptions | orderTranslate:'name'; track currency) {

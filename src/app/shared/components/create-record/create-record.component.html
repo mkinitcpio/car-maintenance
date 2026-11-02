@@ -59,7 +59,7 @@
             <span class="form-field__title-required">*</span>
           </div>
           <mat-form-field>
-            <app-currency matSuffix [currency]="settingsService.units()?.currency"></app-currency>
+            <app-currency matSuffix [currency]="$safeNavigationMigration(settingsService.units()?.currency)"></app-currency>
             <input [required]="true" [formControlName]="'cost'" matInput>
             @if (recordForm.get('cost').hasError('number')) {
               <mat-error>

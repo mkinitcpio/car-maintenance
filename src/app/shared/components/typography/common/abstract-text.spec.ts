@@ -1,4 +1,4 @@
-import { Directive, effect, EffectRef, Component } from '@angular/core';
+import { Directive, effect, EffectRef, Component, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractCmText } from './abstract-text';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -13,6 +13,7 @@ export class TestCmText extends AbstractCmText {
 
 @Component({
   template: `<span testCmText></span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TestCmText],
 })
 class TestHostComponent {}

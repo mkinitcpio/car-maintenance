@@ -1,6 +1,6 @@
 import {
   Directive,
-  EffectRef,
+  effect,
   signal,
 } from "@angular/core";
 
@@ -11,7 +11,7 @@ import {
 })
 export abstract class AbstractCmText {
 
-  abstract initEffectRef: EffectRef;
+  abstract initEffectRef: ReturnType<typeof effect>;
   abstract baseClass: string;
   private commonClass: string = 'cm-text';
 

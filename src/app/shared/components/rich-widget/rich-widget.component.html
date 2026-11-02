@@ -6,7 +6,7 @@
       @switch (type()) {
         @case ('currency') {
           <app-currency [value]="value()"
-            [currency]="settingsService.units()?.currency"
+            [currency]="$safeNavigationMigration(settingsService.units()?.currency)"
             [locale]="settingsService.region()">
           </app-currency>
         }

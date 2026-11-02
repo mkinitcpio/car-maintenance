@@ -8,7 +8,7 @@ import localeEn from '@angular/common/locales/en';
 import localeRu from '@angular/common/locales/ru';
 import { EnvironmentProviders, Provider } from '@angular/core';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { of } from 'rxjs';
@@ -38,7 +38,7 @@ export function createFakeMatIconRegistry(): Partial<MatIconRegistry> {
 export function commonComponentProviders(): (Provider | EnvironmentProviders)[] {
   return [
     provideNoopAnimations(),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     provideMockElectronService(),
     provideMockSettingsService(),
     { provide: MatIconRegistry, useFactory: createFakeMatIconRegistry },

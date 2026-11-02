@@ -20,5 +20,8 @@
     "dist",
     "release",
     "node_modules"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "strictTemplates": false
+  }
 }

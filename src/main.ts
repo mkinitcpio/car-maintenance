@@ -1,7 +1,7 @@
 import { enableProdMode, importProvidersFrom, provideZonelessChangeDetection } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withXhr } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
@@ -68,7 +68,7 @@ bootstrapApplication(AppComponent, {
     provideZonelessChangeDetection(),
     provideRouter(AppRoutes),
     provideAnimations(),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     importProvidersFrom(
       CoreModule,
       SharedModule,

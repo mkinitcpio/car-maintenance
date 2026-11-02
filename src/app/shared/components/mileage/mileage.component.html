@@ -1,5 +1,5 @@
 <div class="mileage">
   <span class="mileage__value">
-    {{"METRIC_SYSTEM." + (settingsService.units()?.metricSystem) | uppercase | translate}}
+    {{"METRIC_SYSTEM." + ($safeNavigationMigration(settingsService.units()?.metricSystem)) | uppercase | translate}}
   </span>
 </div>

@@ -1,5 +1,5 @@
 <app-currency [value]="value()"
               [attr.data-csv]="value() | numberSeparator:settingsService.region()"
-              [currency]="settingsService.units()?.currency"
+              [currency]="$safeNavigationMigration(settingsService.units()?.currency)"
               [locale]="settingsService.region()">
 </app-currency>

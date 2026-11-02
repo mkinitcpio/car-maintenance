@@ -23,7 +23,9 @@
     "useDefineForClassFields": false,
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "ignoreDeprecations": "6.0",
+    "strict": false
   },
   "files": [
     "src/main.ts",

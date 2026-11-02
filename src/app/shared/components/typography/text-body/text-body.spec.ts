@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CmTextBody } from './text-body';
 
 @Component({
   template: `<span [textBody]="value()"></span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CmTextBody],
 })
 class TestHostComponent {
