@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CategoryTree } from '../state/interface';
 
@@ -14,8 +14,9 @@ export interface GroupData {
 })
 export class GroupTreeService {
 
-  private _selectedGroup: GroupData = null;
   private expandedGroupsMap: Map<string, boolean> = new Map();
+
+  public readonly selectedGroup = signal<GroupData>(null);
 
   public selected$: BehaviorSubject<GroupData> = new BehaviorSubject(null);
 
@@ -23,13 +24,13 @@ export class GroupTreeService {
   }
 
   public selectedItem(group: GroupData) {
-    this._selectedGroup = group;
+    this.selectedGroup.set(group);
 
-    this.selected$.next(this._selectedGroup);
+    this.selected$.next(group);
   }
 
   public getSelectedItem(): GroupData {
-    return this._selectedGroup;
+    return this.selectedGroup();
   }
 
   public switchExpandState(id: string): void {
