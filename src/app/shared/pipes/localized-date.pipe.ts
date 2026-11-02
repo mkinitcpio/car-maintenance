@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
-import { SettingsService } from '@shared/components/settings/settings.service';
+import { SettingsService } from '../components/settings/settings.service';
 
 @Pipe({
     name: 'localizedDate',
@@ -13,7 +13,7 @@ export class LocalizedDatePipe implements PipeTransform {
   }
 
   transform(value: number, pattern = 'mediumDate'): any {
-    const lang = this.settingsService.settings.language === 'en' ? 'en_US' : 'ru';
+    const lang = this.settingsService.language() === 'en' ? 'en_US' : 'ru';
     const datePipe: DatePipe = new DatePipe(lang);
 
     return datePipe.transform(value, pattern);

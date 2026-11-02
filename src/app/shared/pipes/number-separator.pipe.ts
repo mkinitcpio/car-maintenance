@@ -9,16 +9,15 @@ import { LocaleEnum } from '@shared/components/settings/locale-enum';
 })
 export class NumberSeparatorPipe implements PipeTransform {
 
-  private digitsInfo = '1.2-2';
-
   constructor() { }
 
-  transform(value: number, locale: LocaleEnum, ignoreАractionalPart = false): string {
-    if(ignoreАractionalPart) {
-      this.digitsInfo = null;
-    }
+  transform(value: number, locale: LocaleEnum, ignoreFractionalPart = false): string {
+    // Computed per call: pure pipes share one instance per template, so any
+    // instance-level state would leak between bindings in the same template.
+    const digitsInfo = ignoreFractionalPart ? null : '1.2-2';
+
     if(locale === LocaleEnum.Us) {
-      return formatNumber(value, 'en', this.digitsInfo);
+      return formatNumber(value, 'en', digitsInfo);
     }
 
     if(locale === LocaleEnum.Ru || locale === LocaleEnum.By || locale === LocaleEnum.Kz) {
