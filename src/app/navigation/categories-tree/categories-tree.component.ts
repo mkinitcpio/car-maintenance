@@ -1,8 +1,9 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { Category, CategoryTree } from '../state/interface';
 import { CategoriesTreeNodeComponent } from './categories-tree-node/categories-tree-node.component';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-categories-tree',
     templateUrl: './categories-tree.component.html',
     styleUrls: ['./categories-tree.component.scss'],

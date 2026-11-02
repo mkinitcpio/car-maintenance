@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { TranslateModule } from "@ngx-translate/core";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
@@ -27,6 +27,7 @@ import { CategoriesTreeComponent } from "./categories-tree/categories-tree.compo
 import { CmButton } from "@shared/components/button/button";
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-navigation",
     templateUrl: "./navigation.component.html",
     styleUrls: ["./navigation.component.scss"],
@@ -68,7 +69,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public dataSource = new MatTreeNestedDataSource<any>();
   public selectedCategory: Category;
   public selected: string = null;
-  public categories: CategoryTree[];
+  public categories = signal<CategoryTree[]>([]);
   public CategoryTypeEnum = CategoryTypeEnum;
   public selectedTabIndex = 0;
 
@@ -119,7 +120,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
     this.categories$
       .subscribe((categories) => {
-        this.categories = categories;
+        this.categories.set(categories);
       });
 
     this.navigationFacade.loadCategories();
@@ -141,7 +142,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   public addCategory(category?: Category): void {
-    const parentList = this.getListOfParents(this.categories);
+    const parentList = this.getListOfParents(this.categories());
     const data = {
       mode: FormModeEnum.Create,
       parents: parentList,
@@ -183,8 +184,8 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   public onEdit(category: Category): void {
-    const formData = this.getFlatTreeView(this.categories).find((row) => row.id === category.id);
-    const parentList = this.getListOfParents(this.categories);
+    const formData = this.getFlatTreeView(this.categories()).find((row) => row.id === category.id);
+    const parentList = this.getListOfParents(this.categories());
     const data = {
       mode: FormModeEnum.Edit,
       parents: parentList,

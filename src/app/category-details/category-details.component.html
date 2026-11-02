@@ -1,4 +1,4 @@
-<app-details [title]="categoryDetails.data.name" class="category-details" [icon]="'illustrations:' + (categoryDetails.icon || 'wrench').replace('.svg', '')">
+<app-details [title]="categoryDetails().data.name" class="category-details" [icon]="'illustrations:' + (categoryDetails().icon || 'wrench').replace('.svg', '')">
   <ng-container buttons-right>
     <cm-actions-panel>
       <button cm-button size="small" variant="transparent" shape="rounded" (click)="onPrint()">
@@ -10,13 +10,13 @@
   <ng-container content>
     <div class="category-details__info-section">
       <div class="category-details__column">
-        @if (categoryDetails.type === CategoryTypeEnum.Car) {
+        @if (categoryDetails().type === CategoryTypeEnum.Car) {
           <app-rich-widget
             icon="speed"
             type="mileage"
             tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.MILEAGE"
             [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE'"
-            value="{{categoryDetails.data.mileage}}"
+            value="{{categoryDetails().data.mileage}}"
             >
           </app-rich-widget>
         }
@@ -25,39 +25,39 @@
           type="currency"
           tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
           [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
-          value="{{totalCost}}"
+          value="{{totalCost()}}"
           >
         </app-rich-widget>
       </div>
-      @if (categoryDetails.type === CategoryTypeEnum.Car) {
+      @if (categoryDetails().type === CategoryTypeEnum.Car) {
         <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.INFO' | translate" icon="task">
           <section class="car-info__content">
             <div class="car-info__raw">
               <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.VEHICLE_ID" | translate}}</span>
-              <span class="car-info__raw-data">{{categoryDetails.data.vehicleId || '-'}}</span>
+              <span class="car-info__raw-data">{{categoryDetails().data.vehicleId || '-'}}</span>
             </div>
             <div class="car-info__raw">
               <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.MAKE" | translate}}</span>
-              <span class="car-info__raw-data">{{categoryDetails.data.make || '-'}}</span>
+              <span class="car-info__raw-data">{{categoryDetails().data.make || '-'}}</span>
             </div>
             <div class="car-info__raw">
               <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.MODEL" | translate}}</span>
-              <span class="car-info__raw-data">{{categoryDetails.data.model || '-'}}</span>
+              <span class="car-info__raw-data">{{categoryDetails().data.model || '-'}}</span>
             </div>
             <div class="car-info__raw">
               <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.YEAR" | translate}}</span>
-              <span class="car-info__raw-data">{{categoryDetails.data.year || '-'}}</span>
+              <span class="car-info__raw-data">{{categoryDetails().data.year || '-'}}</span>
             </div>
             <div class="car-info__raw">
               <span class="car-info__raw-label">{{"PAGES.CATEGORY_DETAILS.LABELS.ENGINE" | translate}}</span>
-              <span class="car-info__raw-data">{{categoryDetails.data.engine || '-'}}</span>
+              <span class="car-info__raw-data">{{categoryDetails().data.engine || '-'}}</span>
             </div>
           </section>
         </app-widget>
       }
-      @if (categoryDetails.type === CategoryTypeEnum.Car) {
+      @if (categoryDetails().type === CategoryTypeEnum.Car) {
         <app-widget [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.NOTE' | translate" icon="edit">
-          <textarea #notesInput class="category-details__notes" [value]="categoryDetails.maintenance.note" placeholder="Type some notes" (focusout)="onTextAreaFocusOut(notesInput.value)"></textarea>
+          <textarea #notesInput class="category-details__notes" [value]="categoryDetails().maintenance.note" placeholder="Type some notes" (focusout)="onTextAreaFocusOut(notesInput.value)"></textarea>
         </app-widget>
       }
     </div>
@@ -76,11 +76,11 @@
           </cm-actions-panel>
         </div>
       </div>
-      @for (table of categoryDetails.tables; track table; let i = $index; let last = $last; let first = $first) {
+      @for (table of categoryDetails().tables; track table; let i = $index; let last = $last; let first = $first) {
         <section class="category-details__table-container"
-          [class.category-details__table-container--border-bottom]="table.length !== 1 && ((!first && expandPanelToggles[i + 1]) || (first && expandPanelToggles[i + 1]))"
-          [class.category-details__table-container--border-top]="table.length !== 1 && ((!last && expandPanelToggles[i - 1]) || (last && expandPanelToggles[i - 1]))"
-          [class.category-details__table-container--expand]="expandPanelToggles[i]"
+          [class.category-details__table-container--border-bottom]="table.length !== 1 && ((!first && expandPanelToggles()[i + 1]) || (first && expandPanelToggles()[i + 1]))"
+          [class.category-details__table-container--border-top]="table.length !== 1 && ((!last && expandPanelToggles()[i - 1]) || (last && expandPanelToggles()[i - 1]))"
+          [class.category-details__table-container--expand]="expandPanelToggles()[i]"
           >
           <div class="category-details__table-header">
             <div class="category-details__table-title" matRipple (click)="onNavigateToDetails(table.id, table.name)">
@@ -95,19 +95,19 @@
                   size="small"
                   variant="transparent"
                   shape="rounded"
-                  (click)="expandPanelToggles[i] = !expandPanelToggles[i]"
+                  (click)="toggleExpandPanel(i)"
                 >
                   <mat-icon
                     class="category-details__expand-button"
-                    [class.category-details__expand-button--expand]="expandPanelToggles[i]"
+                    [class.category-details__expand-button--expand]="expandPanelToggles()[i]"
                     svgIcon="expand"
                   />
                 </button>
               </div>
             </div>
           </div>
-          <div class="category-details__table-content" #detal [style.height]="expandPanelToggles[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles[i]">
-            <cm-table [config]="tableConfig"
+          <div class="category-details__table-content" #detal [style.height]="expandPanelToggles()[i] ? getContentHeight(detal) : 0" [class.category-details__table-content--show]="expandPanelToggles()[i]">
+            <cm-table [config]="tableConfig()"
               [transparent]="true"
               [rows]="table.data"
               (edit)="onEdit($event)"

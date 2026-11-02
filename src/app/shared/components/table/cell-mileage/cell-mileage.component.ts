@@ -5,6 +5,7 @@ import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'cm-cell-mileage',
   templateUrl: './cell-mileage.component.html',
   styleUrl: './cell-mileage.component.scss',

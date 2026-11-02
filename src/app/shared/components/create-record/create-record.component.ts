@@ -1,4 +1,4 @@
-import { Component, computed, inject, Inject, model, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Inject, model, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { CurrencyComponent } from '@shared/currency/currency.component';
 import { MileageComponent } from '../mileage/mileage.component';
@@ -26,6 +26,7 @@ import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/ma
 import { DataBaseService } from '@core/database';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-create-dialog',
     templateUrl: './create-record.component.html',
     styleUrls: ['./create-record.component.scss'],

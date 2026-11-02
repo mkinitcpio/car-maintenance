@@ -1,4 +1,4 @@
-import { Component, inject, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, input } from "@angular/core";
 import { ColorEnum } from "../../colors-enum";
 import { AppearanceType } from "../../interface";
 import { SettingsService } from "../../settings.service";
@@ -12,6 +12,7 @@ import { ThemeService } from "@core/services/theme";
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "cm-appearance-settings-page",
   imports: [
     MatDivider,

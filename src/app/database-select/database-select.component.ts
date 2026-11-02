@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import {ElectronService} from "../core/services";
 import {DataBaseService} from "../core/database";
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CmButton } from '@shared/components/button/button';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-database-select',
     templateUrl: './database-select.component.html',
     styleUrls: ['./database-select.component.scss'],

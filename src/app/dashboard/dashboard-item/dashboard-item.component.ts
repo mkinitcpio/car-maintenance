@@ -1,4 +1,4 @@
-import { Component, OnInit, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, input } from '@angular/core';
 import { SourceCodeIllustrationComponent } from './source-code-illustration/source-code-illustration.component';
 import { FeedbackIllustrationComponent } from './feedback-illustration/feedback-illustration.component';
 import { DocumentationIllustrationComponent } from './documentation-illustration/documentation-illustration.component';
@@ -13,6 +13,7 @@ type DashboardItemSize = 'm' | 's';
 type DashboardContentType = 'changelog' | 'feedback' | 'sourceCode' | 'documentation';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-dashboard-item',
     templateUrl: './dashboard-item.component.html',
     styleUrls: ['./dashboard-item.component.scss'],

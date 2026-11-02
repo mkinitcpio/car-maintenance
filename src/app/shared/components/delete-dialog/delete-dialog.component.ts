@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmButton } from '../button/button';
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-delete-dialog',
     templateUrl: './delete-dialog.component.html',
     styleUrls: ['./delete-dialog.component.scss'],

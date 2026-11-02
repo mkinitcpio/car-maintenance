@@ -1,9 +1,10 @@
-import { Component, ElementRef, ViewEncapsulation, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ElementRef, ViewEncapsulation, input } from "@angular/core";
 import { ButtonBase } from "./button.base";
 import { MatRipple, MatRippleModule } from "@angular/material/core";
 import { CmTextBody } from "../typography/text-body/text-body";
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: `
         button[cm-button]
     `,

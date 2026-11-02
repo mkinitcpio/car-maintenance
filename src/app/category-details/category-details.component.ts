@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
@@ -20,6 +20,7 @@ import { ElectronService } from '@core/services';
 import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
 import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/group-tree.service';
 import { defaultTableConfig } from '@shared/components/table/default-table-config';
+import { TableConfig } from '@shared/components/table/interfaces';
 import { DetailsComponent } from '@shared/components/details/details.component';
 import { RichWidgetComponent } from '@shared/components/rich-widget/rich-widget.component';
 import { WidgetComponent } from '@shared/components/widget/widget.component';
@@ -32,6 +33,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-category-details',
     templateUrl: './category-details.component.html',
     styleUrls: ['./category-details.component.scss'],
@@ -85,18 +87,18 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public CategoryTypeEnum = CategoryTypeEnum;
   public MetricSystemEnum = MetricSystemEnum;
 
-  public expandPanelToggles: Array<boolean>;
+  public expandPanelToggles = signal<Array<boolean>>([]);
   public expandRecordsPanel = false;
 
   public allExpandButtonState = 'expand';
 
   public id: string;
   public category: CategoryTree;
-  public categoryDetails: CategoryDetails;
+  public categoryDetails = signal<CategoryDetails>(null);
   public records: Record[] = [];
-  public totalCost: number;
+  public totalCost = signal<number>(0);
 
-  public tableConfig = defaultTableConfig;
+  public tableConfig = signal<TableConfig>(defaultTableConfig);
   private exportTranslatedText: [text: string, action: string];
 
   private snackBar = inject(MatSnackBar);
@@ -119,13 +121,14 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
   ngOnInit(): void {
     this.categoryDetails$.subscribe((categoryDetails) => {
-      this.categoryDetails = categoryDetails;
-      this.expandPanelToggles = Array.from({length: this.categoryDetails.tables.length}, () => false);
+      this.categoryDetails.set(categoryDetails);
+      this.expandPanelToggles.set(Array.from({length: categoryDetails.tables.length}, () => false));
 
-      this.totalCost = this.categoryDetails.tables.map(table => this.utilsService.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0);
-      this.tableConfig = {...this.tableConfig};
-      this.tableConfig.actions.selectable = false;
-      this.tableConfig.columnSchemas = [{
+      this.totalCost.set(categoryDetails.tables.map(table => this.utilsService.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0));
+      this.tableConfig.set({
+        ...this.tableConfig(),
+        actions: { ...this.tableConfig().actions, selectable: false },
+        columnSchemas: [{
         key: 'name',
         name: 'RECORDS_TABLE.NAME',
         type: 'text',
@@ -155,7 +158,8 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
         type: 'note',
         order: 6,
         visible: true,
-      }];
+      }],
+      });
     });
 
     this.recordChanges$.subscribe(() => {
@@ -246,7 +250,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   }
 
   public onPrint(): void {
-    const tablesData = this.categoryDetails.tables
+    const tablesData = this.categoryDetails().tables
       .map(table => ({
         title: table.name,
         records: table.data,
@@ -254,7 +258,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       }));
 
     this.dialogManagerService.openPrintDialog({
-      title: this.categoryDetails.data.name,
+      title: this.categoryDetails().data.name,
       multiply: true,
       tablesData,
     }).pipe(
@@ -274,21 +278,29 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   }
 
   public onTextAreaFocusOut(note: string): void {
-    const maintenance = {...this.categoryDetails.maintenance};
+    const maintenance = {...this.categoryDetails().maintenance};
 
     maintenance.note = note;
     this.categoryDetailsFacade.updateMaintenance(maintenance);
   }
 
   private findRecord(id: string): Record {
-    return this.categoryDetails.tables
+    return this.categoryDetails().tables
       .map((table) => table.data)
       .reduce((acc, curr) => acc.concat(...curr))
       .find((record) => record.id === id);
   }
 
+  public toggleExpandPanel(index: number): void {
+    this.expandPanelToggles.update(toggles => {
+      const next = [...toggles];
+      next[index] = !next[index];
+      return next;
+    });
+  }
+
   public toogleExpandStates(state): void {
-    this.expandPanelToggles = Array.from({length: this.expandPanelToggles.length}, () => state);
+    this.expandPanelToggles.update(toggles => Array.from({length: toggles.length}, () => state));
   }
 
   public getContentHeight(content: HTMLElement): string {
@@ -299,14 +311,14 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   public onNavigateToDetails(id: string, name: string): void {
     const groupData: GroupData = {
       routeName: 'details',
-      group: { id, parent: this.categoryDetails.data.id, name },
+      group: { id, parent: this.categoryDetails().data.id, name },
     };
 
     this.groupTreeService.selectedItem(groupData);
   }
 
   public get isAllExpanded(): boolean {
-    return this.expandPanelToggles.every(toggle => toggle);
+    return this.expandPanelToggles().every(toggle => toggle);
   }
 
   private getExportTranslatedText(): Observable<[string, string]> {

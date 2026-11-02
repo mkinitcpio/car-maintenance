@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,6 +21,7 @@ import { NotificationTypeEnum } from '../notification/notification-type.enum';
 import { FeedbackRepository } from '@core/repositories/feedback.repository';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-feedback-dialog',
     templateUrl: './feedback-dialog.component.html',
     styleUrls: ['./feedback-dialog.component.scss'],

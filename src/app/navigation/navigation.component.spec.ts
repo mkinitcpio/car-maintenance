@@ -68,7 +68,7 @@ describe('NavigationComponent', () => {
 
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
-    component.categories = [];
+    component.categories.set([]);
     fixture.detectChanges();
   });
 

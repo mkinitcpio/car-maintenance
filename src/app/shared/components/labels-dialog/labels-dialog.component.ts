@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-labels-dialog',
     imports: [
         DialogComponent,

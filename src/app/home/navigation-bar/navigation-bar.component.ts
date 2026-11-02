@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -14,6 +14,7 @@ import { filter } from 'rxjs/operators';
 import { CmButton } from '@shared/components/button/button';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-navigation-bar',
     templateUrl: './navigation-bar.component.html',
     styleUrls: ['./navigation-bar.component.scss'],

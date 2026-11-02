@@ -1,7 +1,8 @@
-import { Component, HostBinding, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-menu',
     imports: [],
     templateUrl: './menu.component.html',

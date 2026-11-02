@@ -1,4 +1,4 @@
-import { Component, OnInit, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, input } from '@angular/core';
 import { CurrencyComponent } from '../../../currency/currency.component';
 import { NumberSeparatorPipe } from '../../../pipes/number-separator.pipe';
 import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
@@ -14,6 +14,7 @@ import { PrintDialogConfig } from '../print-dialog-config';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-preview-page',
     templateUrl: './preview-page.component.html',
     styleUrls: ['./preview-page.component.scss'],

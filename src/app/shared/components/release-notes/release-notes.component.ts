@@ -1,4 +1,4 @@
-import { inject, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, inject, Inject, OnInit } from '@angular/core';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { ContentContainerComponent } from '../content-container/content-container.component';
@@ -23,6 +23,7 @@ interface ReleaseNote {
 };
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-release-notes',
     templateUrl: './release-notes.component.html',
     styleUrls: ['./release-notes.component.scss'],

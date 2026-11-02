@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { SettingComponent } from '../../setting/setting.component';
 import { MatDivider } from '@angular/material/divider';
 import { MatFormField } from '@angular/material/form-field';
@@ -10,6 +10,7 @@ import { LocaleEnum } from '../../locale-enum';
 import { SelectOption } from '../../interface';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-language-settings-page',
     imports: [
         SettingComponent,

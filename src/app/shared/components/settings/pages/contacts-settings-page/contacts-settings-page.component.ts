@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 import { contacts } from './contacts';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,6 +7,7 @@ import { MatRipple } from '@angular/material/core';
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-contacts-settings-page',
     imports: [
     TranslateModule,

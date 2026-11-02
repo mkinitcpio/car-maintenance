@@ -1,7 +1,8 @@
-import { Component, input, effect, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input, effect, ViewEncapsulation } from "@angular/core";
 import { AbstractCmText } from '../common/abstract-text';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   selector: '[cmTextBody]',
   template: '<ng-content/>',

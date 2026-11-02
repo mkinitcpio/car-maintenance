@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable, combineLatest, merge } from 'rxjs';
@@ -32,7 +32,7 @@ import { ElectronService } from '@core/services';
 
 import { columnSchemas } from './detail-table-column-schema.config';
 import { UtilsService } from '@shared/services/utils.service';
-import { ColumnSchema } from '@shared/components/table/interfaces';
+import { ColumnSchema, TableConfig } from '@shared/components/table/interfaces';
 import { TranslateService } from '@ngx-translate/core';
 import { WidgetsPanel } from '../shared/components/widgets-panel/widgets-panel';
 import { Widget } from '../shared/components/widgets-panel/interface';
@@ -50,6 +50,7 @@ const imports = [
 ];
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -72,10 +73,10 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       this.detailsFacade.moveRecords$,
     );
 
-  public parentId: string = null;
+  public parentId = signal<string>(null);
   public id: string = null;
-  public dataSourceTable: Record[] = [];
-  public name: string = null;
+  public dataSourceTable = signal<Record[]>([]);
+  public name = signal<string>(null);
   public currencies = currencies;
   
   public costSum = signal<number>(0);
@@ -102,7 +103,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   public CurrencyEnum = CurrencyEnum;
 
-  public tableConfig = {...defaultTableConfig};
+  public tableConfig = signal<TableConfig>({...defaultTableConfig});
 
   private electronService: ElectronService = inject(ElectronService);
   private translateService: TranslateService = inject(TranslateService);
@@ -121,22 +122,25 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     private navigationFacade: NavigationFacade,
   ) {
     super();
-    this.tableConfig.actions.selectable = true;
-    this.tableConfig.panel = true;
-    this.tableConfig.columnSchemas = this.updateVisibilityOfColumns(columnSchemas);
+    this.tableConfig.set({
+      ...this.tableConfig(),
+      actions: { ...this.tableConfig().actions, selectable: true },
+      panel: true,
+      columnSchemas: this.updateVisibilityOfColumns(columnSchemas),
+    });
   }
 
   ngOnInit(): void {
     this.details$.subscribe((categoryDetails) => {
-      this.dataSourceTable = categoryDetails;
-      this.costSum.set(this.utilsService.getResultCost(this.dataSourceTable));
-      this.lastModifiedDate.set(this.utilsService.getLastDate(this.dataSourceTable));
+      this.dataSourceTable.set(categoryDetails);
+      this.costSum.set(this.utilsService.getResultCost(categoryDetails));
+      this.lastModifiedDate.set(this.utilsService.getLastDate(categoryDetails));
     });
 
     this.route.params.subscribe((params) => {
-      this.parentId = params['parentId'];
+      this.parentId.set(params['parentId']);
       this.id = params['id'];
-      this.name = params['name'];
+      this.name.set(params['name']);
       this.detailsFacade.loadRecords(this.id);
     });
 
@@ -166,7 +170,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     const data = {
       mode: FormModeEnum.Edit,
       parent: this.id,
-      formData: this.dataSourceTable.find(row => row.id === id),
+      formData: this.dataSourceTable().find(row => row.id === id),
     };
 
     this.dialogManagerService
@@ -194,9 +198,9 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       .openPrintDialog({
         multiply: false,
         tablesData: [{
-          title: this.name,
-          records: this.dataSourceTable,
-          totalCost: this.utilsService.getResultCost(this.dataSourceTable),
+          title: this.name(),
+          records: this.dataSourceTable(),
+          totalCost: this.utilsService.getResultCost(this.dataSourceTable()),
         }],
       })
       .subscribe((saveData) => {
@@ -223,7 +227,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   }
 
   public onExportCSV(data: string[][]): void {
-    const defaultFileName = `${this.name}.csv`;
+    const defaultFileName = `${this.name()}.csv`;
 
     this.exportService.toCSV(data, defaultFileName)
       .subscribe((saveData) => {
@@ -255,7 +259,10 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   public onColumnVisibilityChanged(hiddenColumns: string[]): void {
     this.settingsService.setVisibleColumnsForDetailsTable(hiddenColumns);
-    this.tableConfig.columnSchemas = this.updateVisibilityOfColumns(columnSchemas);
+    this.tableConfig.update(config => ({
+      ...config,
+      columnSchemas: this.updateVisibilityOfColumns(columnSchemas),
+    }));
   }
 
   private getMoveToItems(groups: CategoryTree[]): MoveToItem[] {

@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { MatOption } from '@angular/material/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
@@ -10,6 +10,7 @@ import { CurrencyEnum } from '../../currency.enum';
 import { OrderTranslatePipe } from '@shared/pipes/order-translation.pipe';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-currency-settings-page',
     imports: [
         SettingComponent,

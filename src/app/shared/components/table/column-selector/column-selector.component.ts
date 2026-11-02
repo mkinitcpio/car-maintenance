@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { ColumnSchema } from '../interfaces';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +11,7 @@ import { CmTextHeader } from "@shared/components/typography/text-header/text-hea
 import { CmButton } from "@shared/components/button/button";
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-column-selector',
     templateUrl: './column-selector.component.html',
     styleUrls: ['./column-selector.component.scss'],

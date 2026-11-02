@@ -1,8 +1,6 @@
-import {
-  Component,
+import { ChangeDetectionStrategy, Component,
   input,
-  output,
-} from "@angular/core";
+  output, } from "@angular/core";
 import { SwitchComponent } from '../switch/switch.component';
 import { ColorsComponent } from './colors/colors.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,6 +14,7 @@ interface Color {
 }
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-color-selector",
     templateUrl: "./color-selector.component.html",
     styleUrls: ["./color-selector.component.scss"],

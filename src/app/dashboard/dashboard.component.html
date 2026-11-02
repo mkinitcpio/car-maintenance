@@ -1,6 +1,6 @@
 <app-details [title]="'NAVIGATIONS.DASHBOARD' | translate" separated="true">
   <ng-container content>
-    <section class="grid grid--{{gridView}}">
+    <section class="grid grid--{{gridView()}}">
     <app-dashboard-item type="changelog"
                         header="{{appConfig.version}}"
                         [description]="'PAGES.DASHBOARD.CHANGELOG.DESCRIPTION' | translate"

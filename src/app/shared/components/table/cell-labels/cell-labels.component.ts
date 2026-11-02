@@ -1,10 +1,11 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { StackItem } from '@shared/components/stack-item-list/interface';
 
 import { StackItemListComponent } from '@shared/components/stack-item-list/stack-item-list.component';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-cell-labels',
     templateUrl: './cell-labels.component.html',
     styleUrl: './cell-labels.component.scss',

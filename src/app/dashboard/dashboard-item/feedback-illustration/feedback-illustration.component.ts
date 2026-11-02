@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-feedback-illustration',
     templateUrl: './feedback-illustration.component.html',
     styleUrls: ['./feedback-illustration.component.scss']

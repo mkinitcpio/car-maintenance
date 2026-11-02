@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Inject, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ColumnConfig, PreviewPageConfig } from './preview-page/preview-page-config';
@@ -27,6 +27,7 @@ import { ExportService } from '@shared/services/export.service';
 import { SaveDialogData } from '@shared/services/abstract-export.service';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-print-dialog',
     templateUrl: './print-dialog.component.html',
     styleUrls: ['./print-dialog.component.scss'],

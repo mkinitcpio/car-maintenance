@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { TranslateModule } from '@ngx-translate/core';
@@ -12,6 +12,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MoveDialogData, MoveToItem } from './interfaces';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-move-dialog',
     templateUrl: './move-dialog.component.html',
     styleUrls: ['./move-dialog.component.scss'],

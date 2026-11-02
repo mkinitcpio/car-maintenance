@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -13,6 +13,7 @@ import { CmButton } from "@shared/components/button/button";
 import { ActionsPanel } from '../../actions-panel/actions-panel';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-table-panel',
     templateUrl: './table-panel.component.html',
     styleUrl: './table-panel.component.scss',

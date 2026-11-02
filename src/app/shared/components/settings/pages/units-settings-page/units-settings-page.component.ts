@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { SettingComponent } from '../../setting/setting.component';
 import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { LocaleEnum } from '../../locale-enum';
@@ -7,6 +7,7 @@ import { SettingsService } from '../../settings.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-units-settings-page',
     imports: [
         SettingComponent,

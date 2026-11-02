@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { OrderTranslatePipe } from '@shared/pipes/order-translation.pipe';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,6 +13,7 @@ import { SettingsService } from '../settings/settings.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-currency-dialog',
     templateUrl: './currency-dialog.component.html',
     styleUrls: ['./currency-dialog.component.scss'],

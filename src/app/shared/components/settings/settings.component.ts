@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, ElementRef, inject, signal, ViewChild, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, AfterViewInit, Component, computed, ElementRef, inject, signal, ViewChild, ViewEncapsulation } from "@angular/core";
 import { AboutSettingsPageComponent, CommonSettingsPageComponent, ContactsSettingsPageComponent, CurrencySettingsPageComponent, LanguageSettingsPageComponent, UnitsSettingsPageComponent, AppearanceSettingsPageComponent } from './pages';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmTextBody } from '../typography/text-body/text-body';
@@ -32,6 +32,7 @@ import { MatDrawerMode, MatSidenav, MatSidenavContainer, MatSidenavModule } from
 import { ResizeObserverService } from "@shared/services/resize-observer.service";
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-settings",
     templateUrl: "./settings.component.html",
     styleUrls: ["./settings.component.scss"],

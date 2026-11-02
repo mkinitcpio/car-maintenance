@@ -2,11 +2,12 @@ import { trigger, transition, animate, style } from '@angular/animations';
 import { ColorComponent } from './color/color.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild, effect, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild, effect, input, output } from '@angular/core';
 import { Color } from '../../settings/color-interface';
 import { ColorEnum } from '../../settings/colors-enum';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-colors',
     templateUrl: './colors.component.html',
     styleUrls: ['./colors.component.scss'],

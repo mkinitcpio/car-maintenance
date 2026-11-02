@@ -1,10 +1,11 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CmTextHeader } from '@shared/components/typography/text-header/text-header';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CmButton } from '../button/button';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-details',
     templateUrl: './details.component.html',
     styleUrls: ['./details.component.scss'],

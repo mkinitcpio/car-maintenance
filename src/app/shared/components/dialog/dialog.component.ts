@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, input, output, signal } from '@angular/core';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmButton } from '../button/button';
 import { TranslateModule } from '@ngx-translate/core';
@@ -11,6 +11,7 @@ import { Notification } from '../notification/interfaces';
 import { NotificationTypeEnum } from '../notification/notification-type.enum';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-dialog',
     templateUrl: './dialog.component.html',
     styleUrls: ['./dialog.component.scss'],
@@ -36,7 +37,7 @@ export class DialogComponent implements OnInit {
 
   disabledSumbitButton = input<boolean>(false);
 
-  public showNotification = false;
+  public showNotification = signal(false);
 
   notification$ = input<Observable<Notification>>();
 
@@ -62,11 +63,11 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.notification$()?.pipe(
       switchMap(() => {
-        this.showNotification = true;
+        this.showNotification.set(true);
         return timer(2500);
       }))
       .subscribe(() => {
-        this.showNotification = false;
+        this.showNotification.set(false);
       });
   }
 

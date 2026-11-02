@@ -1,4 +1,4 @@
-import { Component, inject, Inject, DOCUMENT } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, Inject, DOCUMENT } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { DataBaseService } from "./core/database";
 import { AutoCloseable } from "./core/auto-closeable";
@@ -14,6 +14,7 @@ import { AppearanceType } from "@shared/components/settings/interface";
 import { DateAdapter } from "@angular/material/core";
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-root",
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],

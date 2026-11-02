@@ -1,8 +1,9 @@
-import { Component, forwardRef, input, linkedSignal, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, input, linkedSignal, output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CmTextBody } from '../typography/text-body/text-body';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'cm-checkbox',
   templateUrl: './checkbox.html',
   styleUrls: ['./checkbox.scss'],

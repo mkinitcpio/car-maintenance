@@ -1,7 +1,7 @@
-<app-details [title]="name">
+<app-details [title]="name()">
   <ng-container buttons-left>
     <cm-actions-panel>
-      <button cm-button variant="neutral" shape="rounded" size="small" (click)="navigateToParentGroup(parentId)">
+      <button cm-button variant="neutral" shape="rounded" size="small" (click)="navigateToParentGroup(parentId())">
         <mat-icon svgIcon="tree"></mat-icon>
       </button>
     </cm-actions-panel>
@@ -10,8 +10,8 @@
 
   <ng-container content>
     <cm-widgets-panel [data]="widgets()"></cm-widgets-panel>
-    <cm-table [config]="tableConfig"
-              [rows]="dataSourceTable"
+    <cm-table [config]="tableConfig()"
+              [rows]="dataSourceTable()"
               (add)="onCreate()"
               (edit)="onEdit($event)"
               (exportToPDF)="onExportToPDF()"

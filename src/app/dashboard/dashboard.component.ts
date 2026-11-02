@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, Inject, OnInit, Self } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, Self, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ElectronService } from '@core/services';
 import { ReleaseNotes } from '@shared/components/release-notes/interface';
@@ -16,6 +16,7 @@ const releaseNotes: ReleaseNotes = require('../release-notes.json');
 type GridView = 'compact' | 'normal' | 'medium';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
@@ -29,10 +30,9 @@ type GridView = 'compact' | 'normal' | 'medium';
 })
 export class DashboardComponent implements OnInit {
 
-  public gridView: GridView;
+  public gridView = signal<GridView>(null);
 
   constructor(
-    private changeDetectorRef: ChangeDetectorRef,
     private elementRef: ElementRef<HTMLElement>,
     private electronService: ElectronService,
     private dialogService: DialogManagerService,
@@ -48,8 +48,7 @@ export class DashboardComponent implements OnInit {
       pageContentElementRef,
       [[587, 'compact'], [900, 'medium'], [Infinity, 'normal']]
     ).subscribe((size: GridView) => {
-      this.gridView = size;
-      this.changeDetectorRef.detectChanges();
+      this.gridView.set(size);
     });
   }
 

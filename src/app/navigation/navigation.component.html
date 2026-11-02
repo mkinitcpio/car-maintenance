@@ -6,13 +6,13 @@
     </button>
   </div>
   <app-tabs [tabs]="tabs" (selectedTabIndex)="onSelectTab($event)">
-    <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Category)"
+    <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories(), CategoryTypeEnum.Category)"
                               (add)="addCategory($event)"
                               (edit)="onEdit($event)"
                               (delete)="onDelete($event)">
     </app-categories-tree>
 
-    <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(categories, CategoryTypeEnum.Car)"
+    <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(categories(), CategoryTypeEnum.Car)"
                               (add)="addCategory($event)"
                               (edit)="$event.type === CategoryTypeEnum.Car ? onEditCarCategory($event.id) : onEdit($event)"
                               (delete)="onDelete($event)">

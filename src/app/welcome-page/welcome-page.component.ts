@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
@@ -9,6 +9,7 @@ import { DatabaseSelectComponent } from '../database-select/database-select.comp
 import { CmButton } from '@shared/components/button/button';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-welcome-page',
     templateUrl: './welcome-page.component.html',
     styleUrls: ['./welcome-page.component.scss'],

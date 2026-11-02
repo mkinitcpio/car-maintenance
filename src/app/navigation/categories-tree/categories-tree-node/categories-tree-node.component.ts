@@ -1,9 +1,7 @@
-import {
-  Component,
+import { ChangeDetectionStrategy, Component,
   ViewChild,
   input,
-  output,
-} from "@angular/core";
+  output, } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule, MatMenuTrigger } from "@angular/material/menu";
 import { MatRippleModule } from "@angular/material/core";
@@ -16,6 +14,7 @@ import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 import { CmLineClamp } from "@shared/directives/line-clamp/line-clamp";
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "app-categories-tree-node",
   templateUrl: "./categories-tree-node.component.html",
   styleUrls: ["./categories-tree-node.component.scss"],

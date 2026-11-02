@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { ContentContainerComponent } from '../content-container/content-container.component';
@@ -23,6 +23,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-create-dialog',
     templateUrl: './create-dialog.component.html',
     styleUrls: ['./create-dialog.component.scss'],

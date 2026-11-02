@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { ReleaseNotesService } from '../shared/components/release-notes/release-notes.service';
@@ -8,6 +8,7 @@ import { DialogManagerService } from '@shared/services/dialog-manager.service';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],

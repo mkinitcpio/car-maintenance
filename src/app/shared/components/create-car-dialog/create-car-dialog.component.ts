@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { DialogComponent } from '../dialog/dialog.component';
 import { UbuntuContainerComponent } from '@shared/ubuntu/ubuntu-container/ubuntu-container.component';
@@ -28,6 +28,7 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CmButton } from '../button/button';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-create-car-dialog',
     templateUrl: './create-car-dialog.component.html',
     styleUrls: ['./create-car-dialog.component.scss'],

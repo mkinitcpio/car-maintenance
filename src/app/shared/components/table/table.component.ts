@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, computed, effect, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, computed, effect, inject, input, output } from '@angular/core';
 import { RowData, TableConfig } from './interfaces';
 import { defaultTableConfig } from './default-table-config';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -10,6 +10,7 @@ import { ColumnVisibilityEvent } from './column-selector/interfaces';
 import { CsvService } from './services/csv.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   selector: 'cm-table',
   templateUrl: './table.component.html',

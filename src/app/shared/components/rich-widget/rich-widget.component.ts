@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NumberSeparatorPipe } from '@shared/pipes/number-separator.pipe';
@@ -13,6 +13,7 @@ import { SettingsService } from '../settings/settings.service';
 import { DataType, Orientation } from './types';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-rich-widget',
     templateUrl: './rich-widget.component.html',
     styleUrls: ['./rich-widget.component.scss'],

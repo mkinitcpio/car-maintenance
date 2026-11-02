@@ -7,6 +7,6 @@
       [svgIcon]="'currencies:' + (currency() | currency)">
     </mat-icon>
   } @else {
-    <img class="currency__image" [src]="currencyBase64SafeUrl">
+    <img class="currency__image" [src]="currencyBase64SafeUrl()">
   }
 </div>

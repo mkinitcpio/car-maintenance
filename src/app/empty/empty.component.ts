@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { DetailsComponent } from '@shared/components/details/details.component';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-empty',
   templateUrl: './empty.component.html',
   styleUrls: ['./empty.component.scss'],

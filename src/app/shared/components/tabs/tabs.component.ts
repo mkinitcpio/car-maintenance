@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, AfterViewInit, Component, ElementRef, OnInit, ViewChild, input, output } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { MatBadgeModule } from '@angular/material/badge';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,6 +7,7 @@ import { Tab } from './interface';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],

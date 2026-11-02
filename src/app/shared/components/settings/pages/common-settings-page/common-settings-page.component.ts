@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { SettingComponent } from '../../setting/setting.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,6 +15,7 @@ import { CmLineClamp } from "@shared/directives/line-clamp/line-clamp";
 import { CmButton } from '@shared/components/button/button';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'cm-common-settings-page',
     imports: [
     MatDivider,

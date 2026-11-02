@@ -1,9 +1,10 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 import { StackItem } from './interface';
 import { imports } from './stack-item-list.imports';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports,
   standalone: true,
   selector: 'cm-stack-item-list',
