@@ -1,5 +1,5 @@
-@import '/src/fonts';
-@import '/src/colors';
+@use '/src/fonts' as *;
+@use '/src/colors' as *;
 
 .database-select {
   height: 100%;

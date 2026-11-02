@@ -1,6 +1,6 @@
 @use '/src/mixins' as mixins;
-@import '/src/colors';
-@import '/src/fonts';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
 
 .cm-table {
   width: 100%;

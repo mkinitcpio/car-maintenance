@@ -1,4 +1,5 @@
-@import '/src/colors';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
 
 .mdc-button {
   &__label {

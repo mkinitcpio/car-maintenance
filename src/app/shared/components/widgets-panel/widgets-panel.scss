@@ -1,4 +1,4 @@
-@import '/src/colors';
+@use '/src/colors' as *;
 
 .widgets-panel {
   display: flex;

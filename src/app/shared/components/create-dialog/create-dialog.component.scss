@@ -1,7 +1,7 @@
 @use '/src/mixins' as mixins;
 
-@import '/src/colors';
-@import '/src/fonts';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
 
 .create-dialog {
   height: 100%;

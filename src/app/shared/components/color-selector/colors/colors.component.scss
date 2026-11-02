@@ -1,4 +1,4 @@
-@import '/src/animations';
+@use '/src/animations' as *;
 
 :host {
   display: flex;

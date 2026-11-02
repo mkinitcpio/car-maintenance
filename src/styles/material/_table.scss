@@ -1,3 +1,6 @@
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
+
 :root {
   --mat-table-header-headline-font: #{$font-system};
   --mat-table-header-headline-size: 12px;

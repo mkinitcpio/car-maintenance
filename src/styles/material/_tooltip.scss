@@ -1,5 +1,5 @@
-@import '/src/colors';
-@import '/src/fonts';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
 
 .mdc-tooltip.mat-mdc-tooltip .mdc-tooltip__surface {
   font-family: $font-system;

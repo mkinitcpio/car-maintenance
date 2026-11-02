@@ -1,5 +1,5 @@
-@import '/src/colors';
-@import '/src/fonts';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
 
 .create-record {
   height: 100%;

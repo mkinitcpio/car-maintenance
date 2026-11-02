@@ -1,6 +1,7 @@
 @use '/src/mixins' as mixins;
 
-@import '/src/colors';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
 
 .mat-mdc-standard-chip {
   --mat-chip-label-text-color: #{$font-color-primary} !important;

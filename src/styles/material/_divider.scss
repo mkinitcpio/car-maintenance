@@ -1,3 +1,5 @@
+@use '/src/colors' as *;
+
 :root {
   --mat-divider-color: #{$color-border};
   --mat-divider-width: 2px;

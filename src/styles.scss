@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @use '/src/mixins' as mixins;
+@use '/src/colors' as *;
+@use '/src/animations' as *;
+@use '/src/fonts' as *;
+@use './styles/index';
 
 @font-face {
   font-family: 'Material Symbols Rounded';
@@ -38,12 +43,6 @@ html, body {
   background-color: var(--background-secondary);
   -webkit-tap-highlight-color: transparent;
 }
-
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '/src/colors';
-@import '/src/animations';
-@import '/src/fonts';
-@import './styles/';
 
 :root {
   --mat-select-enabled-trigger-text-color: #{$font-color-primary};

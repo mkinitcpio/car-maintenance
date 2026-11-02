@@ -1,6 +1,6 @@
-@import '/src/colors';
-@import '/src/fonts';
-@import '/src/animations';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
+@use '/src/animations' as *;
 
 .delete-dialog {
   padding: 16px 16px 24px 16px;

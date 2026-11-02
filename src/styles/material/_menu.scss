@@ -1,5 +1,5 @@
-@import '/src/colors';
-@import '/src/fonts';
+@use '/src/colors' as *;
+@use '/src/fonts' as *;
 
 :root {
   --mat-menu-item-label-text-size: 14px;

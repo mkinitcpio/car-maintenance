@@ -1,5 +1,5 @@
-@import '/src/fonts';
-@import '/src/colors';
+@use '/src/fonts' as *;
+@use '/src/colors' as *;
 
 .storage {
   &__dev {

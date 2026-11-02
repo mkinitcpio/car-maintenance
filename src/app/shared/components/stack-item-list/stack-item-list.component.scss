@@ -1,4 +1,4 @@
-@import "/src/colors";
+@use '/src/colors' as *;
 
 .stack-item-list {
   display: flex;
