@@ -7,7 +7,7 @@ import { CmLineClampStyles } from "./interface";
 
 @Directive({
   standalone: true,
-  selector: '[cmlineClamp]',
+  selector: '[cmLineClamp]',
   host: {
     class: 'cm-line-clamp',
     '[style.-webkit-line-clamp]': 'styles().lineClamp',

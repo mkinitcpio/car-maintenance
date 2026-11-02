@@ -1,80 +1,85 @@
-import { ComponentFixture, TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
+import type { Mock } from "vitest";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 
 import { DatabaseSelectComponent } from './database-select.component';
 import { ElectronService } from '@core/services';
 import { DataBaseService } from '@core/database';
 import { SettingsService } from '@shared/components/settings/settings.service';
-import {
-  provideMockDataBaseService,
-  provideMockElectronService,
-  provideMockSettingsService,
-} from 'testing/test-mocks';
+import { provideMockDataBaseService, provideMockElectronService, provideMockSettingsService, } from 'testing/test-mocks';
 
 describe('DatabaseSelectComponent', () => {
-  let component: DatabaseSelectComponent;
-  let fixture: ComponentFixture<DatabaseSelectComponent>;
-  let electron: any;
-  let database: any;
-  let settings: any;
-  let router: { navigate: jasmine.Spy };
+    beforeEach(() => {
+        vi.useFakeTimers({ advanceTimeDelta: 1, shouldAdvanceTime: true });
+    });
+    afterEach(() => {
+        vi.useRealTimers();
+    });
+    let component: DatabaseSelectComponent;
+    let fixture: ComponentFixture<DatabaseSelectComponent>;
+    let electron: any;
+    let database: any;
+    let settings: any;
+    let router: {
+        navigate: Mock;
+    };
 
-  beforeEach(async () => {
-    router = { navigate: jasmine.createSpy('navigate') };
+    beforeEach(async () => {
+        router = { navigate: vi.fn().mockName('navigate') };
 
-    await TestBed.configureTestingModule({
-      imports: [DatabaseSelectComponent],
-      providers: [
-        provideMockElectronService(),
-        provideMockDataBaseService(),
-        provideMockSettingsService(),
-        { provide: Router, useValue: router },
-      ],
-    })
-      .overrideComponent(DatabaseSelectComponent, { set: { template: '', imports: [] } })
-      .compileComponents();
+        await TestBed.configureTestingModule({
+            imports: [DatabaseSelectComponent],
+            providers: [
+                provideMockElectronService(),
+                provideMockDataBaseService(),
+                provideMockSettingsService(),
+                { provide: Router, useValue: router },
+            ],
+        })
+            .overrideComponent(DatabaseSelectComponent, { set: { template: '', imports: [] } })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(DatabaseSelectComponent);
-    component = fixture.componentInstance;
-    electron = TestBed.inject(ElectronService);
-    database = TestBed.inject(DataBaseService);
-    settings = TestBed.inject(SettingsService);
-  });
+        fixture = TestBed.createComponent(DatabaseSelectComponent);
+        component = fixture.componentInstance;
+        electron = TestBed.inject(ElectronService);
+        database = TestBed.inject(DataBaseService);
+        settings = TestBed.inject(SettingsService);
+    });
 
-  it('creates', () => {
-    expect(component).toBeTruthy();
-  });
+    it('creates', () => {
+        expect(component).toBeTruthy();
+    });
 
-  it('creates a new database file and navigates home on create', fakeAsync(() => {
-    electron.dialog.showSaveDialog.and.returnValue(Promise.resolve({ filePath: '/tmp/new.json' }));
+    it('creates a new database file and navigates home on create', async () => {
+        electron.dialog.showSaveDialog.mockResolvedValue({ filePath: '/tmp/new.json' });
 
-    component.onCreate();
-    flushMicrotasks();
+        component.onCreate();
+        await vi.advanceTimersByTimeAsync(0);
 
-    expect(database.createDatabaseFile).toHaveBeenCalledWith('/tmp/new.json');
-    expect(settings.setDataBasePath).toHaveBeenCalledWith('/tmp/new.json');
-    expect(database.initDataBase).toHaveBeenCalled();
-    expect(router.navigate).toHaveBeenCalledWith(['']);
-  }));
+        expect(database.createDatabaseFile).toHaveBeenCalledWith('/tmp/new.json');
+        expect(settings.setDataBasePath).toHaveBeenCalledWith('/tmp/new.json');
+        expect(database.initDataBase).toHaveBeenCalled();
+        expect(router.navigate).toHaveBeenCalledWith(['']);
+    });
 
-  it('opens an existing database and navigates home on open', fakeAsync(() => {
-    electron.dialog.showOpenDialog.and.returnValue(Promise.resolve({ filePaths: ['/tmp/existing.json'] }));
+    it('opens an existing database and navigates home on open', async () => {
+        electron.dialog.showOpenDialog.mockResolvedValue({ filePaths: ['/tmp/existing.json'] });
 
-    component.onOpen();
-    flushMicrotasks();
+        component.onOpen();
+        await vi.advanceTimersByTimeAsync(0);
 
-    expect(settings.setDataBasePath).toHaveBeenCalledWith('/tmp/existing.json');
-    expect(database.initDataBase).toHaveBeenCalled();
-    expect(router.navigate).toHaveBeenCalledWith(['']);
-  }));
+        expect(settings.setDataBasePath).toHaveBeenCalledWith('/tmp/existing.json');
+        expect(database.initDataBase).toHaveBeenCalled();
+        expect(router.navigate).toHaveBeenCalledWith(['']);
+    });
 
-  it('does nothing when the open dialog returns no file', fakeAsync(() => {
-    electron.dialog.showOpenDialog.and.returnValue(Promise.resolve({ filePaths: [] }));
+    it('does nothing when the open dialog returns no file', async () => {
+        electron.dialog.showOpenDialog.mockResolvedValue({ filePaths: [] });
 
-    component.onOpen();
-    flushMicrotasks();
+        component.onOpen();
+        await vi.advanceTimersByTimeAsync(0);
 
-    expect(settings.setDataBasePath).not.toHaveBeenCalled();
-    expect(router.navigate).not.toHaveBeenCalled();
-  }));
+        expect(settings.setDataBasePath).not.toHaveBeenCalled();
+        expect(router.navigate).not.toHaveBeenCalled();
+    });
 });

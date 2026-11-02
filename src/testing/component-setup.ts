@@ -6,6 +6,7 @@
 import { registerLocaleData } from '@angular/common';
 import localeEn from '@angular/common/locales/en';
 import localeRu from '@angular/common/locales/ru';
+import type { Mock } from 'vitest';
 import { EnvironmentProviders, Provider } from '@angular/core';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withXhr } from '@angular/common/http';
@@ -46,14 +47,14 @@ export function commonComponentProviders(): (Provider | EnvironmentProviders)[] 
 }
 
 export interface MatDialogRefMock {
-  close: jasmine.Spy;
-  afterClosed: jasmine.Spy;
+  close: Mock;
+  afterClosed: Mock;
 }
 
 export function createMatDialogRefMock(): MatDialogRefMock {
   return {
-    close: jasmine.createSpy('MatDialogRef.close'),
-    afterClosed: jasmine.createSpy('MatDialogRef.afterClosed'),
+    close: vi.fn(),
+    afterClosed: vi.fn(),
   };
 }
 

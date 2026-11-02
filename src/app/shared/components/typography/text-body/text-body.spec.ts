@@ -4,57 +4,55 @@ import { By } from '@angular/platform-browser';
 import { CmTextBody } from './text-body';
 
 @Component({
-  template: `<span [textBody]="value()"></span>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [CmTextBody],
+    template: `<span [cmTextBody]="value()"></span>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [CmTextBody],
 })
 class TestHostComponent {
-  value = signal('text');
+    value = signal('text');
 }
 
 describe('CmTextBody', () => {
-  let fixture: ComponentFixture<TestHostComponent>;
-  let directive: CmTextBody;
-  let host: TestHostComponent;
+    let fixture: ComponentFixture<TestHostComponent>;
+    let directive: CmTextBody;
+    let host: TestHostComponent;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [TestHostComponent],
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [TestHostComponent],
+        });
+
+        fixture = TestBed.createComponent(TestHostComponent);
+        host = fixture.componentInstance;
+        fixture.detectChanges();
+
+        const debugEl = fixture.debugElement.query(By.directive(CmTextBody));
+
+        directive = debugEl.injector.get(CmTextBody);
     });
 
-    fixture = TestBed.createComponent(TestHostComponent);
-    host = fixture.componentInstance;
-    fixture.detectChanges();
+    it('should create', () => {
+        expect(directive).toBeTruthy();
+    });
 
-    const debugEl = fixture.debugElement.query(
-      By.directive(CmTextBody)
-    );
+    it('should create element class', () => {
+        host.value.set('b1');
+        fixture.detectChanges();
 
-    directive = debugEl.injector.get(CmTextBody);
-  });
+        expect(directive['classList']()).toEqual([
+            'cm-text-body',
+            'cm-text-body--b1',
+        ]);
+    });
 
-  it('should create', () => {
-    expect(directive).toBeTruthy();
-  });
+    it('should create element and modifier classes', () => {
+        host.value.set('b1:strong');
+        fixture.detectChanges();
 
-  it('should create element class', () => {
-    host.value.set('b1');
-    fixture.detectChanges();
-
-    expect(directive['classList']()).toEqual([
-      'cm-text-body',
-      'cm-text-body--b1',
-    ]);
-  });
-
-  it('should create element and modifier classes', () => {
-    host.value.set('b1:strong');
-    fixture.detectChanges();
-
-    expect(directive['classList']()).toEqual(jasmine.arrayContaining([
-      'cm-text-body',
-      'cm-text-body--b1',
-      'cm-text-body--strong',
-    ]));
-  });
+        expect(directive['classList']()).toEqual(expect.arrayContaining([
+            'cm-text-body',
+            'cm-text-body--b1',
+            'cm-text--strong',
+        ]));
+    });
 });

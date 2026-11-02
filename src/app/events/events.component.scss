@@ -1,5 +1,5 @@
-@use '/src/fonts' as *;
-@use '/src/colors' as *;
+@use 'fonts' as *;
+@use 'colors' as *;
 
 .events {
   &__dev {

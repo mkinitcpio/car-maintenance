@@ -4,46 +4,46 @@ import { ColorSelectorComponent } from './color-selector.component';
 import { ColorEnum } from '../settings/colors-enum';
 
 describe('ColorSelectorComponent', () => {
-  let component: ColorSelectorComponent;
-  let fixture: ComponentFixture<ColorSelectorComponent>;
+    let component: ColorSelectorComponent;
+    let fixture: ComponentFixture<ColorSelectorComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({ imports: [ColorSelectorComponent] })
-      .overrideComponent(ColorSelectorComponent, { set: { template: '' } })
-      .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({ imports: [ColorSelectorComponent] })
+            .overrideComponent(ColorSelectorComponent, { set: { template: '' } })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(ColorSelectorComponent);
-    component = fixture.componentInstance;
-  });
+        fixture = TestBed.createComponent(ColorSelectorComponent);
+        component = fixture.componentInstance;
+    });
 
-  it('creates', () => {
-    expect(component).toBeTruthy();
-  });
+    it('creates', () => {
+        expect(component).toBeTruthy();
+    });
 
-  it('emits the picked color', () => {
-    const spy = jasmine.createSpy('select');
-    component.select.subscribe(spy);
+    it('emits the picked color', () => {
+        const spy = vi.fn().mockName('select');
+        component.select.subscribe(spy);
 
-    component.onSelected(ColorEnum.Blue);
+        component.onSelected(ColorEnum.Blue);
 
-    expect(spy).toHaveBeenCalledWith(ColorEnum.Blue);
-  });
+        expect(spy).toHaveBeenCalledWith(ColorEnum.Blue);
+    });
 
-  it('maps the system-color toggle to Blue when enabled', () => {
-    const spy = jasmine.createSpy('select');
-    component.select.subscribe(spy);
+    it('maps the system-color toggle to Blue when enabled', () => {
+        const spy = vi.fn().mockName('select');
+        component.select.subscribe(spy);
 
-    component.onSystemColorToggle(true);
+        component.onSystemColorToggle(true);
 
-    expect(spy).toHaveBeenCalledWith(ColorEnum.Blue);
-  });
+        expect(spy).toHaveBeenCalledWith(ColorEnum.Blue);
+    });
 
-  it('maps the system-color toggle to the default color when disabled', () => {
-    const spy = jasmine.createSpy('select');
-    component.select.subscribe(spy);
+    it('maps the system-color toggle to the default color when disabled', () => {
+        const spy = vi.fn().mockName('select');
+        component.select.subscribe(spy);
 
-    component.onSystemColorToggle(false);
+        component.onSystemColorToggle(false);
 
-    expect(spy).toHaveBeenCalledWith(ColorEnum.Default);
-  });
+        expect(spy).toHaveBeenCalledWith(ColorEnum.Default);
+    });
 });

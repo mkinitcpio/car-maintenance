@@ -30,7 +30,7 @@ export class FakeNotification {
 
   public readonly title: string;
   public readonly body: string;
-  public readonly show = jasmine.createSpy('Notification.show');
+  public readonly show = vi.fn();
 
   constructor(options: { title: string; body: string }) {
     this.title = options?.title;
@@ -53,10 +53,8 @@ export function createElectronStoreMock(initial: Record<string, any> = {}): any 
     get size(): number {
       return Object.keys(data).length;
     },
-    get: jasmine
-      .createSpy('store.get')
-      .and.callFake((key: string, fallback?: any) => (key in data ? data[key] : fallback)),
-    set: jasmine.createSpy('store.set').and.callFake((key: string, value: any) => {
+    get: vi.fn().mockImplementation((key: string, fallback?: any) => (key in data ? data[key] : fallback)),
+    set: vi.fn().mockImplementation((key: string, value: any) => {
       data[key] = value;
     }),
   };
@@ -73,54 +71,44 @@ export function createElectronServiceMock(settings: Settings = defaultSettings):
   return {
     isElectron: true,
     ipcRenderer: {
-      on: jasmine.createSpy('ipcRenderer.on'),
-      send: jasmine.createSpy('ipcRenderer.send'),
-      invoke: jasmine.createSpy('ipcRenderer.invoke').and.returnValue(Promise.resolve()),
+      on: vi.fn(),
+      send: vi.fn(),
+      invoke: vi.fn().mockReturnValue(Promise.resolve()),
     },
     webFrame: {},
     remote: {
       Notification: FakeNotification,
       BrowserWindow: class FakeBrowserWindow {},
       systemPreferences: {},
-      app: { getPath: jasmine.createSpy('app.getPath').and.returnValue('/home/test') },
+      app: { getPath: vi.fn().mockReturnValue('/home/test') },
     },
     systemPreferences: {},
     childProcess: {},
     fs: {
-      existsSync: jasmine.createSpy('fs.existsSync').and.returnValue(false),
-      readFileSync: jasmine.createSpy('fs.readFileSync').and.returnValue('{}'),
-      writeFileSync: jasmine.createSpy('fs.writeFileSync'),
-      writeFile: jasmine
-        .createSpy('fs.writeFile')
-        .and.callFake((_path: string, _data: any, _opts: any, cb?: () => void) => cb && cb()),
+      existsSync: vi.fn().mockReturnValue(false),
+      readFileSync: vi.fn().mockReturnValue('{}'),
+      writeFileSync: vi.fn(),
+      writeFile: vi.fn().mockImplementation((_path: string, _data: any, _opts: any, cb?: () => void) => cb && cb()),
       promises: {
-        writeFile: jasmine.createSpy('fs.promises.writeFile').and.returnValue(Promise.resolve()),
+        writeFile: vi.fn().mockReturnValue(Promise.resolve()),
       },
     },
-    os: { homedir: jasmine.createSpy('os.homedir').and.returnValue('/home/test') },
+    os: { homedir: vi.fn().mockReturnValue('/home/test') },
     dialog: {
-      showSaveDialog: jasmine
-        .createSpy('dialog.showSaveDialog')
-        .and.returnValue(Promise.resolve({ canceled: false, filePath: '/tmp/db.json' })),
-      showOpenDialog: jasmine
-        .createSpy('dialog.showOpenDialog')
-        .and.returnValue(Promise.resolve({ canceled: false, filePaths: ['/tmp/db.json'] })),
+      showSaveDialog: vi.fn().mockReturnValue(Promise.resolve({ canceled: false, filePath: '/tmp/db.json' })),
+      showOpenDialog: vi.fn().mockReturnValue(Promise.resolve({ canceled: false, filePaths: ['/tmp/db.json'] })),
     },
     shell: {
-      openPath: jasmine.createSpy('shell.openPath').and.returnValue(Promise.resolve('')),
-      openExternal: jasmine.createSpy('shell.openExternal').and.returnValue(Promise.resolve()),
+      openPath: vi.fn().mockReturnValue(Promise.resolve('')),
+      openExternal: vi.fn().mockReturnValue(Promise.resolve()),
     },
     path: { join: (...parts: string[]) => parts.join('/') },
     appSettings: createElectronStoreMock({ ...settings }),
-    combineAppConfigsPath: jasmine
-      .createSpy('combineAppConfigsPath')
-      .and.callFake((...parts: string[]) => parts.join('/')),
-    getAppConfigFolderPath: jasmine
-      .createSpy('getAppConfigFolderPath')
-      .and.returnValue('/home/test/.config/Учет'),
-    isFileExist: jasmine.createSpy('isFileExist').and.returnValue(false),
-    setAppSettingsData: jasmine.createSpy('setAppSettingsData'),
-    setChangelogData: jasmine.createSpy('setChangelogData'),
+    combineAppConfigsPath: vi.fn().mockImplementation((...parts: string[]) => parts.join('/')),
+    getAppConfigFolderPath: vi.fn().mockReturnValue('/home/test/.config/Учет'),
+    isFileExist: vi.fn().mockReturnValue(false),
+    setAppSettingsData: vi.fn(),
+    setChangelogData: vi.fn(),
     changelog: { version: '', isShown: false },
   };
 }
@@ -146,21 +134,19 @@ export function createSettingsServiceMock(settings: Settings = defaultSettings):
       type: SettingsTypeEnum.All,
     }),
     animationsStateChanged$: new Subject<boolean>(),
-    init: jasmine.createSpy('init'),
-    setAppLanguage: jasmine.createSpy('setAppLanguage'),
-    setAnimations: jasmine.createSpy('setAnimations'),
-    setRegion: jasmine.createSpy('setRegion'),
-    setDataBasePath: jasmine.createSpy('setDataBasePath'),
-    setStartPage: jasmine.createSpy('setStartPage'),
-    setMetricSystem: jasmine.createSpy('setMetricSystem'),
-    setCurrency: jasmine.createSpy('setCurrency'),
-    setFirstTab: jasmine.createSpy('setFirstTab'),
-    setAppearance: jasmine.createSpy('setAppearance'),
-    changeThemeColor: jasmine.createSpy('changeThemeColor'),
-    setVisibleColumnsForDetailsTable: jasmine.createSpy('setVisibleColumnsForDetailsTable'),
-    getDetailsHiddenVisibleColumns: jasmine
-      .createSpy('getDetailsHiddenVisibleColumns')
-      .and.returnValue([]),
+    init: vi.fn(),
+    setAppLanguage: vi.fn(),
+    setAnimations: vi.fn(),
+    setRegion: vi.fn(),
+    setDataBasePath: vi.fn(),
+    setStartPage: vi.fn(),
+    setMetricSystem: vi.fn(),
+    setCurrency: vi.fn(),
+    setFirstTab: vi.fn(),
+    setAppearance: vi.fn(),
+    changeThemeColor: vi.fn(),
+    setVisibleColumnsForDetailsTable: vi.fn(),
+    getDetailsHiddenVisibleColumns: vi.fn().mockReturnValue([]),
   };
 }
 
@@ -169,7 +155,7 @@ export function provideMockSettingsService(settings?: Settings): Provider {
 }
 
 export function createNotificationServiceMock(): any {
-  return { show: jasmine.createSpy('NotificationService.show') };
+  return { show: vi.fn() };
 }
 
 export function provideMockNotificationService(): Provider {
@@ -181,25 +167,25 @@ export function createDataBaseServiceMock(): any {
   return {
     databaseError$: new Subject<void>(),
     dbExist$: new BehaviorSubject<boolean>(false),
-    getCategories: jasmine.createSpy('getCategories').and.returnValue([]),
-    getRecords: jasmine.createSpy('getRecords').and.returnValue([]),
-    getLabels: jasmine.createSpy('getLabels').and.returnValue([]),
-    getCategoryDetails: jasmine.createSpy('getCategoryDetails').and.returnValue(null),
-    saveNewCategory: jasmine.createSpy('saveNewCategory'),
-    saveNewRecord: jasmine.createSpy('saveNewRecord'),
-    deleteCategory: jasmine.createSpy('deleteCategory'),
-    deleteRecord: jasmine.createSpy('deleteRecord'),
-    editCategory: jasmine.createSpy('editCategory'),
-    editRecord: jasmine.createSpy('editRecord'),
-    createDatabaseFile: jasmine.createSpy('createDatabaseFile'),
-    initDataBase: jasmine.createSpy('initDataBase'),
+    getCategories: vi.fn().mockReturnValue([]),
+    getRecords: vi.fn().mockReturnValue([]),
+    getLabels: vi.fn().mockReturnValue([]),
+    getCategoryDetails: vi.fn().mockReturnValue(null),
+    saveNewCategory: vi.fn(),
+    saveNewRecord: vi.fn(),
+    deleteCategory: vi.fn(),
+    deleteRecord: vi.fn(),
+    editCategory: vi.fn(),
+    editRecord: vi.fn(),
+    createDatabaseFile: vi.fn(),
+    initDataBase: vi.fn(),
     // Methods used by the NgRx effects return observables.
-    moveRecords: jasmine.createSpy('moveRecords').and.returnValue(of('parent')),
-    updateMaintenance: jasmine.createSpy('updateMaintenance').and.returnValue(of(null)),
-    saveNewCarCategory: jasmine.createSpy('saveNewCarCategory').and.returnValue(of(null)),
-    getCarCategory: jasmine.createSpy('getCarCategory').and.returnValue(of({ data: null, children: [] })),
-    deleteCarCategory: jasmine.createSpy('deleteCarCategory').and.returnValue(of(null)),
-    editCarCategory: jasmine.createSpy('editCarCategory').and.returnValue(of(null)),
+    moveRecords: vi.fn().mockReturnValue(of('parent')),
+    updateMaintenance: vi.fn().mockReturnValue(of(null)),
+    saveNewCarCategory: vi.fn().mockReturnValue(of(null)),
+    getCarCategory: vi.fn().mockReturnValue(of({ data: null, children: [] })),
+    deleteCarCategory: vi.fn().mockReturnValue(of(null)),
+    editCarCategory: vi.fn().mockReturnValue(of(null)),
   };
 }
 

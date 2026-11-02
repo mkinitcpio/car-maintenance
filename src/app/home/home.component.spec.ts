@@ -1,3 +1,4 @@
+import type { Mock } from "vitest";
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
@@ -10,57 +11,64 @@ import { SideNavigationTrackerService } from './side-navigation-tracker.service'
 import { createSettingsServiceMock } from 'testing/test-mocks';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
-  let releaseNotesService: { isFirstAppStartAfterUpdate: jasmine.Spy; showReleaseNotes: jasmine.Spy };
-  let dialogManager: { openCurrencyDialog: jasmine.Spy };
-  let router: { navigate: jasmine.Spy };
-  let settings: any;
-
-  beforeEach(async () => {
-    releaseNotesService = {
-      isFirstAppStartAfterUpdate: jasmine.createSpy('isFirstAppStartAfterUpdate').and.returnValue(false),
-      showReleaseNotes: jasmine.createSpy('showReleaseNotes').and.returnValue(of(undefined)),
+    let component: HomeComponent;
+    let fixture: ComponentFixture<HomeComponent>;
+    let releaseNotesService: {
+        isFirstAppStartAfterUpdate: Mock;
+        showReleaseNotes: Mock;
     };
-    dialogManager = { openCurrencyDialog: jasmine.createSpy('openCurrencyDialog').and.returnValue(of(true)) };
-    router = { navigate: jasmine.createSpy('navigate') };
-    settings = createSettingsServiceMock();
+    let dialogManager: {
+        openCurrencyDialog: Mock;
+    };
+    let router: {
+        navigate: Mock;
+    };
+    let settings: any;
 
-    await TestBed.configureTestingModule({
-      imports: [HomeComponent],
-      providers: [
-        { provide: ReleaseNotesService, useValue: releaseNotesService },
-        { provide: SettingsService, useValue: settings },
-        { provide: Router, useValue: router },
-        { provide: DialogManagerService, useValue: dialogManager },
-        SideNavigationTrackerService,
-      ],
-    })
-      .overrideComponent(HomeComponent, { set: { template: '', imports: [] } })
-      .compileComponents();
+    beforeEach(async () => {
+        releaseNotesService = {
+            isFirstAppStartAfterUpdate: vi.fn().mockName('isFirstAppStartAfterUpdate').mockReturnValue(false),
+            showReleaseNotes: vi.fn().mockName('showReleaseNotes').mockReturnValue(of(undefined)),
+        };
+        dialogManager = { openCurrencyDialog: vi.fn().mockName('openCurrencyDialog').mockReturnValue(of(true)) };
+        router = { navigate: vi.fn().mockName('navigate') };
+        settings = createSettingsServiceMock();
 
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-  });
+        await TestBed.configureTestingModule({
+            imports: [HomeComponent],
+            providers: [
+                { provide: ReleaseNotesService, useValue: releaseNotesService },
+                { provide: SettingsService, useValue: settings },
+                { provide: Router, useValue: router },
+                { provide: DialogManagerService, useValue: dialogManager },
+                SideNavigationTrackerService,
+            ],
+        })
+            .overrideComponent(HomeComponent, { set: { template: '', imports: [] } })
+            .compileComponents();
 
-  it('creates', () => {
-    expect(component).toBeTruthy();
-  });
+        fixture = TestBed.createComponent(HomeComponent);
+        component = fixture.componentInstance;
+    });
 
-  it('navigates to the configured start page on init', () => {
-    fixture.detectChanges();
-    expect(router.navigate).toHaveBeenCalledWith([settings.settings.startPage]);
-  });
+    it('creates', () => {
+        expect(component).toBeTruthy();
+    });
 
-  it('does not show release notes when it is not the first start after an update', () => {
-    releaseNotesService.isFirstAppStartAfterUpdate.and.returnValue(false);
-    fixture.detectChanges();
-    expect(releaseNotesService.showReleaseNotes).not.toHaveBeenCalled();
-  });
+    it('navigates to the configured start page on init', () => {
+        fixture.detectChanges();
+        expect(router.navigate).toHaveBeenCalledWith([settings.settings.startPage]);
+    });
 
-  it('shows release notes on the first start after an update', () => {
-    releaseNotesService.isFirstAppStartAfterUpdate.and.returnValue(true);
-    fixture.detectChanges();
-    expect(releaseNotesService.showReleaseNotes).toHaveBeenCalled();
-  });
+    it('does not show release notes when it is not the first start after an update', () => {
+        releaseNotesService.isFirstAppStartAfterUpdate.mockReturnValue(false);
+        fixture.detectChanges();
+        expect(releaseNotesService.showReleaseNotes).not.toHaveBeenCalled();
+    });
+
+    it('shows release notes on the first start after an update', () => {
+        releaseNotesService.isFirstAppStartAfterUpdate.mockReturnValue(true);
+        fixture.detectChanges();
+        expect(releaseNotesService.showReleaseNotes).toHaveBeenCalled();
+    });
 });

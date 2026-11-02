@@ -1,4 +1,4 @@
-@use '/src/colors' as *;
+@use 'colors' as *;
 
 @mixin scrollable($padding-right: 10px) {
   scrollbar-gutter: stable;

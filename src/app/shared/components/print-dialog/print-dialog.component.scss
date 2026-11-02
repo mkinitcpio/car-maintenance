@@ -1,5 +1,5 @@
-@use '/src/mixins' as mixins;
-@use '/src/colors' as *;
+@use 'mixins' as mixins;
+@use 'colors' as *;
 
 .print-dialog {
   display: flex;

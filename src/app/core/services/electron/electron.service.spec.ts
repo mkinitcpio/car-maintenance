@@ -8,6 +8,16 @@ import { ElectronService } from './electron.service';
 describe('ElectronService', () => {
   let service: ElectronService;
   let storeInstances: Array<{ name: string }>;
+  let originalProcess: unknown;
+
+  beforeAll(() => {
+    originalProcess = (window as any).process;
+    (window as any).process = { type: 'renderer' };
+  });
+
+  afterAll(() => {
+    (window as any).process = originalProcess;
+  });
 
   beforeEach(() => {
     storeInstances = [];
@@ -28,13 +38,12 @@ describe('ElectronService', () => {
       'electron-store': FakeStore,
     };
 
+    // isElectron is a live getter over window.process, so the stub has to
+    // outlive the constructor (installed in beforeAll, removed in afterAll).
     const originalRequire = (window as any).require;
     (window as any).require = (moduleName: string) => fakes[moduleName];
-    try {
-      service = new ElectronService();
-    } finally {
-      (window as any).require = originalRequire;
-    }
+    service = new ElectronService();
+    (window as any).require = originalRequire;
   });
 
   it('detects that it runs inside electron', () => {

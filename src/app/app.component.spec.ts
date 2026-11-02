@@ -1,3 +1,4 @@
+import type { Mock } from "vitest";
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -10,56 +11,54 @@ import { ThemeService } from '@core/services/theme';
 import { createDataBaseServiceMock, createSettingsServiceMock } from 'testing/test-mocks';
 
 describe('AppComponent', () => {
-  let fixture: ComponentFixture<AppComponent>;
-  let settings: any;
-  let database: any;
-  let iconRegistry: { addSvgIconSet: jasmine.Spy; addSvgIconSetInNamespace: jasmine.Spy; setDefaultFontSetClass: jasmine.Spy };
-
-  beforeEach(async () => {
-    settings = createSettingsServiceMock();
-    database = createDataBaseServiceMock();
-    iconRegistry = {
-      addSvgIconSet: jasmine.createSpy('addSvgIconSet'),
-      addSvgIconSetInNamespace: jasmine.createSpy('addSvgIconSetInNamespace'),
-      setDefaultFontSetClass: jasmine.createSpy('setDefaultFontSetClass'),
+    let fixture: ComponentFixture<AppComponent>;
+    let settings: any;
+    let database: any;
+    let iconRegistry: {
+        addSvgIconSet: Mock;
+        addSvgIconSetInNamespace: Mock;
+        setDefaultFontSetClass: Mock;
     };
 
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-      providers: [
-        { provide: DataBaseService, useValue: database },
-        { provide: SettingsService, useValue: settings },
-        { provide: ThemeService, useValue: { setAppColors: jasmine.createSpy(), setColorScheme: jasmine.createSpy() } },
-        { provide: MatIconRegistry, useValue: iconRegistry },
-        { provide: DomSanitizer, useValue: { bypassSecurityTrustResourceUrl: (url: string) => url, sanitize: () => '' } },
-        { provide: DateAdapter, useValue: { setLocale: jasmine.createSpy('setLocale') } },
-      ],
-    })
-      .overrideComponent(AppComponent, { set: { template: '', imports: [] } })
-      .compileComponents();
+    beforeEach(async () => {
+        settings = createSettingsServiceMock();
+        database = createDataBaseServiceMock();
+        iconRegistry = {
+            addSvgIconSet: vi.fn().mockName('addSvgIconSet'),
+            addSvgIconSetInNamespace: vi.fn().mockName('addSvgIconSetInNamespace'),
+            setDefaultFontSetClass: vi.fn().mockName('setDefaultFontSetClass'),
+        };
 
-    fixture = TestBed.createComponent(AppComponent);
-  });
+        await TestBed.configureTestingModule({
+            imports: [AppComponent],
+            providers: [
+                { provide: DataBaseService, useValue: database },
+                { provide: SettingsService, useValue: settings },
+                { provide: ThemeService, useValue: { setAppColors: vi.fn(), setColorScheme: vi.fn() } },
+                { provide: MatIconRegistry, useValue: iconRegistry },
+                { provide: DomSanitizer, useValue: { bypassSecurityTrustResourceUrl: (url: string) => url, sanitize: () => '' } },
+                { provide: DateAdapter, useValue: { setLocale: vi.fn().mockName('setLocale') } },
+            ],
+        })
+            .overrideComponent(AppComponent, { set: { template: '', imports: [] } })
+            .compileComponents();
 
-  it('creates the app', () => {
-    expect(fixture.componentInstance).toBeTruthy();
-  });
+        fixture = TestBed.createComponent(AppComponent);
+    });
 
-  it('registers the application svg icons', () => {
-    expect(iconRegistry.addSvgIconSet).toHaveBeenCalledWith(jasmine.anything());
-    expect(iconRegistry.addSvgIconSetInNamespace).toHaveBeenCalledWith(
-      'illustrations',
-      jasmine.anything(),
-    );
-    expect(iconRegistry.addSvgIconSetInNamespace).toHaveBeenCalledWith(
-      'currencies',
-      jasmine.anything(),
-    );
-    expect(iconRegistry.setDefaultFontSetClass).toHaveBeenCalledWith('material-symbols-rounded');
-  });
+    it('creates the app', () => {
+        expect(fixture.componentInstance).toBeTruthy();
+    });
 
-  it('initialises settings and the database on startup', () => {
-    expect(settings.init).toHaveBeenCalled();
-    expect(database.initDataBase).toHaveBeenCalled();
-  });
+    it('registers the application svg icons', () => {
+        expect(iconRegistry.addSvgIconSet).toHaveBeenCalledWith(expect.anything());
+        expect(iconRegistry.addSvgIconSetInNamespace).toHaveBeenCalledWith('illustrations', expect.anything());
+        expect(iconRegistry.addSvgIconSetInNamespace).toHaveBeenCalledWith('currencies', expect.anything());
+        expect(iconRegistry.setDefaultFontSetClass).toHaveBeenCalledWith('material-symbols-rounded');
+    });
+
+    it('initialises settings and the database on startup', () => {
+        expect(settings.init).toHaveBeenCalled();
+        expect(database.initDataBase).toHaveBeenCalled();
+    });
 });

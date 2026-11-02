@@ -5,96 +5,96 @@ import { GroupTreeService } from '../group-tree.service';
 import { CategoryTree, CategoryTypeEnum } from '../../state/interface';
 
 describe('CategoriesTreeNodeComponent', () => {
-  let component: CategoriesTreeNodeComponent;
-  let fixture: ComponentFixture<CategoriesTreeNodeComponent>;
-  let groupTreeService: GroupTreeService;
+    let component: CategoriesTreeNodeComponent;
+    let fixture: ComponentFixture<CategoriesTreeNodeComponent>;
+    let groupTreeService: GroupTreeService;
 
-  const child: CategoryTree = { id: 'c1', name: 'Engine', type: CategoryTypeEnum.Category };
+    const child: CategoryTree = { id: 'c1', name: 'Engine', type: CategoryTypeEnum.Category };
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CategoriesTreeNodeComponent],
-      providers: [],
-    })
-      .overrideComponent(CategoriesTreeNodeComponent, { set: { template: '', imports: [] } })
-      .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [CategoriesTreeNodeComponent],
+            providers: [],
+        })
+            .overrideComponent(CategoriesTreeNodeComponent, { set: { template: '', imports: [] } })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(CategoriesTreeNodeComponent);
-    component = fixture.componentInstance;
-    fixture.componentRef.setInput('child', child);
-    groupTreeService = TestBed.inject(GroupTreeService);
-  });
-
-  it('creates', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('emits the current child on add', () => {
-    const spy = jasmine.createSpy();
-    component.add.subscribe(spy);
-    component.onAdd();
-    expect(spy).toHaveBeenCalledWith(child as any);
-  });
-
-  it('emits the explicit category on edit, falling back to the child', () => {
-    const spy = jasmine.createSpy();
-    component.edit.subscribe(spy);
-
-    const other = { id: 'other' } as any;
-    component.onEdit(other);
-    expect(spy).toHaveBeenCalledWith(other);
-
-    component.onEdit();
-    expect(spy).toHaveBeenCalledWith(child as any);
-  });
-
-  describe('onSelect', () => {
-    it('selects a category-details route for a top-level group', () => {
-      component.onSelect({ id: 'c1', name: 'Engine', type: CategoryTypeEnum.Category });
-
-      expect(groupTreeService.getSelectedItem()).toEqual({
-        routeName: 'category-details',
-        group: { id: 'c1' },
-      });
+        fixture = TestBed.createComponent(CategoriesTreeNodeComponent);
+        component = fixture.componentInstance;
+        fixture.componentRef.setInput('child', child);
+        groupTreeService = TestBed.inject(GroupTreeService);
     });
 
-    it('selects a details route for a sub-group with a parent', () => {
-      component.onSelect({ id: 'c2', parent: 'c1', name: 'Oil', type: CategoryTypeEnum.Category });
-
-      expect(groupTreeService.getSelectedItem()).toEqual({
-        routeName: 'details',
-        group: { id: 'c2', parent: 'c1', name: 'Oil' },
-      });
+    it('creates', () => {
+        expect(component).toBeTruthy();
     });
-  });
 
-  it('reports selection state based on the group-tree service', () => {
-    expect(component.isSelected(component.child())).toBe(false);
+    it('emits the current child on add', () => {
+        const spy = vi.fn();
+        component.add.subscribe(spy);
+        component.onAdd();
+        expect(spy).toHaveBeenCalledWith(child as any);
+    });
 
-    groupTreeService.selectedItem({ routeName: 'category-details', group: { id: 'c1' } });
-    expect(component.isSelected(component.child())).toBe(true);
-  });
+    it('emits the explicit category on edit, falling back to the child', () => {
+        const spy = vi.fn();
+        component.edit.subscribe(spy);
 
-  it('delegates expand toggling to the group-tree service', () => {
-    expect(component.expanded).toBeUndefined();
+        const other = { id: 'other' } as any;
+        component.onEdit(other);
+        expect(spy).toHaveBeenCalledWith(other);
 
-    component.switchExpandState();
-    expect(component.expanded).toBe(true);
+        component.onEdit();
+        expect(spy).toHaveBeenCalledWith(child as any);
+    });
 
-    component.switchExpandState();
-    expect(component.expanded).toBe(false);
-  });
+    describe('onSelect', () => {
+        it('selects a category-details route for a top-level group', () => {
+            component.onSelect({ id: 'c1', name: 'Engine', type: CategoryTypeEnum.Category });
 
-  it('opens the context menu at the cursor position for the clicked category', () => {
-    const openMenu = jasmine.createSpy('openMenu');
-    component.contextMenu = { openMenu } as any;
-    const event = { preventDefault: jasmine.createSpy('preventDefault'), clientX: 12, clientY: 34 } as any;
+            expect(groupTreeService.getSelectedItem()).toEqual({
+                routeName: 'category-details',
+                group: { id: 'c1' },
+            });
+        });
 
-    component.onContextMenu(event, child);
+        it('selects a details route for a sub-group with a parent', () => {
+            component.onSelect({ id: 'c2', parent: 'c1', name: 'Oil', type: CategoryTypeEnum.Category });
 
-    expect(event.preventDefault).toHaveBeenCalled();
-    expect(component.contextMenuCategory).toBe(child);
-    expect(component.contextMenuPosition).toEqual({ x: '12px', y: '34px' });
-    expect(openMenu).toHaveBeenCalled();
-  });
+            expect(groupTreeService.getSelectedItem()).toEqual({
+                routeName: 'details',
+                group: { id: 'c2', parent: 'c1', name: 'Oil' },
+            });
+        });
+    });
+
+    it('reports selection state based on the group-tree service', () => {
+        expect(component.isSelected(component.child())).toBe(false);
+
+        groupTreeService.selectedItem({ routeName: 'category-details', group: { id: 'c1' } });
+        expect(component.isSelected(component.child())).toBe(true);
+    });
+
+    it('delegates expand toggling to the group-tree service', () => {
+        expect(component.expanded).toBeUndefined();
+
+        component.switchExpandState();
+        expect(component.expanded).toBe(true);
+
+        component.switchExpandState();
+        expect(component.expanded).toBe(false);
+    });
+
+    it('opens the context menu at the cursor position for the clicked category', () => {
+        const openMenu = vi.fn().mockName('openMenu');
+        component.contextMenu = { openMenu } as any;
+        const event = { preventDefault: vi.fn().mockName('preventDefault'), clientX: 12, clientY: 34 } as any;
+
+        component.onContextMenu(event, child);
+
+        expect(event.preventDefault).toHaveBeenCalled();
+        expect(component.contextMenuCategory).toBe(child);
+        expect(component.contextMenuPosition).toEqual({ x: '12px', y: '34px' });
+        expect(openMenu).toHaveBeenCalled();
+    });
 });

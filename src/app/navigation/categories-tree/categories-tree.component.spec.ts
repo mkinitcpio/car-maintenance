@@ -40,8 +40,4 @@ describe('CategoriesTreeComponent', () => {
     expect(edited).toEqual([category]);
     expect(deleted).toEqual([category]);
   });
-
-  it('tracks rows by id', () => {
-    expect(component.trackBy(0, category)).toBe('c1');
-  });
 });

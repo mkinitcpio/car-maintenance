@@ -17,7 +17,7 @@ describe('CellTextComponent', () => {
   });
 
   it('renders the value and mirrors it into the data-csv attribute', () => {
-    fixture.componentRef.setInput('value', 'Barke pads');
+    fixture.componentRef.setInput('value', 'Brake pads');
     fixture.detectChanges();
 
     const p: HTMLElement = fixture.nativeElement.querySelector('.cell-text');

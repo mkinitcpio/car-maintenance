@@ -1,4 +1,4 @@
-@use '/src/colors' as *;
+@use 'colors' as *;
 
 :root {
   --mat-divider-color: #{$color-border};

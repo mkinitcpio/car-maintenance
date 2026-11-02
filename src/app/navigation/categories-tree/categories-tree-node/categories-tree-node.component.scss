@@ -1,7 +1,7 @@
-@use '/src/mixins' as mixins;
+@use 'mixins' as mixins;
 
-@use '/src/colors' as *;
-@use '/src/fonts' as *;
+@use 'colors' as *;
+@use 'fonts' as *;
 
 :host {
   display: block;
