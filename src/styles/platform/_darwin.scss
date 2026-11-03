@@ -36,6 +36,8 @@ html[data-platform='darwin'] {
     --stack-icon-background: #f0f0f0;
 
     --snackbar-border-color: #333;
+
+    --table-scroll-shadow-color: rgba(0, 0, 0, 0.07);
   }
 
   &[data-theme='dark'] {
@@ -74,5 +76,7 @@ html[data-platform='darwin'] {
     --stack-icon-background: #414141;
 
     --snackbar-border-color: #4d4d4d;
+
+    --table-scroll-shadow-color: rgba(0, 0, 0, 0.35);
   }
 }

@@ -1,7 +1,7 @@
 <section class="cm-table">
   @if (config().panel) {
     <cm-table-panel [columnSchemas]="config().columnSchemas"
-      [hasData]="rows().length"
+      [hasData]="!!rows().length"
       [selectedRowsCount]="selectedRows.selected.length"
       [scrollable]="tableScrollable()"
       [canScrollLeft]="canScrollLeft()"
@@ -16,7 +16,11 @@
       (onVisibilityChanged)="onColumnVisibilityChanged($event)">
     </cm-table-panel>
   }
-  <section #tableSection class="cm-table__table-section" [class.cm-table__table-section--transparent]="transparent()" (scroll)="onSectionScroll()">
+  <section #tableSection class="cm-table__table-section"
+    [class.cm-table__table-section--transparent]="transparent()"
+    [class.cm-table__table-section--can-scroll-left]="canScrollLeft()"
+    [class.cm-table__table-section--can-scroll-right]="canScrollRight()"
+    (scroll)="onSectionScroll()">
     <table #table class="cm-table__table">
       <thead class="cm-table__head">
         <tr #tableHeader class="cm-table__head-row">

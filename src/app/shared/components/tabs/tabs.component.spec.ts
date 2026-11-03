@@ -13,9 +13,6 @@ describe('TabsComponent', () => {
 
         fixture = TestBed.createComponent(TabsComponent);
         component = fixture.componentInstance;
-        // The view-measurement refs are only wired up in ngAfterViewInit against the
-        // real template; stub the one the selection logic touches.
-        component.tabCoverRef = { nativeElement: { style: {} } } as any;
     });
 
     it('creates', () => {

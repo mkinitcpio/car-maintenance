@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, contentChild, input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CmTextBody } from '../typography/text-body/text-body';
+import { EmptyStateIllustration } from './empty-state-illustration';
+import { PaperIllustrationComponent } from './illustrations/paper-illustration';
 
 export type EmptyStateSize = 's' | 'm' | 'l';
 
@@ -12,7 +14,8 @@ export type EmptyStateSize = 's' | 'm' | 'l';
   styleUrl: './empty-state.component.scss',
   imports: [
     TranslateModule,
-    CmTextBody
+    CmTextBody,
+    PaperIllustrationComponent
 ],
 })
 export class EmptyStateComponent {
@@ -20,4 +23,6 @@ export class EmptyStateComponent {
   text = input('');
 
   size = input<EmptyStateSize>('m');
+
+  customIllustration = contentChild(EmptyStateIllustration);
 }

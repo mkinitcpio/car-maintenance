@@ -7,7 +7,13 @@
 <div class="input"
   [class.input--focused]="focused()"
   [class.input--invalid]="invalid()"
-  [class.input--disabled]="disabledState()">
+  [class.input--disabled]="disabledState()"
+>
+
+  @if(prefix()) {
+    <mat-icon class="input__prefix">{{prefix()}}</mat-icon>
+  }
+
   <input #fieldInput class="input__field"
     [attr.id]="uid"
     [attr.type]="inputType()"
@@ -21,6 +27,11 @@
   @if (type() === 'password') {
     <button type="button" class="input__toggle" tabindex="-1" (click)="togglePasswordVisibility()">
       <mat-icon svgIcon="eye"></mat-icon>
+    </button>
+  }
+    @if (withClearButton() && fieldInput.value) {
+    <button type="button" class="input__toggle" tabindex="-1" (click)="onClearValue()">
+      <mat-icon>close</mat-icon>
     </button>
   }
 </div>

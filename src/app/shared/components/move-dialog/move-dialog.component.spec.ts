@@ -35,7 +35,7 @@ describe('MoveDialogComponent', () => {
   });
 
   it('filters the targets by the search term', () => {
-    component.onSearchChange({ target: { value: 'oil' } });
+    component.onSearchChange('oil');
 
     expect(component.items.length).toBe(1);
     expect(component.items[0].items.map((i: any) => i.id)).toEqual(['a']);

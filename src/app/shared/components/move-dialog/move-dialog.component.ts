@@ -9,6 +9,9 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MoveDialogData, MoveToItem } from './interfaces';
+import { EmptyStateComponent } from '../empty-state/empty-state.component';
+import { EmptyStateIllustration } from '../empty-state/empty-state-illustration';
+import { SearchIllustrationComponent } from '../empty-state/illustrations/search-illustration';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,6 +27,9 @@ import { MoveDialogData, MoveToItem } from './interfaces';
         CmTextHeader,
         CmTextBody,
         CmInput,
+        EmptyStateComponent,
+        EmptyStateIllustration,
+        SearchIllustrationComponent,
     ]
 })
 export class MoveDialogComponent implements OnInit {

@@ -9,6 +9,8 @@
       <div class="move-dialog__panel">
         <cm-input
           cdkFocusInitial
+          [withClearButton]="true"
+          prefix="search"
           [placeholder]="'DIALOG.MOVE.SEARCH' | translate"
           (change)="onSearchChange($event)">
         </cm-input>
@@ -16,15 +18,16 @@
 
       @if(items.length === 0) {
         <div class="move-dialog__empty">
-          <mat-icon class="move-dialog__empty-icon">search</mat-icon>
-          <span class="move-dialog__empty-text">{{"DIALOG.MOVE.NO_SEARCH_RESULT" | translate}}</span>
+          <cm-empty-state text="DIALOG.MOVE.NO_SEARCH_RESULT">
+            <cm-search-illustration cmEmptyStateIllustration></cm-search-illustration>
+          </cm-empty-state>
         </div>
       } @else {
         <div class="move-dialog__list">
           @for (group of items; track group) {
             @if (group.items.length) {
               <div class="move-dialog__group">
-                <span cmTextHeader="h4" class="move-dialog__group-title">{{group.group}}</span>
+                <span cmTextHeader="h3" class="move-dialog__group-title">{{group.group}}</span>
                 @for (item of group.items; track item) {
                   @if (item.id !== data.parent) {
                     <div mat-ripple

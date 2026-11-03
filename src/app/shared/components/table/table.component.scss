@@ -2,6 +2,8 @@
 @use 'colors' as *;
 @use 'fonts' as *;
 
+$box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+
 .cm-table {
   width: 100%;
   display: flex;
@@ -15,8 +17,21 @@
   &__table-section {
     @include mixins.scrollable-horizontal;
     background-color: $background-primary;
-    border-radius: 24px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 33px;
+    box-shadow: $box-shadow;
+    transition: box-shadow 0.15s ease-in-out;
+
+    &--can-scroll-left {
+      box-shadow: $box-shadow, inset 16px 0 12px -14px $table-scroll-shadow-color;
+    }
+
+    &--can-scroll-right {
+      box-shadow: $box-shadow, inset -16px 0 12px -14px $table-scroll-shadow-color;
+    }
+
+    &--can-scroll-left.cm-table__table-section--can-scroll-right {
+      box-shadow: $box-shadow, inset 16px 0 12px -14px $table-scroll-shadow-color, inset -16px 0 12px -14px $table-scroll-shadow-color;
+    }
 
     &--transparent {
       box-shadow: none;
@@ -49,7 +64,7 @@
   &__table {
     width: 100%;
     min-width: max-content;
-    padding: 12px 16px;
+    padding: 12px;
 
     font-family: $font-system;
     border-spacing: 0 4px;

@@ -75,9 +75,9 @@ try {
       createWindow();
     }
 
-    if (process.platform === 'linux') {
-      app.disableHardwareAcceleration();
-    }
+    // if (process.platform === 'linux') {
+    //   app.disableHardwareAcceleration();
+    // }
   });
 } catch (e) {
   // Catch Error

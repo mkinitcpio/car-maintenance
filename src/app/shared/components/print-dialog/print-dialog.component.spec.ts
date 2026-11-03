@@ -58,7 +58,7 @@ describe('PrintDialogComponent', () => {
 
     it('sets up the preview columns and config', () => {
         expect(component.columns.length).toBeGreaterThan(0);
-        expect(component.config.showTablesCostResult).toBe(true);
+        expect(component.config().showTablesCostResult).toBe(true);
     });
 
     it('reorders columns on drop', () => {

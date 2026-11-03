@@ -7,25 +7,12 @@
   color: $font-color-primary;
 
   &__empty {
+    margin-top: 96px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
     color: $font-color-secondary;
-  }
-
-  &__empty-text {
-    font-size: 18px;
-    font-weight: 500;
-  }
-
-
-  &__empty-icon {
-    margin-top: 64px;
-    --icon-size: 64px;
-    height: var(--icon-size);
-    width: var(--icon-size);
-    font-size: var(--icon-size);
   }
 
   &__list {
@@ -48,7 +35,7 @@
     top: 0;
     z-index: 1;
 
-    color: $font-color-secondary;
+    color: $font-color-primary;
     background-color: $background-primary;
   }
 

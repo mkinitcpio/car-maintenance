@@ -31,6 +31,8 @@ export class CmInput implements ControlValueAccessor {
   readonly type = input<'text' | 'password'>('text');
   readonly maxlength = input<number>();
   readonly invalid = input<boolean>(false);
+  readonly withClearButton = input<boolean>(false);
+  readonly prefix = input<string>();
 
   readonly value = input<string>('');
   readonly valueState = linkedSignal<string>(() => this.value());
@@ -88,6 +90,11 @@ export class CmInput implements ControlValueAccessor {
     this.focused.update(() => false);
     this.onTouched();
     this.blur.emit();
+  }
+
+  onClearValue(): void {
+    this.writeValue('');
+    this.change.emit('');
   }
 
   togglePasswordVisibility(): void {

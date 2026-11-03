@@ -7,7 +7,7 @@ import { Badge } from './badge';
 
 @Component({
     template: `
-        <cm-badge [variant]="variant()" [icon]="icon()">{{ label() }}</cm-badge>
+        <cm-badge [variant]="variant()" [icon]="icon()" [label]="label()"></cm-badge>
     `,
     changeDetection: 0,
     imports: [Badge],
@@ -44,10 +44,10 @@ describe('Badge', () => {
     }
 
     it('should create', () => {
-        expect(fixture.debugElement.query(By.directive(CmBadge))).toBeTruthy();
+        expect(fixture.debugElement.query(By.directive(Badge))).toBeTruthy();
     });
 
-    it('should render content', () => {
+    it('should render the label', () => {
         expect(getBadge().textContent.trim()).toBe('Badge');
     });
 

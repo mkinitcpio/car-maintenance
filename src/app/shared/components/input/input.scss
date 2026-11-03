@@ -8,6 +8,8 @@
 
 .input {
   display: flex;
+  gap: 4px;
+  padding: 0 12px;
   align-items: center;
 
   border: 1.5px solid transparent;
@@ -55,7 +57,7 @@
     flex: 1;
     min-width: 0;
 
-    padding: 12px;
+    padding: 12px 0;
 
     border: none;
     outline: none;
@@ -74,7 +76,7 @@
 
   &__toggle {
     display: flex;
-    padding: 8px;
+    padding: 0;
 
     border: none;
     background: none;
@@ -89,6 +91,8 @@
     mat-icon {
       width: 20px;
       height: 20px;
+      line-height: 20px;
+      font-size: 20px;
     }
   }
 

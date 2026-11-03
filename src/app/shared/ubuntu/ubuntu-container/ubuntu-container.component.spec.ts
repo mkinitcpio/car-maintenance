@@ -22,8 +22,8 @@ describe('UbuntuContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('defaults hasBordersStyle to true', () => {
-    expect(component.hasBordersStyle()).toBe(true);
+  it('defaults expand to true', () => {
+    expect(component.expand()).toBe(true);
   });
 
   it('collapses the content on toggle', () => {
