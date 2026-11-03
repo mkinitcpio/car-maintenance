@@ -1,0 +1,56 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+
+:host {
+  display: inline-flex;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+
+  border-radius: 100px;
+
+  &--primary {
+    background: light-dark(
+      color-mix(in srgb, $color-primary 10%, white),
+      $color-primary
+    );
+
+    color: light-dark(
+      $color-primary,
+      white
+    );
+  }
+
+  &--neutral {
+    color: $font-color-secondary;
+
+    background-color: $background-button-hover;
+  }
+
+  &--dangerous {
+    color: $color-dangerous;
+
+    background-color: color-mix(in srgb, $color-dangerous 12%, transparent);
+  }
+
+  &--icon {
+    padding: 2px;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  &__label {
+    &:empty {
+      display: none;
+    }
+  }
+}

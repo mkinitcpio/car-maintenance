@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, inject, Inject, OnInit } from '@angular/core';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmTextBody } from '../typography/text-body/text-body';
-import { ContentContainerComponent } from '../content-container/content-container.component';
 import { DialogComponent } from '../dialog/dialog.component';
-import { UbuntuContainerComponent } from '@shared/ubuntu/ubuntu-container/ubuntu-container.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,9 +33,7 @@ interface ReleaseNote {
         MatFormFieldModule,
         TranslateModule,
         MatDividerModule,
-        UbuntuContainerComponent,
         DialogComponent,
-        ContentContainerComponent,
         CmTextBody,
         CmTextHeader,
     ]

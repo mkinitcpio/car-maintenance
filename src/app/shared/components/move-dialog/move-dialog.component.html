@@ -7,9 +7,11 @@
     >
     <section content>
       <div class="move-dialog__panel">
-        <mat-form-field>
-          <input [placeholder]="'DIALOG.MOVE.SEARCH' | translate" cdkFocusInitial matInput (keyup)="onSearchChange($event)">
-        </mat-form-field>
+        <cm-input
+          cdkFocusInitial
+          [placeholder]="'DIALOG.MOVE.SEARCH' | translate"
+          (change)="onSearchChange($event)">
+        </cm-input>
       </div>
 
       @if(items.length === 0) {

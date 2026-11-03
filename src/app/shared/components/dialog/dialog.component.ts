@@ -1,13 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, input, output } from '@angular/core';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmButton } from '../button/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Observable, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { FormModeEnum } from '../create-dialog/form-mode.enum';
-import { Notification } from '../notification/interfaces';
 import { NotificationTypeEnum } from '../notification/notification-type.enum';
 
 @Component({
@@ -23,7 +20,7 @@ import { NotificationTypeEnum } from '../notification/notification-type.enum';
         CmTextHeader,
     ]
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
 
   title = input<string>();
 
@@ -36,12 +33,7 @@ export class DialogComponent implements OnInit {
   submitText = input<string>();
 
   disabledSumbitButton = input<boolean>(false);
-
-  public showNotification = signal(false);
-
-  notification$ = input<Observable<Notification>>();
-
-  loading$ = input<Observable<boolean>>();
+  public reduceSpace = input<boolean>(false);
 
   close = output<void>();
 
@@ -50,25 +42,13 @@ export class DialogComponent implements OnInit {
   sideMenuButton = input<boolean>(false);
   sideButtonClick = output<void>();
 
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event) {
-    this.contentScrolled = (event.target as HTMLElement).scrollTop > 12;
-  }
-
   public FormModeEnum = FormModeEnum;
   public NotificationTypeEnum = NotificationTypeEnum;
   public contentScrolled = false;
 
-  ngOnInit(): void {
-    this.notification$()?.pipe(
-      switchMap(() => {
-        this.showNotification.set(true);
-        return timer(2500);
-      }))
-      .subscribe(() => {
-        this.showNotification.set(false);
-      });
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    this.contentScrolled = (event.target as HTMLElement).scrollTop > 12;
   }
 
   public onClose(): void {

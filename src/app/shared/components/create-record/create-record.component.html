@@ -12,11 +12,9 @@
         </div>
         <mat-form-field>
           <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
-          @if (recordForm.get('name').hasError('required')) {
-            <mat-error>
+          @if (recordForm.get('name').hasError('required')) {<mat-error>
               {{"DIALOG.VALIDATIONS.NAME" | translate}}
-            </mat-error>
-          }
+            </mat-error>}
         </mat-form-field>
       </div>
 
@@ -25,16 +23,12 @@
         <mat-form-field>
           <cm-mileage matSuffix></cm-mileage>
           <input [formControlName]="'mileage'" matInput>
-          @if (recordForm.get('mileage').hasError('number')) {
-            <mat-error>
+          @if (recordForm.get('mileage').hasError('number')) {<mat-error>
               {{recordForm.get('mileage').getError('number').value | translate}}
-            </mat-error>
-          }
-          @if (recordForm.get('mileage').hasError('positiveNumber')) {
-            <mat-error>
+            </mat-error>}
+          @if (recordForm.get('mileage').hasError('positiveNumber')) {<mat-error>
               {{recordForm.get('mileage').getError('positiveNumber').value | translate}}
-            </mat-error>
-          }
+            </mat-error>}
         </mat-form-field>
       </div>
 
@@ -61,21 +55,15 @@
           <mat-form-field>
             <app-currency matSuffix [currency]="$safeNavigationMigration(settingsService.units()?.currency)"></app-currency>
             <input [required]="true" [formControlName]="'cost'" matInput>
-            @if (recordForm.get('cost').hasError('number')) {
-              <mat-error>
+            @if (recordForm.get('cost').hasError('number')) {<mat-error>
                 {{recordForm.get('cost').getError('number').value | translate}}
-              </mat-error>
-            }
-            @if (recordForm.get('cost').hasError('positiveNumber')) {
-              <mat-error>
+              </mat-error>}
+            @if (recordForm.get('cost').hasError('positiveNumber')) {<mat-error>
                 {{recordForm.get('cost').getError('positiveNumber').value | translate}}
-              </mat-error>
-            }
-            @if (recordForm.get('cost').hasError('required')) {
-              <mat-error>
+              </mat-error>}
+            @if (recordForm.get('cost').hasError('required')) {<mat-error>
                 {{"DIALOG.VALIDATIONS.EXPENSE.REQIRED" | translate}}
-              </mat-error>
-            }
+              </mat-error>}
           </mat-form-field>
         </div>
       </div>

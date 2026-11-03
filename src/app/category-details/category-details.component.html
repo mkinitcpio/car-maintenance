@@ -16,7 +16,7 @@
             type="mileage"
             tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.MILEAGE"
             [title]="'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE'"
-            value="{{categoryDetails().data.mileage}}"
+            [value]="categoryDetails().data.mileage"
             >
           </app-rich-widget>
         }
@@ -25,7 +25,7 @@
           type="currency"
           tooltip="PAGES.CATEGORY_DETAILS.TOOLTIPS.OVERALL_EXPENSE"
           [title]="'PAGES.DETAIL.OVERALL_EXPENSE'"
-          value="{{totalCost()}}"
+          [value]="totalCost()"
           >
         </app-rich-widget>
       </div>
@@ -78,8 +78,8 @@
       </div>
       @for (table of categoryDetails().tables; track table; let i = $index; let last = $last; let first = $first) {
         <section class="category-details__table-container"
-          [class.category-details__table-container--border-bottom]="table.length !== 1 && ((!first && expandPanelToggles()[i + 1]) || (first && expandPanelToggles()[i + 1]))"
-          [class.category-details__table-container--border-top]="table.length !== 1 && ((!last && expandPanelToggles()[i - 1]) || (last && expandPanelToggles()[i - 1]))"
+          [class.category-details__table-container--border-bottom]="table.data.length !== 1 && ((!first && expandPanelToggles()[i + 1]) || (first && expandPanelToggles()[i + 1]))"
+          [class.category-details__table-container--border-top]="table.data.length !== 1 && ((!last && expandPanelToggles()[i - 1]) || (last && expandPanelToggles()[i - 1]))"
           [class.category-details__table-container--expand]="expandPanelToggles()[i]"
           >
           <div class="category-details__table-header">

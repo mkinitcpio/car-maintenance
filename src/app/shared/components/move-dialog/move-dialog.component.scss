@@ -3,10 +3,10 @@
 @use 'fonts' as *;
 
 .move-dialog {
+  height: 100%;
   color: $font-color-primary;
 
   &__empty {
-    height: 256px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,8 +34,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    height: 256px;
   }
 
   &__group {

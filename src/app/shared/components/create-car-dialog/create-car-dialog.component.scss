@@ -20,8 +20,6 @@
   }
 
   &__parts-inputs-container {
-    max-height: 278px;
-    padding: 0 0 12px 0;
     gap: 8px;
     display: flex;
     flex-direction: column;
@@ -40,12 +38,14 @@
     gap: 8px;
   }
 
-  &__part-input {
-    width: 100%;
+  &__badge-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
-  &__delete-button {
-    margin-top: 4px;
+  &__part-input {
+    width: 100%;
   }
 
   &__delete-button-icon {
@@ -55,7 +55,7 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
   }
 }
 

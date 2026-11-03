@@ -22,8 +22,6 @@
   }
 
   &__icons-container-title {
-    margin-left: 10px;
-
     color: $font-color-primary;
     columns: $font-color-primary;
   }
@@ -33,10 +31,12 @@
     flex-direction: column;
     gap: 12px;
     border-radius: 18px;
-    border: 1.5px solid $color-border;
     padding: 12px;
 
-    background-color: rgba(0, 0, 0, 0.015);
+    background-color: light-dark(
+    rgba(0, 0, 0, 0.04),
+    rgba(0, 0, 0, 0.1)
+  );
   }
 
   &__icon-selector {

@@ -42,17 +42,18 @@
     padding: 0 8px;
   }
 
+  &[disabled] {
+    user-select: none;
+    cursor: default;
+    opacity: 0.6;
+  }
+
   &--primary {
     background-color: $color-primary;
     color: white;
 
     &:hover:not([disabled]) {
       background: m.mix-color($color-primary, white, 10%);
-    }
-
-    &[disabled] {
-      user-select: none;
-      opacity: 0.6;
     }
   }
 
@@ -81,17 +82,12 @@
     &:hover {
       background: m.mix-color($color-dangerous, white, 10%);
     }
-
-    &[disabled] {
-      user-select: none;
-      background-color: m.mix-color($color-dangerous, white, 60%);
-    }
   }
 
   &--transparent {
     background: transparent;
 
-    &:hover {
+    &:hover:not([disabled]) {
       background: var(--background-button-hover);
     }
   }

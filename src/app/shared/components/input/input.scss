@@ -1,0 +1,105 @@
+@use 'colors' as *;
+@use 'fonts' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+
+  border: 1.5px solid transparent;
+  border-radius: 30px;
+
+  background-color: light-dark(
+    rgba(0, 0, 0, 0.04),
+    rgba(0, 0, 0, 0.1)
+  );
+  box-sizing: border-box;
+
+  transition: border-color 0.1s ease-in,
+              background-color 0.1s ease-in;
+
+  &:hover:not(.input--disabled) {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  &--focused {
+    border-color: $color-primary;
+  }
+
+  &--invalid {
+    border-color: $color-dangerous;
+    background-color: rgba($color: $color-dangerous, $alpha: 0.05);
+
+    &:hover:not(.input--disabled) {
+      background-color: rgba($color: $color-dangerous, $alpha: 0.08);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.4;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: $font-color-primary;
+    cursor: pointer;
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 0;
+
+    padding: 12px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-family: $font-system;
+    font-size: 14px;
+    color: $font-color-primary;
+    caret-color: $color-primary;
+
+    &::placeholder {
+      color: $font-color-secondary;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    padding: 8px;
+
+    border: none;
+    background: none;
+
+    color: $font-color-secondary;
+    cursor: pointer;
+
+    &:hover {
+      color: $font-color-primary;
+    }
+
+    mat-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__hint {
+    margin-top: 2px;
+    margin-left: 8px;
+
+    color: $font-color-secondary;
+
+    &--invalid {
+      color: $color-dangerous;
+    }
+  }
+}

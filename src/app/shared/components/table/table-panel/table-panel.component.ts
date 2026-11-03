@@ -35,10 +35,15 @@ export class TablePanelComponent {
   columnSchemas = input<ColumnSchema[]>();
   selectedRowsCount = input<number>(0);
   hasData = input<boolean>(true);
+  scrollable = input<boolean>(false);
+  canScrollLeft = input<boolean>(true);
+  canScrollRight = input<boolean>(true);
 
   add = output<void>();
   move = output<void>();
   delete = output<void>();
+  scrollLeft = output<void>();
+  scrollRight = output<void>();
   exportToCSV = output<void>();
   exportToPDF = output<void>();
   onVisibilityChanged = output<ColumnVisibilityEvent>();

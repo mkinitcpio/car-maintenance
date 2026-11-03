@@ -1,8 +1,6 @@
 <app-dialog class="feedback"
   [title]="data.type === FeedbackTypeEnum.Question ? 'DIALOG.FEEDBACK.QUESTION_TITLE' : 'DIALOG.FEEDBACK.TITLE'"
   [submitText]="'DIALOG.BUTTONS.SEND'"
-  [notification$]="notification$"
-  [loading$]="loading$"
   (submit)="onSend()"
   (close)="dialogRef.close()"
   >
@@ -34,11 +32,9 @@
           formControlName="email"
           matInput
           pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
-        @if (feedbackForm.get('email').hasError('pattern')) {
-          <mat-error>
+        @if (feedbackForm.get('email').hasError('pattern')) {<mat-error>
             {{'DIALOG.VALIDATIONS.EMAIL' | translate}}
-          </mat-error>
-        }
+          </mat-error>}
       </mat-form-field>
     </div>
 
@@ -48,19 +44,10 @@
       </div>
       <mat-form-field [floatLabel]="'always'">
         <textarea cdkFocusInitial class="feedback__note" [formControlName]="'message'" matInput [required]="true"></textarea>
-        @if (feedbackForm.get('message').hasError('required')) {
-          <mat-error>
+        @if (feedbackForm.get('message').hasError('required')) {<mat-error>
             {{'DIALOG.VALIDATIONS.TEXT' | translate}}
-          </mat-error>
-        }
+          </mat-error>}
       </mat-form-field>
     </div>
   </form>
 </app-dialog>
-
-<div
-  attr1
-  attr2
-  attr3
->
-</div>

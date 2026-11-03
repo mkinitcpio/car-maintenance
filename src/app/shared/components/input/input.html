@@ -1,0 +1,30 @@
+@if (label()) {
+  <label class="input__label" cmTextBody="b1" [attr.for]="uid">
+    {{ label() }}
+  </label>
+}
+
+<div class="input"
+  [class.input--focused]="focused()"
+  [class.input--invalid]="invalid()"
+  [class.input--disabled]="disabledState()">
+  <input #fieldInput class="input__field"
+    [attr.id]="uid"
+    [attr.type]="inputType()"
+    [attr.placeholder]="placeholder() || null"
+    [attr.maxlength]="maxlength() || null"
+    [value]="valueState()"
+    [disabled]="disabledState()"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()">
+  @if (type() === 'password') {
+    <button type="button" class="input__toggle" tabindex="-1" (click)="togglePasswordVisibility()">
+      <mat-icon svgIcon="eye"></mat-icon>
+    </button>
+  }
+</div>
+
+<div class="input__hint" cmTextBody="b3" [class.input__hint--invalid]="invalid()">
+    {{ hint() || '&#8203;' }}
+</div>

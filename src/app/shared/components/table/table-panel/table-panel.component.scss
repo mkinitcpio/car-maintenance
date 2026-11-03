@@ -43,6 +43,18 @@
     width: 100%;
   }
 
+  &__scroll-actions {
+    margin-right: auto;
+  }
+
+  &__scroll-actions--enter {
+    animation: fadeInScale 0.2s ease-out forwards;
+  }
+
+  &__scroll-actions--leave {
+    animation: fadeOut 0.2s ease-in forwards;
+  }
+
   &__group-delete {
     color: $color-dangerous;
   }

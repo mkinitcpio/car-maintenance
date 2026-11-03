@@ -183,8 +183,9 @@ export class DialogManagerService {
         disableClose: true,
         width: "340px",
         data,
-        panelClass: "dialog-feedback",
+        panelClass: "dialog-side",
         autoFocus: false,
+        ...SIDE_DIALOG_CONFIG,
       })
       .afterClosed();
   }

@@ -1,4 +1,21 @@
 <section class="table-panel">
+  @if (scrollable()) {
+    <section
+      class="table-panel__scroll-actions"
+      animate.enter="table-panel__scroll-actions--enter"
+      animate.leave="table-panel__scroll-actions--leave"
+    >
+      <cm-actions-panel>
+      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent [disabled]="!canScrollLeft()" (click)="scrollLeft.emit()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button cm-button size="small" variant="transparent" shape="rounded" button-transparent [disabled]="!canScrollRight()" (click)="scrollRight.emit()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </cm-actions-panel>
+  </section>
+  }
+
   @if (selectedRowsCount()) {
     <cm-actions-panel class="table-panel__group" animate.enter="table-panel__group--enter" animate.leave="table-panel__group--leave">
       <button cm-button size="small" variant="transparent" shape="rounded" button-transparent (click)="move.emit()">

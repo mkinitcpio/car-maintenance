@@ -250,7 +250,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       });
   }
 
-  public onDelete(record: Record): void {
+  public onDelete(recordIds: string[]): void {
     this.utilsService.getDeclensionWord("DIALOG.DELETE.DECLESIONS.RECORDS", 1)
       .pipe(
         take(1),
@@ -259,7 +259,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
         })
       )
       .subscribe(() => {
-        this.detailsFacade.deleteRecord([record.id]);
+        this.detailsFacade.deleteRecord(recordIds);
       });
   }
 

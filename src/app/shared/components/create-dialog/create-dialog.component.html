@@ -5,16 +5,14 @@
     (close)="dialogRef.close()"
     >
     <form class="create-dialog__form" content [formGroup]="categoryForm">
-      <div cmTextBody="b1" class="form-field__title">
-        {{"DIALOG.FIELDS.NAME" | translate}}
-        <span class="form-field__title-required">*</span>
-      </div>
-      <mat-form-field [floatLabel]="'always'">
-        <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
-        <mat-error>
-          {{"DIALOG.VALIDATIONS.NAME" | translate}}
-        </mat-error>
-      </mat-form-field>
+      <cm-input
+        cdkFocusInitial
+        [label]="'DIALOG.FIELDS.NAME' | translate"
+        [formControlName]="'name'"
+        [hint]="getErrorMessage() | translate"
+        [invalid]="categoryForm.get('name').touched && categoryForm.get('name').invalid"
+      />
+
       <section class="create-dialog__icons-container">
         <span cmTextBody="b1" class="create-dialog__icons-container-title">{{"DIALOG.FIELDS.ILLUSTRATION" | translate}}</span>
         <section class="create-dialog__icons-container-content">

@@ -1,7 +1,7 @@
+import { CmInput } from './../input/input';
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { CmTextHeader } from '../typography/text-header/text-header';
-import { ContentContainerComponent } from '../content-container/content-container.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -39,9 +39,9 @@ import { map } from 'rxjs/operators';
         DialogComponent,
         MatIconModule,
         MatRippleModule,
-        ContentContainerComponent,
         CmTextHeader,
         CmTextBody,
+        CmInput,
     ]
 })
 export class CreateDialogComponent implements OnInit {
@@ -86,5 +86,10 @@ export class CreateDialogComponent implements OnInit {
       this.translateService.get(this.data.mode === 0 ? "DIALOG.ADD" : "DIALOG.EDIT"),
       this.translateService.get("DIALOG.CATEGORY"),
     ]).pipe(map(([mode, dialogType]) => `${mode as string} ${dialogType as string}`));
+  }
+
+  public getErrorMessage(): string | undefined {
+    const nameControl = this.categoryForm.get('name')
+    return nameControl.touched && nameControl.invalid ? 'DIALOG.VALIDATIONS.NAME' : undefined;
   }
 }

@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { CmTextHeader } from '../typography/text-header/text-header';
+import { CmInput } from '../input/input';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -21,11 +20,10 @@ import { MoveDialogData, MoveToItem } from './interfaces';
         DialogComponent,
         MatIconModule,
         MatRippleModule,
-        MatInputModule,
-        MatFormFieldModule,
         TranslateModule,
         CmTextHeader,
         CmTextBody,
+        CmInput,
     ]
 })
 export class MoveDialogComponent implements OnInit {
@@ -48,11 +46,11 @@ export class MoveDialogComponent implements OnInit {
     this.selectedItemId = id;
   }
 
-  public onSearchChange(event: any): void {
+  public onSearchChange(value: string): void {
     const searchedItems = this.data.moveToItems.filter(item => {
       const itemName = item.name.toLowerCase();
 
-      return itemName.includes(event.target.value.toLowerCase() as string) && item.id !== this.data.parent;
+      return itemName.includes(value.toLowerCase()) && item.id !== this.data.parent;
     });
 
     this.items = this.convertToGroup(searchedItems);

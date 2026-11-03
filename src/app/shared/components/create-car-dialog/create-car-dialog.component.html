@@ -1,118 +1,93 @@
 <div class="create-car-dialog">
   <app-dialog [title]="title | async"
     [mode]="data.mode"
+    [reduceSpace]="true"
     (close)="onClose()"
     (submit)="onSubmit()"
     >
     <form content [formGroup]="carForm" class="create-car-dialog__content">
-      <cm-accordion variant="default" [header]="'DIALOG.COMMON' | translate">
-                <div>
-          <div cmTextBody="b1" class="form-field__title">
-            {{"DIALOG.FIELDS.NAME" | translate}}
-            <span class="form-field__title-required">*</span>
-          </div>
-          <mat-form-field>
-            <input cdkFocusInitial [required]="true" [formControlName]="'name'" matInput>
-            <mat-error>
-              {{"DIALOG.VALIDATIONS.NAME" | translate}}
-            </mat-error>
-          </mat-form-field>
+      <cm-accordion [expand]="true" variant="default" [header]="'DIALOG.COMMON' | translate">
+        <div class="create-car-dialog__field">
+          <cm-input
+            cdkFocusInitial
+            [label]="'DIALOG.FIELDS.NAME' | translate"
+            [formControlName]="'name'"
+            [hint]="getErrorMessage('name') | translate"
+            [invalid]="isInvalid('name')"
+          />
         </div>
-        <div>
-          <div cmTextBody="b1" class="form-field__title">
-            {{"DIALOG.FIELDS.VEHICLE_ID" | translate}}
-          </div>
-          <mat-form-field>
-            <input [formControlName]="'vehicleId'" matInput>
-          </mat-form-field>
+        <div class="create-car-dialog__field">
+          <cm-input
+            [label]="'DIALOG.FIELDS.VEHICLE_ID' | translate"
+            [formControlName]="'vehicleId'"
+          />
         </div>
-        <div>
-          <div cmTextBody="b1" class="form-field__title">
-            {{"DIALOG.FIELDS.MAKE" | translate}}
-          </div>
-          <mat-form-field>
-            <input [formControlName]="'make'" matInput>
-          </mat-form-field>
+        <div class="create-car-dialog__field">
+          <cm-input
+            [label]="'DIALOG.FIELDS.MAKE' | translate"
+            [formControlName]="'make'"
+          />
         </div>
-        <div>
-          <div cmTextBody="b1" class="form-field__title">
-            {{"DIALOG.FIELDS.MODEL" | translate}}
-          </div>
-          <mat-form-field>
-            <input [formControlName]="'model'" matInput>
-          </mat-form-field>
+        <div class="create-car-dialog__field">
+          <cm-input
+            [label]="'DIALOG.FIELDS.MODEL' | translate"
+            [formControlName]="'model'"
+          />
         </div>
-        <div>
-          <div cmTextBody="b1" class="form-field__title">
-            {{"DIALOG.FIELDS.YEAR" | translate}}
-          </div>
-          <mat-form-field>
-            <input [formControlName]="'year'" matInput>
-            @if (carForm.get('year').hasError('number')) {
-              <mat-error>
-                {{carForm.get('year').getError('number').value | translate}}
-              </mat-error>
-            }
-            @if (carForm.get('year').hasError('positiveNumber')) {
-              <mat-error>
-                {{carForm.get('year').getError('positiveNumber').value | translate}}
-              </mat-error>
-            }
-          </mat-form-field>
+        <div class="create-car-dialog__field">
+          <cm-input
+            [label]="'DIALOG.FIELDS.YEAR' | translate"
+            [formControlName]="'year'"
+            [hint]="getErrorMessage('year') | translate"
+            [invalid]="isInvalid('year')"
+          />
         </div>
-        <div>
-          <div cmTextBody="b1" class="form-field__title">
-            {{"DIALOG.FIELDS.ENGINE" | translate}}
-          </div>
-          <mat-form-field>
-            <input [formControlName]="'engine'" matInput>
-          </mat-form-field>
+        <div class="create-car-dialog__field">
+          <cm-input
+            [label]="'DIALOG.FIELDS.ENGINE' | translate"
+            [formControlName]="'engine'"
+          />
         </div>
-        <div>
-          <div cmTextBody="b1" class="form-field__title">
-            {{"DIALOG.FIELDS.MILEAGE" | translate}}
-          </div>
-          <mat-form-field>
-            <input [formControlName]="'mileage'" matInput>
-            @if (carForm.get('mileage').hasError('number')) {
-              <mat-error>
-                {{carForm.get('mileage').getError('number').value | translate}}
-              </mat-error>
-            }
-            @if (carForm.get('mileage').hasError('positiveNumber')) {
-              <mat-error>
-                {{carForm.get('mileage').getError('positiveNumber').value | translate}}
-              </mat-error>
-            }
-          </mat-form-field>
+        <div class="create-car-dialog__field">
+          <cm-input
+            [label]="'DIALOG.FIELDS.MILEAGE' | translate"
+            [formControlName]="'mileage'"
+            [hint]="getErrorMessage('mileage') | translate"
+            [invalid]="isInvalid('mileage')"
+          />
         </div>
       </cm-accordion>
 
+      <cm-accordion
+        variant="default"
+        [header]="'DIALOG.PARTS' | translate"
+      >
+          <div control-left class="create-car-dialog__badge-container">
+            <cm-badge [label]="parts.length || '0'"/>
+          </div>
+          <button control-right type="button" cm-button variant="transparent" size="small" button-transparent (click)="addPart()">
+            <mat-icon>add</mat-icon>
+          </button>
 
-      <ubuntu-container [title]="'DIALOG.PARTS' | translate" [info]="'DIALOG.TOOLTIPS.CAR_PARTS' | translate">
-        <button actions cm-button variant="transparent" button-transparent (click)="addPart()">
-          <mat-icon>add</mat-icon>
-        </button>
-        <div>
-          <div formArrayName="parts">
+          <div content formArrayName="parts">
             <div class="create-car-dialog__parts-inputs-container">
               @for (partConrol of parts.controls; track partConrol; let i = $index) {
                 <div class="create-car-dialog__part">
-                  <mat-form-field class="create-car-dialog__part-input">
-                    <input [formControlName]="i" matInput>
-                    <mat-error>
-                      {{"DIALOG.VALIDATIONS.NAME" | translate}}
-                    </mat-error>
-                  </mat-form-field>
-                  <button cm-button variant="transparent" class="create-car-dialog__delete-button" button-transparent (click)="onDeletePart(i)">
+                  <cm-input
+                    #partInput
+                    class="create-car-dialog__part-input"
+                    [formControlName]="i"
+                    [hint]="getPartErrorMessage(i) | translate"
+                    [invalid]="isPartInvalid(i)"
+                  />
+                  <button type="button" cm-button variant="transparent" class="create-car-dialog__delete-button" button-transparent (click)="onDeletePart(i)">
                     <mat-icon class="create-car-dialog__delete-button-icon">delete</mat-icon>
                   </button>
                 </div>
               }
             </div>
           </div>
-        </div>
-      </ubuntu-container>
+      </cm-accordion>
     </form>
   </app-dialog>
 </div>

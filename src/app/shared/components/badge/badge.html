@@ -1,0 +1,10 @@
+<span class="badge badge--{{variant()}}" [class.badge--icon]="icon()">
+  @if (icon()) {
+    <mat-icon class="badge__icon" [svgIcon]="icon()"/>
+  }
+
+  @if (label()) {
+    <span cmTextBody="b3:medium" class="badge__label">{{ label() }}</span>
+  }
+
+</span>

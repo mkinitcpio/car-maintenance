@@ -7,8 +7,8 @@ import { NgTemplateOutlet } from '@angular/common';
 @Component({
   standalone: true,
   selector: 'cm-accordion',
-  templateUrl: 'cm-accordion.html',
-  styleUrls: ['./cm-accordion.scss'],
+  templateUrl: 'accordion.html',
+  styleUrls: ['./accordion.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CmTextHeader,

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, computed, effect, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewEncapsulation, afterNextRender, computed, effect, inject, input, output, signal, viewChild } from '@angular/core';
 import { RowData, TableConfig } from './interfaces';
 import { defaultTableConfig } from './default-table-config';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -9,6 +9,9 @@ import { ColumnVisibilityEvent } from './column-selector/interfaces';
 
 import { CsvService } from './services/csv.service';
 
+const SCROLL_STEP_RATIO = 0.8;
+const SCROLL_EDGE_EPSILON = 1;
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -18,7 +21,7 @@ import { CsvService } from './services/csv.service';
   imports,
   encapsulation: ViewEncapsulation.None,
 })
-export class TableComponent<T extends RowData> {
+export class TableComponent<T extends RowData> implements OnDestroy {
 
   rows = input<T[]>([]);
   config = input<TableConfig>(defaultTableConfig);
@@ -40,6 +43,14 @@ export class TableComponent<T extends RowData> {
   exportToPDF = output<void>();
   columnVisibilityChange = output<string[]>();
 
+  tableScrollable = signal(false);
+  canScrollLeft = signal(false);
+  canScrollRight = signal(false);
+
+  private tableSection = viewChild.required<ElementRef<HTMLElement>>('tableSection');
+  private table = viewChild.required<ElementRef<HTMLTableElement>>('table');
+  private resizeObserver: ResizeObserver | null = null;
+
   private csvService = inject(CsvService);
 
   public selectedRows = new SelectionModel<string>(true);
@@ -50,6 +61,30 @@ export class TableComponent<T extends RowData> {
     effect(() => {
       this.rows();
       this.clearSelected();
+    });
+
+    afterNextRender(() => {
+      this.resizeObserver = new ResizeObserver(() => this.updateScrollState());
+      this.resizeObserver.observe(this.tableSection().nativeElement);
+      this.resizeObserver.observe(this.table().nativeElement);
+      this.updateScrollState();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.resizeObserver?.disconnect();
+  }
+
+  public onSectionScroll(): void {
+    this.updateScrollState();
+  }
+
+  public onScrollTable(direction: -1 | 1): void {
+    const section = this.tableSection().nativeElement;
+
+    section.scrollBy({
+      left: direction * section.clientWidth * SCROLL_STEP_RATIO,
+      behavior: 'smooth',
     });
   }
 
@@ -116,5 +151,14 @@ export class TableComponent<T extends RowData> {
   private clearSelected(): void {
     this.selectedRows.clear();
     this.allRowSelected = false;
+  }
+
+  private updateScrollState(): void {
+    const section = this.tableSection().nativeElement;
+    const maxScrollLeft = section.scrollWidth - section.clientWidth;
+
+    this.tableScrollable.set(maxScrollLeft > 0);
+    this.canScrollLeft.set(section.scrollLeft > SCROLL_EDGE_EPSILON);
+    this.canScrollRight.set(section.scrollLeft < maxScrollLeft - SCROLL_EDGE_EPSILON);
   }
 }
