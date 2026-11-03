@@ -1,0 +1,47 @@
+<section
+  [class]="`cm-accordion cm-accordion--${variant()}`"
+  [class.cm-accordion--expanded]="expanded()"
+>
+  <header class="cm-accordion__header" (click)="onExpand()">
+    <section class="cm-accordion__header-content">
+
+      @if(customIcon()) {
+        <ng-container *ngTemplateOutlet="customIcon()"/>
+      } @else {
+        @if (icon()) {
+          <mat-icon [svgIcon]="icon()"/>
+        }
+      }
+
+      <span
+        cmTextHeader="h3"
+        class="cm-accordion__header-text"
+      >
+        {{header()}}
+      </span>
+
+      <div class="cm-accordion__control-left" (click)="$event.stopPropagation()">
+        <ng-content select="[control-left]"/>
+      </div>
+    </section>
+
+    <div class="cm-accordion__control-right" (click)="$event.stopPropagation()">
+      <ng-content select="[control-right]"/>
+    </div>
+
+    <mat-icon
+      size="small"
+      [svgIcon]="'expand'"
+      class="cm-accordion__arrow"
+      [class.cm-accordion__arrow--opened]="expanded()"
+    />
+  </header>
+
+  <main class="cm-accordion__content">
+    <div class="cm-accordion__content-inner">
+      <div class="cm-accordion__content-body">
+        <ng-content/>
+      </div>
+    </div>
+  </main>
+</section>

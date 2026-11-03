@@ -24,7 +24,7 @@ import { CmButton } from '@shared/components/button/button';
     MatIconModule,
     MatTooltipModule,
     TranslateModule,
-    CmButton
+    CmButton,
 ],
 })
 export class NavigationBarComponent implements OnInit {

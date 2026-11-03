@@ -1,27 +1,4 @@
-<div class="tabs" [class.tabs--bordered]="bordered()">
-  <div #tabsTitle class="tabs__title">
-    <div class="tabs__title-container">
-      <div #tabsRef class="tabs__tabs-section">
-        <div #tabCoverRef class="tabs__tab--cover-selected"></div>
-        @for (tab of tabs(); track tab; let i = $index) {
-          <div class="tabs__tab"
-            cmTextBody="b1"
-            [class.tabs__tab--selected]="selectedtab === i"
-            matBadge="!"
-            matBadgeSize="small"
-            [matBadgeHidden]="badgesVisibilityArray()[i]"
-            (click)="onTabSelect(i)"
-            >
-            @if(tab.icon) {
-              <mat-icon class="tabs__icon" [svgIcon]="tab.icon"/>
-            }
-            {{tab.label | translate}}
-          </div>
-        }
-      </div>
-    </div>
-  </div>
-
+<div class="tabs">
   <div class="tabs__content" [class.tabs__content--switched]="selectedtab">
     <div class="tab-content" [class.tab-content--selected]="selectedtab === 0">
       <ng-content select="[tab-1]"></ng-content>

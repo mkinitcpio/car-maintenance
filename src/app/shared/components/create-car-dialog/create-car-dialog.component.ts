@@ -1,3 +1,4 @@
+import { Accordion } from '../accordion/cm-accordion';
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -47,7 +48,8 @@ import { CmButton } from '../button/button';
     UbuntuContainerComponent,
     DialogComponent,
     CmTextBody,
-    CmButton
+    CmButton,
+    Accordion,
 ]
 })
 export class CreateCarDialogComponent implements OnInit {

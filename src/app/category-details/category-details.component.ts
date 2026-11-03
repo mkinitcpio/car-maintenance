@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
@@ -31,6 +31,7 @@ import { CmTextHeader } from '@shared/components/typography/text-header/text-hea
 import { CmTextBody } from '@shared/components/typography/text-body/text-body';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { Widget } from '@shared/components/widgets-panel/interface';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -83,6 +84,19 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       this.navigationFacade.newCarCategory$,
       this.navigationFacade.editCarCategory$,
     );
+
+  public widgets = computed<Widget[]>(() => {
+    const widgets: Widget[] = [{
+      title: 'PAGES.DETAIL.OVERALL_EXPENSE',
+      type: 'currency',
+      transparent: true,
+      icon: 'money',
+      value: this.totalCost(),
+      orientation: 'vertical',
+    }];
+
+    return widgets;
+  });
 
   public CategoryTypeEnum = CategoryTypeEnum;
   public MetricSystemEnum = MetricSystemEnum;

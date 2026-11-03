@@ -36,7 +36,7 @@
 }
 
 
-@mixin selectable() {
+@mixin selectable($default-color: $font-color-primary) {
   $parent: null;
 
   @each $selector in & {
@@ -44,7 +44,7 @@
   }
 
   background-color: transparent;
-  color: $font-color-primary;
+  color: $default-color;
 
   &:not(#{$parent}--selected):hover {
     background-color: $background-button-hover;

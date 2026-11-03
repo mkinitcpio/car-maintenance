@@ -1,11 +1,17 @@
-<div class="navigation">
-  <div class="navigation__title-container">
-    <button cm-button variant="transparent" (click)="onAdd(selectedTabIndex)">
-      <mat-icon>add</mat-icon>
-      <span>{{(selectedTabIndex ? "MENU.CAR" : "MENU.CATEGORY" ) | translate}}</span>
+<cm-navigation-panel [navigationIndex]="selectedTabIndex" (navigationChange)="onSelectTab($event)">
+  <ng-container actions>
+    <button cm-button size="small" variant="transparent">
+      <mat-icon>search</mat-icon>
     </button>
-  </div>
-  <app-tabs [tabs]="tabs" (selectedTabIndex)="onSelectTab($event)">
+    <button cm-button size="small" [active]="menu.menuOpen" variant="transparent" [matMenuTriggerFor]="addMenu" #menu="matMenuTrigger">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-container>
+</cm-navigation-panel>
+
+
+<div class="navigation">
+  <app-tabs [tabs]="tabs" [index]="selectedTabIndex" (selectedTabIndex)="onSelectTab($event)">
     <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories(), CategoryTypeEnum.Category)"
                               (add)="addCategory($event)"
                               (edit)="onEdit($event)"
@@ -19,3 +25,16 @@
     </app-categories-tree>
   </app-tabs>
 </div>
+
+<mat-menu #addMenu>
+  <ng-template matMenuContent>
+    <button class="menu-item" mat-menu-item (click)="onAdd(0)">
+      <mat-icon class="mat-item__icon" svgIcon="tree"/>
+      <span cmTextBody="b1">{{"MENU.CATEGORY" | translate}}</span>
+    </button>
+    <button class="menu-item" mat-menu-item (click)="onAdd(1)">
+      <mat-icon class="mat-item__icon" svgIcon="illustrations:car"></mat-icon>
+      <span cmTextBody="b1">{{"MENU.CAR" | translate}}</span>
+    </button>
+  </ng-template>
+</mat-menu>

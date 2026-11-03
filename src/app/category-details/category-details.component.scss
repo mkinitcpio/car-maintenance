@@ -42,37 +42,37 @@
 
     background: $background-primary;
 
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: margin 225ms cubic-bezier(0.4, 0, 0.2, 1),
                 border-radius 0.1s ease-in;
     overflow: hidden;
 
 
     &--border-top {
-      border-top-left-radius: 12px !important;
-      border-top-right-radius: 12px !important;
+      border-top-left-radius: 29px !important;
+      border-top-right-radius: 29px !important;
     }
 
     &--border-bottom {
-      border-bottom-left-radius: 12px !important;
-      border-bottom-right-radius: 12px !important;
+      border-bottom-left-radius: 29px !important;
+      border-bottom-right-radius: 29px !important;
     }
 
     &:first-of-type {
-      border-radius: 12px 12px 0 0;
+      border-radius: 29px 29px 0 0;
     }
 
     &:last-of-type {
-      border-radius: 0 0 12px 12px;
+      border-radius: 0 0 29px 29px;
     }
 
     &:only-of-type {
-      border-radius: 12px;
+      border-radius: 29px;
     }
 
     &--expand {
       margin: 24px 0;
-      border-radius: 12px !important;
+      border-radius: 29px !important;
 
       &:first-of-type {
         margin-top: 0;
@@ -147,11 +147,11 @@
     align-items: center;
     width: 100%;
     padding: 12px 8px 12px 12px;
-    height: 38px;
+    height: 42px;
 
     color: $font-color-primary;
 
-    border-radius: 12px;
+    border-radius: 21px;
     cursor: pointer;
 
     &:hover {
@@ -165,8 +165,6 @@
   }
 
   &__table-icon {
-    height: 20px;
-    width: 20px;
     margin-right: 6px;
   }
 
@@ -175,10 +173,6 @@
   }
 
   &__table-title-icon {
-    width: 20px;
-    height: 20px;
-    
-    font-size: 20px;
     opacity: 0;
     transform: translateX(0);
     transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -186,8 +180,8 @@
   }
 
   &__tables-title {
-    margin-bottom: 12px;
-    padding: 0 8px 0 16px;
+    margin-bottom: 8px;
+    padding: 0 0 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -20,11 +20,13 @@ import { SideNavigationTrackerService } from "../home/side-navigation-tracker.se
 import { CarCategoryFormData } from "@core/interfaces/car-category";
 import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
+import { NavigationPanel } from "@shared/components/navigation-panel/navigation-panel";
 import { GroupData, GroupTreeService } from "./categories-tree/group-tree.service";
 import { TranslateService } from "@ngx-translate/core";
 import { TabsComponent } from "@shared/components/tabs/tabs.component";
 import { CategoriesTreeComponent } from "./categories-tree/categories-tree.component";
 import { CmButton } from "@shared/components/button/button";
+import { MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,7 +39,12 @@ import { CmButton } from "@shared/components/button/button";
     TranslateModule,
     TabsComponent,
     CategoriesTreeComponent,
-    CmButton
+    CmButton,
+    NavigationPanel,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    MatMenuContent,
 ],
 })
 export class NavigationComponent extends AutoCloseable implements OnInit {

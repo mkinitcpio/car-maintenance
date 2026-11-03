@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild, inject, signal } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ColumnConfig, PreviewPageConfig } from './preview-page/preview-page-config';
@@ -57,7 +57,7 @@ export class PrintDialogComponent implements OnInit {
   private readonly MAX_RECORDS_FOR_PREVIEW = 5;
 
   public columns: Array<ColumnConfig> = [];
-  public config: PreviewPageConfig = null;
+  public config = signal<PreviewPageConfig>(null);
   public saveDirectoryPath: string = this.electronService.os.homedir();
 
   @ViewChild('print', { read: ElementRef, static: false }) print;
@@ -77,14 +77,19 @@ export class PrintDialogComponent implements OnInit {
       });
 
     this.columns = [...defaultColumns.map(column =>  ({...column}))];
-    this.config = {
+    this.config.set({
       showTablesCostResult: true,
       columns: this.columns,
-    };
+    });
   }
 
   public drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
+    this.config.update((config) => {
+      config.columns = this.columns;
+
+      return { ...config };
+    })
   }
 
   public onPrint(): void {

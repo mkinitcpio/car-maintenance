@@ -53,7 +53,7 @@
   
     &::before {
       content: "";
-      background-color: light-dark(white, $background-secondary);
+      background-color: white;
       width: 12px;
       height: 10px;
       transform: scale(0);

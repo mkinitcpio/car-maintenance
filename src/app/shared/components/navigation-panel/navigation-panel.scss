@@ -1,0 +1,57 @@
+@use 'mixins' as mixins;
+@use 'colors' as *;
+
+.navigation-panel {
+  margin: 8px 2px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__items {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    gap: 4px;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    height: 42px;
+    border-radius: 21px;
+    background: $background-primary;
+    display: flex;
+    gap: 0;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    justify-content: center;
+    flex: 0 0 56px;
+    overflow: hidden;
+    transition: flex-grow 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      gap 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    mat-icon {
+      flex: none;
+    }
+
+    &--selected {
+      flex: 1 1 56px;
+      gap: 8px;
+
+      .navigation-panel__label {
+        opacity: 1;
+      }
+    }
+
+    @include mixins.selectable($color-button-icon);
+  }
+
+  &__label {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

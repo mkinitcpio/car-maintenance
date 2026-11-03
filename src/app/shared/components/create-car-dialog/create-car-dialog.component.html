@@ -5,8 +5,8 @@
     (submit)="onSubmit()"
     >
     <form content [formGroup]="carForm" class="create-car-dialog__content">
-      <ubuntu-container [title]="'DIALOG.COMMON' | translate">
-        <div>
+      <cm-accordion variant="default" [header]="'DIALOG.COMMON' | translate">
+                <div>
           <div cmTextBody="b1" class="form-field__title">
             {{"DIALOG.FIELDS.NAME" | translate}}
             <span class="form-field__title-required">*</span>
@@ -86,9 +86,10 @@
             }
           </mat-form-field>
         </div>
-      </ubuntu-container>
+      </cm-accordion>
 
-      <ubuntu-container [title]="'DIALOG.PARTS' | translate" [info]="'DIALOG.TOOLTIPS.CAR_PARTS' | translate" [hasBordersStyle]="false">
+
+      <ubuntu-container [title]="'DIALOG.PARTS' | translate" [info]="'DIALOG.TOOLTIPS.CAR_PARTS' | translate">
         <button actions cm-button variant="transparent" button-transparent (click)="addPart()">
           <mat-icon>add</mat-icon>
         </button>

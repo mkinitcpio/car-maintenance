@@ -1,4 +1,4 @@
-<section class="cm-table" [class.cm-table--transparent]="transparent()">
+<section class="cm-table">
   @if (config().panel) {
     <cm-table-panel [columnSchemas]="config().columnSchemas"
       [hasData]="rows().length"
@@ -11,7 +11,7 @@
       (onVisibilityChanged)="onColumnVisibilityChanged($event)">
     </cm-table-panel>
   }
-  <section class="cm-table__table-section">
+  <section class="cm-table__table-section" [class.cm-table__table-section--transparent]="transparent()">
     <table #table class="cm-table__table">
       <thead class="cm-table__head">
         <tr #tableHeader class="cm-table__head-row">

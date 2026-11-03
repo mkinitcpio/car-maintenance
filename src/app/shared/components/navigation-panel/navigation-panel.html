@@ -1,0 +1,17 @@
+<section class="navigation-panel">
+  <section class="navigation-panel__items">
+    <div class="navigation-panel__item" [class.navigation-panel__item--selected]="navigationIndex() === 0" (click)="onNavigationChange(0)">
+      <mat-icon svgIcon="tree"/>
+      <span class="navigation-panel__label" cmTextBody="b1">{{"PAGES.NAVIGATION.TABS.CATEGORIES" | translate}}</span>
+    </div>
+    <div class="navigation-panel__item" [class.navigation-panel__item--selected]="navigationIndex() === 1" (click)="onNavigationChange(1)">
+      <mat-icon svgIcon="illustrations:car"/>
+      <span class="navigation-panel__label" cmTextBody="b1">{{"PAGES.NAVIGATION.TABS.CARS" | translate}}</span>
+    </div>
+  </section>
+  <section class="navigation-panel__actions">
+    <cm-actions-panel>
+      <ng-content select="[actions]"/>
+    </cm-actions-panel>
+  </section>
+</section>

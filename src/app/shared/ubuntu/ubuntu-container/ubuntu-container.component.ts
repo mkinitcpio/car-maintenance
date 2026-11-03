@@ -19,7 +19,6 @@ import { CmButton } from '@shared/components/button/button';
 export class UbuntuContainerComponent {
 
   readonly title = input<string>();
-  readonly hasBordersStyle = input(true);
   readonly info = input<string>();
 
   readonly expand = input<boolean>(true);
