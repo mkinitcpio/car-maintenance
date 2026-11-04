@@ -8,6 +8,10 @@
   </div>
 
   @if (text()) {
-    <span cmTextBody="b1:strong" class="empty-state__text">{{ text() | translate }}</span>
+    @if (size() === 'l') {
+      <span cmTextHeader="h2" class="empty-state__text">{{ text() | translate }}</span>
+    } @else {
+      <span cmTextBody="b1:strong" class="empty-state__text">{{ text() | translate }}</span>
+    }
   }
 </div>

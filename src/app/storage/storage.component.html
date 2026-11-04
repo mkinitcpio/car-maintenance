@@ -1,8 +1,9 @@
-<app-details class="storage" [title]="'NAVIGATIONS.STORAGE' | translate" separated="true">
+<app-details class="storage" [title]="'NAVIGATIONS.STORAGE' | translate" [separated]="true">
   <ng-container content>
     <section class="storage__dev">
-        <mat-icon class="storage__dev-icon" svgIcon="crane"></mat-icon>
-        <span class="storage__dev-text">{{"UNDER_DEV" | translate}}</span>
+      <cm-empty-state size="l" [text]="'UNDER_DEV' | translate">
+        <cm-wrench-illustration cmEmptyStateIllustration></cm-wrench-illustration>
+      </cm-empty-state>
     </section>
   </ng-container>
 </app-details>

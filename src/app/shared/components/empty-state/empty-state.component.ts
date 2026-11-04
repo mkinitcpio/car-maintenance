@@ -3,6 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { EmptyStateIllustration } from './empty-state-illustration';
 import { PaperIllustrationComponent } from './illustrations/paper-illustration';
+import { CmTextHeader } from '../typography/text-header/text-header';
 
 export type EmptyStateSize = 's' | 'm' | 'l';
 
@@ -15,7 +16,8 @@ export type EmptyStateSize = 's' | 'm' | 'l';
   imports: [
     TranslateModule,
     CmTextBody,
-    PaperIllustrationComponent
+    PaperIllustrationComponent,
+    CmTextHeader
 ],
 })
 export class EmptyStateComponent {
