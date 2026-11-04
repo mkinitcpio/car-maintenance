@@ -1,0 +1,12 @@
+diff --git a/node_modules/app-builder-lib/out/targets/snap/core24.js b/node_modules/app-builder-lib/out/targets/snap/core24.js
+index 79b731c..6a09d6a 100644
+--- a/node_modules/app-builder-lib/out/targets/snap/core24.js
++++ b/node_modules/app-builder-lib/out/targets/snap/core24.js
+@@ -275,7 +275,6 @@ class SnapCore24 extends SnapTarget_1.SnapCore {
+             plugs: appPlugs,
+             slots: appSlots,
+             autostart: options.autoStart ? `${desktopBaseName}.desktop` : undefined,
+-            desktop: `meta/gui/${desktopBaseName}.desktop`,
+             extensions: resolvedExtensions,
+         };
+         // Icon path — build-time relative path so snapcraft can find the file in snap/gui/

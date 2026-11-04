@@ -1,5 +1,6 @@
 {
   "productName": "Car Maintenance",
+  "npmRebuild": false,
   "directories": {
     "output": "release/"
   },
@@ -34,5 +35,17 @@
   "linux": {
     "icon": "dist/assets/icons/favicon.png",
     "target": "snap"
+  },
+  "snapcraft": {
+    "base": "core24",
+    "core24": {
+      "useLXD": true,
+      "forceX11": true,
+      "plugs": [
+        "home",
+        "network",
+        "removable-media"
+      ]
+    }
   }
 }
