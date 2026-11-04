@@ -1,0 +1,50 @@
+name: Snap (edge)
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  snap:
+    name: Build & publish snap to edge
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install snapcraft and LXD
+        run: |
+          sudo snap install snapcraft --classic
+          sudo snap install lxd || sudo snap refresh lxd
+          sudo lxd init --auto
+          sudo usermod -aG lxd $USER
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build:prod
+
+      - name: Package snap (LXD)
+        run: sg lxd -c "npx electron-builder --linux --publish never"
+
+      - name: Upload snap artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: car-maintenance-snap
+          path: release/*.snap
+          if-no-files-found: error
+
+      - name: Publish to Snap Store (edge)
+        if: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS != '' }}
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+        run: snapcraft upload release/*.snap --release=edge
