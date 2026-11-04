@@ -75,7 +75,6 @@ try {
       createWindow();
     }
   });
-} catch (e) {
+} catch {
   // Catch Error
-  // throw e;
 }
