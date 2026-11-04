@@ -44,7 +44,11 @@ jobs:
           if-no-files-found: error
 
       - name: Publish to Snap Store (edge)
-        if: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS != '' }}
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
-        run: snapcraft upload release/*.snap --release=edge
+        run: |
+          if [ -z "$SNAPCRAFT_STORE_CREDENTIALS" ]; then
+            echo "SNAPCRAFT_STORE_CREDENTIALS is not set — skipping store publication"
+            exit 0
+          fi
+          snapcraft upload release/*.snap --release=edge
