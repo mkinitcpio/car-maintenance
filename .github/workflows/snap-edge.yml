@@ -2,7 +2,7 @@ name: Snap (edge)
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, upstream ]
   workflow_dispatch:
 
 jobs:
