@@ -14,22 +14,44 @@
     <mat-icon class="input__prefix">{{prefix()}}</mat-icon>
   }
 
-  <input #fieldInput class="input__field"
-    [attr.id]="uid"
-    [attr.type]="inputType()"
-    [attr.placeholder]="placeholder() || null"
-    [attr.maxlength]="maxlength() || null"
-    [value]="valueState()"
-    [disabled]="disabledState()"
-    (input)="onInput($event)"
-    (focus)="onFocus()"
-    (blur)="onBlur()">
+  @if (multiline()) {
+    <textarea #fieldInput
+      class="input__field input__field--textarea"
+      [class.input__field--without-prefix]="!prefix()"
+      [attr.id]="uid"
+      [attr.placeholder]="placeholder() || null"
+      [attr.maxlength]="maxlength() || null"
+      [attr.rows]="rows()"
+      [value]="valueState()"
+      [disabled]="disabledState()"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"></textarea>
+  } @else {
+    <input #fieldInput
+      class="input__field"
+      [class.input__field--without-prefix]="!prefix()"
+      [attr.id]="uid"
+      [attr.type]="inputType()"
+      [attr.placeholder]="placeholder() || null"
+      [attr.maxlength]="maxlength() || null"
+      [value]="valueState()"
+      [disabled]="disabledState()"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()">
+  }
+
+  <span class="input__suffix">
+    <ng-content select="[cmSuffix]"></ng-content>
+  </span>
+
   @if (type() === 'password') {
     <button type="button" class="input__toggle" tabindex="-1" (click)="togglePasswordVisibility()">
       <mat-icon svgIcon="eye"></mat-icon>
     </button>
   }
-    @if (withClearButton() && fieldInput.value) {
+    @if (withClearButton() && valueState()) {
     <button type="button" class="input__toggle" tabindex="-1" (click)="onClearValue()">
       <mat-icon>close</mat-icon>
     </button>

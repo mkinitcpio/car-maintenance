@@ -61,6 +61,7 @@
 
     border: none;
     outline: none;
+    resize: none;
 
     background: transparent;
 
@@ -71,6 +72,30 @@
 
     &::placeholder {
       color: $font-color-secondary;
+    }
+
+    &--without-prefix {
+      padding-left: 4px;
+    }
+
+    &--textarea {
+      padding: 12px 4px;
+    }
+  }
+
+  &__prefix {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+  }
+
+  &__suffix {
+    display: flex;
+    align-items: center;
+
+    &:empty {
+      display: none;
     }
   }
 

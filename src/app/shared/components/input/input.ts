@@ -33,6 +33,8 @@ export class CmInput implements ControlValueAccessor {
   readonly invalid = input<boolean>(false);
   readonly withClearButton = input<boolean>(false);
   readonly prefix = input<string>();
+  readonly multiline = input<boolean>(false);
+  readonly rows = input<number>(3);
 
   readonly value = input<string>('');
   readonly valueState = linkedSignal<string>(() => this.value());
@@ -48,7 +50,7 @@ export class CmInput implements ControlValueAccessor {
   readonly change = output<string>();
   readonly blur = output<void>();
 
-  private readonly fieldInput = viewChild.required<ElementRef<HTMLInputElement>>('fieldInput');
+  private readonly fieldInput = viewChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('fieldInput');
 
   public focus(): void {
     this.fieldInput().nativeElement.focus();
@@ -75,7 +77,7 @@ export class CmInput implements ControlValueAccessor {
   }
 
   onInput(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
+    const value = (event.target as HTMLInputElement | HTMLTextAreaElement).value;
 
     this.valueState.update(() => value);
     this.onChange(value);

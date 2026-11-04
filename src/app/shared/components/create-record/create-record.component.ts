@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Inject, model, OnInit } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
+import { CmInput } from '../input/input';
 import { CurrencyComponent } from '@shared/currency/currency.component';
 import { MileageComponent } from '../mileage/mileage.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -46,6 +47,7 @@ import { DataBaseService } from '@core/database';
         MatChipsModule,
         MatAutocompleteModule,
         CmTextBody,
+        CmInput,
     ]
 })
 export class CreateRecordComponent implements OnInit {
@@ -106,6 +108,35 @@ export class CreateRecordComponent implements OnInit {
 
   public onClose(): void {
     this.dialogRef.close();
+  }
+
+  public isInvalid(controlName: string): boolean {
+    const control = this.recordForm.get(controlName);
+    return control.touched && control.invalid;
+  }
+
+  public getErrorMessage(controlName: string): string | undefined {
+    const control = this.recordForm.get(controlName);
+
+    if (!control.touched || control.valid) {
+      return undefined;
+    }
+
+    if (control.hasError('required')) {
+      return controlName === 'cost'
+        ? 'DIALOG.VALIDATIONS.EXPENSE.REQIRED'
+        : 'DIALOG.VALIDATIONS.NAME';
+    }
+
+    if (control.hasError('number')) {
+      return control.getError('number').value;
+    }
+
+    if (control.hasError('positiveNumber')) {
+      return control.getError('positiveNumber').value;
+    }
+
+    return undefined;
   }
 
   public get title(): Observable<string> {
