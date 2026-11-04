@@ -5,8 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogComponent } from '../dialog/dialog.component';
 import { CommonModule } from '@angular/common';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Data } from 'electron';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,7 +24,6 @@ import { Data } from 'electron';
 export class AccountDialogComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Data,
     public dialogRef: MatDialogRef<AccountDialogComponent>,
   ) { }
 
