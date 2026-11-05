@@ -3,6 +3,8 @@ name: Snap (edge)
 on:
   push:
     branches: [ master, upstream ]
+    paths-ignore:
+      - 'docs/**'
   workflow_dispatch:
 
 jobs:

@@ -9,6 +9,7 @@
   --border: #ffffff1a;
   --text: #fafafa;
   --text-muted: #b5b5b5;
+  --accent-soft: rgba(233, 84, 32, 0.14);
 }
 
 * {
@@ -23,7 +24,9 @@ html {
 
 body {
   font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", sans-serif;
-  background: var(--bg);
+  background:
+    radial-gradient(1200px 620px at 50% -140px, var(--accent-soft), transparent 75%),
+    var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
@@ -123,8 +126,9 @@ a {
 }
 
 .hero {
-  padding: 72px 0 40px;
+  padding-top: 72px;
   text-align: center;
+  margin-bottom: 32px;
 }
 
 .version {
@@ -206,10 +210,10 @@ a {
   border-color: var(--accent-hover);
 }
 
-.shot {
+.content {
+  padding: 16px;
   max-width: 920px;
   margin: 0 auto;
-  padding: 10px;
 }
 
 .shot img {
@@ -222,9 +226,6 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
-  margin: 0 auto 0;
-  padding: 0 24px;
-  max-width: 920px;
 }
 
 .feature {
@@ -259,27 +260,15 @@ a {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin: 32px auto 0;
-  padding: 0 24px;
+  margin: 32px auto 32px;
 }
 
 .gallery img {
   display: block;
   width: 100%;
-  border-radius: 8px;
-}
-
-.gallery figcaption {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 13px;
-  padding: 8px 0 4px;
 }
 
 .platforms {
-  max-width: 1080px;
-  margin: 72px auto 0;
-  padding: 0 24px;
   text-align: center;
 }
 
@@ -336,5 +325,17 @@ a {
 @media (max-width: 600px) {
   .hero {
     padding-top: 48px;
+  }
+
+  .github-link__text {
+    display: none;
+  }
+
+  .header-inner {
+    padding: 14px 16px;
+  }
+
+  .brand {
+    font-size: 16px;
   }
 }
