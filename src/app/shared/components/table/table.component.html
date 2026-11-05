@@ -27,7 +27,7 @@
           @if (config().actions.selectable) {
             <th class="cm-table__head-cell cm-table--column-select"
               >
-              <cm-checkbox [value]="allRowSelected"
+              <cm-checkbox [withoutLabel]="true" [value]="allRowSelected"
                 [intermideate]="someRowSelected"
                 (click)="$event.stopPropagation()"
                 (change)="onAllRowToggle($event)">
@@ -62,7 +62,7 @@
               @if (config().actions.selectable) {
                 <td class="cm-table__cell cm-table--column-select"
                   >
-                  <cm-checkbox [value]="selectedRows.isSelected(row.id)"
+                  <cm-checkbox [withoutLabel]="true" [value]="selectedRows.isSelected(row.id)"
                     (click)="$event.stopPropagation()"
                     (change)="onSelectionChange(row.id)">
                   </cm-checkbox>
