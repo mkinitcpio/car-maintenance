@@ -24,8 +24,8 @@
   transition: border-color 0.1s ease-in,
               background-color 0.1s ease-in;
 
-  &:hover:not(.input--disabled) {
-    background-color: rgba(0, 0, 0, 0.08);
+  &:hover:not(.input--disabled):not(.input--focused):not(.input--invalid) {
+    border-color: $color-border;
   }
 
   &--focused {
@@ -34,11 +34,7 @@
 
   &--invalid {
     border-color: $color-dangerous;
-    background-color: rgba($color: $color-dangerous, $alpha: 0.05);
-
-    &:hover:not(.input--disabled) {
-      background-color: rgba($color: $color-dangerous, $alpha: 0.08);
-    }
+    background-color: rgba(182, 21, 27, 0.05);
   }
 
   &--disabled {

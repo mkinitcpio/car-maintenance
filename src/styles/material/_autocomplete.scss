@@ -6,7 +6,7 @@
 .mat-mdc-standard-chip {
   --mat-chip-label-text-color: #{$font-color-primary} !important;
   --mat-chip-elevated-container-color: #{$color-border} !important;
-  --mat-chip-container-shape-radius: 10px;
+  --mat-chip-container-shape-radius: 20px;
   --mat-chip-label-text-font: #{$font-system} !important;
   --mat-chip-label-text-tracking: 0;
 }

@@ -5,8 +5,8 @@
   --mat-form-field-outlined-error-outline-color: #{$color-dangerous} !important;
   --mat-form-field-outlined-outline-width: 1.5px;
   --mat-form-field-outlined-input-text-color: #{$font-color-primary};
-  --mat-form-field-outlined-container-shape: 12px;
-  --mat-form-field-outlined-outline-color: #{$color-border};
+  --mat-form-field-outlined-container-shape: 30px;
+  --mat-form-field-outlined-outline-color: transparent;
   --mat-form-field-outlined-focus-outline-color: #{$color-primary};
   --mat-form-field-container-vertical-padding: 12px;
   --mat-form-field-outlined-hover-label-text-color: #{$font-color-primary} !important;
@@ -15,9 +15,9 @@
   --mat-form-field-outlined-caret-color: #{$font-color-primary} !important;
   --mat-form-field-outlined-label-text-font: #{$font-system} !important;
   --mat-form-field-outlined-label-text-tracking: 0;
-  --mat-form-field-outlined-hover-outline-color: #7c7c7c;
+  --mat-form-field-outlined-hover-outline-color: #{$color-border};
   --mat-form-field-outlined-label-text-size: 14px;
-  --mat-form-field-container-height: 43px;
+  --mat-form-field-container-height: 44px;
   --mat-form-field-subscript-text-tracking: 0;
   --mat-form-field-subscript-text-font: #{$font-system};
   --mat-form-field-subscript-text-line-height: 1;
@@ -40,7 +40,7 @@
 
 .mat-mdc-option {
   padding: 0 12px !important;
-  border-radius: 12px;
+  border-radius: 21px;
   min-height: 42px !important;
 }
 
@@ -50,7 +50,7 @@
 
 .mat-mdc-form-field-input-control {
   letter-spacing: normal !important;
-  height: 24px !important;
+  height: auto !important;
 }
 
 .mat-mdc-form-field-icon-suffix {
@@ -72,8 +72,7 @@ padding: 0 7px !important;
 }
 
 .form-field__title {
-  margin-left: 10px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 
   color: $font-color-primary;
   columns: $font-color-primary;
@@ -98,6 +97,11 @@ padding: 0 7px !important;
 }
 
 .mdc-text-field {
-  background-color: rgb(0 0 0 / 1.5%);
-  border-radius: 12px !important;
+  background-color: light-dark(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.1));
+  border-radius: 30px !important;
+}
+
+.mdc-text-field--outlined {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
 }
