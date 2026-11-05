@@ -26,7 +26,7 @@ export class CmCheckbox implements ControlValueAccessor {
   disabledState = linkedSignal<boolean>(() => this.disabled());
 
   intermideate = input<boolean>();
-
+  withoutLabel = input<boolean>(false);
   change = output<boolean>();
 
 

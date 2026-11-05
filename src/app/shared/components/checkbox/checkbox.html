@@ -5,9 +5,13 @@
   [checked]="valueState()"
   [disabled]="disabledState()"
   (click)="onClick()"
-  (change)="$event.stopPropagation()">
-  <label cmTextBody="b1" class="checkbox__description">
-    <ng-content></ng-content>
-  </label>
+  (change)="$event.stopPropagation()"
+>
+  @if(!withoutLabel()) {
+    <label cmTextBody="b1" class="checkbox__description">
+      <ng-content></ng-content>
+    </label>
+  }
+
 </div>
 
