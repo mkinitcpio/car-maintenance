@@ -5,11 +5,6 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { SwitchComponent } from '../switch/switch.component';
 import { CmCheckbox } from '../checkbox/checkbox';
 import { CmButton } from '../button/button';
-import { ContentContainerComponent } from '../content-container/content-container.component';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatTableModule } from '@angular/material/table';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,6 +20,7 @@ import { defaultColumns } from './preview-page/default-columns';
 import { PrintDialogConfig } from './print-dialog-config';
 import { ExportService } from '@shared/services/export.service';
 import { SaveDialogData } from '@shared/services/abstract-export.service';
+import { Accordion } from '../accordion/accordion';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,17 +33,13 @@ import { SaveDialogData } from '@shared/services/abstract-export.service';
         MatIconModule,
         MatDividerModule,
         TranslateModule,
-        MatProgressSpinnerModule,
-        MatTableModule,
-        MatTooltipModule,
-        MatSlideToggleModule,
-        ContentContainerComponent,
         CmButton,
         CmCheckbox,
         SwitchComponent,
         DialogComponent,
         CmTextBody,
         PreviewPageComponent,
+        Accordion,
     ]
 })
 export class PrintDialogComponent implements OnInit {

@@ -25,8 +25,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 8px 16px 16px;
-    font-size: 14px;
   }
 
   &__config-section {
@@ -39,11 +37,9 @@
   &__scroll {
     @include mixins.scrollable;
     height: 100%;
-    padding: 16px 0;
-
-    content-container:not(:last-child) {
-      margin-bottom: 32px;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   &__divider {
@@ -77,6 +73,15 @@
       flex: 1;
     }
   }
+
+  &__column-container {
+    height: 42px;
+  }
+
+  cm-accordion {
+    display: block;
+    margin: 2px;
+  }
 }
 
 .columns {
@@ -96,7 +101,8 @@
 }
 
 .column {
-  padding: 16px 8px;
+  height: 100%;
+  padding: 0 8px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -130,10 +136,10 @@
 
   .column {
     box-sizing: border-box;
-    border-radius: 12px;
-    height: 52px;
+    border-radius: 21px;
+    height: 42px;
     background: $background-secondary;
-    border: 2px solid $color-primary;
+    border: 1.5px solid $color-primary;
   }
 
   .column__divider {
