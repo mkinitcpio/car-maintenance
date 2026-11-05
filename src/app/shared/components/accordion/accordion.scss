@@ -65,6 +65,14 @@
     transition: visibility 100ms linear, opacity 80ms linear;
   }
 
+  &--no-animation {
+    .cm-accordion__content,
+    .cm-accordion__content-body,
+    .cm-accordion__arrow {
+      transition: none;
+    }
+  }
+
   &--expanded {
     .cm-accordion__content {
       grid-template-rows: 1fr;

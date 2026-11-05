@@ -1,6 +1,6 @@
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { MatIcon } from '@angular/material/icon';
-import { ChangeDetectionStrategy, Component, contentChild, inject, input, linkedSignal, output, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, afterNextRender, contentChild, inject, input, linkedSignal, output, signal, TemplateRef } from '@angular/core';
 import { AccordionVariant } from "./interface";
 import { NgTemplateOutlet } from '@angular/common';
 
@@ -27,6 +27,14 @@ export class Accordion {
   readonly opened = output<boolean>();
 
   public expanded = linkedSignal<boolean>(() => this.expand());
+
+  protected readonly animationsReady = signal(false);
+
+  constructor() {
+    afterNextRender(() => {
+      requestAnimationFrame(() => this.animationsReady.set(true));
+    });
+  }
 
   public onExpand(): void {
     this.expanded.update(opened => !opened);

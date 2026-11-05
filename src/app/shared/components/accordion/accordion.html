@@ -1,6 +1,7 @@
 <section
   [class]="`cm-accordion cm-accordion--${variant()}`"
   [class.cm-accordion--expanded]="expanded()"
+  [class.cm-accordion--no-animation]="!animationsReady()"
 >
   <header class="cm-accordion__header" (click)="onExpand()">
     <section class="cm-accordion__header-content">
