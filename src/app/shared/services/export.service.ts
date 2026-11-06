@@ -16,7 +16,7 @@ export class ExportService extends AbstractExportService {
   private readonly options: PrintToPDFOptions = {
     pageSize: "A4",
     printBackground: true,
-    landscape: true,
+    landscape: false,
   };
 
   constructor() {
@@ -56,7 +56,7 @@ export class ExportService extends AbstractExportService {
     return parsedData;
   }
 
-  public generatePDF(body: string): Observable<Buffer> {
+  public generatePDF(body: string, orientation: 'vertical' | 'horizontal'): Observable<Buffer> {
     return new Observable<Buffer>((subscriber) => {
       const printWindow = new this.electronService.remote.BrowserWindow({
         show: false,
@@ -72,6 +72,8 @@ export class ExportService extends AbstractExportService {
       };
 
       printWindow.webContents.once('did-finish-load', () => {
+        this.options.landscape = orientation === 'horizontal';
+
         from(printWindow.webContents.printToPDF(this.options)).subscribe({
           next: (data) => {
             subscriber.next(data);
@@ -116,8 +118,8 @@ export class ExportService extends AbstractExportService {
     );
   }
 
-  public toPDF(defaultPath: string, body: string): Observable<SaveDialogData> {
-    return this.generatePDF(body).pipe(
+  public toPDF(defaultPath: string, body: string, orientation: 'vertical' | 'horizontal'): Observable<SaveDialogData> {
+    return this.generatePDF(body, orientation).pipe(
       switchMap((data) => this.savePDF(defaultPath, data)),
     );
   }

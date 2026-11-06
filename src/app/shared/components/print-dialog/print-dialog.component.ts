@@ -50,6 +50,7 @@ export class PrintDialogComponent implements OnInit {
 
   public columns: Array<ColumnConfig> = [];
   public config = signal<PreviewPageConfig>(null);
+  public orientation = signal<'horizontal' | 'vertical'>('vertical');
   public saveDirectoryPath: string = this.electronService.os.homedir();
 
   @ViewChild('print', { read: PreviewPageComponent, static: false }) preview: PreviewPageComponent;
@@ -71,6 +72,7 @@ export class PrintDialogComponent implements OnInit {
     this.columns = [...defaultColumns.map(column =>  ({...column}))];
     this.config.set({
       showTablesCostResult: true,
+      orientation: this.orientation(),
       columns: this.columns,
     });
   }
@@ -81,7 +83,7 @@ export class PrintDialogComponent implements OnInit {
       config.columns = this.columns;
 
       return { ...config };
-    })
+    });
   }
 
   public toggleColumn(column: ColumnConfig): void {
@@ -107,8 +109,21 @@ export class PrintDialogComponent implements OnInit {
 
     const request$ = this.preview.pdfBuffer
       ? this.exportService.savePDF(defaultFileName, this.preview.pdfBuffer)
-      : this.exportService.toPDF(defaultFileName, this.preview.printableHtml);
+      : this.exportService.toPDF(defaultFileName, this.preview.printableHtml, this.orientation());
 
     request$.subscribe((data) => data.filePath && this.dialogRef.close(data));
+  }
+
+  public onOrientationChange(orientation: 'vertical' | 'horizontal'): void {
+    if(orientation !== this.orientation()) {
+      this.orientation.update((value) => orientation === value ? value : orientation);
+
+      this.config.update((config) => {
+        config.columns = this.columns;
+
+        return { ...config, orientation };
+      });
+    }
+
   }
 }

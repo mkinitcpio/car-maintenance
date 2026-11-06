@@ -84,8 +84,9 @@
         "ORDER_AND_VISIBILITY": "Порядок и отображение",
         "TITLE": "Экспорт в PDF",
         "SHOW_TOTAL_SUM": "Показать затраты для таблиц",
+        "ORIENTATION": "Ориентация страницы",
         "TOTAL": "Итог",
-        "OTHER": "Другое"
+        "COMMON": "Общие"
       },
       "NAVIGATION": {
         "TABS": {

@@ -185,7 +185,7 @@ export class PreviewPageComponent implements AfterViewInit {
       .pipe(
         switchMap((html) => {
           this.html = html;
-          return this.exportService.generatePDF(html);
+          return this.exportService.generatePDF(html, this.config().orientation);
         }),
         catchError((error) => {
           console.error('[PDF preview] generation failed', error);

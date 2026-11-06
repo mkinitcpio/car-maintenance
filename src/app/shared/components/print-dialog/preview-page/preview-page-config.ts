@@ -1,5 +1,6 @@
 export interface PreviewPageConfig {
   showTablesCostResult: boolean;
+  orientation: 'vertical' | 'horizontal';
   columns: Array<ColumnConfig>
 }
 

@@ -25,6 +25,61 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &--orientation {
+      justify-content: initial;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__orientation-list {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__orientation-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid $color-border;
+    border-radius: 8px;
+    background-color: $background-primary;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--vertical {
+      height: 96px;
+      width: 64px;
+    }
+
+    &--horizontal {
+      height: 64px;
+      width: 96px;
+    }
+
+    &--selected {
+      border-color: $color-primary;
+
+      .print-dialog__orientation-check {
+        display: block;
+      }
+    }
+  }
+
+  &__orientation-check {
+    height: 16px;
+    width: 16px;
+    background-color: $color-primary;
+    display: none;
+    clip-path: path("M10.9966 0.499996C11.6157 1.05037 11.6715 1.99848 11.1211 2.61766L4.66668 9.87891L0.878902 5.61766C0.328525 4.99848 0.384296 4.05037 1.00347 3.5C1.62264 2.94962 2.57075 3.00539 3.12113 3.62456L4.66668 5.36331L8.8789 0.624564C9.42928 0.00538993 10.3774 -0.0503812 10.9966 0.499996Z");
   }
 
   &__config-section {
@@ -58,6 +113,12 @@
     height: 100%;
 
     box-sizing: border-box;
+  }
+
+  &__common {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   &__content {
