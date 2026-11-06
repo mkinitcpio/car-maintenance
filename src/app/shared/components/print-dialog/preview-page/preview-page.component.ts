@@ -15,7 +15,6 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable, Subject, catchError, debounceTime, of, switchMap } from 'rxjs';
-import printJS from 'print-js';
 import type { PDFDocumentLoadingTask, PDFDocumentProxy, RenderTask } from 'pdfjs-dist';
 
 import { PreviewPageConfig } from './preview-page-config';
@@ -67,7 +66,6 @@ export class PreviewPageComponent implements AfterViewInit {
   private pdfjs: PdfJsModule | null = null;
   private pdfLoadingTask: PDFDocumentLoadingTask | null = null;
   private pdfDoc: PDFDocumentProxy | null = null;
-  private pdfObjectUrl: string | null = null;
   private buffer: Buffer | null = null;
   private html: string | null = null;
   private renderTasks: RenderTask[] = [];
@@ -149,14 +147,6 @@ export class PreviewPageComponent implements AfterViewInit {
     this.setZoom(1);
   }
 
-  public print(): void {
-    if (!this.pdfObjectUrl) {
-      return;
-    }
-
-    printJS({ printable: this.pdfObjectUrl, type: 'pdf' });
-  }
-
   private observeResize(): void {
     const element = this.viewer?.nativeElement;
 
@@ -221,7 +211,6 @@ export class PreviewPageComponent implements AfterViewInit {
       }
 
       const bytes = new Uint8Array(buffer);
-      this.pdfObjectUrl = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
 
       const loadingTask = pdfjs.getDocument({ data: bytes.slice() });
       this.pdfLoadingTask = loadingTask;
@@ -372,13 +361,5 @@ export class PreviewPageComponent implements AfterViewInit {
     }
 
     this.pdfDoc = null;
-    this.releaseObjectUrl();
-  }
-
-  private releaseObjectUrl(): void {
-    if (this.pdfObjectUrl) {
-      URL.revokeObjectURL(this.pdfObjectUrl);
-      this.pdfObjectUrl = null;
-    }
   }
 }
