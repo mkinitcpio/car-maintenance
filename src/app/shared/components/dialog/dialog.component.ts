@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostListener, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, input, output, signal } from '@angular/core';
 import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmButton } from '../button/button';
 import { TranslateModule } from '@ngx-translate/core';
@@ -34,6 +34,9 @@ export class DialogComponent {
 
   disabledSumbitButton = input<boolean>(false);
   public reduceSpace = input<boolean>(false);
+  public fullscreen = input<boolean>(false);
+
+  public isFullscreen = signal(false);
 
   close = output<void>();
 
@@ -53,6 +56,14 @@ export class DialogComponent {
 
   public onClose(): void {
     this.close.emit();
+  }
+
+  public toggleFullscreen(): void {
+    if (!this.fullscreen()) {
+      return;
+    }
+
+    this.isFullscreen.update((value) => !value);
   }
 
   public onSubmit(): void {

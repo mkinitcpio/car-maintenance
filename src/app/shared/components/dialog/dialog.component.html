@@ -1,4 +1,7 @@
-<section class="dialog" [class.dialog--reduce-space]="reduceSpace()">
+<section class="dialog"
+  [class.dialog--reduce-space]="reduceSpace()"
+  [class.dialog--fullscreen]="isFullscreen()"
+  [class.dialog--fullscreen-enabled]="fullscreen()">
   <header class="dialog__header">
     @if (sideMenuButton()) {
       <button cm-button variant="transparent" (click)="sideButtonClick.emit()">
@@ -7,6 +10,11 @@
     }
     <div class="dialog__title" cmTextHeader="h1">{{title() | translate}}</div>
     <div class="dialog__buttons">
+      @if (fullscreen()) {
+        <button cm-button variant="transparent" (click)="toggleFullscreen()">
+          <mat-icon>{{ isFullscreen() ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+        </button>
+      }
       @if (closable()) {
         <button cm-button variant="transparent" (click)="onClose()">
           <mat-icon svgIcon="close"></mat-icon>

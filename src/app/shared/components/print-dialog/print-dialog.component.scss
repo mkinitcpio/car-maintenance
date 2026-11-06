@@ -30,7 +30,8 @@
   &__config-section {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    flex: 0 0 320px;
+    min-width: 320px;
     overflow: hidden;
   }
 
@@ -48,7 +49,8 @@
   }
 
   &__preview-section {
-    width: 50%;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   &__preview {

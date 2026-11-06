@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild, inject, signal } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ColumnConfig, PreviewPageConfig } from './preview-page/preview-page-config';
@@ -52,7 +52,7 @@ export class PrintDialogComponent implements OnInit {
   public config = signal<PreviewPageConfig>(null);
   public saveDirectoryPath: string = this.electronService.os.homedir();
 
-  @ViewChild('print', { read: ElementRef, static: false }) print;
+  @ViewChild('print', { read: PreviewPageComponent, static: false }) preview: PreviewPageComponent;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: PrintDialogConfig,
@@ -84,12 +84,31 @@ export class PrintDialogComponent implements OnInit {
     })
   }
 
+  public toggleColumn(column: ColumnConfig): void {
+    column.visible = !column.visible;
+
+    this.config.update((config) => ({ ...config, columns: [...config.columns] }));
+  }
+
+  public toggleTotal(): void {
+    this.config.update((config) => ({
+      ...config,
+      showTablesCostResult: !config.showTablesCostResult,
+    }));
+  }
+
   public onPrint(): void {
+    if (!this.preview) {
+      return;
+    }
+
     const title = this.data.multiply ? this.data.title : this.data.tablesData[0].title;
     const defaultFileName = `${title} (${(new Date().toLocaleDateString())}).pdf`.replace(/\//g, '\u2215');
 
-    this.exportService
-      .toPDF(defaultFileName, this.print.nativeElement.outerHTML as string)
-      .subscribe((data) => data.filePath && this.dialogRef.close(data));
+    const request$ = this.preview.pdfBuffer
+      ? this.exportService.savePDF(defaultFileName, this.preview.pdfBuffer)
+      : this.exportService.toPDF(defaultFileName, this.preview.printableHtml);
+
+    request$.subscribe((data) => data.filePath && this.dialogRef.close(data));
   }
 }

@@ -1,9 +1,9 @@
-export const getPDFTemplate = (body: string) => {
+export const getPDFTemplate = (title: string, body: string) => {
   return `
     data:text/html;charset=utf-8,
     <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>MyYTitle</title> 
+    <title>${title}</title>
       <style type="text/css">
         @media print {
           * {
@@ -96,19 +96,19 @@ export const getPDFTemplate = (body: string) => {
           .mat-column-date {
             width: 15%;
           }
-      
+
           .mat-column-name {
             width: 35%;
           }
-      
+
           .mat-column-notes {
             width: 20%;
           }
-      
+
           .mat-column-mileage {
             width: 15%;
           }
-      
+
           .mat-column-cost {
             width: 15%;
           }

@@ -23,14 +23,15 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && npm run pdf:worker",
     "icons:sprites": "node scripts/build-icon-sprites.js",
+    "pdf:worker": "node scripts/copy-pdf-worker.js",
     "ng": "ng",
     "start": "npm-run-all -p electron:serve ng:serve",
-    "build": "npm run icons:sprites && npm run electron:serve-tsc && ng build --base-href ./",
+    "build": "npm run icons:sprites && npm run pdf:worker && npm run electron:serve-tsc && ng build --base-href ./",
     "build:dev": "npm run build -- -c dev",
     "build:prod": "npm run build -- -c production",
-    "ng:serve": "npm run icons:sprites && ng serve -c web -o",
+    "ng:serve": "npm run icons:sprites && npm run pdf:worker && ng serve -c web -o",
     "electron:serve-tsc": "tsc -p tsconfig.serve.json",
     "electron:serve": "wait-on tcp:4200 && npm run electron:serve-tsc && npx electron . --serve",
     "electron:local": "npm run build:prod && npx electron .",
@@ -41,8 +42,8 @@
     "test:watch": "ng test",
     "e2e": "npm run build:prod && cross-env TS_NODE_PROJECT='e2e/tsconfig.e2e.json' mocha --timeout 300000 --require ts-node/register e2e/**/*.e2e.ts",
     "lint": "ng lint",
-    "storybook": "npm run icons:sprites && ng run angular-electron:storybook",
-    "build-storybook": "ng run angular-electron:build-storybook"
+    "storybook": "npm run icons:sprites && npm run pdf:worker && ng run angular-electron:storybook",
+    "build-storybook": "npm run icons:sprites && npm run pdf:worker && ng run angular-electron:build-storybook"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "22.2.5",
@@ -66,6 +67,7 @@
     "app-builder-bin": "4.2.0",
     "electron-store": "8.1.0",
     "material-icons": "1.10.6",
+    "pdfjs-dist": "6.5.438",
     "rxjs": "7.8.1",
     "save": "2.9.0",
     "tslib": "2.6.2",

@@ -14,6 +14,7 @@ describe('PrintDialogComponent', () => {
     let fixture: ComponentFixture<PrintDialogComponent>;
     let exportService: {
         toPDF: Mock;
+        savePDF: Mock;
     };
     const dialogRef = createMatDialogRefMock();
 
@@ -26,7 +27,10 @@ describe('PrintDialogComponent', () => {
     };
 
     beforeEach(async () => {
-        exportService = { toPDF: vi.fn().mockName('toPDF').mockReturnValue(of({ status: 'Success', filePath: '/out.pdf' })) };
+        exportService = {
+            toPDF: vi.fn().mockName('toPDF').mockReturnValue(of({ status: 'Success', filePath: '/out.pdf' })),
+            savePDF: vi.fn().mockName('savePDF').mockReturnValue(of({ status: 'Success', filePath: '/out.pdf' })),
+        };
 
         await TestBed.configureTestingModule({
             imports: [PrintDialogComponent],
@@ -67,12 +71,26 @@ describe('PrintDialogComponent', () => {
         expect(component.columns[1]).toBe(first);
     });
 
-    it('exports to PDF and closes with the result', () => {
-        component.print = { nativeElement: { outerHTML: '<div></div>' } };
+    it('exports the already generated PDF and closes with the result', () => {
+        component.preview = {
+            pdfBuffer: Buffer.from('pdf'),
+            printableHtml: '<div></div>',
+        } as any;
 
         component.onPrint();
 
-        expect(exportService.toPDF).toHaveBeenCalled();
+        expect(exportService.savePDF).toHaveBeenCalled();
         expect(dialogRef.close).toHaveBeenCalledWith({ status: 'Success', filePath: '/out.pdf' } as any);
+    });
+
+    it('generates the PDF when the preview is not ready yet', () => {
+        component.preview = {
+            pdfBuffer: null,
+            printableHtml: '<div></div>',
+        } as any;
+
+        component.onPrint();
+
+        expect(exportService.toPDF).toHaveBeenCalledWith(expect.any(String), '<div></div>');
     });
 });

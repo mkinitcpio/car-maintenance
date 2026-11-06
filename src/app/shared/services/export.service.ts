@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { ElectronService } from '@core/services';
 import { APP_CONFIG, AppConfig } from 'app/app.config';
-import { Observable, Subject, from, map, of, switchMap, take } from 'rxjs';
+import { Observable, from, map, of, switchMap } from 'rxjs';
 
 import { AbstractExportService, SaveDialogData } from './abstract-export.service';
 
@@ -56,9 +56,46 @@ export class ExportService extends AbstractExportService {
     return parsedData;
   }
 
-  public toPDF(defaultPath: string, body: string): Observable<SaveDialogData> {
-    const print$: Subject<[filePath: string, data: Buffer]> = new Subject();
+  public generatePDF(body: string): Observable<Buffer> {
+    return new Observable<Buffer>((subscriber) => {
+      const printWindow = new this.electronService.remote.BrowserWindow({
+        show: false,
+        webPreferences: {
+          nodeIntegration: true,
+        }
+      });
 
+      const destroy = (): void => {
+        if (!printWindow.isDestroyed()) {
+          printWindow.destroy();
+        }
+      };
+
+      printWindow.webContents.once('did-finish-load', () => {
+        from(printWindow.webContents.printToPDF(this.options)).subscribe({
+          next: (data) => {
+            subscriber.next(data);
+            subscriber.complete();
+          },
+          error: (error) => {
+            console.error('[ExportService] printToPDF error', error);
+            subscriber.error(error);
+          },
+        });
+      });
+
+      printWindow.webContents.once('did-fail-load', (_event, errorCode, errorDescription) => {
+        console.error('[ExportService] did-fail-load', errorCode, errorDescription);
+        subscriber.error(new Error(`Failed to generate PDF (${errorCode}): ${errorDescription}`));
+      });
+
+      printWindow.loadURL(getPDFTemplate("Title", body));
+
+      return () => destroy();
+    });
+  }
+
+  public savePDF(defaultPath: string, data: Buffer): Observable<SaveDialogData> {
     return this.openSaveDialog(defaultPath).pipe(
       switchMap((dialog) => {
         if(dialog.canceled) {
@@ -68,37 +105,20 @@ export class ExportService extends AbstractExportService {
         }
 
         const path = dialog.filePath;
-        const pdf = getPDFTemplate(body);
 
-        const printWindow = new this.electronService.remote.BrowserWindow({
-          show: false,
-          webPreferences: {
-            nodeIntegration: true,
-          }
-        });
-
-        printWindow.loadURL(pdf);
-
-        printWindow.webContents.on('did-finish-load', () => {
-          from(printWindow.webContents.printToPDF(this.options))
-            .subscribe((data) => {
-              printWindow.destroy();
-              print$.next([path, data]);
-            });
-        });
-
-        return print$.pipe(
-          take(1),
-          switchMap(([filePath, data]) => {
-            return this.save(filePath, data).pipe(
-              map(() => ({
-                status: 'Success',
-                filePath,
-              }) as SaveDialogData
-              ));
-          }),
+        return this.save(path, data).pipe(
+          map(() => ({
+            status: 'Success',
+            filePath: path,
+          }) as SaveDialogData),
         );
       }),
+    );
+  }
+
+  public toPDF(defaultPath: string, body: string): Observable<SaveDialogData> {
+    return this.generatePDF(body).pipe(
+      switchMap((data) => this.savePDF(defaultPath, data)),
     );
   }
 }

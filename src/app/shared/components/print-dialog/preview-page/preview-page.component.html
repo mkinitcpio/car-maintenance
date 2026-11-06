@@ -1,78 +1,57 @@
 <div class="preview-page">
-  <div class="preview-page__app-title-container">
-    <img class="preview-page__app-icon" [src]="domSanitizer.bypassSecurityTrustUrl(appIconBase64)" alt="">
-    <h1 class="preview-page__app-title">Car Maintenance</h1>
-  </div>
+  <div #viewer class="preview-page__viewer"></div>
 
-  <hr class="preview-page__divider">
-
-  @if (data().multiply) {
-    <div class="preview-page__title-container">
-      <h2 class="preview-page__category-title">{{data().title}}</h2>
-      <div class="preview-page__cost-section">
-        <div class="preview-page__cost-section-text">
-          <span>{{"PAGES.PDF_EXPORT.TOTAL" | translate}}: </span>
-          <app-currency [renderAs]="1"
-            [ignoreFontColor]="true"
-            [size]="0"
-            [locale]="settingsService.region()"
-            [value]="cost"
-            [currency]="$safeNavigationMigration(settingsService.units()?.currency)">
-          </app-currency>
-        </div>
-      </div>
+  @if (isLoading()) {
+    <div class="preview-page__loader">
+      <span class="preview-page__spinner"></span>
     </div>
   }
 
-  @for (category of data().tablesData; track category) {
-    <section class="preview-page__category-section">
-      <div class="preview-page__title-container">
-        <h3 class="preview-page__title">{{category.title}}</h3>
-        @if (config().showTablesCostResult) {
-          <div class="preview-page__cost-section">
-            <div class="preview-page__cost-section-text">
-              <span>{{"PAGES.DETAIL.OVERALL_EXPENSE" | translate}}: </span>
-              <app-currency [renderAs]="1"
-                [ignoreFontColor]="true"
-                [size]="0"
-                [locale]="settingsService.region()"
-                [value]="category.totalCost"
-                [currency]="$safeNavigationMigration(settingsService.units()?.currency)">
-              </app-currency>
-            </div>
-          </div>
-        }
-      </div>
-      <table class="preview-page__table" mat-table [dataSource]="category.records">
-        @for (column of config().columns; track column) {
-          <ng-container [matColumnDef]="column.id">
-            <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
-            <td mat-cell *matCellDef="let record">
-              @switch (column.id) {
-                @case ('date') {
-                  <span class="preview-page__nowrap">
-                    {{ record[column.id] | localizedDate }}
-                  </span>
-                }
-                @case ('cost') {
-                  <span class="preview-page__nowrap">
-                    {{ record[column.id] | numberSeparator:this.settingsService.region() }}
-                  </span>
-                }
-                @case ('mileage') {
-                  <span class="preview-page__nowrap">
-                    {{ record[column.id] | numberSeparator:this.settingsService.region() }}
-                  </span>
-                }
-                @default {
-                  {{ record[column.id] }}
-                  } }
-                </td>
-              </ng-container>
-            }
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-        </section>
+  @if (hasError()) {
+    <div class="preview-page__error">
+      <mat-icon>error</mat-icon>
+      @if (errorMessage()) {
+        <span class="preview-page__error-text">{{ errorMessage() }}</span>
       }
     </div>
+  }
+
+  <div class="preview-page__toolbar">
+    <button type="button"
+      cm-button
+      size="small"
+      variant="transparent"
+      class="preview-page__tool"
+      [disabled]="isLoading() || hasError() || zoom() <= 0.5"
+      (click)="zoomOut()">
+      <mat-icon>zoom_out</mat-icon>
+    </button>
+    <button type="button"
+      cm-button
+      size="small"
+      variant="transparent"
+      class="preview-page__tool preview-page__tool--label"
+      [disabled]="isLoading() || hasError()"
+      (click)="resetZoom()">
+      {{ zoomPercent() }}%
+    </button>
+    <button type="button"
+      cm-button
+      size="small"
+      variant="transparent"
+      class="preview-page__tool"
+      [disabled]="isLoading() || hasError() || zoom() >= 2.5"
+      (click)="zoomIn()">
+      <mat-icon>zoom_in</mat-icon>
+    </button>
+    <button type="button"
+      cm-button
+      size="small"
+      variant="transparent"
+      class="preview-page__tool"
+      [disabled]="isLoading() || hasError()"
+      (click)="print()">
+      <mat-icon>print</mat-icon>
+    </button>
+  </div>
+</div>

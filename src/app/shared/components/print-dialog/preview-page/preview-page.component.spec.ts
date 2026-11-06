@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NEVER, of } from 'rxjs';
 
 import { PreviewPageComponent } from './preview-page.component';
-import { provideMockSettingsService } from 'testing/test-mocks';
+import { ExportService } from '@shared/services/export.service';
+import { PrintMarkupService } from '@shared/services/print-markup.service';
 
 describe('PreviewPageComponent', () => {
   let component: PreviewPageComponent;
@@ -11,7 +13,10 @@ describe('PreviewPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PreviewPageComponent],
-      providers: [provideMockSettingsService()],
+      providers: [
+        { provide: PrintMarkupService, useValue: { build: vi.fn().mockName('build').mockReturnValue(of('<div></div>')) } },
+        { provide: ExportService, useValue: { generatePDF: vi.fn().mockName('generatePDF').mockReturnValue(NEVER) } },
+      ],
       schemas: [NO_ERRORS_SCHEMA],
     })
       .overrideComponent(PreviewPageComponent, { set: { template: '' } })
@@ -27,20 +32,25 @@ describe('PreviewPageComponent', () => {
       ],
     });
     fixture.componentRef.setInput('data', {
-      tablesData: [{ title: 'T', totalCost: 0, records: [{ cost: '10' }, { cost: '20' }, { cost: '' }] as any }],
+      multiply: false,
+      tablesData: [{ title: 'T', totalCost: 0, records: [{ cost: '10' }] as any }],
     } as any);
   });
 
-  it('sums the record costs on init', () => {
+  it('creates', () => {
     fixture.detectChanges();
-    expect(component.cost).toBe(30);
+    expect(component).toBeTruthy();
   });
 
-  it('lists only the visible columns', () => {
-    expect(component.displayedColumns).toEqual(['name']);
-  });
+  it('clamps zoom between the configured limits', () => {
+    for (let i = 0; i < 20; i += 1) {
+      component.zoomIn();
+    }
+    expect(component.zoom()).toBe(2.5);
 
-  it('tracks columns by id', () => {
-    expect(component.trackById({ id: 'cost' } as any)).toBe('cost');
+    for (let i = 0; i < 30; i += 1) {
+      component.zoomOut();
+    }
+    expect(component.zoom()).toBe(0.5);
   });
 });
