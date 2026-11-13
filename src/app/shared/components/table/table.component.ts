@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewEncapsulation, afterNextRender, computed, effect, inject, input, output, signal, viewChild } from '@angular/core';
 import { RowData, TableConfig } from './interfaces';
 import { defaultTableConfig } from './default-table-config';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { imports } from "./table.imports";

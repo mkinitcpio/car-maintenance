@@ -161,6 +161,13 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
         order: 3,
         visible: true,
       },{
+        key: 'labels',
+        name: 'RECORDS_TABLE.LABELS',
+        type: 'labels',
+        order: 4,
+        visible: true,
+      },
+      {
         key: 'date',
         name: 'RECORDS_TABLE.DATE',
         type: 'date',
@@ -273,6 +280,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
 
     this.dialogManagerService.openPrintDialog({
       title: this.categoryDetails().data.name,
+      columns: this.tableConfig().columnSchemas,
       multiply: true,
       tablesData,
     }).pipe(

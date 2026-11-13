@@ -58,7 +58,7 @@ const imports = [
   imports,
 })
 export class DetailComponent extends AutoCloseable implements OnInit {
-  
+
   @listen({ value: true })
     details$ = this.detailsFacade.details$;
 
@@ -78,7 +78,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   public dataSourceTable = signal<Record[]>([]);
   public name = signal<string>(null);
   public currencies = currencies;
-  
+
   public costSum = signal<number>(0);
   public lastModifiedDate = signal<Date | null>(null);
 
@@ -197,6 +197,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     this.dialogManagerService
       .openPrintDialog({
         multiply: false,
+        columns: this.updateVisibilityOfColumns(columnSchemas),
         tablesData: [{
           title: this.name(),
           records: this.dataSourceTable(),

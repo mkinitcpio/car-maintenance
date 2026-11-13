@@ -101,7 +101,7 @@ export class PrintMarkupService {
                 </div>
               </div>` : ''}
           </div>
-          ${this.renderTable(category, columns, locale, language)}
+          ${this.renderTable(category, columns, locale, language, currencyIcon)}
         </section>`)
       .join('');
 
@@ -121,6 +121,7 @@ export class PrintMarkupService {
     columns: ReadonlyArray<ColumnConfig>,
     locale: LocaleEnum,
     language: string,
+    currencyIcon: string,
   ): string {
     const header = columns
       .map((column) => `<th class="mat-column-${this.escape(column.id)}">${this.escape(this.translate.instant(column.name))}</th>`)
@@ -128,20 +129,29 @@ export class PrintMarkupService {
 
     const body = (table.records ?? [])
       .map((record) => `<tr>${columns
-        .map((column) => `<td class="mat-column-${this.escape(column.id)}">${this.renderCell(record, column, locale, language)}</td>`)
+        .map((column) => `<td class="mat-column-${this.escape(column.id)}">${this.renderCell(record, column, locale, language, currencyIcon)}</td>`)
         .join('')}</tr>`)
       .join('');
 
-    return `<table class="preview-page__table"><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table>`;
+    return `<table class="preview-page__table">
+      <thead>
+        <tr>${header}</tr>
+      </thead>
+      <tbody>${body}</tbody>
+    </table>`;
   }
 
-  private renderCell(record: TableRecord, column: ColumnConfig, locale: LocaleEnum, language: string): string {
+  private renderCell(record: TableRecord, column: ColumnConfig, locale: LocaleEnum, language: string, currencyIcon: string): string {
     switch (column.id) {
       case 'date':
         return `<span class="preview-page__nowrap">${this.formatDate(record.date, language)}</span>`;
       case 'cost':
+        return `<span class="preview-page__nowrap">${+record[column.id] ? this.renderCurrency(+record[column.id], locale, currencyIcon) : ''}</span>`;
       case 'mileage':
         return `<span class="preview-page__nowrap">${this.formatNumber(+record[column.id], locale)}</span>`;
+      case 'labels': {
+        return record[column.id]?.map((label) => `<div style="white-space: nowrap">• ${label}</div>`).join('\n') || '';
+      }
       default:
         return this.escape(record[column.id]);
     }

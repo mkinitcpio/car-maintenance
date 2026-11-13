@@ -17,10 +17,10 @@ export class CellLabelsComponent {
 
   value = input<string[]>();
   stackItemList = computed<StackItem[]>(() => {
-    return this.value().map((label) => ({
+    return this.value()?.map((label) => ({
       id: label,
       name: label,
-    }));
+    })) ?? [];
   });
 
   private dialogManagerService = inject(DialogManagerService);

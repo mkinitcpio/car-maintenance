@@ -30,7 +30,6 @@ import {
 
 import { ElectronService } from "@core/services";
 
-import { defaultColumns } from "./preview-page/default-columns";
 import { PrintDialogConfig } from "./print-dialog-config";
 import { ExportService } from "@shared/services/export.service";
 import { SaveDialogData } from "@shared/services/abstract-export.service";
@@ -77,7 +76,12 @@ export class PrintDialogComponent implements OnInit {
       (table) => table.records.length,
     );
 
-    this.columns = [...defaultColumns.map((column) => ({ ...column }))];
+    this.columns = this.data.columns.map(column => ({
+      id: column.key,
+      name: column.name,
+      visible: column.visible,
+    }));
+
     this.config.set({
       showTablesCostResult: false,
       orientation: this.orientation(),
