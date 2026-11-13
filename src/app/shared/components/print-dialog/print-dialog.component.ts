@@ -46,8 +46,6 @@ export class PrintDialogComponent implements OnInit {
 
   private exportService: ExportService = inject(ExportService);
 
-  private readonly MAX_RECORDS_FOR_PREVIEW = 5;
-
   public columns: Array<ColumnConfig> = [];
   public config = signal<PreviewPageConfig>(null);
   public orientation = signal<'horizontal' | 'vertical'>('vertical');
@@ -64,10 +62,6 @@ export class PrintDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.data.tablesData = this.data.tablesData.filter(table => table.records.length);
-    this.data.tablesData
-      .forEach(table => {
-        table.records = table.records.slice(0, this.MAX_RECORDS_FOR_PREVIEW);
-      });
 
     this.columns = [...defaultColumns.map(column =>  ({...column}))];
     this.config.set({
