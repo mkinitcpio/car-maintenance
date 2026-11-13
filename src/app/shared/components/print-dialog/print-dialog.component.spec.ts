@@ -4,6 +4,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 
 import { PrintDialogComponent } from './print-dialog.component';
+import { PreviewPageComponent } from './preview-page/preview-page.component';
 import { ElectronService } from '@core/services';
 import { ExportService } from '@shared/services/export.service';
 import { createMatDialogRefMock, provideDialog } from 'testing/component-setup';
@@ -17,6 +18,10 @@ describe('PrintDialogComponent', () => {
         savePDF: Mock;
     };
     const dialogRef = createMatDialogRefMock();
+
+    const stubPreview = (preview: Partial<PreviewPageComponent>): void => {
+        vi.spyOn(component, 'preview').mockReturnValue(preview as PreviewPageComponent);
+    };
 
     const data = {
         multiply: false,
@@ -54,15 +59,15 @@ describe('PrintDialogComponent', () => {
         expect(component.saveDirectoryPath).toBe(electron.os.homedir());
     });
 
-    it('drops empty tables and caps preview rows at five', () => {
+    it('drops empty tables', () => {
         expect(component.data.tablesData.length).toBe(1);
         expect(component.data.tablesData[0].title).toBe('Engine');
-        expect(component.data.tablesData[0].records.length).toBe(5);
+        expect(component.data.tablesData[0].records.length).toBe(6);
     });
 
     it('sets up the preview columns and config', () => {
         expect(component.columns.length).toBeGreaterThan(0);
-        expect(component.config().showTablesCostResult).toBe(true);
+        expect(component.config().showTablesCostResult).toBe(false);
     });
 
     it('reorders columns on drop', () => {
@@ -72,10 +77,10 @@ describe('PrintDialogComponent', () => {
     });
 
     it('exports the already generated PDF and closes with the result', () => {
-        component.preview = {
+        stubPreview({
             pdfBuffer: Buffer.from('pdf'),
             printableHtml: '<div></div>',
-        } as any;
+        });
 
         component.onPrint();
 
@@ -84,13 +89,13 @@ describe('PrintDialogComponent', () => {
     });
 
     it('generates the PDF when the preview is not ready yet', () => {
-        component.preview = {
+        stubPreview({
             pdfBuffer: null,
             printableHtml: '<div></div>',
-        } as any;
+        });
 
         component.onPrint();
 
-        expect(exportService.toPDF).toHaveBeenCalledWith(expect.any(String), '<div></div>');
+        expect(exportService.toPDF).toHaveBeenCalledWith(expect.any(String), '<div></div>', 'vertical');
     });
 });

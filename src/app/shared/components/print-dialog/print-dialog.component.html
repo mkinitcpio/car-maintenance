@@ -1,15 +1,20 @@
-<app-dialog [title]="'PAGES.PDF_EXPORT.TITLE' | translate"
+<app-dialog
+  [title]="'PAGES.PDF_EXPORT.TITLE' | translate"
   [hideFooter]="true"
   [fullscreen]="true"
   (close)="dialogRef.close()"
-  >
+>
   <section content class="print-dialog">
     <div class="print-dialog__config-section">
       <div class="print-dialog__scroll">
-        <cm-accordion [expand]="true" [header]="'PAGES.PDF_EXPORT.COMMON' | translate" variant="default">
+        <cm-accordion
+          [expand]="true"
+          [header]="'PAGES.PDF_EXPORT.COMMON' | translate"
+          variant="default"
+        >
           <section class="print-dialog__common">
             <div class="print-dialog__section print-dialog__section--orientation">
-              <span cmTextBody="b1">{{'PAGES.PDF_EXPORT.ORIENTATION' | translate}}</span>
+              <span cmTextBody="b1">{{ 'PAGES.PDF_EXPORT.ORIENTATION' | translate }}</span>
               <div class="print-dialog__orientation-list">
                 <div
                   class="print-dialog__orientation-item print-dialog__orientation-item--vertical"
@@ -18,6 +23,7 @@
                 >
                   <span class="print-dialog__orientation-check"></span>
                 </div>
+
                 <div
                   class="print-dialog__orientation-item print-dialog__orientation-item--horizontal"
                   [class.print-dialog__orientation-item--selected]="orientation() === 'horizontal'"
@@ -30,30 +36,38 @@
 
             <div class="print-dialog__section">
               <span cmTextBody="b1">{{'PAGES.PDF_EXPORT.SHOW_TOTAL_SUM' | translate}}</span>
-              <cm-switch [value]="config().showTablesCostResult"
-                (change)="toggleTotal()">
-              </cm-switch>
+              <cm-switch
+                [value]="config().showTablesCostResult"
+                (change)="toggleTotal()"
+              />
             </div>
           </section>
 
         </cm-accordion>
 
-        <cm-accordion [header]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate" variant="default">
-          <div cdkDropList class="columns" (cdkDropListDropped)="drop($event)">
+        <cm-accordion
+          [header]="'PAGES.PDF_EXPORT.ORDER_AND_VISIBILITY' | translate"
+          variant="default"
+        >
+          <div
+            cdkDropList class="columns"
+            (cdkDropListDropped)="drop($event)"
+          >
             @for (column of columns; track column.id) {
               <div class="print-dialog__column-container" cdkDrag>
                 <div class="column">
                   <mat-icon class="column__drag-icon" cdkDragHandle>drag_indicator</mat-icon>
-                  <span cmTextBody="b1" class="column__name">{{column.name | translate}}</span>
+                  <span cmTextBody="b1" class="column__name">{{ column.name | translate }}</span>
+
                   @if (column.id !== 'name') {
                     <cm-checkbox
                       [withoutLabel]="true"
                       [value]="column.visible"
-                      (change)="toggleColumn(column)">
-                    </cm-checkbox>
+                      (change)="toggleColumn(column)"
+                    />
                   }
                 </div>
-                <mat-divider class="column__divider"></mat-divider>
+                <mat-divider class="column__divider"/>
               </div>
             }
           </div>
@@ -62,10 +76,10 @@
 
       <div class="print-dialog__buttons">
         <button cm-button variant="secondary" (click)="dialogRef.close()">
-          {{'DIALOG.BUTTONS.CANCEL' | translate}}
+          {{ 'DIALOG.BUTTONS.CANCEL' | translate }}
         </button>
         <button cm-button (click)="onPrint()">
-          {{'DIALOG.BUTTONS.EXPORT' | translate}}
+          {{ 'DIALOG.BUTTONS.EXPORT' | translate }}
         </button>
       </div>
     </div>
@@ -74,8 +88,8 @@
       <div class="print-dialog__preview">
         <app-preview-page #print
           [config]="config()"
-          [data]="data">
-        </app-preview-page>
+          [data]="data"
+        />
       </div>
     </div>
   </section>

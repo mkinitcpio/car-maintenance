@@ -56,6 +56,7 @@ describe('PrintMarkupService', () => {
       },
       {
         showTablesCostResult: true,
+        orientation: 'vertical',
         columns: [
           { id: 'name', name: 'RECORDS_TABLE.NAME', visible: true },
           { id: 'notes', name: 'RECORDS_TABLE.COMMENT', visible: false },
