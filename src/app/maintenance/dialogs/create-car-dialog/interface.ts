@@ -1,4 +1,4 @@
-import { FormModeEnum } from '../../../maintenance/create-dialog/form-mode.enum';
+import { FormModeEnum } from '../create-dialog/form-mode.enum';
 import { CarCategoryFormData } from '@core/interfaces/car-category';
 
 export interface Data {
