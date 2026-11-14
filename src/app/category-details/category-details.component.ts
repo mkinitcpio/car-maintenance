@@ -22,9 +22,7 @@ import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/grou
 import { defaultTableConfig } from '@shared/components/table/default-table-config';
 import { TableConfig } from '@shared/components/table/interfaces';
 import { DetailsComponent } from '@shared/components/details/details.component';
-import { RichWidgetComponent } from '@shared/components/rich-widget/rich-widget.component';
 import { WidgetComponent } from '@shared/components/widget/widget.component';
-import { TableComponent } from '@shared/components/table/table.component';
 import { ActionsPanel } from '@shared/components/actions-panel/actions-panel';
 import { CmButton } from '@shared/components/button/button';
 import { CmTextHeader } from '@shared/components/typography/text-header/text-header';
@@ -32,6 +30,10 @@ import { CmTextBody } from '@shared/components/typography/text-body/text-body';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Widget } from '@shared/components/widgets-panel/interface';
+import { EmptyStateComponent } from '@shared/components';
+import { CmLineClamp } from '@shared/directives/line-clamp/line-clamp';
+import { WidgetsPanel } from '@shared/components/widgets-panel/widgets-panel';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,9 +43,7 @@ import { Widget } from '@shared/components/widgets-panel/interface';
     standalone: true,
     imports: [
         DetailsComponent,
-        RichWidgetComponent,
         WidgetComponent,
-        TableComponent,
         ActionsPanel,
         CmButton,
         CmTextHeader,
@@ -51,6 +51,10 @@ import { Widget } from '@shared/components/widgets-panel/interface';
         MatIconModule,
         MatRippleModule,
         TranslateModule,
+        EmptyStateComponent,
+        CmLineClamp,
+        WidgetsPanel,
+        MatMenuModule,
     ],
 })
 export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
@@ -95,13 +99,23 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       orientation: 'vertical',
     }];
 
+    if (this.categoryDetails().type === this.CategoryTypeEnum.Car) {
+      widgets.push({
+        title: 'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE',
+        type: 'mileage',
+        transparent: true,
+        icon: 'speed',
+        value: this.categoryDetails().data.mileage,
+        orientation: 'vertical',
+      })
+    }
+
     return widgets;
   });
 
   public CategoryTypeEnum = CategoryTypeEnum;
   public MetricSystemEnum = MetricSystemEnum;
 
-  public expandPanelToggles = signal<Array<boolean>>([]);
   public expandRecordsPanel = false;
 
   public allExpandButtonState = 'expand';
@@ -136,7 +150,6 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
   ngOnInit(): void {
     this.categoryDetails$.subscribe((categoryDetails) => {
       this.categoryDetails.set(categoryDetails);
-      this.expandPanelToggles.set(Array.from({length: categoryDetails.tables.length}, () => false));
 
       this.totalCost.set(categoryDetails.tables.map(table => this.utilsService.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0));
       this.tableConfig.set({
@@ -290,7 +303,7 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
         const [text, action] = this.exportTranslatedText;
 
         this.snackBar.open('');
-        this.snackBar.open(text, action, { duration: 4000 })
+        this.snackBar.open(text, action, { duration: 40000000 })
           .onAction()
           .subscribe(() => {
             this.electronService.shell.openPath(saveData.filePath);
@@ -313,23 +326,6 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .find((record) => record.id === id);
   }
 
-  public toggleExpandPanel(index: number): void {
-    this.expandPanelToggles.update(toggles => {
-      const next = [...toggles];
-      next[index] = !next[index];
-      return next;
-    });
-  }
-
-  public toogleExpandStates(state): void {
-    this.expandPanelToggles.update(toggles => Array.from({length: toggles.length}, () => state));
-  }
-
-  public getContentHeight(content: HTMLElement): string {
-    const height = 0;
-    return `${[...(content.children as any)].reduce((acc, curr) => acc + curr.getBoundingClientRect().height, height)}px`;
-  }
-
   public onNavigateToDetails(id: string, name: string): void {
     const groupData: GroupData = {
       routeName: 'details',
@@ -337,10 +333,6 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     };
 
     this.groupTreeService.selectedItem(groupData);
-  }
-
-  public get isAllExpanded(): boolean {
-    return this.expandPanelToggles().every(toggle => toggle);
   }
 
   private getExportTranslatedText(): Observable<[string, string]> {
