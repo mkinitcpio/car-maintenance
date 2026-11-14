@@ -10,10 +10,12 @@
       </div>
       <div class="page__title-buttons">
         <ng-content select="[buttons-right]"></ng-content>
-        @if (sidebarButtonIcon()) {
-          <button cm-button variant="transparent" [active]="showSidebar" button-transparent (click)="showSidebar = !showSidebar">
-            <mat-icon [svgIcon]="sidebarButtonIcon()"></mat-icon>
-          </button>
+        @if (withSidebar()) {
+          <cm-actions-panel>
+            <button cm-button variant="transparent" size="small" [active]="showSidebar" button-transparent (click)="showSidebar = !showSidebar">
+              <mat-icon>view_sidebar</mat-icon>
+            </button>
+          </cm-actions-panel>
         }
       </div>
     </section>
@@ -23,19 +25,16 @@
     </div>
   </div>
 
-  @if (true) {
+  @if (withSidebar()) {
     <div class="page__sidebar" [class.page__sidebar--show]="showSidebar">
       <div class="page__sidebar-container">
         <section class="page__title-section">
           <div class="page__title">
-            <span class="page__title-text">{{sidebarTitle()}}</span>
+            <span cmTextHeader="h1" class="page__title-text">{{sidebarTitle()}}</span>
           </div>
         </section>
-        <div class="page__content-shadow-cover">
-          <div class="page__shadow"></div>
-          <div class="page__content">
-            <ng-content select="[sidebar-content]"></ng-content>
-          </div>
+        <div class="page__content">
+          <ng-content select="[sidebar-content]"></ng-content>
         </div>
       </div>
     </div>

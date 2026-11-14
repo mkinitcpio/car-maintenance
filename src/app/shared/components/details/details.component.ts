@@ -3,13 +3,14 @@ import { CmTextHeader } from '@shared/components/typography/text-header/text-hea
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CmButton } from '../button/button';
+import { ActionsPanel } from '../actions-panel/actions-panel';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-details',
     templateUrl: './details.component.html',
     styleUrls: ['./details.component.scss'],
-    imports: [CommonModule, MatIconModule, CmTextHeader, CmButton]
+    imports: [CommonModule, MatIconModule, CmTextHeader, CmButton, ActionsPanel]
 })
 export class DetailsComponent {
 
@@ -29,7 +30,7 @@ export class DetailsComponent {
 
   separated = input<boolean>(false);
 
-  sidebarButtonIcon = input<string>();
-
+  withSidebar = input<boolean>(false);
   sidebarTitle = input<string>();
+  sidebarMode = input<"transparent" | "block">('transparent');
 }
