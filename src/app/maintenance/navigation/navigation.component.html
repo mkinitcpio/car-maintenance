@@ -3,18 +3,36 @@
     class="navigation-header__panel"
     [class.navigation-header__panel--hidden]="searchOpen()"
     [navigationIndex]="selectedTabIndex"
-    (navigationChange)="onSelectTab($event)">
+    (navigationChange)="onSelectTab($event)"
+  >
     <ng-container actions>
-      <button cm-button size="small" variant="transparent" [attr.aria-label]="'SEARCH' | translate" (click)="openSearch()">
+      <button
+        cm-button
+        size="small"
+        variant="transparent"
+        [attr.aria-label]="'SEARCH' | translate"
+        (click)="openSearch()"
+      >
         <mat-icon>search</mat-icon>
       </button>
-      <button cm-button size="small" [active]="menu.menuOpen" variant="transparent" [matMenuTriggerFor]="addMenu" #menu="matMenuTrigger">
+
+      <button
+        cm-button
+        size="small"
+        [active]="menu.menuOpen"
+        variant="transparent"
+        [matMenuTriggerFor]="addMenu"
+        #menu="matMenuTrigger"
+      >
         <mat-icon>add</mat-icon>
       </button>
     </ng-container>
   </cm-navigation-panel>
 
-  <div class="navigation-header__search" [class.navigation-header__search--visible]="searchOpen()">
+  <div
+    class="navigation-header__search"
+    [class.navigation-header__search--visible]="searchOpen()"
+  >
     <cm-actions-panel class="navigation-header__search-container" [withPaddings]="false">
       <cm-input
         #searchInput
@@ -38,7 +56,6 @@
   </div>
 </div>
 
-
 <div class="navigation">
   @if (searchOpen() && searchQuery().trim() && !hasSearchResults()) {
     <div class="navigation__empty">
@@ -47,20 +64,28 @@
       </cm-empty-state>
     </div>
   } @else {
-    <app-tabs [tabs]="tabs" [index]="selectedTabIndex" (selectedTabIndex)="onSelectTab($event)">
-      <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(filteredCategories(), CategoryTypeEnum.Category)"
-                                [searchQuery]="searchQuery()"
-                                (add)="addCategory($event)"
-                                (edit)="onEdit($event)"
-                                (delete)="onDelete($event)">
-      </app-categories-tree>
+    <app-tabs
+      [tabs]="tabs"
+      [index]="selectedTabIndex"
+      (selectedTabIndex)="onSelectTab($event)"
+    >
+      <app-categories-tree
+        tab-1
+        [catagories]="fitlerCategoriesByType(filteredCategories(), CategoryTypeEnum.Category)"
+        [searchQuery]="searchQuery()"
+        (add)="addCategory($event)"
+        (edit)="onEdit($event)"
+        (delete)="onDelete($event)"
+      />
 
-      <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(filteredCategories(), CategoryTypeEnum.Car)"
-                                [searchQuery]="searchQuery()"
-                                (add)="addCategory($event)"
-                                (edit)="onEdit($event)"
-                                (delete)="onDelete($event)">
-      </app-categories-tree>
+      <app-categories-tree
+        tab-2
+        [catagories]="fitlerCategoriesByType(filteredCategories(), CategoryTypeEnum.Car)"
+        [searchQuery]="searchQuery()"
+        (add)="addCategory($event)"
+        (edit)="onEdit($event)"
+        (delete)="onDelete($event)"
+      />
     </app-tabs>
   }
 </div>
