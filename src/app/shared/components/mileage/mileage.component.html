@@ -1,5 +1,3 @@
-<div class="mileage">
-  <span class="mileage__value">
-    {{"METRIC_SYSTEM." + ($safeNavigationMigration(settingsService.units()?.metricSystem)) | uppercase | translate}}
-  </span>
+<div cmTextBody="b3:strong" class="mileage">
+  {{"METRIC_SYSTEM." + ($safeNavigationMigration(settingsService.units()?.metricSystem)) | uppercase | translate}}
 </div>

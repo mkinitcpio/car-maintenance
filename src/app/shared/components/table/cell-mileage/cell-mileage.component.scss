@@ -1,8 +1,12 @@
 .cell-mileage {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   justify-content: flex-end;
 
   text-wrap: nowrap;
+
+  &__illustration {
+    margin-top: 1px;
+  }
 }
