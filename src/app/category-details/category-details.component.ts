@@ -3,13 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { CategoryTree, CategoryTypeEnum } from '../navigation/state/interface';
+import { Category, CategoryTree, CategoryTypeEnum } from '../navigation/state/interface';
 import { CategoryDetailsFacade } from './state/category-details.facade';
 import { CategoryDetails } from './state/interface';
 import { Record } from '../detail/state/interface';
 import { FormModeEnum } from '../shared/components/create-dialog/form-mode.enum';
 import { DetailsFacade } from '../detail/state/details.facade';
 import { DialogManagerService } from '../shared/services/dialog-manager.service';
+import { CategoryManagementService } from '@shared/services/category-management.service';
 import { NavigationFacade } from '../navigation/state/navigation.facade';
 import { listen } from '../core/decorators';
 import { Observable, combineLatest, filter, merge, switchMap, take } from 'rxjs';
@@ -143,12 +144,13 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
     private dialogManagerService: DialogManagerService,
     private categoryDetailsFacade: CategoryDetailsFacade,
     private groupTreeService: GroupTreeService,
+    private categoryManagementService: CategoryManagementService,
   ) {
     super();
   }
 
   ngOnInit(): void {
-    this.categoryDetails$.subscribe((categoryDetails) => {
+    this.categoryDetails$.subscribe((categoryDetails: CategoryDetails) => {
       this.categoryDetails.set(categoryDetails);
 
       this.totalCost.set(categoryDetails.tables.map(table => this.utilsService.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0));
@@ -241,6 +243,21 @@ export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
       .subscribe((group) => {
         this.navigationFacade.createNewCategory(group);
       });
+  }
+
+  public onEditCategory(): void {
+    this.categoryManagementService.editCategory(this.getCategoryForAction());
+  }
+
+  public onDeleteCategory(): void {
+    this.categoryManagementService.deleteCategory(this.getCategoryForAction());
+  }
+
+  private getCategoryForAction(): Category {
+    return {
+      ...this.categoryDetails().data,
+      type: this.categoryDetails().type,
+    };
   }
 
   public onAddRecord(): void {

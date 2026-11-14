@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { TranslateModule } from "@ngx-translate/core";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
@@ -13,7 +13,7 @@ import { DialogManagerService } from "../shared/services/dialog-manager.service"
 import { listen } from "../core/decorators";
 import { merge } from "rxjs";
 import { AutoCloseable } from "../core/auto-closeable";
-import { filter, skip, switchMap, take, takeUntil } from "rxjs/operators";
+import { filter, skip, takeUntil } from "rxjs/operators";
 import { DataBaseService } from "../core/database";
 
 import { SideNavigationTrackerService } from "../home/side-navigation-tracker.service";
@@ -22,11 +22,11 @@ import { SettingsService } from "@shared/components/settings/settings.service";
 import { SettingsTypeEnum } from "@shared/components/settings/settings-type.enum";
 import { NavigationPanel } from "@shared/components/navigation-panel/navigation-panel";
 import { GroupData, GroupTreeService } from "./categories-tree/group-tree.service";
-import { TranslateService } from "@ngx-translate/core";
 import { TabsComponent } from "@shared/components/tabs/tabs.component";
 import { CategoriesTreeComponent } from "./categories-tree/categories-tree.component";
 import { CmButton } from "@shared/components/button/button";
 import { MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { CategoryManagementService } from "@shared/services/category-management.service";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,9 +58,6 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   @listen({value: true})
   categories$ = this.navigationFacade.categories$;
 
-  @listen({value: true})
-  carCategory$ = this.navigationFacade.carCategory$;
-
   @listen()
   categoryChanges$ = merge(
     this.navigationFacade.newCategory$,
@@ -70,8 +67,6 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     this.navigationFacade.deleteCarCategory$,
     this.navigationFacade.editCarCategory$,
   );
-
-  private translateService = inject(TranslateService);
 
   public dataSource = new MatTreeNestedDataSource<any>();
   public selectedCategory: Category;
@@ -98,6 +93,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     private settingsService: SettingsService,
     public sideNavService: SideNavigationTrackerService,
     public groupTreeService: GroupTreeService,
+    private categoryManagementService: CategoryManagementService,
   ) {
     super();
   }
@@ -126,7 +122,7 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
       });
 
     this.categories$
-      .subscribe((categories) => {
+      .subscribe((categories: CategoryTree[]) => {
         this.categories.set(categories);
       });
 
@@ -179,56 +175,12 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     return categories.map((value) => ({ name: value.name, value: value.id }));
   }
 
-  private getFlatTreeView(categories): Array<{ name: string; value: string; id: string, parent: string }> {
-    return categories
-      .map((value) => [value, ...value.children])
-      .flat(2)
-      .filter((value) => value)
-      .map((value) => {
-        const { children, ...data } = value;
-        return data;
-      });
-  }
-
   public onEdit(category: Category): void {
-    const formData = this.getFlatTreeView(this.categories()).find((row) => row.id === category.id);
-    const parentList = this.getListOfParents(this.categories());
-    const data = {
-      mode: FormModeEnum.Edit,
-      parents: parentList,
-      formData,
-    };
-
-    this.dialogManagerService.openCategoryDialog(data)
-      .subscribe((category: Category | CarCategoryFormData) => {
-        this.navigationFacade.editCategory(category);
-      });
-  }
-
-  public onEditCarCategory(id: string): void {
-    this.carCategory$.pipe(
-      take(1),
-      switchMap((carCategory: any) => {
-        const formData : CarCategoryFormData = {...carCategory.data, parts: carCategory.children};
-        return this.dialogManagerService.openCarDialog({ mode: FormModeEnum.Edit, formData });
-      })
-    ).subscribe((data) => {
-      this.navigationFacade.editCarCategory(data);
-    });
-
-    this.navigationFacade.getCarCategory(id);
+    this.categoryManagementService.editCategory(category);
   }
 
   public onDelete(category: Category): void {
-    this.translateService.get("DIALOG.DELETE.DECLESIONS.GROUPS")
-      .pipe(switchMap(translation => this.dialogManagerService.openDeleteCategoryDialog({name: translation})))
-      .subscribe(() => {
-        if(category.type === CategoryTypeEnum.Category) {
-          this.navigationFacade.deleteCategory(category);
-        } else {
-          this.navigationFacade.deleteCarCategory(category.id);
-        }
-      });
+    this.categoryManagementService.deleteCategory(category);
   }
 
   public onFeedback(): void {
@@ -244,6 +196,10 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   }
 
   public onAdd(selectedTabIndex: number): void {
-    selectedTabIndex ? this.addCarCategory() : this.addCategory();
+    if (selectedTabIndex) {
+      this.addCarCategory();
+    } else {
+      this.addCategory();
+    }
   }
 }

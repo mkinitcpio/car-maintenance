@@ -20,7 +20,7 @@
 
     <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(categories(), CategoryTypeEnum.Car)"
                               (add)="addCategory($event)"
-                              (edit)="$event.type === CategoryTypeEnum.Car ? onEditCarCategory($event.id) : onEdit($event)"
+                              (edit)="onEdit($event)"
                               (delete)="onDelete($event)">
     </app-categories-tree>
   </app-tabs>
