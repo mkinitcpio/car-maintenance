@@ -4,7 +4,7 @@ import { CmButton } from '../button/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { FormModeEnum } from '../create-dialog/form-mode.enum';
+import { FormModeEnum } from '../../../maintenance/dialogs/create-dialog/form-mode.enum';
 import { NotificationTypeEnum } from '../notification/notification-type.enum';
 
 @Component({

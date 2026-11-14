@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { Category } from "app/navigation/state/interface";
+import { Category } from "app/maintenance/navigation/state/interface";
 import { CarCategory, CarCategoryFormData } from "../../../interfaces/car-category";
 
 export const createCarCategory = createAction('[Core] Create Car Category', props<{ carCategoryFormData: CarCategoryFormData }>());

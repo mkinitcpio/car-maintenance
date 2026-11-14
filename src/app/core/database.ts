@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CategoryDetail, CategoryDetails } from '../category-details/state/interface';
-import { Record } from '../detail/state/interface';
-import { Category } from '../navigation/state/interface';
+import { CategoryDetail, CategoryDetails } from '../maintenance/category-details/state/interface';
+import { Record } from '../maintenance/detail/state/interface';
+import { Category } from '../maintenance/navigation/state/interface';
 import { ElectronService } from './services';
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import { SettingsService } from '../shared/components/settings/settings.service';

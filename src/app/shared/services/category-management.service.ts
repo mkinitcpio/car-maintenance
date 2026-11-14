@@ -4,9 +4,9 @@ import { filter, map, switchMap, take } from 'rxjs/operators';
 
 import { CarCategory, CarCategoryFormData } from '@core/interfaces/car-category';
 import { EntityState } from '../../state/interface';
-import { Category, CategoryTree, CategoryTypeEnum } from '../../navigation/state/interface';
-import { NavigationFacade } from '../../navigation/state/navigation.facade';
-import { FormModeEnum } from '../components/create-dialog/form-mode.enum';
+import { Category, CategoryTree, CategoryTypeEnum } from '../../maintenance/navigation/state/interface';
+import { NavigationFacade } from '../../maintenance/navigation/state/navigation.facade';
+import { FormModeEnum } from '../../maintenance/dialogs/create-dialog/form-mode.enum';
 import { DialogManagerService } from './dialog-manager.service';
 
 type CarCategoryState = EntityState<{ data: CarCategory; children: Category[] }>;

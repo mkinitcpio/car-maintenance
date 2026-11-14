@@ -4,27 +4,27 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Record } from '../../detail/state/interface';
-import { Category } from '../../navigation/state/interface';
-import { CreateDialogComponent } from '../components/create-dialog/create-dialog.component';
-import { CreateRecordComponent } from '../components/create-record/create-record.component';
+import { Record } from '../../maintenance/detail/state/interface';
+import { Category } from '../../maintenance/navigation/state/interface';
+import { CreateDialogComponent } from '../../maintenance/dialogs/create-dialog/create-dialog.component';
+import { CreateRecordComponent } from '../../maintenance/dialogs/create-record/create-record.component';
 import { ReleaseNotesComponent } from '../components/release-notes/release-notes.component';
 
 import { ReleaseNotes } from '../components/release-notes/interface';
-import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
+import { DeleteDialogComponent } from '../../maintenance/dialogs/delete-dialog/delete-dialog.component';
 import { SettingsComponent } from '../components/settings/settings.component';
-import { PrintDialogComponent } from '../components/print-dialog/print-dialog.component';
-import { PrintDialogConfig } from '@shared/components/print-dialog/print-dialog-config';
-import { CreateCarDialogComponent } from '@shared/components/create-car-dialog/create-car-dialog.component';
+import { PrintDialogComponent } from '../../maintenance/dialogs/print-dialog/print-dialog.component';
+import { PrintDialogConfig } from '../../maintenance/dialogs/print-dialog/print-dialog-config';
+import { CreateCarDialogComponent } from '../../maintenance/dialogs/create-car-dialog/create-car-dialog.component';
 import { CurrencyDialogComponent } from '@shared/components/currency-dialog/currency-dialog.component';
 
 import { CarCategoryFormData } from '@core/interfaces/car-category';
 import { AccountDialogComponent } from '@shared/components/account-dialog/account-dialog.component';
 import { FeedbackDialogComponent } from '@shared/components/feedback-dialog/feedback-dialog.component';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
-import { MoveDialogComponent } from '@shared/components/move-dialog/move-dialog.component';
-import { LabelsDialogComponent } from '@shared/components/labels-dialog/labels-dialog.component';
-import { MoveDialogData } from '@shared/components/move-dialog/interfaces';
+import { MoveDialogComponent } from '../../maintenance/dialogs/move-dialog/move-dialog.component';
+import { LabelsDialogComponent } from '../../maintenance/dialogs/labels-dialog/labels-dialog.component';
+import { MoveDialogData } from '../../maintenance/dialogs/move-dialog/interfaces';
 import { SaveDialogData } from './abstract-export.service';
 
 export const SIDE_DIALOG_CONFIG: Pick<MatDialogConfig, 'position' | 'enterAnimationDuration' | 'exitAnimationDuration'> = {

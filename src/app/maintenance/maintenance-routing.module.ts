@@ -3,9 +3,9 @@ import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 
 import { MaintenanceComponent } from "./maintenance.component";
-import { EmptyComponent } from "app/empty/empty.component";
-import { CategoryDetailsComponent } from "app/category-details/category-details.component";
-import { DetailComponent } from "app/detail/detail.component";
+import { EmptyComponent } from "./empty/empty.component";
+import { CategoryDetailsComponent } from "./category-details/category-details.component";
+import { DetailComponent } from "./detail/detail.component";
 
 const routes: Routes = [
   {

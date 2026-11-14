@@ -3,7 +3,7 @@ import { initialState } from './initial-state';
 import * as CarCategoryActions from './actions';
 import { Status } from '../../core/state.interfaces';
 import { CarCategory, CarCategoryFormData } from '@core/interfaces/car-category';
-import { CategoryTypeEnum } from 'app/navigation/state/interface';
+import { CategoryTypeEnum } from 'app/maintenance/navigation/state/interface';
 
 const carCategory: CarCategory = {
   id: 'car-1',

@@ -1,0 +1,361 @@
+import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { Category, CategoryTree, CategoryTypeEnum } from 'app/maintenance/navigation/state/interface';
+import { CategoryDetailsFacade } from './state/category-details.facade';
+import { CategoryDetails } from './state/interface';
+import { Record } from '../detail/state/interface';
+import { FormModeEnum } from '../dialogs/create-dialog/form-mode.enum';
+import { DetailsFacade } from '../detail/state/details.facade';
+import { DialogManagerService } from '@shared/services/dialog-manager.service';
+import { CategoryManagementService } from '@shared/services/category-management.service';
+import { NavigationFacade } from 'app/maintenance/navigation/state/navigation.facade';
+import { listen } from '@core/decorators';
+import { Observable, combineLatest, filter, merge, switchMap, take } from 'rxjs';
+import { AutoCloseable } from '@core/auto-closeable';
+import { UtilsService } from '@shared/services/utils.service';
+import { SettingsService } from '@shared/components/settings/settings.service';
+import { ElectronService } from '@core/services';
+import { MetricSystemEnum } from '@shared/components/settings/metric-system.enum';
+import { GroupData, GroupTreeService } from 'app/maintenance/navigation/categories-tree/group-tree.service';
+import { defaultTableConfig } from '@shared/components/table/default-table-config';
+import { TableConfig } from '@shared/components/table/interfaces';
+import { DetailsComponent } from '@shared/components/details/details.component';
+import { WidgetComponent } from '@shared/components/widget/widget.component';
+import { ActionsPanel } from '@shared/components/actions-panel/actions-panel';
+import { CmButton } from '@shared/components/button/button';
+import { CmTextHeader } from '@shared/components/typography/text-header/text-header';
+import { CmTextBody } from '@shared/components/typography/text-body/text-body';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
+import { Widget } from '@shared/components/widgets-panel/interface';
+import { EmptyStateComponent } from '@shared/components';
+import { CmLineClamp } from '@shared/directives/line-clamp/line-clamp';
+import { WidgetsPanel } from '@shared/components/widgets-panel/widgets-panel';
+import { MatMenuModule } from '@angular/material/menu';
+
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-category-details',
+    templateUrl: './category-details.component.html',
+    styleUrls: ['./category-details.component.scss'],
+    standalone: true,
+    imports: [
+        DetailsComponent,
+        WidgetComponent,
+        ActionsPanel,
+        CmButton,
+        CmTextHeader,
+        CmTextBody,
+        MatIconModule,
+        MatRippleModule,
+        TranslateModule,
+        EmptyStateComponent,
+        CmLineClamp,
+        WidgetsPanel,
+        MatMenuModule,
+    ],
+})
+export class CategoryDetailsComponent extends AutoCloseable implements OnInit {
+
+  @listen({ value: true })
+    categoryDetails$ = this.categoryDetailsFacade.categoryDetails$;
+
+  @listen({ value: true })
+    records$ = this.detailsFacade.details$;
+
+  @listen({ value: true })
+    deleteCategory$ = merge(
+      this.navigationFacade.deleteCategory$,
+      this.navigationFacade.deleteCarCategory$,
+    );
+
+  @listen({ value: true })
+    updatedMaintenance$ = this.categoryDetailsFacade.updatedMaintenance$;
+
+  @listen()
+    recordChanges$ = merge(
+      this.detailsFacade.newDetails$,
+      this.detailsFacade.editDetail$,
+      this.detailsFacade.deleteDetail$,
+    );
+
+  @listen({ value: true })
+    categoryChanges$ = merge(
+      this.navigationFacade.newCategory$,
+      this.navigationFacade.editCategory$,
+      this.navigationFacade.newCarCategory$,
+      this.navigationFacade.editCarCategory$,
+    );
+
+  public widgets = computed<Widget[]>(() => {
+    const widgets: Widget[] = [{
+      title: 'PAGES.DETAIL.OVERALL_EXPENSE',
+      type: 'currency',
+      transparent: true,
+      icon: 'money',
+      value: this.totalCost(),
+      orientation: 'vertical',
+    }];
+
+    if (this.categoryDetails().type === this.CategoryTypeEnum.Car) {
+      widgets.push({
+        title: 'PAGES.CATEGORY_DETAILS.WIDGETS.MILEAGE',
+        type: 'mileage',
+        transparent: true,
+        icon: 'speed',
+        value: this.categoryDetails().data.mileage,
+        orientation: 'vertical',
+      })
+    }
+
+    return widgets;
+  });
+
+  public CategoryTypeEnum = CategoryTypeEnum;
+  public MetricSystemEnum = MetricSystemEnum;
+
+  public expandRecordsPanel = false;
+
+  public allExpandButtonState = 'expand';
+
+  public id: string;
+  public category: CategoryTree;
+  public categoryDetails = signal<CategoryDetails>(null);
+  public records: Record[] = [];
+  public totalCost = signal<number>(0);
+
+  public tableConfig = signal<TableConfig>(defaultTableConfig);
+  private exportTranslatedText: [text: string, action: string];
+
+  private snackBar = inject(MatSnackBar);
+  private electronService = inject(ElectronService);
+  private translateService: TranslateService = inject(TranslateService);
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private utilsService: UtilsService,
+    private detailsFacade: DetailsFacade,
+    public settingsService: SettingsService,
+    private navigationFacade: NavigationFacade,
+    private dialogManagerService: DialogManagerService,
+    private categoryDetailsFacade: CategoryDetailsFacade,
+    private groupTreeService: GroupTreeService,
+    private categoryManagementService: CategoryManagementService,
+  ) {
+    super();
+  }
+
+  ngOnInit(): void {
+    this.categoryDetails$.subscribe((categoryDetails: CategoryDetails) => {
+      this.categoryDetails.set(categoryDetails);
+
+      this.totalCost.set(categoryDetails.tables.map(table => this.utilsService.getResultCost(table.data)).reduce((acc, cur) => acc + cur, 0));
+      this.tableConfig.set({
+        ...this.tableConfig(),
+        actions: { ...this.tableConfig().actions, selectable: false },
+        columnSchemas: [{
+        key: 'name',
+        name: 'RECORDS_TABLE.NAME',
+        type: 'text',
+        order: 1,
+        visible: true,
+      },{
+        key: 'cost',
+        name: 'RECORDS_TABLE.EXPENSE',
+        type: 'cost',
+        order: 2,
+        visible: true,
+      },{
+        key: 'mileage',
+        name: 'RECORDS_TABLE.MILEAGE',
+        type: 'mileage',
+        order: 3,
+        visible: true,
+      },{
+        key: 'labels',
+        name: 'RECORDS_TABLE.LABELS',
+        type: 'labels',
+        order: 4,
+        visible: true,
+      },
+      {
+        key: 'date',
+        name: 'RECORDS_TABLE.DATE',
+        type: 'date',
+        order: 5,
+        visible: true,
+      },{
+        key: 'notes',
+        name: 'RECORDS_TABLE.COMMENT',
+        type: 'note',
+        order: 6,
+        visible: true,
+      }],
+      });
+    });
+
+    this.recordChanges$.subscribe(() => {
+      this.categoryDetailsFacade.loadCategoryDetails(this.id);
+    });
+
+    this.categoryChanges$.subscribe((category) => {
+      if(category.parent === this.id || this.id === category.id) {
+        this.categoryDetailsFacade.loadCategoryDetails(this.id);
+      }
+    });
+
+    this.updatedMaintenance$.subscribe(() => {
+      this.categoryDetailsFacade.loadCategoryDetails(this.id);
+    });
+
+    this.deleteCategory$.subscribe((category) => {
+      if(this.id === category.id) {
+        this.router.navigate(['maintenance']);
+      }
+
+      if(this.id === category.parent) {
+        this.categoryDetailsFacade.loadCategoryDetails(this.id);
+      }
+    });
+
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      this.categoryDetailsFacade.loadCategoryDetails(this.id);
+    });
+
+    this.getExportTranslatedText()
+      .pipe(take(1))
+      .subscribe((translatedText) => this.exportTranslatedText = translatedText);
+  }
+
+  public onAddGroup(): void {
+    const data = {
+      mode: FormModeEnum.Create,
+      parentId: this.id,
+    };
+
+    this.dialogManagerService
+      .openCategoryDialog(data)
+      .subscribe((group) => {
+        this.navigationFacade.createNewCategory(group);
+      });
+  }
+
+  public onEditCategory(): void {
+    this.categoryManagementService.editCategory(this.getCategoryForAction());
+  }
+
+  public onDeleteCategory(): void {
+    this.categoryManagementService.deleteCategory(this.getCategoryForAction());
+  }
+
+  private getCategoryForAction(): Category {
+    return {
+      ...this.categoryDetails().data,
+      type: this.categoryDetails().type,
+    };
+  }
+
+  public onAddRecord(): void {
+    const data = {
+      mode: FormModeEnum.Create,
+      parent: this.id,
+    };
+
+    this.dialogManagerService
+      .openRecordDialog(data)
+      .subscribe((record) => {
+        this.detailsFacade.createNewRecord(record);
+      });
+  }
+
+  public onEdit(id: string): void {
+    const data = {
+      mode: FormModeEnum.Edit,
+      parent: this.id,
+      formData: this.findRecord(id),
+    };
+
+    this.dialogManagerService
+      .openRecordDialog(data)
+      .subscribe((record: Record) => {
+        this.detailsFacade.editRecord(record);
+      });
+  }
+
+  public onDelete(recordIds: string[]): void {
+    this.utilsService.getDeclensionWord("DIALOG.DELETE.DECLESIONS.RECORDS", 1)
+      .pipe(
+        take(1),
+        switchMap((translation) => {
+          return this.dialogManagerService.openDeleteRecordDialog({ name: `${1} ${translation}` });
+        })
+      )
+      .subscribe(() => {
+        this.detailsFacade.deleteRecord(recordIds);
+      });
+  }
+
+  public onPrint(): void {
+    const tablesData = this.categoryDetails().tables
+      .map(table => ({
+        title: table.name,
+        records: table.data,
+        totalCost: this.utilsService.getResultCost(table.data),
+      }));
+
+    this.dialogManagerService.openPrintDialog({
+      title: this.categoryDetails().data.name,
+      columns: this.tableConfig().columnSchemas,
+      multiply: true,
+      tablesData,
+    }).pipe(
+      filter((data) => !!data?.filePath),
+    ).subscribe(saveData => {
+      if(saveData?.status === "Success") {
+        const [text, action] = this.exportTranslatedText;
+
+        this.snackBar.open('');
+        this.snackBar.open(text, action, { duration: 40000000 })
+          .onAction()
+          .subscribe(() => {
+            this.electronService.shell.openPath(saveData.filePath);
+          });
+      }
+    });
+  }
+
+  public onTextAreaFocusOut(note: string): void {
+    const maintenance = {...this.categoryDetails().maintenance};
+
+    maintenance.note = note;
+    this.categoryDetailsFacade.updateMaintenance(maintenance);
+  }
+
+  private findRecord(id: string): Record {
+    return this.categoryDetails().tables
+      .map((table) => table.data)
+      .reduce((acc, curr) => acc.concat(...curr))
+      .find((record) => record.id === id);
+  }
+
+  public onNavigateToDetails(id: string, name: string): void {
+    const groupData: GroupData = {
+      routeName: 'details',
+      group: { id, parent: this.categoryDetails().data.id, name },
+    };
+
+    this.groupTreeService.selectedItem(groupData);
+  }
+
+  private getExportTranslatedText(): Observable<[string, string]> {
+    return combineLatest([
+      this.translateService.get("NOTIFICATIONS.EXPORT.TEXT"),
+      this.translateService.get("NOTIFICATIONS.EXPORT.ACTION"),
+    ]);
+  }
+}

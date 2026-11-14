@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { CarCategoryEffects } from './effects';
 import * as CarCategoryActions from './actions';
 import { CarCategory, CarCategoryFormData } from '@core/interfaces/car-category';
-import { CategoryTypeEnum } from 'app/navigation/state/interface';
+import { CategoryTypeEnum } from 'app/maintenance/navigation/state/interface';
 import { createDataBaseServiceMock } from 'testing/test-mocks';
 
 const carCategory: CarCategory = {

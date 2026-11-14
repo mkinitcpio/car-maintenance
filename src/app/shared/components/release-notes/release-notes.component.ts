@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CreateRecordComponent } from '../create-record/create-record.component';
+import type { CreateRecordComponent } from '../../../maintenance/dialogs/create-record/create-record.component';
 import { SettingsService } from '../settings/settings.service';
 import { AppConfig, APP_CONFIG } from 'app/app.config';
 

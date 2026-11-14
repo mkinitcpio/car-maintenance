@@ -1,4 +1,4 @@
-import { Category } from '../../navigation/state/interface';
+import { Category } from '../../maintenance/navigation/state/interface';
 
 export interface CarCategory extends Category {
   vehicleId: string;

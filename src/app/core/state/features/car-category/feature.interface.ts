@@ -1,4 +1,4 @@
-import { Category } from "app/navigation/state/interface";
+import { Category } from "app/maintenance/navigation/state/interface";
 import { CarCategory } from "../../../interfaces/car-category";
 import { EntityState } from "../../core/state.interfaces";
 

@@ -1,7 +1,7 @@
 import { DataBaseService } from './database';
 import { createElectronServiceMock, createSettingsServiceMock, ElectronServiceMock } from 'testing/test-mocks';
-import { Category, CategoryTypeEnum } from '../navigation/state/interface';
-import { Record } from '../detail/state/interface';
+import { Category, CategoryTypeEnum } from '../maintenance/navigation/state/interface';
+import { Record } from '../maintenance/detail/state/interface';
 
 const category = (over: Partial<Category>): Category => ({ id: '', name: '', parent: null, type: CategoryTypeEnum.Category, ...over } as Category);
 

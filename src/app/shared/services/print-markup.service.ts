@@ -9,9 +9,9 @@ import { currencies } from '../pipes/currencies';
 import { CurrencyEnum } from '../components/settings/currency.enum';
 import { LocaleEnum } from '../components/settings/locale-enum';
 import { SettingsService } from '../components/settings/settings.service';
-import { appImageBase64 } from '../components/print-dialog/preview-page/app-image.base64';
-import { PrintDialogConfig } from '../components/print-dialog/print-dialog-config';
-import { ColumnConfig, PreviewPageConfig } from '../components/print-dialog/preview-page/preview-page-config';
+import { appImageBase64 } from '../../maintenance/dialogs/print-dialog/preview-page/app-image.base64';
+import { PrintDialogConfig } from '../../maintenance/dialogs/print-dialog/print-dialog-config';
+import { ColumnConfig, PreviewPageConfig } from '../../maintenance/dialogs/print-dialog/preview-page/preview-page-config';
 
 type TableData = PrintDialogConfig['tablesData'][number];
 type TableRecord = TableData['records'][number];

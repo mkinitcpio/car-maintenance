@@ -5,9 +5,9 @@ import type { Mock } from 'vitest';
 
 import { CarCategory } from '@core/interfaces/car-category';
 import { Status } from '../../state/interface';
-import { Category, CategoryTree, CategoryTypeEnum } from '../../navigation/state/interface';
-import { NavigationFacade } from '../../navigation/state/navigation.facade';
-import { FormModeEnum } from '../components/create-dialog/form-mode.enum';
+import { Category, CategoryTree, CategoryTypeEnum } from '../../maintenance/navigation/state/interface';
+import { NavigationFacade } from '../../maintenance/navigation/state/navigation.facade';
+import { FormModeEnum } from '../../maintenance/dialogs/create-dialog/form-mode.enum';
 import { DialogManagerService } from './dialog-manager.service';
 import { CategoryManagementService } from './category-management.service';
 

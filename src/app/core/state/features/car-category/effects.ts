@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { Category } from 'app/navigation/state/interface';
+import { Category } from 'app/maintenance/navigation/state/interface';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { DataBaseService } from '../../../database';
