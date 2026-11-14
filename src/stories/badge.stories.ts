@@ -4,9 +4,9 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { CmBadge } from '../app/shared/components/badge/badge';
+import { Badge } from '../app/shared/components/badge/badge';
 
-type BadgeWithArgs = Omit<CmBadge, 'variant' | 'icon'> & {
+type BadgeWithArgs = Omit<Badge, 'variant' | 'icon'> & {
   variant: 'primary' | 'neutral' | 'dangerous';
   icon: string;
   label: string;
@@ -25,7 +25,7 @@ const applicationConfig = {
 
 const meta: Meta<BadgeWithArgs> = {
   title: 'Shared/Badge',
-  component: CmBadge,
+  component: Badge,
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text' },
