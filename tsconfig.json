@@ -22,14 +22,19 @@
     },
     "useDefineForClassFields": false,
     "ignoreDeprecations": "6.0",
-    "strict": false
+    "strict": false,
+    "types": [
+      "node",
+      "vitest/globals"
+    ]
   },
   "files": [
     "src/main.ts",
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/**/*.spec.ts"
   ],
   "exclude": [
     "node_modules"
