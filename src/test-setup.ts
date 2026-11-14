@@ -14,3 +14,13 @@ if (typeof window !== 'undefined' && !window.matchMedia) {
     dispatchEvent: () => false,
   })) as typeof window.matchMedia;
 }
+
+if (typeof globalThis.ResizeObserver === 'undefined') {
+  class ResizeObserverMock {
+    observe(): void {}
+    unobserve(): void {}
+    disconnect(): void {}
+  }
+
+  globalThis.ResizeObserver = ResizeObserverMock as unknown as typeof ResizeObserver;
+}

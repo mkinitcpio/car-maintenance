@@ -16,7 +16,9 @@ describe('TableComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({ imports: [TableComponent] })
-            .overrideComponent(TableComponent, { set: { template: '' } })
+            .overrideComponent(TableComponent, {
+                set: { template: '<section #tableSection><table #table></table></section>' },
+            })
             .compileComponents();
 
         fixture = TestBed.createComponent(TableComponent<RowData>);
