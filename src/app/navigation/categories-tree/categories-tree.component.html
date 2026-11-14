@@ -2,6 +2,7 @@
   @for (category of catagories(); track category.id) {
     <app-categories-tree-node
       [child]="category"
+      [searchQuery]="searchQuery()"
       (add)="onAdd($event)"
       (edit)="onEdit($event)"
       (delete)="onDelete($event)">

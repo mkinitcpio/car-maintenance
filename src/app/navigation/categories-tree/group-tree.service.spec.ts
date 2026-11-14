@@ -55,4 +55,34 @@ describe('GroupTreeService', () => {
             expect(service.getGroupExpandState('b')).toBeUndefined();
         });
     });
+
+    describe('search mode', () => {
+        it('expands every group while searching', () => {
+            service.switchExpandState('a');
+
+            service.setSearchActive(true);
+
+            expect(service.getGroupExpandState('a')).toBe(true);
+            expect(service.getGroupExpandState('b')).toBe(true);
+        });
+
+        it('restores the previous expand state when the search is over', () => {
+            service.switchExpandState('a');
+
+            service.setSearchActive(true);
+            service.setSearchActive(false);
+
+            expect(service.getGroupExpandState('a')).toBe(true);
+            expect(service.getGroupExpandState('b')).toBeUndefined();
+        });
+
+        it('does not change the stored expand state while searching', () => {
+            service.setSearchActive(true);
+
+            service.switchExpandState('a');
+
+            service.setSearchActive(false);
+            expect(service.getGroupExpandState('a')).toBeUndefined();
+        });
+    });
 });

@@ -10,7 +10,7 @@ import { DataBaseService } from '../core/database';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { SideNavigationTrackerService } from '../home/side-navigation-tracker.service';
 import { GroupTreeService } from './categories-tree/group-tree.service';
-import { Category, CategoryTypeEnum } from './state/interface';
+import { Category, CategoryTree, CategoryTypeEnum } from './state/interface';
 import { createDataBaseServiceMock, createSettingsServiceMock } from 'testing/test-mocks';
 
 function createNavigationFacadeMock(): any {
@@ -107,6 +107,103 @@ describe('NavigationComponent', () => {
             const car: Category = { id: 'car1', name: 'Car', parent: null, type: CategoryTypeEnum.Car };
             component.onDelete(car);
             expect(facade.deleteCarCategory).toHaveBeenCalledWith('car1');
+        });
+    });
+
+    describe('search', () => {
+        const categories: CategoryTree[] = [
+            {
+                id: 'engine',
+                name: 'Engine',
+                type: CategoryTypeEnum.Category,
+                children: [
+                    { id: 'oil-filter', name: 'Oil filter', type: CategoryTypeEnum.Category },
+                    { id: 'air-filter', name: 'Air filter', type: CategoryTypeEnum.Category },
+                ],
+            },
+            {
+                id: 'brakes',
+                name: 'Brakes',
+                type: CategoryTypeEnum.Category,
+                children: [
+                    { id: 'oil', name: 'Oil', type: CategoryTypeEnum.Category },
+                ],
+            },
+            {
+                id: 'car',
+                name: 'Car',
+                type: CategoryTypeEnum.Car,
+                children: [],
+            },
+        ];
+
+        beforeEach(() => {
+            component.categories.set(categories);
+        });
+
+        it('keeps groups whose children match the query', () => {
+            component.onSearchChange('oil');
+
+            const filtered = component.filteredCategories();
+
+            expect(filtered.map((category) => category.id)).toEqual(['engine', 'brakes']);
+            expect(filtered[0].children.map((child) => child.id)).toEqual(['oil-filter']);
+            expect(filtered[1].children.map((child) => child.id)).toEqual(['oil']);
+        });
+
+        it('keeps all children when the group name matches', () => {
+            component.onSearchChange('engine');
+
+            const filtered = component.filteredCategories();
+
+            expect(filtered.map((category) => category.id)).toEqual(['engine']);
+            expect(filtered[0].children.map((child) => child.id)).toEqual(['oil-filter', 'air-filter']);
+        });
+
+        it('matches car categories as well', () => {
+            component.onSearchChange('car');
+
+            expect(component.filteredCategories().map((category) => category.id)).toEqual(['car']);
+        });
+
+        it('reports no results when nothing matches the query', () => {
+            component.onSearchChange('unknown');
+
+            expect(component.hasSearchResults()).toBe(false);
+        });
+
+        it('checks the results of the active tab only', () => {
+            component.onSearchChange('oil');
+
+            expect(component.hasSearchResults()).toBe(true);
+
+            component.selectedTabIndex = 1;
+            expect(component.hasSearchResults()).toBe(false);
+        });
+
+        it('enables the group-tree search mode when the query is not empty', () => {
+            const groupTreeService = TestBed.inject(GroupTreeService);
+            const spy = vi.spyOn(groupTreeService, 'setSearchActive');
+
+            component.onSearchChange('oil');
+            expect(spy).toHaveBeenCalledWith(true);
+
+            component.onSearchChange('   ');
+            expect(spy).toHaveBeenLastCalledWith(false);
+        });
+
+        it('resets the query and the tree state when the search is closed', () => {
+            const groupTreeService = TestBed.inject(GroupTreeService);
+            const spy = vi.spyOn(groupTreeService, 'setSearchActive');
+
+            component.openSearch();
+            component.onSearchChange('oil');
+            component.closeSearch();
+
+            expect(component.searchOpen()).toBe(false);
+            expect(component.searchQuery()).toBe('');
+            expect(component.filteredCategories()).toEqual(categories);
+            expect(spy).toHaveBeenCalledWith(false);
         });
     });
 });

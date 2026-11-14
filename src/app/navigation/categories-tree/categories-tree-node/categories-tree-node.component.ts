@@ -13,6 +13,11 @@ import { CmButton } from "@shared/components/button/button";
 import { CmTextBody } from "@shared/components/typography/text-body/text-body";
 import { CmLineClamp } from "@shared/directives/line-clamp/line-clamp";
 
+export interface HighlightPart {
+  text: string;
+  matched: boolean;
+}
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "app-categories-tree-node",
@@ -35,6 +40,8 @@ export class CategoriesTreeNodeComponent {
   contextMenu: MatMenuTrigger;
 
   child = input<CategoryTree>();
+
+  searchQuery = input<string>('');
 
   add = output<Category>();
   edit = output<Category>();
@@ -91,5 +98,34 @@ export class CategoriesTreeNodeComponent {
 
   public get expanded(): boolean {
     return this.groupTreeService.getGroupExpandState(this.child().id);
+  }
+
+  public nameParts(name: string): HighlightPart[] {
+    const query = this.searchQuery()?.trim().toLowerCase();
+
+    if (!query || !name) {
+      return [{ text: name, matched: false }];
+    }
+
+    const lowerName = name.toLowerCase();
+    const parts: HighlightPart[] = [];
+    let cursor = 0;
+    let matchIndex = lowerName.indexOf(query);
+
+    while (matchIndex !== -1) {
+      if (matchIndex > cursor) {
+        parts.push({ text: name.slice(cursor, matchIndex), matched: false });
+      }
+
+      parts.push({ text: name.slice(matchIndex, matchIndex + query.length), matched: true });
+      cursor = matchIndex + query.length;
+      matchIndex = lowerName.indexOf(query, cursor);
+    }
+
+    if (cursor < name.length) {
+      parts.push({ text: name.slice(cursor), matched: false });
+    }
+
+    return parts;
   }
 }

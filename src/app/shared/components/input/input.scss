@@ -41,6 +41,10 @@
     opacity: 0.4;
   }
 
+  &--background-primary {
+    background-color: $background-primary;
+  }
+
   &__label {
     display: block;
     margin-bottom: 8px;

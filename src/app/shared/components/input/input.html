@@ -8,6 +8,7 @@
   [class.input--focused]="focused()"
   [class.input--invalid]="invalid()"
   [class.input--disabled]="disabledState()"
+  [class.input--background-primary]="background() === 'primary'"
 >
 
   @if(prefix()) {
@@ -58,6 +59,8 @@
   }
 </div>
 
-<div class="input__hint" cmTextBody="b3" [class.input__hint--invalid]="invalid()">
-    {{ hint() || '&#8203;' }}
-</div>
+@if (withHint()) {
+  <div class="input__hint" cmTextBody="b3" [class.input__hint--invalid]="invalid()">
+      {{ hint() || '&#8203;' }}
+  </div>
+}

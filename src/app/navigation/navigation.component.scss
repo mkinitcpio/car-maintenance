@@ -10,6 +10,80 @@
   overflow: hidden;
 }
 
+.navigation-header {
+  position: relative;
+  display: flow-root;
+
+  &__panel {
+    display: block;
+
+    transition: opacity 200ms ease,
+      transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0s;
+    will-change: opacity, transform;
+
+    &--hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 200ms ease,
+        transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s linear 200ms;
+    }
+  }
+
+  &__search {
+    position: absolute;
+    inset: 8px 2px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 200ms ease,
+      transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0s linear 200ms;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+      transition: opacity 200ms ease,
+        transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s;
+    }
+  }
+
+  &__search-field {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__search-container {
+    display: block;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__search-action {
+    display: block;
+    flex: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation-header__panel,
+  .navigation-header__search {
+    transition: none;
+  }
+}
+
 .navigation {
   flex: 1;
   min-height: 0;
@@ -22,6 +96,13 @@
 
   background-color: $background-primary;
   user-select: none;
+
+  &__empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &__title-container {
     box-sizing: border-box;

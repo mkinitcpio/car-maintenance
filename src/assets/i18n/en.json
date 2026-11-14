@@ -92,7 +92,8 @@
       "TABS": {
         "CATEGORIES": "Groups",
         "CARS": "Cars"
-      }
+      },
+      "NO_SEARCH_RESULT": "Nothing found"
     },
     "CATEGORY_DETAILS": {
       "GROUPS": "Groups",

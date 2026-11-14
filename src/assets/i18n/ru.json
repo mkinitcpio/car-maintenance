@@ -92,7 +92,8 @@
         "TABS": {
           "CATEGORIES": "Группы",
           "CARS": "Автомобили"
-        }
+        },
+        "NO_SEARCH_RESULT": "Ничего не найдено"
       },
       "CATEGORY_DETAILS": {
         "GROUPS": "Группы",

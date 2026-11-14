@@ -16,6 +16,8 @@ export class CategoriesTreeComponent {
 
   catagories = input<CategoryTree[]>();
 
+  searchQuery = input<string>('');
+
   add = output<Category>();
 
   edit = output<Category>();

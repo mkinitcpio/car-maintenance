@@ -32,6 +32,8 @@ export class CmInput implements ControlValueAccessor {
   readonly maxlength = input<number>();
   readonly invalid = input<boolean>(false);
   readonly withClearButton = input<boolean>(false);
+  readonly withHint = input<boolean>(true);
+  readonly background = input<'default' | 'primary'>('default');
   readonly prefix = input<string>();
   readonly multiline = input<boolean>(false);
   readonly rows = input<number>(3);

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit, computed, signal, viewChild } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { TranslateModule } from "@ngx-translate/core";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
@@ -25,8 +25,13 @@ import { GroupData, GroupTreeService } from "./categories-tree/group-tree.servic
 import { TabsComponent } from "@shared/components/tabs/tabs.component";
 import { CategoriesTreeComponent } from "./categories-tree/categories-tree.component";
 import { CmButton } from "@shared/components/button/button";
+import { CmInput } from "@shared/components/input/input";
+import { EmptyStateComponent } from "@shared/components/empty-state/empty-state.component";
+import { EmptyStateIllustration } from "@shared/components/empty-state/empty-state-illustration";
+import { SearchIllustrationComponent } from "@shared/components/empty-state/illustrations/search-illustration";
 import { MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { CategoryManagementService } from "@shared/services/category-management.service";
+import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,11 +45,16 @@ import { CategoryManagementService } from "@shared/services/category-management.
     TabsComponent,
     CategoriesTreeComponent,
     CmButton,
+    CmInput,
+    EmptyStateComponent,
+    EmptyStateIllustration,
+    SearchIllustrationComponent,
     NavigationPanel,
     MatMenuTrigger,
     MatMenu,
     MatMenuItem,
     MatMenuContent,
+    ActionsPanel,
 ],
 })
 export class NavigationComponent extends AutoCloseable implements OnInit {
@@ -74,6 +84,14 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
   public categories = signal<CategoryTree[]>([]);
   public CategoryTypeEnum = CategoryTypeEnum;
   public selectedTabIndex = 0;
+
+  public searchOpen = signal<boolean>(false);
+  public searchQuery = signal<string>('');
+  public filteredCategories = computed<CategoryTree[]>(() =>
+    this.filterCategories(this.categories(), this.searchQuery()),
+  );
+
+  private readonly searchField = viewChild<CmInput>('searchInput');
 
   public tabs = [{
     icon: 'tree',
@@ -189,6 +207,60 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
 
   public fitlerCategoriesByType(categories: CategoryTree[] ,type: CategoryTypeEnum): CategoryTree[] {
     return categories.filter(category => category.type === type);
+  }
+
+  public openSearch(): void {
+    if (this.searchOpen()) {
+      return;
+    }
+
+    this.searchQuery.set('');
+    this.searchOpen.set(true);
+    this.groupTreeService.setSearchActive(false);
+
+    setTimeout(() => this.searchField()?.focus());
+  }
+
+  public closeSearch(): void {
+    this.searchQuery.set('');
+    this.groupTreeService.setSearchActive(false);
+    this.searchOpen.set(false);
+  }
+
+  public onSearchChange(value: string): void {
+    this.searchQuery.set(value);
+    this.groupTreeService.setSearchActive(!!value.trim());
+  }
+
+  public hasSearchResults(): boolean {
+    const type = this.selectedTabIndex === 0 ? CategoryTypeEnum.Category : CategoryTypeEnum.Car;
+
+    return this.fitlerCategoriesByType(this.filteredCategories(), type).length > 0;
+  }
+
+  private filterCategories(categories: CategoryTree[], query: string): CategoryTree[] {
+    const searchTerm = query.trim().toLowerCase();
+
+    if (!searchTerm) {
+      return categories;
+    }
+
+    return categories.reduce<CategoryTree[]>((result, category) => {
+      const children = category.children || [];
+      const matchedChildren = children.filter((child) => this.matchesSearchTerm(child.name, searchTerm));
+
+      if (this.matchesSearchTerm(category.name, searchTerm)) {
+        result.push({ ...category, children });
+      } else if (matchedChildren.length) {
+        result.push({ ...category, children: matchedChildren });
+      }
+
+      return result;
+    }, []);
+  }
+
+  private matchesSearchTerm(name: string, searchTerm: string): boolean {
+    return !!name?.toLowerCase().includes(searchTerm);
   }
 
   public onSelectTab(index: number): void {

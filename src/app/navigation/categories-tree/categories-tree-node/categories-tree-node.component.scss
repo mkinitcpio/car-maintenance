@@ -49,6 +49,15 @@
     color: inherit;
   }
 
+  &__name-text {
+    display: inline;
+  }
+
+  &__match {
+    color: $color-primary;
+    font-weight: 600;
+  }
+
   &__selection-container {
     width: 100%;
     display: flex;

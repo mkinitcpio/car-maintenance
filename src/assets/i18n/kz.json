@@ -90,7 +90,8 @@
     "TABS": {
       "CATEGORIES": "Топтар",
       "CARS": "Автомобильдер"
-    }
+    },
+    "NO_SEARCH_RESULT": "Ештеңе табылмады"
   },
   "CATEGORY_DETAILS": {
     "GROUPS": "Топтар",

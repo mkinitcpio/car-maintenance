@@ -15,6 +15,8 @@ import { CmInput } from './input';
             [hint]="hint()"
             [type]="type()"
             [invalid]="invalid()"
+            [background]="background()"
+            [withHint]="withHint()"
             [formControl]="control">
         </cm-input>
     `,
@@ -26,6 +28,8 @@ class TestHostComponent {
     hint = signal('');
     type = signal<'text' | 'password'>('text');
     invalid = signal(false);
+    background = signal<'default' | 'primary'>('default');
+    withHint = signal(true);
     control = new FormControl('');
 }
 
@@ -132,6 +136,20 @@ describe('CmInput', () => {
         fixture.detectChanges();
 
         expect(getWrapper().classList).toContain('input--invalid');
+    });
+
+    it('should apply primary background', () => {
+        host.background.set('primary');
+        fixture.detectChanges();
+
+        expect(getWrapper().classList).toContain('input--background-primary');
+    });
+
+    it('should hide the hint when withHint is false', () => {
+        host.withHint.set(false);
+        fixture.detectChanges();
+
+        expect(fixture.debugElement.query(By.css('.input__hint'))).toBeNull();
     });
 
     it('should disable field from form control', () => {

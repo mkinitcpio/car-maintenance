@@ -97,4 +97,29 @@ describe('CategoriesTreeNodeComponent', () => {
         expect(component.contextMenuPosition).toEqual({ x: '12px', y: '34px' });
         expect(openMenu).toHaveBeenCalled();
     });
+
+    describe('nameParts', () => {
+        it('returns the whole name when the search query is empty', () => {
+            expect(component.nameParts('Engine')).toEqual([{ text: 'Engine', matched: false }]);
+        });
+
+        it('highlights every case-insensitive occurrence of the query', () => {
+            fixture.componentRef.setInput('searchQuery', 'oil');
+
+            expect(component.nameParts('Oil filter and OIL')).toEqual([
+                { text: 'Oil', matched: true },
+                { text: ' filter and ', matched: false },
+                { text: 'OIL', matched: true },
+            ]);
+        });
+
+        it('keeps the unmatched text around the match', () => {
+            fixture.componentRef.setInput('searchQuery', '  filter  ');
+
+            expect(component.nameParts('Oil filter')).toEqual([
+                { text: 'Oil ', matched: false },
+                { text: 'filter', matched: true },
+            ]);
+        });
+    });
 });

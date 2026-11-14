@@ -1,29 +1,68 @@
-<cm-navigation-panel [navigationIndex]="selectedTabIndex" (navigationChange)="onSelectTab($event)">
-  <ng-container actions>
-    <button cm-button size="small" variant="transparent">
-      <mat-icon>search</mat-icon>
-    </button>
-    <button cm-button size="small" [active]="menu.menuOpen" variant="transparent" [matMenuTriggerFor]="addMenu" #menu="matMenuTrigger">
-      <mat-icon>add</mat-icon>
-    </button>
-  </ng-container>
-</cm-navigation-panel>
+<div class="navigation-header">
+  <cm-navigation-panel
+    class="navigation-header__panel"
+    [class.navigation-header__panel--hidden]="searchOpen()"
+    [navigationIndex]="selectedTabIndex"
+    (navigationChange)="onSelectTab($event)">
+    <ng-container actions>
+      <button cm-button size="small" variant="transparent" [attr.aria-label]="'SEARCH' | translate" (click)="openSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button cm-button size="small" [active]="menu.menuOpen" variant="transparent" [matMenuTriggerFor]="addMenu" #menu="matMenuTrigger">
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
+  </cm-navigation-panel>
+
+  <div class="navigation-header__search" [class.navigation-header__search--visible]="searchOpen()">
+    <cm-actions-panel class="navigation-header__search-container" [withPaddings]="false">
+      <cm-input
+        #searchInput
+        class="navigation-header__search-field"
+        background="primary"
+        [withClearButton]="true"
+        [withHint]="false"
+        prefix="search"
+        [placeholder]="'SEARCH' | translate"
+        [value]="searchQuery()"
+        (change)="onSearchChange($event)">
+      </cm-input>
+    </cm-actions-panel>
+
+    <cm-actions-panel class="navigation-header__search-action">
+      <button cm-button size="small" variant="transparent" (click)="closeSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </cm-actions-panel>
+
+  </div>
+</div>
 
 
 <div class="navigation">
-  <app-tabs [tabs]="tabs" [index]="selectedTabIndex" (selectedTabIndex)="onSelectTab($event)">
-    <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(categories(), CategoryTypeEnum.Category)"
-                              (add)="addCategory($event)"
-                              (edit)="onEdit($event)"
-                              (delete)="onDelete($event)">
-    </app-categories-tree>
+  @if (searchOpen() && searchQuery().trim() && !hasSearchResults()) {
+    <div class="navigation__empty">
+      <cm-empty-state text="PAGES.NAVIGATION.NO_SEARCH_RESULT">
+        <cm-search-illustration cmEmptyStateIllustration></cm-search-illustration>
+      </cm-empty-state>
+    </div>
+  } @else {
+    <app-tabs [tabs]="tabs" [index]="selectedTabIndex" (selectedTabIndex)="onSelectTab($event)">
+      <app-categories-tree tab-1 [catagories]="fitlerCategoriesByType(filteredCategories(), CategoryTypeEnum.Category)"
+                                [searchQuery]="searchQuery()"
+                                (add)="addCategory($event)"
+                                (edit)="onEdit($event)"
+                                (delete)="onDelete($event)">
+      </app-categories-tree>
 
-    <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(categories(), CategoryTypeEnum.Car)"
-                              (add)="addCategory($event)"
-                              (edit)="onEdit($event)"
-                              (delete)="onDelete($event)">
-    </app-categories-tree>
-  </app-tabs>
+      <app-categories-tree tab-2 [catagories]="fitlerCategoriesByType(filteredCategories(), CategoryTypeEnum.Car)"
+                                [searchQuery]="searchQuery()"
+                                (add)="addCategory($event)"
+                                (edit)="onEdit($event)"
+                                (delete)="onDelete($event)">
+      </app-categories-tree>
+    </app-tabs>
+  }
 </div>
 
 <mat-menu #addMenu>

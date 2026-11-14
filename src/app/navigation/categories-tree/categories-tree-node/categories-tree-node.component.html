@@ -11,11 +11,11 @@
         <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (child().illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
       </div>
       <span cmTextBody="b1" cmLineClamp="1" class="categories-tree-node__name">
-        {{child().name}}
+        <span class="categories-tree-node__name-text">@for (part of nameParts(child().name); track $index) {<span [class.categories-tree-node__match]="part.matched">{{ part.text }}</span>}</span>
       </span>
     </div>
     <div class="categories-tree-node__expand-button-container">
-      @if (child().children?.length) {
+      @if (child().children?.length && !groupTreeService.isSearchActive()) {
         <button cm-button variant="transparent" shape="rounded" (click)="switchExpandState()">
           <mat-icon
             class="categories-tree-node__expand-button"
@@ -46,7 +46,7 @@
                 <mat-icon class="categories-tree-node__icon" [svgIcon]="'illustrations:' + (c.illustration?.replace('.svg', '') || 'wrench')"></mat-icon>
               </div>
               <span cmTextBody="b1" cmLineClamp="1" class="categories-tree-node__name">
-                {{c.name}}
+                <span class="categories-tree-node__name-text">@for (part of nameParts(c.name); track $index) {<span [class.categories-tree-node__match]="part.matched">{{ part.text }}</span>}</span>
               </span>
             </div>
           </div>
