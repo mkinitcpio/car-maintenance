@@ -8,6 +8,14 @@
 
   </ng-container>
 
+  <ng-container buttons-right>
+    <cm-actions-panel>
+      <button [matMenuTriggerFor]="menu" cm-button size="small" variant="transparent" shape="rounded">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </cm-actions-panel>
+  </ng-container>
+
   <ng-container content>
     <cm-widgets-panel [data]="widgets()"></cm-widgets-panel>
     <cm-table [config]="tableConfig()"
@@ -23,3 +31,17 @@
     </cm-table>
   </ng-container>
 </app-details>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent>
+    <button class="menu-item" mat-menu-item (click)="onEditCategory()">
+      <mat-icon class="mat-item__icon mat-item__icon--edit" svgIcon="edit"></mat-icon>
+      <span cmTextBody="b1">{{ "MENU.EDIT" | translate }}</span>
+    </button>
+    <div class="mat-menu__divider"></div>
+    <button class="menu-item menu-item--delete" mat-menu-item (click)="onDeleteCategory()">
+      <mat-icon class="mat-item__icon mat-item__icon--delete" svgIcon="trash"></mat-icon>
+      <span cmTextBody="b1">{{ "MENU.DELETE" | translate }}</span>
+    </button>
+  </ng-template>
+</mat-menu>

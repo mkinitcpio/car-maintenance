@@ -18,7 +18,7 @@ import { GroupData, GroupTreeService } from 'app/navigation/categories-tree/grou
 import { ExportService } from '@shared/services/export.service';
 import { NavigationFacade } from 'app/navigation/state/navigation.facade';
 import { filter, map, switchMap, take } from 'rxjs/operators';
-import { CategoryTree } from 'app/navigation/state/interface';
+import { CategoryTree, Category, CategoryTypeEnum } from 'app/navigation/state/interface';
 
 import { stateValue } from '@core/rx-operators';
 import { MoveToItem } from '@shared/components/move-dialog/interfaces';
@@ -33,11 +33,13 @@ import { ElectronService } from '@core/services';
 import { columnSchemas } from './detail-table-column-schema.config';
 import { UtilsService } from '@shared/services/utils.service';
 import { ColumnSchema, TableConfig } from '@shared/components/table/interfaces';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { WidgetsPanel } from '../shared/components/widgets-panel/widgets-panel';
 import { Widget } from '../shared/components/widgets-panel/interface';
 import { CmButton } from "@shared/components/button/button";
 import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
+import { CmTextBody } from '@shared/components/typography/text-body/text-body';
+import { CategoryManagementService } from '@shared/services/category-management.service';
 
 const imports = [
   TableComponent,
@@ -46,7 +48,9 @@ const imports = [
   MatMenuModule,
   WidgetsPanel,
   CmButton,
-  ActionsPanel
+  ActionsPanel,
+  TranslateModule,
+  CmTextBody,
 ];
 
 @Component({
@@ -61,6 +65,12 @@ export class DetailComponent extends AutoCloseable implements OnInit {
 
   @listen({ value: true })
     details$ = this.detailsFacade.details$;
+
+  @listen({ value: true })
+    editCategory$ = this.navigationFacade.editCategory$;
+
+  @listen({ value: true })
+    deleteCategory$ = this.navigationFacade.deleteCategory$;
 
   @listen()
     newDetails$ = this.detailsFacade.newDetails$;
@@ -95,7 +105,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       type: 'date',
       transparent: true,
       icon: 'calendar-edit',
-      value: this.lastModifiedDate() as Date,
+      value: this.lastModifiedDate(),
     }];
 
     return widgets;
@@ -120,6 +130,7 @@ export class DetailComponent extends AutoCloseable implements OnInit {
     private dialogManagerService: DialogManagerService,
     private groupTreeService: GroupTreeService,
     private navigationFacade: NavigationFacade,
+    private categoryManagementService: CategoryManagementService,
   ) {
     super();
     this.tableConfig.set({
@@ -131,21 +142,34 @@ export class DetailComponent extends AutoCloseable implements OnInit {
   }
 
   ngOnInit(): void {
-    this.details$.subscribe((categoryDetails) => {
+    this.details$.subscribe((categoryDetails: Record[]) => {
       this.dataSourceTable.set(categoryDetails);
       this.costSum.set(this.utilsService.getResultCost(categoryDetails));
       this.lastModifiedDate.set(this.utilsService.getLastDate(categoryDetails));
     });
 
     this.route.params.subscribe((params) => {
-      this.parentId.set(params['parentId']);
-      this.id = params['id'];
-      this.name.set(params['name']);
+      this.parentId.set(params['parentId'] as string);
+      this.id = params['id'] as string;
+      this.name.set(params['name'] as string);
       this.detailsFacade.loadRecords(this.id);
     });
 
     this.detailChanges$.subscribe(() => {
       this.detailsFacade.loadRecords(this.id);
+    });
+
+    this.editCategory$.subscribe((category: Category) => {
+      if (category.id === this.id) {
+        this.name.set(category.name);
+        this.parentId.set(category.parent);
+      }
+    });
+
+    this.deleteCategory$.subscribe((category: Category) => {
+      if (category.id === this.id) {
+        this.navigateToParentGroup(this.parentId());
+      }
     });
 
     this.getExportTranslatedText()
@@ -191,6 +215,23 @@ export class DetailComponent extends AutoCloseable implements OnInit {
       .subscribe(() => {
         this.detailsFacade.deleteRecord(rowIds);
       });
+  }
+
+  public onEditCategory(): void {
+    this.categoryManagementService.editCategory(this.getCategoryForAction());
+  }
+
+  public onDeleteCategory(): void {
+    this.categoryManagementService.deleteCategory(this.getCategoryForAction());
+  }
+
+  private getCategoryForAction(): Category {
+    return {
+      id: this.id,
+      name: this.name(),
+      parent: this.parentId(),
+      type: CategoryTypeEnum.Category,
+    };
   }
 
   public onExportToPDF(): void {

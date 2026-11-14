@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { of, Subject } from 'rxjs';
+import type { Mock } from 'vitest';
 
 import { DetailComponent } from './detail.component';
 import { DetailsFacade } from './state/details.facade';
@@ -13,6 +14,9 @@ import { NavigationFacade } from 'app/navigation/state/navigation.facade';
 import { ElectronService } from '@core/services';
 import { ExportService } from '@shared/services/export.service';
 import { UtilsService } from '@shared/services/utils.service';
+import { CategoryManagementService } from '@shared/services/category-management.service';
+import { Status } from 'app/state/interface';
+import { CategoryTypeEnum } from 'app/navigation/state/interface';
 import { createElectronServiceMock, createSettingsServiceMock } from 'testing/test-mocks';
 
 function createDetailsFacadeMock(): any {
@@ -35,11 +39,22 @@ describe('DetailComponent', () => {
     let fixture: ComponentFixture<DetailComponent>;
     let facade: any;
     let settings: any;
+    let navigationFacade: any;
+    let categoryManagement: { editCategory: Mock; deleteCategory: Mock };
     let groupTreeService: GroupTreeService;
 
     beforeEach(async () => {
         facade = createDetailsFacadeMock();
         settings = createSettingsServiceMock();
+        navigationFacade = {
+            categories$: new Subject(),
+            editCategory$: new Subject(),
+            deleteCategory$: new Subject(),
+        };
+        categoryManagement = {
+            editCategory: vi.fn().mockName('editCategory'),
+            deleteCategory: vi.fn().mockName('deleteCategory'),
+        };
 
         await TestBed.configureTestingModule({
             imports: [DetailComponent],
@@ -55,7 +70,8 @@ describe('DetailComponent', () => {
                         openMoveDialog: () => of(null),
                     },
                 },
-                { provide: NavigationFacade, useValue: { categories$: new Subject() } },
+                { provide: NavigationFacade, useValue: navigationFacade },
+                { provide: CategoryManagementService, useValue: categoryManagement },
                 { provide: ElectronService, useValue: createElectronServiceMock() },
                 { provide: ExportService, useValue: { toCSV: () => of({ status: 'Cancel' }), toPDF: () => of({ status: 'Cancel' }) } },
                 { provide: UtilsService, useValue: {
@@ -92,6 +108,54 @@ describe('DetailComponent', () => {
         expect(groupTreeService.getSelectedItem()).toEqual({
             routeName: 'category-details',
             group: { id: 'parent-1' },
+        });
+    });
+
+    it('edits the current category through the shared service', () => {
+        component.onEditCategory();
+
+        expect(categoryManagement.editCategory).toHaveBeenCalledWith({
+            id: 'i',
+            name: 'Engine',
+            parent: 'p',
+            type: CategoryTypeEnum.Category,
+        });
+    });
+
+    it('deletes the current category through the shared service', () => {
+        component.onDeleteCategory();
+
+        expect(categoryManagement.deleteCategory).toHaveBeenCalledWith({
+            id: 'i',
+            name: 'Engine',
+            parent: 'p',
+            type: CategoryTypeEnum.Category,
+        });
+    });
+
+    it('updates the title and parent when the current category is edited', () => {
+        navigationFacade.editCategory$.next({ status: Status.Loading, value: null, error: null });
+        navigationFacade.editCategory$.next({
+            status: Status.Success,
+            value: { id: 'i', name: 'Updated engine', parent: 'new-parent', type: CategoryTypeEnum.Category },
+            error: null,
+        });
+
+        expect(component.name()).toBe('Updated engine');
+        expect(component.parentId()).toBe('new-parent');
+    });
+
+    it('navigates to the parent when the current category is deleted', () => {
+        navigationFacade.deleteCategory$.next({ status: Status.Loading, value: null, error: null });
+        navigationFacade.deleteCategory$.next({
+            status: Status.Success,
+            value: { id: 'i', name: 'Engine', parent: 'p', type: CategoryTypeEnum.Category },
+            error: null,
+        });
+
+        expect(groupTreeService.getSelectedItem()).toEqual({
+            routeName: 'category-details',
+            group: { id: 'p' },
         });
     });
 
