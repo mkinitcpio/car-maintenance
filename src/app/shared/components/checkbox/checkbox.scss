@@ -26,7 +26,7 @@
     color: currentColor;
     min-width: 20px;
     height: 20px;
-    border: 2px solid color-mix(in srgb, $font-color-primary 22%, transparent);
+    border: 1.5px solid color-mix(in srgb, $font-color-primary 22%, transparent);
     border-radius: 6px;
     display: grid;
     place-content: center;
@@ -50,7 +50,7 @@
     &:checked::before {
       transform: scale(1);
     }
-  
+
     &::before {
       content: "";
       background-color: $toggle-active-color;
@@ -62,5 +62,3 @@
       }
   }
 }
-
-
