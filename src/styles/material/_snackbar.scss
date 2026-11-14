@@ -1,0 +1,9 @@
+@use 'colors' as *;
+@use 'fonts' as *;
+
+html {
+  --mat-snack-bar-container-shape: 26px;
+  --mat-snack-bar-container-color: #{$background-primary};
+  --mat-snack-bar-supporting-text-font: #{$font-system};
+  --mat-snack-bar-supporting-text-color: #{$font-color-primary};
+}
