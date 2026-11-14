@@ -45,10 +45,6 @@
     width: 24px;
   }
 
-  &__name {
-    transition: transform 0.2s ease-in;
-  }
-
   &__icon {
     color: inherit;
   }
@@ -62,7 +58,6 @@
     border-radius: 21px;
     cursor: pointer;
     height: 42px;
-    transition: background-color 0.15s ease-in;
 
     @include mixins.selectable;
   }
@@ -73,12 +68,6 @@
     gap: 4px;
 
     line-height: 1.5rem;
-
-    &--select {
-      .categories-tree-node__name {
-        transform: translate(2px);
-      }
-    }
   }
 
   &__expand-button-container {
