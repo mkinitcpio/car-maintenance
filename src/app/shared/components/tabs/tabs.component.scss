@@ -3,6 +3,8 @@
 @use 'fonts' as *;
 
 :host {
+  display: block;
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -10,6 +12,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
 
   &--bordered {
     margin-top: 20px;
@@ -89,20 +92,17 @@
   }
 
   &__content {
-    position: relative;
-    left: 0;
-    display: grid;
-    block-size: 100%;
-    grid-auto-flow: column;
-    grid-auto-columns: 100%;
-    height: 90%;
+    display: flex;
     flex: 1;
+    min-height: 0;
+    width: 100%;
 
-    transition: left 0.4s ease-in-out;
-    will-change: left;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 
     &--switched {
-      left: -100%
+      transform: translate3d(-100%, 0, 0);
     }
   }
 
@@ -116,12 +116,17 @@
   .tab-content {
     @include mixins.scrollable();
 
-    opacity: 0;
-    transition: opacity 0.2s ease-in;
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+  }
+}
 
-    &--selected {
-      opacity: 1;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .tabs__content {
+    transition: none;
   }
 }
 

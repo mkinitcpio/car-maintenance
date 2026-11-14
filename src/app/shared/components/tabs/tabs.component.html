@@ -1,9 +1,9 @@
 <div class="tabs">
   <div class="tabs__content" [class.tabs__content--switched]="selectedtab">
-    <div class="tab-content" [class.tab-content--selected]="selectedtab === 0">
+    <div class="tab-content">
       <ng-content select="[tab-1]"></ng-content>
     </div>
-    <div class="tab-content" [class.tab-content--selected]="selectedtab === 1">
+    <div class="tab-content">
       <ng-content select="[tab-2]"></ng-content>
     </div>
   </div>

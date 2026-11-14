@@ -1,8 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, effect, ElementRef, EventEmitter, input, Input, OnInit, output, Output, ViewChild } from '@angular/core';
-import { CmTextBody } from '../typography/text-body/text-body';
-import { MatBadgeModule } from '@angular/material/badge';
-import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, effect, input, output } from '@angular/core';
 import { Tab } from './interface';
 
 @Component({
@@ -10,7 +6,6 @@ import { Tab } from './interface';
     selector: 'app-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],
-    imports: [CommonModule, TranslateModule, MatBadgeModule]
 })
 export class TabsComponent {
 
