@@ -41,6 +41,10 @@ describe('PrintMarkupService', () => {
     service.build(
       {
         multiply: false,
+        columns: [
+          { key: 'name', name: 'RECORDS_TABLE.NAME', type: 'string', order: 0, visible: true },
+          { key: 'notes', name: 'RECORDS_TABLE.COMMENT', type: 'string', order: 1, visible: false },
+        ],
         tablesData: [{
           title: 'Engine',
           totalCost: 10,
