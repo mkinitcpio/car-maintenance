@@ -49,7 +49,7 @@ export class CmInput implements ControlValueAccessor {
 
   readonly inputType = computed<string>(() => this.type() === 'password' && !this.passwordVisible() ? 'password' : 'text');
 
-  readonly change = output<string>();
+  readonly valueChange = output<string>();
   readonly blur = output<void>();
 
   private readonly fieldInput = viewChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('fieldInput');
@@ -83,7 +83,7 @@ export class CmInput implements ControlValueAccessor {
 
     this.valueState.update(() => value);
     this.onChange(value);
-    this.change.emit(value);
+    this.valueChange.emit(value);
   }
 
   onFocus(): void {
@@ -98,7 +98,8 @@ export class CmInput implements ControlValueAccessor {
 
   onClearValue(): void {
     this.writeValue('');
-    this.change.emit('');
+    this.onChange('');
+    this.valueChange.emit('');
   }
 
   togglePasswordVisibility(): void {

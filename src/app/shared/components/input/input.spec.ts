@@ -17,6 +17,7 @@ import { CmInput } from './input';
             [invalid]="invalid()"
             [background]="background()"
             [withHint]="withHint()"
+            [withClearButton]="withClearButton()"
             [formControl]="control">
         </cm-input>
     `,
@@ -30,6 +31,7 @@ class TestHostComponent {
     invalid = signal(false);
     background = signal<'default' | 'primary'>('default');
     withHint = signal(true);
+    withClearButton = signal(false);
     control = new FormControl('');
 }
 
@@ -100,7 +102,7 @@ describe('CmInput', () => {
     it('should update form control and emit change on input', () => {
         const spy = vi.fn();
         const component = fixture.debugElement.query(By.directive(CmInput)).componentInstance as CmInput;
-        component.change.subscribe(spy);
+        component.valueChange.subscribe(spy);
 
         getField().value = 'typed';
         getField().dispatchEvent(new Event('input'));
@@ -108,6 +110,23 @@ describe('CmInput', () => {
 
         expect(host.control.value).toBe('typed');
         expect(spy).toHaveBeenCalledWith('typed');
+    });
+
+    it('should clear the value, the form control and emit a string', () => {
+        host.withClearButton.set(true);
+        host.control.setValue('typed');
+        fixture.detectChanges();
+
+        const spy = vi.fn();
+        const component = fixture.debugElement.query(By.directive(CmInput)).componentInstance as CmInput;
+        component.valueChange.subscribe(spy);
+
+        fixture.debugElement.query(By.css('.input__toggle')).nativeElement.click();
+        fixture.detectChanges();
+
+        expect(host.control.value).toBe('');
+        expect(getField().value).toBe('');
+        expect(spy).toHaveBeenCalledWith('');
     });
 
     it('should mark control touched on blur', () => {
