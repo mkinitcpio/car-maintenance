@@ -1,12 +1,7 @@
 <app-setting [label]="'PAGES.SETTINGS.FIELDS.METRIC_SYSTEM' | translate" icon="straighten">
-  <mat-button-toggle-group class="settings__toggle-group"
-                          [value]="MetricSystemEnum[metricSystem()] || MetricSystemEnum[region()]"
-                          (change)="onMetricSystemChanged($event.value)">
-    <mat-button-toggle [value]="MetricSystemEnum.Mi">
-      {{"METRIC_SYSTEM.MILES" | translate}}
-    </mat-button-toggle>
-    <mat-button-toggle [value]="MetricSystemEnum.Km">
-      {{"METRIC_SYSTEM.KILOMETERS" | translate}}
-    </mat-button-toggle>
-  </mat-button-toggle-group>
+  <cm-segmented-control
+    [options]="metricSystemOptions"
+    [value]="MetricSystemEnum[metricSystem()] || MetricSystemEnum[region()]"
+    (valueChange)="onMetricSystemChanged($event)"
+  />
 </app-setting>

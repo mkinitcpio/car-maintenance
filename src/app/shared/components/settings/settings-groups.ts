@@ -25,8 +25,4 @@ export const settingsGroups: SettingsGroup[] = [{
   name: 'PAGES.SETTINGS.SECTIONS.CONTACTS',
   icon: 'alternate_email',
   isBottom: true,
-}, {
-  page: 'about',
-  name: 'PAGES.SETTINGS.SECTIONS.ABOUT',
-  icon: 'info',
 }];

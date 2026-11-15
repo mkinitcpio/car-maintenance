@@ -1,18 +1,18 @@
 export const regionOptions = [
   {
-    name: 'United States',
+    name: 'REGION.US',
     value: 'us'
   },
   {
-    name: 'Россия',
+    name: 'REGION.RU',
     value: 'ru'
   },
   {
-    name: 'Беларусь',
+    name: 'REGION.BY',
     value: 'by'
   },
   {
-    name: 'Казахстан',
+    name: 'REGION.KZ',
     value: 'kz'
   },
 ];

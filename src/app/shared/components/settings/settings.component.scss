@@ -104,10 +104,6 @@
     gap: 16px;
   }
 
-  &__toggle-group {
-    border-radius: 12px !important;
-  }
-
   &__item {
     display: flex;
     height: 64px;
@@ -197,42 +193,8 @@
     margin-right: 8px !important;
   }
 
-  .mat-button-toggle-checked {
-    background: $color-primary !important;
-    line-height: initial;
-    color: $toggle-active-color !important;
-  }
-
-  .mat-button-toggle-label-content {
-    line-height: 36px;
-    font-size: 14px;
-    font-family: $font-system;
-  }
-
   .mat-form-field-wrapper {
     width: 100%;
-  }
-
-  .mat-button-toggle-button {
-    width: 104px;
-  }
-
-  .mat-button-toggle-appearance-standard {
-    color: $font-color-secondary;
-    background-color: transparent;
-  }
-
-  .mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
-    border-left: solid 1.5px $color-border;
-  }
-
-  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard {
-    border-color: $color-border;
-    border-width: 1.5px;
-  }
-
-  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
-    line-height: 42px;
   }
 }
 

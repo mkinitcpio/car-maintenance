@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/cor
 import { CmTextBody } from '../typography/text-body/text-body';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -31,7 +30,6 @@ import { FeedbackRepository } from '@core/repositories/feedback.repository';
         ReactiveFormsModule,
         MatFormFieldModule,
         MatSelectModule,
-        MatButtonToggleModule,
         TranslateModule,
         MatIconModule,
         CmTextBody,

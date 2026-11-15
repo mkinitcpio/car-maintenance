@@ -1,0 +1,12 @@
+<div class="segmented-control">
+  @for (option of options(); track option.value) {
+    <button
+      [cmTextBody]="option.value === value() ? 'b1:medium': 'b1'"
+      class="segmented-control__option"
+      [class.segmented-control__option--selected]="option.value === value()"
+      (click)="onSelect(option.value)"
+    >
+      {{option.label | translate}}
+    </button>
+  }
+</div>

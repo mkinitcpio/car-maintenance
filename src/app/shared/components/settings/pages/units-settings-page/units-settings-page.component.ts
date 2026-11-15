@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { SettingComponent } from '../../setting/setting.component';
-import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { SegmentedControlComponent, SegmentedControlOption } from '@shared/components/segmented-control/segmented-control.component';
 import { LocaleEnum } from '../../locale-enum';
 import { MetricSystemEnum } from '../../metric-system.enum';
 import { SettingsService } from '../../settings.service';
@@ -11,8 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'cm-units-settings-page',
     imports: [
         SettingComponent,
-        MatButtonToggle,
-        MatButtonToggleGroup,
+        SegmentedControlComponent,
         TranslateModule,
     ],
     templateUrl: './units-settings-page.component.html',
@@ -26,6 +25,11 @@ export class UnitsSettingsPageComponent {
   private settingsService = inject(SettingsService);
 
   MetricSystemEnum = MetricSystemEnum;
+
+  public readonly metricSystemOptions: SegmentedControlOption<MetricSystemEnum>[] = [
+    { value: MetricSystemEnum.Mi, label: 'METRIC_SYSTEM.MILES' },
+    { value: MetricSystemEnum.Km, label: 'METRIC_SYSTEM.KILOMETERS' },
+  ];
 
   public onMetricSystemChanged(mSystem: MetricSystemEnum): void {
     this.settingsService.setMetricSystem(mSystem);

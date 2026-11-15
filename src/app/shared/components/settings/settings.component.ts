@@ -4,7 +4,6 @@ import { CmTextHeader } from '../typography/text-header/text-header';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { MatRippleModule } from '@angular/material/core';
 import { DialogComponent } from '../dialog/dialog.component';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule } from '@ngx-translate/core';
@@ -49,7 +48,6 @@ import { ResizeObserverService } from "@shared/services/resize-observer.service"
         TranslateModule,
         MatDividerModule,
         MatTooltipModule,
-        MatButtonToggleModule,
         DialogComponent,
         MatRippleModule,
         MatSidenavModule,
