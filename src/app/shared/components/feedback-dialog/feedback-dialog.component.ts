@@ -4,12 +4,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogComponent } from '../dialog/dialog.component';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CmInput } from '../input/input';
 
 import { Feedback, FeedbackDialogData, FeedbackTypeOption } from './interfaces';
 import { FeedbackTypeEnum } from './feedback-type.enum';
@@ -24,27 +24,28 @@ import { FeedbackRepository } from '@core/repositories/feedback.repository';
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-feedback-dialog',
     templateUrl: './feedback-dialog.component.html',
-    styleUrls: ['./feedback-dialog.component.scss'],
     imports: [
         CommonModule,
         DialogComponent,
         FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
-        MatInputModule,
         MatSelectModule,
         MatButtonToggleModule,
         TranslateModule,
         MatIconModule,
         CmTextBody,
+        CmInput,
     ]
 })
 export class FeedbackDialogComponent implements OnInit {
 
   public feedbackForm = new FormGroup({
     name: this.fb.control("Some name"),
-    message: this.fb.control(null),
-    email: this.fb.control(null),
+    message: this.fb.control(null, [Validators.required]),
+    email: this.fb.control(null, [
+      Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z.-]{2,}\.[a-zA-Z]{2,}$/),
+    ]),
     type: this.fb.control(this.data.type || FeedbackTypeEnum.Feature),
   });
 

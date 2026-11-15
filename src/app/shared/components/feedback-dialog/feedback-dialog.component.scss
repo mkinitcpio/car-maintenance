@@ -1,9 +1,0 @@
-@use 'colors' as *;
-@use 'fonts' as *;
-
-.feedback {
-  &__note {
-    height: 128px !important;
-    resize: none;
-  }
-}

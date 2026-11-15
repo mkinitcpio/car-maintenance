@@ -11,7 +11,7 @@
       </div>
       @if (!data.type) {
         <mat-form-field [floatLabel]="'always'">
-          <mat-select [formControlName]="'type'">
+          <mat-select panelClass="cm-select" [formControlName]="'type'">
             @for (option of feedbackTypeOptions; track option) {
               <mat-option [value]="option.key">
                 {{option.value | translate}}
@@ -27,27 +27,26 @@
       <div cmTextBody="b1" class="form-field__title">
         {{'Email' | translate}}
       </div>
-      <mat-form-field [floatLabel]="'always'">
-        <input placeholder="email@example.com"
-          formControlName="email"
-          matInput
-          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
-        @if (feedbackForm.get('email').hasError('pattern')) {<mat-error>
-            {{'DIALOG.VALIDATIONS.EMAIL' | translate}}
-          </mat-error>}
-      </mat-form-field>
+      <cm-input
+        formControlName="email"
+        placeholder="email@example.com"
+        [invalid]="feedbackForm.get('email').touched && feedbackForm.get('email').hasError('pattern')"
+        [hint]="feedbackForm.get('email').touched && feedbackForm.get('email').hasError('pattern') ? ('DIALOG.VALIDATIONS.EMAIL' | translate) : ''">
+      </cm-input>
     </div>
 
     <div>
       <div cmTextBody="b1" class="form-field__title">
         {{"DIALOG.FIELDS.TEXT" | translate}}
       </div>
-      <mat-form-field [floatLabel]="'always'">
-        <textarea cdkFocusInitial class="feedback__note" [formControlName]="'message'" matInput [required]="true"></textarea>
-        @if (feedbackForm.get('message').hasError('required')) {<mat-error>
-            {{'DIALOG.VALIDATIONS.TEXT' | translate}}
-          </mat-error>}
-      </mat-form-field>
+      <cm-input
+        cdkFocusInitial
+        [multiline]="true"
+        [rows]="6"
+        formControlName="message"
+        [invalid]="feedbackForm.get('message').touched && feedbackForm.get('message').hasError('required')"
+        [hint]="feedbackForm.get('message').touched && feedbackForm.get('message').hasError('required') ? ('DIALOG.VALIDATIONS.TEXT' | translate) : ''">
+      </cm-input>
     </div>
   </form>
 </app-dialog>
