@@ -2,7 +2,7 @@
   [title]="categoryDetails().data.name"
   class="category-details"
   [withSidebar]="categoryDetails().type === CategoryTypeEnum.Car"
-  sidebarTitle="Car info"
+  [sidebarTitle]="'PAGES.CATEGORY_DETAILS.SIDEBAR_TITLE' | translate"
   [icon]="'illustrations:' + (categoryDetails().icon || 'wrench').replace('.svg', '')"
 >
   <ng-container buttons-right>
@@ -105,7 +105,7 @@
           #notesInput
           class="category-details__notes"
           [value]="categoryDetails().maintenance.note"
-          placeholder="Type some notes"
+          [placeholder]="'PAGES.CATEGORY_DETAILS.NOTE_PLACEHOLDER' | translate"
           (focusout)="onTextAreaFocusOut(notesInput.value)"
         >
         </textarea>

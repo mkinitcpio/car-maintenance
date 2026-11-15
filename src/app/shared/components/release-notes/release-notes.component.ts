@@ -14,7 +14,7 @@ import type { CreateRecordComponent } from '../../../maintenance/dialogs/create-
 import { SettingsService } from '../settings/settings.service';
 import { AppConfig, APP_CONFIG } from 'app/app.config';
 import { Accordion } from '../accordion/accordion';
-import { ElectronService } from '@core/services';
+import { ExternalLinkService } from '@core/services';
 
 interface ReleaseNote {
   title: string;
@@ -46,7 +46,7 @@ export class ReleaseNotesComponent implements OnInit {
   public dialogRef = inject(MatDialogRef<CreateRecordComponent>);
 
   private settingsService = inject(SettingsService);
-  private electronService = inject(ElectronService);
+  private externalLinkService = inject(ExternalLinkService);
   private releaseNotesData = inject<{ [key: string]: ReleaseNote[] }>(MAT_DIALOG_DATA);
 
   public releaseNotes: ReleaseNote[];
@@ -69,6 +69,6 @@ export class ReleaseNotesComponent implements OnInit {
     }
 
     event.preventDefault();
-    this.electronService.shell.openExternal(link.href);
+    this.externalLinkService.open(link.href);
   }
 }

@@ -97,6 +97,8 @@
     },
     "CATEGORY_DETAILS": {
       "GROUPS": "Groups",
+      "SIDEBAR_TITLE": "Car info",
+      "NOTE_PLACEHOLDER": "Type some notes",
       "WIDGETS": {
         "INFO": "Information",
         "NOTE": "Note",
@@ -162,7 +164,6 @@
     },
     "DELETE": {
       "TITLE": "Confirm Delete",
-      "GROUPS": "groups",
       "TEXT": "Do you really want to delete <b class=\"primary-text-color\">{{name}}</b>?<br>This process cannot be undone.",
       "DECLESIONS": {
         "RECORDS": ["record", "records"],
@@ -274,6 +275,12 @@
     "MILES": "Miles",
     "KM": "km",
     "MI": "mi"
+  },
+  "REGION": {
+    "US": "United States",
+    "RU": "Russia",
+    "BY": "Belarus",
+    "KZ": "Kazakhstan"
   },
   "ERROR": "Oops, something was wrong.",
   "FEEDBACK_SUCCESS": "Feedback submitted.",

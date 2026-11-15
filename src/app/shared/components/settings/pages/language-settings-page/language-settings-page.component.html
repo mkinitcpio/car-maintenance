@@ -26,7 +26,7 @@
     >
       @for (region of regionOptions(); track $index) {
         <mat-option [value]="region.value">
-          {{ region.name }}
+          {{ region.name | translate }}
         </mat-option>
       }
     </mat-select>

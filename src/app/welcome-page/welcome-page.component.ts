@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
-import { ElectronService } from '@core/services';
+import { ExternalLinkService } from '@core/services';
 import { FeedbackTypeEnum } from '@shared/components/feedback-dialog/feedback-type.enum';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
 import { DatabaseSelectComponent } from '../database-select/database-select.component';
 import { CmButton } from '@shared/components/button/button';
+import { AppConfig } from 'environments/environment';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,19 +25,19 @@ import { CmButton } from '@shared/components/button/button';
 })
 export class WelcomePageComponent {
 
-  private readonly GITHUB_URL = "https://github.com/mkinitcpio/car-maintenance";
+  private readonly mailUrl = `${AppConfig.links.mail}?subject=Question`;
 
   constructor(
-    private electronService: ElectronService,
+    private externalLinkService: ExternalLinkService,
     private dialogManagerService: DialogManagerService
   ) {}
 
   public onOpenGitHub(): void {
-    this.electronService.shell.openExternal(this.GITHUB_URL);
+    this.externalLinkService.open(AppConfig.links.sourceCode);
   }
 
   public onOpenMail(): void {
-    this.electronService.shell.openExternal("mailto:aliaksandr.kazhamiaka@gmail.com?subject=Question");
+    this.externalLinkService.open(this.mailUrl);
   }
 
   public onOpenFeedback(): void {

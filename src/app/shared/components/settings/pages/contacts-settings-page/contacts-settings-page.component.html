@@ -4,7 +4,7 @@
   </div>
   <div class="cm-contact-settings-page__contacts">
     @for (contact of contacts(); track $index) {
-      <div class="cm-contact-settings-page__contact" matRipple>
+      <div class="cm-contact-settings-page__contact" matRipple (click)="onOpenContact(contact)">
         <mat-icon class="cm-contact-settings-page__icon" [svgIcon]="contact.icon"></mat-icon>
         <div cmTextBody="b1" class="cm-contact-settings-page__name">{{contact.name}}</div>
       </div>

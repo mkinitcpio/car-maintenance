@@ -1,5 +1,6 @@
 import { InjectionToken } from "@angular/core";
 import packageJson from '../../package.json';
+import { AppConfig as EnvironmentConfig } from '../environments/environment';
 
 const version = packageJson.version;
 export const APP_CONFIG = new InjectionToken<string>('APP_CONFIG');
@@ -13,7 +14,7 @@ export interface AppConfig {
 
 export const appConfig: AppConfig = {
   version,
-  documentationUrl: 'https://mkinitcpio.gitbook.io/car-maintenance',
-  sourceCodeUrl: 'https://github.com/mkinitcpio/car-maintenance',
+  documentationUrl: EnvironmentConfig.links.documentation,
+  sourceCodeUrl: EnvironmentConfig.links.sourceCode,
   fileEncoding: 'utf8',
 };

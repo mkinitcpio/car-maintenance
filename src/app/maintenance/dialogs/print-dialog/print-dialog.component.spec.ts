@@ -27,7 +27,7 @@ describe('PrintDialogComponent', () => {
         multiply: false,
         columns: [
             { key: 'name', name: 'RECORDS_TABLE.NAME', type: 'string', order: 0, visible: true },
-            { key: 'cost', name: 'RECORDS_TABLE.COST', type: 'number', order: 1, visible: true },
+            { key: 'expense', name: 'RECORDS_TABLE.EXPENSE', type: 'number', order: 1, visible: true },
             { key: 'notes', name: 'RECORDS_TABLE.COMMENT', type: 'string', order: 2, visible: false },
         ],
         tablesData: [

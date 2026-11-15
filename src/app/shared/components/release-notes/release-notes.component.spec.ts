@@ -43,23 +43,24 @@ describe('ReleaseNotesComponent', () => {
   });
 
   it('opens a link from the release notes externally', () => {
+    const electron: any = TestBed.inject(ElectronService);
     const link = document.createElement('a');
     link.href = 'https://example.com';
-
     const event = { target: link, preventDefault: vi.fn() } as unknown as MouseEvent;
 
     component.onListClick(event);
 
     expect(event.preventDefault).toHaveBeenCalled();
-    expect(TestBed.inject(ElectronService).shell.openExternal).toHaveBeenCalledWith('https://example.com/');
+    expect(electron.shell.openExternal).toHaveBeenCalledWith('https://example.com/');
   });
 
   it('ignores clicks that are not on a link', () => {
+    const electron: any = TestBed.inject(ElectronService);
     const event = { target: document.createElement('span'), preventDefault: vi.fn() } as unknown as MouseEvent;
 
     component.onListClick(event);
 
     expect(event.preventDefault).not.toHaveBeenCalled();
-    expect(TestBed.inject(ElectronService).shell.openExternal).not.toHaveBeenCalled();
+    expect(electron.shell.openExternal).not.toHaveBeenCalled();
   });
 });

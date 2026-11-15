@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, Self, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { ElectronService } from '@core/services';
+import { ExternalLinkService } from '@core/services';
 import { ReleaseNotes } from '@shared/components/release-notes/interface';
 import { SettingsService } from '@shared/components/settings/settings.service';
 import { DialogManagerService } from '@shared/services/dialog-manager.service';
@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private elementRef: ElementRef<HTMLElement>,
-    private electronService: ElectronService,
+    private externalLinkService: ExternalLinkService,
     private dialogService: DialogManagerService,
     @Self() private resizeObserverService: ResizeObserverService,
     private settingsService: SettingsService,
@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
   }
 
   public openGitHub(): void {
-    this.electronService.shell.openExternal(this.appConfig.sourceCodeUrl);
+    this.externalLinkService.open(this.appConfig.sourceCodeUrl);
   }
 
   public openReleaseNotes(): void {
@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
   public openDocumentation(): void {
     const documentationUrl = `${this.appConfig.documentationUrl}-${this.settingsService.settings.language}`;
 
-    this.electronService.shell.openExternal(documentationUrl);
+    this.externalLinkService.open(documentationUrl);
   }
 
   public openFeedbackDialog(): void {
