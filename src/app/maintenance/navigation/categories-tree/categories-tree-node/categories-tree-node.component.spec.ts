@@ -98,6 +98,25 @@ describe('CategoriesTreeNodeComponent', () => {
         expect(openMenu).toHaveBeenCalled();
     });
 
+    it('compensates the offset of a transformed containing block', () => {
+        const openMenu = vi.fn().mockName('openMenu');
+        const style = { left: '', top: '' };
+        component.contextMenu = { openMenu } as any;
+        component.contextMenuPosition = { x: '10px', y: '20px' };
+        component.contextMenuTrigger = {
+            nativeElement: {
+                getBoundingClientRect: () => ({ left: 100, top: 50 }),
+                style,
+            },
+        } as any;
+
+        component.onContextMenu({ preventDefault: vi.fn(), clientX: 200, clientY: 120 } as any, child);
+
+        expect(component.contextMenuPosition).toEqual({ x: '110px', y: '90px' });
+        expect(style).toEqual({ left: '110px', top: '90px' });
+        expect(openMenu).toHaveBeenCalled();
+    });
+
     describe('nameParts', () => {
         it('returns the whole name when the search query is empty', () => {
             expect(component.nameParts('Engine')).toEqual([{ text: 'Engine', matched: false }]);

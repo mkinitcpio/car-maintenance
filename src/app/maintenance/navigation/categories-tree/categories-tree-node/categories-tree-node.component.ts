@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component,
+  ElementRef,
   ViewChild,
   input,
   output, } from "@angular/core";
@@ -39,6 +40,9 @@ export class CategoriesTreeNodeComponent {
   @ViewChild(MatMenuTrigger)
   contextMenu: MatMenuTrigger;
 
+  @ViewChild('contextMenuTrigger', { read: ElementRef })
+  contextMenuTrigger: ElementRef<HTMLElement>;
+
   child = input<CategoryTree>();
 
   searchQuery = input<string>('');
@@ -55,8 +59,28 @@ export class CategoriesTreeNodeComponent {
   public onContextMenu(event: MouseEvent, category: CategoryTree): void {
     event.preventDefault();
     this.contextMenuCategory = category;
-    this.contextMenuPosition.x = `${event.clientX}px`;
-    this.contextMenuPosition.y = `${event.clientY}px`;
+
+    const trigger = this.contextMenuTrigger?.nativeElement;
+
+    if (trigger) {
+      const triggerRect = trigger.getBoundingClientRect();
+      const previousLeft = parseFloat(this.contextMenuPosition.x) || 0;
+      const previousTop = parseFloat(this.contextMenuPosition.y) || 0;
+
+      const containingBlockLeft = triggerRect.left - previousLeft;
+      const containingBlockTop = triggerRect.top - previousTop;
+
+      this.contextMenuPosition = {
+        x: `${event.clientX - containingBlockLeft}px`,
+        y: `${event.clientY - containingBlockTop}px`,
+      };
+
+      trigger.style.left = this.contextMenuPosition.x;
+      trigger.style.top = this.contextMenuPosition.y;
+    } else {
+      this.contextMenuPosition = { x: `${event.clientX}px`, y: `${event.clientY}px` };
+    }
+
     this.contextMenu.openMenu();
   }
 
