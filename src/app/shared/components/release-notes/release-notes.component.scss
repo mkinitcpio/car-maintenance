@@ -19,6 +19,16 @@
     gap: 12px;
     margin-block: 0px;
     padding-inline-start: 32px;
+
+    a {
+      color: $color-primary;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
 }

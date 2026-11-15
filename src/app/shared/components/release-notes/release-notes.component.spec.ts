@@ -4,8 +4,9 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ReleaseNotesComponent } from './release-notes.component';
 import { APP_CONFIG, appConfig } from 'app/app.config';
+import { ElectronService } from '@core/services';
 import { createMatDialogRefMock, provideDialog } from 'testing/component-setup';
-import { provideMockSettingsService } from 'testing/test-mocks';
+import { provideMockElectronService, provideMockSettingsService } from 'testing/test-mocks';
 
 describe('ReleaseNotesComponent', () => {
   let component: ReleaseNotesComponent;
@@ -22,6 +23,7 @@ describe('ReleaseNotesComponent', () => {
       providers: [
         ...provideDialog(releaseNotesData, createMatDialogRefMock()),
         provideMockSettingsService(),
+        provideMockElectronService(),
         { provide: APP_CONFIG, useValue: appConfig },
       ],
       schemas: [NO_ERRORS_SCHEMA],
@@ -38,5 +40,26 @@ describe('ReleaseNotesComponent', () => {
 
   it('selects the release notes for the active language', () => {
     expect(component.releaseNotes).toBe(releaseNotesData.en);
+  });
+
+  it('opens a link from the release notes externally', () => {
+    const link = document.createElement('a');
+    link.href = 'https://example.com';
+
+    const event = { target: link, preventDefault: vi.fn() } as unknown as MouseEvent;
+
+    component.onListClick(event);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(TestBed.inject(ElectronService).shell.openExternal).toHaveBeenCalledWith('https://example.com/');
+  });
+
+  it('ignores clicks that are not on a link', () => {
+    const event = { target: document.createElement('span'), preventDefault: vi.fn() } as unknown as MouseEvent;
+
+    component.onListClick(event);
+
+    expect(event.preventDefault).not.toHaveBeenCalled();
+    expect(TestBed.inject(ElectronService).shell.openExternal).not.toHaveBeenCalled();
   });
 });

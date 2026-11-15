@@ -13,9 +13,9 @@
             [expand]="isFirst"
             variant="default"
           >
-          <ul class="release-notes__list">
-            @for (text of note.news; track $index) {
-              <li cmTextBody="b1" class="release-notes__text">{{text}}</li>
+          <ul class="release-notes__list" (click)="onListClick($event)">
+            @for (news of note.news; track $index) {
+              <li cmTextBody="b1" class="release-notes__text" [innerHTML]="news"></li>
             }
           </ul>
           </cm-accordion>

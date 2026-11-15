@@ -3,7 +3,9 @@
     "title": "Общее",
     "icon": "refresh",
     "news": [
-      "Сборка приложения переведена с core20 на core24."
+      "Сборка приложения переведена с core20 на core24;",
+      "Проведена подготовка к релизу приложения в Flathub;",
+      "Создан <a href=\"https://mkinitcpio.github.io/car-maintenance/\">сайт приложения</a>."
     ]
   },{
     "title": "Поиск и навигация",
@@ -21,6 +23,7 @@
     "icon": "records",
     "news": [
       "Группу можно редактировать и удалять прямо со страницы группы или записей;",
+      "Добавлены новые иллюстрации для групп;",
       "Добавлены метки для записей и просмотр полного списка меток;",
       "Добавлена новая валюта: шекель."
     ]
@@ -48,7 +51,9 @@
     "title": "General",
     "icon": "refresh",
     "news": [
-      "The application build has been updated from core20 to core24."
+      "The application build has been updated from core20 to core24;",
+      "Prepared the application for release on Flathub;",
+      "Created the <a href=\"https://mkinitcpio.github.io/car-maintenance/\">application website</a>."
     ]
   },{
     "title": "Search and navigation",
@@ -66,6 +71,7 @@
     "icon": "records",
     "news": [
       "A group can now be edited and deleted directly from the group or records page;",
+      "Added new illustrations for groups;",
       "Added labels for records and a full labels list view;",
       "Added a new currency: Shekel."
     ]
@@ -93,7 +99,9 @@
     "title": "Жалпы",
     "icon": "refresh",
     "news": [
-      "Қосымшаның жинағы core20-ден core24-ке жаңартылды."
+      "Қосымшаның жинағы core20-ден core24-ке жаңартылды;",
+      "Қосымшаны Flathub-та шығаруға дайындық жүргізілді;",
+      "<a href=\"https://mkinitcpio.github.io/car-maintenance/\">Қосымшаның сайты</a> жасалды."
     ]
   },{
     "title": "Іздеу және навигация",
@@ -111,6 +119,7 @@
     "icon": "records",
     "news": [
       "Топты топ немесе жазбалар бетінен тікелей өңдеуге және жоюға болады;",
+      "Топтар үшін жаңа иллюстрациялар қосылды;",
       "Жазбаларға белгілер қосылды және барлық белгілердің тізімін көру мүмкіндігі қосылды;",
       "Жаңа валюта қосылды: шекель."
     ]

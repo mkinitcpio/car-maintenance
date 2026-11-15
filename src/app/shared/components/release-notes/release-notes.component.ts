@@ -14,6 +14,7 @@ import type { CreateRecordComponent } from '../../../maintenance/dialogs/create-
 import { SettingsService } from '../settings/settings.service';
 import { AppConfig, APP_CONFIG } from 'app/app.config';
 import { Accordion } from '../accordion/accordion';
+import { ElectronService } from '@core/services';
 
 interface ReleaseNote {
   title: string;
@@ -45,6 +46,7 @@ export class ReleaseNotesComponent implements OnInit {
   public dialogRef = inject(MatDialogRef<CreateRecordComponent>);
 
   private settingsService = inject(SettingsService);
+  private electronService = inject(ElectronService);
   private releaseNotesData = inject<{ [key: string]: ReleaseNote[] }>(MAT_DIALOG_DATA);
 
   public releaseNotes: ReleaseNote[];
@@ -57,5 +59,16 @@ export class ReleaseNotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.releaseNotes = this.releaseNotesData[this.settingsService.settings.language];
+  }
+
+  public onListClick(event: MouseEvent): void {
+    const link = (event.target as HTMLElement).closest('a');
+
+    if (!link) {
+      return;
+    }
+
+    event.preventDefault();
+    this.electronService.shell.openExternal(link.href);
   }
 }

@@ -139,7 +139,7 @@ export class DialogManagerService {
   public openSettingsDialog(): void {
     this.dialog
       .open(SettingsComponent, {
-        width: "1200px",
+        width: "1000px",
         panelClass: "dialog-settings",
       });
   }
