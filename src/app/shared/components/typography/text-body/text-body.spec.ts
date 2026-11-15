@@ -40,6 +40,7 @@ describe('CmTextBody', () => {
         fixture.detectChanges();
 
         expect(directive['classList']()).toEqual([
+            'cm-text',
             'cm-text-body',
             'cm-text-body--b1',
         ]);
@@ -50,6 +51,7 @@ describe('CmTextBody', () => {
         fixture.detectChanges();
 
         expect(directive['classList']()).toEqual(expect.arrayContaining([
+            'cm-text',
             'cm-text-body',
             'cm-text-body--b1',
             'cm-text--strong',

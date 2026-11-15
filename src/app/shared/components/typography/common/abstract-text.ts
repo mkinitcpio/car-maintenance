@@ -18,7 +18,7 @@ export abstract class AbstractCmText {
   protected classList = signal<string[]>([]);
 
   protected computeClasses(data: string): void {
-    const classList = [this.baseClass];
+    const classList = Array.from(new Set([this.commonClass, this.baseClass]));
     const [element, ...modifiers] = data.split(':');
 
     if(!element) {

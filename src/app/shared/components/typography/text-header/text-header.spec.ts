@@ -40,6 +40,7 @@ describe('CmTextHeader', () => {
         fixture.detectChanges();
 
         expect(directive['classList']()).toEqual([
+            'cm-text',
             'cm-text-header',
             'cm-text-header--h1',
         ]);
@@ -50,6 +51,7 @@ describe('CmTextHeader', () => {
         fixture.detectChanges();
 
         expect(directive['classList']()).toEqual(expect.arrayContaining([
+            'cm-text',
             'cm-text-header',
             'cm-text-header--h1',
             'cm-text--strong',
