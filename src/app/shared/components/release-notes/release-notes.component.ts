@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, inject, Inject, OnInit } from '@angular/core';
-import { CmTextHeader } from '../typography/text-header/text-header';
+import { ChangeDetectionStrategy, inject, OnInit, signal } from '@angular/core';
 import { CmTextBody } from '../typography/text-body/text-body';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDividerModule } from '@angular/material/divider';
@@ -14,9 +13,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import type { CreateRecordComponent } from '../../../maintenance/dialogs/create-record/create-record.component';
 import { SettingsService } from '../settings/settings.service';
 import { AppConfig, APP_CONFIG } from 'app/app.config';
+import { Accordion } from '../accordion/accordion';
 
 interface ReleaseNote {
   title: string;
+  icon: string;
   news: string[];
 };
 
@@ -35,7 +36,7 @@ interface ReleaseNote {
         MatDividerModule,
         DialogComponent,
         CmTextBody,
-        CmTextHeader,
+        Accordion,
     ]
 })
 export class ReleaseNotesComponent implements OnInit {
@@ -44,9 +45,11 @@ export class ReleaseNotesComponent implements OnInit {
   public dialogRef = inject(MatDialogRef<CreateRecordComponent>);
 
   private settingsService = inject(SettingsService);
-  private releaseNotesData = inject<{[key: string]: ReleaseNote[]}>(MAT_DIALOG_DATA);
+  private releaseNotesData = inject<{ [key: string]: ReleaseNote[] }>(MAT_DIALOG_DATA);
 
   public releaseNotes: ReleaseNote[];
+
+  public openedAccordion = signal<number>(0);
 
   constructor() {
 

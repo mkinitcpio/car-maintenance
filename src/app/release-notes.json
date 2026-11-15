@@ -1,59 +1,137 @@
 {
   "ru": [{
     "title": "Общее",
+    "icon": "refresh",
     "news": [
-      "Небольшие косметические изменения в приложении;",
-      "Добавлен перевод на казахский язык;",
-      "Добавлена новая валюта: Тенге;",
-      "Для полей ввода пробег и валюта добавлены иллюстрации."
+      "Сборка приложения переведена с core20 на core24."
     ]
   },{
-    "title": "Таблица",
+    "title": "Поиск и навигация",
+    "icon": "tree",
     "news": [
-      "Обновление таблицы и функционала;",
-      "Добавлено скрытие колонок;",
-      "Добавлен экспорт в CSV;",
-      "Добавлена возможность выбора записей;",
-      "Добавлено удаление нескольких записей;",
-      "Добавлено перемещение записей между группами."
+      "Добавлен поиск по группам и категориям в боковой панели;",
+      "Найденные совпадения подсвечиваются, а при отсутствии результатов показывается пустое состояние;",
+      "После закрытия поиска возвращается прежнее состояние раскрытых групп;",
+      "Обновлена панель навигации: у иконок модулей появились подписи;",
+      "Добавлены новые иконки модулей и категорий;",
+      "Исправлено выделение выбранной группы в боковой панели."
+    ]
+  },{
+    "title": "Записи и группы",
+    "icon": "records",
+    "news": [
+      "Группу можно редактировать и удалять прямо со страницы группы или записей;",
+      "Добавлены метки для записей и просмотр полного списка меток;",
+      "Добавлена новая валюта: шекель."
+    ]
+  },{
+    "title": "Печать и экспорт",
+    "icon": "printer",
+    "news": [
+      "Добавлен выбор ориентации страницы при экспорте в PDF;",
+      "Обновлён предпросмотр PDF;",
+      "Колонки для экспорта теперь берутся из настроек таблицы;",
+      "Убрано ограничение на количество записей в предпросмотре и экспорте."
+    ]
+  },{
+    "title": "Интерфейс и настройки",
+    "icon": "settings",
+    "news": [
+      "Переработан диалог настроек: разделы «Общие», «Оформление», «Язык», «Валюта», «Единицы измерения», «Контакты» и «О приложении»;",
+      "Обновлён внешний вид кнопок, полей ввода, чекбоксов, переключателей, аккордеонов, таблиц и диалогов;",
+      "Добавлены новые иллюстрации пустых состояний;",
+      "Обновлены иконки валют;",
+      "Исправлены мелкие визуальные недочёты в таблицах и формах."
     ]
   }],
   "en": [{
-    "title": "Common",
+    "title": "General",
+    "icon": "refresh",
     "news": [
-      "Small cosmetic changes in the application;",
-      "Added translation into Kazakh;",
-      "Added a new currency: Tenge;",
-      "Illustrations have been added to the mileage and currency input fields."
+      "The application build has been updated from core20 to core24."
     ]
   },{
-    "title": "Table",
+    "title": "Search and navigation",
+    "icon": "tree",
     "news": [
-      "Updated table and functionality;",
-      "Added hiding columns;",
-      "Added export to CSV;",
-      "Added the ability to select records;",
-      "Added deleting multiple records;",
-      "Added moving records between groups."
+      "Added search across groups and categories in the sidebar;",
+      "Matches are highlighted, and an empty state is shown when nothing is found;",
+      "The previous expanded state of groups is restored after closing search;",
+      "Updated the navigation panel: module icons now have labels;",
+      "Added new icons for modules and categories;",
+      "Fixed highlighting of the selected group in the sidebar."
+    ]
+  },{
+    "title": "Records and groups",
+    "icon": "records",
+    "news": [
+      "A group can now be edited and deleted directly from the group or records page;",
+      "Added labels for records and a full labels list view;",
+      "Added a new currency: Shekel."
+    ]
+  },{
+    "title": "Print and export",
+    "icon": "printer",
+    "news": [
+      "Added page orientation selection for PDF export;",
+      "Updated the PDF preview;",
+      "Export columns now use the table settings;",
+      "Removed the record count limit in the preview and export."
+    ]
+  },{
+    "title": "Interface and settings",
+    "icon": "settings",
+    "news": [
+      "Redesigned the settings dialog with General, Appearance, Language, Currency, Units, Contacts and About sections;",
+      "Updated the appearance of buttons, inputs, checkboxes, switches, accordions, tables and dialogs;",
+      "Added new empty-state illustrations;",
+      "Updated currency icons;",
+      "Fixed minor visual issues in tables and forms."
     ]
   }],
   "kz": [{
     "title": "Жалпы",
+    "icon": "refresh",
     "news": [
-        "Қосымшаға шағын косметикалық өзгерістер енгізілді;",
-        "Қосымшаға қазақ тіліне аударма қосылды;",
-        "Жаңа валюта қосылды: Теңге;",
-        "Жүгіріс және валюта өрістеріне иллюстрациялар қосылды."
+      "Қосымшаның жинағы core20-ден core24-ке жаңартылды."
     ]
-    },{
-      "title": "Кесте",
-      "news": [
-        "Кесте және функционал жаңартылды;",
-        "Бағандарды жасыру қосылды;",
-        "CSV-ға экспорттау қосылды;",
-        "Жазбаларды таңдау мүмкіндігі қосылды;",
-        "Бірнеше жазбаларды жою қосылды;",
-        "Жазбаларды топтар арасында жылжыту қосылды."
-      ]
-    }]
+  },{
+    "title": "Іздеу және навигация",
+    "icon": "tree",
+    "news": [
+      "Бүйір панелінде топтар мен санаттар бойынша іздеу қосылды;",
+      "Табылған сәйкестіктер ерекшеленеді, нәтиже болмаса бос күй көрсетіледі;",
+      "Іздеуді жапқаннан кейін топтардың бұрынғы ашылу күйі қалпына келеді;",
+      "Навигация панелі жаңартылды: модуль иконкаларында жазулар пайда болды;",
+      "Модульдер мен санаттар үшін жаңа иконкалар қосылды;",
+      "Бүйір панелінде таңдалған топтың ерекшеленуі түзетілді."
+    ]
+  },{
+    "title": "Жазбалар және топтар",
+    "icon": "records",
+    "news": [
+      "Топты топ немесе жазбалар бетінен тікелей өңдеуге және жоюға болады;",
+      "Жазбаларға белгілер қосылды және барлық белгілердің тізімін көру мүмкіндігі қосылды;",
+      "Жаңа валюта қосылды: шекель."
+    ]
+  },{
+    "title": "Басып шығару және экспорт",
+    "icon": "printer",
+    "news": [
+      "PDF-ке экспорттау кезінде бет бағдарын таңдау қосылды;",
+      "PDF алдын ала қарау жаңартылды;",
+      "Экспортқа арналған бағандар енді кесте параметрлерінен алынады;",
+      "Алдын ала қарау мен экспорттағы жазбалар санының шектеуі алынып тасталды."
+    ]
+  },{
+    "title": "Интерфейс және параметрлер",
+    "icon": "settings",
+    "news": [
+      "Параметрлер диалогы қайта жасалды: «Жалпы», «Безендіру», «Тіл», «Валюта», «Өлшем бірліктері», «Байланыс» және «Қосымша туралы» бөлімдері;",
+      "Батырмалар, өрістер, чекбокстар, ауыстырғыштар, аккордеондар, кестелер мен диалогтардың сыртқы түрі жаңартылды;",
+      "Бос күйлер үшін жаңа иллюстрациялар қосылды;",
+      "Валюта иконкалары жаңартылды;",
+      "Кестелер мен формалардағы ұсақ визуалдық кемшіліктер түзетілді."
+    ]
+  }]
 }

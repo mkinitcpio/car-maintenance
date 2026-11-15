@@ -86,7 +86,7 @@ export class DialogManagerService {
   public openReleaseNotesDialog(data: ReleaseNotes): Observable<void> {
     return this.dialog
       .open(ReleaseNotesComponent, {
-        maxHeight: "80%",
+        maxHeight: 800,
         width: "564px",
         autoFocus: false,
         panelClass: "dialog-notes",
