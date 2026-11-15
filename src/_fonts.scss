@@ -1,19 +1,1 @@
-:root {
-  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-}
-
-html[data-platform='windows'] {
-  --font-system: sans-serif;
-}
-
 $font-system: var(--font-system);
-
-.cm-text {
-  &--strong {
-    font-weight: bold;
-  }
-
-  &--medium {
-    font-weight: 500;
-  }
-}
