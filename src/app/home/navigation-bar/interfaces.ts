@@ -1,5 +1,5 @@
 export interface NavigationButton {
   icon: string;
-  tooltipText: string;
+  text: string;
   route: string;
 }

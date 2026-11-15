@@ -4,17 +4,17 @@ import { NavigationEnum } from './navigation.enum';
 export const navigationButtons: NavigationButton[] = [{
   icon: 'dashboard',
   route: NavigationEnum.Dashboard,
-  tooltipText: "NAVIGATIONS.DASHBOARD",
+  text: "NAVIGATIONS.DASHBOARD",
 },{
-  icon: 'tree',
+  icon: 'records',
   route: NavigationEnum.Maintenance,
-  tooltipText: "NAVIGATIONS.RECORDS",
+  text: "NAVIGATIONS.RECORDS",
 },{
-  icon: 'task',
+  icon: 'events',
   route: NavigationEnum.Events,
-  tooltipText: "NAVIGATIONS.EVENTS",
+  text: "NAVIGATIONS.EVENTS",
 },{
   icon: 'store',
   route: NavigationEnum.Storage,
-  tooltipText: "NAVIGATIONS.STORAGE",
+  text: "NAVIGATIONS.STORAGE",
 },];

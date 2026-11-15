@@ -12,6 +12,7 @@ import { NavigationButton } from './interfaces';
 import { navigationButtons } from './navigation-buttons';
 import { filter } from 'rxjs/operators';
 import { CmButton } from '@shared/components/button/button';
+import { CmTextBody } from '@shared/components/typography/text-body/text-body';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,6 +26,7 @@ import { CmButton } from '@shared/components/button/button';
     MatTooltipModule,
     TranslateModule,
     CmButton,
+    CmTextBody
 ],
 })
 export class NavigationBarComponent implements OnInit {
