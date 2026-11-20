@@ -1,0 +1,19 @@
+<section class="bar-chart">
+  <header class="bar-chart__header-container">
+    <div cmTextHeader="h3" class="bar-chart__header">{{ header() }}</div>
+
+    <div class="bar-chart__actions">
+      <ng-content [actions]></ng-content>
+    </div>
+  </header>
+
+  <main class="bar-chart__chart">
+    @for (column of columns; track $index) {
+      <div class="bar-chart__column-background">
+        <div class="bar-chart__column-data" [ngStyle]="{
+          'height': ($index * 5) + '%'
+          }"></div>
+      </div>
+    }
+  </main>
+</section>

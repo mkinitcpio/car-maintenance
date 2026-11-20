@@ -1,0 +1,44 @@
+@use 'colors' as *;
+@use 'fonts' as *;
+
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: 24px;
+  width: 400px;
+  height: 256px;
+  background-color: $background-primary;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  &__header-container {
+    padding-left: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__chart {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    justify-content: space-around;
+    height: 100%;
+  }
+
+  &__column-background {
+    display: flex;
+    align-items: end;
+    height: 100%;
+    width: 16px;
+    border-radius: 12px;
+    background: $background-button-hover;
+  }
+
+  &__column-data {
+    height: 100%;
+    width: 16px;
+    border-radius: 12px;
+    background: $color-primary;
+  }
+}

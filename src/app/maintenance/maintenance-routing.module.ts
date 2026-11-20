@@ -6,6 +6,7 @@ import { MaintenanceComponent } from "./maintenance.component";
 import { EmptyComponent } from "./empty/empty.component";
 import { CategoryDetailsComponent } from "./category-details/category-details.component";
 import { DetailComponent } from "./detail/detail.component";
+import { MaintenanceHome } from "./home/maintenance.home";
 
 const routes: Routes = [
   {
@@ -15,14 +16,19 @@ const routes: Routes = [
       {
         path: "",
         pathMatch: "full",
-        redirectTo: "empty",
+        redirectTo: "home",
       },
-      { path: "category-details/:id",
+      {
+        path: "home",
+        component: MaintenanceHome,
+      },
+      {
+        path: "category-details/:id",
         component: CategoryDetailsComponent,
       },
       {
         path: "details/:id/:parentId/:name",
-        component: DetailComponent
+        component: DetailComponent,
       },
       {
         path: "empty",

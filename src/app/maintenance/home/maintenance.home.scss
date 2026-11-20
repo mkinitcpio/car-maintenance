@@ -1,0 +1,10 @@
+@use 'colors' as *;
+@use 'fonts' as *;
+
+.maintenance-home {
+  &__chart-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}

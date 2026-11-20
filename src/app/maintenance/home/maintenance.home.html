@@ -1,0 +1,27 @@
+<app-details [title]="'Home'">
+  <section content>
+    <bar-chart header="Expenses by Month">
+      <section class="maintenance-home__chart-actions">
+        <button
+          cm-button
+          variant="transparent"
+          size="small"
+          [disabled]="selectedYearIndex() === 0"
+          (click)="prevYear()"
+          >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <span cmTextBody="b1:medium">{{ years()[selectedYearIndex()] }}</span>
+        <button
+          cm-button
+          variant="transparent"
+          size="small"
+          [disabled]="selectedYearIndex() === years().length - 1"
+          (click)="nextYear()"
+          >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </section>
+    </bar-chart>
+  </section>
+</app-details>

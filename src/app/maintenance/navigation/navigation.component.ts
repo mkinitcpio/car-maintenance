@@ -32,6 +32,7 @@ import { SearchIllustrationComponent } from "@shared/components/empty-state/illu
 import { MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { CategoryManagementService } from "@shared/services/category-management.service";
 import { ActionsPanel } from "@shared/components/actions-panel/actions-panel";
+import { NavigationEnum } from "app/home/navigation-bar/navigation.enum";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -273,5 +274,10 @@ export class NavigationComponent extends AutoCloseable implements OnInit {
     } else {
       this.addCategory();
     }
+  }
+
+  public onHome(): void {
+    this.groupTreeService.selectedItem(null);
+    this.router.navigate([NavigationEnum.Maintenance, 'home']);
   }
 }

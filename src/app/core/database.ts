@@ -56,6 +56,10 @@ export class DataBaseService {
     return db.records.filter((record) => record.parent === parentId);
   }
 
+  public getAllRecords(): Promise<Record[]> {
+    return Promise.resolve(this.data.records || []);
+  }
+
   public saveNewCategory(category: Category): void {
     const db = this.data;
     db.categories.push(category);
